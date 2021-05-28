@@ -1,0 +1,24 @@
+{{page-title "Dashboard"}}
+<div class="row">
+  <div class="col-md-6">
+    {{charts/price-chart historic_price=@model.historicPrice}}
+  </div>
+  <div class="col-md-6">
+    
+  </div>
+</div>
+
+<div class="row">
+
+  <div class="col-md-3">
+    {{trend/theta historic_price=@model.historicPrice}}
+  </div>
+  <div class="col-md-3">
+    {{trend/tfuel historic_price=@model.historicPrice}}
+  </div>
+
+  <div class="col-md-6">
+    {{charts/earnings-forecast}}
+  </div>
+</div>
+

@@ -1,0 +1,13 @@
+<p></p>
+<div class="card-description">
+    {{#each guardian.messages as |message|}}
+        {{message}}<br/>
+    {{/each}}
+</div>
+{{#if guardian.versions}}
+    <div class="card-description">
+        {{#each guardian.versions as |version|}}
+            {{version}}<br/>
+        {{/each}}
+    </div>
+{{/if}}

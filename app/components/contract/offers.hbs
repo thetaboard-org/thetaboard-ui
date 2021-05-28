@@ -1,0 +1,13 @@
+{{contract/offer-received-modal  
+    offer=this.offer.offer 
+    ownerAddress=this.offer.ownerAddress 
+    acceptedOffer=this.offer.acceptedOffer}}
+
+{{contract/offer-canceled-modal offer=this.offer.offer}}
+
+<div {{did-insert setupOfferReceivedEventListener}} class="col-lg-6 col-md-6">
+    {{contract/offer-made-list connectWallet=this.connectWallet}}
+</div>
+<div {{did-insert setupOfferMadeEventListener}} class="col-lg-6 col-md-6">
+    {{contract/offer-received-list connectWallet=this.connectWallet}}
+</div>

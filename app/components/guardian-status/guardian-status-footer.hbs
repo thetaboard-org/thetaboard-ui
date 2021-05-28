@@ -1,0 +1,10 @@
+{{#if guardian.snapshotInfo.shouldDownload}}
+    {{#if guardian.snapshotInfo.latestFinalizedBlockTime}}
+        <div class="alert alert-warning">
+            <button type="button" aria-hidden="true" class="close" data-dismiss="alert" aria-label="Close">
+            <i class="tim-icons icon-simple-remove"></i>
+            </button>
+            <span><b> Warning - </b> The lastest finalised block is from over 24hours ago. You might want to stop your Guardian Node and download the latest snapshot before starting it again.</span>
+        </div>
+    {{/if}}
+{{/if}}

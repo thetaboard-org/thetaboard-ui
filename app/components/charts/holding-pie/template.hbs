@@ -1,0 +1,25 @@
+
+<div class="card card-chart card-user card-holdings">
+  <div class="card-header ">
+    <div class="row">
+      <div class="col-sm-12 text-left">
+        <p class="card-text"></p>
+        <div class="author">
+          <div class="block block-one"></div>
+          <div class="block block-two"></div>
+          <div class="block block-three"></div>
+          <div class="block block-four"></div>
+          <h2 class="card-title forecast-title">Wallet Composition in $ {{setUpChart}}</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="holding-container" class="card-body pie-chart-card-body">
+
+  {{#if this.thetaSdk.wallets.length}}
+    <canvas id="pieChartExample" height="300" {{did-insert this.setupChart}}></canvas>
+  {{else}}
+    <p class="wallet-placeholder">Please <a href="" {{on 'click' this.connectWallet}}>connect your wallet</a> or <a href="" data-toggle="modal" data-target="#searchModal">enter an address</a>.</p>
+  {{/if}}
+  </div>
+</div>

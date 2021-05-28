@@ -1,0 +1,57 @@
+<div class="card card-chart card-user">
+  <div class="card-header ">
+    <div class="row">
+      <div class="col-sm-12 text-left">
+        <p class="card-text"></p>
+        <div class="author">
+          <div class="block block-one"></div>
+          <div class="block block-two"></div>
+          <div class="block block-three"></div>
+          <div class="block block-four"></div>
+          <h2 class="card-title forecast-title">Guardian Node TFuel Reward Forecast {{setUpChart}}</h2>
+
+          <br/>
+          <p class="form-inline forecast-amout-inline">Forecasting for
+          <Input
+                  @type="number"
+                  @value={{thetaAmount}}
+                  @class="form-control theta-ammout-forecast"
+                  {{on "keyup" this.updateData}}
+          />
+          Theta </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div id="forecast-chart-container">
+      <canvas id="forecastChart" height="239" {{did-insert this.setupChart}}></canvas>
+    </div>
+    <div class="forecast-legend">
+      <p class="forcast-earning-title">Estimated Tfuel earnings:</p>
+      <div class="row">
+        <div class="col-sm-4">
+          <span class="legend-label"> Per Day:</span> <br>
+          <span class="amount">{{format-number avg_tfuel_per_day}}<img
+                  src="assets/img/logo/tfuel.png" style="width: 15px; margin-left: 3px; vertical-align: unset;"></span>
+          <br>
+          <span class="amount">{{avg_tfuel_per_day_dollar}}</span>
+        </div>
+        <div class="col-sm-4">
+          <span class="legend-label"> Per Month:</span> <br>
+          <span class="amount">{{format-number avg_tfuel_per_month}}<img
+                  src="assets/img/logo/tfuel.png" style="width: 15px; margin-left: 3px; vertical-align: unset;"></span>
+          <br>
+          <span class="amount">{{avg_tfuel_per_month_dollar}}</span>
+        </div>
+        <div class="col-sm-4">
+          <span class="legend-label"> Per year:</span> <br>
+          <span class="amount">{{format-number avg_tfuel_per_year}}<img
+                  src="assets/img/logo/tfuel.png" style="width: 15px; margin-left: 3px; vertical-align: unset;"></span>
+          <br>
+          <span class="amount">{{avg_tfuel_per_year_dollar}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

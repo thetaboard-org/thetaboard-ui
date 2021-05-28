@@ -1,0 +1,43 @@
+<div class="card card-user">
+  <div class="card-body card-min-390">
+    <p class="card-text"></p>
+    <div class="author">
+      <div class="block block-one"></div>
+      <div class="block block-two"></div>
+      <div class="block block-three"></div>
+      <div class="block block-four"></div>
+      <img class="avatar" src="{{rootURL}}assets/img/logo/theta.png" alt="...">
+    </div>
+      <div class="card-body-stake">
+        <h5 class="title">Theta</h5>
+          <div class="trend-activity">
+            <p class="description">Current Price:</p>
+            <p class="title current-price">${{format-number this.thetaSdk.prices.theta.price maximumFractionDigits="2"}}</p>
+        </div>
+        <hr/>
+        <div class="trends-percent-conatiner">
+          <div class="trend-activity trends-percent border-separation">
+              <p class="description">Last 24h</p>
+              <p class="title {{trendYesterday.class}}">{{trendYesterday.type}} {{trendYesterday.percentChange}}% </p>
+                <span class="trend-usd-change {{trendYesterday.class}}">({{trendYesterday.type}} ${{trendYesterday.change}})</span>
+          </div>
+          <div class="trend-activity trends-percent">
+              <p class="description">Last 7 days</p>
+              <p class="title {{trendLastWeek.class}} ">{{trendLastWeek.type}} {{trendLastWeek.percentChange}}% </p>
+              <span class="trend-usd-change {{trendLastWeek.class}}">({{trendLastWeek.type}} ${{trendLastWeek.change}})</span>
+          </div>
+        </div>
+        <hr/>
+        <div class="trend-activity extra">
+          <p class="description">Market Cap: </p>
+          <p class="title">{{format-number this.thetaSdk.prices.theta.market_cap style='currency' currency="USD"}}</p>
+                  <hr/>
+          <p class="description">24h volume</p>
+          <p class="title">${{format-number this.thetaSdk.prices.theta.volume_24h maximumFractionDigits="2"}}</p>
+                <hr/>
+          <p class="description">Theta Staked</p>
+          <p class="title">{{format-number this.thetaSdk.totalStake.totalAmount maximumFractionDigits="0"}}</p>
+        </div>
+      </div>
+  </div>
+</div>
