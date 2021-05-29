@@ -3,8 +3,8 @@
 EmberJS project for theta-board UI.
 
 Dev resources
-- run using `ember server --port 8080 --proxy http://localhost:8000`
-- compile using `ember build --output-path=../webserver/public --environment production`
+- run using `npm start` or `npm run start_dev` to run with local webserver
+- build using `build_and_push`which will build and push the new docker
 
 TODO
 

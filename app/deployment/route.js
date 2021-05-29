@@ -1,13 +1,13 @@
 import Route from '@ember/routing/route';
 import thetajs from "@thetalabs/theta-js";
-import web_utils from 'web3-utils';
+import namehash from 'eth-ens-namehash';
 import ThetaWalletConnect from '@thetalabs/theta-wallet-connect';
 
 export default class DeploymentRoute extends Route {
 
   async model() {
     const LTD = 'theta';
-    const LTD_hash = ethers.utils.namehash(LTD)
+    const LTD_hash = namehash.hash(LTD)
 
     const provider = new thetajs.providers.HttpProvider(thetajs.networks.ChainIds.Privatenet);
     const wallet = new thetajs.Wallet("0xa6c2a7Db246E02789B111343Fc5A4E84d5A8FF69", provider);
