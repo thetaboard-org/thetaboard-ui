@@ -677,6 +677,14 @@ form.domain-available-container label.emphesized {
   #faq-page .card-description {
     width: 100%;
   }
+
+  div.card.login-card {
+    width: 90%;
+  }
+
+  div.social-login {
+    width: 90%;
+  }
 }
 
 
@@ -697,6 +705,15 @@ form.domain-available-container label.emphesized {
       padding-left: 0px;
       padding-right: 0px;
   }
+
+  div.card.login-card {
+    width: 96%;
+  }
+
+  div.social-login {
+    width: 96%;
+  }
+
 }
 
 #faq-page .card-description p {
@@ -807,4 +824,19 @@ button.btn.btn-fill.btn-primary.connect-wallet-offer-button.refresh-offer {
 
 .coinbases {
   color:rgba(255, 255, 255, .8)
+}
+
+.social-login {
+  background: white;
+  height: 50px;
+  line-height: 50px;
+  width: 70%;
+  margin: 15px auto;
+  border-radius: 7px;
+}
+
+.card.login-card {
+  width: 70%;
+  text-align: center;
+  margin: 30px auto 0;
 }

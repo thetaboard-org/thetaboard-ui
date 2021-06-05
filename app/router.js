@@ -31,4 +31,5 @@ Router.map(function () {
   this.route('domain');
   this.route('faq');
   this.route('not-found', { path: '/*path' });
+  this.route('login');
 });

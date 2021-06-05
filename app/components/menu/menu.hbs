@@ -1,10 +1,23 @@
-<ul class="nav">
-    {{#each menuItemList as |menuItem|}}
-    <li class="nav-item {{if menuItem.classActive "active"}}">
-        <LinkTo @class="nav-link" @route="{{menuItem.name}}">
-        <i class="tim-icons {{menuItem.icon}}"></i>
-        <p class="menu-item">{{menuItem.name}}</p>
-        </LinkTo>
-    </li>
-    {{/each}}
-</ul>
+<div class="sidebar" data-color="purple" data-background-color="white">
+    <!--
+        Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
+
+        Tip 2: you can also add an image using data-image tag
+    -->
+    <div class="logo">
+        <img class="thetaboard-logo" src="{{rootURL}}assets/img/thetaboard-logo.png"/>
+    </div>
+
+    <div class="sidebar-wrapper">
+        <ul class="nav">
+            {{#each menuItemList as |menuItem|}}
+            <li class="nav-item {{if menuItem.classActive "active"}}">
+                <LinkTo @class="nav-link" @route="{{menuItem.name}}">
+                <i class="tim-icons {{menuItem.icon}}"></i>
+                <p class="menu-item">{{menuItem.name}}</p>
+                </LinkTo>
+            </li>
+            {{/each}}
+        </ul>
+    </div>
+    </div>
