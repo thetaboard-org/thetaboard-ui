@@ -1,0 +1,31 @@
+<div class="card card-user">
+  <div class="card-body card-min-390">
+    <p class="card-text"></p>
+    <div class="author">
+      <div class="block block-one"></div>
+      <div class="block block-two"></div>
+      <div class="block block-three"></div>
+      <div class="block block-four"></div>
+      <img class="avatar" src="{{rootURL}}assets/img/logo/tfuel.png" alt="...">
+    </div>
+      <div class="card-body-stake">
+        <h5 class="title">Tfuel Staking</h5>
+        <div class="row justify-content-lg-center">
+            <form class="stakes-deposit col-md-11">
+                <div class="form-group">
+                    <label for="stake-amount">How many Tfuel do you want to stake?</label>
+                    <p>The current minimum limit is 100,000Tfuel. This limit will be reduced soon.</p>
+                    <Input @id="stake-amount" @type="number" @min="0" class="form-control border-color" @value='100000'/>
+                </div>
+            </form>
+        </div>
+        <button type="submit" class="btn btn-fill btn-primary btn-left">Review deposit</button>
+          <br/><br/><br/>
+          <div class="stakes-no-activity">
+            <p class="title">No Stakes</p>
+          </div>
+      </div>
+  </div>
+  <div class="card-footer">
+  </div>
+</div>

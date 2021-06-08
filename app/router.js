@@ -33,4 +33,5 @@ Router.map(function () {
   this.route('not-found', { path: '/*path' });
   this.route('login');
   this.route('signup');
+  this.route('staking');
 });

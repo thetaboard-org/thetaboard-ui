@@ -11,7 +11,7 @@
     </div>
     {{#if this.thetaStakes.isStakes}}
       <div class="card-body-stake">
-        <h5 class="title">Stakes</h5>
+        <h5 class="title">Theta Staking</h5>
         <button {{on "click" this.thetaStakes.showDeposit}} type="submit" class="btn btn-fill btn-primary btn-left">Deposit</button>
         <button {{on "click" this.thetaStakes.showWithdraw}} type="submit" class="btn btn-fill btn-primary">Withdraw</button>
         {{#if this.thetaSDK.guardianWallets.length}}
