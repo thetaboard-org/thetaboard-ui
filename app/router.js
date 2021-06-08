@@ -32,4 +32,5 @@ Router.map(function () {
   this.route('faq');
   this.route('not-found', { path: '/*path' });
   this.route('login');
+  this.route('signup');
 });

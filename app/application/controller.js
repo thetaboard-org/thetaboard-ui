@@ -14,6 +14,10 @@ export default class ApplicationController extends Controller {
     return this.routeName == 'login';
   }
 
+  get isSignup() {
+    return this.routeName == 'signup';
+  }
+
   get routeName() {
     return this.router.currentRoute.name;
   }

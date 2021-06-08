@@ -3,6 +3,8 @@
 <div class="wrapper ">
   {{#if isLogin}}
     {{outlet}}
+  {{else if isSignup}}
+      {{outlet}}
   {{else}}
     {{menu/menu}}
     <div class="main-panel">
