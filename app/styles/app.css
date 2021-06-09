@@ -181,6 +181,14 @@ input.border-color{
   height: 39px;
 }
 
+#tfuel-stake-amount {
+  font-size: 20px;
+  width: 300px;
+  margin: 20px auto;
+  text-align: center;
+  height: 39px;
+}
+
 .a-elipsis {
   display: inline-block;
   overflow: hidden;

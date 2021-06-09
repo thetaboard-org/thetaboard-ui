@@ -10,16 +10,16 @@
     </div>
       <div class="card-body-stake">
         <h5 class="title">Tfuel Staking</h5>
-        <div class="row justify-content-lg-center">
-            <form class="stakes-deposit col-md-11">
+        <div class="row justify-content-lg-center justify-content-md-center">
+            <form class="stakes-deposit col-md-9">
                 <div class="form-group">
                     <label for="stake-amount">How many Tfuel do you want to stake?</label>
                     <p>The current minimum limit is 100,000Tfuel. This limit will be reduced soon.</p>
-                    <Input @id="stake-amount" @type="number" @min="0" class="form-control border-color" @value='100000'/>
+                    <Input @id="tfuel-stake-amount" @type="number" @min="0" class="form-control border-color" @value='100000'/>
                 </div>
             </form>
         </div>
-        <button type="submit" class="btn btn-fill btn-primary btn-left">Review deposit</button>
+        <button {{on 'click' this.reviewDeposit}} type="submit" class="btn btn-fill btn-primary btn-left">Review deposit</button>
           <br/><br/><br/>
           <div class="stakes-no-activity">
             <p class="title">No Stakes</p>
