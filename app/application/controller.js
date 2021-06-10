@@ -39,7 +39,9 @@ export default class ApplicationController extends Controller {
   }
 
   get isResetPassword() {
-    return this.routeName == 'resetpassword';
+    return (
+      this.routeName == 'resetpassword' || this.routeName == 'passwordreset'
+    );
   }
 
   get routeName() {
