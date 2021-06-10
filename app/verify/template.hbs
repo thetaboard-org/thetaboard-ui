@@ -23,7 +23,13 @@
                                 <div class="form-group">
                                     <label>Your email is now verified.</label>
                                     <br/><br/>
-                                    <a href="/" class="btn btn-primary">Go to dashboard</a>
+                                    {{#if isUserAuthenticated}}
+                                        <a href="/" class="btn btn-primary">Go to dashboard</a>
+                                    {{else}}
+                                        <p>You can now login to your account</p>
+                                        <br/>
+                                        <a href="/login" class="btn btn-primary">Login</a>
+                                    {{/if}}
                                     <br/><br/><br/>
                                 </div>
                             </form>
