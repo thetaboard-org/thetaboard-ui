@@ -23,7 +23,7 @@
                                 <div class="form-group">
                                     <label>Your email is now verified.</label>
                                     <br/><br/>
-                                    <LinkTo @route='dashboard' @class="btn btn-primary">Go to dashboard</LinkTo>
+                                    <a href="/" class="btn btn-primary">Go to dashboard</a>
                                     <br/><br/><br/>
                                 </div>
                             </form>
@@ -34,7 +34,11 @@
                             <form class="stakes-deposit col-md-9">
                                 <div class="form-group">
                                     <label>Your verification link is invalid.</label>
-                                    <br/><br/><br/>
+                                    <br/><br/>
+                                    <p>Log into your account and click on the "Re-send verification link" banner.</p>
+                                    <br/>
+                                    <LinkTo @route="login" @class="btn btn-primary">Go to login</LinkTo>
+                                    <br/><br/>
                                 </div>
                             </form>
                         </div>

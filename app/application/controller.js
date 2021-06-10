@@ -12,6 +12,10 @@ export default class ApplicationController extends Controller {
   @service session;
   @service currentUser;
 
+  get isShowMenu() {
+    return this.isLogin || this.isSignup || this.isRegistered || this.isVerify;
+  }
+
   get isLogin() {
     return this.routeName == 'login';
   }

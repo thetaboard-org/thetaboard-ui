@@ -3,7 +3,9 @@
 
 <div class="card login-card" style="margin: 80px auto;">
     <div class="logo">
-        <img class="thetaboard-logo" src="{{rootURL}}assets/img/thetaboard-logo.png"/>
+        <LinkTo @route='dashboard' @class="">
+            <img class="thetaboard-logo" src="{{rootURL}}assets/img/thetaboard-logo.png"/>
+        </LinkTo>
     </div>
     <div class="card-body">
     <h4 class="card-title">Login</h4>
@@ -12,7 +14,7 @@
                 <div class="row">
                     <div class="col-md-6" style=" margin: auto;">
                         <div class="alert alert-warning" style="padding: 10px;">
-                            <span><b> Error - </b> {{error.message}}</span>
+                            <span>{{error.message}}</span>
                         </div>
                     </div>
                 </div>

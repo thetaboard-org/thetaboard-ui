@@ -1,0 +1,8 @@
+{{#if this.session.isAuthenticated}}
+    {{#if this.currentUser.user.notVerified}}
+        <div class="alert alert-warning" style="text-align: center; margin: 0;">
+            <span>Please verify your email address</span> 
+            <a href="" {{on 'click' this.resendEmailValidation}} style="padding: 7px 20px;" class="btn btn-fill btn-primary ember-view">Resend verification link</a>
+        </div>
+    {{/if}}
+{{/if}}

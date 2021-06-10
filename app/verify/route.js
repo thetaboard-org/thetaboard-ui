@@ -7,7 +7,6 @@ export default class VerifyRoute extends Route {
     let response = await fetch(`/users/verify_email`, options);
     if (response.status == 200) {
       let { data } = await response.json();
-      console.log(data);
       return { data: data };
     } else {
       return { data: { error: true } };

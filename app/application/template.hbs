@@ -1,15 +1,10 @@
 {{page-title "Thetaboard"}}
 
 <div class="wrapper ">
-  {{#if isLogin}}
+  {{#if isShowMenu}}
     {{outlet}}
-  {{else if isSignup}}
-      {{outlet}}
-  {{else if isRegistered}}
-      {{outlet}}
-  {{else if isVerify}}
-      {{outlet}}
   {{else}}
+    {{verify/email}}
     {{menu/menu}}
     <div class="main-panel">
       {{navbar/navbar}}
