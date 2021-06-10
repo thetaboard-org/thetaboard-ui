@@ -23,6 +23,25 @@ module.exports = function (environment) {
     },
   };
 
+  //Ember-simple-auth
+
+  ENV['ember-simple-auth'] = {
+    routeAfterAuthentication: 'dashboard',
+  };
+
+  ENV['ember-simple-auth-token'] = {
+    routeAfterAuthentication: 'dashboard',
+    refreshAccessTokens: false,
+    serverTokenEndpoint: '/auth/login', // Server endpoint to send authenticate request
+    // tokenDataPropertyName: 'tokenData', // Key in session to store token data
+    tokenPropertyName: 'token', // Key in server response that contains the access token
+    refreshLeeway: 300, // refresh 5 minutes (300 seconds) before expiration
+    // tokenExpirationInvalidateSession: true, // Enables session invalidation on token expiration
+    // serverTokenRefreshEndpoint: '/auth/login', // Server endpoint to send refresh request
+    // refreshTokenPropertyName: 'token', // Key in server response that contains the refresh token
+    // tokenExpireName: 'exp', // Field containing token expiration
+  };
+
   if (environment === 'development') {
     // ENV.APP.LOG_RESOLVER = true;
     // ENV.APP.LOG_ACTIVE_GENERATION = true;

@@ -1,41 +1,44 @@
 {{page-title "Sign Up"}}
 
-
-<div class="card login-card">
+<div class="card login-card" style="margin: 80px auto;">
     <div class="logo">
         <img class="thetaboard-logo" src="{{rootURL}}assets/img/thetaboard-logo.png"/>
     </div>
     <div class="card-body">
-    <h4 class="card-title">Login</h4>
-    <div class="row">
-        <div class="col-md-6" style=" margin: auto;">
-            <div class="form-group">
-                <input type="text" class="form-control" placeholder="Username" style="text-align:center;" value="">
+    <h4 class="card-title">Sign Up</h4>
+    <form {{on 'submit' this.register}}>
+        {{#each this.errorMessages as |error|}}
+            <div class="row">
+                <div class="col-md-6" style=" margin: auto;">
+                    <div class="alert alert-warning" style="padding: 10px;">
+                        <span><b> Error - </b> {{error.message}}</span>
+                    </div>
+                </div>
+            </div>
+        {{/each}}
+        <div class="row">
+            <div class="col-md-6" style=" margin: auto;">
+                <div class="form-group">
+                    <Input @type="email" required minlength="6" @class="form-control" @placeholder="Email" style="text-align:center;" @value={{email}}/>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-md-6" style=" margin: auto;">
-            <div class="form-group">
-                <input type="email" class="form-control" placeholder="Email" style="text-align:center;" value="">
+        <div class="row">
+            <div class="col-md-6" style=" margin: auto;">
+                <div class="form-group">
+                    <Input @id="password" {{on 'change' this.validatePassword}}  @type="password" required pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" title="Password must be 8 characters minimum and contain at least: 1 uppercase, 1 lowercase and 1 number or 1 special character" @class="form-control" @placeholder="Password" style="text-align:center;" @value={{password}}/>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-md-6" style=" margin: auto;">
-            <div class="form-group">
-                <input type="password" class="form-control" placeholder="Password" style="text-align:center;" value="">
+        <div class="row">
+            <div class="col-md-6" style=" margin: auto;">
+                <div class="form-group">
+                    <Input @id="passwordConfirmation" {{on 'keyup' this.validatePassword}}  @type="password" required minlength="6" @class="form-control" @placeholder="Password Confirmation" style="text-align:center;" @value={{passwordConfirmation}}/>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-md-6" style=" margin: auto;">
-            <div class="form-group">
-                <input type="password" class="form-control" placeholder="Password Confirmation" style="text-align:center;" value="">
-            </div>
-        </div>
-    </div>
+        <button type="submit" class="btn btn-primary">Register</button>
+    </form>
     <LinkTo @class="nav-link" @route="login">You already have an account?<br/>click here to Login</LinkTo>
-    <a {{on 'click' this.register}} href="#" class="btn btn-primary">Register</a>
   </div>
 </div>

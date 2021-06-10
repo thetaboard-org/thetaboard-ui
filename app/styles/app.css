@@ -848,3 +848,11 @@ button.btn.btn-fill.btn-primary.connect-wallet-offer-button.refresh-offer {
   text-align: center;
   margin: 30px auto 0;
 }
+
+.login-card .form-group .form-control {
+  height: 45px;
+}
+
+a.logout {
+  color: #9A9A9A;
+}

@@ -33,5 +33,8 @@ Router.map(function () {
   this.route('not-found', { path: '/*path' });
   this.route('login');
   this.route('signup');
+  this.route('registered');
+  this.route('verify', { path: '/verify/:token' });
+  // all routes that require the session to be authenticated
   this.route('staking');
 });

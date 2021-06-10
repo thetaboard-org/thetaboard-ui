@@ -12,7 +12,10 @@ export default class MenuComponent extends Component {
   @service router;
 
   get routeName() {
-    return this.router.currentRoute.name;
+    if (this.router && this.router.currentRoute) {
+      return this.router.currentRoute.name;
+    }
+    return '';
   }
 
   get menuItemList() {

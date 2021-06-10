@@ -21,6 +21,26 @@ export default class ApplicationRoute extends Route {
     return getOwner(this).lookup('service:guardian');
   }
 
+  get session() {
+    return getOwner(this).lookup('service:session');
+  }
+
+  get currentUser() {
+    return getOwner(this).lookup('service:currentUser');
+  }
+
+  beforeModel() {
+    return this._loadCurrentUser();
+  }
+
+  async _loadCurrentUser() {
+    try {
+      await this.currentUser.load();
+    } catch (err) {
+      await this.session.invalidate();
+    }
+  }
+
   async model(params) {
     this.envManager.setParameters(params);
     const guardianStatus = await this.thetaSdk.getGuardianStatus();

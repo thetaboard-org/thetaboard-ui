@@ -3847,7 +3847,7 @@ input[type="button"].btn-block {
 .dropdown-item {
   display: block;
   width: 100%;
-  padding: 0.25rem 1.5rem;
+  padding: 0 5px;
   clear: both;
   font-weight: 400;
   color: #212529;
@@ -14229,8 +14229,8 @@ fieldset[disabled] .btn-link.active {
 .dropdown-menu .dropdown-item,
 .bootstrap-select .dropdown-menu.inner li a {
   font-size: 0.75rem;
-  padding-top: .6rem;
-  padding-bottom: .6rem;
+  /* padding-top: 5px; */
+  padding-bottom: 5px;
   margin-top: 5px;
   -webkit-transition: all 150ms linear;
   -moz-transition: all 150ms linear;
@@ -14490,7 +14490,10 @@ fieldset[disabled] .btn-link.active {
 }
 
 .dropdown-menu.dropdown-navbar {
-  left: -80px;
+  left: -150px;
+  width: 210px;
+  overflow: hidden;
+  text-align: center;
 }
 
 .dropdown-menu.dropdown-navbar:before,
@@ -15775,8 +15778,8 @@ img {
 
 .navbar .photo {
   display: inline-block;
-  height: 30px;
-  width: 30px;
+  height: 40px;
+  width: 40px;
   border-radius: 50%;
   vertical-align: middle;
   overflow: hidden;
@@ -15998,14 +16001,11 @@ img {
 
   .navbar .dropdown.show .dropdown-menu,
   .navbar .dropdown .dropdown-menu {
-    background-color: transparent;
     border: 0;
     transition: none;
     -webkit-box-shadow: none;
     box-shadow: none;
-    width: auto;
-    margin: 0px 1rem;
-    margin-top: 0px;
+    margin-top: 10px;
   }
 
   .navbar .dropdown.show .dropdown-menu:before,

@@ -142,7 +142,7 @@ export default class ThetaSdkService extends Service {
   async getPrices() {
     let prices = { theta: 0, tfuel: 0 };
     const getPrices = await fetch(
-      'explorer/prices' + this.envManager.config.queryParams
+      '/explorer/prices' + this.envManager.config.queryParams
     );
     if (getPrices.status == 200) {
       prices = await getPrices.json();
@@ -154,7 +154,7 @@ export default class ThetaSdkService extends Service {
   async getTotalStake() {
     let totalStake = { totalAmount: '0', totalNodes: 0 };
     const getStake = await fetch(
-      'explorer/totalStake' + this.envManager.config.queryParams
+      '/explorer/totalStake' + this.envManager.config.queryParams
     );
     if (getStake.status == 200) {
       totalStake = await getStake.json();

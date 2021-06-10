@@ -9,6 +9,8 @@ export default class ApplicationController extends Controller {
   @tracked wa;
 
   @service router;
+  @service session;
+  @service currentUser;
 
   get isLogin() {
     return this.routeName == 'login';
@@ -18,8 +20,19 @@ export default class ApplicationController extends Controller {
     return this.routeName == 'signup';
   }
 
+  get isRegistered() {
+    return this.routeName == 'registered';
+  }
+
+  get isVerify() {
+    return this.routeName == 'verify';
+  }
+
   get routeName() {
-    return this.router.currentRoute.name;
+    if (this.router && this.router.currentRoute) {
+      return this.router.currentRoute.name;
+    }
+    return '';
   }
 
   @action
