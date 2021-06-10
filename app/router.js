@@ -34,6 +34,10 @@ Router.map(function () {
   this.route('login');
   this.route('signup');
   this.route('registered');
+  //Reset password request
+  this.route('resetpassword');
+  //Password change
+  this.route('passwordreset', { path: '/passwordreset/:token' });
   this.route('verify', { path: '/verify/:token' });
   // all routes that require the session to be authenticated
   this.route('staking');

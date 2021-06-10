@@ -1,0 +1,39 @@
+{{page-title "Reset password"}}
+
+<div class="card login-card" style="margin: 80px auto;">
+    <br/>
+    <div class="logo">
+        <LinkTo @route='dashboard' @class="">
+            <img class="thetaboard-logo" src="{{rootURL}}/assets/img/thetaboard-logo.png"/>
+        </LinkTo>
+    </div>
+    <div class="card-body">
+        <h4 class="card-title">Reset Password</h4>
+            {{#if isPasswordReset}}
+                <p>Your password has been updated, you can now login</p>
+                <br/>
+                <a href="/login" class="btn btn-primary">Login</a>
+            {{else}}
+                <form {{on 'submit' this.resetPassword}}>
+                    <div class="row">
+                        <div class="col-md-6" style=" margin: auto;">
+                            <div class="form-group">
+                                <Input @id="password" {{on 'change' this.validatePassword}}  @type="password" required pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" title="Password must be 8 characters minimum and contain at least: 1 uppercase, 1 lowercase and 1 number or 1 special character" @class="form-control" @placeholder="Password" style="text-align:center;" @value={{password}}/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6" style=" margin: auto;">
+                            <div class="form-group">
+                                <Input @id="passwordConfirmation" {{on 'keyup' this.validatePassword}}  @type="password" required minlength="6" @class="form-control" @placeholder="Password Confirmation" style="text-align:center;" @value={{passwordConfirmation}}/>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Reset Password</button>
+                </form>
+            {{/if}}
+        <br/>
+        <LinkTo @class="nav-link" @route="signup">No account yet? Sign up for an account</LinkTo>
+        <br/><br/>
+    </div>
+</div>

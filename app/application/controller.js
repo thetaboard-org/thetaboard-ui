@@ -13,7 +13,13 @@ export default class ApplicationController extends Controller {
   @service currentUser;
 
   get isShowMenu() {
-    return this.isLogin || this.isSignup || this.isRegistered || this.isVerify;
+    return (
+      this.isLogin ||
+      this.isSignup ||
+      this.isRegistered ||
+      this.isVerify ||
+      this.isResetPassword
+    );
   }
 
   get isLogin() {
@@ -30,6 +36,10 @@ export default class ApplicationController extends Controller {
 
   get isVerify() {
     return this.routeName == 'verify';
+  }
+
+  get isResetPassword() {
+    return this.routeName == 'resetpassword';
   }
 
   get routeName() {
