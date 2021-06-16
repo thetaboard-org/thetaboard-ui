@@ -41,4 +41,5 @@ Router.map(function () {
   this.route('verify', { path: '/verify/:token' });
   // all routes that require the session to be authenticated
   this.route('staking');
+  this.route('my-wallets');
 });

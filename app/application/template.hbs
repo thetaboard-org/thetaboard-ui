@@ -8,10 +8,12 @@
     {{menu/menu}}
     <div class="main-panel">
       {{navbar/navbar}}
-      {{search-bar/search-bar onRouteChange=this.setQueryParam}}
       {{download-wallet/modal}}
-      {{connect-wallet/connect-wallet onRouteChange=this.setQueryParam}}
-
+      {{#if this.session.isAuthenticated}}
+      {{else}}
+        {{search-bar/search-bar onRouteChange=this.setQueryParam}}
+        {{connect-wallet/connect-wallet onRouteChange=this.setQueryParam}}
+      {{/if}}
       <div class="content">
         <div class="container-fluid">
           {{outlet}}
