@@ -871,7 +871,7 @@ a.logout {
 }
 
 .dropdown .selected-dorpdown-item {
-  width: 400px;
+  width: 500px;
 
 }
 
@@ -879,7 +879,7 @@ a.logout {
   display: none;
   position: absolute;
   background-color: #f9f9f9;
-  width: 400px;
+  width: 500px;
   box-shadow: 0px 8px 16px 0px rgb(0 0 0 / 20%);
   z-index: 1;
   padding: 7px 20px;
@@ -928,7 +928,7 @@ a.logout {
   }
 
   .dropdown-content, .dropdown .selected-dorpdown-item {
-    width: 100%;
+    width: 340px;
   }
 }
 
@@ -937,4 +937,8 @@ a.logout {
     margin-left: 62px;
     text-align: left;
   }
+  .dropdown-content, .dropdown .selected-dorpdown-item {
+    width: 100%;
+  }
+
 }
