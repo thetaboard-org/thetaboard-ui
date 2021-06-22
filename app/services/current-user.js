@@ -5,8 +5,8 @@ import { tracked } from '@glimmer/tracking';
 export default class CurrentUserService extends Service {
   @service session;
   @service store;
-  
   @tracked user;
+  @tracked wallets;
 
   async load() {
     if (
@@ -18,6 +18,8 @@ export default class CurrentUserService extends Service {
       if (userId) {
         let user = await this.store.findRecord('user', userId);
         this.user = user;
+        let wallets = await this.store.findAll('wallet');
+        this.wallets = wallets;
         return user;
       }
     }

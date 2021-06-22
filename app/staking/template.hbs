@@ -66,11 +66,11 @@
                                         <td class="text-center" style="text-transform: capitalize;">{{stake.status}}</td>
                                         <td class="text-center">
                                             {{#if stake.isStaking}}
-                                                <button {{on 'click' (fn this.unstake stake 'cancel')}} class="btn btn-primary">Cancel</button>
+                                                <button {{on 'click' (fn this.unstake stake)}} class="btn btn-primary">Cancel</button>
                                             {{else if stake.isStaked}}
-                                                <button {{on 'click' (fn this.unstake stake 'unstake')}} class="btn btn-primary">Unstake</button>
+                                                <button {{on 'click' (fn this.unstake stake)}} class="btn btn-primary">Unstake</button>
                                             {{else if stake.isUnstaking}}
-                                                <button {{on 'click' (fn this.unstake stake 'cancel')}} class="btn btn-primary">Cancel</button>
+                                                <button {{on 'click' (fn this.unstake stake)}} class="btn btn-primary">Cancel</button>
                                             {{/if}}
                                         </td>
                                     </tr>

@@ -11,6 +11,11 @@
         </div>
         <div class="collapse navbar-collapse" id="navigation">
             <ul class="navbar-nav ml-auto">
+                <li class="search-bar input-group">
+                <button class="btn btn-link" id="search-button" data-toggle="modal" data-target="#searchModal"><i class="tim-icons icon-zoom-split"></i>
+                  <span class="d-lg-none d-md-block">Search</span>
+                </button>
+              </li>
                 <li class="dropdown nav-item">
                     {{#if this.session.isAuthenticated}}
                         <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false">
@@ -20,7 +25,9 @@
                         </a>
                         <ul class="dropdown-menu dropdown-navbar">
                             {{#if this.currentUser.user}}
-                                <li class="nav-link"><a href="javascript:void(0)" class="nav-item dropdown-item ">Signed in as<br/>{{this.currentUser.user.email}}</a></li>
+                                <li class="nav-link"><a href="javascript:void(0)" class="nav-item dropdown-item">Signed in as<br/>{{this.currentUser.user.email}}</a></li>
+                                <li class="dropdown-divider"></li>
+                                <li class="nav-link"><LinkTo @class="nav-item dropdown-item" @route="my-wallets"> My Wallet</LinkTo></li>
                             {{/if}}
                             <li class="dropdown-divider"></li>
                             <li class="nav-link"><a href="javascript:void(0)" {{on "click" this.invalidateSession}} class="nav-item dropdown-item logout">Log out</a></li>

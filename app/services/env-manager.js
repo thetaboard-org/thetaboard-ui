@@ -15,6 +15,14 @@ export default class EnvManagerService extends Service {
     return getOwner(this).lookup('service:utils');
   }
 
+  get currentUser() {
+    return getOwner(this).lookup('service:current-user');
+  }
+
+  get wallet() {
+    return getOwner(this).lookup('service:wallet');
+  }
+
   config = {
     env: '',
     explorerEndpoint: '',
@@ -72,6 +80,10 @@ export default class EnvManagerService extends Service {
           this.utils.errorNotify('Invalid Wallet Address or Domain name');
           this.contract.domainName = '';
         }
+      }
+    } else {
+      if (this.currentUser && this.currentUser.wallets) {
+        this.wallet.initWallet();
       }
     }
     return this.config;

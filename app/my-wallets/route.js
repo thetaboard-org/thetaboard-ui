@@ -9,4 +9,10 @@ export default class MyWalletsRoute extends Route {
   beforeModel(transition) {
     this.session.requireAuthentication(transition, 'login');
   }
+
+  async model() {
+    return this.store.findAll('wallet').then((wallets) => {
+      return { wallets: wallets };
+    });
+  }
 }

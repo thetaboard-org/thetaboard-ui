@@ -3868,7 +3868,7 @@ input[type="button"].btn-block {
 .dropdown-item:active {
   color: #ffffff;
   text-decoration: none;
-  background-color: #e14eca;
+  /* background-color: #e14eca; */
 }
 
 .dropdown-item.disabled,
@@ -14174,7 +14174,7 @@ fieldset[disabled] .btn-link.active {
 
 .dropdown-menu .dropdown-item.active,
 .dropdown-menu .dropdown-item:active {
-  color: inherit;
+  /* color: inherit; */
 }
 
 .dropup .dropdown-menu:before {

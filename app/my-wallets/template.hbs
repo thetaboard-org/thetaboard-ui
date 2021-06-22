@@ -1,33 +1,84 @@
 {{page-title "My Wallets"}}
 
 <div class="card card-user">
-  <div class="card-body card-min-390">
-    <p class="card-text"></p>
-    <div class="author">
-      <div class="block block-one"></div>
-      <div class="block block-two"></div>
-      <div class="block block-three"></div>
-      <div class="block block-four"></div>
-      <img class="avatar" src="{{rootURL}}assets/img/logo/tfuel.png" alt="...">
-    </div>
-      <div class="card-body-stake">
-        <h5 class="title">My wallets</h5>
-        <div class="row justify-content-lg-center justify-content-md-center">
-            <form class="stakes-deposit col-md-9">
-                <div class="form-group">
-                    <label for="stake-amount">How many Tfuel do you want to stake?</label>
-                    <p>The current minimum limit is 100,000Tfuel. This limit will be reduced soon.</p>
-                    <Input @id="tfuel-stake-amount" @type="number" @min="0" class="form-control border-color" @value='100000'/>
-                </div>
-            </form>
+    <div class="card-body card-min-390">
+        <p class="card-text"></p>
+        <div class="author">
+            <div class="block block-one"></div>
+            <div class="block block-two"></div>
+            <div class="block block-three"></div>
+            <div class="block block-four"></div>
+            <img class="avatar" src="{{rootURL}}assets/img/logo/tfuel.png" alt="...">
         </div>
-        <button {{on 'click' this.reviewDeposit}} type="submit" class="btn btn-fill btn-primary btn-left">Review deposit</button>
-          <br/><br/><br/>
-          <div class="stakes-no-activity">
-            <p class="title">No Stakes</p>
-          </div>
-      </div>
-  </div>
-  <div class="card-footer">
-  </div>
+        <div class="card-body-stake">
+             <h5 class="title">My Wallets</h5>
+             <div class="row justify-content-lg-center justify-content-md-center">
+                <form {{on 'submit' this.submitWallet}} class="stakes-deposit col-md-9">
+                    <div class="form-group">
+                        <label for="stake-amount">Add a wallet to your collection</label>
+                        {{#each this.errorMessages as |error|}}
+                            <div class="row">
+                                <div class="col-sm-12 col-lg-8" style=" margin: auto;">
+                                    <div class="alert alert-warning" style="padding: 10px;">
+                                        <span>{{error.message}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        {{/each}}
+                        <div class="row">
+                            <div class="col-sm-12 col-lg-8" style="margin: auto;">
+                                <br/>
+                                <Input required minlength="42" @type="text" @placeholder="Enter wallet address" style="text-align: center;" class="form-control border-color" @value={{address}}/>
+                                <br/>
+                                <Input required @type="text" @min="2" @placeholder="Enter a name for this wallet" style="text-align: center;" class="form-control border-color" @value={{name}}/>
+                                <br/>
+                                <Input @id="default-checkbox" @type="checkbox" @checked={{this.isDefault}} style="width: 16px;height: 16px;margin: 0 5px 0 0;"/>
+                                <label for="default-checkbox">Select this wallet per default</label>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-fill btn-primary btn-left">Add Wallet</button>
+                </form>
+            </div>
+            <br/><br/><br/>
+            <div class="stakes-no-activity">
+                {{#if model.wallets.length}}
+                    <br/>
+                    <p class="title">Wallet List</p>
+                    <br/>
+                    <br/>
+                    <div class="table-responsive transac-history-table">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th class="text-center">Address</th>
+                                <th class="text-center">Name</th>
+                                <th class="text-center">Default</th>
+                                <th class="text-center">Action</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                                {{#each currentUser.wallets as |wallet|}}            
+                                    <tr>
+                                        <td class="text-center">{{wallet.address}}</td>
+                                        <td class="text-center">{{wallet.name}}</td>
+                                        <td class="text-center">
+                                            <input type="radio" name="isDefault" checked="{{if wallet.isDefault 'checked'}}" {{on 'click' (fn this.changeIsDefault wallet)}}/>
+                                        </td>
+                                        <td class="text-center">
+                                            <button class="btn btn-primary" {{on 'click' (fn this.deleteWallet wallet)}}>Remove</button>
+                                        </td>
+                                    </tr>
+                                {{/each}}
+                            </tbody>
+                        </table>
+                    </div>
+                {{else}}
+                    <p class="title">You have not staked any Tfuel yet</p>
+                {{/if}}
+            </div>
+        </div>
+    </div>
+    <div class="card-footer">
+    </div>
 </div>

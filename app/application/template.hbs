@@ -9,9 +9,10 @@
     <div class="main-panel">
       {{navbar/navbar}}
       {{download-wallet/modal}}
+      {{search-bar/search-bar onRouteChange=this.setQueryParam}}
       {{#if this.session.isAuthenticated}}
+        {{wallet/wallet-navbar onRouteChange=this.setQueryParam}}
       {{else}}
-        {{search-bar/search-bar onRouteChange=this.setQueryParam}}
         {{connect-wallet/connect-wallet onRouteChange=this.setQueryParam}}
       {{/if}}
       <div class="content">

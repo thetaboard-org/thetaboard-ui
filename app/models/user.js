@@ -5,7 +5,8 @@ export default class UserModel extends Model {
   @attr('string') email;
   @attr('string') password;
   @attr('boolean') isVerified;
-  @hasMany('tfuelstake') Tfuelstakes;
+  @hasMany('tfuelstake') tfuelstakes;
+  @hasMany('wallet') wallets;
 
   @computed('isVerified')
   get notVerified() {
