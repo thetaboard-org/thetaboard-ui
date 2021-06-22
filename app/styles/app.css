@@ -904,3 +904,37 @@ a.logout {
   border-radius: 10px;
   cursor: pointer;
 }
+
+.search-bar.input-group.loupe {
+  margin: 7px 0 0 0;
+  padding: 0;
+}
+
+.navbar .navbar-collapse .search-bar.input-group.loupe button {
+  padding: 0;
+}
+
+.navbar .navbar-collapse .search-bar.input-group.loupe button i {
+  margin: 0;
+}
+
+.container-fluid .navbar-wrapper {
+  margin-top: -7px;
+}
+
+@media screen and (max-width: 992px) {
+  .navbar .navbar-collapse .search-bar.input-group.loupe {
+    margin: 21px 0 0 0;
+  }
+
+  .dropdown-content, .dropdown .selected-dorpdown-item {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  div div.wallet-address-search-container {
+    margin-left: 62px;
+    text-align: left;
+  }
+}
