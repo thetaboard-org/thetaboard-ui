@@ -11,17 +11,6 @@ export default class WalletWalletNavbarComponent extends Component {
   @service('theta-sdk') thetaSdk;
 
   @action
-  setupWallet() {
-    if (this.wallet.defaultWallet) {
-      this.selectWallet(this.wallet.defaultWallet);
-    } else {
-      if (this.wallet.wallets.length) {
-        this.selectWallet(this.wallet.wallets.firstObject);
-      }
-    }
-  }
-
-  @action
   async selectWallet(wallet) {
     if (wallet.address) {
       await this.thetaSdk.getWalletInfo([wallet.address]);

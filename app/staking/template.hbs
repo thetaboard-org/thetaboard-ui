@@ -31,17 +31,17 @@
                                 <br/>
                                 <Input required minlength="42" @type="text" @min="0" @placeholder="Enter wallet address" style="text-align: center;" class="form-control border-color" @value={{walletAddress}}/>
                                 <br/>
-                                <Input required min="100000" @type="number" @min="0" @placeholder="Enter stake amount" style="text-align: center;" class="form-control border-color" @value={{stakeAmount}}/>
+                                <Input required min="100000" @type="number" @min="0" @placeholder="Enter stake amount" style="text-align: center;" class="form-control border-color" @value={{stakeAmount}}/><button>Max</button>
                                 <br/>
                             </div>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-fill btn-primary btn-left">Review deposit</button>
+                    <button type="submit" class="btn btn-fill btn-primary btn-left">Stake</button>
                 </form>
             </div>
             <br/><br/><br/>
             <div class="stakes-no-activity">
-                {{#if model.tfuelstakes.length}}
+                {{#if this.stakeList.length}}
                     <br/>
                     <p class="title">Tfuel Stakes List</p>
                     <br/>
@@ -58,7 +58,7 @@
                             </tr>
                             </thead>
                             <tbody>
-                                {{#each model.tfuelstakes as |stake|}}            
+                                {{#each this.stakeList as |stake|}}            
                                     <tr>
                                         <td class="text-center">{{moment-format stake.createdAt 'll'}}</td>
                                         <td class="text-center">{{format-number stake.stakeAmount}} <img src="{{rootURL}}assets/img/logo/tfuel.png" style="width: 15px; margin-left: 3px; margin-top: -2px;;"/></td>
@@ -79,7 +79,7 @@
                         </table>
                     </div>
                 {{else}}
-                    <p class="title">You have not staked any Tfuel yet</p>
+                    <p class="title">You don't have any Tfuel staked</p>
                 {{/if}}
             </div>
         </div>

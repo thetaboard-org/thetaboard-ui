@@ -1,31 +1,42 @@
 <div class="wallet-address-search-container">
     {{#if wallet.wallets}}
-        {{#if wallet.isSearchedWalletOwned}}
-                <div class="dropdown dropdown-select-wallet">
-                    <div class="selected-dorpdown-item">{{wallet.isSearchedWalletOwned.name}} (<span {{shortener wallet.isSearchedWalletOwned.address}}>{{wallet.isSearchedWalletOwned.address}}</span>)
-                        <img style="float: right;" src="{{rootURL}}assets/img/arrow.png"/>
-                    </div>
-                    <div class="dropdown-content">
-                        {{#each wallet.noneSelectedWallet as |wallet|}}
-                            <p {{on 'click' (fn this.selectWallet wallet)}}>{{wallet.name}} (<span {{shortener wallet.address}}>{{wallet.address}}</span>)</p>
-                            <hr style="margin: 0 0 5px 0;"/>
-                        {{/each}}
-                        <LinkTo @route="my-wallets"><p><a href="">Add Wallet</a></p></LinkTo>
-                    </div>
+        <div class="dropdown dropdown-select-wallet">
+                <div data-toggle="modal" data-target="#searchModal" class="selected-dorpdown-item">
+                    {{#if wallet.isSearchedWalletOwned}}
+                        {{wallet.isSearchedWalletOwned.name}} 
+                        (<span {{shortener wallet.isSearchedWalletOwned.address}}>{{wallet.isSearchedWalletOwned.address}}</span>)
+                    {{else if thetaSdk.currentAccount}}
+                        <span class="long-address">{{this.thetaSdk.currentAccount}}</span>
+                        <span class="short-address" {{shortener this.thetaSdk.currentAccount.firstObject}}>{{this.thetaSdk.currentAccount}}</span>
+                    {{else}}
+                        Enter Wallet Address
+                    {{/if}}
+                    <img style="float: left; width: 15px; margin: 4px 5px 0 -10px;" src="{{rootURL}}assets/img/magnifying.png"/>
+                    <img style="float: right; margin: 0 -10px 0 5px;" src="{{rootURL}}assets/img/arrow.png"/>
                 </div>
-        {{else}}
-            {{#if thetaSdk.currentAccount}}
-                <div style="margin: auto;">
-                    <input placeholder="Enter Wallet Address" readonly  class="wallet-address-span" data-toggle="modal" data-target="#searchModal" value="{{this.thetaSdk.currentAccount}}"/>
-                    <br class="d-block d-sm-none d-md-none d-lg-none"/>
-                    <button {{on 'click' this.setupWallet}} type="submit" class="connect-wallet-button btn btn-fill btn-primary btn-left">My Wallet</button>
-                </div>
-            {{else}}
-            {{/if}}
-        {{/if}}
+            <div class="dropdown-content">
+                {{#each wallet.wallets as |wallet|}}
+                    <p {{on 'click' (fn this.selectWallet wallet)}}>{{wallet.name}} (<span {{shortener wallet.address}}>{{wallet.address}}</span>)</p>
+                    <hr style="margin: 0 0 5px 0;"/>
+                {{/each}}
+                <LinkTo @route="my-wallets"><p><a href="">Add Wallet</a></p></LinkTo>
+            </div>
+        </div>
     {{else}}
-    <div style="position: relative; z-index: 9991; display: inline-block;margin: 5px 0 0;">
-        <LinkTo @route="my-wallets" @class="btn btn-primary" style="padding: 7px 20px;">Link your wallet</LinkTo>
-    </div>
+        <div class="dropdown dropdown-select-wallet">
+            <div data-toggle="modal" data-target="#searchModal" class="selected-dorpdown-item">
+                {{#if this.thetaSdk.currentAccount}} 
+                    <span class="long-address">{{this.thetaSdk.currentAccount}}</span>
+                    <span class="short-address" {{shortener this.thetaSdk.currentAccount.firstObject}}>{{this.thetaSdk.currentAccount}}</span>
+                {{else}}
+                    Enter Wallet Address
+                {{/if}}
+                <img style="float: left; width: 15px; margin: 4px 5px 0 -10px;" src="{{rootURL}}assets/img/magnifying.png"/>
+                <img style="float: right; margin: 0 -10px 0 5px;" src="{{rootURL}}assets/img/arrow.png"/>
+            </div>
+            <div class="dropdown-content">
+                <LinkTo @route="my-wallets"><p><a href="">Add Wallet</a></p></LinkTo>
+            </div>
+        </div>
     {{/if}}
 </div>

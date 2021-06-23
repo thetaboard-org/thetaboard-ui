@@ -864,7 +864,7 @@ a.logout {
 }
 
 .dropdown.dropdown-select-wallet {
-  margin: 10px 0 0;
+  margin: 7px 0 0;
   position: relative;
   display: inline-block;
   z-index: 9991;
@@ -922,23 +922,44 @@ a.logout {
   margin-top: -7px;
 }
 
+.long-address {
+  display: inline-block;
+}
+
+.short-address{
+  display: none;
+}
+
 @media screen and (max-width: 992px) {
   .navbar .navbar-collapse .search-bar.input-group.loupe {
     margin: 21px 0 0 0;
   }
 
   .dropdown-content, .dropdown .selected-dorpdown-item {
-    width: 340px;
+    width: 440px;
   }
 }
 
-@media screen and (max-width: 576px) {
+@media screen and (max-width: 620px) {
   div div.wallet-address-search-container {
     margin-left: 62px;
     text-align: left;
   }
-  .dropdown-content, .dropdown .selected-dorpdown-item {
-    width: 100%;
+
+  .long-address {
+    display: none;
+  }
+  
+  .short-address{
+    display: inline-block;
   }
 
+  .dropdown-content, .dropdown .selected-dorpdown-item {
+    width: 250px;
+  }
+
+}
+
+.navbar .navbar-nav .dropdown .nav-link {
+  padding: 4px 0 0 0;
 }

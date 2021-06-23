@@ -81,10 +81,6 @@ export default class EnvManagerService extends Service {
           this.contract.domainName = '';
         }
       }
-    } else {
-      if (this.currentUser && this.currentUser.wallets) {
-        this.wallet.initWallet();
-      }
     }
     return this.config;
   }

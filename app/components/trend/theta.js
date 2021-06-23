@@ -17,7 +17,11 @@ export default class TrendThetaComponent extends Component {
   async initialize() {
     return this.getDates().then((dates) => {
       const prices = this.args.historic_price;
-      const thetaPrice = this.thetaSdk.prices.theta.price;
+      let thetaPrice = 0;
+
+      if (this.thetaSdk && this.thetaSdk.prices && this.thetaSdk.prices.theta) {
+        thetaPrice = this.thetaSdk.prices.theta.price;
+      }
       this.trendLastWeek = this.setTrend(thetaPrice, prices[dates.lastWeek].theta_price);
       this.trendYesterday = this.setTrend(thetaPrice, prices[dates.yesterday].theta_price);
     });

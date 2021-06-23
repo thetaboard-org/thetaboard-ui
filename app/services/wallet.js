@@ -35,15 +35,6 @@ export default class WalletService extends Service {
     return ownedWallet;
   }
 
-  get noneSelectedWallet() {
-    if (this.isSearchedWalletOwned) {
-      return this.wallets.filter(
-        (wallet) => wallet.id != this.isSearchedWalletOwned.id
-      );
-    }
-    return [];
-  }
-
   @action
   async initWallet() {
     if (this.wallets.length) {

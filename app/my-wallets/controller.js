@@ -6,7 +6,6 @@ import { inject as service } from '@ember/service';
 export default class MyWalletsController extends Controller {
   @tracked address;
   @tracked name;
-  @tracked isDefault;
   @tracked errorMessages;
 
   @service utils;
@@ -23,7 +22,6 @@ export default class MyWalletsController extends Controller {
     this.utils.successNotify(`Default wallet setup`);
     this.address = '';
     this.name = '';
-    this.isDefault = false;
     return this.store.findAll('wallet');
   }
 
@@ -58,12 +56,14 @@ export default class MyWalletsController extends Controller {
         });
       }
 
-      let wallet = this.store.createRecord('wallet', this.getProperties('address', 'name', 'isDefault'));
+      let wallet = this.store.createRecord('wallet', this.getProperties('address', 'name'));
+      if (!this.currentUser.wallets.length) {
+        wallet.isDefault = true;
+      }
       await wallet.save();
       this.utils.successNotify(`Wallet added`);
       this.address = '';
       this.name = '';
-      this.isDefault = false;
       await this.store.findAll('wallet');
       await this.thetaSdk.getWalletInfo([wallet.address]);
       this.transitionToRoute({

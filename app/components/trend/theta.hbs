@@ -36,7 +36,7 @@
           <p class="title">${{format-number this.thetaSdk.prices.theta.volume_24h maximumFractionDigits="2"}}</p>
                 <hr/>
           <p class="description">Theta Staked</p>
-          <p class="title">{{format-number this.thetaSdk.totalStake.totalAmount maximumFractionDigits="0"}}</p>
+          <p class="title">{{format-number this.thetaSdk.totalStake.percent maximumFractionDigits="1"}}% ({{format-number this.thetaSdk.totalStake.totalAmount maximumFractionDigits="0"}})</p>
         </div>
       </div>
   </div>

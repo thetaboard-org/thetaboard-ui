@@ -17,6 +17,10 @@ export default class StakingController extends Controller {
     return this.envManager.config.explorerEndpoint;
   }
 
+  get stakeList() {
+    return this.model.tfuelstakes.filter((stake) => !stake.isUnstaked);
+  }
+
   @action
   async submitStake(e) {
     try {

@@ -21,8 +21,10 @@ export default class ThetaSdkService extends Service {
     this.currentAccountDomainList = [];
     this.prices = {};
     this.getPrices();
-    this.totalStake = {};
+    this.totalStake = { totalAmount: '0', percent: 0 };
+    this.totalTfuelStake = { totalAmount: '0', percent: 0 };
     this.getTotalStake();
+    this.getTotalTfuelStake();
   }
 
   @tracked downloadProgress;
@@ -34,6 +36,8 @@ export default class ThetaSdkService extends Service {
   @tracked coinbases;
   @tracked coinbasesLoaded;
   @tracked currentAccountDomainList
+  @tracked totalStake
+  @tracked totalTfuelStake
 
   get envManager() {
     return getOwner(this).lookup('service:env-manager');
@@ -152,7 +156,7 @@ export default class ThetaSdkService extends Service {
   }
 
   async getTotalStake() {
-    let totalStake = { totalAmount: '0', totalNodes: 0 };
+    let totalStake = { totalAmount: '0', totalNodes: 0, percent: 0 };
     const getStake = await fetch(
       '/explorer/totalStake' + this.envManager.config.queryParams
     );
@@ -160,8 +164,24 @@ export default class ThetaSdkService extends Service {
       totalStake = await getStake.json();
     }
     totalStake.totalAmount = thetajs.utils.fromWei(totalStake.totalAmount);
+    totalStake.percent = totalStake.totalAmount / 10000000;
     this.totalStake = totalStake;
     return totalStake;
+  }
+
+  async getTotalTfuelStake() {
+    let totalTfuelStake = { totalAmount: '0', percent: 0 };
+    const getTfuelStake = await fetch(
+      '/explorer/totalTfuelStake' + this.envManager.config.queryParams
+    );
+    if (getTfuelStake.status == 200) {
+      totalTfuelStake = await getTfuelStake.json();
+    }
+    totalTfuelStake.totalAmount = Number(totalTfuelStake.total_tfuel_staked) || Number(totalTfuelStake.totalAmount);
+    const totalSupply = this.prices.tfuel ? this.prices.tfuel.total_supply : 1;
+    totalTfuelStake.percent = totalTfuelStake.totalAmount / totalSupply * 100;
+    this.totalTfuelStake = totalTfuelStake;
+    return totalTfuelStake;
   }
 
   async getWalletInfo(accounts) {

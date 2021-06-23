@@ -28,7 +28,6 @@ export default class TrendTfuelComponent extends Component {
     return Math.round(this.thetaSdk.prices.theta.price / this.thetaSdk.prices.tfuel.price) ;
   }
 
-
   setTrend(currentPrice, previousPrice) {
     const change = (currentPrice - previousPrice).toFixed(3);
     const percentChange = (change / previousPrice * 100).toFixed(2);

@@ -32,9 +32,12 @@
         <div class="trend-activity extra">
           <p class="description">Market Cap: </p>
           <p class="title">{{format-number this.thetaSdk.prices.tfuel.market_cap style='currency' currency="USD"}}</p>
-                  <hr/>
+          <hr/>
           <p class="description">24h volume</p>
           <p class="title">${{format-number this.thetaSdk.prices.tfuel.volume_24h maximumFractionDigits="2"}}</p>
+          <hr/>
+          <p class="description">Tfuel Staked</p>
+          <p class="title">{{format-number this.thetaSdk.totalTfuelStake.percent maximumFractionDigits="1"}}% ({{format-number this.thetaSdk.totalTfuelStake.totalAmount maximumFractionDigits="0"}})</p>
         </div>
       </div>
   </div>
