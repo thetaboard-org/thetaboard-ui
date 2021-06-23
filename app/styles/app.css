@@ -870,7 +870,7 @@ a.logout {
   z-index: 9991;
 }
 
-.dropdown .selected-dorpdown-item {
+.dropdown .selected-dropdown-item {
   width: 500px;
 
 }
@@ -889,6 +889,12 @@ a.logout {
   color: black;
 }
 
+.dropdown-content.my-wallet {
+  background-color: #262733;
+  border: 1px solid #ccc;
+  width: 100%;
+}
+
 .dropdown-content p {
   color: #525f7f;
   padding: 3px 0;
@@ -898,8 +904,14 @@ a.logout {
   display: block;
 }
 
-.dropdown .selected-dorpdown-item{
+.dropdown .selected-dropdown-item{
   background: white;
+  padding: 7px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.dropdown .mywallet-dropdown-item {
   padding: 7px 20px;
   border-radius: 10px;
   cursor: pointer;
@@ -935,7 +947,7 @@ a.logout {
     margin: 21px 0 0 0;
   }
 
-  .dropdown-content, .dropdown .selected-dorpdown-item {
+  .dropdown-content, .dropdown .selected-dropdown-item {
     width: 440px;
   }
 }
@@ -954,7 +966,7 @@ a.logout {
     display: inline-block;
   }
 
-  .dropdown-content, .dropdown .selected-dorpdown-item {
+  .dropdown-content, .dropdown .selected-dropdown-item {
     width: 250px;
   }
 

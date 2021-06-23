@@ -1,7 +1,7 @@
 <div class="wallet-address-search-container">
     {{#if wallet.wallets}}
         <div class="dropdown dropdown-select-wallet">
-                <div data-toggle="modal" data-target="#searchModal" class="selected-dorpdown-item">
+                <div data-toggle="modal" data-target="#searchModal" class="selected-dropdown-item">
                     {{#if wallet.isSearchedWalletOwned}}
                         {{wallet.isSearchedWalletOwned.name}} 
                         (<span {{shortener wallet.isSearchedWalletOwned.address}}>{{wallet.isSearchedWalletOwned.address}}</span>)
@@ -24,7 +24,7 @@
         </div>
     {{else}}
         <div class="dropdown dropdown-select-wallet">
-            <div data-toggle="modal" data-target="#searchModal" class="selected-dorpdown-item">
+            <div data-toggle="modal" data-target="#searchModal" class="selected-dropdown-item">
                 {{#if this.thetaSdk.currentAccount}} 
                     <span class="long-address">{{this.thetaSdk.currentAccount}}</span>
                     <span class="short-address" {{shortener this.thetaSdk.currentAccount.firstObject}}>{{this.thetaSdk.currentAccount}}</span>

@@ -11,7 +11,7 @@ export default class StakingController extends Controller {
 
   @service('env-manager') envManager;
   @service utils;
-  @service currentUser;
+  @service wallet;
 
   get explorerEndpoint() {
     return this.envManager.config.explorerEndpoint;
@@ -19,6 +19,53 @@ export default class StakingController extends Controller {
 
   get stakeList() {
     return this.model.tfuelstakes.filter((stake) => !stake.isUnstaked);
+  }
+
+  get showWallet() {
+    if (this.wallet.wallets.length) {
+      return true;
+    }
+    return false;
+  }
+
+  @action
+  selectWallet(wallet) {
+    if (wallet.address) {
+      this.walletAddress = wallet.address;
+    }
+  }
+
+  @action
+  clear(e) {
+    e.preventDefault();
+    this.walletAddress = '';
+  }
+
+  @action
+  async max(e) {
+    try {
+      e.preventDefault();
+      this.errorMessages = [];
+      if (
+        !this.walletAddress ||
+        this.walletAddress.length != 42 ||
+        this.walletAddress.substr(1, 1).toLocaleLowerCase() != 'x'
+      ) {
+        return this.errorMessages.pushObject({
+          message: 'Invalid wallet address',
+        });
+      }
+
+      const maxTfuel = await this.getMaxTfuelBalance(this.walletAddress);
+      if (maxTfuel < 100000) {
+        return this.errorMessages.pushObject({
+          message: "You don't have enough Tfuel in your wallet",
+        });
+      }
+      this.stakeAmount = Math.floor(maxTfuel);
+    } catch (err) {
+      this.errorMessages.pushObject(err.errors);
+    }
   }
 
   @action
@@ -40,7 +87,6 @@ export default class StakingController extends Controller {
           message: 'The minimum limit is 100,000 Tfuel',
         });
       }
-
       const isMinimumLimitReached = await this.verifyTfuelBalance(
         this.walletAddress,
         this.stakeAmount
@@ -93,7 +139,10 @@ export default class StakingController extends Controller {
     );
     if (response.status == 200) {
       let data = await response.json();
-      if (thetajs.utils.fromWei(data.body.balance.tfuelwei) < stakeAmount) {
+      if (
+        Number(thetajs.utils.fromWei(data.body.balance.tfuelwei)) < Number(stakeAmount) &&
+        Number(thetajs.utils.fromWei(data.body.balance.tfuelwei)) < 100000
+      ) {
         return false;
       } else {
         return true;
@@ -101,5 +150,16 @@ export default class StakingController extends Controller {
     } else {
       return false;
     }
+  }
+
+  async getMaxTfuelBalance(wa) {
+    let response = await fetch(
+      `${this.envManager.config.explorerEndpoint}:8443/api/account/${wa}`
+    );
+    if (response.status == 200) {
+      let data = await response.json();
+      return thetajs.utils.fromWei(data.body.balance.tfuelwei);
+    }
+    return 0;
   }
 }
