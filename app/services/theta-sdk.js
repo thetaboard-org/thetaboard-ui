@@ -197,7 +197,7 @@ export default class ThetaSdkService extends Service {
       this.currentAccountDomainList = await this.contract.getAddressToNames(
         accounts[0]
       );
-      if (this.currentAccountDomainList.length) {
+      if (this.currentAccountDomainList && this.currentAccountDomainList.length) {
         this.contract.domainName = this.currentAccountDomainList[0];
       }
     } else {
