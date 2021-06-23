@@ -18,7 +18,7 @@ export default class SearchBarSearchBarComponent extends Component {
     });
   }
 
-  @action 
+  @action
   async search(event) {
     event.preventDefault();
     if (

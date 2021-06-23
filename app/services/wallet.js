@@ -37,7 +37,7 @@ export default class WalletService extends Service {
 
   @action
   async initWallet() {
-    if (this.wallets.length) {
+    if (this.wallets && this.wallets.length) {
       if (!this.isSearchedWalletOwned && !this.thetaSdk.currentAccount) {
         let walletAddress = this.defaultWallet
           ? this.defaultWallet.address
