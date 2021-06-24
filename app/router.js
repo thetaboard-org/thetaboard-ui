@@ -25,19 +25,24 @@ export default class Router extends EmberRouter {
 }
 
 Router.map(function () {
-  this.route('dashboard', { path: '/' });
+  this.route('dashboard', {path: '/'});
   this.route('guardian');
   this.route('wallet');
   this.route('domain');
+  this.route('policy', function () {
+    this.route('terms');
+    this.route('privacy');
+  })
   this.route('faq');
-  this.route('not-found', { path: '/*path' });
+  this.route('footer');
+  this.route('not-found', {path: '/*path'});
   this.route('login');
   this.route('signup');
   this.route('registered');
   //Reset password request
   this.route('resetpassword');
   //Password change
-  this.route('passwordreset', { path: '/passwordreset/:token' });
+  this.route('passwordreset', {path: '/passwordreset/:token'});
   this.route('verify', { path: '/verify/:token' });
   // all routes that require the session to be authenticated
   this.route('staking');
