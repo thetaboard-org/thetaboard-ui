@@ -30,6 +30,8 @@ export default class ApplicationRoute extends Route {
   }
 
   beforeModel() {
+    const params = this.paramsFor('application');
+    this.envManager.setParameters(params);
     return this._loadCurrentUser();
   }
 
@@ -42,7 +44,6 @@ export default class ApplicationRoute extends Route {
   }
 
   async model(params) {
-    this.envManager.setParameters(params);
     const guardianStatus = await this.thetaSdk.getGuardianStatus();
     const guardianSummary = await this.thetaSdk.getGuardianSummary();
     const guardianLatestSnapshot = await this.thetaSdk.getGuardianLatestSnapshot();
