@@ -21,9 +21,9 @@ export default class ApplicationRoute extends Route {
     return getOwner(this).lookup('service:currentUser');
   }
 
-  beforeModel() {
+  async beforeModel() {
     const params = this.paramsFor('application');
-    this.envManager.setParameters(params);
+    await this.envManager.setParameters(params);
     return this._loadCurrentUser();
   }
 

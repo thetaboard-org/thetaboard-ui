@@ -31,14 +31,8 @@ export default class MenuComponent extends Component {
   get menuItemList() {
     return this.menuItems.reduce((acc, x) => {
       // only show non-admins menus if not admin
-      if (x.scope) {
-        debugger
-      }
-      if (x.scope && !this.currentUser.user && x.scope !== this.currentUser.user.scope) {
-        if (!this.currentUser.user) {
-          return acc;
-        }
-        return acc;
+      if (x.scope && !(this.currentUser.user && x.scope === this.currentUser.user.scope)) {
+        return acc
       }
       const result = {
         name: x.name,
