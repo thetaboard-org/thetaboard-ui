@@ -43,8 +43,11 @@ Router.map(function () {
   this.route('resetpassword');
   //Password change
   this.route('passwordreset', {path: '/passwordreset/:token'});
-  this.route('verify', { path: '/verify/:token' });
+  this.route('verify', {path: '/verify/:token'});
   // all routes that require the session to be authenticated
-  this.route('staking');
+  this.route('staking', function () {
+    this.route('tfuel');
+    this.route('theta');
+  });
   this.route('my-wallets');
 });

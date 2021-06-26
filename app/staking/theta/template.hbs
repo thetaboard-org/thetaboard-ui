@@ -1,0 +1,121 @@
+{{page-title "Staking"}}
+
+<div class="card card-user">
+  <div class="card-body card-min-390">
+    <p class="card-text"></p>
+    <div class="author">
+      <div class="block block-one"></div>
+      <div class="block block-two"></div>
+      <div class="block block-three"></div>
+      <div class="block block-four"></div>
+      <img class="avatar" src="{{rootURL}}assets/img/logo/tfuel.png" alt="...">
+    </div>
+    <div class="card-body-stake">
+      <h5 class="title">Tfuel Staking</h5>
+      <div class="row justify-content-lg-center justify-content-md-center">
+        <form {{on 'submit' this.submitStake}} class="stakes-deposit col-md-9">
+          <div class="form-group">
+            <label for="stake-amount">How many Tfuel do you want to stake?</label>
+            <p>The current minimum limit is 100,000Tfuel. This limit will be reduced soon.</p>
+            {{#each this.errorMessages as |error|}}
+              <div class="row">
+                <div class="col-sm-12 col-lg-8" style=" margin: auto;">
+                  <div class="alert alert-warning" style="padding: 10px;">
+                    <span>{{error.message}}</span>
+                  </div>
+                </div>
+              </div>
+            {{/each}}
+            <div class="row">
+              <div class="col-sm-12 col-lg-8" style="margin: auto;">
+                <br/>
+                <div class="dropdown">
+                  <div class="">
+                    <Input required minlength="42" @type="text" @min="0" @placeholder="Enter wallet address"
+                           style="text-align: center;" class="form-control border-color" @value={{walletAddress}}/>
+                  </div>
+                  {{#if showWallet}}
+                    <div class="dropdown-content my-wallet">
+                      {{#each wallet.wallets as |wallet|}}
+                        <p {{on 'click' (fn this.selectWallet wallet)}}>{{wallet.name}} (<span {{shortener
+                                wallet.address}}>{{wallet.address}}</span>)</p>
+                        <hr style="margin: 0 0 5px 0;"/>
+                      {{/each}}
+                      <a {{on 'click' this.clear}}><p><a href="">Clear</a></p></a>
+                    </div>
+                  {{/if}}
+                </div>
+                <br/>
+                <div class="dropdown">
+                  <div class="">
+                    {{#if walletAddress}}
+                      <Input required min="100000" @type="number" @min="0" @placeholder="Enter stake amount"
+                             style="text-align: center;" class="form-control border-color" @value={{stakeAmount}}/>
+                      <div class="dropdown-content my-wallet">
+                        <a {{on 'click' this.max}}><p><a href="">Max</a></p></a>
+                      </div>
+                    {{else}}
+                      <Input required disabled min="100000" @type="number" @min="0" @placeholder="Enter stake amount"
+                             style="text-align: center;" class="form-control border-color" @value={{stakeAmount}}/>
+                    {{/if}}
+                  </div>
+                </div>
+                <br/>
+              </div>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-fill btn-primary btn-left">Stake</button>
+        </form>
+      </div>
+      <br/><br/><br/>
+      <div class="stakes-no-activity">
+        {{#if this.stakeList.length}}
+          <br/>
+          <p class="title">Tfuel Stakes List</p>
+          <br/>
+          <br/>
+          <div class="table-responsive transac-history-table">
+            <table class="table">
+              <thead>
+              <tr>
+                <th class="text-center">Date</th>
+                <th class="text-center">Stake Amount</th>
+                <th class="text-center">Wallet Address</th>
+                <th class="text-center">Status</th>
+                <th class="text-center">Action</th>
+              </tr>
+              </thead>
+              <tbody>
+              {{#each this.stakeList as |stake|}}
+                <tr>
+                  <td class="text-center">{{moment-format stake.createdAt 'll'}}</td>
+                  <td class="text-center">{{format-number stake.stakeAmount}} <img
+                          src="{{rootURL}}assets/img/logo/tfuel.png"
+                          style="width: 15px; margin-left: 3px; margin-top: -2px;;"/></td>
+                  <td class="text-center"><a href="{{explorerEndpoint}}/account/{{stake.walletAddress}}"
+                                             title="{{stake.walletAddress}}" target="_blank" {{shortener
+                            stake.walletAddress}}>{{stake.walletAddress}}</a></td>
+                  <td class="text-center" style="text-transform: capitalize;">{{stake.status}}</td>
+                  <td class="text-center">
+                    {{#if stake.isStaking}}
+                      <button {{on 'click' (fn this.unstake stake)}} class="btn btn-primary">Cancel</button>
+                    {{else if stake.isStaked}}
+                      <button {{on 'click' (fn this.unstake stake)}} class="btn btn-primary">Unstake</button>
+                    {{else if stake.isUnstaking}}
+                      <button {{on 'click' (fn this.unstake stake)}} class="btn btn-primary">Cancel</button>
+                    {{/if}}
+                  </td>
+                </tr>
+              {{/each}}
+              </tbody>
+            </table>
+          </div>
+        {{else}}
+          <p class="title">You don't have any Tfuel staked</p>
+        {{/if}}
+      </div>
+    </div>
+  </div>
+  <div class="card-footer">
+  </div>
+</div>

@@ -5,6 +5,7 @@ export default class UserModel extends Model {
   @attr('string') email;
   @attr('string') password;
   @attr('boolean') isVerified;
+  @attr('string') scope;
   @hasMany('tfuelstake') tfuelstakes;
   @hasMany('wallet') wallets;
 

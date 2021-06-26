@@ -12,18 +12,18 @@
         <ul class="nav">
             {{#each menuItemList as |menuItem|}}
                 {{#if menuItem.children}}
-                    <li class="nav-item">
-                        <LinkTo @class="nav-link" @route="{{menuItem.name}}">
-                            <i class="tim-icons {{menuItem.icon}}"></i>
-                            <p class="menu-item">{{menuItem.name}}</p>
-                        </LinkTo>
-                        <ul>
-                            {{#each menuItem.children as |child|}}
-                              <li style="list-style-type: none;" class="nav-item {{if child.classActive "active"}}">
-                                <LinkTo @class="nav-link" @route="{{child.route}}">
-                                  <p class="menu-item"><img class="tim-icons"
-                                                            src="{{rootURL}}/assets/img/logo/{{child.icon}}"/>{{child.name}}
-                                  </p>
+                  <li class="nav-item">
+                    <LinkTo @class="nav-link" @route="{{menuItem.route}}">
+                      <i class="tim-icons {{menuItem.icon}}"></i>
+                      <p class="menu-item">{{menuItem.name}}</p>
+                    </LinkTo>
+                    <ul>
+                      {{#each menuItem.children as |child|}}
+                        <li style="list-style-type: none;" class="nav-item {{if child.classActive "active"}}">
+                          <LinkTo @class="nav-link" @route="{{child.route}}">
+                            <p class="menu-item"><img class="tim-icons"
+                                                      src="{{rootURL}}/assets/img/logo/{{child.icon}}"/>{{child.name}}
+                            </p>
                                 </LinkTo>
                               </li>
                             {{/each}}
