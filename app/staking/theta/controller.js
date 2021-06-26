@@ -1,165 +1,27 @@
 import Controller from '@ember/controller';
 import {action} from '@ember/object';
-import {tracked} from '@glimmer/tracking';
 import {inject as service} from '@ember/service';
-import * as thetajs from '@thetalabs/theta-js';
 
-export default class StakingController extends Controller {
-  @tracked walletAddress;
-  @tracked stakeAmount;
-  @tracked errorMessages;
-
-  @service('env-manager') envManager;
+export default class ThetaStakingController extends Controller {
+  summary = '0x4417fFbb5A04611DecCCd9Fe9529f98742664690b4d1aa4e65dd2fa44f7990528d63ccf1dd6a6b1a7442d57a52ab4ce6d9a4a3b97597546d07675d4260acee5dd4e179a9adbf76d937a5942fc9dd4de0247bd3a74511294495336ebd84647c974ab9ae022d93741d3a4a6314463f7f619fadcf1517c6995ed8120084b88565cc9cc6d5bf95dc764fcc7d29f29748fa5aa21ddc7410f3926fc4b140b66903b4a141d9e11fa18ebe4ce6e4d1057b550bb37061c7d9724d6d15b98f73648fe9e10e35d26e6044b61a4d0cd39dc11c378eb8085cb6f843adf61efb0b930521b2fffdde6511c401';
   @service utils;
-  @service wallet;
+  @service thetaStakes;
+  @service thetaSdk;
 
-  get explorerEndpoint() {
-    return this.envManager.config.explorerEndpoint;
-  }
-
-  get stakeList() {
-    return this.model.tfuelstakes.filter((stake) => !stake.isUnstaked);
-  }
-
-  get showWallet() {
-    if (this.wallet.wallets.length) {
-      return true;
+  get thetaStake() {
+    debugger
+    if (this.thetaSdk.currentAccount) {
+      debugger
+      return this.thetaSdk.currentAccount
     }
-    return false;
+    return '';
   }
 
   @action
-  selectWallet(wallet) {
-    if (wallet.address) {
-      this.walletAddress = wallet.address;
-    }
-  }
-
-  @action
-  clear(e) {
-    e.preventDefault();
-    this.walletAddress = '';
-  }
-
-  @action
-  async max(e) {
-    try {
-      e.preventDefault();
-      this.errorMessages = [];
-      if (
-        !this.walletAddress ||
-        this.walletAddress.length != 42 ||
-        this.walletAddress.substr(1, 1).toLocaleLowerCase() != 'x'
-      ) {
-        return this.errorMessages.pushObject({
-          message: 'Invalid wallet address',
-        });
-      }
-
-      const maxTfuel = await this.getMaxTfuelBalance(this.walletAddress);
-      if (maxTfuel < 100000) {
-        return this.errorMessages.pushObject({
-          message: "You don't have enough Tfuel in your wallet",
-        });
-      }
-      this.stakeAmount = Math.floor(maxTfuel);
-    } catch (err) {
-      this.errorMessages.pushObject(err.errors);
-    }
-  }
-
-  @action
-  async submitStake(e) {
-    try {
-      e.preventDefault();
-      this.errorMessages = [];
-      if (
-        !this.walletAddress ||
-        this.walletAddress.length != 42 ||
-        this.walletAddress.substr(1, 1).toLocaleLowerCase() != 'x'
-      ) {
-        return this.errorMessages.pushObject({
-          message: 'Invalid wallet address',
-        });
-      }
-      if (!this.stakeAmount || this.stakeAmount < 100000) {
-        return this.errorMessages.pushObject({
-          message: 'The minimum limit is 100,000 Tfuel',
-        });
-      }
-      const isMinimumLimitReached = await this.verifyTfuelBalance(
-        this.walletAddress,
-        this.stakeAmount
-      );
-      if (!isMinimumLimitReached) {
-        return this.errorMessages.pushObject({
-          message: "You don't have enough Tfuel in your wallet",
-        });
-      }
-
-      let tfuelStake = this.store.createRecord(
-        'tfuelstake',
-        this.getProperties('walletAddress', 'stakeAmount')
-      );
-      await tfuelStake.save();
-      this.utils.successNotify(
-        `Your request to stake ${this.stakeAmount} Tfuel has been submitted`
-      );
-      this.stakeAmount = '';
-      this.walletAddress = '';
-    } catch (err) {
-      this.errorMessages.pushObject(err.errors);
-    }
-  }
-
-  @action
-  async unstake(stake) {
-    this.errorMessages = [];
-    try {
-      let message = '';
-      const savedStake = await stake.save();
-      if (savedStake.isUnstaked) {
-        message = 'You succesfully canceled your stake request';
-      } else if (savedStake.isStaked) {
-        message = `Your request to unstake ${savedStake.stakeAmount} Tfuel has been canceled`;
-      } else if (savedStake.isUnstaking) {
-        message = `Your request to unstake ${savedStake.stakeAmount} Tfuel has been submitted`;
-      } else {
-        this.errorMessages.pushObject({message: 'Action not authorized'});
-      }
-      this.utils.successNotify(message);
-    } catch (err) {
-      this.errorMessages.pushObject(err.errors);
-    }
-  }
-
-  async verifyTfuelBalance(wa, stakeAmount) {
-    let response = await fetch(
-      `${this.envManager.config.explorerEndpoint}:8443/api/account/${wa}`
+  copySummaryToClipBoard(label, summary) {
+    this.utils.copyToClipboard(
+      summary,
+      `${label} was successfully copied to your clipboad`
     );
-    if (response.status == 200) {
-      let data = await response.json();
-      if (
-        Number(thetajs.utils.fromWei(data.body.balance.tfuelwei)) < Number(stakeAmount) &&
-        Number(thetajs.utils.fromWei(data.body.balance.tfuelwei)) < 100000
-      ) {
-        return false;
-      } else {
-        return true;
-      }
-    } else {
-      return false;
-    }
-  }
-
-  async getMaxTfuelBalance(wa) {
-    let response = await fetch(
-      `${this.envManager.config.explorerEndpoint}:8443/api/account/${wa}`
-    );
-    if (response.status == 200) {
-      let data = await response.json();
-      return thetajs.utils.fromWei(data.body.balance.tfuelwei);
-    }
-    return 0;
   }
 }

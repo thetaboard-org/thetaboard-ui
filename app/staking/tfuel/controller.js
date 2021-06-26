@@ -4,7 +4,7 @@ import { tracked } from '@glimmer/tracking';
 import { inject as service } from '@ember/service';
 import * as thetajs from '@thetalabs/theta-js';
 
-export default class StakingController extends Controller {
+export default class TfuelStakingController extends Controller {
   @tracked walletAddress;
   @tracked stakeAmount;
   @tracked errorMessages;

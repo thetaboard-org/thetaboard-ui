@@ -209,7 +209,7 @@ export default class ThetaSdkService extends Service {
   }
 
   async getTransactions(accounts, current = 1, limit_number = 15) {
-    let transactionList = {transactions: []};
+    let transactionList = { transactions: [] };
     let finalUrl = '/explorer/wallet-transactions/' + accounts[0] + this.envManager.config.queryParams;
     this.envManager.config.queryParams ? (finalUrl += '&') : (finalUrl += '?');
     finalUrl += `pageNumber=${current}&limitNumber=${limit_number}`;

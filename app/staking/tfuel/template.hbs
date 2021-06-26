@@ -8,7 +8,7 @@
             <div class="block block-two"></div>
             <div class="block block-three"></div>
             <div class="block block-four"></div>
-            <img class="avatar" src="{{rootURL}}assets/img/logo/tfuel.png" alt="...">
+            <img class="avatar" src="{{rootURL}}/assets/img/logo/tfuel.png" alt="...">
         </div>
         <div class="card-body-stake">
              <h5 class="title">Tfuel Staking</h5>
@@ -85,7 +85,7 @@
                                 {{#each this.stakeList as |stake|}}            
                                     <tr>
                                         <td class="text-center">{{moment-format stake.createdAt 'll'}}</td>
-                                        <td class="text-center">{{format-number stake.stakeAmount}} <img src="{{rootURL}}assets/img/logo/tfuel.png" style="width: 15px; margin-left: 3px; margin-top: -2px;;"/></td>
+                                        <td class="text-center">{{format-number stake.stakeAmount}} <img src="{{rootURL}}/assets/img/logo/tfuel.png" style="width: 15px; margin-left: 3px; margin-top: -2px;"/></td>
                                         <td class="text-center"><a href="{{explorerEndpoint}}/account/{{stake.walletAddress}}" title="{{stake.walletAddress}}" target="_blank" {{shortener stake.walletAddress}}>{{stake.walletAddress}}</a></td>
                                         <td class="text-center" style="text-transform: capitalize;">{{stake.status}}</td>
                                         <td class="text-center">

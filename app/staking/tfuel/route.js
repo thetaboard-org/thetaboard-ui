@@ -1,7 +1,7 @@
 import Route from '@ember/routing/route';
 import { getOwner } from '@ember/application';
 
-export default class StakingRoute extends Route {
+export default class TfuelStakingRoute extends Route {
   get session() {
     return getOwner(this).lookup('service:session');
   }
