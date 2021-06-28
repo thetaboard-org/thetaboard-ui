@@ -13,6 +13,10 @@ export default class TfuelStakingController extends Controller {
   @service utils;
   @service wallet;
 
+  get summary() {
+    return "0xbA8e836cfAcfb7032c66F5dC8e549089A2c04BC484c049b5631f98b5b5b1bbe21563c88948dedc06e6565452f10b3c97a3f2cd4c6f3c14ee22cf748fc76137fa62ef7a5a8a97fe51a07d4d40d36c3710ca87f691fc49e8f69f935a3e3f4e21c60e5f53752c9adb5c9617aca87eac0c2794e4dc4c123bf7c2416c035a76d13569ca5c7fc1c0eb23dc65d498db94af9d3a8a354d806146c3cfe8c0956cd0cde696e5133adb014c6b4c6a2b29ccfa6785099bff3be84a26d808ba4127a154d277ad080a90d323f7323cb34f6a596627c98527d501e1f2fba7ac4117d40a390954040371aa7200b1585ab57bec34636a48afd56f07c9893cd69f7c2fba387690bbe55fcd693a44"
+  }
+
   get explorerEndpoint() {
     return this.envManager.config.explorerEndpoint;
   }
@@ -161,5 +165,13 @@ export default class TfuelStakingController extends Controller {
       return thetajs.utils.fromWei(data.body.balance.tfuelwei);
     }
     return 0;
+  }
+
+  @action
+  copySummaryToClipBoard(label, value) {
+    this.utils.copyToClipboard(
+      value,
+      `${label} was successfully copied to your clipboad`
+    );
   }
 }
