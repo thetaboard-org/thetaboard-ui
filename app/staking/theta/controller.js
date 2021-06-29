@@ -10,7 +10,7 @@ export default class ThetaStakingController extends Controller {
 
   get thetaStake() {
     if (this.thetaSdk.currentAccount) {
-      return this.thetaSdk.currentAccount
+      return this.thetaSdk.currentAccount;
     }
     return '';
   }

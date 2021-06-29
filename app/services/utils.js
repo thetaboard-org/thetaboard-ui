@@ -4,15 +4,17 @@ import { action } from '@ember/object';
 export default class UtilsService extends Service {
   @action
   copyToClipboard(textToCopy, message) {
-    const el = document.createElement('textarea');
-    el.value = textToCopy;
-    el.setAttribute('readonly', '');
-    el.style.position = 'absolute';
-    el.style.left = '-9999px';
-    document.body.appendChild(el);
-    el.select();
+    var textarea = document.createElement('textarea');
+    textarea.textContent = textToCopy;
+    document.body.appendChild(textarea);
+    var selection = document.getSelection();
+    var range = document.createRange();
+    range.selectNode(textarea);
+    selection.removeAllRanges();
+    selection.addRange(range);
     document.execCommand('copy');
-    document.body.removeChild(el);
+    selection.removeAllRanges();
+    document.body.removeChild(textarea);
     $.notify(
       {
         icon: 'glyphicon glyphicon-success-sign',

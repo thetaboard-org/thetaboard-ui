@@ -16,18 +16,40 @@
         <form class="col-md-9">
           <label>You can Stake you Tfuel on our Delegate Elite Edge Nodes</label>
           <br/>
-          <br/>
-          <p>Please refer to the following tutorial from the Theta Network Team, and don't forget to pick Thetaboard in the list !<br/>
-          <a target="_blank" href="https://medium.com/theta-network/theta-1-click-delegated-staking-now-live-in-the-theta-web-wallet-b80d499aae71">https://medium.com/theta-network/theta-1-click-delegated-staking-now-live-in-the-theta-web-wallet-b80d499aae71</a>.</p>
-          <br/><br/>
-          <p>You can use the following summaries to Stake your Tfuel:</p>
-         <div {{on "click" (action this.copySummaryToClipBoard 'Summary' summary)}} style="cursor: pointer;" class="card-description-summary">
-            <p class="summary-value">{{summary}} summarry</p>
-          </div>
+          <p>If you have more than 100,000 Tfuel, stake on our <LinkTo @route="staking.tfuelvip">VIP Elite Edge Nodes</LinkTo></p><br/>
+          <p>Or you can use the following summaries to Stake your Tfuel:</p>
+          {{#each edgeNodeList as |edgeNode|}}
+            <div data-toggle="modal" data-target="#EdgeSummaryModal" {{on 'click' (fn this.setupModalSummary edgeNode.summary)}} style="cursor: pointer;" class="card-description-summary">
+              <p class="summary-value">{{edgeNode.summary}}</p>
+            </div>
+            <br/>
+          {{/each}}
         </form>
       </div>
     </div>
   </div>
   <div class="card-footer">
+  </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="EdgeSummaryModal" tabindex="-1" role="dialog" aria-labelledby="EdgeSummaryModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="EdgeSummaryModalLabel">Edge Node Summary</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+          <i class="tim-icons icon-simple-remove"></i>
+        </button>
+      </div>
+      <div class="modal-body">
+        <img src="https://chart.googleapis.com/chart?chs=500x500&cht=qr&chl={{modalSummary}}&choe=UTF-8"/>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" {{on "click" (fn this.copySummaryToClipBoard 'Edge Node Summary' modalSummary)}}>Copy Summary</button>
+      </div>
+    </div>
   </div>
 </div>

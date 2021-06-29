@@ -1,17 +1,17 @@
 import Controller from '@ember/controller';
-import { action } from '@ember/object';
+import {action} from '@ember/object';
+import {inject as service} from '@ember/service';
 import { tracked } from '@glimmer/tracking';
-import { inject as service } from '@ember/service';
 import * as thetajs from '@thetalabs/theta-js';
 
 export default class TfuelvipStakingController extends Controller {
+  @service utils;
+  @service('env-manager') envManager;
+  @service wallet;
+
   @tracked walletAddress;
   @tracked errorMessages;
   @tracked modalSummary;
-
-  @service('env-manager') envManager;
-  @service utils;
-  @service wallet;
 
   get explorerEndpoint() {
     return this.envManager.config.explorerEndpoint;
@@ -94,9 +94,9 @@ export default class TfuelvipStakingController extends Controller {
   }
 
   @action
-  copySummaryToClipBoard(label, value) {
+  copySummaryToClipBoard(label, modalSummary) {
     this.utils.copyToClipboard(
-      value,
+      modalSummary,
       `${label} was successfully copied to your clipboad`
     );
   }
