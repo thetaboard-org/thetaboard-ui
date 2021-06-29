@@ -5,23 +5,44 @@ import {tracked} from '@glimmer/tracking';
 export default class TrendTfuelComponent extends Component {
   constructor(...args) {
     super(...args);
-    this.trendLastWeek = {};
-    this.trendYesterday = {};
+    this.dates;
     this.initialize();
   }
 
   @service('theta-sdk') thetaSdk;
 
-  @tracked trendLastWeek;
-  @tracked trendYesterday;
-
   async initialize() {
     return this.getDates().then((dates) => {
-      const prices = this.args.historic_price;
-      const tfuelPrice = this.thetaSdk.prices.tfuel.price;
-      this.trendLastWeek = this.setTrend(tfuelPrice, prices[dates.lastWeek].tfuel_price);
-      this.trendYesterday = this.setTrend(tfuelPrice, prices[dates.yesterday].tfuel_price);
+      this.dates = dates;
     });
+  }
+
+  get trendYesterday() {
+    const prices = this.args.historic_price;
+    const tfuelPrice = this.thetaSdk.prices.tfuel.price;
+    if (!this.dates) {
+      return {
+        type: '-',
+        class: 'down',
+        change: 0,
+        percentChange: 0,
+      };
+    }
+    return this.setTrend(tfuelPrice, prices[this.dates.yesterday].tfuel_price);
+  }
+
+  get trendLastWeek() {
+    const prices = this.args.historic_price;
+    const tfuelPrice = this.thetaSdk.prices.tfuel.price;
+    if (!this.dates) {
+      return {
+        type: '-',
+        class: 'down',
+        change: 0,
+        percentChange: 0,
+      };
+    }
+    return this.setTrend(tfuelPrice, prices[this.dates.lastWeek].tfuel_price);
   }
 
   get ratio() {

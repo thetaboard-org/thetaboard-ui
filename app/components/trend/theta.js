@@ -5,26 +5,43 @@ import { tracked } from '@glimmer/tracking';
 export default class TrendThetaComponent extends Component {
   constructor(...args) {
     super(...args);
-    this.trendLastWeek = {};
-    this.trendYesterday = {};
+    this.dates;
     this.initialize();
   }
   @service('theta-sdk') thetaSdk;
 
-  @tracked trendLastWeek;
-  @tracked trendYesterday;
-
   async initialize() {
     return this.getDates().then((dates) => {
-      const prices = this.args.historic_price;
-      let thetaPrice = 0;
-
-      if (this.thetaSdk && this.thetaSdk.prices && this.thetaSdk.prices.theta) {
-        thetaPrice = this.thetaSdk.prices.theta.price;
-      }
-      this.trendLastWeek = this.setTrend(thetaPrice, prices[dates.lastWeek].theta_price);
-      this.trendYesterday = this.setTrend(thetaPrice, prices[dates.yesterday].theta_price);
+      this.dates = dates;
     });
+  }
+
+  get trendYesterday() {
+    const prices = this.args.historic_price;
+    const thetaPrice = this.thetaSdk.prices.theta.price;
+    if (!this.dates) {
+      return {
+        type: '-',
+        class: 'down',
+        change: 0,
+        percentChange: 0,
+      };
+    }
+    return this.setTrend(thetaPrice, prices[this.dates.yesterday].theta_price);
+  }
+
+  get trendLastWeek() {
+    const prices = this.args.historic_price;
+    const thetaPrice = this.thetaSdk.prices.theta.price;
+    if (!this.dates) {
+      return {
+        type: '-',
+        class: 'down',
+        change: 0,
+        percentChange: 0,
+      };
+    }
+    return this.setTrend(thetaPrice, prices[this.dates.lastWeek].theta_price);
   }
 
   setTrend(currentPrice, previousPrice) {

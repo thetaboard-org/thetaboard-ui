@@ -19,7 +19,10 @@ export default class ThetaSdkService extends Service {
     this.pagination = {};
     this.currentAccount = '';
     this.currentAccountDomainList = [];
-    this.prices = {};
+    this.prices = {
+      theta: { price: 0, market_cap: 0, volume_24h: 0 },
+      tfuel: { price: 0, market_cap: 0, volume_24h: 0 },
+    };
     this.getPrices();
     this.totalStake = { totalAmount: '0', percent: 0 };
     this.totalTfuelStake = { totalAmount: '0', percent: 0 };
