@@ -9,9 +9,7 @@ export default class ThetaStakingController extends Controller {
   @service thetaSdk;
 
   get thetaStake() {
-    debugger
     if (this.thetaSdk.currentAccount) {
-      debugger
       return this.thetaSdk.currentAccount
     }
     return '';

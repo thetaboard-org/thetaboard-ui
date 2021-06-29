@@ -32,7 +32,7 @@ Router.map(function () {
   this.route('policy', function () {
     this.route('terms');
     this.route('privacy');
-  })
+  });
   this.route('faq');
   this.route('footer');
   this.route('not-found', {path: '/*path'});
@@ -48,6 +48,7 @@ Router.map(function () {
   this.route('staking', function () {
     this.route('tfuel');
     this.route('theta');
+    this.route('tfuelvip');
   });
   this.route('my-wallets');
 });

@@ -1,0 +1,122 @@
+{{page-title "Staking"}}
+
+<div class="card card-user">
+  <div class="card-body card-min-390">
+    <p class="card-text"></p>
+    <div class="author">
+      <div class="block block-one"></div>
+      <div class="block block-two"></div>
+      <div class="block block-three"></div>
+      <div class="block block-four"></div>
+      <img class="avatar" src="{{rootURL}}/assets/img/logo/tfuel.png" alt="...">
+    </div>
+    <div class="card-body-stake">
+      <h5 class="title">Tfuel VIP Elite Edge Node Staking</h5>
+      <div class="row justify-content-lg-center justify-content-md-center">
+        <form {{on 'submit' this.submitStake}} class="stakes-deposit col-md-9">
+          <div class="form-group">
+            <label for="stake-amount">How many Tfuel do you want to stake?</label>
+            <p>The current minimum limit is 100,000Tfuel. This limit will be reduced soon.</p>
+            {{#each this.errorMessages as |error|}}
+              <div class="row">
+                <div class="col-sm-12 col-lg-8" style=" margin: auto;">
+                  <div class="alert alert-warning" style="padding: 10px;">
+                    <span>{{error.message}}</span>
+                  </div>
+                </div>
+              </div>
+            {{/each}}
+            <div class="row">
+              <div class="col-sm-12 col-lg-8" style="margin: auto;">
+                <br/>
+                <div class="dropdown">
+                  <div class="">
+                    <Input required minlength="42" @type="text" @min="0" @placeholder="Enter wallet address"
+                           style="text-align: center;" class="form-control border-color" @value={{walletAddress}}/>
+                  </div>
+                  {{#if showWallet}}
+                    <div class="dropdown-content my-wallet">
+                      {{#each wallet.wallets as |wallet|}}
+                        <p {{on 'click' (fn this.selectWallet wallet)}}>{{wallet.name}} (<span {{shortener
+                                wallet.address}}>{{wallet.address}}</span>)</p>
+                        <hr style="margin: 0 0 5px 0;"/>
+                      {{/each}}
+                      <a {{on 'click' this.clear}}><p><a href="">Clear</a></p></a>
+                    </div>
+                  {{/if}}
+                </div>
+                <br/>
+              </div>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-fill btn-primary btn-left">Submit</button>
+        </form>
+      </div>
+      <br/><br/><br/>
+      <div class="stakes-no-activity">
+        {{#if this.stakeList.length}}
+          <br/>
+          <p class="title">VIP Elite Edge Nodes List</p>
+          <br/>
+          <br/>
+          <div class="table-responsive transac-history-table">
+            <table class="table" style="table-layout: fixed;">
+              <thead>
+              <tr>
+                <th class="text-center">Date</th>
+                <th class="text-center">Wallet Address</th>
+                <th class="text-center">Summary</th>
+              </tr>
+              </thead>
+              <tbody>
+              {{#each this.stakeList as |stake|}}
+                <tr>
+                  <td class="text-center">{{moment-format stake.createdAt 'll'}}</td>
+                  <td class="text-center">
+                    <a href="{{explorerEndpoint}}/account/{{stake.walletAddress}}" title="{{stake.walletAddress}}" 
+                      target="_blank" {{shortener stake.walletAddress}}>{{stake.walletAddress}}</a>
+                  </td>
+                  {{#if stake.edgeNodeSummary}}
+                    <td>
+                      <button class="btn btn-primary" {{on 'click' (fn this.setupModalSummary stake.edgeNodeSummary)}} data-toggle="modal" data-target="#SummaryModal">See Summary</button>
+                    </td>
+                  {{else}}
+                    <td>
+                      A Summary will appear soon.
+                    </td>
+                  {{/if}}
+                </tr>
+              {{/each}}
+              </tbody>
+            </table>
+          </div>
+        {{else}}
+          <p class="title">You don't have a VIP Elite Edge Node yet</p>
+        {{/if}}
+      </div>
+    </div>
+  </div>
+  <div class="card-footer">
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="SummaryModal" tabindex="-1" role="dialog" aria-labelledby="SummaryModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="SummaryModalLabel">Edge Node Summary</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+          <i class="tim-icons icon-simple-remove"></i>
+        </button>
+      </div>
+      <div class="modal-body">
+        <img src="https://chart.googleapis.com/chart?chs=500x500&cht=qr&chl={{modalSummary}}&choe=UTF-8"/>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" {{on "click" (action this.copySummaryToClipBoard 'Edge Node Summary' modalSummary)}}>Copy Summary</button>
+      </div>
+    </div>
+  </div>
+</div>

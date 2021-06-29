@@ -5,19 +5,19 @@ export default class MenuComponent extends Component {
   @service currentUser;
 
   menuItems = [
-    {name: 'dashboard', icon: 'icon-chart-pie-36'},
-    {name: 'wallet', icon: 'icon-wallet-43'},
+    { name: 'dashboard', icon: 'icon-chart-pie-36' },
+    { name: 'wallet', icon: 'icon-wallet-43' },
     {
       name: 'staking', icon: 'icon-align-center', route: 'staking.tfuel',
-      children:
-        [
-          {name: 'Tfuel', icon: 'tfuel-white.png', route: 'staking.tfuel'},
-          {name: 'Theta', icon: 'theta-white.png', route: 'staking.theta'},
-        ],
+      children: [
+        { name: 'Tfuel', icon: 'tfuel-white.png', route: 'staking.tfuel' },
+        { name: 'Theta', icon: 'theta-white.png', route: 'staking.theta' },
+        { name: 'Tfuel VIP', icon: 'tfuel-white.png', route: 'staking.tfuelvip' },
+      ],
     },
-    {name: 'domain', icon: 'icon-book-bookmark'},
-    {name: 'faq', icon: 'icon-compass-05'},
-    {name: 'guardian', icon: 'icon-align-center', scope: "Admin"},
+    { name: 'domain', icon: 'icon-book-bookmark' },
+    { name: 'faq', icon: 'icon-compass-05' },
+    { name: 'guardian', icon: 'icon-align-center', scope: 'Admin' },
   ];
   @service router;
 

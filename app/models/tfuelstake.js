@@ -4,6 +4,8 @@ import { computed } from '@ember/object';
 export default class TfuelstakeModel extends Model {
   @attr('string') walletAddress;
   @attr('number') stakeAmount;
+  @attr('string') edgeNodeId;
+  @attr('string') edgeNodeSummary;
   @attr('string', { defaultValue: 'staking' }) status;
   @attr('date') createdAt;
   @belongsTo('user') user;
