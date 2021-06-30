@@ -96,6 +96,22 @@
       </div>
     </div>
   </div>
+    {{#if this.thetaSdk.eliteEdgeNodeWallets.length}}
+      <div style="text-align: center;" class="stakes-activity">
+        <p class="title">Your Stakes</p>
+        {{#each this.thetaSdk.eliteEdgeNodeWallets as |eliteEdgeNode|}}
+          <p class="title"><img src="{{rootURL}}/assets/img/logo/tfuel.png" style="width: 15px; margin-left: 3px; margin-top: -2px;"/>
+            {{format-number eliteEdgeNode.amount maximumFractionDigits="2"}} <span class="capitalize">{{eliteEdgeNode.currency}}</span> Staked</p>
+          <p class="description">Staked on node address:<br/>{{eliteEdgeNode.node_address}}</p>
+        {{/each}}
+      </div>
+    {{else}}
+      <br/><br/><br/>
+      <div style="text-align: center;" class="stakes-no-activity">
+        <p class="title">You don't have any Tfuel staked.</p><br/>
+        <p class="description"> Stake your Tfuel to earn TFUEL</p>
+      </div>
+    {{/if}}     
   <div class="card-footer">
   </div>
 </div>

@@ -33,7 +33,7 @@
             <p class="title">Your Stakes</p>
             {{#each this.thetaSdk.guardianWallets as |guardianWallet|}}
               <p class="title"><img src="{{rootURL}}/assets/img/logo/theta.png" style="width: 15px; margin-left: 3px; margin-top: -2px;"/>
-{{format-number guardianWallet.amount maximumFractionDigits="2"}} <span class="capitalize">{{guardianWallet.currency}}</span> Staked</p>
+                {{format-number guardianWallet.amount maximumFractionDigits="2"}} <span class="capitalize">{{guardianWallet.currency}}</span> Staked</p>
               <p class="description">Staked on node address:<br/>{{guardianWallet.node_address}}</p>
             {{/each}}
           </div>

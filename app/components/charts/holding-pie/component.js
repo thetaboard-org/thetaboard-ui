@@ -41,12 +41,20 @@ export default class HoldingPieComponent extends Component {
       return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     };
 
-    const guardian = this.thetaSdk.wallets.filter((x) => x.type === 'guardian');
+    const guardian = this.thetaSdk.guardianWallets;
     let guardian_value = 0;
     let guardian_amount = 0;
     if (guardian.length > 0) {
       guardian_value = guardian.reduce((a, b) => a + b.value, 0);
       guardian_amount = guardian.reduce((a, b) => a + b.amount, 0);
+    }
+
+    const eliteEdgeNodes = this.thetaSdk.eliteEdgeNodeWallets;
+    let een_value = 0;
+    let een_amount = 0;
+    if (eliteEdgeNodes.length > 0) {
+      een_value = eliteEdgeNodes.reduce((a, b) => a + b.value, 0);
+      een_amount = eliteEdgeNodes.reduce((a, b) => a + b.amount, 0);
     }
 
     let theta_value = this.thetaSdk.wallets.filter((x) => x.type === 'wallet' && x.currency === 'theta').reduce((a, b) => a + b.value, 0);
@@ -55,6 +63,11 @@ export default class HoldingPieComponent extends Component {
     let tfuel_amount = this.thetaSdk.wallets.filter((x) => x.type === 'wallet' && x.currency === 'tfuel').reduce((a, b) => a + b.amount, 0);
 
     const types = [
+      {
+        label: `EEN (${numberWithCommas(een_amount.toFixed(2))})`,
+        value: een_value,
+        color: '#ea9c3a',
+      },
       {
         label: `Guardian (${numberWithCommas(guardian_amount.toFixed(2))})`,
         value: guardian_value,

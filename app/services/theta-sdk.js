@@ -68,7 +68,14 @@ export default class ThetaSdkService extends Service {
 
   get guardianWallets() {
     if (this.wallets.length) {
-      return this.wallets.filter((x) => x.type === 'guardian');
+      return this.wallets.filter((x) => x.type === 'Guardian Node');
+    }
+    return [];
+  }
+
+  get eliteEdgeNodeWallets() {
+    if (this.wallets.length) {
+      return this.wallets.filter((x) => x.type === 'Elite Edge Node');
     }
     return [];
   }
