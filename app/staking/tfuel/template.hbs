@@ -14,9 +14,14 @@
       <h5 class="title">Tfuel Public Staking</h5>
       <div class="row justify-content-lg-center justify-content-md-center">
         <form class="col-md-9">
-          <label>You can Stake you Tfuel on our Delegate Elite Edge Nodes</label>
+          <label>You can Stake Tfuel on our Delegate Elite Edge Nodes</label>
           <br/>
-          <p>If you have more than 100,000 Tfuel, stake on our <LinkTo @route="staking.tfuelvip">VIP Elite Edge Nodes</LinkTo></p><br/>
+          <p> Just follow the <a href="https://docs.thetatoken.org/docs/elite-edge-node-staking-process">Theta
+            documentation </a> using the Summaries bellow</p>
+          <p>If you have more than 100,000 Tfuel, stake on our
+            <LinkTo @route="staking.tfuelvip">VIP Elite Edge Nodes</LinkTo>
+          </p>
+          <br/>
           <p>Or you can use the following summaries to Stake your Tfuel:</p>
           {{#each edgeNodeList as |edgeNode|}}
             <div data-toggle="modal" data-target="#EdgeSummaryModal" {{on 'click' (fn this.setupModalSummary edgeNode.summary)}} style="cursor: pointer;" class="card-description-summary">
