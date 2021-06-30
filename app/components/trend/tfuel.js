@@ -1,56 +1,21 @@
 import Component from '@glimmer/component';
 import { inject as service } from '@ember/service';
-import { tracked } from '@glimmer/tracking';
 
 export default class TrendTfuelComponent extends Component {
-  constructor(...args) {
-    super(...args);
-    this.dates;
-    this.trendY;
-    this.trendLW;
-    this.initialize();
-  }
   @service('theta-sdk') thetaSdk;
 
-  @tracked trendY;
-  @tracked trendLW;
-
-  async initialize() {
-    return await this.getDates().then((dates) => {
-      this.dates = dates;
-      this.trendLastWeek;
-      this.trendYesterday;
-    });
-  }
-
   get trendYesterday() {
+    const yesterday = moment(new Date(new Date() - 3600000 * 24)).format('YYYY-MM-DD');
     const prices = this.args.historic_price;
     const tfuelPrice = this.thetaSdk.prices.tfuel.price;
-    if (!this.dates) {
-      return {
-        type: '-',
-        class: 'down',
-        change: 0,
-        percentChange: 0,
-      };
-    }
-    this.trendY = this.setTrend(tfuelPrice, prices[this.dates.yesterday].tfuel_price);
-    return this.trendY;
+    return this.setTrend(tfuelPrice, prices[yesterday].tfuel_price);
   }
 
   get trendLastWeek() {
+    const lastWeek = moment(new Date(new Date() - 3600000 * 24 * 7)).format('YYYY-MM-DD');
     const prices = this.args.historic_price;
     const tfuelPrice = this.thetaSdk.prices.tfuel.price;
-    if (!this.dates) {
-      return {
-        type: '-',
-        class: 'down',
-        change: 0,
-        percentChange: 0,
-      };
-    }
-    this.trendLW = this.setTrend(tfuelPrice, prices[this.dates.lastWeek].tfuel_price);
-    return this.trendLW;
+    return this.setTrend(tfuelPrice, prices[lastWeek].tfuel_price);
   }
 
   get ratio() {
@@ -66,11 +31,5 @@ export default class TrendTfuelComponent extends Component {
       change: change < 0 ? -change : change,
       percentChange: percentChange < 0 ? -percentChange : percentChange,
     };
-  }
-
-  async getDates() {
-    const yesterday = await moment(new Date(new Date() - 3600000 * 24)).format('YYYY-MM-DD');
-    const lastWeek = await moment(new Date(new Date() - 3600000 * 24 * 7)).format('YYYY-MM-DD');
-    return {yesterday: yesterday, lastWeek: lastWeek};
   }
 }

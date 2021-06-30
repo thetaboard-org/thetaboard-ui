@@ -18,23 +18,13 @@
         <div class="trends-percent-conatiner">
           <div class="trend-activity trends-percent border-separation">
               <p class="description">Last 24h</p>
-              {{#if thetaSdk.currentAccount}}
-                <p class="title {{trendY.class}}">{{trendY.type}} {{trendY.percentChange}}% </p>
-                <span class="trend-usd-change {{trendY.class}}">({{trendY.type}} ${{trendY.change}})</span>
-              {{else}}
-                <p class="title {{trendYesterday.class}}">{{trendYesterday.type}} {{trendYesterday.percentChange}}% </p>
-                <span class="trend-usd-change {{trendYesterday.class}}">({{trendYesterday.type}} ${{trendYesterday.change}})</span>
-              {{/if}}
+              <p class="title {{trendYesterday.class}}">{{trendYesterday.type}} {{trendYesterday.percentChange}}% </p>
+              <span class="trend-usd-change {{trendYesterday.class}}">({{trendYesterday.type}} ${{trendYesterday.change}})</span>
           </div>
           <div class="trend-activity trends-percent">
               <p class="description">Last 7 days</p>
-              {{#if thetaSdk.currentAccount}}
-                <p class="title {{trendLW.class}} ">{{trendLW.type}} {{trendLW.percentChange}}% </p>
-                <span class="trend-usd-change {{trendLW.class}}">({{trendLW.type}} ${{trendLW.change}})</span>
-              {{else}}
-                <p class="title {{trendLastWeek.class}} ">{{trendLastWeek.type}} {{trendLastWeek.percentChange}}% </p>
-                <span class="trend-usd-change {{trendLastWeek.class}}">({{trendLastWeek.type}} ${{trendLastWeek.change}})</span>
-              {{/if}}
+              <p class="title {{trendLastWeek.class}} ">{{trendLastWeek.type}} {{trendLastWeek.percentChange}}% </p>
+              <span class="trend-usd-change {{trendLastWeek.class}}">({{trendLastWeek.type}} ${{trendLastWeek.change}})</span>
           </div>
         </div>
         <hr/>
