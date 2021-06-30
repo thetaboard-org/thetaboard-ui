@@ -16,9 +16,9 @@ export default class ThetaStakingController extends Controller {
   }
 
   @action
-  copySummaryToClipBoard(label, summary) {
+  copySummaryToClipBoard(label, inputId) {
     this.utils.copyToClipboard(
-      summary,
+      inputId,
       `${label} was successfully copied to your clipboad`
     );
   }

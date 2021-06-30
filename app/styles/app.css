@@ -975,3 +975,8 @@ a.logout {
 .navbar .navbar-nav .dropdown .nav-link {
   padding: 4px 0 0 0;
 }
+
+.input-to-hide {
+  left: 10000px;
+  position: fixed;
+}

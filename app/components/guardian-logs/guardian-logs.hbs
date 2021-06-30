@@ -42,12 +42,14 @@
                     <p></p>
                     {{#if this.guardian.snapshotInfo.latestFinalizedBlockTime}}
                         <p class="summary-label">Address</p>
-                        <div {{on "click" (action this.copySummaryToClipBoard 'Address' this.guardian.guardianSummary.msg.Address)}} class="card-description-summary">
+                        <div {{on "click" (action this.copySummaryToClipBoard 'Address' 'input-to-copy-from-guardian-address')}} class="card-description-summary">
                             <p class="summary-value">{{guardian.guardianSummary.msg.Address}}</p>
+                            <input id="input-to-copy-from-guardian-address" class="input-to-hide" value="{{guardian.guardianSummary.msg.Address}}"/>
                         </div>
                         <p class="summary-label">Summary</p>
-                        <div {{on "click" (action this.copySummaryToClipBoard 'Summary' this.guardian.guardianSummary.msg.Summary)}} class="card-description-summary">
+                        <div {{on "click" (action this.copySummaryToClipBoard 'Summary' 'input-to-copy-from-guardian-summary')}} class="card-description-summary">
                             <p class="summary-value">{{guardian.guardianSummary.msg.Summary}}</p>
+                            <input id="input-to-copy-from-guardian-summary" class="input-to-hide" value="{{guardian.guardianSummary.msg.Summary}}"/>
                         </div>
                     {{else}}
                         <p></p><br/>
@@ -64,9 +66,10 @@
                 {{/accordionItem.panel}}
                 {{#accordionItem.panel panelName="logs"}}
                     <p {{did-insert this.turnOnLogs}} {{will-destroy this.turnOffLogs}}></p>
-                    <div {{on "click" (action this.copyLogsToClipBoard guardian.guardianLogs.logs)}} class="card-description max-height-462" {{autoscroll guardian.guardianLogs.logs}}>
+                    <div {{on "click" (action this.copyLogsToClipBoard 'Logs' 'input-to-copy-from-guardian-logs')}} class="card-description max-height-462" {{autoscroll guardian.guardianLogs.logs}}>
                         {{guardian.guardianLogs.logs}}
                     </div>
+                    <input id="input-to-copy-from-guardian-logs" class="input-to-hide" value="{{guardian.guardianLogs.logs}}"/>
                     {{guardian-logs/footer}}
                 {{/accordionItem.panel}}
             {{/accordion.item}}

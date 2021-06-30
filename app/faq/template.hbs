@@ -242,8 +242,9 @@
             <p style="margin-left: 25px;">
               Thetaboard hosts a public Guardian Node for the community and anyone can use it by either using the summary below and the <a target="_blank" href="https://docs.thetatoken.org/docs/guardian-staking-process">Theta
               instructions</a> or by using the Stake widget in the <LinkTo @route="guardian">Guardian</LinkTo> page.<br><br>
-              <div {{on "click" (action this.copySummaryToClipBoard 'Summary' this.guardian.guardianSummary.msg.Summary)}} class="card-description-summary">
-                <p class="summary-value">{{guardian.guardianSummary.msg.Summary}}</p>
+              <div {{on "click" (action this.copySummaryToClipBoard 'Summary' 'input-to-copy-from-faq')}} class="card-description-summary">
+                <p class="summary-value">{{summary}}</p>
+                <input id="input-to-copy-from-faq" class="input-to-hide" value="{{summary}}"/>
               </div>
               <br/><br/>
               <b>Staking using the Stakes widget:</b><br/> From the the <LinkTo @route="guardian">Guardian</LinkTo> page click the "Deposit" button

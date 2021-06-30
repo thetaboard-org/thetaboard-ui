@@ -49,11 +49,12 @@
         </button>
       </div>
       <div class="modal-body">
-        <img src="https://chart.googleapis.com/chart?chs=500x500&cht=qr&chl={{modalSummary}}&choe=UTF-8"/>
+        <img {{on "click" (fn this.copySummaryToClipBoard 'Edge Node Summary' 'input-to-copy-from-tfuel')}} src="https://chart.googleapis.com/chart?chs=500x500&cht=qr&chl={{modalSummary}}&choe=UTF-8"/>
+        <input id="input-to-copy-from-tfuel" class="input-to-hide" value="{{modalSummary}}"/>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" {{on "click" (fn this.copySummaryToClipBoard 'Edge Node Summary' modalSummary)}}>Copy Summary</button>
+        <button type="button" class="btn btn-primary" {{on "click" (fn this.copySummaryToClipBoard 'Edge Node Summary' 'input-to-copy-from-tfuel')}}>Copy Summary</button>
       </div>
     </div>
   </div>

@@ -17,12 +17,4 @@ export default class GuardianController extends Controller {
   get envManager() {
     return getOwner(this).lookup('service:env-manager');
   }
-
-  @action
-  copySummaryToClipBoard(label, summary) {
-    this.utils.copyToClipboard(
-      summary,
-      `${label} was successfully copied to your clipboad`
-    );
-  }
 }

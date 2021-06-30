@@ -95,9 +95,9 @@ export default class TfuelvipStakingController extends Controller {
   }
 
   @action
-  copySummaryToClipBoard(label, modalSummary) {
+  copySummaryToClipBoard(label, inputId) {
     this.utils.copyToClipboard(
-      modalSummary,
+      inputId,
       `${label} was successfully copied to your clipboad`
     );
   }

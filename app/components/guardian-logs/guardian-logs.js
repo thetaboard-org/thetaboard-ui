@@ -27,17 +27,17 @@ export default class GuardianLogsComponent extends Component {
   }
 
   @action
-  copySummaryToClipBoard(label, value) {
+  copySummaryToClipBoard(label, inputId) {
     this.utils.copyToClipboard(
-      value,
+      inputId,
       `${label} was successfully copied to your clipboad`
     );
   }
 
   @action
-  copyLogsToClipBoard(logs) {
+  copyLogsToClipBoard(logs, inputId) {
     this.utils.copyToClipboard(
-      logs,
+      inputId,
       `Logs were successfully copied to your clipboad`
     );
   }
