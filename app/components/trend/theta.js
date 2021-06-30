@@ -6,13 +6,20 @@ export default class TrendThetaComponent extends Component {
   constructor(...args) {
     super(...args);
     this.dates;
+    this.trendY;
+    this.trendLW;
     this.initialize();
   }
   @service('theta-sdk') thetaSdk;
 
+  @tracked trendY;
+  @tracked trendLW;
+
   async initialize() {
-    return this.getDates().then((dates) => {
+    return await this.getDates().then((dates) => {
       this.dates = dates;
+      this.trendLastWeek;
+      this.trendYesterday;
     });
   }
 
@@ -27,7 +34,8 @@ export default class TrendThetaComponent extends Component {
         percentChange: 0,
       };
     }
-    return this.setTrend(thetaPrice, prices[this.dates.yesterday].theta_price);
+    this.trendY = this.setTrend(thetaPrice, prices[this.dates.yesterday].theta_price);
+    return this.trendY;
   }
 
   get trendLastWeek() {
@@ -41,7 +49,8 @@ export default class TrendThetaComponent extends Component {
         percentChange: 0,
       };
     }
-    return this.setTrend(thetaPrice, prices[this.dates.lastWeek].theta_price);
+    this.trendLW = this.setTrend(thetaPrice, prices[this.dates.lastWeek].theta_price);
+    return this.trendLW;
   }
 
   setTrend(currentPrice, previousPrice) {

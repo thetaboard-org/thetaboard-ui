@@ -1,19 +1,25 @@
 import Component from '@glimmer/component';
-import {inject as service} from '@ember/service';
-import {tracked} from '@glimmer/tracking';
+import { inject as service } from '@ember/service';
+import { tracked } from '@glimmer/tracking';
 
 export default class TrendTfuelComponent extends Component {
   constructor(...args) {
     super(...args);
     this.dates;
+    this.trendY;
+    this.trendLW;
     this.initialize();
   }
-
   @service('theta-sdk') thetaSdk;
 
+  @tracked trendY;
+  @tracked trendLW;
+
   async initialize() {
-    return this.getDates().then((dates) => {
+    return await this.getDates().then((dates) => {
       this.dates = dates;
+      this.trendLastWeek;
+      this.trendYesterday;
     });
   }
 
@@ -28,7 +34,8 @@ export default class TrendTfuelComponent extends Component {
         percentChange: 0,
       };
     }
-    return this.setTrend(tfuelPrice, prices[this.dates.yesterday].tfuel_price);
+    this.trendY = this.setTrend(tfuelPrice, prices[this.dates.yesterday].tfuel_price);
+    return this.trendY;
   }
 
   get trendLastWeek() {
@@ -42,7 +49,8 @@ export default class TrendTfuelComponent extends Component {
         percentChange: 0,
       };
     }
-    return this.setTrend(tfuelPrice, prices[this.dates.lastWeek].tfuel_price);
+    this.trendLW = this.setTrend(tfuelPrice, prices[this.dates.lastWeek].tfuel_price);
+    return this.trendLW;
   }
 
   get ratio() {
