@@ -7,7 +7,7 @@ export default class SessionService extends BaseSessionService {
   async handleAuthentication() {
     super.handleAuthentication(...arguments);
     try {
-      await this.currentUser.load(true);
+      await this.currentUser.load();
     } catch (err) {
       await this.invalidate();
     }

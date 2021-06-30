@@ -9,7 +9,7 @@ export default class CurrentUserService extends Service {
   @tracked user;
   @tracked wallets;
 
-  async load(handledAuthentication) {
+  async load() {
     if (
       this.session.data.authenticated &&
       this.session.data.authenticated.tokenData &&
@@ -21,9 +21,7 @@ export default class CurrentUserService extends Service {
         this.user = user;
         let wallets = await this.store.findAll('wallet');
         this.wallets = wallets;
-        if (handledAuthentication) {
-          await this.wallet.initWallet();
-        }
+        this.wallet.initWallet();
         return user;
       }
     }
