@@ -15,6 +15,8 @@ export default class ThetaSdkService extends Service {
     this.wallets = [];
     this.transactions = [];
     this.coinbases = [];
+    this.guardianCoinbases = [];
+    this.eliteEdgeNodeCoinbases = [];
     this.coinbasesLoaded = false;
     this.pagination = {};
     this.currentAccount = '';
@@ -40,6 +42,8 @@ export default class ThetaSdkService extends Service {
   @tracked pagination;
   @tracked transactions;
   @tracked coinbases;
+  @tracked guardianCoinbases
+  @tracked eliteEdgeNodeCoinbases
   @tracked coinbasesLoaded;
   @tracked currentAccountDomainList
   @tracked totalStake
@@ -282,6 +286,12 @@ export default class ThetaSdkService extends Service {
       pageNumber++;
     }
     this.coinbases = coinbaseList;
+    this.guardianCoinbases = coinbaseList.filter((x) => {
+      return x.amount % 12 == 0 ? true : false;
+    });
+    this.eliteEdgeNodeCoinbases = coinbaseList.filter((x) => {
+      return x.amount % 12 == 0 ? false : true;
+    });
     this.coinbasesLoaded = true;
     return coinbaseList;
   }

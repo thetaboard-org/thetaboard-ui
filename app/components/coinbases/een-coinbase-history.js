@@ -28,7 +28,7 @@ export default class CoinbaseHistoryComponent extends Component {
   get coinbasesLastDay() {
     this.initialize();
     const yesterday = new Date(new Date().setDate(new Date().getDate() - 1));
-    const lastDayCoinbases = this.thetaSdk.guardianCoinbases.filter(
+    const lastDayCoinbases = this.thetaSdk.eliteEdgeNodeCoinbases.filter(
       (x) => new Date(Number(x.timestamp * 1000)) > yesterday
     );
     return lastDayCoinbases;
@@ -48,7 +48,7 @@ export default class CoinbaseHistoryComponent extends Component {
 
   get coinbasesLastWeek() {
     const lastWeek = new Date(new Date().setDate(new Date().getDate() - 7));
-    const lastWeekCoinbases = this.thetaSdk.guardianCoinbases.filter(
+    const lastWeekCoinbases = this.thetaSdk.eliteEdgeNodeCoinbases.filter(
       (x) => new Date(Number(x.timestamp * 1000)) > lastWeek
     );
     return lastWeekCoinbases;
@@ -68,7 +68,7 @@ export default class CoinbaseHistoryComponent extends Component {
 
   get coinbasesLastMonth() {
     const lastMonth = new Date(new Date().setMonth(new Date().getMonth() - 1));
-    const lastMonthCoinbases = this.thetaSdk.guardianCoinbases.filter(
+    const lastMonthCoinbases = this.thetaSdk.eliteEdgeNodeCoinbases.filter(
       (x) => new Date(Number(x.timestamp * 1000)) > lastMonth
     );
     return lastMonthCoinbases;
@@ -93,7 +93,7 @@ export default class CoinbaseHistoryComponent extends Component {
 
   get coinbasesLastTwoMonths() {
     const lastTwoMonth = new Date(new Date().setMonth(new Date().getMonth() - 2));
-    const lastTwoMonthCoinbases = this.thetaSdk.guardianCoinbases.filter(
+    const lastTwoMonthCoinbases = this.thetaSdk.eliteEdgeNodeCoinbases.filter(
       (x) => new Date(Number(x.timestamp * 1000)) > lastTwoMonth
     );
     return lastTwoMonthCoinbases;
@@ -117,8 +117,8 @@ export default class CoinbaseHistoryComponent extends Component {
   }
 
   get lastCoinbaseDate() {
-    if (this.thetaSdk.guardianCoinbases.lastObject && this.thetaSdk.guardianCoinbases.lastObject.timestamp) {
-      return new Date(Number(this.thetaSdk.guardianCoinbases.lastObject.timestamp * 1000));
+    if (this.thetaSdk.eliteEdgeNodeCoinbases.lastObject && this.thetaSdk.eliteEdgeNodeCoinbases.lastObject.timestamp) {
+      return new Date(Number(this.thetaSdk.eliteEdgeNodeCoinbases.lastObject.timestamp * 1000));
     }
     return '';
   }
