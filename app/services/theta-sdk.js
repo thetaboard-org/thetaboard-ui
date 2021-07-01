@@ -21,13 +21,16 @@ export default class ThetaSdkService extends Service {
     this.currentAccountDomainList = [];
     this.prices = {
       theta: { price: 0, market_cap: 0, volume_24h: 0 },
-      tfuel: { price: 0, market_cap: 0, volume_24h: 0 },
+      tfuel: {
+        price: 0,
+        market_cap: 0,
+        volume_24h: 0,
+        total_supply: 1,
+      },
     };
-    this.getPrices();
     this.totalStake = { totalAmount: '0', percent: 0 };
     this.totalTfuelStake = { totalAmount: '0', percent: 0 };
-    this.getTotalStake();
-    this.getTotalTfuelStake();
+    this.initialize();
   }
 
   @tracked downloadProgress;
@@ -71,6 +74,12 @@ export default class ThetaSdkService extends Service {
       return this.wallets.filter((x) => x.type === 'Guardian Node');
     }
     return [];
+  }
+
+  async initialize() {
+    await this.getPrices();
+    await this.getTotalStake();
+    await this.getTotalTfuelStake();
   }
 
   get eliteEdgeNodeWallets() {
@@ -173,7 +182,9 @@ export default class ThetaSdkService extends Service {
     if (getStake.status == 200) {
       totalStake = await getStake.json();
     }
-    totalStake.totalAmount = thetajs.utils.fromWei(totalStake.totalAmount);
+    totalStake.totalAmount = Number(
+      thetajs.utils.fromWei(totalStake.totalAmount)
+    );
     totalStake.percent = totalStake.totalAmount / 10000000;
     this.totalStake = totalStake;
     return totalStake;
@@ -187,9 +198,11 @@ export default class ThetaSdkService extends Service {
     if (getTfuelStake.status == 200) {
       totalTfuelStake = await getTfuelStake.json();
     }
-    totalTfuelStake.totalAmount = Number(totalTfuelStake.total_tfuel_staked) || Number(totalTfuelStake.totalAmount);
+    totalTfuelStake.totalAmount = Number(
+      thetajs.utils.fromWei(totalTfuelStake.totalAmount)
+    );
     const totalSupply = this.prices.tfuel ? this.prices.tfuel.total_supply : 1;
-    totalTfuelStake.percent = totalTfuelStake.totalAmount / totalSupply * 100;
+    totalTfuelStake.percent = (totalTfuelStake.totalAmount / totalSupply) * 100;
     this.totalTfuelStake = totalTfuelStake;
     return totalTfuelStake;
   }
