@@ -11,7 +11,7 @@
       <img class="avatar" src="{{rootURL}}/assets/img/logo/tfuel.png" alt="...">
     </div>
     <div class="card-body-stake">
-      <h5 class="title">Tfuel VIP Elite Edge Node Staking</h5>
+      <h5 class="title">Tfuel VIP Elite Edge Node Staking<br>Earn up to {{format-number this.thetaSdk.tfuelAPR maximumFractionDigits="1"}}% APR*.</h5>
       <div class="row justify-content-lg-center justify-content-md-center">
         <form {{on 'submit' this.submitStake}} class="stakes-deposit col-md-9">
           <div class="form-group">
@@ -118,6 +118,7 @@
       </div>
     {{/if}}
   <div class="card-footer">
+    <sub>*Thetaboard cannot guarantee this APR as it is dependent on the Theta Network.</sub>
   </div>
 </div>
 

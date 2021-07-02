@@ -8,14 +8,14 @@
           <div class="block block-two"></div>
           <div class="block block-three"></div>
           <div class="block block-four"></div>
-          <img class="avatar" src="{{rootURL}}/assets/img/logo/theta.png" alt="..."/>
-          <h2 class="card-title forecast-title">Guardian Node TFuel Reward Forecast {{setUpChart}}</h2>
+          <img class="avatar" src="{{rootURL}}/assets/img/logo/tfuel.png" alt="..."/>
+          <h2 class="card-title forecast-title">Elite Edge Node TFuel Reward Forecast {{setUpChart}}</h2>
 
           <br/>
           <p class="form-inline forecast-amout-inline">Forecasting for
           <Input
                   @type="number"
-                  @value={{thetaAmount}}
+                  @value={{tfuelAmount}}
                   @class="form-control theta-ammout-forecast"
                   {{on "keyup" this.updateData}}
           />
@@ -25,8 +25,8 @@
     </div>
   </div>
   <div class="card-body">
-    <div id="forecast-chart-container">
-      <canvas id="forecastChart" height="239" {{did-insert this.setupChart}}></canvas>
+    <div id="forecast-chart-container-tfuel">
+      <canvas id="forecastChartTfuel" height="239" {{did-insert this.setupChart}}></canvas>
     </div>
     <div class="forecast-legend">
       <p class="forcast-earning-title">Estimated Tfuel earnings:</p>

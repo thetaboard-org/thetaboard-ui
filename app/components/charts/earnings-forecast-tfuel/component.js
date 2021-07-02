@@ -3,7 +3,7 @@ import {action} from '@ember/object';
 import {inject as service} from '@ember/service';
 import {tracked} from '@glimmer/tracking';
 
-export default class EarningsProjectionsComponent extends Component {
+export default class EarningsForcastTfuelComponent extends Component {
   @service('theta-sdk') thetaSdk;
   account = '';
   walletLength = 0;
@@ -11,8 +11,7 @@ export default class EarningsProjectionsComponent extends Component {
   @tracked avg_tfuel_per_day = 0;
   @tracked avg_tfuel_per_year = 0;
 
-  @tracked thetaAmount = 1000;
-  @tracked transactions = [];
+  @tracked tfuelAmount = 1000;
 
   formatter = new Intl.NumberFormat('en-US', {
     style: 'currency',
@@ -20,14 +19,13 @@ export default class EarningsProjectionsComponent extends Component {
   });
 
   get setUpChart() {
-    if (this.thetaSdk.currentAccount != this.account || this.walletLength != this.thetaSdk.guardianWallets.length) {
+    if (this.thetaSdk.currentAccount != this.account || this.walletLength != this.thetaSdk.eliteEdgeNodeWallets.length) {
       this.account = this.thetaSdk.currentAccount;
-      this.walletLength = this.thetaSdk.guardianWallets.length;
-      const guardian = this.thetaSdk.guardianWallets;
-      if (guardian.length > 0) {
-        this.thetaAmount = Math.round(guardian.reduce((a, b) =>  a + b.amount, 0));
+      this.walletLength = this.thetaSdk.eliteEdgeNodeWallets.length;
+      const een = this.thetaSdk.eliteEdgeNodeWallets;
+      if (een.length > 0) {
+        this.tfuelAmount = Math.round(een.reduce((a, b) =>  a + b.amount, 0));
       }
-      this.transactions = this.thetaSdk.transactions;
       this.setupChart();
     }
   }
@@ -61,7 +59,7 @@ export default class EarningsProjectionsComponent extends Component {
   }
 
   get chartData() {
-    this.avg_tfuel_per_day = this.thetaAmount * 0.00104;
+    this.avg_tfuel_per_day = ((this.tfuelAmount * (this.thetaSdk.tfuelAPR / 100)) / 365);
     const labels = [];
     for (let i = 0; i < 13; i++) {
       labels.push(moment().add(i, 'months'));
@@ -94,11 +92,11 @@ export default class EarningsProjectionsComponent extends Component {
 
   @action
   setupChart() {
-    let element = document.getElementById("forecastChart");
+    let element = document.getElementById("forecastChartTfuel");
     if (!element) return;
     element.remove(); // this is my <canvas> element
-    $('#forecast-chart-container').append('<canvas id="forecastChart" height="239"></canvas>');
-    element = document.getElementById('forecastChart');
+    $('#forecast-chart-container-tfuel').append('<canvas id="forecastChartTfuel" height="239"></canvas>');
+    element = document.getElementById('forecastChartTfuel');
     const ctx = element.getContext('2d');
     const gradientChartOptionsConfiguration = {
       maintainAspectRatio: false,

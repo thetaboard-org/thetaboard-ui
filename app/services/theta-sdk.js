@@ -93,6 +93,22 @@ export default class ThetaSdkService extends Service {
     return [];
   }
 
+  get tfuelAPR() {
+    //test tfuel stake in %
+    const totalStake = Number(this.totalTfuelStake.totalAmount) || 1;
+    const testStake = 100000;
+    const testPercentStaked = testStake / totalStake;
+
+    //Yearly token inflation in # of tfuel
+    const totalSupply = Number(this.prices.tfuel.total_supply) || 1;
+    const yearlyTokenInflation = totalSupply * 0.04;
+
+    //Yearly revenue
+    const yearlyTokenRevenue = testPercentStaked * yearlyTokenInflation;
+
+    return (yearlyTokenRevenue / testStake) * 100;
+  }
+
   async getThetaAccount() {
     try {
       let provider = new thetajs.providers.HttpProvider(
