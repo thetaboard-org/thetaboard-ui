@@ -1,4 +1,4 @@
-{{page-title "Staking"}}
+{{page-title "Staking Tfuel"}}
 
 <div class="card card-user">
   <div class="card-body card-min-390">
@@ -22,7 +22,6 @@
             <LinkTo @route="staking.tfuelvip">VIP Elite Edge Nodes</LinkTo>
           </p>
           <br/>
-          <p>Or you can use the following summaries to Stake your Tfuel:</p>
           {{#each edgeNodeList as |edgeNode|}}
             <div data-toggle="modal" data-target="#EdgeSummaryModal" {{on 'click' (fn this.setupModalSummary edgeNode.summary)}} style="cursor: pointer;" class="card-description-summary">
               <p class="summary-value">{{edgeNode.summary}}</p>

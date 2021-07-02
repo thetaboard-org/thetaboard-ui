@@ -1,4 +1,4 @@
-{{page-title "Staking"}}
+{{page-title "Staking Tfuel VIP"}}
 
 <div class="card card-user">
   <div class="card-body card-min-390">
@@ -15,8 +15,11 @@
       <div class="row justify-content-lg-center justify-content-md-center">
         <form {{on 'submit' this.submitStake}} class="stakes-deposit col-md-9">
           <div class="form-group">
-            <label for="stake-amount">How many Tfuel do you want to stake?</label>
-            <p>The current minimum limit is 100,000Tfuel. This limit will be reduced soon.</p>
+
+            <p> Enter your wallet address below to get a new Edge Node <br>
+              Once you have your summary, you can use <a
+                      href="https://docs.thetatoken.org/docs/elite-edge-node-staking-process">Theta
+                documentation </a> to start staking</p>
             {{#each this.errorMessages as |error|}}
               <div class="row">
                 <div class="col-sm-12 col-lg-8" style=" margin: auto;">
@@ -73,12 +76,14 @@
                 <tr>
                   <td class="text-center">{{moment-format stake.createdAt 'll'}}</td>
                   <td class="text-center">
-                    <a href="{{explorerEndpoint}}/account/{{stake.walletAddress}}" title="{{stake.walletAddress}}" 
-                      target="_blank" {{shortener stake.walletAddress}}>{{stake.walletAddress}}</a>
+                    <a href="{{explorerEndpoint}}/account/{{stake.walletAddress}}" title="{{stake.walletAddress}}"
+                       target="_blank" {{shortener stake.walletAddress}}>{{stake.walletAddress}}</a>
                   </td>
                   {{#if stake.edgeNodeSummary}}
                     <td>
-                      <button class="btn btn-primary" {{on 'click' (fn this.setupModalSummary stake.edgeNodeSummary)}} data-toggle="modal" data-target="#SummaryModal">See Summary</button>
+                      <button class="btn btn-primary" {{on 'click' (fn this.setupModalSummary stake.edgeNodeSummary)}}
+                              data-toggle="modal" data-target="#SummaryModal">See Summary
+                      </button>
                     </td>
                   {{else}}
                     <td>
@@ -111,7 +116,7 @@
         <p class="title">You don't have any Tfuel staked.</p><br/>
         <p class="description"> Stake your Tfuel to earn TFUEL</p>
       </div>
-    {{/if}}     
+    {{/if}}
   <div class="card-footer">
   </div>
 </div>
