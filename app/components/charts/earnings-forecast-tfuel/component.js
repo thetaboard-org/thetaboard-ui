@@ -11,7 +11,7 @@ export default class EarningsForcastTfuelComponent extends Component {
   @tracked avg_tfuel_per_day = 0;
   @tracked avg_tfuel_per_year = 0;
 
-  @tracked tfuelAmount = 1000;
+  @tracked tfuelAmount = 10000;
 
   formatter = new Intl.NumberFormat('en-US', {
     style: 'currency',
