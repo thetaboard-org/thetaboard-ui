@@ -4,6 +4,11 @@ import {inject as service} from '@ember/service';
 import {tracked} from '@glimmer/tracking';
 
 export default class EarningsForcastTfuelComponent extends Component {
+  constructor(...args) {
+    super(...args);
+    this.initialize();
+  }
+
   @service('theta-sdk') thetaSdk;
   account = '';
   walletLength = 0;
@@ -12,6 +17,10 @@ export default class EarningsForcastTfuelComponent extends Component {
   @tracked avg_tfuel_per_year = 0;
 
   @tracked tfuelAmount = 10000;
+
+  initialize() {
+    setTimeout(this.updateData, 2500);
+  }
 
   formatter = new Intl.NumberFormat('en-US', {
     style: 'currency',
