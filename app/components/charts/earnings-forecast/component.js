@@ -84,7 +84,7 @@ export default class EarningsProjectionsComponent extends Component {
     });
 
     //todo remove setter from getter
-    this.avg_tfuel_per_year = data[data.length - 1];
+    this.avg_tfuel_per_year = data[data.length - 2];
 
     return {
       labels: labels,
