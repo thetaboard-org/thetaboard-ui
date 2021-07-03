@@ -9,7 +9,9 @@
           <div class="block block-three"></div>
           <div class="block block-four"></div>
           <img class="avatar" src="{{rootURL}}/assets/img/logo/tfuel.png" alt="..."/>
-          <h2 class="card-title forecast-title">Elite Edge Node TFuel Reward Forecast {{setUpChart}}</h2>
+          <h2 class="card-title forecast-title">Elite Edge Node TFuel Reward Forecast {{setUpChart}}
+            {{#if this.thetaSdk.tfuelAPR}}({{format-number this.thetaSdk.tfuelAPR maximumFractionDigits="1"}}% APR*){{/if}}
+          </h2>
 
           <br/>
           <p class="form-inline forecast-amout-inline">Forecasting for
@@ -54,5 +56,6 @@
         </div>
       </div>
     </div>
+      <sub>*Thetaboard cannot guarantee this APR as it is dependent on the Theta Network.</sub>
   </div>
 </div>
