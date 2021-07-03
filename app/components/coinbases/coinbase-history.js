@@ -18,13 +18,6 @@ export default class CoinbaseHistoryComponent extends Component {
     }
   }
 
-  get isLoaded() {
-    if (this.thetaSdk) {
-      return this.thetaSdk.coinbasesLoaded;
-    }
-    return false;
-  }
-
   get coinbasesLastDay() {
     this.initialize();
     const yesterday = new Date(new Date().setDate(new Date().getDate() - 1));

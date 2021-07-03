@@ -11,22 +11,7 @@ export default class CoinbaseHistoryComponent extends Component {
   @service('env-manager') envManager;
   @service('theta-sdk') thetaSdk;
 
-  async initialize() {
-    if (this.thetaSdk && this.thetaSdk.currentAccount && this.thetaSdk.currentAccount != this.account) {
-      this.account = this.thetaSdk.currentAccount;
-      return await this.thetaSdk.getAllCoinbases(this.thetaSdk.currentAccount);
-    }
-  }
-
-  get isLoaded() {
-    if (this.thetaSdk) {
-      return this.thetaSdk.coinbasesLoaded;
-    }
-    return false;
-  }
-
   get coinbasesLastDay() {
-    this.initialize();
     const yesterday = new Date(new Date().setDate(new Date().getDate() - 1));
     const lastDayCoinbases = this.thetaSdk.eliteEdgeNodeCoinbases.filter(
       (x) => new Date(Number(x.timestamp * 1000)) > yesterday
