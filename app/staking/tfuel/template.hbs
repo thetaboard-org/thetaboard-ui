@@ -11,7 +11,9 @@
       <img class="avatar" src="{{rootURL}}/assets/img/logo/tfuel.png" alt="...">
     </div>
     <div class="card-body-stake">
-      <h5 class="title">Tfuel Public Staking<br>Earn up to {{format-number this.thetaSdk.tfuelAPR maximumFractionDigits="1"}}% APR*.</h5>
+      <h5 class="title">Tfuel Public Staking
+        {{#if this.thetaSdk.tfuelAPR}}<br>Earn up to {{format-number this.thetaSdk.tfuelAPR maximumFractionDigits="1"}}% APR*.{{/if}}
+      </h5>
       <div class="row justify-content-lg-center justify-content-md-center">
         <form class="col-md-9">
           <label>You can Stake Tfuel on our Delegate Elite Edge Nodes</label>

@@ -6,6 +6,7 @@ import { tracked } from '@glimmer/tracking';
 export default class TfuelStakingController extends Controller {
   @tracked modalSummary;
   @service utils;
+  @service thetaSdk;
 
   get edgeNodeList() {
     return this.model.publicEdgeNodes;
