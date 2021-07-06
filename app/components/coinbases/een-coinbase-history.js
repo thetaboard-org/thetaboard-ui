@@ -21,7 +21,7 @@ export default class CoinbaseHistoryComponent extends Component {
 
   get coinbasesLastDayTfuelAmount() {
     const finalAmount = this.coinbasesLastDay.reduce((a, b) => a + b.amount, 0);
-    return finalAmount;
+    return Number.parseFloat(finalAmount).toFixed(2);
   }
 
   get coinbasesLastDayUsdValue() {
@@ -41,7 +41,7 @@ export default class CoinbaseHistoryComponent extends Component {
 
   get coinbasesLastWeekTfuelAmount() {
     const finalAmount = this.coinbasesLastWeek.reduce((a, b) => a + b.amount, 0);
-    return finalAmount;
+    return Number.parseFloat(finalAmount).toFixed(2);
   }
 
   get coinbasesLastWeekUsdValue() {
@@ -61,7 +61,7 @@ export default class CoinbaseHistoryComponent extends Component {
 
   get coinbasesLastMonthTfuelAmount() {
     const finalAmount = this.coinbasesLastMonth.reduce((a, b) => a + b.amount, 0);
-    return finalAmount;
+    return Number.parseFloat(finalAmount).toFixed(2);
   }
 
   get coinbasesLastMonthUsdValue() {
@@ -86,7 +86,7 @@ export default class CoinbaseHistoryComponent extends Component {
 
   get coinbasesLastTwoMonthsTfuelAmount() {
     const finalAmount = this.coinbasesLastTwoMonths.reduce((a, b) => a + b.amount, 0);
-    return finalAmount;
+    return Number.parseFloat(finalAmount).toFixed(2);
   }
 
   get coinbasesLastTwoMonthsUsdValue() {

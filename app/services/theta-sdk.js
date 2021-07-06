@@ -306,10 +306,16 @@ export default class ThetaSdkService extends Service {
     }
     this.coinbases = coinbaseList;
     this.guardianCoinbases = coinbaseList.filter((x) => {
-      return x.amount % 12 == 0 ? true : false;
+      if (x.amount % 12 == 0 || x.amount % 11.52 == 0 || x.amount % 11.64 == 0 || x.amount % 11.88 == 0) {
+        return true;
+      }
+      return false;
     });
     this.eliteEdgeNodeCoinbases = coinbaseList.filter((x) => {
-      return x.amount % 12 == 0 ? false : true;
+      if (x.amount % 12 == 0 || x.amount % 11.52 == 0 || x.amount % 11.64 == 0 || x.amount % 11.88 == 0) {
+        return false;
+      }
+      return true;
     });
     this.coinbasesLoaded = true;
     return coinbaseList;
