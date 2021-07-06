@@ -284,7 +284,7 @@ export default class ThetaSdkService extends Service {
     let pageNumber = 1;
     let coinbaseList = [];
     let keepFectching = true;
-    while (keepFectching && pageNumber < 5) {
+    while (keepFectching && pageNumber < 7) {
       let coinbases = await this.getCoinbases(accounts, pageNumber);
       if (!coinbases.length) {
         keepFectching = false;
