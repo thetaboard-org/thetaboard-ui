@@ -980,3 +980,8 @@ a.logout {
   left: 10000px;
   position: fixed;
 }
+
+.edge-node-top-border {
+  height: 2px;
+  background: #e14eca;
+}

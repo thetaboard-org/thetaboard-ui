@@ -102,7 +102,7 @@ export default class ThetaSdkService extends Service {
 
       //Yearly token inflation in # of tfuel
       const totalSupply = Number(this.prices.tfuel.total_supply) || 1;
-      const yearlyTokenInflation = totalSupply * 0.04;
+      const yearlyTokenInflation = totalSupply * 0.032;
 
       //Yearly revenue
       const yearlyTokenRevenue = testPercentStaked * yearlyTokenInflation;
