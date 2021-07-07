@@ -94,20 +94,25 @@ export default class ThetaSdkService extends Service {
   }
 
   get tfuelAPR() {
-    if (this.totalTfuelStake && this.prices.tfuel && this.prices.tfuel.total_supply) {
+    if (this.totalTfuelStake && this.prices.tfuel && this.prices.tfuel.total_supply && this.prices.secPerBlock) {
       //test tfuel stake in %
       const totalStake = Number(this.totalTfuelStake.totalAmount) || 1;
       const testStake = 100000;
       const testPercentStaked = testStake / totalStake;
 
-      //Yearly token inflation in # of tfuel
-      const totalSupply = Number(this.prices.tfuel.total_supply) || 1;
-      const yearlyTokenInflation = totalSupply * 0.032;
+      //how many blocks per year
+      const yearInSeconds = 31536000;
+      const BlockPerYear = yearInSeconds / this.prices.secPerBlock;
 
-      //Yearly revenue
-      const yearlyTokenRevenue = testPercentStaked * yearlyTokenInflation;
+      //Tfuel distributed per year
+      // 38 TFUEL per block, corresponds to about 4% initial annual inflation rate.
+      const totalTfuelPerYear = BlockPerYear * 38;
 
-      return (yearlyTokenRevenue / testStake) * 100;
+      //tfuel received per year
+      const testTfuelPerYear = totalTfuelPerYear * testPercentStaked;
+
+      //APR
+      return (testTfuelPerYear / testStake) * 100;
     }
     return false;
   }
