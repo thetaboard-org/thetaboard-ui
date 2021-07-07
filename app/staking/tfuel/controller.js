@@ -13,8 +13,8 @@ export default class TfuelStakingController extends Controller {
   }
 
   @action
-  setupModalSummary(edgeNodeSummary) {
-    this.modalSummary = edgeNodeSummary;
+  setupModalSummary(summary) {
+    this.modalSummary = summary;
   }
 
   @action

@@ -30,8 +30,8 @@ export default class TfuelvipStakingController extends Controller {
   }
 
   @action
-  setupModalSummary(edgeNodeSummary) {
-    this.modalSummary = edgeNodeSummary;
+  setupModalSummary(summary) {
+    this.modalSummary = summary;
   }
 
   @action
