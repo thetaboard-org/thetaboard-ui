@@ -241,48 +241,16 @@
             <h4> Using Thetaboard public Guardian Node</h4>
             <p style="margin-left: 25px;">
               Thetaboard hosts a public Guardian Node for the community and anyone can use it by either using the summary below and the <a target="_blank" href="https://docs.thetatoken.org/docs/guardian-staking-process">Theta
-              instructions</a> or by using the Stake widget in the <LinkTo @route="guardian">Guardian</LinkTo> page.<br><br>
+              instructions</a> or by using the Stake widget in the <LinkTo @route="staking.theta">Guardian</LinkTo> page.<br><br>
               <div {{on "click" (action this.copySummaryToClipBoard 'Summary' 'input-to-copy-from-faq')}} class="card-description-summary">
                 <p class="summary-value">{{summary}}</p>
                 <input id="input-to-copy-from-faq" class="input-to-hide" value="{{summary}}"/>
               </div>
               <br/><br/>
-              <b>Staking using the Stakes widget:</b><br/> From the the <LinkTo @route="guardian">Guardian</LinkTo> page click the "Deposit" button
-               and enter the amount of Theta to stake. Then click on "Review Deposit" which will open a confirmation pop-up on the <a
-                    target="_blank" href="https://chrome.google.com/webstore/detail/Theta-wallet/ckelpdlfgochnkdgikcgbimdcfgpkhgk">official
-              Theta Wallet extension.</a> <br><br>
-              <b>Unstaking using the Stakes widget:</b><br/>  Click "Withdraw" from the <LinkTo @route="guardian">Guardian</LinkTo> page, which will open a confirmation pop-up on the <a
-                    target="_blank" href="https://chrome.google.com/webstore/detail/Theta-wallet/ckelpdlfgochnkdgikcgbimdcfgpkhgk">official
-              Theta Wallet extension.</a> <br><br>
             </p>
-            <h4>Summary and Logs</h4>
+            <h4> Delegate fee for Thetaboard public Guardian Node</h4>
             <p style="margin-left: 25px;">
-              The Guardian Node Address and Summary are displayed and it is possible to click on it to copy the
-              content.<br>
-              Curious people can click on the "Guardian Logs" icon, to get the latest logs from the running Guardian
-              Node.
-            </p><br/>
-            <h4>Hosting a Guardian Node</h4>
-            <p style="margin-left: 25px;">
-              For more advanced users it is possible to set up a Guardian Node using the using the <a
-              target="_blank" href="https://docs.thetatoken.org/docs/guardian-node-overview">Theta documentation</a>
-              or by setting up an instance of Thetaboard by running the following commands on a Linux
-              terminal: <br><br>
-              <code>
-                curl -L https://raw.githubusercontent.com/momohuri/thetaboard/main/Makefile -o ./Makefile <br>
-                NODE_PASSWORD='A-SECRET-PASSWRD' make start_thetaboard<br>
-              </code>
-              <br>
-              More information can be found on our <a
-                    target="_blank" href="https://github.com/momohuri/thetaboard">github</a>.<br>
-
-              Setting up a Thetaboard Guardian Node wil unlock the following features:<br>
-               <ul>
-                 <li>Start/Stop the Guardian Node</li>
-                 <li>Update to the latest binaries</li>
-                 <li>Download the latest snapshot</li>
-                 <li>Check your Guardian Node Logs</li>
-               </ul>
+              Thetaboard is charging a 3% fee on the Guardian Node staking rewards to cover for server costs.
             </p>
           </div>
         </div>
