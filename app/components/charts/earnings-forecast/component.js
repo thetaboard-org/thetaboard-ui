@@ -63,7 +63,7 @@ export default class EarningsProjectionsComponent extends Component {
   get chartData() {
     this.avg_tfuel_per_day = this.thetaAmount * 0.00104;
     const labels = [];
-    for (let i = 0; i < 13; i++) {
+    for (let i = 1; i < 13; i++) {
       labels.push(moment().add(i, 'months'));
     }
     const data = labels.reduce((acc, curr, index) => {
@@ -84,7 +84,7 @@ export default class EarningsProjectionsComponent extends Component {
     });
 
     //todo remove setter from getter
-    this.avg_tfuel_per_year = data[data.length - 2];
+    this.avg_tfuel_per_year = data[data.length - 1];
 
     return {
       labels: labels,
