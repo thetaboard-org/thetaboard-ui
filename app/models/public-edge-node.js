@@ -19,7 +19,7 @@ export default class PublicEdgeNodeModel extends Model {
     if (this.stakeAmount) {
       return 500000 - this.stakeAmount;
     }
-    return 0;
+    return 500000;
   }
 
   @computed('stakeAmount')
@@ -27,7 +27,7 @@ export default class PublicEdgeNodeModel extends Model {
     if (this.stakeAmount) {
       return Number((500000 - this.stakeAmount) / 1000).toFixed(1);
     }
-    return 0;
+    return 500;
   }
 
   @computed('stakeAmount')
