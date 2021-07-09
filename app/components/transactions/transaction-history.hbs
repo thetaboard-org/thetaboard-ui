@@ -37,8 +37,8 @@
               {{#each transaction.value as |coin|}}
                 <div>
                   <img src="assets/img/logo/{{coin.type}}.png" class="img-fluid rounded-circle" style="width: 20px;" alt="logo"/>
-                  <span class="coin-amount">{{format-number coin.amount}} <span class="capitalize">{{coin.type}}</span> </span>
-                  <span class="coin-value">[{{format-number coin.value style='currency' currency='USD'}}]</span>
+                  <span class="coin-amount"><span class="nostyle" {{numberformat coin.amount 3}}></span> <span class="capitalize">{{coin.type}}</span> </span>
+                  <span class="coin-value">[$<span class="nostyle" {{numberformat coin.value 2}}></span>]</span>
                 </div>
               {{/each}}
             </td>

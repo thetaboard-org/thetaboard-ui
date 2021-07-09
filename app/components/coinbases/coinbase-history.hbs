@@ -17,12 +17,12 @@
               <div class="trend-activity trends-percent border-separation">
                   <p class="description">Last 24h</p>
                   <p class="title">{{coinbasesLastDayTfuelAmount}} <img src="{{rootURL}}assets/img/logo/tfuel.png" class="img-fluid rounded-circle" style="width: 20px;"></p>
-                  <span class="trend-usd-change coinbases">({{format-number coinbasesLastDayUsdValue style='currency' currency="USD"}} | {{coinbasesLastDay.length}} reward(s) received)</span>
+                  <span class="trend-usd-change coinbases">($<span class="nostyle" {{numberformat coinbasesLastDayUsdValue 2}}></span> | {{coinbasesLastDay.length}} reward(s) received)</span>
               </div>
               <div class="trend-activity trends-percent">
                   <p class="description">Last 7 days</p>
                   <p class="title"> {{coinbasesLastWeekTfuelAmount}} <img src="{{rootURL}}assets/img/logo/tfuel.png" class="img-fluid rounded-circle" style="width: 20px;"></p>
-                  <span class="trend-usd-change coinbases">({{format-number coinbasesLastWeekUsdValue style='currency' currency="USD"}} | {{coinbasesLastWeek.length}} reward(s) received))</span>
+                  <span class="trend-usd-change coinbases">($<span class="nostyle" {{numberformat coinbasesLastWeekUsdValue 2}}></span> | {{coinbasesLastWeek.length}} reward(s) received))</span>
               </div>
             </div>
             <hr/>
@@ -31,12 +31,12 @@
                 <div class="trend-activity trends-percent border-separation">
                     <p class="description">Last months</p>
                     <p class="title">{{coinbasesLastMonthTfuelAmount}} <img src="{{rootURL}}assets/img/logo/tfuel.png" class="img-fluid rounded-circle" style="width: 20px;"></p>
-                    <span class="trend-usd-change coinbases">({{format-number coinbasesLastMonthUsdValue style='currency' currency="USD"}} | {{coinbasesLastMonth.length}} reward(s) received))</span>
+                    <span class="trend-usd-change coinbases">($<span class="nostyle" {{numberformat coinbasesLastMonthUsdValue 2}}></span> | {{coinbasesLastMonth.length}} reward(s) received))</span>
                 </div>
                 <div class="trend-activity trends-percent">
                     <p class="description">Last 2 months</p>
                     <p class="title">{{coinbasesLastTwoMonthsTfuelAmount}} <img src="{{rootURL}}assets/img/logo/tfuel.png" class="img-fluid rounded-circle" style="width: 20px;"></p>
-                    <span class="trend-usd-change coinbases">({{format-number coinbasesLastTwoMonthsUsdValue style='currency' currency="USD"}} | {{coinbasesLastTwoMonths.length}} reward(s) received))</span>
+                    <span class="trend-usd-change coinbases">($<span class="nostyle" {{numberformat coinbasesLastTwoMonthsUsdValue 2}}></span> | {{coinbasesLastTwoMonths.length}} reward(s) received))</span>
                 </div>
               </div>
             {{else if showLastMonth}}
@@ -44,7 +44,7 @@
                 <div class="trend-activity trends-percent">
                     <p class="description">Last months</p>
                     <p class="title">{{coinbasesLastMonthTfuelAmount}} <img src="{{rootURL}}assets/img/logo/tfuel.png" class="img-fluid rounded-circle" style="width: 20px;"></p>
-                    <span class="trend-usd-change coinbases">({{format-number coinbasesLastMonthUsdValue style='currency' currency="USD"}} | {{coinbasesLastMonth.length}} reward(s) received))</span>
+                    <span class="trend-usd-change coinbases">($<span class="nostyle" {{numberformat coinbasesLastMonthUsdValue 2}}></span> | {{coinbasesLastMonth.length}} reward(s) received))</span>
                 </div>
               </div>
             {{/if}}

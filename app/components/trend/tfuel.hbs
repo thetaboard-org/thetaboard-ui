@@ -11,7 +11,7 @@
       <div class="card-body-stake">
         <h5 class="title">Tfuel</h5>
           <div class="trend-activity">
-            <p class="title current-price">${{format-number this.thetaSdk.prices.tfuel.price maximumFractionDigits="3"}}</p>
+            <p class="title current-price">$<span class="nostyle" {{numberformat this.thetaSdk.prices.tfuel.price 3}}></span></p>
             <p> Theta/Tfuel ratio: {{ratio}}x </p>
         </div>
         <div class="trends-percent-conatiner">
@@ -29,13 +29,13 @@
         <hr/>
         <div class="trend-activity extra">
           <p class="description">Market Cap: </p>
-          <p class="title">{{format-number this.thetaSdk.prices.tfuel.market_cap style='currency' currency="USD"}}</p>
+          <p class="title">$<span class="nostyle" {{numberformat this.thetaSdk.prices.tfuel.market_cap 0}}></span></p>
           <hr/>
           <p class="description">24h volume</p>
-          <p class="title">${{format-number this.thetaSdk.prices.tfuel.volume_24h maximumFractionDigits="2"}}</p>
+          <p class="title">$<span class="nostyle" {{numberformat this.thetaSdk.prices.tfuel.volume_24h 0}}></span></p>
           <hr/>
           <p class="description">Tfuel Staked</p>
-          <p class="title">{{format-number this.thetaSdk.totalTfuelStake.percent maximumFractionDigits="1"}}% ({{format-number this.thetaSdk.totalTfuelStake.totalAmount maximumFractionDigits="0"}})</p>
+          <p class="title"><span class="nostyle" {{numberformat this.thetaSdk.totalTfuelStake.percent 1}}></span>% (<span class="nostyle" {{numberformat this.thetaSdk.totalTfuelStake.totalAmount 0}}></span>)</p>
           <hr/>
         </div>
       </div>

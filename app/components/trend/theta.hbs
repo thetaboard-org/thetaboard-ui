@@ -11,7 +11,7 @@
       <div class="card-body-stake">
         <h5 class="title">Theta</h5>
           <div class="trend-activity">
-            <p class="title current-price">${{format-number this.thetaSdk.prices.theta.price maximumFractionDigits="2"}}</p>
+            <p class="title current-price">$<span class="nostyle" {{numberformat this.thetaSdk.prices.theta.price 2}}></span></p>
         </div>
         <div class="trends-percent-conatiner">
           <div class="trend-activity trends-percent border-separation">
@@ -28,13 +28,13 @@
         <hr/>
         <div class="trend-activity extra">
           <p class="description">Market Cap: </p>
-          <p class="title">{{format-number this.thetaSdk.prices.theta.market_cap style='currency' currency="USD"}}</p>
+          <p class="title">$<span class="nostyle" {{numberformat this.thetaSdk.prices.theta.market_cap 0}}></span></p>
                   <hr/>
           <p class="description">24h volume</p>
-          <p class="title">${{format-number this.thetaSdk.prices.theta.volume_24h maximumFractionDigits="2"}}</p>
+          <p class="title">$<span class="nostyle" {{numberformat this.thetaSdk.prices.theta.volume_24h 0}}></span></p>
                 <hr/>
           <p class="description">Theta Staked</p>
-          <p class="title">{{format-number this.thetaSdk.totalStake.percent maximumFractionDigits="1"}}% ({{format-number this.thetaSdk.totalStake.totalAmount maximumFractionDigits="0"}})</p>
+          <p class="title"><span class="nostyle" {{numberformat this.thetaSdk.totalStake.percent 1}}></span>% (<span class="nostyle" {{numberformat this.thetaSdk.totalStake.totalAmount 0}}></span>)</p>
         </div>
       </div>
   </div>

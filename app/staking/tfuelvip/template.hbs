@@ -12,7 +12,7 @@
     </div>
     <div class="card-body-stake">
       <h5 class="title">Tfuel VIP Elite Edge Node Staking<br>Earn up to
-        {{#if this.thetaSdk.tfuelAPR}}<br>Earn up to {{format-number this.thetaSdk.tfuelAPR maximumFractionDigits="1"}}% APR*.{{/if}}
+        {{#if this.thetaSdk.tfuelAPR}}<br>Earn up to <span class="nostyle" {{numberformat this.thetaSdk.tfuelAPR 1}}></span>% APR*.{{/if}}
       </h5>
       <div class="row justify-content-lg-center justify-content-md-center">
         <form {{on 'submit' this.submitStake}} class="stakes-deposit col-md-9">
@@ -78,7 +78,7 @@
               {{#each this.stakeList as |stake|}}
                 <tr>
                   <td class="text-center">{{moment-format stake.createdAt 'll'}}</td>
-                  <td class="text-center">{{format-number stake.stakeAmount}} <img style="width: 15px;" src="{{rootURL}}/assets/img/logo/tfuel.png" alt="..."/></td>
+                  <td class="text-center"><span class="nostyle" {{numberformat stake.stakeAmount 0}}></span> <img style="width: 15px;" src="{{rootURL}}/assets/img/logo/tfuel.png" alt="..."/></td>
                   <td class="text-center">
                     <a href="{{explorerEndpoint}}/account/{{stake.walletAddress}}" title="{{stake.walletAddress}}"
                        target="_blank" {{shortener stake.walletAddress}}>{{stake.walletAddress}}</a>
@@ -110,7 +110,7 @@
         <p class="title">Your Stakes</p>
         {{#each this.thetaSdk.eliteEdgeNodeWallets as |eliteEdgeNode|}}
           <p class="title"><img src="{{rootURL}}/assets/img/logo/tfuel.png" style="width: 15px; margin-left: 3px; margin-top: -2px;"/>
-            {{format-number eliteEdgeNode.amount maximumFractionDigits="2"}} <span class="capitalize">{{eliteEdgeNode.currency}}</span> Staked</p>
+            <span class="nostyle" {{numberformat eliteEdgeNode.amount 2}}></span> <span class="capitalize">{{eliteEdgeNode.currency}}</span> Staked</p>
           <p class="description">Staked on node address:<br/>{{eliteEdgeNode.node_address}}</p>
         {{/each}}
       </div>

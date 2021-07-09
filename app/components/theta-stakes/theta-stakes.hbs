@@ -17,7 +17,7 @@
         {{#if this.thetaSDK.guardianWallets.length}}
           <div class="stakes-activity">
             {{#each this.thetaSDK.guardianWallets as |guardianWallet|}}
-              <p class="title">{{format-number guardianWallet.amount maximumFractionDigits="2"}} <span class="capitalize">{{guardianWallet.currency}}</span> Staked</p>
+              <p class="title"><span class="nostyle" {{numberformat guardianWallet.amount 2}}></span> <span class="capitalize">{{guardianWallet.currency}}</span> Staked</p>
               <p class="description">Staked on node address:<br/>{{guardianWallet.node_address}}</p>
             {{/each}}
           </div>

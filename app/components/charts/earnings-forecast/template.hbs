@@ -33,21 +33,21 @@
       <div class="row">
         <div class="col-sm-4">
           <span class="legend-label"> Per Day:</span> <br>
-          <span class="amount">{{format-number avg_tfuel_per_day}}<img
+          <span class="amount"><span class="nostyle" {{numberformat avg_tfuel_per_day 2}}></span><img
                   src="assets/img/logo/tfuel.png" style="width: 15px; margin-left: 3px; vertical-align: unset;"></span>
           <br>
           <span class="amount">{{avg_tfuel_per_day_dollar}}</span>
         </div>
         <div class="col-sm-4">
           <span class="legend-label"> Per Month:</span> <br>
-          <span class="amount">{{format-number avg_tfuel_per_month}}<img
+          <span class="amount"><span class="nostyle" {{numberformat avg_tfuel_per_month 2}}></span><img
                   src="assets/img/logo/tfuel.png" style="width: 15px; margin-left: 3px; vertical-align: unset;"></span>
           <br>
           <span class="amount">{{avg_tfuel_per_month_dollar}}</span>
         </div>
         <div class="col-sm-4">
           <span class="legend-label"> Per year:</span> <br>
-          <span class="amount">{{format-number avg_tfuel_per_year}}<img
+          <span class="amount"><span class="nostyle" {{numberformat avg_tfuel_per_year 2}}></span><img
                   src="assets/img/logo/tfuel.png" style="width: 15px; margin-left: 3px; vertical-align: unset;"></span>
           <br>
           <span class="amount">{{avg_tfuel_per_year_dollar}}</span>
