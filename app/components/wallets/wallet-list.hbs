@@ -39,7 +39,7 @@
                 <td class="text-right">$<span class="nostyle" {{numberformat balance.value 2}}></span></td>
             </tr>
             {{else}}
-            <p>No wallet, please <a href="" {{on 'click' this.connectWallet}}>connect your wallet</a> or <a href="" data-toggle="modal" data-target="#searchModal">enter an address</a>.</p>
+            <p>No wallet, please <LinkTo @route="my-wallets">link your wallet</LinkTo> or <a href="" data-toggle="modal" data-target="#searchModal">enter an address</a>.</p>
             {{/each}}
             </tbody>
         </table>
