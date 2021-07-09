@@ -12,7 +12,7 @@
   },
   "scripts": {
     "build": "ember build --environment=production --output-path=../webserver/public --environment production",
-    "build_and_push": "ember build --output-path=../webserver/public --environment production && cd ../ && docker build -t maurinl/thetaboard:latest -f docker/Dockerfile . && docker push maurinl/thetaboard:latest && cd ./thetaboard-ui",
+    "build_and_push": "ember build --output-path=../webserver/public --environment production && cd ../docker/deployment && make build_thetaboard && make push_thetaboard && cd ../../thetaboard-ui",
     "lint": "npm-run-all --aggregate-output --continue-on-error --parallel 'lint:!(fix)'",
     "lint:fix": "npm-run-all --aggregate-output --continue-on-error --parallel lint:*:fix",
     "lint:hbs": "ember-template-lint .",
