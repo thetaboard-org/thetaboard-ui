@@ -14,6 +14,8 @@ export default modifier(function numberformat(element, params) {
   } else {
     finalVal = value;
   }
-
-  element.innerText = finalVal.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+  let parts = finalVal.toString().split('.');
+  parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  element.innerText = parts.join('.');
+  // element.innerText = finalVal.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ',');
 });
