@@ -1,5 +1,6 @@
 import Model, { attr } from '@ember-data/model';
 import { computed } from '@ember/object';
+import { htmlSafe } from '@ember/template';
 
 export default class PublicEdgeNodeModel extends Model {
   @attr('number') nodeId;
@@ -41,8 +42,8 @@ export default class PublicEdgeNodeModel extends Model {
   @computed('stakeAmount')
   get percentFillSafe() {
     if (this.stakeAmount) {
-      return Ember.String.htmlSafe('width:' + ((this.stakeAmount / 500000) * 100) + '%;');
+      return htmlSafe('width:' + (this.stakeAmount / 500000) * 100 + '%;');
     }
-    return Ember.String.htmlSafe('width:0%;');
+    return htmlSafe('width:0%;');
   }
 }
