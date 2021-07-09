@@ -5,17 +5,33 @@ export default class TrendThetaComponent extends Component {
   @service('theta-sdk') thetaSdk;
 
   get trendYesterday() {
-    const yesterday = moment(new Date(new Date() -3600000*24)).format('YYYY-MM-DD');
+    const yesterday = moment.utc(new Date(new Date() -3600000*24)).format('YYYY-MM-DD');
     const prices = this.args.historic_price;
     const thetaPrice = this.thetaSdk.prices.theta.price;
-    return this.setTrend(thetaPrice, prices[yesterday].theta_price);
+    if (thetaPrice && prices[yesterday] && prices[yesterday].theta_price) {
+      return this.setTrend(thetaPrice, prices[yesterday].theta_price);
+    }
+    return {
+      type: '-',
+      class: 'down',
+      change: 0,
+      percentChange: 0,
+    };
   }
 
   get trendLastWeek() {
-    const lastWeek = moment(new Date(new Date() -3600000*24*7)).format('YYYY-MM-DD');
+    const lastWeek = moment.utc(new Date(new Date() -3600000*24*7)).format('YYYY-MM-DD');
     const prices = this.args.historic_price;
     const thetaPrice = this.thetaSdk.prices.theta.price;
-    return this.setTrend(thetaPrice, prices[lastWeek].theta_price);
+    if (thetaPrice && prices[lastWeek] && prices[lastWeek].theta_price) {
+      return this.setTrend(thetaPrice, prices[lastWeek].theta_price);
+    }
+    return {
+      type: '-',
+      class: 'down',
+      change: 0,
+      percentChange: 0,
+    };
   }
 
   setTrend(currentPrice, previousPrice) {
