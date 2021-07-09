@@ -37,4 +37,12 @@ export default class PublicEdgeNodeModel extends Model {
     }
     return 0;
   }
+
+  @computed('stakeAmount')
+  get percentFillSafe() {
+    if (this.stakeAmount) {
+      return Ember.String.htmlSafe('width:' + ((this.stakeAmount / 500000) * 100) + '%;');
+    }
+    return Ember.String.htmlSafe('width:0%;');
+  }
 }
