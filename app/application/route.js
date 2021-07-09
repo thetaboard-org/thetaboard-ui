@@ -6,7 +6,9 @@ export default class ApplicationRoute extends Route {
     env: {
       refreshModel: true,
     },
-    wa: {}
+    wa: {
+      refreshModel: true,
+    },
   };
 
   get envManager() {

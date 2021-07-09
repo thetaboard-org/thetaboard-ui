@@ -23,15 +23,11 @@
             <td class="text-center d-none d-sm-none d-md-table-cell">{{transaction.block}}</td>
             <td class="text-center"><a href="{{explorerEndpoint}}/txs/{{transaction.txn_hash}}" target="_blank">{{moment-from transaction.timestamp}}</a></td>
             <td class="text-center d-none d-sm-none d-md-none d-lg-none d-xl-table-cell">
-              <a class="a-elipsis" href="{{explorerEndpoint}}/account/{{transaction.from_wallet_address}}"  {{shortener transaction.from_wallet_address}}>
-                {{transaction.from_wallet_address}}
-              </a>
+              <LinkTo {{shortener transaction.from_wallet_address}} @route="wallet" @query={{hash wa=transaction.from_wallet_address}}>{{transaction.from_wallet_address}}</LinkTo>
             </td>
             <td class="text-center d-none d-sm-table-cell" id="in-or-out"><img src="assets/img/transaction-{{transaction.in_or_out}}.png"/></td>
             <td class="text-center d-none d-sm-none d-md-none d-lg-none d-xl-table-cell">
-              <a class="a-elipsis" href="{{explorerEndpoint}}/account/{{transaction.to_wallet_address}}"   {{shortener transaction.to_wallet_address}}>
-                {{transaction.to_wallet_address}}
-              </a>
+              <LinkTo {{shortener transaction.to_wallet_address}} @route="wallet" @query={{hash wa=transaction.to_wallet_address}}>{{transaction.to_wallet_address}}</LinkTo>
             </td>
             <td class="text-left td-value">
               {{#each transaction.value as |coin|}}

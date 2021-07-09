@@ -300,11 +300,13 @@ export default class ThetaSdkService extends Service {
       }
       coinbases.map((x) => {
         const to = x["data"]["outputs"].filter(x => x['address'].toUpperCase() === accounts['0'].toUpperCase())[0];
-        coinbaseList.push({
-          "timestamp": x["timestamp"],
-          "amount": to["coins"]["tfuelwei"] / wei_divider,
-          "value": to["coins"]["tfuelwei"] / wei_divider * this.prices.tfuel.price
-        });
+        if (to) {
+          coinbaseList.push({
+            "timestamp": x["timestamp"],
+            "amount": to["coins"]["tfuelwei"] / wei_divider,
+            "value": to["coins"]["tfuelwei"] / wei_divider * this.prices.tfuel.price
+          });
+        }
       });
       coinbases = [];
       pageNumber++;

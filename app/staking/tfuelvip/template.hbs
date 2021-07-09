@@ -80,8 +80,7 @@
                   <td class="text-center">{{moment-format stake.createdAt 'll'}}</td>
                   <td class="text-center"><span class="nostyle" {{numberformat stake.stakeAmount 0}}></span> <img style="width: 15px;" src="{{rootURL}}/assets/img/logo/tfuel.png" alt="..."/></td>
                   <td class="text-center">
-                    <a href="{{explorerEndpoint}}/account/{{stake.walletAddress}}" title="{{stake.walletAddress}}"
-                       target="_blank" {{shortener stake.walletAddress}}>{{stake.walletAddress}}</a>
+                    <LinkTo {{shortener stake.walletAddress}} @route="wallet" @query={{hash wa=stake.walletAddress}}>{{stake.walletAddress}}</LinkTo>
                   </td>
                   {{#if stake.summary}}
                     <td>
