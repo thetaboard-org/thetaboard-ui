@@ -418,7 +418,9 @@ export default class ContractService extends Service {
       if (this.isMobile.any) {
         return;
       }
-      return this.utils.errorNotify(error.message);
+      console.log(error.message);
+      return;
+      // return this.utils.errorNotify(error.message);
     }
   }
 
