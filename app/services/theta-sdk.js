@@ -133,7 +133,8 @@ export default class ThetaSdkService extends Service {
       const account = await ThetaWalletConnect.requestAccounts();
       return this.setupWalletAddress(account, timeoutId);
     } catch (error) {
-      this.utils.errorNotify(error.message);
+      console.log(error)
+      // this.utils.errorNotify(error.message);
     }
   }
 

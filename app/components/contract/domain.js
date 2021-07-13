@@ -95,7 +95,8 @@ export default class ContractDomainComponent extends Component {
       this.nameToAddress = await this.contract.contract.nameToAddress(this.domainName);
       this.searchedDomain = this.domainName;
     } catch (error) {
-      this.utils.errorNotify(error.message);
+      console.log(error);
+      // this.utils.errorNotify(error.message);
     }
   }
 

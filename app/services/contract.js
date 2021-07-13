@@ -440,7 +440,8 @@ export default class ContractService extends Service {
       this.walletAddress = address;
       return this.addressToName;
     } catch (error) {
-      this.utils.errorNotify(error.message);
+      console.log(error);
+      // this.utils.errorNotify(error.message);
       return null;
     }
   }
@@ -455,7 +456,8 @@ export default class ContractService extends Service {
       this.domainName = name;
       return this.nameToAddress;
     } catch (error) {
-      this.utils.errorNotify(error.message);
+      console.log(error);
+      // this.utils.errorNotify(error.message);
       return null;
     }
   }
