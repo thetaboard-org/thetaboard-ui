@@ -985,3 +985,12 @@ a.logout {
   height: 2px;
   background: #e14eca;
 }
+
+.faq-title {
+  text-align: center;
+}
+
+#faq-page div.faq-card-desc h4,
+#faq-page div.faq-card-desc p {
+  text-align: center;
+}

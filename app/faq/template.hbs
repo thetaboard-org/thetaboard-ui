@@ -13,7 +13,7 @@
             <div class="block block-three"></div>
             <div class="block block-four"></div>
             <a href="javascript:void(0)">
-              <h3 class="title">Thetaboard</h3>
+              <h3 class="title">Thetaboard FAQ</h3>
             </a>
             <p class="description">
               What is Thetaboard?
@@ -25,16 +25,7 @@
               Thetaboard's mission is to become the central place for any Theta enthusiast. <br>
               We want to bring value to the Theta ecosystem by providing functionalities
               that either simplifies access to information about Theta, or enrich the ecosystem.<br>
-
-              We currently have:
-            </p>
-            <ul>
-              <li><a href="#dashboard">A Dashboard</a></li>
-              <li><a href="#wallet">A Wallet</a></li>
-              <li><a href="#domain">Domains</a></li>
-              <li><a href="#guardian">Public Guardian Node</a></li>
-            </ul>
-            <p>
+              <br/>
               Thetaboard is an open source project hosted on <a
                     target="_blank" href="https://github.com/momohuri/thetaboard">github</a>.
               And we encourage people to deploy their own instance of Thetaboard using the easy instructions so they can
@@ -49,7 +40,11 @@
       </div>
     </div>
   </div>
-  <div class="row" id="dashboard">
+  
+  
+
+
+  <div class="row">
     <div class="col-lg-12 col-md-12">
       <div class="card card-user">
         <div class="card-body">
@@ -60,201 +55,261 @@
             <div class="block block-two"></div>
             <div class="block block-three"></div>
             <div class="block block-four"></div>
-            <a href="javascript:void(0)">
-              <h3 class="title">Dashboard</h3>
-            </a>
-            <p class="description">
-              What is the Dashboard page?
-            </p>
           </div>
           <p></p>
-          <div class="card-description">
-            <p>
-              The Dashboard page exists to report information about Theta and Tfuel price evolution and wallets.<br>
-              To get information about a specific wallet, it possible to either search for it
-              by address or <a href="#domain">domain</a> by clicking on the search bar,
-              or connect your wallet using the <a
-                    target="_blank" href="https://chrome.google.com/webstore/detail/Theta-wallet/ckelpdlfgochnkdgikcgbimdcfgpkhgk">official
-              Theta Wallet extension</a>.<br>
-              It currently has 5 widgets:
-            </p>
-            <br/>
-            <ul class="no-list-deco">
-              <li><b>Theta & Tfuel line chart: </b><br/>This widget provides historic price information for both crypto
-                currencies. It can be filtered by year, month, or week.
-              </li><br/>
-              <li><b> Wallet Composition: </b><br/>It displays a pie chart, representing all the Theta and Tfuel held by
-                the wallet with the
-                composition in $ value.
-              </li><br/>
-              <li><b> Theta & Tfuel price: </b><br/>These two widgets provide current Theta and Tfuel price,
-                the price/percentage change from the last 24 hours/last 7 days, followed by the market cap and the last 24 hours volume.
-              </li><br/>
-              <li><b> Guardian Node Reward Forecast: </b><br/>Staking Theta on a Guardian Node gives TFuel as rewards. There
-                is a minimum of 1,000 Theta requirement in order to stake. When inputing an amount of Theta staked, the widget will
-                forecast how many Tfuel will be rewarded by day/month/year.
-              </li><br/>
-            </ul>
+          <div class="card-description faq-card-desc">
+            {{#accordion-list as |accordion|}}
+              {{#accordion.item as |accordionItem|}}
+                
+                
+                {{#accordionItem.toggle panelName="staking" as |isActive|}}
+                 <h3 id="staking" class="faq-title"><img src="{{rootURL}}/assets/img/arrow-white.png"/> What is staking?</h3>
+                {{/accordionItem.toggle}}
+                {{#accordionItem.panel panelName="staking"}}
+                  <p>Staking is a process that involves associating your tokens to a machine that is completing work
+                   and providing security to a network, which results in you earning additional rewards.</p><br/>
+                  <p>Your rewards for staking are based on the number of tokens you stake, as well as the uptime of your node.
+                     To maximise your staking earnings, the computer hosting your node needs to be left running 24/7.</p><br/>
+                  <p>On the Theta Network, staking of both Theta token and Tfuel token is possible. Both tokens are rewarded for staking in the form of Tfuel.
+                     To stake your tokens, they need to be delegated to either a Guardian Node (Theta) or an Elite Edge Node (Tfuel).
+                      Both types of nodes play important roles within the Theta decentralised network.</p><br/>
+                  <p>Throughout the process of staking, the tokens always stay inside your official Theta wallet. If the node were to ever switch off,
+                     the tokens remain in your wallet, and will only be controlled by whoever has access to the wallet.
+                      NEVER enter your 12-word seed phrase, or keystore file and password, anywhere except the official Theta Wallet.
+                       Thetaboard will never request this information.</p>
+                       <br/><br/>
+                {{/accordionItem.panel}}
+                
+                
+                {{#accordionItem.toggle panelName="staking-thetaboard" as |isActive|}}
+                 <h3 id="staking-thetaboard" class="faq-title"><img src="{{rootURL}}/assets/img/arrow-white.png"/> What staking does Thetaboard provide?</h3>
+                {{/accordionItem.toggle}}
+                {{#accordionItem.panel panelName="staking-thetaboard"}}
+                  <h4>Theta</h4>
+                  <p>Stake to our Guardian Node, for anyone with over the minimum 1000 Theta tokens. There is no maximum number of Theta that can be staked to a Guardian Node.</p><br/>
+                  <h4>Tfuel</h4>
+                  <p>Stake to one of our Public Elite Edge Nodes, for anyone with over 10,000 Tfuel. Elite Edge Nodes have a maximum amount of 500,000 Tfuel that can be staked to any one node.</p><br/>
+                  <h4>Tfuel VIP</h4>
+                  <p>For individuals with over 100,000 Tfuel. These Elite Edge Nodes will be reserved for you, guaranteeing you room to grow your stake, and the same node summary if you ever withdraw your stake and deposit again.</p>
+                  <br/><br/>
+                {{/accordionItem.panel}}
+
+
+                {{#accordionItem.toggle panelName="deposit" as |isActive|}}
+                 <h3 id="deposit" class="faq-title"><img src="{{rootURL}}/assets/img/arrow-white.png"/> How do I deposit my stake on the Theta Network?</h3>
+                {{/accordionItem.toggle}}
+                {{#accordionItem.panel panelName="deposit"}}
+                  <p>You can deposit your stake of Theta or Tfuel from inside your official Theta Wallet.</p><br/>
+                  <h4>Staking Theta to a Guardian Node</h4>
+                  <p><a target="_blank" href="https://docs.thetatoken.org/docs/guardian-staking-process">https://docs.thetatoken.org/docs/guardian-staking-process</a></p><br/>
+                  <p>You can use the one-click Guardian Node address for Thetaboard during the process inside your Theta wallet.</p><br/>
+                  <p>Further reading from Theta Labs regarding Theta 1 click delegated staking:</p><br/>
+                  <p><a target="_blank" href="https://medium.com/theta-network/theta-1-click-delegated-staking-now-live-in-the-theta-web-wallet-b80d499aae71">https://medium.com/theta-network/theta-1-click-delegated-staking-now-live-in-the-theta-web-wallet-b80d499aae71</a></p><br/>
+                  <h4>Staking Tfuel to an Elite Edge Node</h4>
+                  <p><a target="_blank" href="https://docs.thetatoken.org/docs/elite-edge-node-staking-process">https://docs.thetatoken.org/docs/elite-edge-node-staking-process</a></p><br/>
+                  <p>You can use the Public Staking summaries available on our Tfuel page, or the VIP summary provided after requesting a VIP node, during the Edge Staking process inside your Theta wallet.</p><br/>
+                  <p>Further reading from Theta Labs regarding Tfuel staking:</p><br/>
+                  <p><a target="_blank" href="https://medium.com/theta-network/theta-wallet-v3-0-1-released-to-enable-tfuel-staking-at-block-height-10-968-061-on-june-30-c90bf080ef93">https://medium.com/theta-network/theta-wallet-v3-0-1-released-to-enable-tfuel-staking-at-block-height-10-968-061-on-june-30-c90bf080ef93</a></p><br/>
+                  <br/><br/>
+                {{/accordionItem.panel}}
+
+
+                {{#accordionItem.toggle panelName="nodes" as |isActive|}}
+                 <h3 id="nodes" class="faq-title"><img src="{{rootURL}}/assets/img/arrow-white.png"/> Where are the nodes Thetaboard uses?</h3>
+                {{/accordionItem.toggle}}
+                {{#accordionItem.panel panelName="nodes"}}
+                  <p>Thetaboard has nodes spread across the USA and Canada. We plan to extend to other parts of the world as well.</p><br/>
+                  <br/><br/>
+                {{/accordionItem.panel}}
+
+
+                {{#accordionItem.toggle panelName="fees" as |isActive|}}
+                 <h3 id="fees" class="faq-title"><img src="{{rootURL}}/assets/img/arrow-white.png"/> What fees does Thetaboard have?</h3>
+                {{/accordionItem.toggle}}
+                {{#accordionItem.panel panelName="fees"}}
+                  <p>Thetaboard fees for hosting Theta and Tfuel node is 3% of the rewards earned. With the current 8% APR for Tfuel,
+                     it means you get 7.76% APR and thetaboard gets 0.24%</p><br/>
+                  <br/><br/>
+                {{/accordionItem.panel}}
+
+
+                {{#accordionItem.toggle panelName="minimum" as |isActive|}}
+                 <h3 id="minimum" class="faq-title"><img src="{{rootURL}}/assets/img/arrow-white.png"/> What are the current minimum number of tokens for staking?</h3>
+                {{/accordionItem.toggle}}
+                {{#accordionItem.panel panelName="minimum"}}
+                  <p>For staking on the Theta Network, the minimum amounts are:</p><br/>
+                  <p>1000 Theta tokens, or</p><br/>
+                  <p>10,000 Tfuel tokens.</p><br/>
+                  <p>Theses limits are set by Theta Labs and have changed in the past. While possible, there is no stated timeline by Theta Labs for future changes of these minimums.</p><br/>
+                  <br/><br/>
+                {{/accordionItem.panel}}
+
+
+                {{#accordionItem.toggle panelName="earn" as |isActive|}}
+                 <h3 id="earn" class="faq-title"><img src="{{rootURL}}/assets/img/arrow-white.png"/> When do I earn my rewards?</h3>
+                {{/accordionItem.toggle}}
+                {{#accordionItem.panel panelName="earn"}}
+                  <p>The Theta Network uses a weighted randomly assigned method to send out staking rewards. The algorithms are different for each token.</p><br/>
+                  <h4>Theta</h4>
+                  <p>Theta staking rewards are paid out every 100 blocks to different stakes, with size of stake increasing the chance of regular payouts.
+                     The amount of Theta staked to the Guardian Node makes no difference.</p><br/>
+                  <p>Theta staking reward amounts are assigned by the Theta blockchain in multiples of 12. Thetaboard fees will
+                   be taken out by the time the transaction arrives in your wallet, meaning the amounts will be in multiples of 11.64.</p><br/>
+                  <h4>Tfuel</h4>
+                  <p>Tfuel staking rewards are paid out every 100 blocks to Edge Nodes, with amount of 
+                    Tfuel staked to that Edge Node increasing the chance of regular payouts. The size of the individual Tfuel stake makes no difference.</p><br/>
+                  <p>Tfuel staking reward amounts vary greatly, based on the size of your stake. They are often three decimal places and are regularly 5 Tfuel and under.</p><br/>
+                  <br/><br/>
+                {{/accordionItem.panel}}
+
+
+                {{#accordionItem.toggle panelName="how-much" as |isActive|}}
+                 <h3 id="how-much" class="faq-title"><img src="{{rootURL}}/assets/img/arrow-white.png"/> How much Tfuel do I earn?</h3>
+                {{/accordionItem.toggle}}
+                {{#accordionItem.panel panelName="how-much"}}
+                  <p>Use the reward forecast calculator available on the Thetaboard Dashboard page to calculate the earnings you are predicted to see for the size of your stake.</p><br/>
+                  <br/><br/>
+                {{/accordionItem.panel}}
+
+
+                {{#accordionItem.toggle panelName="public-or-private" as |isActive|}}
+                 <h3 id="public-or-private" class="faq-title"><img src="{{rootURL}}/assets/img/arrow-white.png"/> Should I use a Public or Private Elite Edge Node?</h3>
+                {{/accordionItem.toggle}}
+                {{#accordionItem.panel panelName="public-or-private"}}
+                  <p>Many Thetaboard customers use both. Sharing a node will increase the frequency (but not the amount) of your payments,
+                  as the node will hold more Tfuel than if you were staking alone, so the chances of being picked in the rewards algorithm is increased.
+                  Your place is not reserved when you unstake, but we will continue to provide more Public Elite Edge Nodes as required. 
+                  Also, separating out a 10,000 Tfuel stake and placing it on a Public Elite Edge Node allows for a smaller amount of your 
+                  Tfuel to be withdrawn and added to, so unstaking does not affect your entire staked amount.</p><br/>
+                  <br/><br/>
+                {{/accordionItem.panel}}
+
+
+                {{#accordionItem.toggle panelName="where-rewards" as |isActive|}}
+                 <h3 id="where-rewards" class="faq-title"><img src="{{rootURL}}/assets/img/arrow-white.png"/> Where do these rewards come from?</h3>
+                {{/accordionItem.toggle}}
+                {{#accordionItem.panel panelName="where-rewards"}}
+                  <p>Theta Network uses inflation of Tfuel tokens to pay staking rewards. This inflation of Tfuel is set at 38 Tfuel per block for Tfuel staking, 
+                  and 48 Tfuel per block for Theta staking. The Theta Network aims for 6 second blocks, at which point the inflation rates correspond to 
+                  roughly 4% (Tfuel staking rewards) and 5% (Theta staking rewards) inflation of the initial Tfuel supply of 5 billion.</p><br/>
+                  <p>This inflation is planned to be offset by burning of a portion of fees paid to use the Theta Network. Theta Labs has stated they 
+                  aim to keep the total supply of Tfuel close to the initial 5 billion supply.</p><br/>
+                  <br/><br/>
+                {{/accordionItem.panel}}
+
+
+                {{#accordionItem.toggle panelName="staking-in-wallet" as |isActive|}}
+                 <h3 id="staking-in-wallet" class="faq-title"><img src="{{rootURL}}/assets/img/arrow-white.png"/> What do staking rewards look like in my wallet?</h3>
+                {{/accordionItem.toggle}}
+                {{#accordionItem.panel panelName="staking-in-wallet"}}
+                  <p>Staking rewards on our dashboard, in the form of a ‘coinbase’ transaction, will be sent to the wallet you staked your tokens from. 
+                  The ‘from’ address in these coinbase transactions will be one of the 16 Validator Node addresses in the Theta Network.</p><br/>
+                  <p>If you are using the Theta Wallet to track your rewards, they will not appear as transactions, but only as an increase in the available Tfuel balance.</p><br/>
+                  <br/><br/>
+                {{/accordionItem.panel}}
+
+
+                {{#accordionItem.toggle panelName="no-rewards" as |isActive|}}
+                 <h3 id="no-rewards" class="faq-title"><img src="{{rootURL}}/assets/img/arrow-white.png"/> How come I have not received Theta staking rewards for a week?</h3>
+                {{/accordionItem.toggle}}
+                {{#accordionItem.panel panelName="no-rewards"}}
+                  <p>If you are staking an amount of Theta closer to the minimum, it is possible you may go weeks without payment due to the Theta Labs staking rewards algorithm. 
+                  Be assured, you are still accruing rewards, and just need the staking algorithm to select you for reward payment.</p><br/>
+                  <p>Even if you go through long periods without staking rewards, your rewards are still accruing. 
+                  Often you will receive more than normal a short period following a long dry spell without rewards.</p><br/>
+                  <p>Discussion of the randomized block reward for Theta by Theta Labs is found here:</p><br/>
+                  <p><a traget="_blank" href="https://medium.com/theta-network/theta-protocol-code-v2-2-0-released-with-important-performance-related-updates-6b9e2261d0ae">https://medium.com/theta-network/theta-protocol-code-v2-2-0-released-with-important-performance-related-updates-6b9e2261d0ae</a></p><br/>
+                  <p>Prior to Mainnet 3.0 in June 2021, all theta staking rewards were delivered in transactions with a multiple of 12. However, since then, instances where Theta staking rewards have been joined to Tfuel staking rewards have occurred. 
+                  This makes it harder to track which payment is coming for what stake. While our dashboard makes every attempt to correctly assign Theta and Tfuel staking rewards correctly, 
+                  it may not capture every joint payment, as these are not labelled on the Theta blockchain.</p>
+                  <br/><br/>
+                {{/accordionItem.panel}}
+
+
+                {{#accordionItem.toggle panelName="add-token" as |isActive|}}
+                 <h3 id="add-token" class="faq-title"><img src="{{rootURL}}/assets/img/arrow-white.png"/> Do I have to withdraw my stake to add new tokens?</h3>
+                {{/accordionItem.toggle}}
+                {{#accordionItem.panel panelName="add-token"}}
+                  <p>If the amount you wish to add is under the minimum requirements for staking (1000 Theta and 10,000 Tfuel), then yes you will have to unstake your original amount to add new tokens.
+                  If the amount is over the minimum requirements, just stake the new amount as a new stake.</p><br/>
+                  <br/><br/>
+                {{/accordionItem.panel}}
+
+
+                {{#accordionItem.toggle panelName="withdraw" as |isActive|}}
+                 <h3 id="withdraw" class="faq-title"><img src="{{rootURL}}/assets/img/arrow-white.png"/> How do I withdraw my stake?</h3>
+                {{/accordionItem.toggle}}
+                {{#accordionItem.panel panelName="withdraw"}}
+                  <p>You can withdraw your staked tokens from inside your Theta wallet.</p><br/>
+                  <br/><br/>
+                {{/accordionItem.panel}}
+
+
+                {{#accordionItem.toggle panelName="withdrawn" as |isActive|}}
+                 <h3 id="withdrawn" class="faq-title"><img src="{{rootURL}}/assets/img/arrow-white.png"/> I have withdrawnn my staked tokens and they are not in my wallet yet. Where are they?</h3>
+                {{/accordionItem.toggle}}
+                {{#accordionItem.panel panelName="withdrawn"}}
+                  <p>Both Theta and Tfuel tokens take approximately 54 hours to unstake. They will then appear in your original wallet.</p><br/>
+                  <br/><br/>
+                {{/accordionItem.panel}}
+
+
+                {{#accordionItem.toggle panelName="unstaking-rewards" as |isActive|}}
+                 <h3 id="unstaking-rewards" class="faq-title"><img src="{{rootURL}}/assets/img/arrow-white.png"/> Do I accrue rewards during my 54-hour unstaking period?</h3>
+                {{/accordionItem.toggle}}
+                {{#accordionItem.panel panelName="unstaking-rewards"}}
+                  <p>No.</p><br/>
+                  <br/><br/>
+                {{/accordionItem.panel}}
+
+
+                {{#accordionItem.toggle panelName="unstaking-rewards-paid" as |isActive|}}
+                 <h3 id="unstaking-rewards-paid" class="faq-title"><img src="{{rootURL}}/assets/img/arrow-white.png"/> Will I still be paid rewards that are owed to me when I began the unstaking period?</h3>
+                {{/accordionItem.toggle}}
+                {{#accordionItem.panel panelName="unstaking-rewards-paid"}}
+                  <p>Yes.</p><br/>
+                  <br/><br/>
+                {{/accordionItem.panel}}      
+
+
+                {{#accordionItem.toggle panelName="en-wallet-address" as |isActive|}}
+                 <h3 id="en-wallet-address" class="faq-title"><img src="{{rootURL}}/assets/img/arrow-white.png"/> What is the new wallet address in my Edge Node at home?</h3>
+                {{/accordionItem.toggle}}
+                {{#accordionItem.panel panelName="en-wallet-address"}}
+                  <p>Edge Nodes now have their own wallet address to collect cache and compute rewards in. Please read more here:</p><br/>
+                  <p><a href="https://medium.com/Theta-network/Theta-elite-edge-node-v3-0-6-released-to-enable-mainnet-3-0-features-7b07fc4bc7b3">https://medium.com/Theta-network/Theta-elite-edge-node-v3-0-6-released-to-enable-mainnet-3-0-features-7b07fc4bc7b3</a></p>
+                  <br/><br/>
+                {{/accordionItem.panel}}                
+
+
+                {{#accordionItem.toggle panelName="domains" as |isActive|}}
+                 <h3 id="domains" class="faq-title"><img src="{{rootURL}}/assets/img/arrow-white.png"/> What are the Theta Domain Names available to be purchased through Thetaboard?</h3>
+                {{/accordionItem.toggle}}
+                {{#accordionItem.panel panelName="domains"}}
+                  <p>Domains are currently a proof of concept. You can currently buy and sell Domains, and use them to Search Wallets by name within Thetaboard's website, and toshow your support to Thetaboard.</p><br/>
+                  <p>At some point in 2021 we will migrate to final contracts. These will be NFT’s and will be integrated in the theta wallets, in order to do transactions using domain names instead of wallet addresses.</p><br/>
+                  <p>However, we won’t be able to migrate currently bought domains to the new version.</p><br/>
+                  <p>Further reading about the Theta Network can be found here.</p><br/>
+                  <p><a href="https://docs.thetatoken.org/docs/what-is-theta-network" target="_blank">https://docs.thetatoken.org/docs/what-is-theta-network</a></p>
+                  <br/><br/>
+                {{/accordionItem.panel}} 
+
+
+            {{/accordion.item}}
+        {{/accordion-list}}
+
+
+
           </div>
         </div>
       </div>
     </div>
   </div>
-  <div class="row" id="wallet">
-    <div class="col-lg-12 col-md-12">
-      <div class="card card-user">
-        <div class="card-body">
-          <p class="card-text">
-          </p>
-          <div class="author">
-            <div class="block block-one"></div>
-            <div class="block block-two"></div>
-            <div class="block block-three"></div>
-            <div class="block block-four"></div>
-            <a href="javascript:void(0)">
-              <h3 class="title">Wallet</h3>
-            </a>
-            <p class="description">
-              What is the Wallet page?
-            </p>
-          </div>
-          <p></p>
-          <div class="card-description">
-            <p>
-              The Wallet page shows the total amount of Theta and Tfuel on a wallet, the wallet addresses, and a history
-              of all the transactions made on that wallet.
-              Finding a wallet can be done by using the wallet address, <a href="#domain">domain</a>, or by connecting to a wallet using the <a
-                    target="_blank" href="https://chrome.google.com/webstore/detail/Theta-wallet/ckelpdlfgochnkdgikcgbimdcfgpkhgk">official
-              Theta Wallet extension</a>.<br>
-              We are planning to add a widget to easily transfer and receive Tfuel which will be compatible with <a href="#domain">Domains</a>.
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="row" id="domain">
-    <div class="col-lg-12 col-md-12">
-      <div class="card card-user">
-        <div class="card-body">
-          <p class="card-text">
-          </p>
-          <div class="author">
-            <div class="block block-one"></div>
-            <div class="block block-two"></div>
-            <div class="block block-three"></div>
-            <div class="block block-four"></div>
-            <a href="javascript:void(0)">
-              <h3 class="title">Domain</h3>
-            </a>
-            <p class="description">
-              What is a Domain?
-            </p>
-          </div>
-          <p></p>
-          <div class="card-description">
-            <p>
-              Domains are a way of associating a wallet address with a domain name on the Theta blockchain. <br>
-              They remove the need for copying and pasting long addresses. You can use them to easily explore a wallet
-              or send Tfuels to someone. <br>
-              Domains are using a public smart contract that can be found on
-              <a target="_blank" href="https://github.com/thetaboard-org/smart_contracts/blob/master/contracts/addressName.sol">
-                github</a>.<br>
-              <br>
-              New domains can be bought using <a href="https://www.google.com/chrome/" target="_blank">Google Chome</a> and the <a
-                    target="_blank" href="https://chrome.google.com/webstore/detail/Theta-wallet/ckelpdlfgochnkdgikcgbimdcfgpkhgk">official
-              Theta Wallet extension</a>.<br>
-            </p>
-            <br>
-            <h4>How to buy a Theta Domain Name</h4>
-            <p style="margin-left: 25px;">Search for a domain on the <LinkTo @route="domain"> Domain</LinkTo> page
-            and see if it is available or not. <br/><br/>
-              <b>If the domain is available:</b><br/>
-              The domain can be bought for 5 Tfuel by clicking on the "Review Order" button. It will
-              open a pop-up on the <a
-                    target="_blank" href="https://chrome.google.com/webstore/detail/Theta-wallet/ckelpdlfgochnkdgikcgbimdcfgpkhgk">official
-              Theta Wallet extension</a> to confirm the transaction
-             <br/><br/>
-             <b>If the domain is already taken:</b><br/>
-              An offer can be made for at least 1 Tfuel to the current owner of
-              the domain.<br>
-              Once an offer amount is entered, clicking the "Review Order" button will
-              open a pop-up on the <a
-                    target="_blank" href="https://chrome.google.com/webstore/detail/Theta-wallet/ckelpdlfgochnkdgikcgbimdcfgpkhgk">official
-              Theta Wallet extension</a>, and when confirmed the funds will be locked on the smart contract.
-              The offer can be canceled at any time and the smart contract will send all the Tfuels back to the original wallet.
-              The owner of the domain can either accept or reject the offer.
-            </p>
-            <br>
-            <h4>Address Lookup</h4>
-            <p style="margin-left: 25px;"> Enter a wallet address in the Address Lookup widget to list all its associated domains.
-              The "My domain name" button can be clicked to link a wallet using the <a
-                      target="_blank" href="https://chrome.google.com/webstore/detail/Theta-wallet/ckelpdlfgochnkdgikcgbimdcfgpkhgk">official
-                Chrome extension</a>.
-            </p>
-            <br>
-            <h4>My Offers</h4>
-            <p style="margin-left: 25px;"> <b>Offer Made:</b><br/> List the statuses of offers made by the current connected wallet. Offers made can be
-              canceled at any time, which will transfer the Tfuels from the smart contract back to the original wallet which made the
-              offer.<br><br>
-              <b>Offer Received:</b><br/> Clicking the "Accept offer" button will open a confirmation pop-up on the <a
-                      target="_blank" href="https://chrome.google.com/webstore/detail/Theta-wallet/ckelpdlfgochnkdgikcgbimdcfgpkhgk">official
-                Chrome extension</a>. Once confirmed, the smart contract will transfer ownership of the domain to the new owner and send
-              the Tfuels to the wallet that accepted the offer (10% of the TFuel will be sent to Thetaboard for support).<br>
-              If not satisfied with an offer, it is possible to reject it by clicking on the "Reject offer" button.
-              The smart contract will send back the Tfuels to the wallet that made the offer once the rejection is
-              confirmed.
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="row" id="guardian">
-    <div class="col-lg-12 col-md-12">
-      <div class="card card-user">
-        <div class="card-body">
-          <p class="card-text">
-          </p>
-          <div class="author">
-            <div class="block block-one"></div>
-            <div class="block block-two"></div>
-            <div class="block block-three"></div>
-            <div class="block block-four"></div>
-            <a href="javascript:void(0)">
-              <h3 class="title">Guardian Node</h3>
-            </a>
-            <p class="description">
-              What is the Guardian Node page?
-            </p>
-          </div>
-          <p></p>
-          <div class="card-description">
-            <p>
-              Guardian Nodes play an important role in the Theta ecosystem, they form a second layer of defense against potential
-              attacks on the blockchain. <br>
-              Staking a minimum of 1,000 Theta on a Guardian Node will reward proportionally in
-              Tfuels. Forecasting can be found on the <LinkTo @route="dashboard">Dashboard.</LinkTo><br>
-              Staking Theta on a Guardian Node will keep the Theta on the wallet. The Guardian Node will NOT be in
-              control of the Theta and it is always possible to withdraw them.
-            </p><br>
-            <h4> Using Thetaboard public Guardian Node</h4>
-            <p style="margin-left: 25px;">
-              Thetaboard hosts a public Guardian Node for the community and anyone can use it by either using the summary below and the <a target="_blank" href="https://docs.thetatoken.org/docs/guardian-staking-process">Theta
-              instructions</a> or by using the Stake widget in the <LinkTo @route="staking.theta">Guardian</LinkTo> page.<br><br>
-              <div {{on "click" (action this.copySummaryToClipBoard 'Summary' 'input-to-copy-from-faq')}} class="card-description-summary">
-                <p class="summary-value">{{summary}}</p>
-                <input id="input-to-copy-from-faq" class="input-to-hide" value="{{summary}}"/>
-              </div>
-              <br/><br/>
-            </p>
-            <h4> Delegate fee for Thetaboard public Guardian Node</h4>
-            <p style="margin-left: 25px;">
-              Thetaboard is charging a 3% fee on the Guardian Node staking rewards to cover for server costs.
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+  
+  
 </div>
+
+
+
+
+
