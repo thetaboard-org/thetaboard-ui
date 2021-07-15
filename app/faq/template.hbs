@@ -63,13 +63,13 @@
                 {{/accordionItem.toggle}}
                 {{#accordionItem.panel panelName="staking"}}
                   <p>Staking is a process that involves associating your tokens to a machine that is completing work
-                   and providing security to a network, which results in you earning additional rewards.</p><br/>
-                  <p>Your rewards for staking are based on the number of tokens you stake, as well as the uptime of your node.
-                     To maximise your staking earnings, the computer hosting your node needs to be left running 24/7.</p><br/>
-                  <p>On the Theta Network, staking of both Theta token and Tfuel token is possible. Both tokens are rewarded for staking in the form of Tfuel.
+                   and providing security to a network, which results in you earning additional rewards.<br/>
+                  Your rewards for staking are based on the number of tokens you stake, as well as the uptime of your node.
+                     To maximise your staking earnings, the computer hosting your node needs to be left running 24/7.<br/>
+                  On the Theta Network, staking of both Theta token and Tfuel token is possible. Both tokens are rewarded for staking in the form of Tfuel.
                      To stake your tokens, they need to be delegated to either a Guardian Node (Theta) or an Elite Edge Node (Tfuel).
-                      Both types of nodes play important roles within the Theta decentralised network.</p><br/>
-                  <p>Throughout the process of staking, the tokens always stay inside your official Theta wallet. If the node were to ever switch off,
+                      Both types of nodes play important roles within the Theta decentralised network.<br/>
+                  Throughout the process of staking, the tokens always stay inside your official Theta wallet. If the node were to ever switch off,
                      the tokens remain in your wallet, and will only be controlled by whoever has access to the wallet.
                       NEVER enter your 12-word seed phrase, or keystore file and password, anywhere except the official Theta Wallet.
                        Thetaboard will never request this information.</p>
@@ -97,16 +97,31 @@
                 {{#accordionItem.panel panelName="deposit"}}
                   <p>You can deposit your stake of Theta or Tfuel from inside your official Theta Wallet.</p><br/>
                   <h4>Staking Theta to a Guardian Node</h4>
-                  <p><a target="_blank" href="https://docs.thetatoken.org/docs/guardian-staking-process">https://docs.thetatoken.org/docs/guardian-staking-process</a></p><br/>
-                  <p>You can use the one-click Guardian Node address for Thetaboard during the process inside your Theta wallet.</p><br/>
-                  <p>If you are staking more than 10,000 Theta to our Guardian Node, use the summary available on our <LinkTo @route="staking.theta">Theta Staking page</LinkTo>, as Theta Labs has a 10,000 maximum for one-click Theta delegations</p>
-                  <p>Further reading from Theta Labs regarding Theta 1 click delegated staking:</p><br/>
-                  <p><a target="_blank" href="https://medium.com/theta-network/theta-1-click-delegated-staking-now-live-in-the-theta-web-wallet-b80d499aae71">https://medium.com/theta-network/theta-1-click-delegated-staking-now-live-in-the-theta-web-wallet-b80d499aae71</a></p><br/>
+                  <p><a target="_blank" href="https://docs.thetatoken.org/docs/guardian-staking-process">https://docs.thetatoken.org/docs/guardian-staking-process</a><br/>
+                  You can use the one-click Guardian Node address for Thetaboard during the process inside your Theta wallet.<br/>
+                  If you are staking more than 10,000 Theta to our Guardian Node, use the summary available on our <LinkTo @route="staking.theta">Theta Staking page</LinkTo>, as Theta Labs has a 10,000 maximum for one-click Theta delegations<br/>
+                  Further reading from Theta Labs regarding Theta 1 click delegated staking:<br/>
+                  <a target="_blank" href="https://medium.com/theta-network/theta-1-click-delegated-staking-now-live-in-the-theta-web-wallet-b80d499aae71">https://medium.com/theta-network/theta-1-click-delegated-staking-now-live-in-the-theta-web-wallet-b80d499aae71</a></p><br/>
                   <h4>Staking Tfuel to an Elite Edge Node</h4>
-                  <p><a target="_blank" href="https://docs.thetatoken.org/docs/elite-edge-node-staking-process">https://docs.thetatoken.org/docs/elite-edge-node-staking-process</a></p><br/>
-                  <p>You can use the Public Staking summaries available on our Tfuel page, or the VIP summary provided after requesting a VIP node, during the Edge Staking process inside your Theta wallet.</p><br/>
-                  <p>Further reading from Theta Labs regarding Tfuel staking:</p><br/>
-                  <p><a target="_blank" href="https://medium.com/theta-network/theta-wallet-v3-0-1-released-to-enable-tfuel-staking-at-block-height-10-968-061-on-june-30-c90bf080ef93">https://medium.com/theta-network/theta-wallet-v3-0-1-released-to-enable-tfuel-staking-at-block-height-10-968-061-on-june-30-c90bf080ef93</a></p><br/>
+                  <p><a target="_blank" href="https://docs.thetatoken.org/docs/elite-edge-node-staking-process">https://docs.thetatoken.org/docs/elite-edge-node-staking-process</a><br/>
+                  You can use the Public Staking summaries available on our Tfuel page, or the VIP summary provided after requesting a VIP node, during the Edge Staking process inside your Theta wallet.<br/>
+                  Further reading from Theta Labs regarding Tfuel staking:<br/>
+                  <a target="_blank" href="https://medium.com/theta-network/theta-wallet-v3-0-1-released-to-enable-tfuel-staking-at-block-height-10-968-061-on-june-30-c90bf080ef93">https://medium.com/theta-network/theta-wallet-v3-0-1-released-to-enable-tfuel-staking-at-block-height-10-968-061-on-june-30-c90bf080ef93</a></p><br/>
+                  <br/><br/>
+                {{/accordionItem.panel}}
+
+
+                
+
+
+
+                {{#accordionItem.toggle panelName="stake-exchange" as |isActive|}}
+                 <h3 id="stake-exchange" class="faq-title"><img src="{{rootURL}}/assets/img/arrow-white.png"/> Can I stake my Tfuel or Theta tokens from an exchange?</h3>
+                {{/accordionItem.toggle}}
+                {{#accordionItem.panel panelName="stake-exchange"}}
+                  <p>No, staking on the Theta Network is currently only possible using the tokens you have deposited into your official Theta wallet.<br/> 
+                    We suggest using the Wallet link available at the top of the <a href="https://www.thetatoken.org/" target="_blank">https://www.thetatoken.org/</a> and bookmarking 
+                    this as the way to access your official wallet and avoid scams. This is the only location you should ever enter your 12 word seed phrase, or keystore file and password.</p><br/>
                   <br/><br/>
                 {{/accordionItem.panel}}
 
@@ -135,8 +150,8 @@
                 {{/accordionItem.toggle}}
                 {{#accordionItem.panel panelName="minimum"}}
                   <p>For staking on the Theta Network, the minimum amounts are:</p><br/>
-                  <p>1000 Theta tokens, or</p><br/>
-                  <p>10,000 Tfuel tokens.</p><br/>
+                  <p>1000 Theta tokens, or<br/>
+                  10,000 Tfuel tokens.</p><br/>
                   <p>Theses limits are set by Theta Labs and have changed in the past. While possible, there is no stated timeline by Theta Labs for future changes of these minimums.</p><br/>
                   <br/><br/>
                 {{/accordionItem.panel}}
@@ -149,13 +164,13 @@
                   <p>The Theta Network uses a weighted randomly assigned method to send out staking rewards. The algorithms are different for each token.</p><br/>
                   <h4>Theta</h4>
                   <p>Theta staking rewards are paid out every 100 blocks to different stakes, with size of stake increasing the chance of regular payouts.
-                     The amount of Theta staked to the Guardian Node makes no difference.</p><br/>
-                  <p>Theta staking reward amounts are assigned by the Theta blockchain in multiples of 12. Thetaboard fees will
+                     The amount of Theta staked to the Guardian Node makes no difference.<br/>
+                  Theta staking reward amounts are assigned by the Theta blockchain in multiples of 12. Thetaboard fees will
                    be taken out by the time the transaction arrives in your wallet, meaning the amounts will be in multiples of 11.64.</p><br/>
                   <h4>Tfuel</h4>
                   <p>Tfuel staking rewards are paid out every 100 blocks to Edge Nodes, with amount of 
-                    Tfuel staked to that Edge Node increasing the chance of regular payouts. The size of the individual Tfuel stake makes no difference.</p><br/>
-                  <p>Tfuel staking reward amounts vary greatly, based on the size of your stake. They are often three decimal places and are regularly 5 Tfuel and under.</p><br/>
+                    Tfuel staked to that Edge Node increasing the chance of regular payouts. The size of the individual Tfuel stake makes no difference.<br/>
+                  Tfuel staking reward amounts vary greatly, based on the size of your stake. They are often three decimal places and are regularly 5 Tfuel and under.</p><br/>
                   <br/><br/>
                 {{/accordionItem.panel}}
 
@@ -285,11 +300,11 @@
                  <h3 id="domains" class="faq-title"><img src="{{rootURL}}/assets/img/arrow-white.png"/> What are the Theta Domain Names available to be purchased through Thetaboard?</h3>
                 {{/accordionItem.toggle}}
                 {{#accordionItem.panel panelName="domains"}}
-                  <p>Domains are currently a proof of concept. You can currently buy and sell Domains, and use them to Search Wallets by name within Thetaboard's website, and toshow your support to Thetaboard.</p><br/>
-                  <p>At some point in 2021 we will migrate to final contracts. These will be NFT’s and will be integrated in the theta wallets, in order to do transactions using domain names instead of wallet addresses.</p><br/>
-                  <p>However, we won’t be able to migrate currently bought domains to the new version.</p><br/>
-                  <p>Further reading about the Theta Network can be found here.</p><br/>
-                  <p><a href="https://docs.thetatoken.org/docs/what-is-theta-network" target="_blank">https://docs.thetatoken.org/docs/what-is-theta-network</a></p>
+                  <p>Domains are currently a proof of concept. You can currently buy and sell Domains, and use them to Search Wallets by name within Thetaboard's website, and toshow your support to Thetaboard.<br/>
+                  At some point in 2021 we will migrate to final contracts. These will be NFT’s and will be integrated in the theta wallets, in order to do transactions using domain names instead of wallet addresses.<br/>
+                  However, we won’t be able to migrate currently bought domains to the new version.<br/>
+                  Further reading about the Theta Network can be found here.<br/>
+                  <a href="https://docs.thetatoken.org/docs/what-is-theta-network" target="_blank">https://docs.thetatoken.org/docs/what-is-theta-network</a></p>
                   <br/><br/>
                 {{/accordionItem.panel}} 
 
