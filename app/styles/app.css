@@ -991,6 +991,9 @@ a.logout {
 }
 
 #faq-page div.faq-card-desc h4,
-#faq-page div.faq-card-desc p {
+#faq-page div.faq-card-desc p,
+#faq-page div.faq-card-desc h3.faq-title {
   text-align: center;
+  position: relative;
+  z-index: 9;
 }

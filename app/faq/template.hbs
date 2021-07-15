@@ -99,6 +99,7 @@
                   <h4>Staking Theta to a Guardian Node</h4>
                   <p><a target="_blank" href="https://docs.thetatoken.org/docs/guardian-staking-process">https://docs.thetatoken.org/docs/guardian-staking-process</a></p><br/>
                   <p>You can use the one-click Guardian Node address for Thetaboard during the process inside your Theta wallet.</p><br/>
+                  <p>If you are staking more than 10,000 Theta to our Guardian Node, use the summary available on our <LinkTo @route="staking.theta">Theta Staking page</LinkTo>, as Theta Labs has a 10,000 maximum for one-click Theta delegations</p>
                   <p>Further reading from Theta Labs regarding Theta 1 click delegated staking:</p><br/>
                   <p><a target="_blank" href="https://medium.com/theta-network/theta-1-click-delegated-staking-now-live-in-the-theta-web-wallet-b80d499aae71">https://medium.com/theta-network/theta-1-click-delegated-staking-now-live-in-the-theta-web-wallet-b80d499aae71</a></p><br/>
                   <h4>Staking Tfuel to an Elite Edge Node</h4>
@@ -237,12 +238,14 @@
                 {{/accordionItem.toggle}}
                 {{#accordionItem.panel panelName="withdraw"}}
                   <p>You can withdraw your staked tokens from inside your Theta wallet.</p><br/>
+                  <p>For further information about the Withdraw Stake process, read the official Theta documentation here:<br/>
+                  <a href="https://docs.thetatoken.org/docs/withdrawing-your-stake-from-the-guardian-node" target="_blank">https://docs.thetatoken.org/docs/withdrawing-your-stake-from-the-guardian-node</a></p>
                   <br/><br/>
                 {{/accordionItem.panel}}
 
 
                 {{#accordionItem.toggle panelName="withdrawn" as |isActive|}}
-                 <h3 id="withdrawn" class="faq-title"><img src="{{rootURL}}/assets/img/arrow-white.png"/> I have withdrawnn my staked tokens and they are not in my wallet yet. Where are they?</h3>
+                 <h3 id="withdrawn" class="faq-title"><img src="{{rootURL}}/assets/img/arrow-white.png"/> I have withdrawn my staked tokens and they are not in my wallet yet. Where are they?</h3>
                 {{/accordionItem.toggle}}
                 {{#accordionItem.panel panelName="withdrawn"}}
                   <p>Both Theta and Tfuel tokens take approximately 54 hours to unstake. They will then appear in your original wallet.</p><br/>
