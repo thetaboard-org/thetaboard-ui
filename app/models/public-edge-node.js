@@ -1,4 +1,4 @@
-import Model, { attr } from '@ember-data/model';
+import Model, { attr, belongsTo } from '@ember-data/model';
 import { computed } from '@ember/object';
 import { htmlSafe } from '@ember/template';
 
@@ -6,6 +6,8 @@ export default class PublicEdgeNodeModel extends Model {
   @attr('number') nodeId;
   @attr('string') summary;
   @attr('number') stakeAmount;
+  @attr('number') affiliateId;
+  @belongsTo('affiliate') affiliate;
 
   @computed('stakeAmount')
   get stakeAmountK() {

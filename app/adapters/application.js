@@ -22,4 +22,12 @@ export default class ApplicationAdapter extends JSONAPIAdapter {
     }
     return super.handleResponse(...arguments);
   }
+
+  normalizeErrorResponse(status, headers, payload) {
+    if (payload && typeof payload === 'object' && payload.errors) {
+      return payload.errors;
+    } else {
+      return payload;
+    }
+  }
 }

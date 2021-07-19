@@ -49,6 +49,7 @@ Router.map(function () {
     this.route('tfuel');
     this.route('theta');
     this.route('tfuelvip');
+    this.route('affiliate', {path: '/affiliate/:affiliate'});
   });
   this.route('my-wallets');
 });

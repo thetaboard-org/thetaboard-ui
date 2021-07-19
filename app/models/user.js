@@ -8,6 +8,7 @@ export default class UserModel extends Model {
   @attr('string', { defaultValue: 'User' }) scope;
   @hasMany('tfuelstake') tfuelstakes;
   @hasMany('wallet') wallets;
+  @hasMany('affiliate') affiliates;
 
   @computed('isVerified')
   get notVerified() {

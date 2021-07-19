@@ -1,4 +1,4 @@
-{{page-title "Staking Tfuel"}}
+{{page-title "Affiliate Tfuel"}}
 
 <div class="card card-user">
   <div class="card-body card-min-390">
@@ -8,33 +8,31 @@
       <div class="block block-two"></div>
       <div class="block block-three"></div>
       <div class="block block-four"></div>
-      <img class="avatar" src="{{rootURL}}/assets/img/logo/tfuel.png" alt="...">
+      {{#if affiliate.logo}}
+        <img class="avatar" src="{{affiliate.logo}}" alt="...">
+      {{else}}
+        <img class="avatar" src="{{rootURL}}/assets/img/logo/tfuel.png" alt="...">
+      {{/if}}
     </div>
     <div class="card-body-stake">
-      <h5 class="title">Tfuel Public Staking
+      <h5 class="title">{{affiliate.displayName}} Tfuel Public Staking
         {{#if this.thetaSdk.tfuelAPR}}<br>Earn up to <span class="nostyle" {{numberformat this.thetaSdk.tfuelAPR 1}}></span>% APR*.{{/if}}
       </h5>
       <div class="row justify-content-lg-center justify-content-md-center">
         <form class="col-md-9">
-          <label>You can Stake Tfuel on our Delegate Elite Edge Nodes</label>
+          <label>Stake Tfuel to {{affiliate.displayName}} community Elite Edge Nodes</label>
           <p>0% fee until 07/31/2021 (3% fee starting on 08/01/2021)</p>
           <br/>
           <p> Just follow the <a href="https://docs.thetatoken.org/docs/elite-edge-node-staking-process">Theta
             documentation </a> using the Summaries below</p>
-          <p>If you have more than 100,000 Tfuel, stake on our
-            <LinkTo @route="staking.tfuelvip">VIP Elite Edge Nodes</LinkTo>
-          </p>
           <br/>
           {{#each edgeNodeListSorted as |edgeNode|}}
-            {{#if edgeNode.affiliateId}}
-            {{else}}
-              <p class="summary-value">Staked: {{edgeNode.stakeAmountK}}K / Available: {{edgeNode.availableStakeK}}K</p>
-              <div style="{{edgeNode.percentFillSafe}}" class="edge-node-top-border"></div>
-              <div data-toggle="modal" data-target="#EdgeSummaryModal" {{on 'click' (fn this.setupModalSummary edgeNode.summary)}} style="cursor: pointer;" class="card-description-summary">
-                <p class="summary-value">{{edgeNode.summary}}</p>
-              </div>
-              <br/>
-            {{/if}}
+          <p class="summary-value">Staked: {{edgeNode.stakeAmountK}}K / Available: {{edgeNode.availableStakeK}}K</p>
+            <div style="{{edgeNode.percentFillSafe}}" class="edge-node-top-border"></div>
+            <div data-toggle="modal" data-target="#EdgeSummaryModal" {{on 'click' (fn this.setupModalSummary edgeNode.summary)}} style="cursor: pointer;" class="card-description-summary">
+              <p class="summary-value">{{edgeNode.summary}}</p>
+            </div>
+            <br/>
           {{/each}}
         </form>
       </div>
