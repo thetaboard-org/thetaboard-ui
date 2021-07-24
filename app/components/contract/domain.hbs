@@ -10,7 +10,7 @@
                 <div class="block block-two"></div>
                 <div class="block block-three"></div>
                 <div class="block block-four"></div>
-                <h2 class="card-title domain-title">Buy a Theta Domain Name</h2>
+                <h2 class="card-title domain-title">{{t 'domain.buy.title'}}</h2>
                 </div>
             </div>
         </div>
@@ -21,12 +21,12 @@
             <div class="row">
                 <div class="col-md-10 domain-block-centered">
                     <div class="form-group domain-body-block">
-                        <label>Enter a Domain Name to check it's availibility:</label> <br/><br/>
+                        <label>{{t 'domain.buy.subtitle'}}:</label> <br/><br/>
                         <div class="input-group mb-3">
                             <div class="input-group-prepend border-color-grey">
                                 <span class="input-group-text" id="basic-addon1"><i class="tim-icons icon-book-bookmark"></i></span>
                             </div>
-                            <Input @placeholder="Enter Domain Name" @type="text" aria-label="Domain" aria-describedby="basic-addon1" class="form-control border-color" @value={{this.domainName}}/>
+                            <Input @placeholder={{t 'domain.buy.placeholder'}} @type="text" aria-label="Domain" aria-describedby="basic-addon1" class="form-control border-color" @value={{this.domainName}}/>
                         </div>
                     </div>
                 </div>
@@ -37,18 +37,18 @@
                 <div class="row">
                 <div class="col-md-12">
                     <br/>
-                    <label class="alert alert-success emphesized">The domain name: <br/>{{this.domainName}}<br/>is available you can buy it for 5 Tfuel!</label>
+                    <label class="alert alert-success emphesized">{{t 'domain.buy.domain_name'}}: <br/>{{this.domainName}}<br/>{{t 'domain.buy.available'}}</label>
                     <br/>
                     <div class="form-group">
                         <br/>
                         {{#if this.assignToBuyer}}
-                            <label>The domain name <label class="emphesized">{{this.domainName}}</label> will be assigned to your wallet address per default.<br/>
-                            But you can also assign/gift it to another wallet address</label>
-                            <button {{on 'click' this.giftDomain}} type="submit" class="btn btn-fill btn-primary btn-left">Gift someone else with this domain name!</button>
+                            <label>{{t 'domain.buy.domain_name'}} <label class="emphesized">{{this.domainName}}</label> {{t 'domain.buy.will_assign'}}<br/>
+                            {{t 'domain.buy.but'}}</label>
+                            <button {{on 'click' this.giftDomain}} type="submit" class="btn btn-fill btn-primary btn-left">{{t 'domain.buy.gift'}}</button>
                         {{else}}
-                            <label>Enter the wallet address that will be assigned<br/>to the domain name: <label class="emphesized">{{this.domainName}}</label></label>
-                            <Input @placeholder="Enter Receiver's Wallet Address" @type="text" class="form-control border-color" @value={{this.walletAddressReceiver}}/>
-                            <button {{on 'click' this.resetGiftDomain}} type="submit" class="btn btn-fill btn-primary btn-left">Or assign it to my wallet address!</button>
+                            <label>{{t 'domain.buy.enter_wallet_assign'}}<br/>{{t 'domain.buy.to_domain'}} <label class="emphesized">{{this.domainName}}</label></label>
+                            <Input @placeholder={{t 'domain.buy.enter_receiver'}} @type="text" class="form-control border-color" @value={{this.walletAddressReceiver}}/>
+                            <button {{on 'click' this.resetGiftDomain}} type="submit" class="btn btn-fill btn-primary btn-left">{{t 'domain.buy.your_wallet'}}</button>
                         {{/if}}
                     </div>
                 </div>
@@ -60,12 +60,12 @@
                 <div class="row">
                 <div class="col-md-12">
                     <br/>
-                    <label class="alert alert-info emphesized">The domain name:<br/>{{this.domainName}}<br/>is already taken!<br/> But you can make an offer to buy it!</label>
+                    <label class="alert alert-info emphesized">{{t 'domain.buy.domain_name'}}:<br/>{{this.domainName}}<br/>{{t 'domain.buy.already_taken'}}<br/> {{t 'domain.buy.can_make_offer'}}</label>
                     <br/>
                     <div class="form-group">
                         <br/>
-                        <label>Amount of your offer in Tfuel:</label>
-                        <Input @placeholder="Amount (in Tfuel)" @type="number" @min="1" class="form-control border-color" @value={{this.offerAmount}}/>
+                        <label>{{t 'domain.buy.offer_amount'}}:</label>
+                        <Input @placeholder={{t 'domain.buy.amount_tfuel'}} @type="number" @min="1" class="form-control border-color" @value={{this.offerAmount}}/>
                     </div>
                 </div>
                 </div>
@@ -74,15 +74,15 @@
     </div>
     <div class="card-footer card-footer-domain">
         {{#if canSearch}}
-            <button {{on 'click' nameToAddressAction}} type="submit" class="btn btn-fill btn-primary btn-left">Search</button>
+            <button {{on 'click' nameToAddressAction}} type="submit" class="btn btn-fill btn-primary btn-left">{{t 'global.search'}}</button>
         {{/if}}
         {{#if this.canByDomain}}
-            <button {{on 'click' cancel}} type="submit" class="btn btn-fill btn-secondary btn-left">Cancel</button>
-            <button {{on 'click' assignNewName}} type="submit" class="btn btn-fill btn-primary btn-left">Review Order</button>
+            <button {{on 'click' cancel}} type="submit" class="btn btn-fill btn-secondary btn-left">{{t 'global.search'}}</button>
+            <button {{on 'click' assignNewName}} type="submit" class="btn btn-fill btn-primary btn-left">{{t 'global.review_order'}}</button>
         {{/if}}
          {{#if this.canMakeOffer}}
-            <button {{on 'click' cancel}} type="submit" class="btn btn-fill btn-secondary btn-left">Cancel</button>
-            <button {{on 'click' makeOffer}} type="submit" class="btn btn-fill btn-primary btn-left">Review offer</button>
+            <button {{on 'click' cancel}} type="submit" class="btn btn-fill btn-secondary btn-left">{{t 'global.search'}}</button>
+            <button {{on 'click' makeOffer}} type="submit" class="btn btn-fill btn-primary btn-left">{{t 'global.review_offer'}}</button>
         {{/if}}
     </div>
 </div>

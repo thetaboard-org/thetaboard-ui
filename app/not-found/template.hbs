@@ -14,11 +14,11 @@
         </div>
     </div>
     <div class="card-body card-not-found">
-        <h1>Oops!</h1>
-        <p>The page you are looking for doesn't exist.</p>
+        <h1>{{t 'notfound.oops'}}</h1>
+        <p>{{t 'notfound.page_doesnt_exist'}}</p>
         <br/>
         <LinkTo @class="link-not-find" @route="dashboard">
-            <button type="submit" class="btn btn-fill btn-primary">Go to Dashboard</button>
+            <button type="submit" class="btn btn-fill btn-primary">{{t 'global.go_dash'}}</button>
         </LinkTo>
     </div>
 </div>

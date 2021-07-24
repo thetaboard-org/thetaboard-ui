@@ -3,21 +3,33 @@ import {inject as service} from '@ember/service';
 
 export default class MenuComponent extends Component {
   @service currentUser;
-
+  @service intl
   menuItems = [
-    { name: 'dashboard', icon: 'icon-chart-pie-36' },
-    { name: 'wallet', icon: 'icon-wallet-43' },
     {
-      name: 'staking', icon: 'icon-align-center', route: 'staking.tfuel',
+      name: this.intl.t('menu.dashboard'),
+      icon: 'icon-chart-pie-36',
+      route: 'dashboard',
+    },
+    {
+      name: this.intl.t('menu.wallet'),
+      icon: 'icon-wallet-43',
+      route: 'wallet',
+    },
+    {
+      name: this.intl.t('menu.staking'), icon: 'icon-align-center', route: 'staking.tfuel',
       children: [
         { name: 'Tfuel', icon: 'tfuel-white.png', route: 'staking.tfuel' },
         { name: 'Theta', icon: 'theta-white.png', route: 'staking.theta' },
-        { name: 'Tfuel VIP', icon: 'tfuel-white.png', route: 'staking.tfuelvip' },
+        { name: this.intl.t('menu.tfuel_vip'), icon: 'tfuel-white.png', route: 'staking.tfuelvip' },
       ],
     },
-    { name: 'domain', icon: 'icon-book-bookmark' },
-    { name: 'faq', icon: 'icon-compass-05' },
-    { name: 'guardian', icon: 'icon-align-center', scope: 'Admin' },
+    {
+      name: this.intl.t('menu.domain'),
+      icon: 'icon-book-bookmark',
+      route: 'domain',
+    },
+    { name: this.intl.t('menu.faq'), icon: 'icon-compass-05', route: 'faq' },
+    { name: 'guardian', icon: 'icon-align-center', route: 'guardian', scope: 'Admin' },
   ];
   @service router;
 

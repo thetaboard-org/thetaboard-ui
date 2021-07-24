@@ -10,16 +10,16 @@
                             <div class="block block-two"></div>
                             <div class="block block-three"></div>
                             <div class="block block-four"></div>
-                            <h2 class="card-title domain-title">Your offer was canceled!</h2>
+                            <h2 class="card-title domain-title">{{t 'domain.modal.offer_cancelled'}}</h2>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="card-body card-offers">
-                Your offer to buy the domain name <b>{{this.domainName}}</b> for {{this.offerAmount}} Tfuel has been canceled.
+                 {{t 'domain.modal.offer_to_buy'}} <b>{{this.domainName}}</b> {{t 'global.for'}} {{this.offerAmount}} {{t 'domain.modal.tfuel_canceled'}}.
             </div>
             <div class="card-footer card-footer-domain">
-                <button {{on 'click' this.closeModal}} type="submit" class="btn btn-fill btn-primary btn-left">Close</button>
+                <button {{on 'click' this.closeModal}} type="submit" class="btn btn-fill btn-primary btn-left">{{t 'global.close'}}</button>
             </div>
             <div class="card-header ">
                 <div class="row">

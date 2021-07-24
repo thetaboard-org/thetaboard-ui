@@ -10,18 +10,18 @@
                         <div class="block block-two"></div>
                         <div class="block block-three"></div>
                         <div class="block block-four"></div>
-                        <h2 class="card-title domain-title">Congratulations!!!</h2>
+                        <h2 class="card-title domain-title">{{t 'domain.modal.congrats'}}</h2>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="card-body card-offers">
                 <span class="emphezised alert alert-success">{{this.domainName}}</span>
-                <div>Is assigned to the address:</div>
+                <div>{{t 'domain.modal.is_assigned'}}</div>
                 <span class="emphezised">{{this.walletAddressReceiver}}</span>
             </div>
             <div class="card-footer card-footer-domain">
-                <button {{on 'click' this.closeModal}} type="submit" class="btn btn-fill btn-primary btn-left">Close</button>
+                <button {{on 'click' this.closeModal}} type="submit" class="btn btn-fill btn-primary btn-left">{{t 'global.close'}}</button>
             </div>
             <div class="card-header ">
                 <div class="row">

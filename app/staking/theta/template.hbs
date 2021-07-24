@@ -11,17 +11,17 @@
       <img class="avatar" src="{{rootURL}}/assets/img/logo/theta.png" alt="...">
     </div>
     <div class="card-body-stake">
-      <h5 class="title">Theta Staking</h5>
+      <h5 class="title">{{t 'staking.theta.title'}}</h5>
       <div class="row justify-content-lg-center justify-content-md-center">
         <form class="col-md-9">
-          <label>You can Stake you Theta on our Delegate Guardian Node</label>
-          <p>3% fee on staking rewards (rewards will be in multiples of 11.64 Tfuel)</p>
+          <label>{{t 'staking.theta.subtitle'}}</label>
+          <p>{{t 'staking.theta.fees'}}</p>
           <br/>
           <br/>
-          <p>Please refer to the following tutorial from the Theta Network Team, and don't forget to pick Thetaboard in the list !<br/>
+          <p>{{t 'staking.theta.tuto'}}<br/>
           <a target="_blank" href="https://medium.com/theta-network/theta-1-click-delegated-staking-now-live-in-the-theta-web-wallet-b80d499aae71">https://medium.com/theta-network/theta-1-click-delegated-staking-now-live-in-the-theta-web-wallet-b80d499aae71</a>.</p>
           <br/><br/>
-          <p>Or you can use the following summary if you know what you are doing:</p>
+          <p>{{t 'staking.theta.use_summary'}}:</p>
           <input id="input-to-copy-from-theta" class="input-to-hide" value="{{summary}}"/>
          <div {{on "click" (action this.copySummaryToClipBoard 'Summary' 'input-to-copy-from-theta')}} style="cursor: pointer;" class="card-description-summary">
             <p class="summary-value">{{summary}}</p>
@@ -32,18 +32,18 @@
       <div class="stakes-no-activity">
         {{#if this.thetaSdk.guardianWallets.length}}
           <div class="stakes-activity">
-            <p class="title">Your Stakes</p>
+            <p class="title">{{t 'global.your_stakes'}}</p>
             {{#each this.thetaSdk.guardianWallets as |guardianWallet|}}
               <p class="title"><img src="{{rootURL}}/assets/img/logo/theta.png" style="width: 15px; margin-left: 3px; margin-top: -2px;"/>
-                <span class="nostyle" {{numberformat guardianWallet.amount 2}}></span> <span class="capitalize">{{guardianWallet.currency}}</span> Staked</p>
-              <p class="description">Staked on node address:<br/>{{guardianWallet.node_address}}</p>
+                <span class="nostyle" {{numberformat guardianWallet.amount 2}}></span> <span class="capitalize">{{guardianWallet.currency}}</span> {{t 'global.staked'}}</p>
+              <p class="description">{{t 'global.staked_on'}}:<br/>{{guardianWallet.node_address}}</p>
             {{/each}}
           </div>
         {{else}}
           <br/><br/><br/>
           <div class="stakes-no-activity">
-            <p class="title">You don't have any Theta staked.</p><br/>
-            <p class="description"> Stake your THETA to earn TFUEL</p>
+            <p class="title">{{t 'staking.theta.no_theta_staked'}}</p><br/>
+            <p class="description">{{t 'staking.theta.earn'}}</p>
           </div>
         {{/if}}
       </div>

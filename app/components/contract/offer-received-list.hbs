@@ -8,7 +8,7 @@
                 <div class="block block-two"></div>
                 <div class="block block-three"></div>
                 <div class="block block-four"></div>
-                <h2 class="card-title domain-title">Offer Received</h2>
+                <h2 class="card-title domain-title">{{t 'domain.offer_received.title'}}</h2>
                 </div>
             </div>
         </div>
@@ -20,23 +20,23 @@
                     <div class="offer-made-cards">
                         <h3>{{offerReceived.domainName}}</h3>
                         <div class="alert-success alert emphesized">
-                            <span>Offer amount:</span>
-                            <p>{{offer.offerAmount}} Tfuel</p>
+                            <span>{{t 'domain.offer_amount'}}</span>
+                            <p>{{offer.offerAmount}} {{t 'global.tfuel'}}</p>
                         </div>
                         <br/><br/>
-                        <div>{{offer.walletMakingOffer}}<br/> made an offer to buy your Domain:</div><br/>
+                        <div>{{offer.walletMakingOffer}}<br/> {{t 'domain.offer_received.offer_made'}}</div><br/>
                         <div class="buttons-container">
-                            <button type="submit" {{on 'click' (fn this.offer.rejectOffer offerReceived)}} class="btn btn-fill btn-secondary">Reject Offer</button>
-                            <button type="submit" {{on 'click' (fn this.offer.acceptOffer offerReceived)}} class="btn btn-fill btn-primary">Accept Offer</button>
+                            <button type="submit" {{on 'click' (fn this.offer.rejectOffer offerReceived)}} class="btn btn-fill btn-secondary">{{t 'domain.offer_received.reject_offer'}}</button>
+                            <button type="submit" {{on 'click' (fn this.offer.acceptOffer offerReceived)}} class="btn btn-fill btn-primary">{{t 'domain.offer_received.accept_offer'}}</button>
                         </div>
                     </div>
                 {{/each}}
             {{else}}
-                <p class="offer-placeholder">No offer received.</p>
+                <p class="offer-placeholder">{{t 'domain.offer_received.no_offer'}}</p>
             {{/each}}
-                <button type="submit" {{on 'click' this.connectWallet}} class="btn btn-fill btn-primary connect-wallet-offer-button refresh-offer">Refresh</button>
+                <button type="submit" {{on 'click' this.connectWallet}} class="btn btn-fill btn-primary connect-wallet-offer-button refresh-offer">{{t 'global.refresh'}}</button>
         {{else}}
-            <p class="offer-placeholder connection-offer">Please <LinkTo @route="my-wallets" @class="connect-wallet-offer-button">link your wallet</LinkTo> to access your offers.</p>
+            <p class="offer-placeholder connection-offer">{{t 'global.please'}} <LinkTo @route="my-wallets" @class="connect-wallet-offer-button">{{t 'global.link_wallet'}}</LinkTo> {{t 'domain.offer_made.to_access'}}</p>
         {{/if}}
     </div>
 </div>

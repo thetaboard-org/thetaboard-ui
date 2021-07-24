@@ -8,7 +8,7 @@
         </LinkTo>
     </div>
     <div class="card-body">
-    <h4 class="card-title">Login</h4>
+    <h4 class="card-title">{{t 'global.login'}}</h4>
         <form {{on 'submit' this.authenticate}}>
             {{#each this.errorMessages as |error|}}
                 <div class="row">
@@ -22,44 +22,21 @@
             <div class="row">
                 <div class="col-md-6" style=" margin: auto;">
                     <div class="form-group">
-                    <Input @type="email" required minlength="6" @class="form-control" @placeholder="Email" style="text-align:center;" @value={{email}}/>
+                    <Input @type="email" required minlength="6" @class="form-control" @placeholder={{t 'global.email'}} style="text-align:center;" @value={{email}}/>
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-6" style=" margin: auto;">
                     <div class="form-group">
-                    <Input @type="password" required minlength="6" @class="form-control" @placeholder="Password" style="text-align:center;" @value={{password}}/>
+                    <Input @type="password" required minlength="6" @class="form-control" @placeholder={{t 'global.password'}} style="text-align:center;" @value={{password}}/>
                     </div>
                 </div>
             </div>
-            <button type="submit" class="btn btn-primary">Login</button>
+            <button type="submit" class="btn btn-primary">{{t 'global.login'}}</button>
         </form>
     <br/>
-    {{!-- <br/>
-    <p class="card-text">Or</p>
-    <div class="col-md-6" style=" margin: auto;">
-        <div class="social-login">
-            <img src="{{rootURL}}assets/img/google.svg" width="17px" /> 
-            <span>Login with Google</span>
-        </div>
-
-        <div class="social-login">
-            <img src="{{rootURL}}assets/img/facebook.png" width="17px" /> 
-            <span>Login with Facebook</span>
-        </div>
-
-        <div class="social-login">
-            <img src="{{rootURL}}assets/img/twitter.png" width="17px" /> 
-            <span>Login with Twitter</span>
-        </div>
-
-        <div class="social-login">
-            <img src="{{rootURL}}assets/img/github.png" width="17px" /> 
-            <span>Login with Github</span>
-        </div>
-    </div> --}}
-    <LinkTo @class="nav-link" @route="signup">No account yet? Sign up for an account</LinkTo>
-    <LinkTo @class="nav-link" @route="resetpassword">Can't login?</LinkTo>
+    <LinkTo @class="nav-link" @route="signup">{{t 'login.no_account'}}</LinkTo>
+    <LinkTo @class="nav-link" @route="resetpassword">{{t 'login.cant_login'}}</LinkTo>
   </div>
 </div>

@@ -11,24 +11,23 @@
       <img class="avatar" src="{{rootURL}}/assets/img/logo/tfuel.png" alt="...">
     </div>
     <div class="card-body-stake">
-      <h5 class="title">Tfuel Public Staking
-        {{#if this.thetaSdk.tfuelAPR}}<br>Earn up to <span class="nostyle" {{numberformat this.thetaSdk.tfuelAPR 1}}></span>% APR*.{{/if}}
+      <h5 class="title">{{t 'staking.tfuel.title'}}
+        {{#if this.thetaSdk.tfuelAPR}}<br>{{t 'staking.earn_up_to'}} <span class="nostyle" {{numberformat this.thetaSdk.tfuelAPR 1}}></span>% {{t 'global.apr'}}*.{{/if}}
       </h5>
       <div class="row justify-content-lg-center justify-content-md-center">
         <form class="col-md-9">
-          <label>You can Stake Tfuel on our Delegate Elite Edge Nodes</label>
-          <p>0% fee until 07/31/2021 (3% fee starting on 08/01/2021)</p>
+          <label>{{t 'staking.tfuel.subtitle'}}</label>
+          <p>{{t 'staking.tfuel_fees'}}</p>
           <br/>
-          <p> Just follow the <a href="https://docs.thetatoken.org/docs/elite-edge-node-staking-process">Theta
-            documentation </a> using the Summaries below</p>
-          <p>If you have more than 100,000 Tfuel, stake on our
-            <LinkTo @route="staking.tfuelvip">VIP Elite Edge Nodes</LinkTo>
+          <p> {{t 'staking.tfuel.follow'}} <a href="https://docs.thetatoken.org/docs/elite-edge-node-staking-process">{{t 'global.theta_doc'}} </a> {{t 'staking.tfuel.using_summary'}}</p>
+          <p>{{t 'staking.tfuel.stake_on'}}
+            <LinkTo @route="staking.tfuelvip">{{t 'global.vip_een'}}</LinkTo>
           </p>
           <br/>
           {{#each edgeNodeListSorted as |edgeNode|}}
             {{#if edgeNode.affiliateId}}
             {{else}}
-              <p class="summary-value">Staked: {{edgeNode.stakeAmountK}}K / Available: {{edgeNode.availableStakeK}}K</p>
+              <p class="summary-value">{{t 'global.staked'}}: {{edgeNode.stakeAmountK}}K / {{t 'global.available'}}: {{edgeNode.availableStakeK}}K</p>
               <div style="{{edgeNode.percentFillSafe}}" class="edge-node-top-border"></div>
               <div data-toggle="modal" data-target="#EdgeSummaryModal" {{on 'click' (fn this.setupModalSummary edgeNode.summary)}} style="cursor: pointer;" class="card-description-summary">
                 <p class="summary-value">{{edgeNode.summary}}</p>
@@ -41,7 +40,7 @@
     </div>
   </div>
   <div class="card-footer">
-    <sub>*Thetaboard cannot guarantee this APR as it is dependent on the Theta Network.</sub>
+    <sub>*{{t 'global.apr_not_guarentee'}}.</sub>
   </div>
 </div>
 
@@ -51,7 +50,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="EdgeSummaryModalLabel">Edge Node Summary</h5>
+        <h5 class="modal-title" id="EdgeSummaryModalLabel">{{t 'global.en_summary'}}</h5>
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
           <i class="tim-icons icon-simple-remove"></i>
         </button>
@@ -61,8 +60,8 @@
         <input id="input-to-copy-from-tfuel" class="input-to-hide" value="{{modalSummary}}"/>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" {{on "click" (fn this.copySummaryToClipBoard 'Edge Node Summary' 'input-to-copy-from-tfuel')}}>Copy Summary</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">{{t 'global.close'}}</button>
+        <button type="button" class="btn btn-primary" {{on "click" (fn this.copySummaryToClipBoard 'Edge Node Summary' 'input-to-copy-from-tfuel')}}>{{t 'global.copy_summary'}}</button>
       </div>
     </div>
   </div>

@@ -17,33 +17,33 @@
                 </div>
                 <div class="card-body-stake">
                     {{#if @model.data.id}}
-                        <h3 class="title">Welcome to Thetaboard </h3>
+                        <h3 class="title">{{t 'global.welcome'}}</h3>
                         <div class="row justify-content-lg-center justify-content-md-center">
                             <form class="stakes-deposit col-md-9">
                                 <div class="form-group">
-                                    <label>Your email is now verified.</label>
+                                    <label>{{t 'verify.email_verified'}}</label>
                                     <br/><br/>
                                     {{#if isUserAuthenticated}}
-                                        <a href="/" class="btn btn-primary">Go to dashboard</a>
+                                        <a href="/" class="btn btn-primary">{{t 'global.go_dash'}}</a>
                                     {{else}}
-                                        <p>You can now login to your account</p>
+                                        <p>{{t 'verify.can_login'}}</p>
                                         <br/>
-                                        <a href="/login" class="btn btn-primary">Login</a>
+                                        <a href="/login" class="btn btn-primary">{{t 'global.login'}}</a>
                                     {{/if}}
                                     <br/><br/><br/>
                                 </div>
                             </form>
                         </div>
                     {{else if @model.data.error}}
-                        <h3 class="title">Thetaboard </h3>
+                        <h3 class="title">Thetaboard</h3>
                         <div class="row justify-content-lg-center justify-content-md-center">
                             <form class="stakes-deposit col-md-9">
                                 <div class="form-group">
-                                    <label>Your verification link is invalid.</label>
+                                    <label>{{t 'verify.link_invalid'}}</label>
                                     <br/><br/>
-                                    <p>Log into your account and click on the "Re-send verification link" banner.</p>
+                                    <p>{{t 'verify.click_banner'}}</p>
                                     <br/>
-                                    <LinkTo @route="login" @class="btn btn-primary">Go to login</LinkTo>
+                                    <LinkTo @route="login" @class="btn btn-primary">{{t 'global.login'}}</LinkTo>
                                     <br/><br/>
                                 </div>
                             </form>

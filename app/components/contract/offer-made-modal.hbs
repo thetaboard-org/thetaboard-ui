@@ -10,17 +10,17 @@
                         <div class="block block-two"></div>
                         <div class="block block-three"></div>
                         <div class="block block-four"></div>
-                        <h2 class="card-title domain-title">Your offer was sent!</h2>
+                        <h2 class="card-title domain-title">{{t 'domain.modal.offer_sent'}}</h2>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="card-body card-offers">
-                You offered {{this.offerAmount}} Tfuel to buy the domain name <b>{{this.domainName}}</b> from the wallet address:
+                {{t 'domain.modal.you_offered'}} {{this.offerAmount}} {{t 'domain.modal.tfuel_buy'}} <b>{{this.domainName}}</b> {{t 'domain.modal.from'}}
                 <div>{{this.ownerAddress}}</div>
             </div>
             <div class="card-footer card-footer-domain">
-                <button {{on 'click' this.closeModal}} type="submit" class="btn btn-fill btn-primary btn-left">Close</button>
+                <button {{on 'click' this.closeModal}} type="submit" class="btn btn-fill btn-primary btn-left">{{t 'global.close'}}</button>
             </div>
             <div class="card-header ">
                 <div class="row">

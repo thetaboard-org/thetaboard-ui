@@ -1,9 +1,11 @@
 import Component from '@glimmer/component';
-import {action} from '@ember/object';
-import {tracked} from '@glimmer/tracking';
+import { action } from '@ember/object';
+import { tracked } from '@glimmer/tracking';
+import { inject as service } from '@ember/service';
 
 export default class PriceChartComponent extends Component {
   @tracked time_range = 'year';
+  @service intl;
 
   get chartData() {
     let historic_data = {};
@@ -52,7 +54,7 @@ export default class PriceChartComponent extends Component {
           borderWidth: 1,
         },
         {
-          label: 'Theta/Tfuel ratio',
+          label: this.intl.t('global.ratio_theta_tfuel'),
           yAxisID: 'ratio',
           pointStyle: 'point',
           radius: 0,
@@ -67,6 +69,8 @@ export default class PriceChartComponent extends Component {
 
   @action
   setupChart() {
+    moment.locale("nl");
+
     const element = document.getElementById('lineChartExample');
     const formatter = new Intl.NumberFormat('en-US', {
       style: 'currency',
@@ -89,7 +93,7 @@ export default class PriceChartComponent extends Component {
           },
           label: (tooltipItem) => {
             if (tooltipItem.datasetIndex === 2) {
-              return `1 Theta is worth ${Math.round(Number(tooltipItem.yLabel), 1)} Tfuels`;
+              return `1 Theta ${this.intl.t('price_chart.is_worth')} ${Math.round(Number(tooltipItem.yLabel), 1)} Tfuels`;
             }
             if (Number(tooltipItem.yLabel) > 0.01) {
               return formatter.format(Number(tooltipItem.yLabel));

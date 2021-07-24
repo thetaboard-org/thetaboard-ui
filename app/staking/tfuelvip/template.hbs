@@ -11,18 +11,17 @@
       <img class="avatar" src="{{rootURL}}/assets/img/logo/tfuel.png" alt="..."/>
     </div>
     <div class="card-body-stake">
-      <h5 class="title">Tfuel VIP Elite Edge Node Staking<br>Earn up to
-        {{#if this.thetaSdk.tfuelAPR}}<br>Earn up to <span class="nostyle" {{numberformat this.thetaSdk.tfuelAPR 1}}></span>% APR*.{{/if}}
+      <h5 class="title">{{t 'staking.vip.title'}}
+        {{#if this.thetaSdk.tfuelAPR}}<br>{{t 'staking.earn_up_to'}} <span class="nostyle" {{numberformat this.thetaSdk.tfuelAPR 1}}></span>% {{t 'global.apr'}}*.{{/if}}
       </h5>
-      <p>0% fee until 07/31/2021 (3% fee starting on 08/01/2021)</p>
+      <p>{{t 'staking.tfuel_fees'}}</p>
       <div class="row justify-content-lg-center justify-content-md-center">
         <form {{on 'submit' this.submitStake}} class="stakes-deposit col-md-9">
           <div class="form-group">
 
-            <p> Enter your wallet address below to get a new Edge Node <br>
-              Once you have your summary, you can use <a
-                      href="https://docs.thetatoken.org/docs/elite-edge-node-staking-process">Theta
-                documentation </a> to start staking</p>
+            <p> {{t 'staking.vip.subtitle'}} <br>
+              {{t 'staking.vip.once_summary'}} <a
+                      href="https://docs.thetatoken.org/docs/elite-edge-node-staking-process">{{t 'global.theta_doc'}} </a> {{t 'staking.vip.start_staking'}}</p>
             {{#each this.errorMessages as |error|}}
               <div class="row">
                 <div class="col-sm-12 col-lg-8" style=" margin: auto;">
@@ -37,7 +36,7 @@
                 <br/>
                 <div class="dropdown">
                   <div class="">
-                    <Input required minlength="42" @type="text" @min="0" @placeholder="Enter wallet address"
+                    <Input required minlength="42" @type="text" @min="0" @placeholder={{t 'global.enter_wallet'}}
                            style="text-align: center;" class="form-control border-color" @value={{walletAddress}}/>
                   </div>
                   {{#if showWallet}}
@@ -47,7 +46,7 @@
                                 wallet.address}}>{{wallet.address}}</span>)</p>
                         <hr style="margin: 0 0 5px 0;"/>
                       {{/each}}
-                      <a {{on 'click' this.clear}}><p><a href="">Clear</a></p></a>
+                      <a {{on 'click' this.clear}}><p><a href="">{{t 'global.clear'}}</a></p></a>
                     </div>
                   {{/if}}
                 </div>
@@ -55,24 +54,24 @@
               </div>
             </div>
           </div>
-          <button type="submit" class="btn btn-fill btn-primary btn-left">Submit</button>
+          <button type="submit" class="btn btn-fill btn-primary btn-left">{{t 'global.submit'}}</button>
         </form>
       </div>
       <br/><br/><br/>
       <div class="stakes-no-activity">
         {{#if this.stakeList.length}}
           <br/>
-          <p class="title">VIP Elite Edge Nodes List</p>
+          <p class="title">{{t 'staking.vip.node_list'}}</p>
           <br/>
           <br/>
           <div class="table-responsive transac-history-table">
             <table class="table" style="table-layout: fixed;">
               <thead>
               <tr>
-                <th class="text-center">Date</th>
-                <th class="text-center">Stake Amount</th>
-                <th class="text-center">Wallet Address</th>
-                <th class="text-center">Summary</th>
+                <th class="text-center">{{t 'global.date'}}</th>
+                <th class="text-center">{{t 'staking.vip.stake_amount'}}</th>
+                <th class="text-center">{{t 'global.wallet_address'}}</th>
+                <th class="text-center">{{t 'global.summary'}}</th>
               </tr>
               </thead>
               <tbody>
@@ -86,12 +85,12 @@
                   {{#if stake.summary}}
                     <td>
                       <button class="btn btn-primary" {{on 'click' (fn this.setupModalSummary stake.summary)}}
-                              data-toggle="modal" data-target="#SummaryModal">See Summary
+                              data-toggle="modal" data-target="#SummaryModal">{{t 'staking.vip.see_summary'}}
                       </button>
                     </td>
                   {{else}}
                     <td>
-                      A Summary will appear soon.
+                      {{t 'staking.vip.summary_will_appear'}}.
                     </td>
                   {{/if}}
                 </tr>
@@ -100,29 +99,29 @@
             </table>
           </div>
         {{else}}
-          <p class="title">You don't have a VIP Elite Edge Node yet</p>
+          <p class="title">{{t 'staking.vip.no_vip'}}</p>
         {{/if}}
       </div>
     </div>
   </div>
     {{#if this.thetaSdk.eliteEdgeNodeWallets.length}}
       <div style="text-align: center;" class="stakes-activity">
-        <p class="title">Your Stakes</p>
+        <p class="title">{{t 'global.your_stakes'}}</p>
         {{#each this.thetaSdk.eliteEdgeNodeWallets as |eliteEdgeNode|}}
           <p class="title"><img src="{{rootURL}}/assets/img/logo/tfuel.png" style="width: 15px; margin-left: 3px; margin-top: -2px;"/>
-            <span class="nostyle" {{numberformat eliteEdgeNode.amount 2}}></span> <span class="capitalize">{{eliteEdgeNode.currency}}</span> Staked</p>
-          <p class="description">Staked on node address:<br/>{{eliteEdgeNode.node_address}}</p>
+            <span class="nostyle" {{numberformat eliteEdgeNode.amount 2}}></span> <span class="capitalize">{{eliteEdgeNode.currency}}</span> {{t 'global.staked'}}</p>
+          <p class="description">{{t 'global.staked_on'}}:<br/>{{eliteEdgeNode.node_address}}</p>
         {{/each}}
       </div>
     {{else}}
       <br/><br/><br/>
       <div style="text-align: center;" class="stakes-no-activity">
-        <p class="title">You don't have any Tfuel staked.</p><br/>
-        <p class="description"> Stake your Tfuel to earn TFUEL</p>
+        <p class="title">{{t 'staking.vip.no_tfuel_staked'}}</p><br/>
+        <p class="description"> {{t 'staking.vip.earn'}}</p>
       </div>
     {{/if}}
   <div class="card-footer">
-    <sub>*Thetaboard cannot guarantee this APR as it is dependent on the Theta Network.</sub>
+    <sub>*{{t 'global.apr_not_guarentee'}}.</sub>
   </div>
 </div>
 
@@ -131,7 +130,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="SummaryModalLabel">Edge Node Summary</h5>
+        <h5 class="modal-title" id="SummaryModalLabel">{{t 'global.en_summary'}}</h5>
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
           <i class="tim-icons icon-simple-remove"></i>
         </button>
@@ -141,8 +140,8 @@
         <input id="input-to-copy-from-tfuelvip" class="input-to-hide" value="{{modalSummary}}"/>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" {{on "click" (action this.copySummaryToClipBoard 'Edge Node Summary' 'input-to-copy-from-tfuelvip')}}>Copy Summary</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">{{t 'global.close'}}</button>
+        <button type="button" class="btn btn-primary" {{on "click" (action this.copySummaryToClipBoard 'Edge Node Summary' 'input-to-copy-from-tfuelvip')}}>{{t 'global.copy_summary'}}</button>
       </div>
     </div>
   </div>

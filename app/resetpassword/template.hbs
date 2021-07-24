@@ -8,25 +8,25 @@
         </LinkTo>
     </div>
     <div class="card-body">
-        <h4 class="card-title">Reset Password</h4>
+        <h4 class="card-title">{{t 'reset_pass.reset_pass'}}</h4>
         {{#if resetPasswordLinkSent}}
-            <label>Your password reset submission has been received</label>
+            <label>{{t 'reset_pass.submission_received'}}</label>
             <br/>
-            <p>If we have an account matching your email address, you will receive an email with a link to reset your password.</p>
+            <p>{{t 'reset_pass.will_receive_email'}}</p>
         {{else}}
             <form {{on 'submit' this.resetPassword}}>
                 <div class="row">
                     <div class="col-md-6" style=" margin: auto;">
                         <div class="form-group">
-                        <Input @type="email" required minlength="6" @class="form-control" @placeholder="Email" style="text-align:center;" @value={{email}}/>
+                        <Input @type="email" required minlength="6" @class="form-control" @placeholder={{t 'global.email'}} style="text-align:center;" @value={{email}}/>
                         </div>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-primary">Reset Password</button>
+                <button type="submit" class="btn btn-primary">{{t 'reset_pass.reset_pass'}}</button>
             </form>
         {{/if}}
         <br/>
-        <LinkTo @class="nav-link" @route="signup">No account yet? Sign up for an account</LinkTo>
+        <LinkTo @class="nav-link" @route="signup">{{t 'reset_pass.no_account_yet'}}</LinkTo>
         <br/><br/>
     </div>
 </div>

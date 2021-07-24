@@ -9,7 +9,7 @@
                         <span class="long-address">{{this.thetaSdk.currentAccount}}</span>
                         <span class="short-address" {{shortener this.thetaSdk.currentAccount.firstObject}}>{{this.thetaSdk.currentAccount}}</span>
                     {{else}}
-                        Enter Wallet Address
+                        {{t 'global.enter_wallet'}}
                     {{/if}}
                     <img style="float: left; width: 15px; margin: 4px 5px 0 -10px;" src="{{rootURL}}/assets/img/magnifying.png"/>
                     <img style="float: right; margin: 0 -10px 0 5px;" src="{{rootURL}}/assets/img/arrow.png"/>
@@ -19,7 +19,7 @@
                     <p {{on 'click' (fn this.selectWallet wallet)}}>{{wallet.name}} (<span {{shortener wallet.address}}>{{wallet.address}}</span>)</p>
                     <hr style="margin: 0 0 5px 0;"/>
                 {{/each}}
-                <LinkTo @route="my-wallets"><p><a href="">Add Wallet</a></p></LinkTo>
+                <LinkTo @route="my-wallets"><p><a href="">{{t 'global.add_wallet'}}</a></p></LinkTo>
             </div>
         </div>
     {{else}}
@@ -29,13 +29,13 @@
                     <span class="long-address">{{this.thetaSdk.currentAccount}}</span>
                     <span class="short-address" {{shortener this.thetaSdk.currentAccount.firstObject}}>{{this.thetaSdk.currentAccount}}</span>
                 {{else}}
-                    Enter Wallet Address
+                    {{t 'global.enter_wallet'}}
                 {{/if}}
                 <img style="float: left; width: 15px; margin: 4px 5px 0 -10px;" src="{{rootURL}}/assets/img/magnifying.png"/>
                 <img style="float: right; margin: 0 -10px 0 5px;" src="{{rootURL}}/assets/img/arrow.png"/>
             </div>
             <div class="dropdown-content">
-                <LinkTo @route="my-wallets"><p><a href="">Add Wallet</a></p></LinkTo>
+                <LinkTo @route="my-wallets"><p><a href="">{{t 'global.add_wallet'}}</a></p></LinkTo>
             </div>
         </div>
     {{/if}}

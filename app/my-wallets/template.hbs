@@ -13,11 +13,11 @@
             <br/>
         </div>
         <div class="card-body-stake">
-             <h5 class="title">My Wallets</h5>
+             <h5 class="title">{{t 'my_wallets.title'}}</h5>
              <div class="row justify-content-lg-center justify-content-md-center">
                 <form {{on 'submit' this.submitWallet}} class="stakes-deposit col-md-9">
                     <div class="form-group">
-                        <label for="stake-amount">Add a wallet to your collection</label>
+                        <label for="stake-amount">{{t 'my_wallets.add_collection'}}</label>
                         {{#each this.errorMessages as |error|}}
                             <div class="row">
                                 <div class="col-sm-12 col-lg-8" style=" margin: auto;">
@@ -30,30 +30,30 @@
                         <div class="row">
                             <div class="col-sm-12 col-lg-8" style="margin: auto;">
                                 <br/>
-                                <Input required minlength="42" @type="text" @placeholder="Enter wallet address" style="text-align: center;" class="form-control border-color" @value={{address}}/>
+                                <Input required minlength="42" @type="text" @placeholder={{t 'global.enter_wallet'}} style="text-align: center;" class="form-control border-color" @value={{address}}/>
                                 <br/>
-                                <Input required @type="text" @min="2" @placeholder="Enter a name for this wallet" style="text-align: center;" class="form-control border-color" @value={{name}}/>
+                                <Input required @type="text" @min="2" @placeholder={{t 'my_wallets.enter_name_wallet'}} style="text-align: center;" class="form-control border-color" @value={{name}}/>
                             </div>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-fill btn-primary btn-left">Add Wallet</button>
+                    <button type="submit" class="btn btn-fill btn-primary btn-left">{{t 'global.add_wallet'}}</button>
                 </form>
             </div>
             <br/><br/><br/>
             <div class="stakes-no-activity">
                 {{#if model.wallets.length}}
                     <br/>
-                    <p class="title">Wallet List</p>
+                    <p class="title">{{t 'my_wallets.wallet_list'}}</p>
                     <br/>
                     <br/>
                     <div class="table-responsive transac-history-table">
                         <table class="table">
                             <thead>
                             <tr>
-                                <th class="text-center">Address</th>
-                                <th class="text-center">Name</th>
-                                <th class="text-center">Default</th>
-                                <th class="text-center">Action</th>
+                                <th class="text-center">{{t 'global.wallet_address'}}</th>
+                                <th class="text-center">{{t 'global.name'}}</th>
+                                <th class="text-center">{{t 'global.default'}}</th>
+                                <th class="text-center">{{t 'global.action'}}</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -68,7 +68,7 @@
                                             <input type="radio" name="isDefault" checked="{{if wallet.isDefault 'checked'}}" {{on 'click' (fn this.changeIsDefault wallet)}}/>
                                         </td>
                                         <td class="text-center">
-                                            <button class="btn btn-primary" {{on 'click' (fn this.deleteWallet wallet)}}>Remove</button>
+                                            <button class="btn btn-primary" {{on 'click' (fn this.deleteWallet wallet)}}>{{t 'global.remove'}}</button>
                                         </td>
                                     </tr>
                                 {{/each}}
@@ -76,7 +76,7 @@
                         </table>
                     </div>
                 {{else}}
-                    <p class="title">You don't have any wallet in your collection yet</p>
+                    <p class="title">{{t 'my_wallets.no_wallet'}}</p>
                 {{/if}}
             </div>
         </div>

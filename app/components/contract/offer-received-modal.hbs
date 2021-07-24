@@ -10,20 +10,20 @@
                         <div class="block block-two"></div>
                         <div class="block block-three"></div>
                         <div class="block block-four"></div>
-                        <h2 class="card-title domain-title">You {{if this.acceptedOffer 'accepted' 'rejected'}} the offer!</h2>
+                        <h2 class="card-title domain-title">{{t 'global.you'}} {{if this.acceptedOffer 'accepted' 'rejected'}} {{t 'domain.modal.the_offer'}}</h2>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="card-body card-offers">
-                The offer to buy your domain name <b>{{this.domainName}}</b> for {{this.offerAmount}} Tfuel from the wallet address:
-                <div>{{this.ownerAddress}}<br/> was {{if this.acceptedOffer 'accepted' 'rejected'}}.</div>
+                {{t 'domain.modal.the_offer_to_buy'}} <b>{{this.domainName}}</b> {{t 'global.for'}} {{this.offerAmount}} {{t 'domain.modal.from_wallet'}}
+                <div>{{this.ownerAddress}}<br/> {{t 'global.was'}} {{if this.acceptedOffer 'accepted' 'rejected'}}.</div>
                 {{#if this.acceptedOffer}}
-                    <div>{{this.ownerAddress}} now owns the domain name <b>{{this.domainName}}</b></div>
+                    <div>{{this.ownerAddress}} {{t 'domain.modal.now_own'}} <b>{{this.domainName}}</b></div>
                 {{/if}}
             </div>
             <div class="card-footer card-footer-domain">
-                <button {{on 'click' this.closeModal}} type="submit" class="btn btn-fill btn-primary btn-left">Close</button>
+                <button {{on 'click' this.closeModal}} type="submit" class="btn btn-fill btn-primary btn-left">{{t 'global.close'}}</button>
             </div>
             <div class="card-header ">
                 <div class="row">

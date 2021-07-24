@@ -23,8 +23,13 @@ export default class ApplicationRoute extends Route {
     return getOwner(this).lookup('service:currentUser');
   }
 
+  get intl() {
+    return getOwner(this).lookup('service:intl');
+  }
+
   async beforeModel() {
     const params = this.paramsFor('application');
+    this.intl.setLocale(['en-us']);
     await this.envManager.setParameters(params);
     return this._loadCurrentUser();
   }

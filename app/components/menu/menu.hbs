@@ -31,7 +31,7 @@
                     </li>
                 {{else}}
                     <li class="nav-item {{if menuItem.classActive "active"}}">
-                        <LinkTo @class="nav-link" @route="{{menuItem.name}}">
+                        <LinkTo @class="nav-link" @route="{{menuItem.route}}">
                         <i class="tim-icons {{menuItem.icon}}"></i>
                         <p class="menu-item">{{menuItem.name}}</p>
                         </LinkTo>

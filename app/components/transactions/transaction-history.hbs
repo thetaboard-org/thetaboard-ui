@@ -1,19 +1,19 @@
 <div class="card">
   <div class="card-header">
-    <h4 class="card-title">Transactions</h4>
+    <h4 class="card-title">{{t 'transaction_history.title'}}</h4>
   </div>
   <div class="card-body">
     <div class="table-responsive transac-history-table">
       <table class="table">
         <thead>
           <tr>
-            <th class="text-center">Type</th>
-            <th class="text-center d-none d-sm-none d-md-table-cell">Block</th>
-            <th class="text-center">Age</th>
-            <th class="text-center d-none d-sm-none d-md-none d-lg-none d-xl-table-cell">From</th>
+            <th class="text-center">{{t 'global.type'}}</th>
+            <th class="text-center d-none d-sm-none d-md-table-cell">{{t 'global.block'}}</th>
+            <th class="text-center">{{t 'transaction_history.age'}}</th>
+            <th class="text-center d-none d-sm-none d-md-none d-lg-none d-xl-table-cell">{{t 'transaction_history.from'}}</th>
             <th class="text-center d-none d-sm-table-cell"></th>
-            <th class="text-center d-none d-sm-none d-md-none d-lg-none d-xl-table-cell">To</th>
-            <th class="text-center">Value</th>
+            <th class="text-center d-none d-sm-none d-md-none d-lg-none d-xl-table-cell">{{t 'transaction_history.to'}}</th>
+            <th class="text-center">{{t 'transaction_history.value'}}</th>
           </tr>
         </thead>
         <tbody>
@@ -40,7 +40,7 @@
             </td>
           </tr>
           {{else}}
-            <p>No transaction</p>
+            <p>{{t 'transaction_history.no_transaction'}}</p>
           {{/each}}
         </tbody>
       </table>

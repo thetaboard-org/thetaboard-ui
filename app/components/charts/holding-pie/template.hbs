@@ -9,7 +9,7 @@
           <div class="block block-two"></div>
           <div class="block block-three"></div>
           <div class="block block-four"></div>
-          <h2 class="card-title forecast-title">Wallet Composition in $ {{setUpChart}}</h2>
+          <h2 class="card-title forecast-title">{{t 'holding_pie.title'}} $ {{setUpChart}}</h2>
         </div>
       </div>
     </div>
@@ -19,7 +19,7 @@
   {{#if this.thetaSdk.wallets.length}}
     <canvas id="pieChartExample" height="300" {{did-insert this.setupChart}}></canvas>
   {{else}}
-    <p class="wallet-placeholder">Please <LinkTo @route="my-wallets">link your wallet</LinkTo> or <a href="" data-toggle="modal" data-target="#searchModal">enter an address</a>.</p>
+    <p class="wallet-placeholder">{{t 'global.please'}} <LinkTo @route="my-wallets">{{t 'global.link_wallet'}}</LinkTo> {{t 'global.or'}} <a href="" data-toggle="modal" data-target="#searchModal">{{t 'global.enter_address'}}</a>.</p>
   {{/if}}
   </div>
 </div>

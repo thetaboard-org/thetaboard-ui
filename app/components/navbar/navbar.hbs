@@ -20,15 +20,15 @@
                         </a>
                         <ul class="dropdown-menu dropdown-navbar">
                             {{#if this.currentUser.user}}
-                                <li class="nav-link"><a href="javascript:void(0)" class="nav-item dropdown-item">Signed in as<br/>{{this.currentUser.user.email}}</a></li>
+                                <li class="nav-link"><a href="javascript:void(0)" class="nav-item dropdown-item">{{t 'navbar.signed_as'}}<br/>{{this.currentUser.user.email}}</a></li>
                                 <li class="dropdown-divider"></li>
-                                <li class="nav-link"><LinkTo @class="nav-item dropdown-item" @route="my-wallets"> My Wallets</LinkTo></li>
+                                <li class="nav-link"><LinkTo @class="nav-item dropdown-item" @route="my-wallets"> {{t 'navbar.my_wallets'}}</LinkTo></li>
                             {{/if}}
                             <li class="dropdown-divider"></li>
-                            <li class="nav-link"><a href="javascript:void(0)" {{on "click" this.invalidateSession}} class="nav-item dropdown-item logout">Log out</a></li>
+                            <li class="nav-link"><a href="javascript:void(0)" {{on "click" this.invalidateSession}} class="nav-item dropdown-item logout">{{t 'navbar.logout'}}</a></li>
                         </ul>
                     {{else}}
-                        <LinkTo @route="login" @class="btn btn-fill btn-primary" style="padding: 7px 20px;margin-top: 10px;">Login</LinkTo>
+                        <LinkTo @route="login" @class="btn btn-fill btn-primary" style="padding: 7px 20px;margin-top: 10px;">{{t 'global.login'}}</LinkTo>
                     {{/if}}
                 </li>
             </ul>
