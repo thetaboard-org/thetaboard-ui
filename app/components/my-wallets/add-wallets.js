@@ -17,6 +17,13 @@ export default class MyWalletsAddWalletsComponent extends Component {
   @service router;
 
   @action
+  resetComponent() {
+    this.address = '';
+    this.name = '';
+    this.isAddingWallet = false;
+  }
+
+  @action
   showAddWallet() {
     this.isAddingWallet = true;
   }
@@ -56,9 +63,7 @@ export default class MyWalletsAddWalletsComponent extends Component {
         queryParams: { wa: wallet.address },
         reload: true,
       });
-      this.address = '';
-      this.name = '';
-      this.isAddingWallet = false;
+      this.resetComponent();
     } catch (err) {
       this.errMessages.pushObject(err.errors);
     }
