@@ -1,0 +1,28 @@
+{{#if isAddingWallet}}
+<div class="row justify-content-lg-center justify-content-md-center">
+    <form {{on 'submit' this.submitWallet}} class="stakes-deposit col-md-9">
+        <div class="form-group">
+            <label for="stake-amount">{{t 'my_wallets.add_collection'}}</label>
+            {{#each this.errMessages as |error|}}
+                <div class="row">
+                    <div class="col-sm-12 col-lg-8" style=" margin: auto;">
+                        <div class="alert alert-warning" style="padding: 10px;">
+                            <span>{{error.message}}</span>
+                        </div>
+                    </div>
+                </div>
+            {{/each}}
+            <div class="row">
+                <div class="col-sm-12 col-lg-8" style="margin: auto;">
+                    <Input required minlength="42" @type="text" @placeholder={{t 'global.enter_wallet'}} style="text-align: center;" class="form-control border-color" @value={{address}}/>
+                    <br/>
+                    <Input required @type="text" @min="2" @placeholder={{t 'my_wallets.enter_name_wallet'}} style="text-align: center;" class="form-control border-color" @value={{name}}/>
+                </div>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-fill btn-primary btn-left">{{t 'global.add_wallet'}}</button>
+    </form>
+</div>
+{{else}}
+        <button {{on 'click' this.showAddWallet}} type="submit" class="btn btn-fill btn-primary btn-left">{{t 'global.add_wallet'}}</button>
+{{/if}}

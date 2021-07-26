@@ -4,13 +4,10 @@ import { tracked } from '@glimmer/tracking';
 import { inject as service } from '@ember/service';
 
 export default class MyWalletsController extends Controller {
-  @tracked address;
-  @tracked name;
   @tracked errorMessages;
 
   @service utils;
   @service currentUser;
-  @service thetaSdk;
 
   @action
   async changeIsDefault(wallet) {
@@ -31,45 +28,6 @@ export default class MyWalletsController extends Controller {
       await wallet.destroyRecord();
       this.utils.successNotify(`Wallet removed`);
       return this.store.findAll('wallet');
-    } catch (err) {
-      this.errorMessages.pushObject(err.errors);
-    }
-  }
-
-  @action
-  async submitWallet(e) {
-    try {
-      e.preventDefault();
-      this.errorMessages = [];
-      if (
-        !this.address ||
-        this.address.length != 42 ||
-        this.address.substr(1, 1).toLocaleLowerCase() != 'x'
-      ) {
-        return this.errorMessages.pushObject({
-          message: 'Invalid wallet address',
-        });
-      }
-      if (!this.name || this.name.length == 0) {
-        return this.errorMessages.pushObject({
-          message: 'Invalid wallet name',
-        });
-      }
-
-      let wallet = this.store.createRecord('wallet', this.getProperties('address', 'name'));
-      if (!this.currentUser.wallets.length) {
-        wallet.isDefault = true;
-      }
-      await wallet.save();
-      this.utils.successNotify(`Wallet added`);
-      this.address = '';
-      this.name = '';
-      await this.store.findAll('wallet');
-      await this.thetaSdk.getWalletInfo([wallet.address]);
-      this.transitionToRoute({
-        queryParams: { wa: wallet.address },
-        reload: true,
-      });
     } catch (err) {
       this.errorMessages.pushObject(err.errors);
     }
