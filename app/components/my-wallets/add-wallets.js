@@ -2,7 +2,6 @@ import Component from '@glimmer/component';
 import { action } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
 import { inject as service } from '@ember/service';
-import { getProperties } from '@ember/object';
 
 export default class MyWalletsAddWalletsComponent extends Component {
   @tracked address;
@@ -57,7 +56,6 @@ export default class MyWalletsAddWalletsComponent extends Component {
       }
       await wallet.save();
       this.utils.successNotify(`Wallet added`);
-      await this.store.findAll('wallet');
       await this.thetaSdk.getWalletInfo([wallet.address]);
       this.router.transitionTo({
         queryParams: { wa: wallet.address },

@@ -1,1 +1,45 @@
-{{yield}}
+{{#if isAddingGroups}}
+<div class="row justify-content-lg-center justify-content-md-center">
+    <form {{on 'submit' this.submitGroup}} class="stakes-deposit col-md-9">
+        <div class="form-group">
+            <br/>
+            <label for="stake-amount">{{t 'my_wallets.add_group'}}</label>
+            <br/>
+            <br/>
+            {{#each this.errMessages as |error|}}
+                <div class="row">
+                    <div class="col-sm-12 col-lg-8" style=" margin: auto;">
+                        <div class="alert alert-warning" style="padding: 10px;">
+                            <span>{{error.message}}</span>
+                        </div>
+                    </div>
+                </div>
+            {{/each}}
+            <div class="row">
+                <div class="col-sm-12 col-lg-8" style="margin: auto;">
+                    <Input required @type="text" @min="2" @placeholder={{t 'my_wallets.enter_name_group'}} style="text-align: center;" class="form-control border-color" @value={{name}}/>
+                </div>
+            </div>
+            <br/>
+            <label for="stake-amount">{{t 'my_wallets.click_wallet'}}</label>
+            <div class="wallet-list-group">
+                {{#each walletList as |wallet|}}            
+                    <div {{on 'click' (fn this.toggleWallet wallet)}} class="wallet-list-item {{if wallet.isSelected 'selected'}}">
+                        <p class="text-center">{{wallet.name}}</p>
+                        <p class="" {{shortener wallet.address}}>{{wallet.address}}</p>
+                        {{#if wallet.isSelected}}
+                            <p class="p-selected">Selected</p>
+                        {{else}}
+                            <p class="p-selected not">Not Selected</p>
+                        {{/if}}
+                    </div>
+                {{/each}}
+            </div>
+        </div>
+        <button {{on 'click' this.resetComponent}} type="submit" class="btn btn-fill btn-secondary btn-left">{{t 'global.cancel'}}</button>
+        <button type="submit" class="btn btn-fill btn-primary btn-left">{{t 'my_wallets.add_group'}}</button>
+    </form>
+</div>
+{{else}}
+        <button {{on 'click' this.showAddGroup}} type="submit" class="btn btn-fill btn-primary btn-left">{{t 'my_wallets.add_group'}}</button>
+{{/if}}

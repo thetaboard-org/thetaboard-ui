@@ -6,8 +6,10 @@ export default class CurrentUserService extends Service {
   @service session;
   @service store;
   @service wallet;
+  
   @tracked user;
   @tracked wallets;
+  @tracked groups;
 
   async load() {
     if (
@@ -21,6 +23,8 @@ export default class CurrentUserService extends Service {
         this.user = user;
         let wallets = await this.store.findAll('wallet');
         this.wallets = wallets;
+        let groups = await this.store.findAll('group');
+        this.groups = groups;
         this.wallet.initWallet();
         return user;
       }

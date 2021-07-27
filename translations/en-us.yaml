@@ -215,11 +215,16 @@ domain:
 
 ###### MY-WALLETS START ######
 my_wallets:
-  title: "My Wallets"
   add_collection: "Add a wallet to your collection"
   enter_name_wallet: "Enter a name for this wallet"
   no_wallet: "You don't have any wallet in your collection yet."
   wallet_list: "Wallet List"
+  enter_name_group: "Enter a name for this group"
+  add_group: "Create a group"
+  click_wallet: "Click on wallets to add to your group:"
+  group_list: "Group List"
+  addresses: "Addresses"
+  no_group: "You don't have any group in your collection yet."
   ###### MY-WALLETS END ######
 
 

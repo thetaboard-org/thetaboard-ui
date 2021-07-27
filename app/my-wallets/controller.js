@@ -10,16 +10,15 @@ export default class MyWalletsController extends Controller {
   @service currentUser;
 
   @action
-  async changeIsDefault(wallet) {
-    if (wallet.isDefault) {
+  async changeIsDefault(object) {
+    if (object.isDefault) {
       return;
     }
-    wallet.isDefault = true;
-    await wallet.save();
-    this.utils.successNotify(`Default wallet setup`);
-    this.address = '';
-    this.name = '';
-    return this.store.findAll('wallet');
+    object.isDefault = true;
+    await object.save();
+    this.utils.successNotify(`${object.name} is now setup as default`);
+    this.store.findAll('wallet');
+    this.store.findAll('group');
   }
 
   @action
@@ -27,7 +26,18 @@ export default class MyWalletsController extends Controller {
     try {
       await wallet.destroyRecord();
       this.utils.successNotify(`Wallet removed`);
-      return this.store.findAll('wallet');
+      // return this.store.findAll('wallet');
+    } catch (err) {
+      this.errorMessages.pushObject(err.errors);
+    }
+  }
+
+  @action
+  async deleteGroup(group) {
+    try {
+      await group.destroyRecord();
+      this.utils.successNotify(`Group removed`);
+      // return this.store.findAll('group');
     } catch (err) {
       this.errorMessages.pushObject(err.errors);
     }

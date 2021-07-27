@@ -13,7 +13,6 @@
             <br/>
         </div>
         <div class="card-body-stake">
-            {{!-- <h5 class="title">{{t 'my_wallets.title'}}</h5> --}}
             <div class="stakes-no-activity">
                 {{#if model.wallets.length}}
                     <p class="title">{{t 'my_wallets.wallet_list'}}</p>
@@ -52,6 +51,49 @@
             </div>
             <br/>
             {{my-wallets/add-wallets}}
+            <br/>
+            <br/>
+            <br/>
+            <div class="stakes-no-activity">
+                {{#if model.groups.length}}
+                    <p class="title">{{t 'my_wallets.group_list'}}</p>
+                    <div class="table-responsive transac-history-table">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th class="text-center">{{t 'my_wallets.addresses'}}</th>
+                                <th class="text-center">{{t 'global.name'}}</th>
+                                <th class="text-center">{{t 'global.default'}}</th>
+                                <th class="text-center">{{t 'global.action'}}</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                                {{#each currentUser.groups as |group|}}            
+                                    <tr>
+                                        <td class="text-center">
+                                            {{#each group.wallets as |wallet|}}            
+                                                <span class="long-address">{{wallet.name}}<br/>({{wallet.address}})</span>
+                                                <span class="short-address">{{wallet.name}}<br/><span {{shortener wallet.address}}>{{wallet.address}}</span></span><br/>
+                                            {{/each}}
+                                        </td>
+                                        <td class="text-center">{{group.name}}</td>
+                                        <td class="text-center">
+                                            <input type="radio" name="isDefault" checked="{{if group.isDefault 'checked'}}" {{on 'click' (fn this.changeIsDefault group)}}/>
+                                        </td>
+                                        <td class="text-center">
+                                            <button class="btn btn-primary" {{on 'click' (fn this.deleteGroup group)}}>{{t 'global.remove'}}</button>
+                                        </td>
+                                    </tr>
+                                {{/each}}
+                            </tbody>
+                        </table>
+                    </div>
+                {{else}}
+                    <p class="title">{{t 'my_wallets.no_group'}}</p>
+                {{/if}}
+            </div>
+            <br/>
+            {{my-wallets/add-groups}}
         </div>
     </div>
     <div class="card-footer">
