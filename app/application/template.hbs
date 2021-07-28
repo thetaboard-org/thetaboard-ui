@@ -10,11 +10,7 @@
       {{navbar/navbar}}
       {{download-wallet/modal}}
       {{search-bar/search-bar onRouteChange=this.setQueryParam}}
-      {{#if this.session.isAuthenticated}}
-        {{wallet/wallet-navbar onRouteChange=this.setQueryParam}}
-      {{else}}
-        {{connect-wallet/connect-wallet onRouteChange=this.setQueryParam}}
-      {{/if}}
+      {{wallet/wallet-navbar onRouteChange=this.setQueryParam}}
       <div class="content">
         <div class="container-fluid">
           {{outlet}}

@@ -5,6 +5,9 @@
                     {{#if wallet.isSearchedWalletOwned}}
                         {{wallet.isSearchedWalletOwned.name}} 
                         (<span {{shortener wallet.isSearchedWalletOwned.address}}>{{wallet.isSearchedWalletOwned.address}}</span>)
+                    {{else if group.isSearchedGroupOwned}}
+                        {{group.isSearchedGroupOwned.name}}
+                        (<span>{{group.isSearchedGroupOwned.wallets.length}} {{t 'my_wallets.wallets'}}</span>)
                     {{else if thetaSdk.currentAccount}}
                         <span class="long-address">{{this.thetaSdk.currentAccount}}</span>
                         <span class="short-address" {{shortener this.thetaSdk.currentAccount.firstObject}}>{{this.thetaSdk.currentAccount}}</span>
@@ -17,6 +20,10 @@
             <div class="dropdown-content">
                 {{#each wallet.wallets as |wallet|}}
                     <p {{on 'click' (fn this.selectWallet wallet)}}>{{wallet.name}} (<span {{shortener wallet.address}}>{{wallet.address}}</span>)</p>
+                    <hr style="margin: 0 0 5px 0;"/>
+                {{/each}}
+                {{#each group.groups as |group|}}
+                    <p {{on 'click' (fn this.selectGroup group)}}>{{group.name}} (<span>{{group.wallets.length}} {{t 'my_wallets.wallets'}}</span>)</p>
                     <hr style="margin: 0 0 5px 0;"/>
                 {{/each}}
                 <LinkTo @route="my-wallets"><p><a href="">{{t 'global.add_wallet'}}</a></p></LinkTo>

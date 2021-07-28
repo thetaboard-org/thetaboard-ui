@@ -11,8 +11,8 @@ export default class MyWalletsRoute extends Route {
   }
 
   async model() {
-    const wallets = await this.store.findAll('wallet');
-    const groups = await this.store.findAll('group');
+    const wallets = await this.store.peekAll('wallet');
+    const groups = await this.store.peekAll('group');
     return { wallets: wallets, groups: groups };
   }
 }

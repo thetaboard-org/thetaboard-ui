@@ -225,6 +225,7 @@ my_wallets:
   group_list: "Group List"
   addresses: "Addresses"
   no_group: "You don't have any group in your collection yet."
+  wallets: "wallets"
   ###### MY-WALLETS END ######
 
 

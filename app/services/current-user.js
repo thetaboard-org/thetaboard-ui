@@ -6,6 +6,7 @@ export default class CurrentUserService extends Service {
   @service session;
   @service store;
   @service wallet;
+  @service group;
   
   @tracked user;
   @tracked wallets;
@@ -26,6 +27,7 @@ export default class CurrentUserService extends Service {
         let groups = await this.store.findAll('group');
         this.groups = groups;
         this.wallet.initWallet();
+        this.group.initGroup();
         return user;
       }
     }

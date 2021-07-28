@@ -11,19 +11,6 @@ export default class HoldingPieComponent extends Component {
     }
   }
 
-  async connectToWallet() {
-    const address = await this.thetaSdk.connectWallet();
-    this.args.onRouteChange(address);
-  }
-
-  @action
-  async connectWallet(event) {
-    if (event) {
-      event.preventDefault();
-    }
-    Ember.run.debounce(this, this.connectToWallet, 500, true);
-  }
-
   @action
   setupChart() {
     let element = document.getElementById('pieChartExample');

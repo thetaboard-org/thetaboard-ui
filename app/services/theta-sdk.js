@@ -13,6 +13,7 @@ export default class ThetaSdkService extends Service {
     super(...args);
     this.downloadProgress = '';
     this.wallets = [];
+    this.groups = [];
     this.transactions = [];
     this.coinbases = [];
     this.guardianCoinbases = [];
@@ -20,6 +21,7 @@ export default class ThetaSdkService extends Service {
     this.coinbasesLoaded = false;
     this.pagination = {};
     this.currentAccount = '';
+    this.currentGroup = '';
     this.currentAccountDomainList = [];
     this.prices = {
       theta: { price: 0, market_cap: 0, volume_24h: 0 },
@@ -37,7 +39,9 @@ export default class ThetaSdkService extends Service {
 
   @tracked downloadProgress;
   @tracked wallets;
+  @tracked groups;
   @tracked currentAccount;
+  @tracked currentGroup;
   @tracked prices;
   @tracked pagination;
   @tracked transactions;
@@ -133,7 +137,7 @@ export default class ThetaSdkService extends Service {
       const account = await ThetaWalletConnect.requestAccounts();
       return this.setupWalletAddress(account, timeoutId);
     } catch (error) {
-      console.log(error)
+      console.log(error);
       // this.utils.errorNotify(error.message);
     }
   }
@@ -234,6 +238,57 @@ export default class ThetaSdkService extends Service {
     totalTfuelStake.percent = (totalTfuelStake.totalAmount / totalSupply) * 100;
     this.totalTfuelStake = totalTfuelStake;
     return totalTfuelStake;
+  }
+
+  async getWalletsInfo(type, object) {
+    //type: group or wallet
+    //object: Either the group or the wallet
+
+    if (type == 'wallet') {
+      let wallets = { wallets: [] };
+      this.contract.domainName = '';
+      const walletInfo = await fetch(
+        '/explorer/wallets-info/' + object[0] + this.envManager.config.queryParams
+      );
+      if (walletInfo.status == 200) {
+        wallets = await walletInfo.json();
+      }
+      if (object.length) {
+        this.currentAccountDomainList = await this.contract.getAddressToNames(
+          object[0]
+        );
+        if (this.currentAccountDomainList && this.currentAccountDomainList.length) {
+          this.contract.domainName = this.currentAccountDomainList[0];
+        }
+      } else {
+        this.currentAccountDomainList = [];
+      }
+      this.wallets = wallets.wallets;
+      this.currentAccount = object;
+      this.currentGroup = null;
+      return wallets;
+    } else if (type == 'group') {
+      let wallets = { wallets: [] };
+      this.contract.domainName = '';
+      let uuid = '';
+      if (typeof object == 'string') {
+        uuid = object;
+      } else {
+        uuid = object.uuid;
+      }
+
+      const goupInfo = await fetch(
+        '/explorer/group-info/' + uuid + this.envManager.config.queryParams
+      );
+      if (goupInfo.status == 200) {
+        wallets = await goupInfo.json();
+      }
+      this.currentAccountDomainList = [];
+      this.wallets = wallets.wallets;
+      this.currentAccount = null;
+      this.currentGroup = uuid;
+      return wallets;
+    }
   }
 
   async getWalletInfo(accounts) {

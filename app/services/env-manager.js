@@ -72,6 +72,10 @@ export default class EnvManagerService extends Service {
         }
       }
     }
+
+    if (params && params.group) {
+      await this.thetaSdk.getWalletsInfo('group', params.group);
+    }
     return this.config;
   }
 }

@@ -11,8 +11,6 @@ export default class MyWalletsAddGroupsComponent extends Component {
   @service utils;
   @service currentUser;
   @service store;
-  // @service thetaSdk;
-  // @service router;
 
   get walletList() {
     return this.currentUser.wallets;

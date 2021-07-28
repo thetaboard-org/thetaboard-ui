@@ -4,9 +4,10 @@ import { tracked } from '@glimmer/tracking';
 import { inject as service } from '@ember/service';
 
 export default class ApplicationController extends Controller {
-  queryParams = ['wa'];
+  queryParams = ['wa', 'group'];
 
   @tracked wa;
+  @tracked group;
 
   @service router;
   @service session;
@@ -52,7 +53,13 @@ export default class ApplicationController extends Controller {
   }
 
   @action
-  setQueryParam(walletAddress) {
-    this.wa = walletAddress;
+  setQueryParam(value, type) {
+    if (type == 'group') {
+      this.group = value;
+      this.wa = null;
+    } else {
+      this.wa = value;
+      this.group = null;
+    }
   }
 }

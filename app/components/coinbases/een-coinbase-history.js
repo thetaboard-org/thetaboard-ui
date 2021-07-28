@@ -111,17 +111,4 @@ export default class CoinbaseHistoryComponent extends Component {
   get explorerEndpoint() {
     return this.envManager.config.explorerEndpoint;
   }
-
-  async connectToWallet() {
-    const address = await this.thetaSdk.connectWallet();
-    this.args.onRouteChange(address);
-  }
-
-  @action
-  async connectWallet(event) {
-    if (event) {
-      event.preventDefault();
-    }
-    Ember.run.debounce(this, this.connectToWallet, 500, true);
-  }
 }
