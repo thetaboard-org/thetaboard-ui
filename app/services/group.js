@@ -38,7 +38,7 @@ export default class GroupService extends Service {
   @action
   async initGroup() {
     if (this.groups && this.groups.length) {
-      if (!this.isSearchedGroupOwned && !this.thetaSdk.currentGroup) {
+      if (!this.isSearchedGroupOwned && !this.thetaSdk.currentGroup && !this.thetaSdk.currentAccount) {
         if (this.defaultGroup) {
           await this.thetaSdk.getWalletsInfo('group', this.defaultGroup);
           return this.router.transitionTo({

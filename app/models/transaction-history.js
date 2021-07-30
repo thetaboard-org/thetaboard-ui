@@ -4,7 +4,7 @@ export default class TransactionHistoryModel extends Model {
   @attr('string') walletAddress;
   @attr('string') blockHash
   @attr('number') blockHeight
-  @attr('string') hash
+  @attr('string') txnHash
   @attr('number') type
   @attr('string') fromAddress
   @attr('string') toAddress

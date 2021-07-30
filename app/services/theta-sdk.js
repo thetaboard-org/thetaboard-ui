@@ -316,6 +316,7 @@ export default class ThetaSdkService extends Service {
     }
     this.wallets = wallets.wallets;
     this.currentAccount = accounts;
+    this.currentGroup = null;
     return wallets;
   }
 

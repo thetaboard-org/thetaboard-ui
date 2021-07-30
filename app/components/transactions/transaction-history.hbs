@@ -21,13 +21,13 @@
             <tr>
             <td class="text-center transaction-type"><img src="{{rootURL}}assets/img/transactions/{{transaction.type}}.png"/> {{transaction.typeName}}</td>
             <td class="text-center d-none d-sm-none d-md-table-cell">{{transaction.blockHeight}}</td>
-            <td class="text-center"><a href="{{explorerEndpoint}}/txs/{{transaction.hash}}" target="_blank">{{moment-from transaction.txTimestamp}}</a></td>
+            <td class="text-center"><a href="{{explorerEndpoint}}/txs/{{transaction.txnHash}}" target="_blank">{{moment-from transaction.txTimestamp}}</a></td>
             <td class="text-center d-none d-sm-none d-md-none d-lg-none d-xl-table-cell">
-              <LinkTo {{shortener transaction.fromAddress}} @route="wallet" @query={{hash group="" wa=transaction.fromAddress}}>{{transaction.fromAddress}}</LinkTo>
+              <LinkTo {{shortener transaction.fromAddress}} @route="wallet" @query={{hash group=null wa=transaction.fromAddress}}>{{transaction.fromAddress}}</LinkTo>
             </td>
             <td class="text-center d-none d-sm-table-cell" id="in-or-out"><img src="assets/img/transaction-{{transaction.inOrOut}}.png"/></td>
             <td class="text-center d-none d-sm-none d-md-none d-lg-none d-xl-table-cell">
-              <LinkTo {{shortener transaction.toAddress}} @route="wallet" @query={{hash group="" wa=transaction.toAddress}}>{{transaction.toAddress}}</LinkTo>
+              <LinkTo {{shortener transaction.toAddress}} @route="wallet" @query={{hash group=null wa=transaction.toAddress}}>{{transaction.toAddress}}</LinkTo>
             </td>
             <td class="text-left td-value">
               {{#each transaction.values as |coin|}}
