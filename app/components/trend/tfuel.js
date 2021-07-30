@@ -1,19 +1,19 @@
 import Component from '@glimmer/component';
-import { inject as service } from '@ember/service';
+import {inject as service} from '@ember/service';
 
 export default class TrendTfuelComponent extends Component {
   @service('theta-sdk') thetaSdk;
 
   get trendYesterday() {
-    const yesterday = moment.utc(new Date(new Date() - 3600000 * 24)).format('YYYY-MM-DD');
-    const prices = this.args.historic_price;
     const tfuelPrice = this.thetaSdk.prices.tfuel.price;
-    if (tfuelPrice && prices[yesterday] && prices[yesterday].tfuel_price) {
-      return this.setTrend(tfuelPrice, prices[yesterday].tfuel_price);
+    const perc_change = this.args.historic_price.tfuel.change_24h;
+    if (tfuelPrice && perc_change) {
+      const previous_price = tfuelPrice + tfuelPrice / 100 * perc_change;
+      return this.setTrend(tfuelPrice, previous_price);
     }
     return {
-      type: '-',
-      class: 'down',
+      type: '+',
+      class: 'up',
       change: 0,
       percentChange: 0,
     };
@@ -21,21 +21,21 @@ export default class TrendTfuelComponent extends Component {
 
   get trendLastWeek() {
     const lastWeek = moment.utc(new Date(new Date() - 3600000 * 24 * 7)).format('YYYY-MM-DD');
-    const prices = this.args.historic_price;
+    const prices = this.args.historic_price.dailyPrice;
     const tfuelPrice = this.thetaSdk.prices.tfuel.price;
-    if (tfuelPrice && prices[lastWeek] && prices[lastWeek].tfuel_price) {
-      return this.setTrend(tfuelPrice, prices[lastWeek].tfuel_price);
+    if (tfuelPrice && prices.find((x) => x.date === lastWeek)) {
+      return this.setTrend(tfuelPrice, prices.find((x) => x.date === lastWeek)['tfuel-price']);
     }
     return {
-      type: '-',
-      class: 'down',
+      type: '+',
+      class: 'up',
       change: 0,
       percentChange: 0,
     };
   }
 
   get ratio() {
-    return Math.round(this.thetaSdk.prices.theta.price / this.thetaSdk.prices.tfuel.price) ;
+    return Math.round(this.thetaSdk.prices.theta.price / this.thetaSdk.prices.tfuel.price);
   }
 
   setTrend(currentPrice, previousPrice) {

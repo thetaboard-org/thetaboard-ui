@@ -5,30 +5,30 @@ export default class TrendThetaComponent extends Component {
   @service('theta-sdk') thetaSdk;
 
   get trendYesterday() {
-    const yesterday = moment.utc(new Date(new Date() -3600000*24)).format('YYYY-MM-DD');
-    const prices = this.args.historic_price;
     const thetaPrice = this.thetaSdk.prices.theta.price;
-    if (thetaPrice && prices[yesterday] && prices[yesterday].theta_price) {
-      return this.setTrend(thetaPrice, prices[yesterday].theta_price);
+    const perc_change = this.args.historic_price.theta.change_24h;
+    if (thetaPrice && perc_change) {
+      const previous_price = thetaPrice + thetaPrice / 100 * perc_change;
+      return this.setTrend(thetaPrice, previous_price);
     }
     return {
-      type: '-',
-      class: 'down',
+      type: '+',
+      class: 'up',
       change: 0,
       percentChange: 0,
     };
   }
 
   get trendLastWeek() {
-    const lastWeek = moment.utc(new Date(new Date() -3600000*24*7)).format('YYYY-MM-DD');
-    const prices = this.args.historic_price;
+    const lastWeek = moment.utc(new Date(new Date() - 3600000 * 24 * 7)).format('YYYY-MM-DD');
+    const prices = this.args.historic_price.dailyPrice;
     const thetaPrice = this.thetaSdk.prices.theta.price;
-    if (thetaPrice && prices[lastWeek] && prices[lastWeek].theta_price) {
-      return this.setTrend(thetaPrice, prices[lastWeek].theta_price);
+    if (thetaPrice && prices.find((x) => x.date === lastWeek)) {
+      return this.setTrend(thetaPrice, prices.find((x) => x.date === lastWeek)['theta-price']);
     }
     return {
-      type: '-',
-      class: 'down',
+      type: '+',
+      class: 'up',
       change: 0,
       percentChange: 0,
     };

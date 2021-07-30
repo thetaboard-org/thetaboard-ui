@@ -1,34 +1,28 @@
 import Component from '@glimmer/component';
-import { action } from '@ember/object';
-import { tracked } from '@glimmer/tracking';
-import { inject as service } from '@ember/service';
+import {action} from '@ember/object';
+import {tracked} from '@glimmer/tracking';
+import {inject as service} from '@ember/service';
 
 export default class PriceChartComponent extends Component {
   @tracked time_range = 'year';
   @service intl;
+  @service('theta-sdk') thetaSdk;
 
   get chartData() {
     let historic_data = {};
     if (this.time_range === 'week') {
-      Object.keys(this.args.historic_price)
-        .splice(0, 7)
-        .forEach((date) => {
-          historic_data[date] = this.args.historic_price[date];
-        });
+      historic_data = this.args.historic_price.dailyPrice
+        .splice(this.args.historic_price.dailyPrice.length - 7, this.args.historic_price.dailyPrice.length);
+
     } else if (this.time_range === 'month') {
-      Object.keys(this.args.historic_price)
-        .splice(0, 30)
-        .forEach((date) => {
-          historic_data[date] = this.args.historic_price[date];
-        });
+      historic_data = this.args.historic_price.dailyPrice
+        .splice(this.args.historic_price.dailyPrice.length - 30, this.args.historic_price.dailyPrice.length);
     } else {
-      historic_data = this.args.historic_price;
+      historic_data = this.args.historic_price.dailyPrice;
     }
-    const labels = Object.keys(historic_data).map((x) =>
-      moment(x, 'YYYY-MM-DD')
-    );
-    const theta_price = Object.values(historic_data).map((x) => x.theta_price);
-    const tfuel_price = Object.values(historic_data).map((x) => x.tfuel_price);
+    const labels = historic_data.map((x) => x.date);
+    const theta_price = historic_data.map((x) => x["theta-price"]);
+    const tfuel_price = historic_data.map((x) => x["tfuel-price"]);
     const ratio = theta_price.map((n, i) => n / tfuel_price[i]);
     return {
       labels: labels,
@@ -40,7 +34,7 @@ export default class PriceChartComponent extends Component {
           radius: 0,
           borderColor: '#2BB7E5',
           pointBackgroundColor: '#2BB7E5',
-          data: Object.values(historic_data).map((x) => x.theta_price),
+          data: theta_price,
           borderWidth: 1,
         },
         {
@@ -50,7 +44,7 @@ export default class PriceChartComponent extends Component {
           radius: 0,
           borderColor: '#FFA500',
           pointBackgroundColor: '#FFA500',
-          data: Object.values(historic_data).map((x) => x.tfuel_price),
+          data: tfuel_price,
           borderWidth: 1,
         },
         {

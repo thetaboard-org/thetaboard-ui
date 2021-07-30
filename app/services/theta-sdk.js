@@ -1,12 +1,12 @@
 import Service from '@ember/service';
-import { getOwner } from '@ember/application';
+import {getOwner} from '@ember/application';
 import ThetaWalletConnect from '@thetalabs/theta-wallet-connect';
 import * as thetajs from '@thetalabs/theta-js';
-import { tracked } from '@glimmer/tracking';
+import {tracked} from '@glimmer/tracking';
 import BigNumber from "bignumber.js";
-import { htmlSafe } from '@ember/template';
-import { cancel } from '@ember/runloop';
-import { later } from '@ember/runloop';
+import {htmlSafe} from '@ember/template';
+import {cancel} from '@ember/runloop';
+import {later} from '@ember/runloop';
 
 export default class ThetaSdkService extends Service {
   constructor(...args) {
@@ -24,7 +24,7 @@ export default class ThetaSdkService extends Service {
     this.currentGroup = '';
     this.currentAccountDomainList = [];
     this.prices = {
-      theta: { price: 0, market_cap: 0, volume_24h: 0 },
+      theta: {price: 0, market_cap: 0, volume_24h: 0},
       tfuel: {
         price: 0,
         market_cap: 0,
@@ -32,8 +32,8 @@ export default class ThetaSdkService extends Service {
         total_supply: 1,
       },
     };
-    this.totalStake = { totalAmount: '0', percent: 0 };
-    this.totalTfuelStake = { totalAmount: '0', percent: 0 };
+    this.totalStake = {totalAmount: '0', percent: 0};
+    this.totalTfuelStake = {totalAmount: '0', percent: 0};
     this.initialize();
   }
 
@@ -199,20 +199,19 @@ export default class ThetaSdkService extends Service {
     }
   }
 
-  async getPrices() {
-    let prices = { theta: 0, tfuel: 0 };
-    const getPrices = await fetch(
-      '/explorer/prices' + this.envManager.config.queryParams
-    );
-    if (getPrices.status == 200) {
-      prices = await getPrices.json();
+  async getPrices(start_date = null, end_date = null, currency = 'USD') {
+    let api_call = `/explorer/prices?currency=${currency}`;
+    if (start_date && end_date) {
+      api_call += `&start_date=${start_date}&end_date=${end_date}`
     }
-    this.prices = prices;
-    return prices;
+    api_call += this.envManager.config.queryParams;
+    const getPrices = await fetch(api_call);
+    this.prices = await getPrices.json();
+    return this.prices;
   }
 
   async getTotalStake() {
-    let totalStake = { totalAmount: '0', totalNodes: 0, percent: 0 };
+    let totalStake = {totalAmount: '0', totalNodes: 0, percent: 0};
     const getStake = await fetch(
       '/explorer/totalStake' + this.envManager.config.queryParams
     );
@@ -228,7 +227,7 @@ export default class ThetaSdkService extends Service {
   }
 
   async getTotalTfuelStake() {
-    let totalTfuelStake = { totalAmount: '0', percent: 0 };
+    let totalTfuelStake = {totalAmount: '0', percent: 0};
     const getTfuelStake = await fetch(
       '/explorer/totalTfuelStake' + this.envManager.config.queryParams
     );
@@ -296,7 +295,7 @@ export default class ThetaSdkService extends Service {
   }
 
   async getWalletInfo(accounts) {
-    let wallets = { wallets: [] };
+    let wallets = {wallets: []};
     this.contract.domainName = '';
     const walletInfo = await fetch(
       '/explorer/wallet-info/' + accounts[0] + this.envManager.config.queryParams
@@ -405,7 +404,7 @@ export default class ThetaSdkService extends Service {
         return pump();
 
         function pump() {
-          return reader.read().then(({ done, value }) => {
+          return reader.read().then(({done, value}) => {
             // When no more data needs to be consumed, close the stream
             if (done) {
               controller.close();
@@ -441,7 +440,7 @@ export default class ThetaSdkService extends Service {
         return pump();
 
         function pump() {
-          return reader.read().then(({ done, value }) => {
+          return reader.read().then(({done, value}) => {
             // When no more data needs to be consumed, close the stream
             if (done) {
               controller.close();
@@ -465,7 +464,7 @@ export default class ThetaSdkService extends Service {
       .then((response) => response.blob())
       .then((blob) => {
         return blob.text().then((text) => {
-          return { logs: htmlSafe(text.split('\n').join('<br/>')) };
+          return {logs: htmlSafe(text.split('\n').join('<br/>'))};
         });
       })
       .catch((err) => console.error(err));
@@ -518,7 +517,7 @@ export default class ThetaSdkService extends Service {
       .then((blob) => {
         return blob.text().then((logs) => {
           self.utils.successNotify('Download completed. You can now start your Guardian Node');
-          return { logs: htmlSafe(logs.split('\n').join('<br/>')) };
+          return {logs: htmlSafe(logs.split('\n').join('<br/>'))};
         });
       })
       .catch((err) => console.error(err));
