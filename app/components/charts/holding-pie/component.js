@@ -63,7 +63,7 @@ export default class HoldingPieComponent extends Component {
       {
         label: `Theta (${numberWithCommas(theta_amount.toFixed(2))})`,
         value: theta_value,
-        color: '#4fc733',
+        color: '#58d8f5',
       },
       {
         label: `Tfuel (${numberWithCommas(tfuel_amount.toFixed(2))})`,
@@ -132,7 +132,7 @@ export default class HoldingPieComponent extends Component {
               return `
                   ${formatter.format(value)}
                    ${((100 * value) / total).toFixed(2)}%
-              `
+              `;
             },
           },
         },

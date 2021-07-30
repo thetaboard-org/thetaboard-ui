@@ -11,7 +11,7 @@ global:
     24h: "Last 24h"
     7d: "Last 7 days"
     m: "Last months"
-    2m: "Last 2 months"
+    6m: "Last 6 months"
   market_cap: "Market Cap"
   24_volume: "24h volume"
   theta_staked: "Theta Staked"

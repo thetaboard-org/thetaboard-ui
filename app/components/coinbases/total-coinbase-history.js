@@ -1,13 +1,44 @@
 import Component from '@glimmer/component';
 import { inject as service } from '@ember/service';
 
-export default class CoinbaseHistoryComponent extends Component {
+export default class TotalCoinbaseHistoryComponent extends Component {
+  constructor(...args) {
+    super(...args);
+    this.account = '';
+    this.group = '';
+    this.wallets = [];
+  }
   @service('env-manager') envManager;
   @service('theta-sdk') thetaSdk;
 
+  async initialize() {
+    if (
+      this.thetaSdk.currentAccount &&
+      this.thetaSdk.currentAccount[0] &&
+      (this.account == undefined ||
+        this.account[0] == undefined ||
+        this.thetaSdk.currentAccount[0].toLowerCase() != this.account[0].toLowerCase())
+    ) {
+      this.account = this.thetaSdk.currentAccount;
+      this.group = '';
+      this.wallets = this.thetaSdk.currentAccount;
+      return await this.thetaSdk.getAllCoinbases(this.wallets);
+    } else if (
+      this.thetaSdk.currentGroup &&
+      this.thetaSdk.currentGroup != this.group
+    ) {
+      this.group = this.thetaSdk.currentGroup;
+      this.account = '';
+      let allWallets = this.thetaSdk.wallets.map((x) => x.wallet_address.toLowerCase());
+      this.wallets = [...new Set(allWallets)];
+      return await this.thetaSdk.getAllCoinbases(this.wallets);
+    }
+  }
+
   get coinbasesLastDay() {
+    this.initialize();
     const yesterday = new Date(new Date().setDate(new Date().getDate() - 1));
-    const lastDayCoinbases = this.thetaSdk.guardianCoinbases.filter((x) => x.timestamp > yesterday);
+    const lastDayCoinbases = this.thetaSdk.coinbases.filter((x) => x.timestamp > yesterday);
     return lastDayCoinbases;
   }
 
@@ -25,7 +56,7 @@ export default class CoinbaseHistoryComponent extends Component {
 
   get coinbasesLastWeek() {
     const lastWeek = new Date(new Date().setDate(new Date().getDate() - 7));
-    const lastWeekCoinbases = this.thetaSdk.guardianCoinbases.filter((x) => x.timestamp > lastWeek);
+    const lastWeekCoinbases = this.thetaSdk.coinbases.filter((x) => x.timestamp > lastWeek);
     return lastWeekCoinbases;
   }
 
@@ -43,7 +74,7 @@ export default class CoinbaseHistoryComponent extends Component {
 
   get coinbasesLastMonth() {
     const lastMonth = new Date(new Date().setMonth(new Date().getMonth() - 1));
-    const lastMonthCoinbases = this.thetaSdk.guardianCoinbases.filter((x) => x.timestamp > lastMonth);
+    const lastMonthCoinbases = this.thetaSdk.coinbases.filter((x) => x.timestamp > lastMonth);
     return lastMonthCoinbases;
   }
 
@@ -61,7 +92,7 @@ export default class CoinbaseHistoryComponent extends Component {
 
   get coinbasesLastSixMonths() {
     const lastSixMonth = new Date(new Date().setMonth(new Date().getMonth() - 6));
-    const lastSixMonthCoinbases = this.thetaSdk.guardianCoinbases.filter((x) => x.timestamp > lastSixMonth);
+    const lastSixMonthCoinbases = this.thetaSdk.coinbases.filter((x) => x.timestamp > lastSixMonth);
     return lastSixMonthCoinbases;
   }
 

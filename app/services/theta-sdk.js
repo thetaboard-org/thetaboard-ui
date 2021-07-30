@@ -16,9 +16,6 @@ export default class ThetaSdkService extends Service {
     this.groups = [];
     this.transactions = [];
     this.coinbases = [];
-    this.guardianCoinbases = [];
-    this.eliteEdgeNodeCoinbases = [];
-    this.coinbasesLoaded = false;
     this.pagination = {};
     this.currentAccount = '';
     this.currentGroup = '';
@@ -46,9 +43,6 @@ export default class ThetaSdkService extends Service {
   @tracked pagination;
   @tracked transactions;
   @tracked coinbases;
-  @tracked guardianCoinbases
-  @tracked eliteEdgeNodeCoinbases
-  @tracked coinbasesLoaded;
   @tracked currentAccountDomainList
   @tracked totalStake
   @tracked totalTfuelStake
@@ -99,6 +93,36 @@ export default class ThetaSdkService extends Service {
       return this.wallets.filter((x) => x.type === 'Elite Edge Node');
     }
     return [];
+  }
+
+  get guardianCoinbases() {
+    return this.coinbases.filter((x) => {
+      if (
+        x.value % 12 == 0 ||
+        x.value % 11.88 == 0 ||
+        x.value % 11.76 == 0 ||
+        x.value % 11.64 == 0 ||
+        x.value % 11.52 == 0
+      ) {
+        return true;
+      }
+      return false;
+    });
+  }
+
+  get eliteEdgeNodeCoinbases() {
+    return this.coinbases.filter((x) => {
+      if (
+        x.value % 12 == 0 ||
+        x.value % 11.88 == 0 ||
+        x.value % 11.76 == 0 ||
+        x.value % 11.64 == 0 ||
+        x.value % 11.52 == 0
+      ) {
+        return false;
+      }
+      return true;
+    });
   }
 
   get tfuelAPR() {
@@ -332,59 +356,14 @@ export default class ThetaSdkService extends Service {
       });
   }
 
-  async getCoinbases(accounts, pageNumber = 1) {
-    let url = `${this.envManager.config.explorerEndpoint}:8443/api/accounttx/${accounts[0]}/?type=-1&pageNumber=${pageNumber}&limitNumber=90&isEqualType=true&types=["0"]`;
-    const coinbases = await fetch(url);
-    if (coinbases.status == 200) {
-      const result = await coinbases.json();
-      return result.body;
-    }
-    return [];
-  }
-
-  async getAllCoinbases(accounts) {
-    this.coinbasesLoaded = false;
-    const wei_divider = 1000000000000000000;
-    let pageNumber = 1;
-    let coinbaseList = [];
-    let keepFectching = true;
-    while (keepFectching && pageNumber < 7) {
-      let coinbases = await this.getCoinbases(accounts, pageNumber);
-      if (!coinbases.length) {
-        keepFectching = false;
-        break;
-      }
-      if (coinbases.length != 90) {
-        keepFectching = false;
-      }
-      coinbases.map((x) => {
-        const to = x["data"]["outputs"].filter(x => x['address'].toUpperCase() === accounts['0'].toUpperCase())[0];
-        if (to) {
-          coinbaseList.push({
-            "timestamp": x["timestamp"],
-            "amount": to["coins"]["tfuelwei"] / wei_divider,
-            "value": to["coins"]["tfuelwei"] / wei_divider * this.prices.tfuel.price
-          });
-        }
+  async getAllCoinbases(wallets) {
+    this.store.query('coinbaseHistory', {
+        wallets: wallets
+      })
+      .then((coinbases) => {
+        this.coinbases = coinbases;
+        return coinbases;
       });
-      coinbases = [];
-      pageNumber++;
-    }
-    this.coinbases = coinbaseList;
-    this.guardianCoinbases = coinbaseList.filter((x) => {
-      if (x.amount % 12 == 0 || x.amount % 11.52 == 0 || x.amount % 11.64 == 0 || x.amount % 11.88 == 0) {
-        return true;
-      }
-      return false;
-    });
-    this.eliteEdgeNodeCoinbases = coinbaseList.filter((x) => {
-      if (x.amount % 12 == 0 || x.amount % 11.52 == 0 || x.amount % 11.64 == 0 || x.amount % 11.88 == 0) {
-        return false;
-      }
-      return true;
-    });
-    this.coinbasesLoaded = true;
-    return coinbaseList;
   }
 
   async getGuardianStatus() {
