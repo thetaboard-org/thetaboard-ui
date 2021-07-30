@@ -8,14 +8,29 @@ export default class TransactionHistoryComponent extends Component {
   constructor(...args) {
     super(...args);
     this.account = '';
+    this.group = '';
+    this.wallets = [];
   }
   @service('env-manager') envManager;
   @service('theta-sdk') thetaSdk;
 
   async initialize() {
-    if (this.thetaSdk.currentAccount && this.thetaSdk.currentAccount != this.account) {
+    if (
+      this.thetaSdk.currentAccount &&
+      this.thetaSdk.currentAccount[0] &&
+      (this.account[0] == undefined ||
+      this.thetaSdk.currentAccount[0].toLowerCase() != this.account[0].toLowerCase())
+    ) {
       this.account = this.thetaSdk.currentAccount;
-      return await this.thetaSdk.getTransactions(this.thetaSdk.currentAccount);
+      this.group = '';
+      this.wallets = this.thetaSdk.currentAccount;
+      return await this.thetaSdk.getTransactions(this.wallets);
+    } else if (this.thetaSdk.currentGroup && this.thetaSdk.currentGroup != this.group) {
+      this.group = this.thetaSdk.currentGroup;
+      this.account = '';
+      let allWallets = this.thetaSdk.wallets.map((x) => x.wallet_address.toLowerCase());
+      this.wallets = [...new Set(allWallets)];
+      return await this.thetaSdk.getTransactions(this.wallets);
     }
   }
 
@@ -36,8 +51,7 @@ export default class TransactionHistoryComponent extends Component {
   }
 
   async changePagination(current) {
-    const account = this.thetaSdk.currentAccount;
-    await this.thetaSdk.getTransactions(account, current);
+    await this.thetaSdk.getTransactions(this.wallets, current);
     $('nav[aria-label="Page navigation"] .pager li').removeClass("disabled");
   }
 

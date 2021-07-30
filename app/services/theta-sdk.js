@@ -77,6 +77,10 @@ export default class ThetaSdkService extends Service {
     return getOwner(this).lookup('service:utils');
   }
 
+  get store() {
+    return getOwner(this).lookup('service:store');
+  }
+
   get guardianWallets() {
     if (this.wallets.length) {
       return this.wallets.filter((x) => x.type === 'Guardian Node');
@@ -315,18 +319,17 @@ export default class ThetaSdkService extends Service {
     return wallets;
   }
 
-  async getTransactions(accounts, current = 1, limit_number = 15) {
-    let transactionList = { transactions: [] };
-    let finalUrl = '/explorer/wallet-transactions/' + accounts[0] + this.envManager.config.queryParams;
-    this.envManager.config.queryParams ? (finalUrl += '&') : (finalUrl += '?');
-    finalUrl += `pageNumber=${current}&limitNumber=${limit_number}`;
-    const transactions = await fetch(finalUrl);
-    if (transactions.status == 200) {
-      transactionList = await transactions.json();
-      this.transactions = transactionList.transactions;
-      this.pagination = transactionList.pagination;
-    }
-    return transactionList;
+  async getTransactions(wallets, current = 1, limit_number = 40) {
+    this.store.query('transactionHistory', {
+        pageNumber: current,
+        limitNumber: limit_number,
+        wallets: wallets,
+      })
+      .then((transactions) => {
+        this.transactions = transactions;
+        this.pagination = transactions.meta.pagination;
+        return transactions;
+      });
   }
 
   async getCoinbases(accounts, pageNumber = 1) {
