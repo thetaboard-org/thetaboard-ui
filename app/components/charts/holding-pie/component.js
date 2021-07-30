@@ -53,22 +53,22 @@ export default class HoldingPieComponent extends Component {
       {
         label: `EEN (${numberWithCommas(een_amount.toFixed(2))})`,
         value: een_value,
-        color: '#ea9c3a',
+        color: '#ff7710',
       },
       {
         label: `Guardian (${numberWithCommas(guardian_amount.toFixed(2))})`,
         value: guardian_value,
-        color: '#24bac5',
+        color: '#0f9fce',
       },
       {
         label: `Theta (${numberWithCommas(theta_amount.toFixed(2))})`,
         value: theta_value,
-        color: '#2BB7E5',
+        color: '#4fc733',
       },
       {
         label: `Tfuel (${numberWithCommas(tfuel_amount.toFixed(2))})`,
         value: tfuel_value,
-        color: '#FFA500',
+        color: '#ffa113',
       },
     ];
     this.thetaSdk.wallets.map((x) => x.value);
