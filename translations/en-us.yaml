@@ -63,6 +63,15 @@ global:
   default: "Default"
   action: "Action"
   remove: "Remove"
+  reward: "Reward"
+  transfer: "Transfer"
+  reserve_fund: "Reserve Fund"
+  service_payment: "Service Payment"
+  split_contract: "Split Contract"
+  smart_contract: "Smart Contract"
+  withdraw_stake: "Withdraw Stake"
+  deposit_stake: "Deposit Stake"
+  stake_reward_distribution: "Stake Reward Distribution"
 ###### GLOBAL END ######
 
 
