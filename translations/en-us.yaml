@@ -122,7 +122,7 @@ transaction_history:
 ###### STAKING START ######
 staking: 
   earn_up_to: "Earn up to"
-  tfuel_fees: "0% fee until 07/31/2021 (3% fee starting on 08/01/2021)"
+  tfuel_fees: "3% fee on staking rewards (For every 10 Tfuel earnt, Thetaboard fee equals 0.3 Tfuel)"
   tfuel_fees_affiliate: "0% fee until 08/31/2021 (3% fee starting on 09/01/2021)"
   ### Staking Tfuel
   tfuel:
@@ -135,7 +135,7 @@ staking:
   theta:
     title: "Theta Staking"
     subtitle: "You can Stake you Theta on our Delegate Guardian Node"
-    fees: "3% fee on staking rewards (rewards will be in multiples of 11.64 Tfuel)"
+    fees: "3% fee on staking rewards (For every 12 Tfuel earnt, Thetaboard fee equals 0.36 Tfuel. Rewards will be received in multiples of 11.64 Tfuel)"
     tuto: "Please refer to the following tutorial from the Theta Network Team, and don't forget to pick Thetaboard in the list!"
     use_summary: "Or you can use the following summary if you know what you are doing"
     no_theta_staked: "You don't have any Theta staked."
