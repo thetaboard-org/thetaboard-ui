@@ -8,7 +8,7 @@ export default class TrendTfuelComponent extends Component {
     const tfuelPrice = this.thetaSdk.prices.tfuel.price;
     const perc_change = this.args.historic_price.tfuel.change_24h;
     if (tfuelPrice && perc_change) {
-      const previous_price = tfuelPrice + tfuelPrice / 100 * perc_change;
+      const previous_price = tfuelPrice / (1 - (-perc_change / 100));
       return this.setTrend(tfuelPrice, previous_price);
     }
     return {
@@ -39,8 +39,8 @@ export default class TrendTfuelComponent extends Component {
   }
 
   setTrend(currentPrice, previousPrice) {
-    const change = (Number(currentPrice) - Number(previousPrice)).toFixed(3);
-    const percentChange = (change / Number(previousPrice) * 100).toFixed(2);
+    const change = currentPrice - previousPrice;
+    const percentChange = (change / previousPrice) * 100;
     return {
       type: percentChange < 0 ? '-' : '+',
       class: percentChange < 0 ? 'down' : 'up',

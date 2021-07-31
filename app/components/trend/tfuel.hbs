@@ -17,13 +17,13 @@
         <div class="trends-percent-conatiner">
           <div class="trend-activity trends-percent border-separation">
               <p class="description">{{t 'global.last.24h'}}</p>
-              <p class="title {{trendYesterday.class}}">{{trendYesterday.type}} {{trendYesterday.percentChange}}%</p>
-              <span class="trend-usd-change {{trendYesterday.class}}">({{trendYesterday.type}} ${{trendYesterday.change}})</span>
+              <p class="title {{trendYesterday.class}}">{{trendYesterday.type}} <span class="nostyle" {{numberformat trendYesterday.percentChange 2}}></span>%</p>
+              <span class="trend-usd-change {{trendYesterday.class}}">({{trendYesterday.type}} $<span class="nostyle" {{numberformat trendYesterday.change 3}}></span>)</span>
           </div>
           <div class="trend-activity trends-percent">
               <p class="description">{{t 'global.last.7d'}}</p>
-              <p class="title {{trendLastWeek.class}} ">{{trendLastWeek.type}} {{trendLastWeek.percentChange}}%</p>
-              <span class="trend-usd-change {{trendLastWeek.class}}">({{trendLastWeek.type}} ${{trendLastWeek.change}})</span>
+              <p class="title {{trendLastWeek.class}} ">{{trendLastWeek.type}} <span class="nostyle" {{numberformat trendLastWeek.percentChange 2}}></span>%</p>
+              <span class="trend-usd-change {{trendLastWeek.class}}">({{trendLastWeek.type}} $<span class="nostyle" {{numberformat trendLastWeek.change 3}}></span>)</span>
           </div>
         </div>
         <hr/>

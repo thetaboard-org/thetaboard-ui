@@ -8,7 +8,7 @@ export default class TrendThetaComponent extends Component {
     const thetaPrice = this.thetaSdk.prices.theta.price;
     const perc_change = this.args.historic_price.theta.change_24h;
     if (thetaPrice && perc_change) {
-      const previous_price = thetaPrice + thetaPrice / 100 * perc_change;
+      const previous_price = thetaPrice / (1 - (-perc_change / 100));
       return this.setTrend(thetaPrice, previous_price);
     }
     return {
@@ -35,8 +35,8 @@ export default class TrendThetaComponent extends Component {
   }
 
   setTrend(currentPrice, previousPrice) {
-    const change = Math.round(((currentPrice - previousPrice) + Number.EPSILON) * 100) / 100;
-    const percentChange = Math.round(((change / previousPrice * 100) + Number.EPSILON) * 100) / 100;
+    const change = currentPrice - previousPrice;
+    const percentChange = (change / previousPrice) * 100;
     return {
       type: percentChange < 0 ? '-' : '+',
       class: percentChange < 0 ? 'down' : 'up',
