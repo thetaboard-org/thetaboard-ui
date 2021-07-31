@@ -272,7 +272,7 @@ export default class ThetaSdkService extends Service {
     //object: Either the group or the wallet
 
     if (type == 'wallet') {
-      let wallets = { wallets: [] };
+      let wallets = {wallets: []};
       this.contract.domainName = '';
       const walletInfo = await fetch(
         '/explorer/wallets-info/' + object[0] + this.envManager.config.queryParams
@@ -295,7 +295,7 @@ export default class ThetaSdkService extends Service {
       this.currentGroup = null;
       return wallets;
     } else if (type == 'group') {
-      let wallets = { wallets: [] };
+      let wallets = {wallets: []};
       this.contract.domainName = '';
       let uuid = '';
       if (typeof object == 'string') {
@@ -344,26 +344,20 @@ export default class ThetaSdkService extends Service {
   }
 
   async getTransactions(wallets, current = 1, limit_number = 40) {
-    this.store.query('transactionHistory', {
-        pageNumber: current,
-        limitNumber: limit_number,
-        wallets: wallets,
-      })
-      .then((transactions) => {
-        this.transactions = transactions;
-        this.pagination = transactions.meta.pagination;
-        return transactions;
-      });
+    this.transactions = await this.store.query('transactionHistory', {
+      pageNumber: current,
+      limitNumber: limit_number,
+      wallets: wallets,
+    });
+    this.pagination = this.transactions.meta.pagination;
+    return this.transactions;
   }
 
   async getAllCoinbases(wallets) {
-    return await this.store.query('coinbaseHistory', {
-        wallets: wallets
-      })
-      .then((coinbases) => {
-        this.coinbases = coinbases;
-        return coinbases;
-      });
+    this.coinbases = await this.store.query('coinbaseHistory', {
+      wallets: wallets
+    });
+    return this.coinbases;
   }
 
   async getGuardianStatus() {
