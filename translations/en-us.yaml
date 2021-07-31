@@ -123,6 +123,7 @@ transaction_history:
 staking: 
   earn_up_to: "Earn up to"
   tfuel_fees: "0% fee until 07/31/2021 (3% fee starting on 08/01/2021)"
+  tfuel_fees_affiliate: "0% fee until 08/31/2021 (3% fee starting on 09/01/2021)"
   ### Staking Tfuel
   tfuel:
     title: "Tfuel Public Staking"
