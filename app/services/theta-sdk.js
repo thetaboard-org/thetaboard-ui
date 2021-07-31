@@ -357,7 +357,7 @@ export default class ThetaSdkService extends Service {
   }
 
   async getAllCoinbases(wallets) {
-    this.store.query('coinbaseHistory', {
+    return await this.store.query('coinbaseHistory', {
         wallets: wallets
       })
       .then((coinbases) => {

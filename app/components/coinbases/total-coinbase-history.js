@@ -2,41 +2,10 @@ import Component from '@glimmer/component';
 import { inject as service } from '@ember/service';
 
 export default class TotalCoinbaseHistoryComponent extends Component {
-  constructor(...args) {
-    super(...args);
-    this.account = '';
-    this.group = '';
-    this.wallets = [];
-  }
   @service('env-manager') envManager;
   @service('theta-sdk') thetaSdk;
 
-  async initialize() {
-    if (
-      this.thetaSdk.currentAccount &&
-      this.thetaSdk.currentAccount[0] &&
-      (this.account == undefined ||
-        this.account[0] == undefined ||
-        this.thetaSdk.currentAccount[0].toLowerCase() != this.account[0].toLowerCase())
-    ) {
-      this.account = this.thetaSdk.currentAccount;
-      this.group = '';
-      this.wallets = this.thetaSdk.currentAccount;
-      return await this.thetaSdk.getAllCoinbases(this.wallets);
-    } else if (
-      this.thetaSdk.currentGroup &&
-      this.thetaSdk.currentGroup != this.group
-    ) {
-      this.group = this.thetaSdk.currentGroup;
-      this.account = '';
-      let allWallets = this.thetaSdk.wallets.map((x) => x.wallet_address.toLowerCase());
-      this.wallets = [...new Set(allWallets)];
-      return await this.thetaSdk.getAllCoinbases(this.wallets);
-    }
-  }
-
   get coinbasesLastDay() {
-    this.initialize();
     const yesterday = new Date(new Date().setDate(new Date().getDate() - 1));
     const lastDayCoinbases = this.thetaSdk.coinbases.filter((x) => x.timestamp > yesterday);
     return lastDayCoinbases;
