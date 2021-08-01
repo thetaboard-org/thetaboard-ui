@@ -48,7 +48,6 @@ global:
   refresh: "Refresh"
   you: "You"
   was: "was"
-  donations: "Donations:"
   click: "Click"
   here: "here"
   by: "by"
@@ -336,8 +335,7 @@ faq:
               <br/>
               This project is primarily developed and maintained by Maurin Lenglart and Adrien Vinches.<br>
               We can be contacted for support or suggestions on <a target=\"_blank\" href=\"https://discord.gg/SGUtY7zBU3\"> discord</a>.
-              <br>
-              If you like the project you can make"
+              <br>"
   quick_links: "Quick Links"
   how_to_stake_tfuel : "How to stake Tfuel?"
   how_to_stake_tfuel_link : "/assets/pdf/How_to_stake_TFUEL.pdf"
