@@ -38,7 +38,7 @@ export default class WalletService extends Service {
   @action
   async initWallet() {
     if (this.wallets && this.wallets.length) {
-      if (!this.isSearchedWalletOwned && !this.thetaSdk.currentAccount) {
+      if (!this.isSearchedWalletOwned && !this.thetaSdk.currentGroup && !this.thetaSdk.currentAccount) {
         if (this.defaultWallet) {
           await this.thetaSdk.getWalletInfo([this.defaultWallet.address]);
           return this.router.transitionTo({
