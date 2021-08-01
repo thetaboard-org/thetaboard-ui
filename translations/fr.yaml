@@ -102,7 +102,7 @@ wallet_list:
     no_wallet: "Pas de portefeuille, s’il vous plait"
 ### holding-pie component
 holding_pie:
-    title: "Composition du portefeuille en"
+    title: "Composition en"
 ### Coinbase-history component
 coinbase_history:
     title: "{jeton} Récompense de Staking"

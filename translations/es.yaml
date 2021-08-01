@@ -102,7 +102,7 @@ wallet_list:
   no_wallet: "Por favor, no hay wallet"
 ### holding-pie component
 holding_pie:
-  title: "Composición de la wallet"
+  title: "Composición en"
 ### Coinbase-history component
 coinbase_history:
   title: "{token} Recompensas por stakes"

@@ -1,6 +1,25 @@
 <div class="wallet-address-search-container">
     {{#if wallet.wallets}}
         <div class="dropdown dropdown-select-wallet">
+            {{#if isMobile.android.device}}
+            {{!-- Specific for android --}}
+                <div class="selected-dropdown-item">
+                    {{#if wallet.isSearchedWalletOwned}}
+                        {{wallet.isSearchedWalletOwned.name}} 
+                        (<span {{shortener wallet.isSearchedWalletOwned.address}}>{{wallet.isSearchedWalletOwned.address}}</span>)
+                    {{else if group.isSearchedGroupOwned}}
+                        {{group.isSearchedGroupOwned.name}}
+                        (<span>{{group.isSearchedGroupOwned.wallets.length}} {{t 'my_wallets.wallets'}}</span>)
+                    {{else if thetaSdk.currentAccount}}
+                        <span class="long-address">{{this.thetaSdk.currentAccount}}</span>
+                        <span class="short-address" {{shortener this.thetaSdk.currentAccount.firstObject}}>{{this.thetaSdk.currentAccount}}</span>
+                    {{else}}
+                        {{t 'global.enter_wallet'}}
+                    {{/if}}
+                    <img data-toggle="modal" data-target="#searchModal" style="float: left; width: 15px; margin: 4px 5px 0 -10px;" src="{{rootURL}}/assets/img/magnifying.png"/>
+                    <img style="float: right; margin: 0 -10px 0 5px;" src="{{rootURL}}/assets/img/arrow.png"/>
+                </div>
+            {{else}}
                 <div data-toggle="modal" data-target="#searchModal" class="selected-dropdown-item">
                     {{#if wallet.isSearchedWalletOwned}}
                         {{wallet.isSearchedWalletOwned.name}} 
@@ -17,6 +36,7 @@
                     <img style="float: left; width: 15px; margin: 4px 5px 0 -10px;" src="{{rootURL}}/assets/img/magnifying.png"/>
                     <img style="float: right; margin: 0 -10px 0 5px;" src="{{rootURL}}/assets/img/arrow.png"/>
                 </div>
+            {{/if}}
             <div class="dropdown-content">
                 {{#each wallet.wallets as |wallet|}}
                     <p {{on 'click' (fn this.selectWallet wallet)}}>{{wallet.name}} (<span {{shortener wallet.address}}>{{wallet.address}}</span>)</p>
@@ -31,16 +51,30 @@
         </div>
     {{else}}
         <div class="dropdown dropdown-select-wallet">
-            <div data-toggle="modal" data-target="#searchModal" class="selected-dropdown-item">
-                {{#if this.thetaSdk.currentAccount}} 
-                    <span class="long-address">{{this.thetaSdk.currentAccount}}</span>
-                    <span class="short-address" {{shortener this.thetaSdk.currentAccount.firstObject}}>{{this.thetaSdk.currentAccount}}</span>
-                {{else}}
-                    {{t 'global.enter_wallet'}}
-                {{/if}}
-                <img style="float: left; width: 15px; margin: 4px 5px 0 -10px;" src="{{rootURL}}/assets/img/magnifying.png"/>
-                <img style="float: right; margin: 0 -10px 0 5px;" src="{{rootURL}}/assets/img/arrow.png"/>
-            </div>
+            {{#if isMobile.android.device}}
+            {{!-- Specific for android --}}
+                <div class="selected-dropdown-item">
+                    {{#if this.thetaSdk.currentAccount}} 
+                        <span class="long-address">{{this.thetaSdk.currentAccount}}</span>
+                        <span class="short-address" {{shortener this.thetaSdk.currentAccount.firstObject}}>{{this.thetaSdk.currentAccount}}</span>
+                    {{else}}
+                        {{t 'global.enter_wallet'}}
+                    {{/if}}
+                    <img data-toggle="modal" data-target="#searchModal" style="float: left; width: 15px; margin: 4px 5px 0 -10px;" src="{{rootURL}}/assets/img/magnifying.png"/>
+                    <img style="float: right; margin: 0 -10px 0 5px;" src="{{rootURL}}/assets/img/arrow.png"/>
+                </div>
+            {{else}}
+                <div data-toggle="modal" data-target="#searchModal" class="selected-dropdown-item">
+                    {{#if this.thetaSdk.currentAccount}} 
+                        <span class="long-address">{{this.thetaSdk.currentAccount}}</span>
+                        <span class="short-address" {{shortener this.thetaSdk.currentAccount.firstObject}}>{{this.thetaSdk.currentAccount}}</span>
+                    {{else}}
+                        {{t 'global.enter_wallet'}}
+                    {{/if}}
+                    <img style="float: left; width: 15px; margin: 4px 5px 0 -10px;" src="{{rootURL}}/assets/img/magnifying.png"/>
+                    <img style="float: right; margin: 0 -10px 0 5px;" src="{{rootURL}}/assets/img/arrow.png"/>
+                </div>
+            {{/if}}
             <div class="dropdown-content">
                 <LinkTo @route="my-wallets"><p><a href="">{{t 'global.add_wallet'}}</a></p></LinkTo>
             </div>

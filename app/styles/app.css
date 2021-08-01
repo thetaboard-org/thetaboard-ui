@@ -969,7 +969,7 @@ a.logout {
   }
 
   .dropdown-content, .dropdown .selected-dropdown-item {
-    width: 250px;
+    width: 240px;
   }
 
 }
@@ -1036,4 +1036,11 @@ a.logout {
 
 .visibility-hidden {
   visibility: hidden;
+}
+
+@media screen and (max-width: 991px) {
+  .main-panel .navbar .container-fluid {
+    padding-right: 5px;
+    padding-left: 5px;
+  }
 }
