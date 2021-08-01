@@ -1,350 +1,342 @@
 ###### GLOBAL START ######
 global:
-  year: "Year"
-  year_short: "Y"
-  month: "Month"
+  year: "Año"
+  year_short: "A"
+  month: "Mes"
   month_short: "M"
-  week: "Week"
-  week_short: "W"
+  week: "Semana"
+  week_short: "S"
   ratio_theta_tfuel: "Theta/Tfuel ratio"
   last:
-    24h: "Last 24h"
-    7d: "Last 7 days"
-    m: "Last months"
-    6m: "Last 6 months"
-  market_cap: "Market Cap"
-  24_volume: "24h volume"
-  theta_staked: "Theta Staked"
-  tfuel_staked: "Tfuel Staked"
-  apr_not_guarentee: "Thetaboard cannot guarantee this APR as it is dependent on the Theta Network."
-  in: "in"
-  or: "or"
-  for: "for"
-  please: "Please"
-  link_wallet: "link your wallet"
-  enter_address: "enter an address"
+    24h: "Últimas 24h"
+    7d: "Últimos 7 días"
+    m: "Últimos meses"
+    6m: "Últimos seis meses"
+  market_cap: "Capitalización de mercado"
+  24_volume: "Volumen en 24h"
+  theta_staked: "Thetas en Stake"
+  tfuel_staked: "Tfuels en Stake"
+  apr_not_guarentee: "Thetaboard no puede garantizar APR, esto depende de Theta Network."
+  in: "dentro"
+  or: "o"
+  for: "para"
+  please: "Por favor"
+  link_wallet: "Enlaza tu wallet"
+  enter_address: "Introduce direción"
   total: "Total"
-  type: "Type"
-  block: "Block"
-  apr: "APR"
-  theta_doc: "Theta documentation"
+  type: "Tipo"
+  block: "Bloque"
+  apr: "Tasa de Porcentaje Anual"
+  theta_doc: "Documentación de Theta"
   vip_een: "VIP Elite Edge Nodes"
-  copy_summary: "Copy Summary"
-  close: "Close"
-  staked: "Staked"
-  available: "Available"
+  copy_summary: "Copiar Summary"
+  close: "Cerrar"
+  staked: "Stakeado"
+  available: "Disponible"
   en_summary: "Edge Node Summary"
-  your_stakes: "Your Stakes"
-  staked_on: "Staked on node address"
-  clear: "Clear"
-  submit: "Submit"
-  date: "Date"
+  your_stakes: "Tus Stakes"
+  staked_on: "Stakeado en dirección de nodo"
+  clear: "limpiar"
+  submit: "Enviar"
+  date: "Fecha"
   summary: "Summary"
-  wallet_address: "Wallet Address"
-  search: Search
-  cancel: Cancel
-  enter_wallet: "Enter wallet address"
+  wallet_address: "Dirección Wallet"
+  search: Buscar
+  cancel: Cancelar
+  enter_wallet: "Introduce dirección wallet"
   tfuel: "Tfuel"
-  refresh: "Refresh"
-  you: "You"
-  was: "was"
-  donations: "Donations:"
+  refresh: "Refresca"
+  you: "Tu"
+  was: "eras"
+  donations: "Donaciones:"
   click: "Click"
-  here: "here"
+  here: "Aquí"
   by: "by"
-  login: "Login"
+  login: "Loguearse"
   email: "Email"
-  password: "Password"
-  go_dash: "Go to Dashboard"
-  password_format: "Password must be 8 characters minimum and contain at least: 1 uppercase, 1 lowercase and 1 number or 1 special character"
-  welcome: "Welcome to Thetaboard!"
-  add_wallet: "Add Wallet"
-  name: "Name"
-  default: "Default"
-  action: "Action"
-  remove: "Remove"
-  reward: "Reward"
-  transfer: "Transfer"
-  reserve_fund: "Reserve Fund"
-  service_payment: "Service Payment"
-  split_contract: "Split Contract"
-  smart_contract: "Smart Contract"
-  withdraw_stake: "Withdraw Stake"
-  deposit_stake: "Deposit Stake"
-  stake_reward_distribution: "Stake Reward Distribution"
+  password: "Contrseña"
+  go_dash: "Ve a Dashboard"
+  password_format: "La contraseña debe ser como mínimo de 8 caracteres incluyendo una mayúscula, una minúscula y un número o caracter especial"
+  welcome: "Bienvenido a Thetaboard!"
+  add_wallet: "Añade Wallet"
+  name: "Nombre"
+  default: "Por defecto"
+  action: "Acción"
+  remove: "Quitar"
+  reward: "Recompensa"
+  transfer: "Transferir"
+  reserve_fund: "Fondo de Reserva"
+  service_payment: “Pago del Servicio"
+  split_contract: "Contrato Dividido"
+  smart_contract: "Contrato Inteligente "
+  withdraw_stake: "Retirar Stake"
+  deposit_stake: "Depositar Stake"
+  stake_reward_distribution: "Distribución de Recompensas de Stake"
 ###### GLOBAL END ######
 
 
 ###### DASHBOARD START ######
 ### Price-chart component
 price_chart:
-  title: "Theta/Tfuel Price"
-  is_worth: "is worth"
+  title: "Precio Theta/Tfuel"
+  is_worth: "Valor"
 ### earnings-forecast components 
 reward_forecast:
-  title_tfuel: "Elite Edge Node TFuel Reward Forecast"
-  title_theta: "Guardian Node TFuel Reward Forecast"
-  subtitle: "Forecasting for"
-  estimated_earning: "Estimated Tfuel earnings"
-  per_day: "Per Day"
-  per_month: "Per Month"
-  per_year: "Per Year"
+  title_tfuel: "Pronóstico de recompensas en TFuels nodo Élite Edge"
+  title_theta: "Pronóstico de recompensas en  TFuel nodo Guardián"
+  subtitle: "Previsión de"
+  estimated_earning: "Ganancias estimadas en Tfuels"
+  per_day: "Diario"
+  per_month: "Mensual"
+  per_year: "Anual"
 ###### DASHBOARD END ######
 
 
 ###### WALLET START ######
 ### Wallet-list component
 wallet_list:
-  title: "Holdings"
-  wallet_address: "Wallet Address"
-  market_price: "Market Price"
-  amount: "Amount"
-  node_address: "Node Address"
-  no_wallet: "No wallet, please"
+  title: "Portfolio"
+  wallet_address: "Direción Wallet"
+  market_price: "Precio de mercado"
+  amount: "Cantidad"
+  node_address: "Dirección de nodo"
+  no_wallet: "Por favor, no hay wallet"
 ### holding-pie component
 holding_pie:
-  title: "Wallet Composition in"
+  title: "Composición de la wallet"
 ### Coinbase-history component
 coinbase_history:
-  title: "{token} Staking Rewards"
-  rewards_received: "reward(s) received"
+  title: "{token} Recompensas por stakes"
+  rewards_received: "Recompensas recibidas"
 ### transaction-history component
 transaction_history:
-  title: "Transactions"
-  no_transaction: "No transaction"
-  age: "Age"
-  from: "From"
-  to: "To"
-  value: "Value"
+  title: "Transaciones"
+  no_transaction: "No hay transacción"
+  age: "Edad"
+  from: "de"
+  to: "a"
+  value: "Valor"
 ###### WALLET END ######
 
 
 ###### STAKING START ######
 staking: 
-  earn_up_to: "Earn up to"
+  earn_up_to: "Ganar hasta"
   tfuel_fees: "3% fee on staking rewards (For every 10 Tfuel earnt, Thetaboard fee equals 0.3 Tfuel)"
   tfuel_fees_affiliate: "0% fee until 08/31/2021 (3% fee starting on 09/01/2021)"
   ### Staking Tfuel
   tfuel:
-    title: "Tfuel Public Staking"
-    subtitle: "You can Stake Tfuel on our Delegate Elite Edge Nodes"
-    follow: "Just follow the"
-    using_summary: "using the Summaries below"
-    stake_on: "If you have more than 100,000 Tfuel, stake on our"
+    title: "Tfuel Staking público"
+    subtitle: "Puedes hacer stake de tus Tfuels delegando en Élite Edges nodes"
+    follow: "Solo sigue el"
+    using_summary: "Usando las direcciones summaries de aquí debajo"
+    stake_on: "Si tienes más de100,000 Tfuels, haz stake en nuestros "
   ### Staking Tfuel
   theta:
-    title: "Theta Staking"
-    subtitle: "You can Stake you Theta on our Delegate Guardian Node"
-    fees: "3% fee on staking rewards (For every 12 Tfuel earnt, Thetaboard fee equals 0.36 Tfuel. Rewards will be received in multiples of 11.64 Tfuel)"
-    tuto: "Please refer to the following tutorial from the Theta Network Team, and don't forget to pick Thetaboard in the list!"
-    use_summary: "Or you can use the following summary if you know what you are doing"
-    no_theta_staked: "You don't have any Theta staked."
-    earn: "Stake your THETA to earn TFUEL"
+    title: "Staking de Thetas"
+    subtitle: "Puedes hacer stake de tus Thetas,delegando en nuestro nodo guardián."
+    fees: "3% de comisión por recompensas de nuestro stake (Las recompensas serán múltipoos de11.64 Tfuel ya con la comisión descontada)"
+    tuto: "Por favor consulta el siguiente tutorial creado por Theta Network y no olvides elegir Thetaboadr en la lista"
+    use_summary: "O puedes usar este resumen si sabes conoces y sabes que estás haciendo"
+    no_theta_staked: "No tienes ningún stake en Thetas."
+    earn: "Haz stake de tus Thetas para ganar Tfuels"
   ### Staking VIP
   vip:
-    title: "Tfuel VIP Elite Edge Node Staking"
-    subtitle: "Enter your wallet address below to get a new Edge Node"
-    once_summary: "Once you have your summary, you can use the"
-    start_staking: "to start staking"
-    node_list: "VIP Elite Edge Nodes List"
-    stake_amount: "Stake Amount"
-    see_summary: "See Summary"
-    summary_will_appear: "A Summary will appear soon"
-    no_vip: "You don't have a VIP Elite Edge Node yet"
-    no_tfuel_staked: "You don't have any Tfuel staked."
-    earn: "Stake your Tfuel to earn TFUEL"
+    title: "Stake de Tfuels en VIP Élite Edge node"
+    subtitle: "Introduce tu dirección de wallet para obtener un nuevo Edge node"
+    once_summary: "Una vez tengas tu summary puedes usar el"
+    start_staking: "Para comenzar a hacer stake"
+    node_list: "Lista de VIPs Elite Edge Nodes"
+    stake_amount: "Cantidad a poner en Stake "
+    see_summary: "Mira la Summary"
+    summary_will_appear: "Una dirección Summary aparecerá pronto"
+    no_vip: "Todavía no tienes un VIP Elite Edge Node"
+    no_tfuel_staked: "No tienes Tfuesl en stake."
+    earn: "Haz stake de tus Tfuels para ganar más Tfuels"
   ### Staking Affiliate 
   affiliate:
-    stake_to: "Stake Tfuel to"
-    community_een: "community Elite Edge Nodes"
+    stake_to: "Hacer Stake de Tfuels a"
+    community_een: "Comunidad de Elite Edge Nodes"
 ###### STAKING END ######
 
 
 ###### DOMAIN START ######
 domain:
-  offer_amount: "Offer amount:"
+  offer_amount: "Ofrece una cantidad"
   ### Contract/domain component
   buy:
-    title: "Buy a Theta Domain Name"
-    subtitle: "Enter a Domain Name to check it's availibility"
-    placeholder: "Enter Domain Name"
-    domain_name: "The domain name"
-    available: "is available you can buy it for 5 Tfuel!"
-    will_assign: "will be assigned to your wallet address per default."
-    but: "But you can also assign/gift it to another wallet address"
-    gift: "Gift someone else with this domain name!"
-    enter_wallet_assign: "Enter the wallet address that will be assigned"
-    to_domain: "to the domain name:"
-    your_wallet: "Or assign it to your wallet address!"
-    already_taken: "is already taken!"
-    can_make_offer: "But you can make an offer to buy it!"
-    offer_amount: "Amount of your offer in Tfuel"
-    amount_tfuel: "Amount (in Tfuel)"
-    review_order: "Review Order"
-    review_offer: "Review Offer"
-    enter_receiver: "Enter Receiver's Wallet Address"
+    title: "Comprar un dominio de Theta"
+    subtitle: “ Introduce el nombre de dominio para comprobar si está disponible"
+    placeholder: "Pon el nombre del dominio"
+    domain_name: "Nombre de dominio"
+    available: "Está disponible lo puedes comprar por 5 Tfuels!"
+    will_assign: "Se asignará la nuestra dirección de wallet por defecto."
+    but: "Pero también podemos asignarlo/regalarlo a otra dirección wallet"
+    gift: "Regala a otra persona este dominio"
+    enter_wallet_assign: "Introduce la dirección de la wallet a la que se asignará"
+    to_domain: "al nombre de dominio"
+    your_wallet: "O lo asignamos a nuestra dirección wallet!"
+    already_taken: "Ya lo tenemos!"
+    can_make_offer: "Pero puedes hacer una oferta para comprarlo!"
+    offer_amount: "Cantidad de tu oferta en Tfuels"
+    amount_tfuel: "Cantidad (en Tfuels)"
+    review_order: "Revisa orden"
+    review_offer: "Revisa oferta"
+    enter_receiver: "Introduce la dirección wallet del destinatario"
   ### Contract/address component
   lookup:
-    title: "Address lookup"
-    check_domain: "Enter an address to check the associated domain names:"
-    domain_list: "Domain Name List:"
-    no_associated_domain: "No domain associated with the wallet address:"
-    my_domain: "My domain name"
+    title: "Búsqueda de dirección"
+    check_domain: "Introduce una dirección para verificar los dominios asociados."
+    domain_list: "Lista de dominios:"
+    no_associated_domain: "Ningún dominio asociado con la dirección de esta wallet.:"
+    my_domain: "Mi dominio"
   ### Offer-made-list component
   offer_made:
-    offer_submitted: "Offer Submitted"
-    you_made_offer: "You made an offer to buy the Domain:"
-    cancel_offer: "Cancel Offer"
-    no_offer: "No offer submitted."
-    to_access: "to access your offers."
+    offer_submitted: "Oferta enviada"
+    you_made_offer: "Has hecho una oferta para comprar un dominio:"
+    cancel_offer: "Cancelar oferta"
+    no_offer: "Ninguna oferta enviada."
+    to_access: "Para acceder a tus ofertas."
   ### Offer-received-list component
   offer_received:
-    title: "Offer Received"
-    offer_made: "made an offer to buy your Domain:"
-    reject_offer: "Reject Offer"
-    accept_offer: "Accept Offer"
-    no_offer: "No offer received."
+    title: "Oferta recivida"
+    offer_made: "Se ha hecho una oferta para comprar tu dominio:"
+    reject_offer: "Oferta rechazada."
+    accept_offer: "Oferta aceptada"
+    no_offer: "Ninguna oferta recibida."
   #### domain-assigned-modal
   ### offer-made-modal
   modal:
-    congrats: "Congratulations!"
-    is_assigned: "is assigned to the address:"
-    offer_sent: "Your offer was sent!"
-    you_offered: "You offered"
-    tfuel_buy: "Tfuel to buy the domain name"
-    from: "from the wallet address:"
-    offer_cancelled: "Your offer was canceled!"
-    offer_to_buy: "Your offer to buy the domain name"
-    tfuel_canceled: "Tfuel has been canceled"
-    the_offer: "the offer!"
-    the_offer_to_buy: "The offer to buy your domain name"
-    from_wallet: "Tfuel from the wallet address:"
-    now_own: "now owns the domain name"
+    congrats: "Enhorabuena!"
+    is_assigned: "Se asigna a la dirección:"
+    offer_sent: "Tu oferta fue enviada!"
+    you_offered: "Ofertaste"
+    tfuel_buy: "Tfuels para comprar el dominio"
+    from: "Desde la dirección wallet:"
+    offer_cancelled: "Tu oferta fue cancelada!"
+    offer_to_buy: "Tu oferta para comprar ese dominio"
+    tfuel_canceled: "Los Tfuels han sido cancelados"
+    the_offer: "La oferta!"
+    the_offer_to_buy: "La oferta para comprar tu dominio"
+    from_wallet: "Tfuels desde la dirección wallet.:"
+    now_own: "Ya eres el propietario de ese dominio"
 ###### DOMAIN END ######
 
 
 ###### MY-WALLETS START ######
 my_wallets:
-  add_collection: "Add a wallet to your collection"
-  enter_name_wallet: "Enter a name for this wallet"
-  no_wallet: "You don't have any wallet in your collection yet."
-  wallet_list: "Wallet List"
-  enter_name_group: "Enter a name for this group"
-  add_group: "Create a group"
-  click_wallet: "Click on wallets to add to your group:"
-  group_list: "Group List"
-  addresses: "Addresses"
-  no_group: "You don't have any group in your collection yet."
+  add_collection: "Añade una wallet a tu colección."
+  enter_name_wallet: "Introduce un nombre para esta wallet."
+  no_wallet: "No tienes ninguna wallet en tu colección todavía."
+  wallet_list: "Lista de wallets"
+  enter_name_group: "Introduce un nombre para este grupo"
+  add_group: "Crea un grupo"
+  click_wallet: "Clicka sobre las wallets para añadirlas a tu grupo:"
+  group_list: "Lista de grupos"
+  addresses: "Direcciones"
+  no_group: "No tienes ningún grupo añadido a tu lista todavía?"
   wallets: "wallets"
   ###### MY-WALLETS END ######
 
 
 ###### DOWNLOAD WALLET START ######
 download_wallet:
-  make_sure: "Make sure you authenticate using the official"
-  theta_wallet_extension: "Theta Wallet extension"
-  download: "to download it."
+  make_sure: "Asegúrate de autenticarte con la oficial"
+  theta_wallet_extension: "Extensión Theta Wallet"
+  download: "Para descargar a."
 ###### DOWNLOAD WALLET END ######
 
 
 ###### FOOTER START ######
 footer:
-  terms: "Terms of use"
-  privacy: "Privacy policy"
-  made_with: "Made with"
-  join_discord: "Join us on Discord"
-  github: "Check the project on github"
+  terms: "Condiciones de uso"
+  privacy: "Política de privacidad"
+  made_with: "Hecho con"
+  join_discord: "Únete a nosotros en Discord"
+  github: "Comprueba el proyecto en github"
 ###### FOOTER END ######
 
 ###### MENU START ######
 menu:
-  dashboard: "dashboard"
+  dashboard: "dashobard"
   wallet: "wallet"
   staking: "staking"
   tfuel_vip: "Tfuel VIP"
-  domain: "domain"
+  domain: "dominio"
   faq: "faq"
 ###### MENU END ######
 
 ###### NAVBAR START ######
 navbar:
-  signed_as: "Signed in as"
-  my_wallets: "My Wallets"
-  logout: "Log out"
+  signed_as: "Registrado como"
+  my_wallets: "Mis Wallets"
+  logout: "Cerrar sesiónt"
 ###### NAVBAR END ######
 
 
 ###### VERIFY START ######
 verify:
-  please_verify: "Please verify your email address"
-  resend: "Resend verification link"
-  email_verified: "Your email is now verified."
-  can_login: "You can now login to your account"
-  link_invalid: "Your verification link is invalid."
-  click_banner: "Log into your account and click on the 'Re-send verification link' banner."
+  please_verify: "Por favor verifica tu dirección de email"
+  resend: "Reenviar enlace de verificación"
+  email_verified: "Tu email ya está verificado."
+  can_login: "Ya puedes iniciar sesión en tu cuenta"
+  link_invalid: "Tu link de verificación es inválido."
+  click_banner: "Inicia sesión en tu cuenta y haz click en el banner:Reenviar enlace de verificación."
 ###### VERIFY END ######
 
 
 ###### LOGIN START ######
 login:
-  no_account: "No account yet? Sign up for an account"
-  cant_login: "Can't login?"
+  no_account: "No tienes cuenta todavía? Inscríbete para tener tu cuenta"
+  cant_login: "No puedes iniciar sesión?"
 ###### LOGIN END ######
 
 
 ###### SIGN UP START ######
 signup:
-  title: "Sign Up"
-  password_confirm: "Password Confirmation"
-  register: "Register"
-  already_account: "You already have an account?"
-  click_to_login: "click here to Login"
+  title: "Regístrate"
+  password_confirm: "Confirmación de contraseña"
+  register: "Registror"
+  already_account: "Ya tienes una cuenta?"
+  click_to_login: "Pulsa aquí para iniciar sesión"
 ###### SIGN UP END ######
 
 
 ###### PASSWORD RESET START ######
 reset_pass:
-  reset_pass: "Reset Password"
-  submission_received: "Your password reset submission has been received"
-  will_receive_email: "If we have an account matching your email address, you will receive an email with a link to reset your password."
-  no_account_yet: "No account yet? Sign up for an account"
-  pass_updated: "Your password has been updated, you can now login"
+  reset_pass: "Reestablecer contraseña"
+  submission_received: "Su solicitud para reestablecer contraseña se ha recibido"
+  will_receive_email: "Si tenemos registrada una cuenta que coincide con tu correo electrónico, recibirás un email con un enlace para reestablecer tu contraseña."
+  no_account_yet: "No tienes cuenta todavía? Regístrate y obtén tu cuenta"
+  pass_updated: "Tu contraseña ha sido actualizada, ya puedes iniciar sesión"
 ###### PASSWORD RESET END ######
 
 
 ###### REGISTERED START ######
 registered:
-  title: "A verification link has been sent to your email address."
-  subtitle: "Please click on the link we just sent you through email to finalize the registration process."
+  title: "Un enlace de verificación ha sido enviado a tu email."
+  subtitle: "Por favor, haz click en el enlace que te hemos enviado para completar tu resgistro."
 ###### REGISTERED END ######
 
 
 ###### 404 START ######
 notfound:
   oops: "Oops!"
-  page_doesnt_exist: "The page you are looking for doesn't exist."
+  page_doesnt_exist: "La página que buscas, no existe."
 ###### 404 END ######
 
 
 ###### FAQ START ######
 faq:
   title: "Thetaboard FAQ"
-  subtitle: "What is Thetaboard?"
+  subtitle: "Qué es Thetaboard?"
   description: "Thetaboard's mission is to become the central place for any Theta enthusiast. <br>
               We want to bring value to the Theta ecosystem by providing functionalities
               that either simplifies access to information about Theta, or enrich the ecosystem such as Tfuel and Theta Staking, user friendly UI...<br>
               <br/>
               This project is primarily developed and maintained by Maurin Lenglart and Adrien Vinches.<br>
               We can be contacted for support or suggestions on <a target=\"_blank\" href=\"https://discord.gg/SGUtY7zBU3\"> discord</a>.
-              <br>
-              If you like the project you can make"
-  quick_links: "Quick Links"
-  how_to_stake_tfuel : "How to stake Tfuel?"
-  how_to_stake_tfuel_link : "/assets/pdf/How_to_stake_TFUEL.pdf"
-  how_to_stake_theta : "How to stake Theta?"
-  how_to_stake_theta_link : "/assets/pdf/How_to_stake_THETA.pdf"
-  how_to_withdraw : "How to withdraw a stake?"
-  how_to_withdraw_link : "/assets/pdf/How_to_WITHDRAW_stake.pdf"
+              <br>"
   what_staking: "What is staking?"
   what_staking_body: "<p>Staking is a process that involves associating your tokens to a machine that is completing work
                    and providing security to a network, which results in you earning additional rewards.<br/>
@@ -474,3 +466,5 @@ faq:
                   <a href=\"https://docs.thetatoken.org/docs/what-is-theta-network\" target=\"_blank\">https://docs.thetatoken.org/docs/what-is-theta-network</a></p>
                   <br/><br/>"  
 ###### FAQ END ######
+
+

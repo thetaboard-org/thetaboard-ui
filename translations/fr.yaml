@@ -1,0 +1,380 @@
+###### GLOBAL START ######
+global:
+    year: Année
+    year_short: A
+    month: Mois
+    month_short: M
+    week: Semaine
+    week_short: S
+    ratio_theta_tfuel: "ratio Theta/Tfuel"
+    last:
+        24h: "Sur 24h"
+        7d: "Sur 7 jours"
+        m: "Sur 1 mois"
+        6m: "Sur 6 mois"
+    market_cap: "Market Cap"
+    24_volume: "Volume sur 24h"
+    theta_staked: "Theta Stakés"
+    tfuel_staked: "Tfuel Stakés"
+    apr_not_guarentee: "ThetaBoard ne peut garantir un APR car il dépend du Réseau Theta"
+    in: dans
+    or: ou
+    for: pour
+    please: "S’il vous plait"
+    link_wallet: "lier votre portefeuille votre portefeuille"
+    enter_address: "Entrer une adresse"
+    total: Total
+    type: Type
+    block: Block
+    apr: APR
+    theta_doc: "Documentation Theta"
+    vip_een: "VIP Elite Edge Nodes"
+    copy_summary: "Copier le Summary"
+    close: Fermé
+    staked: Staké
+    available: Disponible
+    en_summary: "Edge Node Summary du Edge Node"
+    your_stakes: "Vos Stakes"
+    staked_on: "Staké sur l’adresse du Noeud"
+    clear: Effacé
+    submit: Soumettre
+    date: Date
+    summary: Summary
+    wallet_address: "Adresse du portefeuille"
+    search: "Rechercher"
+    cancel: Annuler
+    enter_wallet: "Entrer l’adresse du portefeuille"
+    tfuel: Tfuel
+    refresh: Rafraîchir
+    you: vous
+    was: "a été"
+    donations: "Donations:"
+    click: Cliquer
+    here: ici
+    by: par
+    login: "Se Connecter"
+    email: E-mail
+    password: "Mot de Passe"
+    go_dash: "Aller au Tableau de Bord"
+    password_format: "Le mot de passe doit comporter au minimum 8 caractères et contenir au moins : 1 majuscule, 1 minuscule et 1 chiffre ou 1 caractère spécial."
+    welcome: "Bienvenue chez Thetaboard!"
+    add_wallet: "Ajouter un portefeuille"
+    name: Nom
+    default: Defaut
+    action: Action
+    remove: Supprimer
+    reward: "Récompenses"
+    transfer: "Transfert"
+    reserve_fund: "Fond de reserve"
+    service_payment: "Payment de service"
+    split_contract: "Division de contract"
+    smart_contract: "Smart contrat"
+    withdraw_stake: "Stake retiré"
+    deposit_stake: "Stake ajouté"
+    stake_reward_distribution: "Distribution de récompenses"
+###### GLOBAL END ######
+
+
+###### DASHBOARD START ######
+### Price-chart component
+price_chart:
+    title: "Prix Theta/Tfuel"
+    is_worth: vaut
+### earnings-forecast components 
+reward_forecast:
+    title_tfuel: "Estimation des récompenses en Tfuel du Elite Edge Node"
+    title_theta: "Estimation des récompenses en Tfuel du Noeud Guardian Node"
+    subtitle: Prévisions
+    estimated_earning: "Gains en Tfuel estimés"
+    per_day: "Par Jour"
+    per_month: "Par Mois"
+    per_year: "Par An"
+###### DASHBOARD END ######
+
+
+###### WALLET START ######
+### Wallet-list component
+wallet_list:
+    title: Portefeuilles
+    wallet_address: "Adresse du portefeuille"
+    market_price: "Prix du Marché"
+    amount: Montant
+    node_address: "Adresse du Nœud"
+    no_wallet: "Pas de portefeuille, s’il vous plait"
+### holding-pie component
+holding_pie:
+    title: "Composition du portefeuille en"
+### Coinbase-history component
+coinbase_history:
+    title: "{jeton} Récompense de Staking"
+    rewards_received: "Récompense(s) reçue(s)"
+### transaction-history component
+transaction_history:
+    title: Transactions
+    no_transaction: "Pas de transaction"
+    age: Age
+    from: De
+    to: A
+    value: Valeur
+###### WALLET END ######
+
+
+###### STAKING START ######
+staking:
+    earn_up_to: "Gagnez jusqu’à"
+    tfuel_fees: "3% fee on staking rewards (For every 10 Tfuel earnt, Thetaboard fee equals 0.3 Tfuel)"
+    tfuel_fees_affiliate: "0% fee until 08/31/2021 (3% fee starting on 09/01/2021)"
+    ### Staking Tfuel
+    tfuel:
+        title: "Staking Tfuel sur un Noeud"
+        subtitle: "Vous pouvez staker vos Tfuel sur nos Edge Node"
+        follow: "Veuillez suivre"
+        using_summary: "en utilisant les summarys ci-dessous"
+        stake_on: "Si vous détenez plus de 100 000 Tfuel, stakez-les sur nos"
+    ### Staking Tfuel
+    theta:
+        title: "Staking Theta"
+        subtitle: "Vous pouvez staker vous Theta sur nos Noeuds Guardian Nodes"
+        fees: "3% de commission sur les récompenses de staking (les récompenses seront des multiples de 11.64 Tfuel"
+        tuto: "Veuillez vous référer au tutoriel suivant de l'équipe du Réseau Thêta, et n'oubliez pas de choisir Thetaboard dans la liste !"
+        use_summary: "Ou vous pouvez utiliser les summarys suivants si vous savez comment faire"
+        no_theta_staked: "Vous n’avez pas de Theta stakés."
+        earn: "Staker vos Theta pour gagner des Tfuel"
+    ### Staking VIP
+    vip:
+        title: "Stakez vos Tfuel sur nos VIP Elite Edge Node"
+        subtitle: "Entrer votre adresse de portefeuille ci-dessous pour avoir un nouveau Edge Node"
+        once_summary: "Une fois que vous avez votre summary, vous pouvez l’utiliser pour"
+        start_staking: "Pour commencer le staking"
+        node_list: "Liste des VIP Elite Edge Nodes"
+        stake_amount: "Montant du stake"
+        see_summary: "Voir le summary"
+        summary_will_appear: "Un summary apparaîtra bientôt"
+        no_vip: "Vous n’avez pas encore de VIP Edge Node"
+        no_tfuel_staked: "Vous n’avez aucun Tfuel stakés."
+        earn: "Stakez vos Tfuel pour gagner des Tfuel"
+    ### Staking Affiliate 
+    affiliate:
+        stake_to: "Staker vos Tfuel sur"
+        community_een: "le communauté Elite Edge Node"
+###### STAKING END ######
+
+
+###### DOMAIN START ######
+domain:
+    offer_amount: "Montant de l’offre:"
+    ### Contract/domain component
+    buy:
+        title: "Achetez un nom de domaine Theta"
+        subtitle: "Entrer un nom de domaine pour voir sa disponibilité"
+        placeholder: "Entrer un nom de domaine"
+        domain_name: "Le nom de domaine"
+        available: "est disponible, vous pouvez l’acheter pour 5 TFuel !"
+        will_assign: "sera attribué à votre adresse de portefeuille par défaut"
+        but: "Mais vous pouvez également l’attribuer ou l’offrir à une autre adresse de portefeuille"
+        gift: "Offrez ce nom de domaine à un ami"
+        enter_wallet_assign: "Entrer l’adresse du portefeuille correspondant"
+        to_domain: "au nom du domaine"
+        your_wallet: "ou attribuez-le à votre adresse de portefeuille"
+        already_taken: "est déjà pris!"
+        can_make_offer: "Mais vous pouvez faire un offre pour l’acheter"
+        offer_amount: "Montant de votre offre en Tfuel"
+        amount_tfuel: "Montant (en Tfuel)"
+        review_order: "Revoir l’offre"
+        review_offer: "Revoir l’offre"
+        enter_receiver: "Entrer l’adresse de portefeuille du destinataire"
+    ### Contract/address component
+    lookup:
+        title: "Rechercher une adresse"
+        check_domain: "Entrer une adresse pour vérifier les noms de domaine associés"
+        domain_list: "Liste des noms de domaine"
+        no_associated_domain: "Aucun nom de domaine associé à l’adresse du portefeuille"
+        my_domain: "Mon nom de domaine"
+    ### Offer-made-list component
+    offer_made:
+        offer_submitted: "Offre soumise"
+        you_made_offer: "Vous avez fait une offre pour acheter le domaine"
+        cancel_offer: "Annuler l’offre"
+        no_offer: "Aucune offre soumise"
+        to_access: "pour accéder à vos offres"
+    ### Offer-received-list component
+    offer_received:
+        title: "Offre reçue"
+        offer_made: "Faire une offre pour acheter votre domaine"
+        reject_offer: "Rejeter l’offre"
+        accept_offer: "Accepter l’offre"
+        no_offer: "Aucune offre reçue"
+    #### domain-assigned-modal
+    ### offer-made-modal
+    modal:
+        congrats: "Félicitations !"
+        is_assigned: "est attribué à l’adresse:"
+        offer_sent: "Votre offre a été envoyée!"
+        you_offered: "Vous avez offert"
+        tfuel_buy: "Tfuel pour acheter votre domaine"
+        from: "depuis l’adresse du portefeuille"
+        offer_cancelled: "Votre offre a été annulée !"
+        offer_to_buy: "Votre offre pour acheter le nom de domaine"
+        tfuel_canceled: "Tfuel a été annulé(s)"
+        the_offer: "l’offre !"
+        the_offer_to_buy: "l’offre pour acheter votre nom de domaine"
+        from_wallet: "Tfuel depuis l’adresse de votre portefeuille:"
+        now_own: "possède maintenant le nom de domaine"
+###### DOMAIN END ######
+
+
+###### MY-WALLETS START ######
+my_wallets:
+    add_collection: "Ajouter un portefeuille à votre collection"
+    enter_name_wallet: "Entrer un nom pour ce portefeuille"
+    no_wallet: "Vous n’avez aucun portefeuille dans votre collection pour le moment"
+    wallet_list: "Liste de Portefeuille"
+    enter_name_group: "Entrer un nom pour ce groupe"
+    add_group: "Créer un groupe"
+    click_wallet: "Cliquer sur les portefeuilles pour les ajouter à votre groupe :"
+    group_list: "Liste de groupe"
+    addresses: "Adresses"
+    no_group: "Vous n’avez pas de groupe dans votre collection"
+    wallets: "Portefeuilles"
+###### MY-WALLETS END ######
+
+
+###### DOWNLOAD WALLET START ######
+download_wallet:
+    make_sure: "Assurez-vous de bien vous authentifier en utilisant"
+    theta_wallet_extension: "l'extension officiel du portefeuille Theta"
+    download: "pour le télécharger."
+###### DOWNLOAD WALLET END ######
+
+
+###### FOOTER START ######
+footer:
+    terms: "Conditions d'utilisation"
+    privacy: "Politique de confidentialité"
+    made_with: "Fait avec"
+    join_discord: "Rejoignez-nous sur Discord"
+    github: "Allez voir le projet sur github"
+###### FOOTER END ######
+
+###### MENU START ######
+menu:
+    dashboard: "Tableau de bord"
+    wallet: portefeuille
+    staking: staking
+    tfuel_vip: "Tfuel VIP"
+    domain: domaine
+    faq: faq
+###### MENU END ######
+
+###### NAVBAR START ######
+navbar:
+    signed_as: S’identifier
+    my_wallets: "Mes Portefeuilles"
+    logout: "Se déconnecter"
+###### NAVBAR END ######
+
+
+###### VERIFY START ######
+verify:
+    please_verify: "Veuillez vérifier votre adresse e-mail"
+    resend: "Envoyer le lien de vérification à nouveau"
+    email_verified: "Votre e-mail est maintenant vérifié"
+    can_login: "Vous pouvez, dès à présent, vous connecter à votre compte"
+    link_invalid: "Votre lien de vérification est invalide."
+    click_banner: "Connectez-vous à votre compte et cliquez sur ‘Envoyer le lien de vérification à nouveau"
+###### VERIFY END ######
+
+
+###### LOGIN START ######
+login:
+    no_account: "Pas encore de compte ? Inscrivez-vous"
+    cant_login: "Impossible de se connecter ?"
+###### LOGIN END ######
+
+
+###### SIGN UP START ######
+signup:
+    title: S’inscrire
+    password_confirm: "Confirmation du mot de passe"
+    register: S’enregistrer
+    already_account: "Vous avez déjà un compte ?"
+    click_to_login: "Cliquez ici pour vous connecter"
+###### SIGN UP END ######
+
+
+###### PASSWORD RESET START ######
+reset_pass:
+    reset_pass: "Réinitialiser votre mot de passe"
+    submission_received: "La demande de réinitialisation de votre mot de passe a été reçue."
+    will_receive_email: "Si nous avons un compte correspondant à votre adresse électronique, vous recevrez un e-mail contenant un lien pour réinitialiser votre mot de passe"
+    no_account_yet: "Pas encore de compte ? Inscrivez-vous"
+    pass_updated: "Votre mot de passe a été modifié. Vous pouvez, dès à présent, vous connecter"
+###### PASSWORD RESET END ######
+
+
+###### REGISTERED START ######
+registered:
+    title: "Un lien de vérification a été envoyé sur votre e-mail"
+    subtitle: "Veuillez cliquer sur le lien que nous venons de vous envoyer par e-mail afin de finaliser le processus d’enregistrement"
+###### REGISTERED END ######
+
+
+###### 404 START ######
+notfound:
+    oops: Oups!
+    page_doesnt_exist: "Cette page n’existe pas"
+###### 404 END ######
+
+
+###### FAQ START ######
+faq:
+    title: "FAQ Thetaboard"
+    subtitle: "Qu’est-ce que ThetaBoard ?"
+    description: "La mission de ThetaBoard est de devenir la place centrale de tous les passionnés de Theta <br> Nous voulons apporter de la valeur à l'écosystème de Theta en fournissant des fonctionnalités qui simplifient l'accès à l'information à propos de Theta ou qui enrichissent l'écosystème, comme le staking de Tfuel et de Theta, des outils conviviaux de gestion de l'information. <br/> Ce projet est principalement développé et alimenté par Maurin Lenglart et Adrien Vinches. Vous pouvez nous contacter pour du soutien ou des suggestions sur <a target=\"_blank\" href=\"https://discord.gg/SGUtY7zBU3\"> discord</a>."
+    quick_links: ""
+    how_to_stake_tfuel: ""
+    how_to_stake_tfuel_link: ""
+    how_to_stake_theta: ""
+    how_to_stake_theta_link: ""
+    how_to_withdraw: ""
+    how_to_withdraw_link: ""
+    what_staking: "Qu’est ce que le Staking ?"
+    what_staking_body: "<p>e Staking est un processus qui consiste à associer vos token à une machine qui effectue un travail et assure la sécurité d'un réseau, ce qui vous permet de gagner des récompenses supplémentaires.<br/> Vos récompenses pour le staking sont basées sur le nombre de token que vous mettez en jeu/stakez, ainsi que sur le temps de fonctionnement de votre nœud. Pour maximiser vos gains, l'ordinateur qui héberge votre nœud doit fonctionner 24 heures sur 24, 7 jours sur 7.<br/> Sur le Réseau Thêta, il est possible destaker à la fois les token Thêta et les token Tfuel. Les deux token sont récompensés pour le staking sous forme de Tfuel. Pour staker vos token, ils doivent être délégués à un nœud Guardian Node (Theta) ou à un nœud Elite Edge/Elite Edge Node (Tfuel). Ces deux types de nœuds jouent un rôle important au sein du réseau décentralisé Theta. Tout au long du processus de staking, les token restent toujours dans votre portefeuille officiel Theta. Si le nœud devait s'éteindre, les token restent dans votre portefeuille, et ne seront contrôlés que par celui qui a accès au portefeuille. N'entrez JAMAIS votre phrase mnémotechnique de 12 mots ni votre fichier keystore et votre mot de passe, ailleurs que dans le portefeuille Theta officiel. Thetaboard ne demandera jamais ces informations.</p>"
+    provide: "Quel genre de staking ThetaBoard fournit-il ?"
+    provide_body: "<h4>Theta</h4> <p>Stakez sur notre Nœud Guardian Node, pour toute personne possédant plus de 1000 token Thêta au minimum. Il n'y a pas de nombre maximum de Theta qui peuvent être mis en jeu/staké sur un nœud Guardian Node.</p> <h4>Tfuel</h4> <p>Stakez sur l'un de nos nœuds publics Elite Edge, pour toute personne possédant plus de 10 000 Tfuel. Les nœuds Elite Edge/Elite Edge Node ont un montant maximum de 500 000 Tfuel qui peut être misés sur un seul nœud.</p> <h4>Tfuel VIP</h4> <p>Pour les personnes ayant plus de 100 000 Tfuel. Ces nœuds Elite Edge vous seront réservés, vous garantissant la possibilité d'augmenter votre mise sur le même summary de nœud si jamais vous retirez votre mise et déposez à nouveau.</p><br/>"
+    deposit: "Comment déposer mon stake sur le Réseau Theta ?"
+    deposit_body: "<p>Vous pouvez déposer votre mise/votre stake de Theta ou de Tfuel à partir de votre portefeuille officiel Theta.</p> <h4>Staking Theta to a Guardian Node</h4> <p><a target=\"_blank\" href=\"https://docs.thetatoken.org/docs/guardian-staking-process\">https://docs.thetatoken.org/docs/guardian-staking-process</a><br/> Vous pouvez utiliser l’adresse 'One-Click Guardian Node' pour ThetaBoard pendant le processus dans votre portefeuille Theta. Si vous stakez plus de 10 000 Theta sur notre nœud Guardian Node, utilisez le résumé disponible sur <a href=\"/staking/theta\">Theta Staking page</a>, car ThetaLabs donne la possibilité de ne staker que 10,000 Theta maximum via le 'One-Click Delegation' Plus d’informations concernant le staking via 'One-Click Delegation' de Theta Labs <a target=\"_blank\" href=\"https://medium.com/theta-network/theta-1-click-delegated-staking-now-live-in-the-theta-web-wallet-b80d499aae71\">https://medium.com/theta-network/theta-1-click-delegated-staking-now-live-in-the-theta-web-wallet-b80d499aae71</a></p><br/> <h4>Staké Tfuel sur un Elite Edge Node</h4> <p><a target=\"_blank\" href=\"https://docs.thetatoken.org/docs/elite-edge-node-staking-process\">https://docs.thetatoken.org/docs/elite-edge-node-staking-process</a><br/> Vous pouvez utiliser les summaries disponibles sur notre <a href=\"/staking/tfuel\">Tfuel page</a>, ou un <a href=\"/staking/tfuelvip\">VIP summary</a> fourni après avoir demandé un nœud VIP, pendant le processus de staking Edge dans votre portefeuille Theta. Plus d’informations de ThetaLabs concernant le staking de Tfuel <a target=\"_blank\" href=\"https://medium.com/theta-network/theta-wallet-v3-0-1-released-to-enable-tfuel-staking-at-block-height-10-968-061-on-june-30-c90bf080ef93\">https://medium.com/theta-network/theta-wallet-v3-0-1-released-to-enable-tfuel-staking-at-block-height-10-968-061-on-june-30-c90bf080ef93</a></p><br/> <br/><br/>"
+    stake: "Puis-je staker mes Tfuel ou Theta à partir d'un échange centralisé?"
+    stake_body: "<p>Non, le staking sur le Réseau Theta n’est possible qu’en utilisant les token que vous détenez dans votre portefeuille officiel Theta.<br/> Nous vous suggérons d'utiliser le lien du portefeuille disponible en haut de <a href=\"https://www.thetatoken.org/\" target=\"_blank\">https://www.thetatoken.org/</a> et d'ajouter cette page à vos favoris comme moyen d'accéder à votre porte-monnaie officiel et ainsi d'éviter les arnaques. C'est le seul endroit où vous devez entrer votre phrase mnémotechnique de 12 mots, ou votre fichier keystore et votre mot de passe. <br/><br/>"
+    where_nodes: "Où sont situés les noeuds utilisés par ThetaBoard?"
+    where_nodes_body: "<p>Thetaboard dispose de nœuds répartis sur l'ensemble des États-Unis et du Canada. Nous prévoyons de nous étendre à d'autres parties du monde également.</p> <br/><br/>"
+    fees: "Quels sont les tarifs pratiqués par Thetaboard ?"
+    fees_body: "<p>Les commissions de Thetaboard pour l'hébergement du nœud Theta et Tfuel sont de 3% des récompenses gagnées. Avec le taux d'intérêt annuel actuel de 8% pour Tfuel, cela signifie que vous obtenez un taux de 7,76% et que Thetaboard obtient 0,24%.</p><br/> <br/>"
+    minimum: "Quel est le nombre minimum actuel de token pour le staking ?"
+    minimum_body: "<p>Pour staker sur le Réseau Thêta, les montants minimums sont les suivants :</p> <p>1000 Theta tokens, or 10,000 Tfuel tokens.</p> <p>Ces limites sont fixées par Theta Labs et ont changé dans le passé. Bien que cela soit possible, il n'y a pas de calendrier établi par Theta Labs pour les changements futurs de ces montants minimums.</p> <br/><br/>"
+    when_earn: "Quand est-ce que je gagne mes récompenses ?"
+    when_earn_body: "<p>Le Réseau Thêta utilise une méthode d'affectation aléatoire pondérée pour envoyer les récompenses de staking. Les algorithmes sont différents pour chaque jeton.</p> <h4>Theta</h4> <p>Les récompenses theta sont payées tous les 100 blocs pour différentes mises, la taille de la mise augmentant les chances de paiements réguliers. Le montant de theta misé/staké sur le nœud Guardian Node ne fait aucune différence.<br/> Les montants des récompenses de staking Theta sont attribués par la blockchain Theta en multiples de 12. Les commissions de ThetaBoard seront retirés au moment où la transaction arrive dans votre portefeuille, ce qui signifie que les montants seront des multiples de 11,64.</p> <h4>Tfuel</h4> <p>Les récompenses de Tfuel sont payées tous les 100 blocs aux Edge Nodes, le montant de Tfuel misé sur ce Edge Node augmentant les chances de paiements réguliers. La taille de la mise individuelle de Tfuel ne fait aucune différence.<br/> Les montants des récompenses de staking de Tfuel varient considérablement, en fonction de la taille de votre mise/stake. Ils comportent souvent trois décimales et sont régulièrement de 5 Tfuel et moins.</p> <br/><br/>"
+    how_much_earn: "Combien de Tfuel vais-je gagner?"
+    how_much_earn_body: "<p>Utilisez le calculateur de prévision de récompenses disponible sur le tableau de bord Thetaboard pour calculer les gains que vous êtes censé obtenir pour la taille de votre mise/stake.</p> <br/><br/>"
+    public_private: "Dois-je utiliser un nœud Elite Edge/Elite Edge Node public ou privé ?"
+    public_private_body: "<p>De nombreux clients de Thetaboard utilisent les deux. Partager un nœud augmentera la fréquence (mais pas le montant) de vos paiements, car le nœud contiendra plus de Tfuel que si vous étiez seul, ce qui augmentera vos chances d'être choisi dans l'algorithme des récompenses. Votre place n'est pas réservée lorsque vous vous désengagez, mais nous continuerons à fournir plus de nœuds publics Elite Edge/Elite Edge Node publics selon les besoins. De plus, le fait de séparer une mise de 10 000 Tfuel et de la placer sur un nœud Public Elite Edge permet de retirer une plus petite partie de votre mise de 10 000 Tfuel et de l'ajouter à votre compte. Tfuel à retirer et à ajouter, de sorte que le déstaking/unstaking n'affecte pas la totalité de votre mise.</p> <br/><br/>"
+    where_rewards_from: "D’où viennent ces récompenses?"
+    where_rewards_from_body: "<p>Le Réseau Theta utilise l'inflation des token Tfuel pour payer les récompenses de jalonnement. Cette inflation de Tfuel est fixée à 38 Tfuel par bloc pour le staking de Tfuel, et 48 Tfuel par bloc pour le staking de Theta. Le réseau Theta vise des blocs de 6 secondes, à partir desquels les taux d'inflation correspondent à environ 4 % (récompenses pour le staking de Tfuel) et 5 % (récompenses pour le staking de Theta) de l'inflation de la réserve initiale de Tfuel de 5 milliards.</p> <p>Il est prévu de compenser cette inflation en brûlant une partie des comissions payées pour utiliser le réseau Theta. Theta Labs a déclaré qu'ils Vise à maintenir l'offre totale de Tfuel proche de l'offre initiale de 5 milliards.</p> <br/><br/>"
+    staking_wallet: "À quoi ressemblent les récompenses de staking dans mon portefeuille ?"
+    staking_wallet_body: "<p>Les récompenses de la mise en jeu/du staking sur notre tableau de bord, sous la forme d'une transaction 'coinbase', seront envoyées au portefeuille à partir duquel vous avez mis en jeu/staké vos token. L'adresse 'from/source' dans ces transactions coinbase sera l'une des 16 adresses de nœuds de validation dans le réseau Theta.</p> <p>i vous utilisez le portefeuille Theta pour suivre vos récompenses, celles-ci n'apparaîtront pas comme des transactions, mais directement dans le solde disponible de Tfuel.</p> <br/><br/>"
+    no_rewards: "Comment se fait-il que je n'ai pas reçu les récompenses de staking Theta depuis une semaine ?"
+    no_rewards_body: "<p>Si vous stakez un montant de Thêta proche du minimum, il est possible que vous restiez des semaines sans paiement en raison de l'algorithme de récompense de Theta Labs. Soyez rassuré, vous continuez à accumuler des récompenses, et il suffit que l'algorithme de jalonnement vous sélectionne pour le paiement des récompenses.</p> <p>Même si vous traversez de longues périodes sans récomprense de staking, vos récompenses continuent de s'accumuler. Souvent, vous recevrez plus que la normale pendant une courte période suivant une longue période sans récompense.</p> <p>Plus d’informations sur la récompense en bloc aléatoire pour Theta par Theta Labs se trouve ici :</p> <p><a traget=\"_blank\" href=\"https://medium.com/theta-network/theta-protocol-code-v2-2-0-released-with-important-performance-related-updates-6b9e2261d0ae\">https://medium.com/theta-network/theta-protocol-code-v2-2-0-released-with-important-performance-related-updates-6b9e2261d0ae</a></p><br/> <p>Avant la mise en place du Mainnet 3.0 en juin 2021, toutes les récompenses de staking theta étaient livrées dans des transactions avec un multiple de 12. Cependant, depuis le Mainnet 3.0, des cas où les récompenses de staking theta ont été jointes aux récompenses de staking Tfuel se sont produits. Il est donc plus difficile de savoir quel paiement correspond à quel enjeu/stake. Bien que notre tableau de bord fasse tout son possible pour attribuer correctement les récompenses de staking Theta et Tfuel, il peut ne pas capturer tous les paiements conjoints, car ceux-ci ne sont pas étiquetés sur la blockchain Theta.</p><br/><br/>"
+    withdraw_add_more: "Dois-je retirer mon stake pour ajouter de nouveaux token ?"
+    withdraw_add_more_body: "<p>Si le montant que vous souhaitez ajouter est inférieur aux exigences minimales de mise/stake (1000 Theta et 10,000 Tfuel), alors oui, vous devrez retirer votre mise initiale pour ajouter de nouveaux token. Si le montant est supérieur aux exigences minimales, il suffit destaker le nouveau montant comme une nouvelle mise.</p><br/><br/>"
+    how_withdraw: "Comment puis-je retirer mon stake?"
+    how_withdraw_body: "<p>Vous pouvez retirer vos token mis en jeu/stakés depuis votre portefeuille Theta.</p> <p>Pour plus d'informations sur le processus de retrait des stakes, lisez la documentation officielle de Theta ici.</p> <a href=\"https://docs.thetatoken.org/docs/withdrawing-your-stake-from-the-guardian-node\" target=\"_blank\">https://docs.thetatoken.org/docs/withdrawing-your-stake-from-the-guardian-node</a></p> <br/><br/>"
+    where_coin: "J'ai retiré mes token stakés et ils ne sont pas encore dans mon portefeuille. Où sont-ils ?"
+    where_coin_body: "<p>Le déblocage des tokens Theta et Tfuel prend environ 54 heures. Ils apparaîtront ensuite dans votre portefeuille d'origine.</p> <br/><br/>"
+    rewards_withdraw: "Est-ce que j'accumule des récompenses pendant ma période de déblocage de 54 heures ?"
+    rewards_withdraw_body: "<p>Non.</p> <br/><br/>"
+    rewards_paid: "Recevrai-je toujours les récompenses qui m'étaient dues au début de la période de déblocage ?"
+    rewards_paid_body: "<p>Oui.</p> <br/><br/>"
+    new_address: "Quelle est la nouvelle adresse du portefeuille de mon propre nœud Edge Node?"
+    new_address_body: "<p>Les Edge Nodes ont maintenant leur propre adresse de portefeuille pour collecter le cache et calculer les récompenses. Plus d'informations ici</p> <p><a target=\"_blank\" href=\"https://medium.com/Theta-network/Theta-elite-edge-node-v3-0-6-released-to-enable-mainnet-3-0-features-7b07fc4bc7b3\">https://medium.com/Theta-network/Theta-elite-edge-node-v3-0-6-released-to-enable-mainnet-3-0-features-7b07fc4bc7b3</a></p> <br/><br/>"
+    domain: "Quels sont les noms de domaine Theta disponibles à l'achat sur Thetaboard ?"
+    domain_body: "<p>Les domaines sont actuellement une preuve de concept/en version beta. Vous pouvez actuellement acheter et vendre des domaines, et les utiliser pour rechercher des portefeuilles par nom sur le site Web de Thetaboard, et pour montrer votre soutien à Thetaboard. Courant 2021, nous passerons aux contrats finaux. Il s'agira de NFT et ils seront intégrés aux portefeuilles Theta, afin d'effectuer des transactions en utilisant des noms de domaine au lieu des adresses des portefeuilles. Cependant, nous ne serons pas en mesure de migrer les domaines actuellement achetés vers la nouvelle version. Pour en savoir plus sur le réseau Theta : <a href=\"https://docs.thetatoken.org/docs/what-is-theta-network\" target=\"_blank\">https://docs.thetatoken.org/docs/what-is-theta-network</a></p> <br/><br/>"
