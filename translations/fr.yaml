@@ -62,15 +62,15 @@ global:
     default: Defaut
     action: Action
     remove: Supprimer
-    reward: "Récompenses"
+    reward: "Récompense"
     transfer: "Transfert"
-    reserve_fund: "Fond de reserve"
-    service_payment: "Payment de service"
-    split_contract: "Division de contract"
-    smart_contract: "Smart contrat"
-    withdraw_stake: "Stake retiré"
-    deposit_stake: "Stake ajouté"
-    stake_reward_distribution: "Distribution de récompenses"
+    reserve_fund: "Fonds de réserve"
+    service_payment: “Paiement des services"
+    split_contract: "Contrat fractionné"
+    smart_contract: "Contrat intelligent"
+    withdraw_stake: "Retirer le stake"
+    deposit_stake: "Mise de dépôt"
+    stake_reward_distribution: " Répartition des récompenses de stake"
 ###### GLOBAL END ######
 
 
@@ -331,7 +331,7 @@ notfound:
 faq:
     title: "FAQ Thetaboard"
     subtitle: "Qu’est-ce que ThetaBoard ?"
-    description: "La mission de ThetaBoard est de devenir la place centrale de tous les passionnés de Theta <br> Nous voulons apporter de la valeur à l'écosystème de Theta en fournissant des fonctionnalités qui simplifient l'accès à l'information à propos de Theta ou qui enrichissent l'écosystème, comme le staking de Tfuel et de Theta, des outils conviviaux de gestion de l'information. <br/> Ce projet est principalement développé et alimenté par Maurin Lenglart et Adrien Vinches. Vous pouvez nous contacter pour du soutien ou des suggestions sur <a target=\"_blank\" href=\"https://discord.gg/SGUtY7zBU3\"> discord</a>."
+    description: "La mission de ThetaBoard est de devenir la place centrale de tous les passionnés de Theta <br> Nous voulons apporter de la valeur à l'écosystème de Theta en fournissant des fonctionnalités qui simplifient l'accès à l'information à propos de Theta ou qui enrichissent l'écosystème, comme le staking de Tfuel et de Theta, des outils conviviaux de gestion de l'information. <br/> Ce projet est principalement développé et alimenté par Maurin Lenglart et Adrien Vinches. Vous pouvez nous contacter pour du soutien ou des suggestions sur <a target=\"_blank\" href=\"https://discord.gg/SGUtY7zBU3\"> discord</a> ou or <a href=\"https://twitter.com/Thetaboard1\" target=\"_blank\">Twitter</a>."
     quick_links: ""
     how_to_stake_tfuel: ""
     how_to_stake_tfuel_link: ""
