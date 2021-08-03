@@ -96,6 +96,7 @@ reward_forecast:
 wallet_list:
   title: "Holdings"
   wallet_address: "Wallet Address"
+  add_wallet_group: "Add Wallet/Group"
   market_price: "Market Price"
   amount: "Amount"
   node_address: "Node Address"
@@ -127,16 +128,16 @@ staking:
   tfuel:
     title: "Tfuel Public Staking"
     subtitle: "You can Stake Tfuel on our Delegate Elite Edge Nodes"
-    follow: "Just follow the"
-    using_summary: "using the Summaries below"
+    follow: "Use the Summaries below and follow our"
+    using_summary: "FAQ Page"
     stake_on: "If you have more than 100,000 Tfuel, stake on our"
   ### Staking Tfuel
   theta:
     title: "Theta Staking"
     subtitle: "You can Stake you Theta on our Delegate Guardian Node"
     fees: "3% fee on staking rewards (For every 12 Tfuel earnt, Thetaboard fee equals 0.36 Tfuel. Rewards will be received in multiples of 11.64 Tfuel)"
-    tuto: "Please refer to the following tutorial from the Theta Network Team, and don't forget to pick Thetaboard in the list!"
-    use_summary: "Or you can use the following summary if you know what you are doing"
+    tuto: "Use the below Summary and follow our"
+    use_summary: "FAQ Page"
     no_theta_staked: "You don't have any Theta staked."
     earn: "Stake your THETA to earn TFUEL"
   ### Staking VIP
@@ -252,6 +253,7 @@ footer:
   privacy: "Privacy policy"
   made_with: "Made with"
   join_discord: "Join us on Discord"
+  follow_twitter: "Follow us on Twitter"
   github: "Check the project on github"
 ###### FOOTER END ######
 

@@ -96,6 +96,7 @@ reward_forecast:
 wallet_list:
     title: Portefeuilles
     wallet_address: "Adresse du portefeuille"
+    add_wallet_group: "Add Wallet/Group"
     market_price: "Prix du Marché"
     amount: Montant
     node_address: "Adresse du Nœud"
@@ -252,6 +253,7 @@ footer:
     privacy: "Politique de confidentialité"
     made_with: "Fait avec"
     join_discord: "Rejoignez-nous sur Discord"
+    follow_twitter: "Follow us on Twitter"
     github: "Allez voir le projet sur github"
 ###### FOOTER END ######
 

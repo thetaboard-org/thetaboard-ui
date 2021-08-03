@@ -18,10 +18,9 @@
           <p>{{t 'staking.theta.fees'}}</p>
           <br/>
           <br/>
-          <p>{{t 'staking.theta.tuto'}}<br/>
-          <a target="_blank" href="https://medium.com/theta-network/theta-1-click-delegated-staking-now-live-in-the-theta-web-wallet-b80d499aae71">https://medium.com/theta-network/theta-1-click-delegated-staking-now-live-in-the-theta-web-wallet-b80d499aae71</a>.</p>
+          <p>{{t 'staking.theta.tuto'}}
+          <a target="_blank" href="/faq">{{t 'staking.theta.use_summary'}}</a>.</p>
           <br/><br/>
-          <p>{{t 'staking.theta.use_summary'}}:</p>
           <input id="input-to-copy-from-theta" class="input-to-hide" value="{{summary}}"/>
          <div {{on "click" (action this.copySummaryToClipBoard 'Summary' 'input-to-copy-from-theta')}} style="cursor: pointer;" class="card-description-summary">
             <p class="summary-value">{{summary}}</p>
