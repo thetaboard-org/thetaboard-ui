@@ -43,6 +43,7 @@ global:
   wallet_address: "Dirección Wallet"
   search: Buscar
   cancel: Cancelar
+  search_a_wallet: "Buscar Wallet"
   enter_wallet: "Introduce dirección wallet"
   tfuel: "Tfuel"
   refresh: "Refresca"
@@ -50,7 +51,7 @@ global:
   was: "eras"
   click: "Click"
   here: "Aquí"
-  by: "by"
+  by: "por"
   login: "Loguearse"
   email: "Email"
   password: "Contrseña"
@@ -71,6 +72,8 @@ global:
   withdraw_stake: "Retirar Stake"
   deposit_stake: "Depositar Stake"
   stake_reward_distribution: "Distribución de Recompensas de Stake"
+  selected: "Seleccionado"
+  not_selected: "No Seleccionado"
 ###### GLOBAL END ######
 
 
@@ -96,7 +99,7 @@ reward_forecast:
 wallet_list:
   title: "Portfolio"
   wallet_address: "Direción Wallet"
-  add_wallet_group: "Add Wallet/Group"
+  add_wallet_group: "Agregar wallet / grupo"
   market_price: "Precio de mercado"
   amount: "Cantidad"
   node_address: "Dirección de nodo"
@@ -123,21 +126,21 @@ transaction_history:
 staking: 
   earn_up_to: "Ganar hasta"
   tfuel_fees: "3% fee on staking rewards (For every 10 Tfuel earnt, Thetaboard fee equals 0.3 Tfuel)"
-  tfuel_fees_affiliate: "0% fee until 08/31/2021 (3% fee starting on 09/01/2021)"
+  tfuel_fees_affiliate: "Comisión del 0% hasta el 31/08/2021 (Comisión del 3% a partir del 01/09/2021)"
   ### Staking Tfuel
   tfuel:
     title: "Tfuel Staking público"
     subtitle: "Puedes hacer stake de tus Tfuels delegando en Élite Edges nodes"
-    follow: "Solo sigue el"
-    using_summary: "Usando las direcciones summaries de aquí debajo"
+    follow: "Selecciona la dirección summary más abajo y sigue a nuestra"
+    using_summary: "Preguntas más frecuentes"
     stake_on: "Si tienes más de100,000 Tfuels, haz stake en nuestros "
   ### Staking Tfuel
   theta:
     title: "Staking de Thetas"
     subtitle: "Puedes hacer stake de tus Thetas,delegando en nuestro nodo guardián."
     fees: "3% de comisión por recompensas de nuestro stake (Las recompensas serán múltipoos de11.64 Tfuel ya con la comisión descontada)"
-    tuto: "Por favor consulta el siguiente tutorial creado por Theta Network y no olvides elegir Thetaboadr en la lista"
-    use_summary: "O puedes usar este resumen si sabes conoces y sabes que estás haciendo"
+    tuto: "Selecciona la dirección summary más abajo y sigue a nuestra"
+    use_summary: "Preguntas más frecuentes"
     no_theta_staked: "No tienes ningún stake en Thetas."
     earn: "Haz stake de tus Thetas para ganar Tfuels"
   ### Staking VIP
@@ -253,7 +256,7 @@ footer:
   privacy: "Política de privacidad"
   made_with: "Hecho con"
   join_discord: "Únete a nosotros en Discord"
-  follow_twitter: "Follow us on Twitter"
+  follow_twitter: "Síguenos en Twitter"
   github: "Comprueba el proyecto en github"
 ###### FOOTER END ######
 
@@ -331,6 +334,13 @@ notfound:
 faq:
   title: "Thetaboard FAQ"
   subtitle: "Qué es Thetaboard?"
+  how_to_stake_tfuel_link : "/assets/pdf/ES_How_to_stake_TFUEL.pdf"
+  how_to_stake_theta_link : "/assets/pdf/ES_How_to_stake_THETA.pdf"
+  how_to_withdraw_link : "/assets/pdf/ES_How_to_stake_WITHDRAW.pdf"
+  quick_links: "Enlaces directos"
+  how_to_stake_tfuel : "Cómo hacer stake de Tfuels?"
+  how_to_stake_theta : "Cómo hacer stake de Thetas?"
+  how_to_withdraw : “Cómo retirar un stake? "
   description: "Thetaboard's mission is to become the central place for any Theta enthusiast. <br>
               We want to bring value to the Theta ecosystem by providing functionalities
               that either simplifies access to information about Theta, or enrich the ecosystem such as Tfuel and Theta Staking, user friendly UI...<br>
@@ -338,7 +348,7 @@ faq:
               This project is primarily developed and maintained by Maurin Lenglart and Adrien Vinches.<br>
               We can be contacted for support or suggestions on <a target=\"_blank\" href=\"https://discord.gg/SGUtY7zBU3\"> discord</a> o <a href=\"https://twitter.com/Thetaboard1\" target=\"_blank\">Twitter</a>.
               <br>"
-  what_staking: "What is staking?"
+  what_staking: "Qué es staking?"
   what_staking_body: "<p>Staking is a process that involves associating your tokens to a machine that is completing work
                    and providing security to a network, which results in you earning additional rewards.<br/>
                   Your rewards for staking are based on the number of tokens you stake, as well as the uptime of your node.

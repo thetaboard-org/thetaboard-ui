@@ -43,6 +43,7 @@ global:
   wallet_address: "Wallet Address"
   search: Search
   cancel: Cancel
+  search_a_wallet: "Enter wallet address"
   enter_wallet: "Enter wallet address"
   tfuel: "Tfuel"
   refresh: "Refresh"
@@ -71,6 +72,8 @@ global:
   withdraw_stake: "Withdraw Stake"
   deposit_stake: "Deposit Stake"
   stake_reward_distribution: "Stake Reward Distribution"
+  selected: "Selected"
+  not_selected: "Not Selected"
 ###### GLOBAL END ######
 
 

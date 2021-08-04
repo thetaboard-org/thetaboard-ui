@@ -28,9 +28,9 @@
                         <p class="text-center">{{wallet.name}}</p>
                         <p class="" {{shortener wallet.address}}>{{wallet.address}}</p>
                         {{#if wallet.isSelected}}
-                            <p class="p-selected">Selected</p>
+                            <p class="p-selected">{{t 'global.selected'}}</p>
                         {{else}}
-                            <p class="p-selected not">Not Selected</p>
+                            <p class="p-selected not">{{t 'global.not_selected'}}</p>
                         {{/if}}
                     </div>
                 {{/each}}

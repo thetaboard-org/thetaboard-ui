@@ -21,7 +21,7 @@ global:
     or: ou
     for: pour
     please: "S’il vous plait"
-    link_wallet: "lier votre portefeuille votre portefeuille"
+    link_wallet: "lier votre portefeuille"
     enter_address: "Entrer une adresse"
     total: Total
     type: Type
@@ -43,6 +43,7 @@ global:
     wallet_address: "Adresse du portefeuille"
     search: "Rechercher"
     cancel: Annuler
+    search_a_wallet: "Entrer un portefeuille"
     enter_wallet: "Entrer l’adresse du portefeuille"
     tfuel: Tfuel
     refresh: Rafraîchir
@@ -69,8 +70,10 @@ global:
     split_contract: "Contrat fractionné"
     smart_contract: "Contrat intelligent"
     withdraw_stake: "Retirer le stake"
-    deposit_stake: "Mise de dépôt"
+    deposit_stake: "Dépôt de stake"
     stake_reward_distribution: " Répartition des récompenses de stake"
+    selected: "Séléctionné"
+    not_selected: "Non Séléctionné"
 ###### GLOBAL END ######
 
 
@@ -96,7 +99,7 @@ reward_forecast:
 wallet_list:
     title: Portefeuilles
     wallet_address: "Adresse du portefeuille"
-    add_wallet_group: "Add Wallet/Group"
+    add_wallet_group: "Ajouter un portefeuille/ groupe"
     market_price: "Prix du Marché"
     amount: Montant
     node_address: "Adresse du Nœud"
@@ -106,7 +109,7 @@ holding_pie:
     title: "Composition en"
 ### Coinbase-history component
 coinbase_history:
-    title: "{jeton} Récompense de Staking"
+    title: "{token} Récompense de Staking"
     rewards_received: "Récompense(s) reçue(s)"
 ### transaction-history component
 transaction_history:
@@ -122,22 +125,22 @@ transaction_history:
 ###### STAKING START ######
 staking:
     earn_up_to: "Gagnez jusqu’à"
-    tfuel_fees: "3% fee on staking rewards (For every 10 Tfuel earnt, Thetaboard fee equals 0.3 Tfuel)"
-    tfuel_fees_affiliate: "0% fee until 08/31/2021 (3% fee starting on 09/01/2021)"
+    tfuel_fees: "3 % de commission sur les récompenses de staking (pour chaque tranche de 10 Tfuel gagnés, les frais de Thetaboard s'élèvent à 0,3 Tfuel)"
+    tfuel_fees_affiliate: "0% de commission jusqu'au 31/08/2021 (3% de commission à partir du 01/09/2021)"
     ### Staking Tfuel
     tfuel:
         title: "Staking Tfuel sur un Noeud"
         subtitle: "Vous pouvez staker vos Tfuel sur nos Edge Node"
-        follow: "Veuillez suivre"
-        using_summary: "en utilisant les summarys ci-dessous"
+        follow: "Utilisez les résumés ci-dessous et suivez notre"
+        using_summary: "FAQ"
         stake_on: "Si vous détenez plus de 100 000 Tfuel, stakez-les sur nos"
     ### Staking Tfuel
     theta:
         title: "Staking Theta"
         subtitle: "Vous pouvez staker vous Theta sur nos Noeuds Guardian Nodes"
-        fees: "3% de commission sur les récompenses de staking (les récompenses seront des multiples de 11.64 Tfuel"
-        tuto: "Veuillez vous référer au tutoriel suivant de l'équipe du Réseau Thêta, et n'oubliez pas de choisir Thetaboard dans la liste !"
-        use_summary: "Ou vous pouvez utiliser les summarys suivants si vous savez comment faire"
+        fees: "3% de commission sur les récompenses de staking (les récompenses seront des multiples de 11.64 Tfuel)"
+        tuto: "Utilisez le résumé ci-dessous et suivez notre"
+        use_summary: "FAQ"
         no_theta_staked: "Vous n’avez pas de Theta stakés."
         earn: "Staker vos Theta pour gagner des Tfuel"
     ### Staking VIP
@@ -253,7 +256,7 @@ footer:
     privacy: "Politique de confidentialité"
     made_with: "Fait avec"
     join_discord: "Rejoignez-nous sur Discord"
-    follow_twitter: "Follow us on Twitter"
+    follow_twitter: "Suivez-nous sur Twitter"
     github: "Allez voir le projet sur github"
 ###### FOOTER END ######
 
@@ -332,12 +335,12 @@ faq:
     title: "FAQ Thetaboard"
     subtitle: "Qu’est-ce que ThetaBoard ?"
     description: "La mission de ThetaBoard est de devenir la place centrale de tous les passionnés de Theta <br> Nous voulons apporter de la valeur à l'écosystème de Theta en fournissant des fonctionnalités qui simplifient l'accès à l'information à propos de Theta ou qui enrichissent l'écosystème, comme le staking de Tfuel et de Theta, des outils conviviaux de gestion de l'information. <br/> Ce projet est principalement développé et alimenté par Maurin Lenglart et Adrien Vinches. Vous pouvez nous contacter pour du soutien ou des suggestions sur <a target=\"_blank\" href=\"https://discord.gg/SGUtY7zBU3\"> discord</a> ou or <a href=\"https://twitter.com/Thetaboard1\" target=\"_blank\">Twitter</a>."
-    quick_links: ""
-    how_to_stake_tfuel: ""
+    quick_links: "Liens rapides"
+    how_to_stake_tfuel : “Comment staker ses Tfuel ?”
+    how_to_stake_theta : “Comment staker ses Theta ?”
+    how_to_withdraw : “Comment retirer un stake ? "
     how_to_stake_tfuel_link: ""
-    how_to_stake_theta: ""
     how_to_stake_theta_link: ""
-    how_to_withdraw: ""
     how_to_withdraw_link: ""
     what_staking: "Qu’est ce que le Staking ?"
     what_staking_body: "<p>e Staking est un processus qui consiste à associer vos token à une machine qui effectue un travail et assure la sécurité d'un réseau, ce qui vous permet de gagner des récompenses supplémentaires.<br/> Vos récompenses pour le staking sont basées sur le nombre de token que vous mettez en jeu/stakez, ainsi que sur le temps de fonctionnement de votre nœud. Pour maximiser vos gains, l'ordinateur qui héberge votre nœud doit fonctionner 24 heures sur 24, 7 jours sur 7.<br/> Sur le Réseau Thêta, il est possible destaker à la fois les token Thêta et les token Tfuel. Les deux token sont récompensés pour le staking sous forme de Tfuel. Pour staker vos token, ils doivent être délégués à un nœud Guardian Node (Theta) ou à un nœud Elite Edge/Elite Edge Node (Tfuel). Ces deux types de nœuds jouent un rôle important au sein du réseau décentralisé Theta. Tout au long du processus de staking, les token restent toujours dans votre portefeuille officiel Theta. Si le nœud devait s'éteindre, les token restent dans votre portefeuille, et ne seront contrôlés que par celui qui a accès au portefeuille. N'entrez JAMAIS votre phrase mnémotechnique de 12 mots ni votre fichier keystore et votre mot de passe, ailleurs que dans le portefeuille Theta officiel. Thetaboard ne demandera jamais ces informations.</p>"
@@ -354,7 +357,7 @@ faq:
     minimum: "Quel est le nombre minimum actuel de token pour le staking ?"
     minimum_body: "<p>Pour staker sur le Réseau Thêta, les montants minimums sont les suivants :</p> <p>1000 Theta tokens, or 10,000 Tfuel tokens.</p> <p>Ces limites sont fixées par Theta Labs et ont changé dans le passé. Bien que cela soit possible, il n'y a pas de calendrier établi par Theta Labs pour les changements futurs de ces montants minimums.</p> <br/><br/>"
     when_earn: "Quand est-ce que je gagne mes récompenses ?"
-    when_earn_body: "<p>Le Réseau Thêta utilise une méthode d'affectation aléatoire pondérée pour envoyer les récompenses de staking. Les algorithmes sont différents pour chaque jeton.</p> <h4>Theta</h4> <p>Les récompenses theta sont payées tous les 100 blocs pour différentes mises, la taille de la mise augmentant les chances de paiements réguliers. Le montant de theta misé/staké sur le nœud Guardian Node ne fait aucune différence.<br/> Les montants des récompenses de staking Theta sont attribués par la blockchain Theta en multiples de 12. Les commissions de ThetaBoard seront retirés au moment où la transaction arrive dans votre portefeuille, ce qui signifie que les montants seront des multiples de 11,64.</p> <h4>Tfuel</h4> <p>Les récompenses de Tfuel sont payées tous les 100 blocs aux Edge Nodes, le montant de Tfuel misé sur ce Edge Node augmentant les chances de paiements réguliers. La taille de la mise individuelle de Tfuel ne fait aucune différence.<br/> Les montants des récompenses de staking de Tfuel varient considérablement, en fonction de la taille de votre mise/stake. Ils comportent souvent trois décimales et sont régulièrement de 5 Tfuel et moins.</p> <br/><br/>"
+    when_earn_body: "<p>Le Réseau Thêta utilise une méthode d'affectation aléatoire pondérée pour envoyer les récompenses de staking. Les algorithmes sont différents pour chaque Token.</p> <h4>Theta</h4> <p>Les récompenses theta sont payées tous les 100 blocs pour différentes mises, la taille de la mise augmentant les chances de paiements réguliers. Le montant de theta misé/staké sur le nœud Guardian Node ne fait aucune différence.<br/> Les montants des récompenses de staking Theta sont attribués par la blockchain Theta en multiples de 12. Les commissions de ThetaBoard seront retirés au moment où la transaction arrive dans votre portefeuille, ce qui signifie que les montants seront des multiples de 11,64.</p> <h4>Tfuel</h4> <p>Les récompenses de Tfuel sont payées tous les 100 blocs aux Edge Nodes, le montant de Tfuel misé sur ce Edge Node augmentant les chances de paiements réguliers. La taille de la mise individuelle de Tfuel ne fait aucune différence.<br/> Les montants des récompenses de staking de Tfuel varient considérablement, en fonction de la taille de votre mise/stake. Ils comportent souvent trois décimales et sont régulièrement de 5 Tfuel et moins.</p> <br/><br/>"
     how_much_earn: "Combien de Tfuel vais-je gagner?"
     how_much_earn_body: "<p>Utilisez le calculateur de prévision de récompenses disponible sur le tableau de bord Thetaboard pour calculer les gains que vous êtes censé obtenir pour la taille de votre mise/stake.</p> <br/><br/>"
     public_private: "Dois-je utiliser un nœud Elite Edge/Elite Edge Node public ou privé ?"

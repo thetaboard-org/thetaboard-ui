@@ -29,9 +29,25 @@ export default class ApplicationRoute extends Route {
 
   async beforeModel() {
     const params = this.paramsFor('application');
-    this.intl.setLocale(['en-us']);
+    const locale = this.getLocaleLanguage();
+    this.intl.setLocale([locale]);
     await this.envManager.setParameters(params);
     return this._loadCurrentUser();
+  }
+
+  getLocaleLanguage() {
+    let locale = null;
+    const availableLocal = ['en', 'fr', 'es'];
+    if (navigator.languages != undefined) {
+      locale = navigator.languages[0].substring(0, 2).toLowerCase();
+    } else {
+      locale = navigator.language.substring(0, 2).toLowerCase();
+    }
+    if (availableLocal.indexOf(locale) > -1) {
+      return locale;
+    } else {
+      return 'en';
+    }
   }
 
   async _loadCurrentUser() {
