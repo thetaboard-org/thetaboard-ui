@@ -932,10 +932,6 @@ a.logout {
   margin: 0;
 }
 
-.container-fluid .navbar-wrapper {
-  margin-top: -7px;
-}
-
 .long-address {
   display: inline-block;
 }
@@ -952,9 +948,15 @@ a.logout {
   .dropdown-content, .dropdown .selected-dropdown-item {
     width: 440px;
   }
+
+  div div.wallet-address-search-container {
+    margin-left: 62px;
+    text-align: left;
+  }
+
 }
 
-@media screen and (max-width: 620px) {
+@media screen and (max-width: 640px) {
   div div.wallet-address-search-container {
     margin-left: 62px;
     text-align: left;
@@ -970,7 +972,38 @@ a.logout {
 
   .dropdown-content, .dropdown .selected-dropdown-item {
     width: 240px;
-    padding: 7px 25px;
+    padding: 7px 15px;
+  }  
+}
+
+@media screen and (max-width: 560px) {
+  .dropdown-content, .dropdown .selected-dropdown-item {
+    width: 185px;
+    padding: 7px 11px;
+  }
+
+  a.login-button.btn.btn-fill.btn-primary {
+    font-size: 11px;
+    padding: 10px 10px;
+    margin-top: 10px!important;
+  }
+
+  .main-panel .navbar div.container-fluid {
+    padding: 0;
+  }
+
+  div div.wallet-address-search-container {
+    margin-left: 45px;
+  }
+
+  .language-small-button {
+    font-size: 11px;
+  }
+
+  .wallet-address-search-container span.short-address {
+    overflow: hidden;
+    max-width: 120px;
+    max-height: 20px;
   }
 
 }
@@ -1044,4 +1077,22 @@ a.logout {
     padding-right: 5px;
     padding-left: 5px;
   }
+}
+
+.dropdown-menu.dropdown-navbar.show {
+  border-radius: 20px;
+  color: #9A9A9A;
+}
+
+.dropdown-menu.dropdown-navbar.show p.title{
+  color: #9A9A9A;
+  margin-top: 5px;
+}
+
+.dropdown.nav-item.paddingtop {
+  padding: 10px 0 0;
+}
+
+.language-selector {
+  color: #fff;
 }

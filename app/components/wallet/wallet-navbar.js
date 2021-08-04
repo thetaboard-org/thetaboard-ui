@@ -7,6 +7,7 @@ export default class WalletWalletNavbarComponent extends Component {
     super(...args);
   }
   @service session;
+  @service intl;
   @service wallet;
   @service group;
   @service('theta-sdk') thetaSdk;

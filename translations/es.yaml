@@ -44,6 +44,7 @@ global:
   search: Buscar
   cancel: Cancelar
   search_a_wallet: "Buscar Wallet"
+  search_a_wallet_short: "Buscar Wallet"
   enter_wallet: "Introduce dirección wallet"
   tfuel: "Tfuel"
   refresh: "Refresca"
@@ -125,7 +126,7 @@ transaction_history:
 ###### STAKING START ######
 staking: 
   earn_up_to: "Ganar hasta"
-  tfuel_fees: "3% fee on staking rewards (For every 10 Tfuel earnt, Thetaboard fee equals 0.3 Tfuel)"
+  tfuel_fees: "Comisión del 3% sobre recompensas por stake (por cada 10 Tfuels generados, la comisión de Thetaboard será de 0,3 Tfuels)"
   tfuel_fees_affiliate: "Comisión del 0% hasta el 31/08/2021 (Comisión del 3% a partir del 01/09/2021)"
   ### Staking Tfuel
   tfuel:
@@ -328,6 +329,15 @@ notfound:
   oops: "Oops!"
   page_doesnt_exist: "La página que buscas, no existe."
 ###### 404 END ######
+
+
+###### LOCALE START ######
+locale:
+  language: "Idioma"
+  en: "Inglés"
+  fr: "Francés"
+  es: "Español"
+###### LOCALE` END ######
 
 
 ###### FAQ START ######

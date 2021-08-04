@@ -44,6 +44,7 @@ global:
     search: "Rechercher"
     cancel: Annuler
     search_a_wallet: "Entrer un portefeuille"
+    search_a_wallet_short: "Entrer adresse"
     enter_wallet: "Entrer l’adresse du portefeuille"
     tfuel: Tfuel
     refresh: Rafraîchir
@@ -52,7 +53,7 @@ global:
     click: Cliquer
     here: ici
     by: par
-    login: "Se Connecter"
+    login: "Connexion"
     email: E-mail
     password: "Mot de Passe"
     go_dash: "Aller au Tableau de Bord"
@@ -66,7 +67,7 @@ global:
     reward: "Récompense"
     transfer: "Transfert"
     reserve_fund: "Fonds de réserve"
-    service_payment: “Paiement des services"
+    service_payment: "Paiement des services"
     split_contract: "Contrat fractionné"
     smart_contract: "Contrat intelligent"
     withdraw_stake: "Retirer le stake"
@@ -330,15 +331,24 @@ notfound:
 ###### 404 END ######
 
 
+###### LOCALE START ######
+locale:
+language: "Langue"
+  en: "Anglais"
+  fr: "Français"
+  es: "Espagnol"
+###### LOCALE` END ######
+
+
 ###### FAQ START ######
 faq:
     title: "FAQ Thetaboard"
     subtitle: "Qu’est-ce que ThetaBoard ?"
     description: "La mission de ThetaBoard est de devenir la place centrale de tous les passionnés de Theta <br> Nous voulons apporter de la valeur à l'écosystème de Theta en fournissant des fonctionnalités qui simplifient l'accès à l'information à propos de Theta ou qui enrichissent l'écosystème, comme le staking de Tfuel et de Theta, des outils conviviaux de gestion de l'information. <br/> Ce projet est principalement développé et alimenté par Maurin Lenglart et Adrien Vinches. Vous pouvez nous contacter pour du soutien ou des suggestions sur <a target=\"_blank\" href=\"https://discord.gg/SGUtY7zBU3\"> discord</a> ou or <a href=\"https://twitter.com/Thetaboard1\" target=\"_blank\">Twitter</a>."
     quick_links: "Liens rapides"
-    how_to_stake_tfuel : “Comment staker ses Tfuel ?”
-    how_to_stake_theta : “Comment staker ses Theta ?”
-    how_to_withdraw : “Comment retirer un stake ? "
+    how_to_stake_tfuel : "Comment staker ses Tfuel ?”
+    how_to_stake_theta : "Comment staker ses Theta ?”
+    how_to_withdraw : "Comment retirer un stake ? "
     how_to_stake_tfuel_link: ""
     how_to_stake_theta_link: ""
     how_to_withdraw_link: ""

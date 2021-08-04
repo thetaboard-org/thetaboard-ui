@@ -44,6 +44,7 @@ global:
   search: Search
   cancel: Cancel
   search_a_wallet: "Enter wallet address"
+  search_a_wallet_short: "Enter wallet"
   enter_wallet: "Enter wallet address"
   tfuel: "Tfuel"
   refresh: "Refresh"
@@ -328,6 +329,16 @@ notfound:
   oops: "Oops!"
   page_doesnt_exist: "The page you are looking for doesn't exist."
 ###### 404 END ######
+
+
+###### LOCALE START ######
+locale:
+  language: "Language"
+  en: "English"
+  fr: "French"
+  es: "Spanish"
+###### LOCALE` END ######
+
 
 
 ###### FAQ START ######

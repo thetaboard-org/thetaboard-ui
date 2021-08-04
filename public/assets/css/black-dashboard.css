@@ -15915,10 +15915,6 @@ img {
   padding: 0 10px;
 }
 
-.navbar-nav li a {
-  color: #ffffff;
-}
-
 .navbar-nav li i {
   vertical-align: middle;
   font-size: 20px;
@@ -16015,7 +16011,7 @@ img {
 
   .navbar .dropdown-menu .dropdown-item:focus,
   .navbar .dropdown-menu .dropdown-item:hover {
-    color: #ffffff;
+    /* color: #ffffff; */
   }
 
   .navbar.bg-white .dropdown-menu .dropdown-item:focus,

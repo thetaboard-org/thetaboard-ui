@@ -37,13 +37,12 @@ export default class ApplicationRoute extends Route {
 
   getLocaleLanguage() {
     let locale = null;
-    const availableLocal = ['en', 'fr', 'es'];
     if (navigator.languages != undefined) {
       locale = navigator.languages[0].substring(0, 2).toLowerCase();
     } else {
       locale = navigator.language.substring(0, 2).toLowerCase();
     }
-    if (availableLocal.indexOf(locale) > -1) {
+    if (this.intl.get('locales').indexOf(locale) > -1) {
       return locale;
     } else {
       return 'en';
