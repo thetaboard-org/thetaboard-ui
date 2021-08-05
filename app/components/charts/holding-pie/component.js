@@ -4,9 +4,11 @@ import { action } from '@ember/object';
 
 export default class HoldingPieComponent extends Component {
   @service('theta-sdk') thetaSdk;
+  @service('currency') currency;
+  @service('utils') utils;
 
   get setUpChart() {
-    if (this.thetaSdk.wallets.length) {
+    if (this.thetaSdk.walletList.length) {
       this.setupChart();
     }
   }
@@ -18,11 +20,6 @@ export default class HoldingPieComponent extends Component {
     element.remove(); // this is my <canvas> element
     $('#holding-container').append('<canvas id="pieChartExample" height="300"></canvas>');
     element = document.getElementById('pieChartExample');
-
-    const formatter = new Intl.NumberFormat('en-US', {
-      style: 'currency',
-      currency: 'USD',
-    });
 
     const numberWithCommas = function(x) {
       return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -44,11 +41,10 @@ export default class HoldingPieComponent extends Component {
       een_amount = eliteEdgeNodes.reduce((a, b) => a + b.amount, 0);
     }
 
-    let theta_value = this.thetaSdk.wallets.filter((x) => x.type === 'wallet' && x.currency === 'theta').reduce((a, b) => a + b.value, 0);
-    let theta_amount = this.thetaSdk.wallets.filter((x) => x.type === 'wallet' && x.currency === 'theta').reduce((a, b) => a + b.amount, 0);
-    let tfuel_value = this.thetaSdk.wallets.filter((x) => x.type === 'wallet' && x.currency === 'tfuel').reduce((a, b) => a + b.value, 0);
-    let tfuel_amount = this.thetaSdk.wallets.filter((x) => x.type === 'wallet' && x.currency === 'tfuel').reduce((a, b) => a + b.amount, 0);
-
+    let theta_value = this.thetaSdk.walletList.filter((x) => x.type === 'wallet' && x.currency === 'theta').reduce((a, b) => a + b.value, 0);
+    let theta_amount = this.thetaSdk.walletList.filter((x) => x.type === 'wallet' && x.currency === 'theta').reduce((a, b) => a + b.amount, 0);
+    let tfuel_value = this.thetaSdk.walletList.filter((x) => x.type === 'wallet' && x.currency === 'tfuel').reduce((a, b) => a + b.value, 0);
+    let tfuel_amount = this.thetaSdk.walletList.filter((x) => x.type === 'wallet' && x.currency === 'tfuel').reduce((a, b) => a + b.amount, 0);
     const types = [
       {
         label: `EEN (${numberWithCommas(een_amount.toFixed(2))})`,
@@ -71,7 +67,7 @@ export default class HoldingPieComponent extends Component {
         color: '#ffa113',
       },
     ];
-    this.thetaSdk.wallets.map((x) => x.value);
+    // this.thetaSdk.walletList.map((x) => x.value);
     let data = {
       datasets: [
         {
@@ -105,12 +101,17 @@ export default class HoldingPieComponent extends Component {
         tooltips: {
           mode: 'label',
           callbacks: {
-            label: function (tooltipItem, data) {
+            label: (tooltipItem, data) => {
               const indice = tooltipItem.index;
               return (
                 data.labels[indice] +
                 ': ' +
-                formatter.format(data.datasets[0].data[indice]) +
+                this.currency.currentCurrency.symbol +
+                '' +
+                this.utils.formatNumber(
+                  Number(data.datasets[0].data[indice]),
+                  2
+                ) +
                 ''
               );
             },
@@ -127,11 +128,11 @@ export default class HoldingPieComponent extends Component {
             font: {
               weight: 'bold',
             },
-            formatter: function (value, context) {
+            formatter: (value, context) => {
               const total = context.dataset.data.reduce((a, b) => a + b, 0);
               return `
-                  ${formatter.format(value)}
-                   ${((100 * value) / total).toFixed(2)}%
+                ${this.currency.currentCurrency.symbol}${this.utils.formatNumber(Number(value), 2)}
+                ${((100 * value) / total).toFixed(2)}%
               `;
             },
           },

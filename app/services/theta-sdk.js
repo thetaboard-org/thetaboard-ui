@@ -80,8 +80,8 @@ export default class ThetaSdkService extends Service {
   }
 
   get guardianWallets() {
-    if (this.wallets.length) {
-      return this.wallets.filter((x) => x.type === 'Guardian Node');
+    if (this.walletList.length) {
+      return this.walletList.filter((x) => x.type === 'Guardian Node');
     }
     return [];
   }
@@ -93,10 +93,34 @@ export default class ThetaSdkService extends Service {
   }
 
   get eliteEdgeNodeWallets() {
-    if (this.wallets.length) {
-      return this.wallets.filter((x) => x.type === 'Elite Edge Node');
+    if (this.walletList.length) {
+      return this.walletList.filter((x) => x.type === 'Elite Edge Node');
     }
     return [];
+  }
+
+  get walletList() {
+    let walletList = Ember.A();
+    const tfuelPrice = this.prices.tfuel.price;
+    const thetaPrice = this.prices.theta.price;
+    this.wallets.forEach((wallet) => {
+      let walletItem = this.store.createRecord('walletItem', wallet);
+      if (wallet.currency == 'theta') {
+        walletItem.market_price = thetaPrice;
+      } else if (wallet.currency == 'tfuel') {
+        walletItem.market_price = tfuelPrice;
+      }
+      walletList.pushObject(walletItem);
+    });
+    return walletList;
+  }
+
+  get walletTotal() {
+    let wallets = this.walletList;
+    if (wallets.length == 0) return 0;
+    return wallets.reduce(function (previousValue, item) {
+      return previousValue + item.value;
+    }, 0);
   }
 
   get guardianCoinbases() {
