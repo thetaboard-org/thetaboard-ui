@@ -4,6 +4,7 @@ import { inject as service } from '@ember/service';
 export default class CoinbaseHistoryComponent extends Component {
   @service('env-manager') envManager;
   @service('theta-sdk') thetaSdk;
+  @service('currency') currency;
 
   get coinbasesLastDay() {
     const yesterday = new Date(new Date().setDate(new Date().getDate() - 1));

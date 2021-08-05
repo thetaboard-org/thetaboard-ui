@@ -36,7 +36,7 @@ export default class WalletController extends Controller {
       this.loading = true;
       this.group = this.thetaSdk.currentGroup;
       this.account = '';
-      let allWallets = this.thetaSdk.wallets.map((x) => x.wallet_address.toLowerCase());
+      let allWallets = this.walletList.wallets.map((x) => x.wallet_address.toLowerCase());
       this.wallets = [...new Set(allWallets)];
       const coinbases = await this.thetaSdk.getAllCoinbases(this.wallets);
       this.loading = false;

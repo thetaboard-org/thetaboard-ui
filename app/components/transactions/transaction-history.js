@@ -31,7 +31,7 @@ export default class TransactionHistoryComponent extends Component {
     ) {
       this.group = this.thetaSdk.currentGroup;
       this.account = '';
-      let allWallets = this.thetaSdk.wallets.map((x) => x.wallet_address.toLowerCase());
+      let allWallets = this.thetaSdk.walletList.map((x) => x.wallet_address.toLowerCase());
       this.wallets = [...new Set(allWallets)];
       return await this.thetaSdk.getTransactions(this.wallets);
     }

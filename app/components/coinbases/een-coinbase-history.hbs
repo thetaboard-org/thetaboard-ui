@@ -10,7 +10,7 @@
     </div>
       <div class="card-body-stake">
         <h5 class="title">{{t 'coinbase_history.title' token="Tfuel"}}</h5>
-        {{#if this.thetaSdk.wallets.length}}
+        {{#if this.thetaSdk.walletList.length}}
           {{#if this.args.loading}}
             <p><img class="main-loader rotate coinbases" width="50" src="{{rootURL}}assets/img/theta-logo.png"/></p>
           {{/if}}
@@ -20,12 +20,12 @@
               <div class="trend-activity trends-percent border-separation">
                   <p class="description">{{t 'global.last.24h'}}</p>
                   <p class="title"><span class="nostyle" {{numberformat coinbasesLastDayTfuelAmount 2}}></span> <img src="{{rootURL}}assets/img/logo/tfuel.png" class="img-fluid rounded-circle" style="width: 20px;"></p>
-                  <span class="trend-usd-change coinbases">($<span class="nostyle" {{numberformat coinbasesLastDayUsdValue 2}}></span> | {{coinbasesLastDay.length}} {{t 'coinbase_history.rewards_received'}})</span>
+                  <span class="trend-usd-change coinbases">({{currency.currentCurrency.symbol}}<span class="nostyle" {{numberformat coinbasesLastDayUsdValue 2}}></span> | {{coinbasesLastDay.length}} {{t 'coinbase_history.rewards_received'}})</span>
               </div>
               <div class="trend-activity trends-percent">
                   <p class="description">{{t 'global.last.7d'}}</p>
                   <p class="title"> <span class="nostyle" {{numberformat coinbasesLastWeekTfuelAmount 2}}></span> <img src="{{rootURL}}assets/img/logo/tfuel.png" class="img-fluid rounded-circle" style="width: 20px;"></p>
-                  <span class="trend-usd-change coinbases">($<span class="nostyle" {{numberformat coinbasesLastWeekUsdValue 2}}></span> | {{coinbasesLastWeek.length}} {{t 'coinbase_history.rewards_received'}})</span>
+                  <span class="trend-usd-change coinbases">({{currency.currentCurrency.symbol}}<span class="nostyle" {{numberformat coinbasesLastWeekUsdValue 2}}></span> | {{coinbasesLastWeek.length}} {{t 'coinbase_history.rewards_received'}})</span>
               </div>
             </div>
             <hr/>
@@ -33,12 +33,12 @@
               <div class="trend-activity trends-percent border-separation">
                   <p class="description">{{t 'global.last.m'}}</p>
                   <p class="title"><span class="nostyle" {{numberformat coinbasesLastMonthTfuelAmount 2}}></span> <img src="{{rootURL}}assets/img/logo/tfuel.png" class="img-fluid rounded-circle" style="width: 20px;"></p>
-                  <span class="trend-usd-change coinbases">($<span class="nostyle" {{numberformat coinbasesLastMonthUsdValue 2}}></span> | {{coinbasesLastMonth.length}} {{t 'coinbase_history.rewards_received'}})</span>
+                  <span class="trend-usd-change coinbases">({{currency.currentCurrency.symbol}}<span class="nostyle" {{numberformat coinbasesLastMonthUsdValue 2}}></span> | {{coinbasesLastMonth.length}} {{t 'coinbase_history.rewards_received'}})</span>
               </div>
               <div class="trend-activity trends-percent">
                   <p class="description">{{t 'global.last.6m'}}</p>
                   <p class="title"><span class="nostyle" {{numberformat coinbasesLastSixMonthsTfuelAmount 2}}></span> <img src="{{rootURL}}assets/img/logo/tfuel.png" class="img-fluid rounded-circle" style="width: 20px;"></p>
-                  <span class="trend-usd-change coinbases">($<span class="nostyle" {{numberformat coinbasesLastSixMonthsUsdValue 2}}></span> | {{coinbasesLastSixMonths.length}} {{t 'coinbase_history.rewards_received'}})</span>
+                  <span class="trend-usd-change coinbases">({{currency.currentCurrency.symbol}}<span class="nostyle" {{numberformat coinbasesLastSixMonthsUsdValue 2}}></span> | {{coinbasesLastSixMonths.length}} {{t 'coinbase_history.rewards_received'}})</span>
               </div>
             </div>
           </div>

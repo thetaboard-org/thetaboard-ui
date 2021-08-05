@@ -16,7 +16,7 @@
   </div>
   <div id="holding-container" class="card-body pie-chart-card-body">
 
-  {{#if this.thetaSdk.wallets.length}}
+  {{#if this.thetaSdk.walletList.length}}
     <canvas id="pieChartExample" height="300" {{did-insert this.setupChart}}></canvas>
   {{else}}
     <p class="wallet-placeholder">{{t 'global.please'}} <LinkTo @route="my-wallets">{{t 'global.link_wallet'}}</LinkTo> {{t 'global.or'}} <a href="" data-toggle="modal" data-target="#searchModal">{{t 'global.enter_address'}}</a>.</p>
