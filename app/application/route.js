@@ -29,12 +29,26 @@ export default class ApplicationRoute extends Route {
     return getOwner(this).lookup('service:intl');
   }
 
+  get currency() {
+    return getOwner(this).lookup('service:currency');
+  }
+
   async beforeModel() {
     const params = this.paramsFor('application');
     const locale = await this.getLocaleLanguage();
     this.intl.setLocale([locale]);
+    await this.setCurrency();
     await this.envManager.setParameters(params);
     return this._loadCurrentUser();
+  }
+
+  async setCurrency() {
+    const currencies = await this.store.findAll('currency');
+    let currency = null;
+    if (currencies.length) {
+      currency = currencies.firstObject.value;
+    }
+    this.currency.initialize(currency);
   }
 
   async getLocaleLanguage() {

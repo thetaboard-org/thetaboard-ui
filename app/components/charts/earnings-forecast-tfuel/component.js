@@ -8,7 +8,7 @@ export default class EarningsForcastTfuelComponent extends Component {
     super(...args);
     this.initialize();
   }
-
+  @service('currency') currency;
   @service('theta-sdk') thetaSdk;
   account = '';
   walletLength = 0;
@@ -21,11 +21,6 @@ export default class EarningsForcastTfuelComponent extends Component {
   initialize() {
     setTimeout(this.updateData, 2500);
   }
-
-  formatter = new Intl.NumberFormat('en-US', {
-    style: 'currency',
-    currency: 'USD',
-  });
 
   get setUpChart() {
     if (this.thetaSdk.currentAccount != this.account || this.walletLength != this.thetaSdk.eliteEdgeNodeWallets.length) {
@@ -48,7 +43,7 @@ export default class EarningsForcastTfuelComponent extends Component {
     if (this.thetaSdk.prices.tfuel) {
       value = this.avg_tfuel_per_day * this.thetaSdk.prices.tfuel.price;
     }
-    return this.formatter.format(value);
+    return value;
   }
 
   get avg_tfuel_per_month_dollar() {
@@ -56,7 +51,7 @@ export default class EarningsForcastTfuelComponent extends Component {
     if (this.thetaSdk.prices.tfuel) {
       value = this.avg_tfuel_per_month * this.thetaSdk.prices.tfuel.price;
     }
-    return this.formatter.format(value);
+    return value;
   }
 
   get avg_tfuel_per_year_dollar() {
@@ -64,7 +59,7 @@ export default class EarningsForcastTfuelComponent extends Component {
     if (this.thetaSdk.prices.tfuel) {
       value = this.avg_tfuel_per_year * this.thetaSdk.prices.tfuel.price;
     }
-    return this.formatter.format(value);
+    return value;
   }
 
   get chartData() {

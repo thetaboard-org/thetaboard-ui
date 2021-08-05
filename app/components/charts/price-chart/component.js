@@ -5,20 +5,39 @@ import {inject as service} from '@ember/service';
 
 export default class PriceChartComponent extends Component {
   @tracked time_range = 'year';
+  @tracked chartHistoricData = null;
   @service intl;
+  @service utils;
+  @service currency;
   @service('theta-sdk') thetaSdk;
+
+  get priceChange() {
+    this.currencyChanged();
+    return '';
+  }
+
+  async currencyChanged() {
+    const currencyName = this.currency.currentCurrency.name;
+    if (this.historic_data_chart) {
+      const oneYearBack = new Date(new Date().setFullYear(new Date().getFullYear() - 1)).toISOString().split('T')[0];
+      const today = new Date().toISOString().split('T')[0];
+      this.chartHistoricData = await this.thetaSdk.getPrices(currencyName, oneYearBack, today);
+      this.updateData();
+    }
+  }
 
   get chartData() {
     let historic_data = {};
+    let chartHistoricData = this.chartHistoricData || this.args.historic_price;
     if (this.time_range === 'week') {
-      historic_data = this.args.historic_price.dailyPrice
-        .splice(this.args.historic_price.dailyPrice.length - 7, this.args.historic_price.dailyPrice.length);
+      historic_data = chartHistoricData.dailyPrice
+        .splice(chartHistoricData.dailyPrice.length - 7, chartHistoricData.dailyPrice.length);
 
     } else if (this.time_range === 'month') {
-      historic_data = this.args.historic_price.dailyPrice
-        .splice(this.args.historic_price.dailyPrice.length - 30, this.args.historic_price.dailyPrice.length);
+      historic_data = chartHistoricData.dailyPrice
+        .splice(chartHistoricData.dailyPrice.length - 30, chartHistoricData.dailyPrice.length);
     } else {
-      historic_data = this.args.historic_price.dailyPrice;
+      historic_data = chartHistoricData.dailyPrice;
     }
     const labels = historic_data.map((x) => x.date);
     const theta_price = historic_data.map((x) => x["theta-price"]);
@@ -66,10 +85,6 @@ export default class PriceChartComponent extends Component {
     moment.locale("nl");
 
     const element = document.getElementById('lineChartExample');
-    const formatter = new Intl.NumberFormat('en-US', {
-      style: 'currency',
-      currency: 'USD',
-    });
     const gradientChartOptionsConfiguration = {
       maintainAspectRatio: false,
       legend: {
@@ -90,9 +105,9 @@ export default class PriceChartComponent extends Component {
               return `1 Theta ${this.intl.t('price_chart.is_worth')} ${Math.round(Number(tooltipItem.yLabel), 1)} Tfuels`;
             }
             if (Number(tooltipItem.yLabel) > 0.01) {
-              return formatter.format(Number(tooltipItem.yLabel));
+              return `${this.currency.currentCurrency.symbol}${this.utils.formatNumber(Number(tooltipItem.yLabel), 2)}`;
             } else {
-              return `$${Number(tooltipItem.yLabel)}`;
+              return `${this.currency.currentCurrency.symbol}${Number(tooltipItem.yLabel)}`;
             }
           },
         },
@@ -116,8 +131,8 @@ export default class PriceChartComponent extends Component {
               fontColor: '#2BB7E5',
               beginAtZero: true,
               maxTicksLimit: 10,
-              callback: function (value) {
-                return formatter.format(Number(value.toString()));
+              callback: (value) => {
+                return `${this.currency.currentCurrency.symbol}${this.utils.formatNumber(Number(value.toString()), 2)}`;
               },
             },
           },
@@ -130,8 +145,8 @@ export default class PriceChartComponent extends Component {
               fontColor: '#FFA500',
               beginAtZero: true,
               maxTicksLimit: 10,
-              callback: function (value) {
-                return formatter.format(Number(value.toString()));
+              callback: (value) => {
+                return `${this.currency.currentCurrency.symbol}${this.utils.formatNumber(Number(value.toString()), 2)}`;
               },
             },
           },

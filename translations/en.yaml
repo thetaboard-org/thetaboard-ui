@@ -337,8 +337,21 @@ locale:
   en: "English"
   fr: "French"
   es: "Spanish"
-###### LOCALE` END ######
+###### LOCALE END ######
 
+
+###### CURRENCY START ######
+currency:
+  currency: "Currency"
+  usd: "USD"
+  aud: "AUD"
+  eur: "EUR"
+  symbol:
+    usd: "$"
+    aud: "A$"
+    eur: "€"
+
+###### CURRENCY END ######
 
 
 ###### FAQ START ######

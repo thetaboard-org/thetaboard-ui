@@ -3,6 +3,7 @@ import {inject as service} from '@ember/service';
 
 export default class TrendThetaComponent extends Component {
   @service('theta-sdk') thetaSdk;
+  @service('currency') currency;
 
   get trendYesterday() {
     const thetaPrice = this.thetaSdk.prices.theta.price;

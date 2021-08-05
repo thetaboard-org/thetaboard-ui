@@ -11,27 +11,27 @@
       <div class="card-body-stake">
         <h5 class="title">Theta</h5>
           <div class="trend-activity">
-            <p class="title current-price">$<span class="nostyle" {{numberformat this.thetaSdk.prices.theta.price 2}}></span></p>
+            <p class="title current-price">{{currency.currentCurrency.symbol}}<span class="nostyle" {{numberformat this.thetaSdk.prices.theta.price 2}}></span></p>
         </div>
         <div class="trends-percent-conatiner">
           <div class="trend-activity trends-percent border-separation">
               <p class="description">{{t 'global.last.24h'}}</p>
               <p class="title {{trendYesterday.class}}">{{trendYesterday.type}} <span class="nostyle" {{numberformat trendYesterday.percentChange 2}}></span>% </p>
-              <span class="trend-usd-change {{trendYesterday.class}}">({{trendYesterday.type}} $<span class="nostyle" {{numberformat trendYesterday.change 2}}></span>)</span>
+              <span class="trend-usd-change {{trendYesterday.class}}">({{trendYesterday.type}} {{currency.currentCurrency.symbol}}<span class="nostyle" {{numberformat trendYesterday.change 2}}></span>)</span>
           </div>
           <div class="trend-activity trends-percent">
               <p class="description">{{t 'global.last.7d'}}</p>
               <p class="title {{trendLastWeek.class}} ">{{trendLastWeek.type}} <span class="nostyle" {{numberformat trendLastWeek.percentChange 2}}></span>% </p>
-              <span class="trend-usd-change {{trendLastWeek.class}}">({{trendLastWeek.type}} $<span class="nostyle" {{numberformat trendLastWeek.change 2}}></span>)</span>
+              <span class="trend-usd-change {{trendLastWeek.class}}">({{trendLastWeek.type}} {{currency.currentCurrency.symbol}}<span class="nostyle" {{numberformat trendLastWeek.change 2}}></span>)</span>
           </div>
         </div>
         <hr/>
         <div class="trend-activity extra">
           <p class="description">{{t 'global.market_cap'}}: </p>
-          <p class="title">$<span class="nostyle" {{numberformat this.thetaSdk.prices.theta.market_cap 0}}></span></p>
+          <p class="title">{{currency.currentCurrency.symbol}}<span class="nostyle" {{numberformat this.thetaSdk.prices.theta.market_cap 0}}></span></p>
                   <hr/>
           <p class="description">{{t 'global.24_volume'}}</p>
-          <p class="title">$<span class="nostyle" {{numberformat this.thetaSdk.prices.theta.volume_24h 0}}></span></p>
+          <p class="title">{{currency.currentCurrency.symbol}}<span class="nostyle" {{numberformat this.thetaSdk.prices.theta.volume_24h 0}}></span></p>
                 <hr/>
           <p class="description">{{t 'global.theta_staked'}}</p>
           <p class="title"><span class="nostyle" {{numberformat this.thetaSdk.totalStake.percent 1}}></span>% (<span class="nostyle" {{numberformat this.thetaSdk.totalStake.totalAmount 0}}></span>)</p>

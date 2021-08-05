@@ -3,8 +3,9 @@ import {action} from '@ember/object';
 import {inject as service} from '@ember/service';
 import {tracked} from '@glimmer/tracking';
 
-export default class EarningsProjectionsComponent extends Component {
+export default class EarningsForecastComponent extends Component {
   @service('theta-sdk') thetaSdk;
+  @service('currency') currency;
   account = '';
   walletLength = 0;
 
@@ -13,11 +14,6 @@ export default class EarningsProjectionsComponent extends Component {
 
   @tracked thetaAmount = 1000;
   @tracked transactions = [];
-
-  formatter = new Intl.NumberFormat('en-US', {
-    style: 'currency',
-    currency: 'USD',
-  });
 
   get setUpChart() {
     if (this.thetaSdk.currentAccount != this.account || this.walletLength != this.thetaSdk.guardianWallets.length) {
@@ -41,7 +37,7 @@ export default class EarningsProjectionsComponent extends Component {
     if (this.thetaSdk.prices.tfuel) {
       value = this.avg_tfuel_per_day * this.thetaSdk.prices.tfuel.price;
     }
-    return this.formatter.format(value);
+    return value;
   }
 
   get avg_tfuel_per_month_dollar() {
@@ -49,7 +45,7 @@ export default class EarningsProjectionsComponent extends Component {
     if (this.thetaSdk.prices.tfuel) {
       value = this.avg_tfuel_per_month * this.thetaSdk.prices.tfuel.price;
     }
-    return this.formatter.format(value);
+    return value;
   }
 
   get avg_tfuel_per_year_dollar() {
@@ -57,7 +53,7 @@ export default class EarningsProjectionsComponent extends Component {
     if (this.thetaSdk.prices.tfuel) {
       value = this.avg_tfuel_per_year * this.thetaSdk.prices.tfuel.price;
     }
-    return this.formatter.format(value);
+    return value;
   }
 
   get chartData() {

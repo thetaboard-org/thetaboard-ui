@@ -75,6 +75,10 @@ export default class ThetaSdkService extends Service {
     return getOwner(this).lookup('service:store');
   }
 
+  get currency() {
+    return getOwner(this).lookup('service:currency');
+  }
+
   get guardianWallets() {
     if (this.wallets.length) {
       return this.wallets.filter((x) => x.type === 'Guardian Node');
@@ -83,7 +87,7 @@ export default class ThetaSdkService extends Service {
   }
 
   async initialize() {
-    await this.getPrices();
+    await this.getPrices(this.currency.currentCurrency.name);
     await this.getTotalStake();
     await this.getTotalTfuelStake();
   }
@@ -223,7 +227,7 @@ export default class ThetaSdkService extends Service {
     }
   }
 
-  async getPrices(start_date = null, end_date = null, currency = 'USD') {
+  async getPrices(currency = 'USD', start_date = null, end_date = null) {
     let api_call = `/explorer/prices?currency=${currency}`;
     if (start_date && end_date) {
       api_call += `&start_date=${start_date}&end_date=${end_date}`
