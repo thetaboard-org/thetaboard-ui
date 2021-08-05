@@ -12,7 +12,7 @@
             <th class="text-center">{{t 'global.wallet_address'}}</th>
             <th class="text-center d-none d-sm-none d-md-none d-lg-table-cell">{{t 'wallet_list.market_price'}}</th>
             <th class="text-center">{{t 'wallet_list.amount'}}</th>
-            <th class="text-right">$</th>
+            <th class="text-right">{{currency.currentCurrency.symbol}}</th>
             </tr>
             </thead>
             <tbody>
@@ -30,9 +30,9 @@
                         <LinkTo {{shortener balance.node_address}} @route="wallet" @query={{hash wa=balance.node_address}}>{{balance.node_address}}</LinkTo>
                     {{/if}}
                 </td>
-                <td class="text-center d-none d-sm-none d-md-none d-lg-table-cell">$<span class="nostyle" {{numberformat balance.market_price 2}}></span></td>
+                <td class="text-center d-none d-sm-none d-md-none d-lg-table-cell">{{currency.currentCurrency.symbol}}<span class="nostyle" {{numberformat balance.market_price 2}}></span></td>
                 <td class="text-center"><span class="nostyle" {{numberformat balance.amount 3}}></span></td>
-                <td class="text-right">$<span class="nostyle" {{numberformat balance.value 2}}></span></td>
+                <td class="text-right">{{currency.currentCurrency.symbol}}<span class="nostyle" {{numberformat balance.value 2}}></span></td>
             </tr>
             {{else}}
             <p>{{t 'wallet_list.no_wallet'}} <LinkTo @route="my-wallets">{{t 'global.link_wallet'}}</LinkTo> {{t 'global.or'}} <a href="" data-toggle="modal" data-target="#searchModal">{{t 'global.enter_address'}}</a>.</p>
@@ -40,7 +40,9 @@
             </tbody>
         </table>
         <div style="text-align: right;">
-            {{wallets/wallet-total}}
+            <div>
+                <p class="wallet-total-amount">{{t 'global.total'}}: <span class="nostyle" {{numberformat walletTotal 2}}></span></p>
+            </div>
         </div>
         </div>
     </div>
