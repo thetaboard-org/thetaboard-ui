@@ -1,5 +1,6 @@
 import Route from '@ember/routing/route';
 import { getOwner } from '@ember/application';
+import { storageFor } from 'ember-local-storage';
 
 export default class ApplicationRoute extends Route {
   queryParams = {
@@ -10,6 +11,7 @@ export default class ApplicationRoute extends Route {
       refreshModel: true,
     },
   };
+  locales = storageFor('locales');
 
   get envManager() {
     return getOwner(this).lookup('service:env-manager');
@@ -29,14 +31,18 @@ export default class ApplicationRoute extends Route {
 
   async beforeModel() {
     const params = this.paramsFor('application');
-    const locale = this.getLocaleLanguage();
+    const locale = await this.getLocaleLanguage();
     this.intl.setLocale([locale]);
     await this.envManager.setParameters(params);
     return this._loadCurrentUser();
   }
 
-  getLocaleLanguage() {
+  async getLocaleLanguage() {
     let locale = null;
+    const savedLocale = await this.store.findAll('locale');
+    if (savedLocale.length) {
+      return savedLocale.firstObject.value;
+    }
     if (navigator.languages != undefined) {
       locale = navigator.languages[0].substring(0, 2).toLowerCase();
     } else {

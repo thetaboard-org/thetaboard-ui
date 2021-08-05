@@ -3,6 +3,9 @@
 module.exports = function (environment) {
   let ENV = {
     modulePrefix: 'thetaboard-ui',
+    'ember-local-storage': {
+      namespace: true, // will use the modulePrefix
+    },
     environment,
     rootURL: '/',
     locationType: 'auto',
