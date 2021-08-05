@@ -13,6 +13,7 @@ export default class TransactionHistoryComponent extends Component {
   }
   @service('env-manager') envManager;
   @service('theta-sdk') thetaSdk;
+  @service('currency') currency;
 
   async initialize() {
     if (

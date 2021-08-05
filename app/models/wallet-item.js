@@ -9,7 +9,7 @@ export default class walletItemModel extends Model {
   @attr('number') market_price;
   @attr('number') amount;
 
-  @computed('amount,market_price')
+  @computed('amount', 'market_price')
   get value() {
     return this.amount * this.market_price;
   }

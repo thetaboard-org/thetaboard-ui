@@ -30,13 +30,16 @@
               <LinkTo {{shortener transaction.toAddress}} @route="wallet" @query={{hash group=null wa=transaction.toAddress}}>{{transaction.toAddress}}</LinkTo>
             </td>
             <td class="text-left td-value">
-              {{#each transaction.values as |coin|}}
                 <div>
-                  <img src="assets/img/logo/{{coin.type}}.png" class="img-fluid rounded-circle" style="width: 20px;" alt="logo"/>
-                  <span class="coin-amount"><span class="nostyle" {{numberformat coin.amount 3}}></span> <span class="capitalize">{{coin.type}}</span> </span>
-                  <span class="coin-value">[$<span class="nostyle" {{numberformat coin.value 2}}></span>]</span>
+                  <img src="assets/img/logo/theta.png" class="img-fluid rounded-circle" style="width: 20px;" alt="logo"/>
+                  <span class="coin-amount"><span class="nostyle" {{numberformat transaction.thetaAmount 3}}></span> <span class="capitalize">Theta</span> </span>
+                  <span class="coin-value">[{{currency.currentCurrency.symbol}}<span class="nostyle" {{numberformat transaction.thetaValue 2}}></span>]</span>
                 </div>
-              {{/each}}
+                <div>
+                  <img src="assets/img/logo/tfuel.png" class="img-fluid rounded-circle" style="width: 20px;" alt="logo"/>
+                  <span class="coin-amount"><span class="nostyle" {{numberformat transaction.tfuelAmount 3}}></span> <span class="capitalize">Tfuel</span> </span>
+                  <span class="coin-value">[{{currency.currentCurrency.symbol}}<span class="nostyle" {{numberformat transaction.tfuelValue 2}}></span>]</span>
+                </div>
             </td>
           </tr>
           {{else}}

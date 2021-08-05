@@ -3,35 +3,47 @@ import { computed } from '@ember/object';
 import { inject as service } from '@ember/service';
 
 export default class TransactionHistoryModel extends Model {
-  @service intl
+  @service intl;
+  @service('theta-sdk') thetaSdk;
 
-  @attr('string') walletAddress;
-  @attr('string') blockHash
-  @attr('number') blockHeight
-  @attr('string') txnHash
-  @attr('number') type
-  @attr('string') fromAddress
-  @attr('string') toAddress
-  @attr('string') contractAddress
-  @attr('date') txTimestamp
-  @attr('number') status
-  @attr('number') theta
-  @attr('number') tfuel
-  @attr('number') feeTheta
-  @attr('number') feeTfuel
-  @attr('number') gasLimit
-  @attr('number') gasPrice
-  @attr('number') gasUsed
-  @attr('number') duration
-  @attr('number') splitBasisPoint
-  @attr('number') paymentSequence
-  @attr('number') reserveSequence
-  @attr('string') resourceIds
-  @attr('string') resourceId
+  @attr('string') walletAddress;;
+  @attr('string') blockHash;
+  @attr('number') blockHeight;
+  @attr('string') txnHash;
+  @attr('number') type;
+  @attr('string') fromAddress;
+  @attr('string') toAddress;
+  @attr('string') contractAddress;
+  @attr('date') txTimestamp;
+  @attr('number') status;
+  @attr('number') theta;
+  @attr('number') tfuel;
+  @attr('number') feeTheta;
+  @attr('number') feeTfuel;
+  @attr('number') gasLimit;
+  @attr('number') gasPrice;
+  @attr('number') gasUsed;
+  @attr('number') duration;
+  @attr('number') splitBasisPoint;
+  @attr('number') paymentSequence;
+  @attr('number') reserveSequence;
+  @attr('string') resourceIds;
+  @attr('string') resourceId;
+  @attr('number') thetaAmount;
+  @attr('number') tfuelAmount;
 
   //transaction list component
   @attr('string') inOrOut
-  @attr() values
+
+  @computed('thetaAmount', 'thetaSdk.prices.theta.price')
+  get thetaValue() {
+    return this.thetaSdk.prices.theta.price * this.thetaAmount;
+  }
+
+  @computed('tfuelAmount', 'thetaSdk.prices.tfuel.price')
+  get tfuelValue() {
+    return this.thetaSdk.prices.tfuel.price * this.tfuelAmount;
+  }
 
   @computed('type')
   get typeName() {
