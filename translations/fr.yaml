@@ -342,7 +342,7 @@ locale:
 
 ###### CURRENCY START ######
 currency:
-  currency: "Currency"
+  currency: "Devise"
   usd: "USD"
   aud: "AUD"
   eur: "EUR"
@@ -357,9 +357,9 @@ faq:
     how_to_stake_tfuel: "Comment staker ses Tfuel ?"
     how_to_stake_theta: "Comment staker ses Theta ?"
     how_to_withdraw: "Comment retirer un stake ? "
-    how_to_stake_tfuel_link: ""
-    how_to_stake_theta_link: ""
-    how_to_withdraw_link: ""
+    how_to_stake_tfuel_link : "/assets/pdf/FR_How_to_stake_TFUEL.pdf"
+    how_to_stake_theta_link : "/assets/pdf/FR_How_to_stake_THETA.pdf"
+    how_to_withdraw_link : "/assets/pdf/FR_How_to_stake_WITHDRAW.pdf"
     what_staking: "Qu’est ce que le Staking ?"
     what_staking_body: "<p>e Staking est un processus qui consiste à associer vos token à une machine qui effectue un travail et assure la sécurité d'un réseau, ce qui vous permet de gagner des récompenses supplémentaires.<br/> Vos récompenses pour le staking sont basées sur le nombre de token que vous mettez en jeu/stakez, ainsi que sur le temps de fonctionnement de votre nœud. Pour maximiser vos gains, l'ordinateur qui héberge votre nœud doit fonctionner 24 heures sur 24, 7 jours sur 7.<br/> Sur le Réseau Thêta, il est possible destaker à la fois les token Thêta et les token Tfuel. Les deux token sont récompensés pour le staking sous forme de Tfuel. Pour staker vos token, ils doivent être délégués à un nœud Guardian Node (Theta) ou à un nœud Elite Edge/Elite Edge Node (Tfuel). Ces deux types de nœuds jouent un rôle important au sein du réseau décentralisé Theta. Tout au long du processus de staking, les token restent toujours dans votre portefeuille officiel Theta. Si le nœud devait s'éteindre, les token restent dans votre portefeuille, et ne seront contrôlés que par celui qui a accès au portefeuille. N'entrez JAMAIS votre phrase mnémotechnique de 12 mots ni votre fichier keystore et votre mot de passe, ailleurs que dans le portefeuille Theta officiel. Thetaboard ne demandera jamais ces informations.</p>"
     provide: "Quel genre de staking ThetaBoard fournit-il ?"

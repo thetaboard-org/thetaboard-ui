@@ -342,7 +342,7 @@ locale:
 
 ###### CURRENCY START ######
 currency:
-  currency: "Currency"
+  currency: "Moneda"
   usd: "USD"
   aud: "AUD"
   eur: "EUR"
