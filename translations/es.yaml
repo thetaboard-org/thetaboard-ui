@@ -346,6 +346,10 @@ currency:
   usd: "USD"
   aud: "AUD"
   eur: "EUR"
+  symbol:
+    usd: "$"
+    aud: "A$"
+    eur: "€"
 ###### CURRENCY END ######
 
 

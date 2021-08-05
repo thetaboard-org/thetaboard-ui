@@ -342,10 +342,14 @@ locale:
 
 ###### CURRENCY START ######
 currency:
-  currency: "Devise"
-  usd: "USD"
-  aud: "AUD"
-  eur: "EUR"
+    currency: "Devise"
+    usd: "USD"
+    aud: "AUD"
+    eur: "EUR"
+    symbol:
+        usd: "$"
+        aud: "A$"
+        eur: "€"
 ###### CURRENCY END ######
 
 ###### FAQ START ######
