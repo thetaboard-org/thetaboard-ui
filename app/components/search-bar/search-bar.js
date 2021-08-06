@@ -3,10 +3,10 @@ import { action } from '@ember/object';
 import { inject as service } from '@ember/service';
 
 export default class SearchBarSearchBarComponent extends Component {
-  @service('theta-sdk') thetaSdk;
-  @service('utils') utils;
-  @service('intl') intl;
-  @service('contract') contract;
+  @service thetaSdk;
+  @service utils;
+  @service intl;
+  @service contract;
   walletAddress = '';
 
   @action

@@ -1,15 +1,9 @@
 import Route from '@ember/routing/route';
-import {getOwner} from '@ember/application';
-
+import { inject as service } from '@ember/service';
 
 export default class GuardianRoute extends Route {
-  get thetaSdk() {
-    return getOwner(this).lookup('service:theta-sdk');
-  }
-
-  get guardian() {
-    return getOwner(this).lookup('service:guardian');
-  }
+  @service thetaSdk;
+  @service guardian;
 
   async model(params) {
     const guardianStatus = await this.thetaSdk.getGuardianStatus();

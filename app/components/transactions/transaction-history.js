@@ -11,9 +11,9 @@ export default class TransactionHistoryComponent extends Component {
     this.group = '';
     this.wallets = [];
   }
-  @service('env-manager') envManager;
-  @service('theta-sdk') thetaSdk;
-  @service('currency') currency;
+  @service envManager;
+  @service thetaSdk;
+  @service currency;
 
   async initialize() {
     if (

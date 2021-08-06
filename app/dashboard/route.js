@@ -1,18 +1,10 @@
 import Route from '@ember/routing/route';
-import {getOwner} from '@ember/application';
+import { inject as service } from '@ember/service';
 
 export default class DashboardRoute extends Route {
-  get thetaSdk() {
-    return getOwner(this).lookup('service:theta-sdk');
-  }
-
-  get currency() {
-    return getOwner(this).lookup('service:currency');
-  }
-
-  get historicPrice() {
-    return getOwner(this).lookup('service:historic-price');
-  }
+  @service thetaSdk;
+  @service currency;
+  @service historicPrice;
 
   async model() {
     const oneYearBack = new Date(new Date().setFullYear(new Date().getFullYear() - 1)).toISOString().split('T')[0];

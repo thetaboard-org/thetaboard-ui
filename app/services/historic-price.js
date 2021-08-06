@@ -1,14 +1,12 @@
 import Service from '@ember/service';
-import { getOwner } from '@ember/application';
+import { inject as service } from '@ember/service';
 import { action } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
 
 export default class HistoricPriceService extends Service {
   @tracked historicPrice;
 
-  get store() {
-    return getOwner(this).lookup('service:store');
-  }
+  @service store;
 
   @action
   initialize(historicPrice) {

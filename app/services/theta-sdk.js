@@ -1,5 +1,5 @@
 import Service from '@ember/service';
-import {getOwner} from '@ember/application';
+import { inject as service } from '@ember/service';
 import ThetaWalletConnect from '@thetalabs/theta-wallet-connect';
 import * as thetajs from '@thetalabs/theta-js';
 import {tracked} from '@glimmer/tracking';
@@ -47,37 +47,13 @@ export default class ThetaSdkService extends Service {
   @tracked totalStake
   @tracked totalTfuelStake
 
-  get envManager() {
-    return getOwner(this).lookup('service:env-manager');
-  }
-
-  get thetaStakes() {
-    return getOwner(this).lookup('service:theta-stakes');
-  }
-
-  get guardian() {
-    return getOwner(this).lookup('service:guardian');
-  }
-
-  get contract() {
-    return getOwner(this).lookup('service:contract');
-  }
-
-  get offer() {
-    return getOwner(this).lookup('service:offer');
-  }
-
-  get utils() {
-    return getOwner(this).lookup('service:utils');
-  }
-
-  get store() {
-    return getOwner(this).lookup('service:store');
-  }
-
-  get currency() {
-    return getOwner(this).lookup('service:currency');
-  }
+  @service envManager;
+  @service guardian;
+  @service contract;
+  @service offer;
+  @service utils;
+  @service store;
+  @service currency;
 
   get guardianWallets() {
     if (this.walletList.length) {

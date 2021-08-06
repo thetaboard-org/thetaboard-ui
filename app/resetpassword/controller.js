@@ -1,5 +1,5 @@
 import Controller from '@ember/controller';
-import { getOwner } from '@ember/application';
+import { inject as service } from '@ember/service';
 import { action } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
 
@@ -7,9 +7,7 @@ export default class ResetpasswordController extends Controller {
   @tracked email;
   @tracked resetPasswordLinkSent;
 
-  get session() {
-    return getOwner(this).lookup('service:session');
-  }
+  @service session;
 
   @action
   async resetPassword(e) {

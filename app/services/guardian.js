@@ -1,5 +1,5 @@
 import Service from '@ember/service';
-import { getOwner } from '@ember/application';
+import { inject as service } from '@ember/service';
 import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
 import { later } from '@ember/runloop';
@@ -26,9 +26,7 @@ export default class GuardianService extends Service {
   @tracked statusAutoRefresh;
   @tracked logsAutoRefresh;
 
-  get thetaSdk() {
-    return getOwner(this).lookup('service:theta-sdk');
-  }
+  @service thetaSdk;
 
   get guardianLatestSnapshotDate() {
     return this.guardianLatestSnapshot.date;

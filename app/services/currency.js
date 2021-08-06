@@ -1,19 +1,16 @@
 import Service from '@ember/service';
-import { getOwner } from '@ember/application';
-import { tracked } from '@glimmer/tracking';
 import { inject as service } from '@ember/service';
+import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
 
 export default class CurrencyService extends Service {
   @tracked currentCurrency;
   @tracked thetaPrice;
   @tracked TfuelPrice;
+
   @service intl;
   @service thetaSdk;
-
-  get store() {
-    return getOwner(this).lookup('service:store');
-  }
+  @service store;
 
   get currencyList() {
     return [

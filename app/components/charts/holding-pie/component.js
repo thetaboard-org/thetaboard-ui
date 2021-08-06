@@ -3,9 +3,9 @@ import { inject as service } from '@ember/service';
 import { action } from '@ember/object';
 
 export default class HoldingPieComponent extends Component {
-  @service('theta-sdk') thetaSdk;
-  @service('currency') currency;
-  @service('utils') utils;
+  @service thetaSdk;
+  @service currency;
+  @service utils;
 
   get setUpChart() {
     if (this.thetaSdk.walletList.length) {

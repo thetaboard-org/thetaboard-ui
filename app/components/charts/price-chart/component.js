@@ -1,15 +1,15 @@
 import Component from '@glimmer/component';
-import {action} from '@ember/object';
-import {tracked} from '@glimmer/tracking';
-import {inject as service} from '@ember/service';
+import { action } from '@ember/object';
+import { tracked } from '@glimmer/tracking';
+import { inject as service } from '@ember/service';
 
 export default class PriceChartComponent extends Component {
   @tracked time_range = 'year';
   @service intl;
   @service utils;
   @service currency;
-  @service('theta-sdk') thetaSdk;
-  @service('historic-price') historicPrice;
+  @service thetaSdk;
+  @service historicPrice;
 
   get priceChange() {
     this.currencyChanged();

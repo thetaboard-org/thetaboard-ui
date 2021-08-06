@@ -1,5 +1,4 @@
 import Route from '@ember/routing/route';
-import { getOwner } from '@ember/application';
 
 export default class AffiliateRoute extends Route {
   async model(params) {

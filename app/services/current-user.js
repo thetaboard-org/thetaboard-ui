@@ -7,7 +7,7 @@ export default class CurrentUserService extends Service {
   @service store;
   @service wallet;
   @service group;
-  
+
   @tracked user;
   @tracked wallets;
   @tracked groups;

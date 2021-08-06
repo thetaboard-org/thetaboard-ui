@@ -1,10 +1,10 @@
 import Component from '@glimmer/component';
-import {inject as service} from '@ember/service';
+import { inject as service } from '@ember/service';
 
 export default class TrendTfuelComponent extends Component {
-  @service('theta-sdk') thetaSdk;
-  @service('currency') currency;
-  @service('historic-price') historicPrice;
+  @service thetaSdk;
+  @service currency;
+  @service historicPrice;
 
   get trendYesterday() {
     const tfuelPrice = this.thetaSdk.prices.tfuel.price;

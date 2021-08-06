@@ -1,9 +1,10 @@
 import Component from '@glimmer/component';
-import {inject as service} from '@ember/service';
+import { inject as service } from '@ember/service';
 
 export default class MenuComponent extends Component {
   @service currentUser;
-  @service intl
+  @service intl;
+
   menuItems = [
     {
       name: this.intl.t('menu.dashboard'),

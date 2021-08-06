@@ -1,31 +1,14 @@
 import Service from '@ember/service';
 import * as thetajs from '@thetalabs/theta-js';
-import { getOwner } from '@ember/application';
+import { inject as service } from '@ember/service';
 
 export default class EnvManagerService extends Service {
-  get thetaSdk() {
-    return getOwner(this).lookup('service:theta-sdk');
-  }
-
-  get contract() {
-    return getOwner(this).lookup('service:contract');
-  }
-
-  get utils() {
-    return getOwner(this).lookup('service:utils');
-  }
-
-  get currentUser() {
-    return getOwner(this).lookup('service:current-user');
-  }
-
-  get wallet() {
-    return getOwner(this).lookup('service:wallet');
-  }
-
-  get intl() {
-    return getOwner(this).lookup('service:intl');
-  }
+  @service thetaSdk;
+  @service contract;
+  @service utils;
+  @service currentUser;
+  @service wallet;
+  @service intl;
 
   config = {
     env: '',

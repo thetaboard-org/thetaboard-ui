@@ -4,7 +4,7 @@ import { inject as service } from '@ember/service';
 
 export default class TransactionHistoryModel extends Model {
   @service intl;
-  @service('theta-sdk') thetaSdk;
+  @service thetaSdk;
 
   @attr('string') walletAddress;;
   @attr('string') blockHash;

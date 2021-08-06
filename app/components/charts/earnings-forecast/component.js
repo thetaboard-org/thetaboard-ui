@@ -4,8 +4,8 @@ import {inject as service} from '@ember/service';
 import {tracked} from '@glimmer/tracking';
 
 export default class EarningsForecastComponent extends Component {
-  @service('theta-sdk') thetaSdk;
-  @service('currency') currency;
+  @service thetaSdk;
+  @service currency;
   account = '';
   walletLength = 0;
 

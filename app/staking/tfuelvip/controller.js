@@ -6,7 +6,7 @@ import * as thetajs from '@thetalabs/theta-js';
 
 export default class TfuelvipStakingController extends Controller {
   @service utils;
-  @service('env-manager') envManager;
+  @service envManager;
   @service thetaSdk;
   @service wallet;
   @service intl;

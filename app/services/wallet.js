@@ -1,19 +1,11 @@
 import Service from '@ember/service';
-import { getOwner } from '@ember/application';
+import { inject as service } from '@ember/service';
 import { action } from '@ember/object';
 
 export default class WalletService extends Service {
-  get thetaSdk() {
-    return getOwner(this).lookup('service:theta-sdk');
-  }
-
-  get currentUser() {
-    return getOwner(this).lookup('service:current-user');
-  }
-
-  get router() {
-    return getOwner(this).lookup('service:router');
-  }
+  @service thetaSdk;
+  @service currentUser;
+  @service router;
 
   get wallets() {
     return this.currentUser.wallets;

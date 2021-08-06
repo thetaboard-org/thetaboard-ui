@@ -1,15 +1,15 @@
 import Component from '@glimmer/component';
-import {action} from '@ember/object';
-import {inject as service} from '@ember/service';
-import {tracked} from '@glimmer/tracking';
+import { action } from '@ember/object';
+import { inject as service } from '@ember/service';
+import { tracked } from '@glimmer/tracking';
 
 export default class EarningsForcastTfuelComponent extends Component {
   constructor(...args) {
     super(...args);
     this.initialize();
   }
-  @service('currency') currency;
-  @service('theta-sdk') thetaSdk;
+  @service currency;
+  @service thetaSdk;
   account = '';
   walletLength = 0;
 

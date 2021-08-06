@@ -1,15 +1,10 @@
 import Service from '@ember/service';
-import { getOwner } from '@ember/application';
+import { inject as service } from '@ember/service';
 import { action } from '@ember/object';
 
 export default class I18nService extends Service {
-  get intl() {
-    return getOwner(this).lookup('service:intl');
-  }
-
-  get store() {
-    return getOwner(this).lookup('service:store');
-  }
+  @service intl;
+  @service store;
 
   get currentLocale() {
     return this.setJsonReturn(this.intl.get('primaryLocale'));

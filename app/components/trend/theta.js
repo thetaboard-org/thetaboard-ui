@@ -2,9 +2,9 @@ import Component from '@glimmer/component';
 import {inject as service} from '@ember/service';
 
 export default class TrendThetaComponent extends Component {
-  @service('theta-sdk') thetaSdk;
-  @service('currency') currency;
-  @service('historic-price') historicPrice;
+  @service thetaSdk;
+  @service currency;
+  @service historicPrice;
 
   get trendYesterday() {
     const thetaPrice = this.thetaSdk.prices.theta.price;

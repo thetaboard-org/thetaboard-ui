@@ -10,8 +10,8 @@ export default class WalletWalletNavbarComponent extends Component {
   @service intl;
   @service wallet;
   @service group;
-  @service('theta-sdk') thetaSdk;
-  @service('is-mobile') isMobile;
+  @service thetaSdk;
+  @service isMobile;
 
   @action
   async selectWallet(wallet) {

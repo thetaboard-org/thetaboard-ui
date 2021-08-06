@@ -2,9 +2,9 @@ import Component from '@glimmer/component';
 import { inject as service } from '@ember/service';
 
 export default class EECoinbaseHistoryComponent extends Component {
-  @service('env-manager') envManager;
-  @service('theta-sdk') thetaSdk;
-  @service('currency') currency;
+  @service envManager;
+  @service thetaSdk;
+  @service currency;
 
   get coinbasesLastDay() {
     const yesterday = new Date(new Date().setDate(new Date().getDate() - 1));

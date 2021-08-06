@@ -1,10 +1,8 @@
 import Route from '@ember/routing/route';
-import { getOwner } from '@ember/application';
+import { inject as service } from '@ember/service';
 
 export default class MyWalletsRoute extends Route {
-  get session() {
-    return getOwner(this).lookup('service:session');
-  }
+  @service session;
 
   beforeModel(transition) {
     this.session.requireAuthentication(transition, 'login');

@@ -1,5 +1,5 @@
 import Route from '@ember/routing/route';
-import { getOwner } from '@ember/application';
+import { inject as service } from '@ember/service';
 import { storageFor } from 'ember-local-storage';
 
 export default class ApplicationRoute extends Route {
@@ -13,25 +13,11 @@ export default class ApplicationRoute extends Route {
   };
   locales = storageFor('locales');
 
-  get envManager() {
-    return getOwner(this).lookup('service:env-manager');
-  }
-
-  get session() {
-    return getOwner(this).lookup('service:session');
-  }
-
-  get currentUser() {
-    return getOwner(this).lookup('service:currentUser');
-  }
-
-  get intl() {
-    return getOwner(this).lookup('service:intl');
-  }
-
-  get currency() {
-    return getOwner(this).lookup('service:currency');
-  }
+  @service envManager;
+  @service session;
+  @service currentUser;
+  @service intl;
+  @service currency;
 
   async beforeModel() {
     const params = this.paramsFor('application');
