@@ -374,7 +374,7 @@ notif:
 
 ###### COPY CLIPBOARD START ######
 clip:
-  succesfully: "{label} was successfully copied to your clipboad"
+  succesfully: "{label} was successfully copied to your clipboard"
 ###### COPY CLIPBOARD END ######
 
 

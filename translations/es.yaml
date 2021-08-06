@@ -353,6 +353,31 @@ currency:
 ###### CURRENCY END ######
 
 
+###### UTILS NOTIFY START ######
+notif:
+  invalid_address: "Dirección de Wallet o nombre de dominio no válido"
+  something_wrong: "Algo salió mal. Vuelve a intentarlo más tarde"
+  wallet_no_domain: "Esta es una dirección de billetera, no un nombre de dominio"
+  invalid_goup: "Nombre de grupo no válido"
+  invalid_wallet_name: "Nombre de billetera no válido"
+  invalid_wallet_address: "Dirección de billetera no válida"
+  group_created: "Grupo creado"
+  wallet_added: "Wallet agregado"
+  group_removed: "Grupo eliminado"
+  wallet_removed: "Wallet eliminado"
+  setup_as_default: "{name} ahora está configurado como predeterminado"
+  verification_sent: "Enlace de verificación enviado a {email}"
+  vip_creation: "Creación de su nodo VIP Elite Edge"
+  vip_ready: "Su nodo VIP Elite Edge está listo!"
+  not_enough_tfuel: "No tienes suficiente Tfuel en tu billetera"
+###### UTILS NOTIFY END ######
+
+###### COPY CLIPBOARD START ######
+clip:
+  succesfully: "{label} se copió correctamente en el portapapeles"
+###### COPY CLIPBOARD END ######
+
+
 ############ BACK-END ERROR START ############
 error:
   no_empty_email_password: "La dirección de correo electrónico y / o la contraseña no pueden estar vacías"

@@ -352,10 +352,36 @@ currency:
         eur: "€"
 ###### CURRENCY END ######
 
+
+###### UTILS NOTIFY START ######
+notif:
+  invalid_address: “Adresse de portefeuille ou nom de domaine non valide”
+  something_wrong: "Une erreur s'est produite. Réessayez plus tard"
+  wallet_no_domain: "Ceci est une adresse de portefeuille pas un nom de domaine"
+  invalid_goup: "Nom de groupe invalide"
+  invalid_wallet_name: "Nom de portefeuille invalide"
+  invalid_wallet_address: "Adresse de portefeuille invalide"
+  group_created: "Groupe créé"
+  wallet_added: "Portefeuille ajouté"
+  group_removed: "Groupe supprimé"
+  wallet_removed: "Portefeuille supprimé"
+  setup_as_default: "{name} est maintenant configuré par défaut"
+  verification_sent: "Lien de vérification envoyé à {email}"
+  vip_creation: "Créer votre nœud VIP Elite Edge"
+  vip_ready: “Votre nœud VIP Elite Edge est prêt!”
+  not_enough_tfuel: "Vous n'avez pas assez de Tfuel dans votre portefeuille"
+###### UTILS NOTIFY END ######
+
+###### COPY CLIPBOARD START ######
+clip:
+  succesfully: "{label} a été copié avec succès dans votre presse-papiers"
+###### COPY CLIPBOARD END ######
+
+
 ############ BACK-END ERROR START ############
 error:
-  no_empty_email_password: "L'adresse e-mail et/ou le mot de passe ne peuvent pas être vides"
-  incorrect_email_password: "Adresse e-mail et/ou mot de passe incorrects"
+  no_empty_email_password: “L'adresse e-mail et/ou le mot de passe ne peuvent pas être vides”
+  incorrect_email_password: “Adresse e-mail et/ou mot de passe incorrects”
 ############ BACK-END ERROR END ############
 
 
