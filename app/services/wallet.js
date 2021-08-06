@@ -40,7 +40,7 @@ export default class WalletService extends Service {
     if (this.wallets && this.wallets.length) {
       if (!this.isSearchedWalletOwned && !this.thetaSdk.currentGroup && !this.thetaSdk.currentAccount) {
         if (this.defaultWallet) {
-          await this.thetaSdk.getWalletInfo([this.defaultWallet.address]);
+          await this.thetaSdk.getWalletsInfo('wallet', [this.defaultWallet.address]);
           return this.router.transitionTo({
             queryParams: { wa: this.defaultWallet.address, group: null },
           });

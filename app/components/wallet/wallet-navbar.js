@@ -16,7 +16,7 @@ export default class WalletWalletNavbarComponent extends Component {
   @action
   async selectWallet(wallet) {
     if (wallet.address) {
-      await this.thetaSdk.getWalletInfo([wallet.address]);
+      await this.thetaSdk.getWalletsInfo('wallet', [wallet.address]);
       this.args.onRouteChange(wallet.address);
     }
   }

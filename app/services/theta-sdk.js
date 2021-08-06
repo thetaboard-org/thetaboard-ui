@@ -202,7 +202,7 @@ export default class ThetaSdkService extends Service {
     $('.connect-wallet-offer-button').addClass("disabled");
     $('.connect-wallet-button').addClass("disabled");
     const address = await this.getThetaAccount();
-    await this.getWalletInfo(address);
+    await this.getWalletsInfo('wallet', address);
     await this.offer.setupOffers(address);
     $('.connect-wallet-offer-button').removeClass("disabled");
     $('.connect-wallet-button').removeClass("disabled");
@@ -218,37 +218,6 @@ export default class ThetaSdkService extends Service {
 
   showDownloadExtensionPopup() {
     $('#downloadThetaExtension').modal('show');
-  }
-
-  async sendThetaTransaction(type) {
-    const source = await this.getThetaAccount();
-    const holderSummary = this.guardian.guardianSummary.msg.Summary;
-    const txData = {
-      source: source[0],
-      holderSummary: holderSummary,
-      holder: this.guardian.guardianSummary.msg.Address,
-      purpose: thetajs.constants.StakePurpose.StakeForGuardian,
-    };
-    if (type == 'deposit') {
-      const stakeAmount = this.thetaStakes.stakeAmount;
-      if (stakeAmount && stakeAmount > 999) {
-        const ten18 = (new BigNumber(10)).pow(18); // 10^18, 1 Theta = 10^18 ThetaWei, 1 Gamma = 10^ TFuelWei
-        const thetaWeiToStake = (new BigNumber(Number(stakeAmount))).multipliedBy(ten18);
-        txData.amount = thetaWeiToStake;
-        let stakeTx = new thetajs.transactions.DepositStakeV2Transaction(txData);
-        const stakeTxResult = await ThetaWalletConnect.sendTransaction(stakeTx);
-        return stakeTxResult;
-      } else {
-        return {
-          success: false,
-          msg: 'Please provide a stake amout of 1000 minimum',
-        };
-      }
-    } else if (type == 'withdraw') {
-      let withdrawTx = new thetajs.transactions.WithdrawStakeTransaction(txData);
-      const withdrawTxResult = await ThetaWalletConnect.sendTransaction(withdrawTx);
-      return withdrawTxResult;
-    }
   }
 
   async getPrices(currency = 'USD', start_date = null, end_date = null) {
@@ -298,12 +267,11 @@ export default class ThetaSdkService extends Service {
   async getWalletsInfo(type, object) {
     //type: group or wallet
     //object: Either the group or the wallet
-
     if (type == 'wallet') {
       let wallets = {wallets: []};
       this.contract.domainName = '';
       const walletInfo = await fetch(
-        '/explorer/wallets-info/' + object[0] + this.envManager.config.queryParams
+        '/explorer/wallet-info/' + object[0] + this.envManager.config.queryParams
       );
       if (walletInfo.status == 200) {
         wallets = await walletInfo.json();
@@ -344,31 +312,6 @@ export default class ThetaSdkService extends Service {
       this.currentGroup = uuid;
       return wallets;
     }
-  }
-
-  async getWalletInfo(accounts) {
-    let wallets = {wallets: []};
-    this.contract.domainName = '';
-    const walletInfo = await fetch(
-      '/explorer/wallet-info/' + accounts[0] + this.envManager.config.queryParams
-    );
-    if (walletInfo.status == 200) {
-      wallets = await walletInfo.json();
-    }
-    if (accounts.length) {
-      this.currentAccountDomainList = await this.contract.getAddressToNames(
-        accounts[0]
-      );
-      if (this.currentAccountDomainList && this.currentAccountDomainList.length) {
-        this.contract.domainName = this.currentAccountDomainList[0];
-      }
-    } else {
-      this.currentAccountDomainList = [];
-    }
-    this.wallets = wallets.wallets;
-    this.currentAccount = accounts;
-    this.currentGroup = null;
-    return wallets;
   }
 
   async getTransactions(wallets, current = 1, limit_number = 40) {

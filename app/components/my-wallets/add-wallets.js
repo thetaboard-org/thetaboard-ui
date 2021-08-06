@@ -56,7 +56,6 @@ export default class MyWalletsAddWalletsComponent extends Component {
       }
       await wallet.save();
       this.utils.successNotify(`Wallet added`);
-      await this.thetaSdk.getWalletInfo([wallet.address]);
       this.router.transitionTo({
         queryParams: { wa: wallet.address },
         reload: true,

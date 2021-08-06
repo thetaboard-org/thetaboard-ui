@@ -25,7 +25,7 @@ export default class SearchBarSearchBarComponent extends Component {
       this.walletAddress.length == 42 &&
       this.walletAddress.substr(1, 1).toLocaleLowerCase() == 'x'
     ) {
-      await this.thetaSdk.getWalletInfo([this.walletAddress]);
+      await this.thetaSdk.getWalletsInfo('wallet', [this.walletAddress]);
       this.contract.domainName
         ? this.args.onRouteChange(this.contract.domainName)
         : this.args.onRouteChange(this.walletAddress);
@@ -38,7 +38,7 @@ export default class SearchBarSearchBarComponent extends Component {
         nameToAddress['ownerAddr'] !=
           '0x0000000000000000000000000000000000000000'
       ) {
-        await this.thetaSdk.getWalletInfo([nameToAddress['ownerAddr']]);
+        await this.thetaSdk.getWalletsInfo('wallet', [nameToAddress['ownerAddr']]);
         this.args.onRouteChange(this.walletAddress);
       } else {
         this.utils.errorNotify('Invalid Wallet Address or Domain name');
