@@ -334,9 +334,9 @@ notfound:
 ###### LOCALE START ######
 locale:
     language: "Langue"
-    en: "Anglais"
+    en: "English"
     fr: "Français"
-    es: "Espagnol"
+    es: "Español"
 ###### LOCALE END ######
 
 
@@ -351,6 +351,13 @@ currency:
         aud: "A$"
         eur: "€"
 ###### CURRENCY END ######
+
+############ BACK-END ERROR START ############
+error:
+  no_empty_email_password: "L'adresse e-mail et/ou le mot de passe ne peuvent pas être vides"
+  incorrect_email_password: "Adresse e-mail et/ou mot de passe incorrects"
+############ BACK-END ERROR END ############
+
 
 ###### FAQ START ######
 faq:

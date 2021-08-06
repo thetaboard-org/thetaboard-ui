@@ -334,8 +334,8 @@ notfound:
 ###### LOCALE START ######
 locale:
   language: "Idioma"
-  en: "Inglés"
-  fr: "Francés"
+  en: "English"
+  fr: "Français"
   es: "Español"
 ###### LOCALE END ######
 
@@ -351,6 +351,13 @@ currency:
     aud: "A$"
     eur: "€"
 ###### CURRENCY END ######
+
+
+############ BACK-END ERROR START ############
+error:
+  no_empty_email_password: "La dirección de correo electrónico y / o la contraseña no pueden estar vacías"
+  incorrect_email_password: "Dirección de correo electrónico y / o contraseña incorrectas"
+############ BACK-END ERROR END ############
 
 
 ###### FAQ START ######

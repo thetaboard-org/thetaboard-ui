@@ -335,8 +335,8 @@ notfound:
 locale:
   language: "Language"
   en: "English"
-  fr: "French"
-  es: "Spanish"
+  fr: "Français"
+  es: "Español"
 ###### LOCALE END ######
 
 
@@ -350,8 +350,14 @@ currency:
     usd: "$"
     aud: "A$"
     eur: "€"
-
 ###### CURRENCY END ######
+
+
+############ BACK-END ERROR START ############
+error:
+  no_empty_email_password: "Email address and / or password can't be empty"
+  incorrect_email_password: "Incorrect email address and / or password"
+############ BACK-END ERROR END ############
 
 
 ###### FAQ START ######

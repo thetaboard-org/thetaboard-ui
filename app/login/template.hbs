@@ -2,6 +2,7 @@
 
 
 <div class="card login-card" style="margin: 80px auto;">
+    {{navbar/i18n-selection}}
     <div class="logo">
         <LinkTo @route='dashboard' @class="">
             <img class="thetaboard-logo" src="{{rootURL}}assets/img/thetaboard-logo.png"/>
@@ -14,7 +15,7 @@
                 <div class="row">
                     <div class="col-md-6" style=" margin: auto;">
                         <div class="alert alert-warning" style="padding: 10px;">
-                            <span>{{error.message}}</span>
+                            <span>{{t error.message}}</span>
                         </div>
                     </div>
                 </div>
