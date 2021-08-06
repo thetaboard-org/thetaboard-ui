@@ -30,7 +30,7 @@ export default class UtilsService extends Service {
     $.notify(
       {
         icon: 'glyphicon glyphicon-success-sign',
-        title: 'Success!!',
+        title: '',
         message: message,
       },
       { type: 'success' }
@@ -42,7 +42,7 @@ export default class UtilsService extends Service {
     $.notify(
       {
         icon: 'glyphicon glyphicon-success-sign',
-        title: 'Error',
+        title: '',
         message: message,
       },
       { type: 'danger' }
@@ -54,7 +54,7 @@ export default class UtilsService extends Service {
     $.notify(
       {
         icon: 'glyphicon glyphicon-success-sign',
-        title: 'Success!',
+        title: '',
         message: message,
       },
       { type: 'success' }

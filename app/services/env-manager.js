@@ -23,6 +23,10 @@ export default class EnvManagerService extends Service {
     return getOwner(this).lookup('service:wallet');
   }
 
+  get intl() {
+    return getOwner(this).lookup('service:intl');
+  }
+
   config = {
     env: '',
     explorerEndpoint: '',
@@ -67,7 +71,7 @@ export default class EnvManagerService extends Service {
         ) {
           await this.thetaSdk.getWalletsInfo('wallet', [nameToAddress['ownerAddr']]);
         } else {
-          this.utils.errorNotify('Invalid Wallet Address or Domain name');
+          this.utils.errorNotify(this.intl.t('notif.invalid_address'));
           this.contract.domainName = '';
         }
       }

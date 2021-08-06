@@ -353,6 +353,31 @@ currency:
 ###### CURRENCY END ######
 
 
+###### UTILS NOTIFY START ######
+notif:
+  invalid_address: "Invalid Wallet Address or Domain name"
+  something_wrong: "Something went wrong. Try again later"
+  wallet_no_domain: "This is a wallet address not a domain name"
+  invalid_goup: "Invalid Group name"
+  invalid_wallet_name: "Invalid wallet name"
+  invalid_wallet_address: "Invalid wallet address"
+  group_created: "Group created"
+  wallet_added: "Wallet added"
+  group_removed: "Group removed"
+  wallet_removed: "Wallet removed"
+  setup_as_default: "{name} is now setup as default"
+  verification_sent: "Verification link sent to {email}"
+  vip_creation: "Creating your VIP Elite Edge Node"
+  vip_ready: "Your VIP Elite Edge Node is ready!"
+  not_enough_tfuel: "You don't have enough Tfuel in your wallet"
+###### UTILS NOTIFY END ######
+
+###### COPY CLIPBOARD START ######
+clip:
+  succesfully: "{label} was successfully copied to your clipboad"
+###### COPY CLIPBOARD END ######
+
+
 ############ BACK-END ERROR START ############
 error:
   no_empty_email_password: "Email address and / or password can't be empty"

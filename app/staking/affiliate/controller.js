@@ -7,6 +7,7 @@ import { sort } from '@ember/object/computed';
 export default class AffiliateController extends Controller {
   @tracked modalSummary;
   @service utils;
+  @service intl;
   @service thetaSdk;
 
   get edgeNodeList() {
@@ -37,7 +38,7 @@ export default class AffiliateController extends Controller {
   copySummaryToClipBoard(label, inputId) {
     this.utils.copyToClipboard(
       inputId,
-      `${label} was successfully copied to your clipboad`
+      this.intl.t('clip.succesfully', {label: label})
     );
   }
 }

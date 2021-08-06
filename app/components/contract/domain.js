@@ -19,6 +19,7 @@ export default class ContractDomainComponent extends Component {
   @service('contract') contract;
   @service('theta-sdk') thetaSdk;
   @service('utils') utils;
+  @service('intl') intl;
   @service('offer') offer;
 
   @tracked domainName;
@@ -88,7 +89,7 @@ export default class ContractDomainComponent extends Component {
       this.domainName.length == 42 &&
       this.domainName.substr(1, 1).toLocaleLowerCase() == 'x'
     ) {
-      this.utils.errorNotify('This is a wallet address not a domain name.');
+      this.utils.errorNotify(this.intl.t('notif.wallet_no_domain'));
       return null;
     }
     try {

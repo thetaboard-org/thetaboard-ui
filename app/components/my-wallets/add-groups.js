@@ -9,6 +9,7 @@ export default class MyWalletsAddGroupsComponent extends Component {
   @tracked isAddingGroups;
 
   @service utils;
+  @service intl;
   @service currentUser;
   @service store;
 
@@ -42,7 +43,7 @@ export default class MyWalletsAddGroupsComponent extends Component {
       this.errMessages = [];
       if (!this.name || this.name.length == 0) {
         return this.errMessages.pushObject({
-          message: 'Invalid Group name',
+          message: this.intl.t('notif.invalid_goup'),
         });
       }
       let group = this.store.createRecord('group', {
@@ -50,7 +51,7 @@ export default class MyWalletsAddGroupsComponent extends Component {
         name: this.name,
       });
       await group.save();
-      this.utils.successNotify(`Group created`);
+      this.utils.successNotify(this.intl.t('notif.group_created'));
       this.resetComponent();
     } catch (err) {
       this.errMessages.pushObject(err.errors);

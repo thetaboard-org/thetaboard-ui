@@ -6,6 +6,7 @@ export default class VerifyEmailComponent extends Component {
   @service session;
   @service currentUser;
   @service utils;
+  @service intl;
 
   @action
   async resendEmailValidation(e) {
@@ -22,9 +23,9 @@ export default class VerifyEmailComponent extends Component {
       let response = await fetch(`/users/send_email_verification`, options);
       if (response.status == 200) {
         let { data } = await response.json();
-        this.utils.successNotify(`Verification link sent to ${data.attributes.email}`);
+        this.utils.successNotify(this.intl.t("notif.verification_sent", {email: data.attributes.email}));
       } else {
-        this.utils.errorNotify("Something went wrong. Try again later.");
+        this.utils.errorNotify(this.intl.t("notif.something_wrong"));
       }
     }
   }

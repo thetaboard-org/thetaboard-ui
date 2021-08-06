@@ -10,6 +10,7 @@ export default class MyWalletsAddWalletsComponent extends Component {
   @tracked isAddingWallet;
 
   @service utils;
+  @service intl;
   @service currentUser;
   @service store;
   @service thetaSdk;
@@ -38,12 +39,12 @@ export default class MyWalletsAddWalletsComponent extends Component {
         this.address.substr(1, 1).toLocaleLowerCase() != 'x'
       ) {
         return this.errMessages.pushObject({
-          message: 'Invalid wallet address',
+          message: this.intl.t('notif.invalid_wallet_address'),
         });
       }
       if (!this.name || this.name.length == 0) {
         return this.errMessages.pushObject({
-          message: 'Invalid wallet name',
+          message: this.intl.t('notif.invalid_wallet_name'),
         });
       }
 
@@ -55,7 +56,7 @@ export default class MyWalletsAddWalletsComponent extends Component {
         wallet.isDefault = true;
       }
       await wallet.save();
-      this.utils.successNotify(`Wallet added`);
+      this.utils.successNotify(this.intl.t('notif.wallet_added'));
       this.router.transitionTo({
         queryParams: { wa: wallet.address },
         reload: true,

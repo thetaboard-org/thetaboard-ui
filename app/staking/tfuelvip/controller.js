@@ -9,6 +9,7 @@ export default class TfuelvipStakingController extends Controller {
   @service('env-manager') envManager;
   @service thetaSdk;
   @service wallet;
+  @service intl;
 
   @tracked walletAddress;
   @tracked errorMessages;
@@ -58,20 +59,20 @@ export default class TfuelvipStakingController extends Controller {
         this.walletAddress.substr(1, 1).toLocaleLowerCase() != 'x'
       ) {
         return this.errorMessages.pushObject({
-          message: 'Invalid wallet address',
+          message: this.intl.t('notif.invalid_wallet_address'),
         });
       }
 
       const isMinimumLimitReached = await this.verifyTfuelBalance(this.walletAddress);
       if (!isMinimumLimitReached) {
         return this.errorMessages.pushObject({
-          message: "You don't have enough Tfuel in your wallet",
+          message: this.intl.t('notif.not_enough_tfuel'),
         });
       }
-      this.utils.successNotify(`Creating your VIP Elite Edge Node.`);
+      this.utils.successNotify(this.intl.t('notif.vip_creation'));
       let tfuelStake = this.store.createRecord('tfuelstake', this.getProperties('walletAddress'));
       await tfuelStake.save();
-      this.utils.successNotify(`Your VIP Elite Edge Node is ready!`);
+      this.utils.successNotify(this.intl.t('notif.vip_ready'));
       this.walletAddress = '';
     } catch (err) {
       this.errorMessages.pushObject(err.errors);
@@ -98,7 +99,7 @@ export default class TfuelvipStakingController extends Controller {
   copySummaryToClipBoard(label, inputId) {
     this.utils.copyToClipboard(
       inputId,
-      `${label} was successfully copied to your clipboad`
+      this.intl.t('clip.succesfully', {label: label})
     );
   }
 }
