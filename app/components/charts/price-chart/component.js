@@ -5,11 +5,11 @@ import {inject as service} from '@ember/service';
 
 export default class PriceChartComponent extends Component {
   @tracked time_range = 'year';
-  @tracked chartHistoricData = null;
   @service intl;
   @service utils;
   @service currency;
   @service('theta-sdk') thetaSdk;
+  @service('historic-price') historicPrice;
 
   get priceChange() {
     this.currencyChanged();
@@ -21,14 +21,14 @@ export default class PriceChartComponent extends Component {
     if (this.historic_data_chart) {
       const oneYearBack = new Date(new Date().setFullYear(new Date().getFullYear() - 1)).toISOString().split('T')[0];
       const today = new Date().toISOString().split('T')[0];
-      this.chartHistoricData = await this.thetaSdk.getPrices(currencyName, oneYearBack, today);
+      this.historicPrice.historicPrice = await this.thetaSdk.getPrices(currencyName, oneYearBack, today);
       this.updateData();
     }
   }
 
   get chartData() {
     let historic_data = {};
-    let chartHistoricData = this.chartHistoricData || this.args.historic_price;
+    let chartHistoricData = this.chartHistoricData || this.historicPrice.historicPrice;
     if (this.time_range === 'week') {
       historic_data = chartHistoricData.dailyPrice
         .splice(chartHistoricData.dailyPrice.length - 7, chartHistoricData.dailyPrice.length);
