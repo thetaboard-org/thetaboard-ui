@@ -956,7 +956,7 @@ a.logout {
 
 }
 
-@media screen and (max-width: 640px) {
+@media screen and (max-width: 680px) {
   div div.wallet-address-search-container {
     margin-left: 62px;
     text-align: left;
@@ -998,6 +998,7 @@ a.logout {
 
   .language-small-button {
     font-size: 11px;
+
   }
 
   .wallet-address-search-container span.short-address {
@@ -1107,4 +1108,18 @@ a.logout {
   width: 1px;
   border-right: 1px solid #f1f1f1;
   height: 90px;
+}
+
+.i18n-selector{
+  background: #ffffff26;
+  padding: 10px 15px;
+  border-radius: 25px;
+}
+
+.i18n-authenticated {
+  font-size: 12px;
+}
+
+.i18n-color {
+  color: white;
 }

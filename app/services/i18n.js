@@ -38,7 +38,7 @@ export default class I18nService extends Service {
     return {
       value: locale,
       name: this.intl.t(`locale.${locale}`),
-      shortName: locale.charAt(0).toUpperCase() + locale.slice(1),
+      shortName: locale.substring(0, 2).toUpperCase(),
     };
   }
 }
