@@ -44,10 +44,10 @@ export default class WalletController extends Controller {
     }
   }
 
-  get getcoinbases() {
+  get getCoinbases() {
     this.initCoinbase();
+    return '';
   }
-
 
   @action
   setQueryParam(walletAddress) {
