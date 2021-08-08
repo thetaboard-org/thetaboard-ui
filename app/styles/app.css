@@ -73,14 +73,14 @@ div.card.card-chart.card-holdings div.card-body.pie-chart-card-body{
 }
 
 #wallet-connection-notif-loader {
-  margin-top: 150px;
+  margin-top: 180px;
   margin-left: 45vw;
   position: absolute;
 }
 
 @media screen and (max-width: 992px) {
   #wallet-connection-notif-loader {
-    margin-top: 150px;
+    margin-top: 180px;
     margin-left: 35%;
     position: absolute;
   }
@@ -997,7 +997,7 @@ a.logout {
   }
 
   div div.wallet-address-search-container {
-    margin-left: 45px;
+    margin-left: 40px;
   }
 
   .language-small-button {
@@ -1011,6 +1011,13 @@ a.logout {
     max-height: 20px;
   }
 
+  a.login-button.btn.btn-fill.btn-primary {
+    padding: 8px 6px;
+  }
+
+  button.navbar-toggler {
+    padding: 0.25rem 0.5rem;
+  }
 }
 
 .navbar .navbar-nav .dropdown .nav-link {
@@ -1116,7 +1123,7 @@ a.logout {
 
 .i18n-selector{
   background: rgba(255,255,255,0.26);
-  padding: 10px 15px;
+  padding: 10px 10px;
   border-radius: 25px;
 }
 
