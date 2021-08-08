@@ -255,7 +255,6 @@ download_wallet:
 footer:
   terms: "Terms of use"
   privacy: "Privacy policy"
-  made_with: "Made with"
   join_discord: "Join us on Discord"
   follow_twitter: "Follow us on Twitter"
   github: "Check the project on github"
@@ -393,7 +392,6 @@ faq:
               We want to bring value to the Theta ecosystem by providing functionalities
               that either simplifies access to information about Theta, or enrich the ecosystem such as Tfuel and Theta Staking, user friendly UI...<br>
               <br/>
-              This project is primarily developed and maintained by Maurin Lenglart and Adrien Vinches.<br>
               We can be contacted for support or suggestions on <a target=\"_blank\" href=\"https://discord.gg/SGUtY7zBU3\"> Discord</a> or <a href=\"https://twitter.com/Thetaboard1\" target=\"_blank\">Twitter</a>.
               <br>"
   quick_links: "Quick Links"

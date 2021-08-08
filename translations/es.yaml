@@ -255,7 +255,6 @@ download_wallet:
 footer:
   terms: "Condiciones de uso"
   privacy: "Política de privacidad"
-  made_with: "Hecho con"
   join_discord: "Únete a nosotros en Discord"
   follow_twitter: "Síguenos en Twitter"
   github: "Comprueba el proyecto en github"
@@ -263,7 +262,7 @@ footer:
 
 ###### MENU START ######
 menu:
-  dashboard: "dashobard"
+  dashboard: "dashboard"
   wallet: "wallet"
   staking: "staking"
   tfuel_vip: "Tfuel VIP"
@@ -397,8 +396,7 @@ faq:
   how_to_stake_theta : "Cómo hacer stake de Thetas?"
   how_to_withdraw : "Cómo retirar un stake?"
   description: "La misión de Thetaboard es convertirse en el lugar central para cualquier entusiasta de Theta.
-              Queremos aportar valor al ecosistema Theta proporcionando funcionalidades que simplifiquen el acceso a la información sobre Theta o enriquezcan el ecosistema como Tfuel y Theta Staking, una interfaz de usuario fácil de usar .
-              Este proyecto es desarrollado y mantenido principalmente por Maurin Lenglart y Adrien Vinches.
+              Queremos aportar valor al ecosistema Theta proporcionando funcionalidades que simplifiquen el acceso a la información sobre Theta o enriquezcan el ecosistema como Tfuel y Theta Staking, una interfaz de usuario fácil de usar.
               <br>
               Podemos ser contactados para soporte o sugerencias sobre <a target=\"_blank\" href=\"https://discord.gg/SGUtY7zBU3\"> discord</a> o <a href=\"https://twitter.com/Thetaboard1\" target=\"_blank\">Twitter</a>.
               <br>"
