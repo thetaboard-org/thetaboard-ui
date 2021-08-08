@@ -20,10 +20,10 @@ export default class ApplicationRoute extends Route {
   @service currency;
 
   async beforeModel() {
-    const params = this.paramsFor('application');
     const locale = await this.getLocaleLanguage();
     this.intl.setLocale([locale]);
     await this.setCurrency();
+    const params = this.paramsFor('application');
     await this.envManager.setParameters(params);
     return this._loadCurrentUser();
   }
