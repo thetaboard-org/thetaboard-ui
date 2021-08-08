@@ -21,7 +21,7 @@ export default class PriceChartComponent extends Component {
     if (this.historic_data_chart) {
       const oneYearBack = new Date(new Date().setFullYear(new Date().getFullYear() - 1)).toISOString().split('T')[0];
       const today = new Date().toISOString().split('T')[0];
-      this.historicPrice.historicPrice = await this.thetaSdk.getPrices(currencyName, oneYearBack, today);
+        this.historicPrice.historicPrice = await this.thetaSdk.getPrices(currencyName, oneYearBack, today);
       this.updateData();
     }
   }
@@ -31,11 +31,11 @@ export default class PriceChartComponent extends Component {
     let chartHistoricData = this.chartHistoricData || this.historicPrice.historicPrice;
     if (this.time_range === 'week') {
       historic_data = chartHistoricData.dailyPrice
-        .splice(chartHistoricData.dailyPrice.length - 7, chartHistoricData.dailyPrice.length);
+        .slice(chartHistoricData.dailyPrice.length - 7, chartHistoricData.dailyPrice.length);
 
     } else if (this.time_range === 'month') {
       historic_data = chartHistoricData.dailyPrice
-        .splice(chartHistoricData.dailyPrice.length - 30, chartHistoricData.dailyPrice.length);
+        .slice(chartHistoricData.dailyPrice.length - 30, chartHistoricData.dailyPrice.length);
     } else {
       historic_data = chartHistoricData.dailyPrice;
     }
@@ -51,6 +51,7 @@ export default class PriceChartComponent extends Component {
           pointStyle: 'point',
           yAxisID: 'theta',
           radius: 0,
+          lineTension: 0,
           borderColor: '#2BB7E5',
           pointBackgroundColor: '#2BB7E5',
           data: theta_price,
@@ -61,6 +62,7 @@ export default class PriceChartComponent extends Component {
           yAxisID: 'tfuel',
           pointStyle: 'point',
           radius: 0,
+          lineTension: 0,
           borderColor: '#FFA500',
           pointBackgroundColor: '#FFA500',
           data: tfuel_price,
@@ -71,6 +73,7 @@ export default class PriceChartComponent extends Component {
           yAxisID: 'ratio',
           pointStyle: 'point',
           radius: 0,
+          lineTension: 0,
           borderColor: '#5C5852FF',
           pointBackgroundColor: '#5C5852FF',
           data: ratio,
@@ -127,10 +130,8 @@ export default class PriceChartComponent extends Component {
             id: 'theta',
             type: 'linear',
             ticks: {
-              min: 0,
               fontColor: '#2BB7E5',
-              beginAtZero: true,
-              maxTicksLimit: 10,
+              maxTicksLimit: 16,
               callback: (value) => {
                 return `${this.currency.currentCurrency.symbol}${this.utils.formatNumber(Number(value.toString()), 2)}`;
               },
@@ -141,12 +142,10 @@ export default class PriceChartComponent extends Component {
             type: 'linear',
             position: 'right',
             ticks: {
-              min: 0,
               fontColor: '#FFA500',
-              beginAtZero: true,
-              maxTicksLimit: 10,
+              maxTicksLimit: 16,
               callback: (value) => {
-                return `${this.currency.currentCurrency.symbol}${this.utils.formatNumber(Number(value.toString()), 2)}`;
+                return `${this.currency.currentCurrency.symbol}${this.utils.formatNumber(Number(value.toString()), 3)}`;
               },
             },
           },
@@ -182,6 +181,7 @@ export default class PriceChartComponent extends Component {
     const data = this.chartData;
     this.historic_data_chart = new Chart(ctx, {
       type: 'line',
+      lineTension: 0,
       data: data,
       options: gradientChartOptionsConfiguration,
     });
