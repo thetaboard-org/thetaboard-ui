@@ -265,6 +265,8 @@ menu:
     dashboard: "Tableau de bord"
     wallet: portefeuille
     staking: staking
+    tfuel: "Tfuel"
+    theta: "Theta"
     tfuel_vip: "Tfuel VIP"
     domain: domaine
     faq: faq

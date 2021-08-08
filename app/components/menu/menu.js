@@ -7,29 +7,29 @@ export default class MenuComponent extends Component {
 
   menuItems = [
     {
-      name: this.intl.t('menu.dashboard'),
+      name: 'menu.dashboard',
       icon: 'icon-chart-pie-36',
       route: 'dashboard',
     },
     {
-      name: this.intl.t('menu.wallet'),
+      name: 'menu.wallet',
       icon: 'icon-wallet-43',
       route: 'wallet',
     },
     {
-      name: this.intl.t('menu.staking'), icon: 'icon-align-center', route: 'staking.tfuel',
+      name: 'menu.staking', icon: 'icon-align-center', route: 'staking.tfuel',
       children: [
-        { name: 'Tfuel', icon: 'tfuel-white.png', route: 'staking.tfuel' },
-        { name: 'Theta', icon: 'theta-white.png', route: 'staking.theta' },
-        { name: this.intl.t('menu.tfuel_vip'), icon: 'tfuel-white.png', route: 'staking.tfuelvip' },
+        { name: 'menu.tfuel', icon: 'tfuel-white.png', route: 'staking.tfuel' },
+        { name: 'menu.theta', icon: 'theta-white.png', route: 'staking.theta' },
+        { name: 'menu.tfuel_vip', icon: 'tfuel-white.png', route: 'staking.tfuelvip' },
       ],
     },
     {
-      name: this.intl.t('menu.domain'),
+      name: 'menu.domain',
       icon: 'icon-book-bookmark',
       route: 'domain',
     },
-    { name: this.intl.t('menu.faq'), icon: 'icon-compass-05', route: 'faq' },
+    { name: 'menu.faq', icon: 'icon-compass-05', route: 'faq' },
     { name: 'guardian', icon: 'icon-align-center', route: 'guardian', scope: 'Admin' },
   ];
   @service router;
@@ -45,13 +45,13 @@ export default class MenuComponent extends Component {
     return this.menuItems.reduce((acc, x) => {
       // only show non-admins menus if not admin
       if (x.scope && !(this.currentUser.user && x.scope === this.currentUser.user.scope)) {
-        return acc
+        return acc;
       }
       const result = {
         name: x.name,
-        classActive: this.routeName === x.name,
+        classActive: this.routeName === x.route,
         icon: x.icon,
-        route: x.route ? x.route : x.name
+        route: x.route,
       };
       if (x.children) {
         result.children = x.children.map((child) => {

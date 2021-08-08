@@ -15,14 +15,14 @@
                   <li class="nav-item">
                     <LinkTo @class="nav-link" @route="{{menuItem.route}}">
                       <i class="tim-icons {{menuItem.icon}}"></i>
-                      <p class="menu-item">{{menuItem.name}}</p>
+                      <p class="menu-item">{{t menuItem.name}}</p>
                     </LinkTo>
                     <ul>
                       {{#each menuItem.children as |child|}}
                         <li style="list-style-type: none;" class="nav-item {{if child.classActive "active"}}">
                           <LinkTo @class="nav-link" @route="{{child.route}}">
                             <p class="menu-item"><img class="tim-icons"
-                                                      src="{{rootURL}}/assets/img/logo/{{child.icon}}"/>{{child.name}}
+                                                      src="{{rootURL}}/assets/img/logo/{{child.icon}}"/>{{t child.name}}
                             </p>
                                 </LinkTo>
                               </li>
@@ -33,7 +33,7 @@
                     <li class="nav-item {{if menuItem.classActive "active"}}">
                         <LinkTo @class="nav-link" @route="{{menuItem.route}}">
                         <i class="tim-icons {{menuItem.icon}}"></i>
-                        <p class="menu-item">{{menuItem.name}}</p>
+                        <p class="menu-item">{{t menuItem.name}}</p>
                         </LinkTo>
                     </li>
                 {{/if}}

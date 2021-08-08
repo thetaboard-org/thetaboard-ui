@@ -1,7 +1,7 @@
 import Model, { attr } from '@ember-data/model';
 import { computed } from '@ember/object';
 
-export default class walletItemModel extends Model {
+export default class WalletItemModel extends Model {
   @attr('string') currency;
   @attr('string') type;
   @attr('string') wallet_address;
