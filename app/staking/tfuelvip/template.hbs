@@ -12,16 +12,15 @@
     </div>
     <div class="card-body-stake">
       <h5 class="title">{{t 'staking.vip.title'}}
-        {{#if this.thetaSdk.tfuelAPR}}<br>{{t 'staking.earn_up_to'}} <span class="nostyle" {{numberformat this.thetaSdk.tfuelAPR 1}}></span>% {{t 'global.apr'}}*.{{/if}}
+        {{#if this.thetaSdk.tfuelAPR}}<br>{{t 'staking.earn_up_to'}} <span class="nostyle" {{numberformat this.thetaSdk.tfuelAPR 1}}></span>% {{t 'global.apr'}}*{{/if}}
       </h5>
       <p>{{t 'staking.tfuel_fees'}}</p>
       <div class="row justify-content-lg-center justify-content-md-center">
         <form {{on 'submit' this.submitStake}} class="stakes-deposit col-md-9">
           <div class="form-group">
 
-            <p> {{t 'staking.vip.subtitle'}} <br>
-              {{t 'staking.vip.once_summary'}} <a
-                      href="https://docs.thetatoken.org/docs/elite-edge-node-staking-process">{{t 'global.theta_doc'}} </a> {{t 'staking.vip.start_staking'}}</p>
+            <p>{{t 'staking.vip.subtitle'}} <br>
+              {{t 'staking.vip.once_summary'}} <a href="/faq"> {{t 'staking.tfuel.using_summary'}} </a>{{t 'staking.vip.start_staking'}}</p>
             {{#each this.errorMessages as |error|}}
               <div class="row">
                 <div class="col-sm-12 col-lg-8" style=" margin: auto;">

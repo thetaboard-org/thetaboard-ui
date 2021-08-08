@@ -112,6 +112,7 @@ holding_pie:
 coinbase_history:
   title: "{token} Recompensas por stakes"
   rewards_received: "Recompensas recibidas"
+  reward_received: "Recompensa recibida"
 ### transaction-history component
 transaction_history:
   title: "Transaciones"
@@ -126,8 +127,8 @@ transaction_history:
 ###### STAKING START ######
 staking: 
   earn_up_to: "Ganar hasta"
-  tfuel_fees: "Comisión del 3% sobre recompensas por stake (por cada 10 Tfuels generados, la comisión de Thetaboard será de 0,3 Tfuels)"
-  tfuel_fees_affiliate: "Comisión del 0% hasta el 31/08/2021 (Comisión del 3% a partir del 01/09/2021)"
+  tfuel_fees: "Comisión del 3% sobre recompensas por stake (por cada 10 Tfuels generados, la comisión de Thetaboard será de 0,3 Tfuels)."
+  tfuel_fees_affiliate: "Comisión del 0% hasta el 31/08/2021 (Comisión del 3% a partir del 01/09/2021)."
   ### Staking Tfuel
   tfuel:
     title: "Tfuel Staking público"
@@ -147,9 +148,9 @@ staking:
   ### Staking VIP
   vip:
     title: "Stake de Tfuels en VIP Élite Edge node"
-    subtitle: "Introduce tu dirección de wallet para obtener un nuevo Edge node"
+    subtitle: "Introduce tu dirección de wallet para obtener un nuevo Edge node."
     once_summary: "Una vez tengas tu summary puedes usar el"
-    start_staking: "Para comenzar a hacer stake"
+    start_staking: "para comenzar a hacer stake."
     node_list: "Lista de VIPs Elite Edge Nodes"
     stake_amount: "Cantidad a poner en Stake "
     see_summary: "Mira la Summary"

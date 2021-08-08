@@ -6,7 +6,7 @@ global:
     month_short: M
     week: Semaine
     week_short: S
-    ratio_theta_tfuel: "ratio Theta/Tfuel"
+    ratio_theta_tfuel: "Ratio Theta/Tfuel"
     last:
         24h: "Sur 24h"
         7d: "Sur 7 jours"
@@ -87,7 +87,7 @@ price_chart:
 reward_forecast:
     title_tfuel: "Estimation des récompenses en Tfuel du Elite Edge Node"
     title_theta: "Estimation des récompenses en Tfuel du Noeud Guardian Node"
-    subtitle: Prévisions
+    subtitle: "Prévisions pour"
     estimated_earning: "Gains en Tfuel estimés"
     per_day: "Par Jour"
     per_month: "Par Mois"
@@ -98,7 +98,7 @@ reward_forecast:
 ###### WALLET START ######
 ### Wallet-list component
 wallet_list:
-    title: Portefeuilles
+    title: "Portefeuilles"
     wallet_address: "Adresse du portefeuille"
     add_wallet_group: "Ajouter un portefeuille/ groupe"
     market_price: "Prix du Marché"
@@ -111,7 +111,8 @@ holding_pie:
 ### Coinbase-history component
 coinbase_history:
     title: "{token} Récompense de Staking"
-    rewards_received: "Récompense(s) reçue(s)"
+    rewards_received: "Récompenses reçues"
+    reward_received: "Récompense reçue"
 ### transaction-history component
 transaction_history:
     title: Transactions
@@ -126,8 +127,8 @@ transaction_history:
 ###### STAKING START ######
 staking:
     earn_up_to: "Gagnez jusqu’à"
-    tfuel_fees: "3 % de commission sur les récompenses de staking (pour chaque tranche de 10 Tfuel gagnés, les frais de Thetaboard s'élèvent à 0,3 Tfuel)"
-    tfuel_fees_affiliate: "0% de commission jusqu'au 31/08/2021 (3% de commission à partir du 01/09/2021)"
+    tfuel_fees: "3 % de commission sur les récompenses de staking (pour chaque tranche de 10 Tfuel gagnés, les frais de Thetaboard s'élèvent à 0,3 Tfuel)."
+    tfuel_fees_affiliate: "0% de commission jusqu'au 31/08/2021 (3% de commission à partir du 01/09/2021)."
     ### Staking Tfuel
     tfuel:
         title: "Staking Tfuel sur un Noeud"
@@ -147,9 +148,9 @@ staking:
     ### Staking VIP
     vip:
         title: "Stakez vos Tfuel sur nos VIP Elite Edge Node"
-        subtitle: "Entrer votre adresse de portefeuille ci-dessous pour avoir un nouveau Edge Node"
-        once_summary: "Une fois que vous avez votre summary, vous pouvez l’utiliser pour"
-        start_staking: "Pour commencer le staking"
+        subtitle: "Entrer votre adresse de portefeuille ci-dessous pour avoir un nouveau Edge Node."
+        once_summary: "Une fois que vous avez votre summary, vous pouvez utiliser la"
+        start_staking: "pour commencer le staking."
         node_list: "Liste des VIP Elite Edge Nodes"
         stake_amount: "Montant du stake"
         see_summary: "Voir le summary"

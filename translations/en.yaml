@@ -111,7 +111,8 @@ holding_pie:
 ### Coinbase-history component
 coinbase_history:
   title: "{token} Staking Rewards"
-  rewards_received: "reward(s) received"
+  rewards_received: "rewards received"
+  reward_received: "reward received"
 ### transaction-history component
 transaction_history:
   title: "Transactions"
@@ -126,8 +127,8 @@ transaction_history:
 ###### STAKING START ######
 staking: 
   earn_up_to: "Earn up to"
-  tfuel_fees: "3% fee on staking rewards (For every 10 Tfuel earnt, Thetaboard fee equals 0.3 Tfuel)"
-  tfuel_fees_affiliate: "0% fee until 08/31/2021 (3% fee starting on 09/01/2021)"
+  tfuel_fees: "3% fee on staking rewards (For every 10 Tfuel earnt, Thetaboard fee equals 0.3 Tfuel)."
+  tfuel_fees_affiliate: "0% fee until 08/31/2021 (3% fee starting on 09/01/2021)."
   ### Staking Tfuel
   tfuel:
     title: "Tfuel Public Staking"
@@ -147,9 +148,9 @@ staking:
   ### Staking VIP
   vip:
     title: "Tfuel VIP Elite Edge Node Staking"
-    subtitle: "Enter your wallet address below to get a new Edge Node"
+    subtitle: "Enter your wallet address below to get a new Edge Node."
     once_summary: "Once you have your summary, you can use the"
-    start_staking: "to start staking"
+    start_staking: "to start staking."
     node_list: "VIP Elite Edge Nodes List"
     stake_amount: "Stake Amount"
     see_summary: "See Summary"
