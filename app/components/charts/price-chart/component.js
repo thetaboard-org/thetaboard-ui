@@ -107,10 +107,19 @@ export default class PriceChartComponent extends Component {
             if (tooltipItem.datasetIndex === 2) {
               return `1 Theta ${this.intl.t('price_chart.is_worth')} ${Math.round(Number(tooltipItem.yLabel), 1)} Tfuels`;
             }
+            const surencySymbol = this.currency.currentCurrency.symbol;
             if (Number(tooltipItem.yLabel) > 0.01) {
-              return `${this.currency.currentCurrency.symbol}${this.utils.formatNumber(Number(tooltipItem.yLabel), 2)}`;
+              return tooltipItem.datasetIndex === 1
+                ? `${surencySymbol}${this.utils.formatNumber(
+                    Number(tooltipItem.yLabel),
+                    3
+                  )}`
+                : `${surencySymbol}${this.utils.formatNumber(
+                    Number(tooltipItem.yLabel),
+                    2
+                  )}`;
             } else {
-              return `${this.currency.currentCurrency.symbol}${Number(tooltipItem.yLabel)}`;
+              return `${surencySymbol}${Number(tooltipItem.yLabel)}`;
             }
           },
         },
