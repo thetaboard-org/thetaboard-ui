@@ -1111,7 +1111,7 @@ a.logout {
 }
 
 .i18n-selector{
-  background: #ffffff26;
+  background: rgba(255,255,255,0.26);
   padding: 10px 15px;
   border-radius: 25px;
 }
