@@ -348,10 +348,12 @@ currency:
     usd: "USD"
     aud: "AUD"
     eur: "EUR"
+    gbp: "GBP"
     symbol:
         usd: "$"
         aud: "A$"
         eur: "€"
+        gbp: "£"
 ###### CURRENCY END ######
 
 

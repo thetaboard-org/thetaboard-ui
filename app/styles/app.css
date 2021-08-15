@@ -1111,6 +1111,7 @@ a.logout {
 
 .split-i18n-currency {
   display: inline-block;
+  vertical-align: top;
   padding: 10px;
 }
 
@@ -1119,6 +1120,7 @@ a.logout {
   width: 1px;
   border-right: 1px solid #f1f1f1;
   height: 90px;
+  margin-top: 60px;
 }
 
 .i18n-selector{
