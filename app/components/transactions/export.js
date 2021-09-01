@@ -1,7 +1,7 @@
 import Component from '@glimmer/component';
-import { tracked } from '@glimmer/tracking';
-import { action } from '@ember/object';
-import { inject as service } from '@ember/service';
+import {tracked} from '@glimmer/tracking';
+import {action} from '@ember/object';
+import {inject as service} from '@ember/service';
 import config from 'thetaboard-ui/config/environment';
 
 export default class TransactionsExportComponent extends Component {
@@ -63,16 +63,16 @@ export default class TransactionsExportComponent extends Component {
 
   @action
   submit() {
-    let params = {
+    const params = {
       startDate: this.startDate,
       endDate: this.endDate,
       currency: this.currency.currentCurrency.name,
       wallets: this.walletList,
     };
-    var queryString = Object.keys(params)
+    const queryString = Object.keys(params)
       .map((key) => key + '=' + params[key])
       .join('&');
-    let url = `${config.downloadCsvUrl}?${queryString}`;
+    const url = `${config.downloadCsvUrl}?${queryString}`;
     document.getElementById('my_iframe').src = url;
     this.utils.successNotify(this.intl.t('export.generating'));
   }
@@ -82,7 +82,7 @@ export default class TransactionsExportComponent extends Component {
   }
 
   get walletList() {
-    let allWallets = this.thetaSdk.walletList.map((x) => x.wallet_address.toLowerCase());
+    const allWallets = this.thetaSdk.walletList.map((x) => x.wallet_address.toLowerCase());
     return [...new Set(allWallets)];
   }
 
@@ -92,10 +92,10 @@ export default class TransactionsExportComponent extends Component {
   }
 
   formatDate(date) {
-    var d = date ? new Date(date) : new Date(),
-      month = '' + (d.getMonth() + 1),
-      day = '' + d.getDate(),
+    const d = date ? new Date(date) : new Date(),
       year = d.getFullYear();
+    let month = '' + (d.getMonth() + 1),
+      day = '' + d.getDate();
 
     if (month.length < 2) month = '0' + month;
     if (day.length < 2) day = '0' + day;
