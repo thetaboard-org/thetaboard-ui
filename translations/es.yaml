@@ -75,6 +75,8 @@ global:
   stake_reward_distribution: "Distribución de Recompensas de Stake"
   selected: "Seleccionado"
   not_selected: "No Seleccionado"
+  next: "Próximo"
+  previous: "Previo"
 ###### GLOBAL END ######
 
 
@@ -376,10 +378,19 @@ notif:
   not_enough_tfuel: "No tienes suficiente Tfuel en tu billetera"
 ###### UTILS NOTIFY END ######
 
+
 ###### COPY CLIPBOARD START ######
 clip:
   succesfully: "{label} se copió correctamente en el portapapeles"
 ###### COPY CLIPBOARD END ######
+
+
+###### TRANSACTION EXPORT START ######
+export:
+  button_label: "Historial de transacciones de exportación (CSV)"
+  date_incorrect: "Seleccione fechas desde el 1 de enero de 2021 hasta hoy."
+  generating: "Se está generando el informe, puede tardar hasta un minuto."
+###### TRANSACTION EXPORT END ######
 
 
 ############ BACK-END ERROR START ############

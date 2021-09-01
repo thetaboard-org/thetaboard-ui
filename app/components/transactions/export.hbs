@@ -1,0 +1,62 @@
+{{#if isMobile.any}}
+{{else}}
+    {{#if showComponent}}
+        <div class="export-container">
+            <div class="row">
+                <h4 style="width: 100%;font-weight: 600;">{{t 'export.button_label'}}</h4>
+                <div class="col-md-12 mobile-padding">
+                    <span>{{t 'transaction_history.from'}}: {{i18n.currentLocale.value}}</span><br/>
+                    <EmberFlatpickr
+                        placeholder="Pick a start date"
+                        @date={{this.startDate}}
+                        @minDate={{this.minStartDate}}
+                        @maxDate={{this.maxDate}}
+                        @onChange={{this.onStartDateChange}}
+                        @mode="single"
+                        @locale={{i18n.currentLocale.value}}
+                        @altInput={{true}}
+                        @altFormat="F j, Y"
+                        @dateFormat="Y-m-d"
+                        @altInputClass="flatpicker-input"
+                    />
+                </div>
+                <div class="col-md-12 mobile-padding">
+                    <span>{{t 'transaction_history.to'}}: </span><br/>
+                    <EmberFlatpickr
+                        @date={{this.endDate}}
+                        @minDate={{this.minDate}}
+                        @maxDate={{this.maxEndDate}}
+                        @onChange={{false}}
+                        @onChange={{this.onEndDateChange}}
+                        @mode="single"
+                        @locale={{i18n.currentLocale.value}}
+                        @altInput={{true}}
+                        @altFormat="F j, Y"
+                        @dateFormat="Y-m-d"
+                        @altInputClass="flatpicker-input"
+                    />
+                </div>
+                <div class="col-md-12 mobile-padding">
+                    <span>{{t 'currency.currency'}}: </span><br/>
+                    {{navbar/currency-selection}}
+                </div>
+                <div class="col-md-12 mobile-padding">
+                    <span class="capitalize-first">{{t 'my_wallets.wallets'}}: </span><br/>
+                    {{#each walletList as |wallet|}}
+                        <p>
+                        <span style="font-size: 1rem;font-weight: 400;" class="long-address">{{wallet}}</span>
+                        <span style="font-size: 1rem;font-weight: 400;" class="short-address" {{shortener wallet}}>{{wallet}}</span>
+                        </p>
+                    {{/each}}
+                </div>
+                <div class="col-md-12 mobile-padding">
+                    <button {{on 'click' resetComp}} class="btn btn-secondary">{{t 'global.cancel'}}</button>
+                    <button {{on 'click' submit}} class="btn btn-primary">{{t 'global.submit'}}</button>
+                </div>
+            </div>
+        </div>
+    {{else}}
+        <button {{on 'click' showComp}} class="btn btn-primary" style="float:right;">{{t 'export.button_label'}}</button>
+    {{/if}}
+    <iframe id="my_iframe" style="display:none;"></iframe>
+{{/if}}

@@ -5,6 +5,7 @@ import { action } from '@ember/object';
 export default class I18nService extends Service {
   @service intl;
   @service store;
+  @service moment;
 
   get currentLocale() {
     return this.setJsonReturn(this.intl.get('primaryLocale'));
@@ -26,6 +27,7 @@ export default class I18nService extends Service {
       value: value,
     });
     await locale.save();
+    this.moment.setLocale(value);
     this.intl.setLocale(value);
   }
 

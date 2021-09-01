@@ -944,6 +944,16 @@ a.logout {
   display: none;
 }
 
+.export-container {
+  text-align: center;
+  margin: 0 auto 40px;
+  background: #1e1e2f;
+  border-radius: 20px;
+  padding: 30px 20px;
+  box-shadow: 0 1px 20px 0px rgb(0 0 0 / 10%);
+  width: 480px;
+}
+
 @media screen and (max-width: 992px) {
   .navbar .navbar-collapse .search-bar.input-group.loupe {
     margin: 21px 0 0 0;
@@ -1002,7 +1012,6 @@ a.logout {
 
   .language-small-button {
     font-size: 11px;
-
   }
 
   .wallet-address-search-container span.short-address {
@@ -1017,6 +1026,24 @@ a.logout {
 
   button.navbar-toggler {
     padding: 0.25rem 0.5rem;
+  }
+
+  input.flatpicker-input {
+    font-size: 12px;
+    padding: 5px;
+  }
+
+  .col-md-12.mobile-padding {
+    margin: 10px auto 10px;
+  }
+
+  .export-container {
+    width: 100%;
+  }  
+
+  div.main-panel div.content {
+    padding-left: 5px;
+    padding-right: 5px;
   }
 }
 
@@ -1135,4 +1162,19 @@ a.logout {
 
 .i18n-color {
   color: white;
+}
+
+input.flatpicker-input {
+  color: white;
+  width: 190px;
+  border: none;
+  background: none;
+  display: inline-block;
+  cursor: pointer;
+  height: 38px;
+  text-align: center;
+}
+
+.capitalize-first {
+  text-transform: capitalize;
 }

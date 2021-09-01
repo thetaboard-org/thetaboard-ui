@@ -9,7 +9,7 @@ module.exports = function (defaults) {
     },
     // Add options here
     fingerprint: {
-      enabled: false
+      enabled: false,
     },
     SRI: {
       enabled: false,
@@ -21,8 +21,12 @@ module.exports = function (defaults) {
           global: true,
           process: true,
         },
-      }
-    }
+      },
+    },
+    flatpickr: {
+      theme: 'dark',
+      locales: ['fr', 'es'],
+    },
   });
 
   // Use `app.import` to add additional libraries to the generated

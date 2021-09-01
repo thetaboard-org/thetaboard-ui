@@ -5,6 +5,10 @@
   <div class="card-body">
     {{#if this.args.loading}}
       <p style="text-align: center;"><img class="main-loader rotate transactions" width="50" src="{{rootURL}}assets/img/theta-logo.png"/></p>
+    {{else}}
+      {{#if this.thetaSdk.walletList.length}}
+        {{transactions/export}}
+      {{/if}}
     {{/if}}
     <div class="table-responsive transac-history-table {{if this.args.loading 'visibility-hidden'}}">
       <table class="table">
@@ -51,7 +55,15 @@
         </tbody>
       </table>
       {{#if showPagination}}
-      <PaginationPager @pager={{true}} @count={{this.thetaSdk.pagination.totalPageNumber}} @current={{this.thetaSdk.pagination.currentPageNumber}} @change={{this.pageChanged}} @pagerFirst="|<" @pagerLast=">|" >
+      <PaginationPager 
+        @pager={{true}} 
+        @count={{this.thetaSdk.pagination.totalPageNumber}}
+        @current={{this.thetaSdk.pagination.currentPageNumber}}
+        @change={{this.pageChanged}}
+        @pagerFirst="|<"
+        @pagerLast=">|"
+        @pagerNext={{t 'global.next'}}
+        @pagerPrevious={{t 'global.previous'}}>
         {{this.thetaSdk.pagination.currentPageNumber}} of {{this.thetaSdk.pagination.totalPageNumber}}
       </PaginationPager>
       {{/if}}

@@ -1,0 +1,16 @@
+<div class="dropdown nav-item" style="display: inline-block; padding: 10px 0 10px;">
+    <a href="javascript:void(0)" class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false">
+        <div class="d-none d-lg-block d-xl-block"><span class="language-selector i18n-selector i18n-authenticated">{{currency.currentCurrency.name}} ({{currency.currentCurrency.symbol}})</span></div>
+        <div class="d-lg-none language-small-button ">
+            <span class="i18n-color i18n-selector">{{currency.currentCurrency.name}} ({{currency.currentCurrency.symbol}})</span>
+        </div>
+    </a>
+    <div class="dropdown-menu dropdown-menu-left dropdown-navbar">
+        <div class="split-i18n-currency">
+            <p class="title">{{t "currency.currency"}}</p>
+            {{#each this.currency.currencyList as |currency|}}
+                <p {{on 'click' (fn this.setCurrency currency.value)}} class="nav-link"><a href="javascript:void(0)" class="nav-item dropdown-item">{{currency.name}}</a></p>
+            {{/each}}
+        </div>
+    </div>
+</div>

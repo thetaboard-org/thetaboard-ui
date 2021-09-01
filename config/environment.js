@@ -9,6 +9,7 @@ module.exports = function (environment) {
     environment,
     rootURL: '/',
     locationType: 'auto',
+    downloadCsvUrl: 'http://localhost:8000/transaction-exports.csv',
     EmberENV: {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
@@ -19,7 +20,11 @@ module.exports = function (environment) {
         Date: false,
       },
     },
-
+    moment: {
+      // To cherry-pick specific locale support into your application.
+      // Full list of locales: https://github.com/moment/moment/tree/2.10.3/locale
+      includeLocales: ['es', 'fr'],
+    },
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
@@ -67,7 +72,7 @@ module.exports = function (environment) {
 
   if (environment === 'production') {
     // here you can enable a production-specific feature
+    ENV.downloadCsvUrl = 'https://thetaboard.io/transaction-exports.csv';
   }
-
   return ENV;
 };
