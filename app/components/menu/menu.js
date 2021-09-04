@@ -1,5 +1,5 @@
 import Component from '@glimmer/component';
-import { inject as service } from '@ember/service';
+import {inject as service} from '@ember/service';
 
 export default class MenuComponent extends Component {
   @service currentUser;
@@ -14,14 +14,18 @@ export default class MenuComponent extends Component {
     {
       name: 'menu.wallet',
       icon: 'icon-wallet-43',
-      route: 'wallet',
+      route: 'wallet.explorer',
+      children: [
+        {name: 'menu.wallet', icon: 'icon-money-coins', route: 'wallet.explorer'},
+        {name: 'menu.nft', icon: 'icon-image-02', route: 'wallet.nft'},
+      ],
     },
     {
       name: 'menu.staking', icon: 'icon-align-center', route: 'staking.tfuel',
       children: [
-        { name: 'menu.tfuel', icon: 'tfuel-white.png', route: 'staking.tfuel' },
-        { name: 'menu.theta', icon: 'theta-white.png', route: 'staking.theta' },
-        { name: 'menu.tfuel_vip', icon: 'tfuel-white.png', route: 'staking.tfuelvip' },
+        {name: 'menu.tfuel', image: 'tfuel-white.png', route: 'staking.tfuel'},
+        {name: 'menu.theta', image: 'theta-white.png', route: 'staking.theta'},
+        {name: 'menu.tfuel_vip', image: 'tfuel-white.png', route: 'staking.tfuelvip'},
       ],
     },
     {
@@ -29,8 +33,8 @@ export default class MenuComponent extends Component {
       icon: 'icon-book-bookmark',
       route: 'domain',
     },
-    { name: 'menu.faq', icon: 'icon-compass-05', route: 'faq' },
-    { name: 'guardian', icon: 'icon-align-center', route: 'guardian', scope: 'Admin' },
+    {name: 'menu.faq', icon: 'icon-compass-05', route: 'faq'},
+    {name: 'guardian', icon: 'icon-align-center', route: 'guardian', scope: 'Admin'},
   ];
   @service router;
 
@@ -59,6 +63,7 @@ export default class MenuComponent extends Component {
             name: child.name,
             classActive: this.routeName === child.route,
             icon: child.icon,
+            image: child.image,
             route: child.route,
           };
         });

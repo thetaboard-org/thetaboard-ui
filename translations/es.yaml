@@ -83,7 +83,7 @@ global:
 price_chart:
   title: "Precio Theta/Tfuel"
   is_worth: "Valor"
-### earnings-forecast components 
+### earnings-forecast components
 reward_forecast:
   title_tfuel: "Pronóstico de recompensas en TFuels nodo Élite Edge"
   title_theta: "Pronóstico de recompensas en  TFuel nodo Guardián"
@@ -124,8 +124,16 @@ transaction_history:
 ###### WALLET END ######
 
 
+###### NFT START ######
+
+NFT:
+  no_nft: "Esta wallet no tiene NFT"
+
+###### NFT END ######
+
+
 ###### STAKING START ######
-staking: 
+staking:
   earn_up_to: "Ganar hasta"
   tfuel_fees: "Comisión del 3% sobre recompensas por stake (por cada 10 Tfuels generados, la comisión de Thetaboard será de 0,3 Tfuels)."
   tfuel_fees_affiliate: "Comisión del 0% hasta el 31/08/2021 (Comisión del 3% a partir del 01/09/2021)."
@@ -158,7 +166,7 @@ staking:
     no_vip: "Todavía no tienes un VIP Elite Edge Node"
     no_tfuel_staked: "No tienes Tfuesl en stake."
     earn: "Haz stake de tus Tfuels para ganar más Tfuels"
-  ### Staking Affiliate 
+  ### Staking Affiliate
   affiliate:
     stake_to: "Hacer Stake de Tfuels a"
     community_een: "Comunidad de Elite Edge Nodes"
@@ -265,6 +273,7 @@ footer:
 menu:
   dashboard: "dashboard"
   wallet: "wallet"
+  nft: NFT
   staking: "staking"
   tfuel: "Tfuel"
   theta: "Theta"
@@ -411,7 +420,7 @@ faq:
                   En Theta Network, es posible staking tanto el token Theta como el token Tfuel. Ambos tokens son recompensados por staking en forma de Tfuel. Para staking sus tokens, deben delegarse a un Nodo Guardián (Theta) o un Nodo Elite Edge (Tfuel). Ambos tipos de nodos juegan un papel importante dentro de la red descentralizada Theta.<br/>
                   Durante todo el proceso de apuesta, los tokens siempre permanecen dentro de su billetera Theta oficial. Si el nodo alguna vez se apaga, los tokens permanecen en su billetera y solo serán controlados por quien tenga acceso a la billetera. NUNCA ingrese su frase inicial de 12 palabras, o su archivo de almacén de claves y contraseña, en ningún lugar excepto en el Theta Wallet oficial. Thetaboard nunca solicitará esta información.</p>
                        <br/><br/>"
-  
+
   provide: "Qué participación ofrece Thetaboard?"
   provide_body: "<h4>Theta</h4>
                   <p>Apueste a nuestro Nodo Guardián, para cualquier persona con más del mínimo de 1000 tokens Theta. No hay un número máximo de Theta que se pueda staking a un Nodo Guardián.</p><br/>
@@ -435,7 +444,7 @@ faq:
                   <a target=\"_blank\" href=\"https://medium.com/theta-network/theta-wallet-v3-0-1-released-to-enable-tfuel-staking-at-block-height-10-968-061-on-june-30-c90bf080ef93\">https://medium.com/theta-network/theta-wallet-v3-0-1-released-to-enable-tfuel-staking-at-block-height-10-968-061-on-june-30-c90bf080ef93</a></p><br/>
                   <br/><br/>"
   stake: "Puedo staking mis tokens Tfuel o Theta en un intercambio?"
-  stake_body: "<p>No, staking en Theta Network actualmente solo es posible usando los tokens que ha depositado en su billetera Theta oficial.<br/> 
+  stake_body: "<p>No, staking en Theta Network actualmente solo es posible usando los tokens que ha depositado en su billetera Theta oficial.<br/>
                     Sugerimos usar el enlace Wallet disponible en la parte superior de <a href=\"https://www.thetatoken.org/\" target=\"_blank\">https://www.thetatoken.org/</a> y marcarlo como la forma de acceder a su billetera oficial y evitar estafas. Esta es la única ubicación en la que debe ingresar su frase inicial de 12 palabras, o archivo de almacén de claves y contraseña.</p><br/>
                   <br/><br/>"
   where_nodes: "Dónde están los nodos que usa Thetaboard?"

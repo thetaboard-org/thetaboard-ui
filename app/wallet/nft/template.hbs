@@ -1,0 +1,45 @@
+{{page-title "Nft"}}
+<div class="content">
+  <div class="row">
+    {{#each this.model as |NFT|}}
+      <div class="col-lg-3 col-md-12">
+        <div class="card card-chart card-user card-holdings" style="min-height: 412px;">
+          <div class="card-header ">
+            <div class="row">
+              <div class="col-sm-12 text-left">
+                <p class="card-text"></p>
+                <div class="author">
+                  <div class="block block-one"></div>
+                  <div class="block block-two"></div>
+                  <div class="block block-three"></div>
+                  <div class="block block-four"></div>
+                  <h2 class="card-title">{{NFT.name}}</h2>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="holding-container" class="card-body nft-card-body">
+            <img src="{{NFT.url}}" alt="{{NFT.name}}" style="width:90%">
+          </div>
+        </div>
+      </div>
+    {{else}}
+      <div class="card">
+        <div class="card-body">
+          {{#if isWallet}}
+            <p>{{t 'NFT.no_nft'}}
+            </p>
+          {{else}}
+            <p>{{t 'wallet_list.no_wallet'}}
+              <LinkTo @route="my-wallets">{{t 'global.link_wallet'}}</LinkTo> {{t 'global.or'}} <a href=""
+                                                                                                   data-toggle="modal"
+                                                                                                   data-target="#searchModal">{{t
+                'global.enter_address'}}</a>.
+            </p>
+          {{/if}}
+        </div>
+      </div>
+
+    {{/each}}
+  </div>
+</div>

@@ -83,7 +83,7 @@ global:
 price_chart:
   title: "Theta/Tfuel Price"
   is_worth: "is worth"
-### earnings-forecast components 
+### earnings-forecast components
 reward_forecast:
   title_tfuel: "Elite Edge Node TFuel Reward Forecast"
   title_theta: "Guardian Node TFuel Reward Forecast"
@@ -124,8 +124,16 @@ transaction_history:
 ###### WALLET END ######
 
 
+###### NFT START ######
+
+NFT:
+  no_nft: "This wallet doesn't have any NFT"
+
+###### NFT END ######
+
+
 ###### STAKING START ######
-staking: 
+staking:
   earn_up_to: "Earn up to"
   tfuel_fees: "3% fee on staking rewards (For every 10 Tfuel earnt, Thetaboard fee equals 0.3 Tfuel)."
   tfuel_fees_affiliate: "0% fee until 08/31/2021 (3% fee starting on 09/01/2021)."
@@ -158,7 +166,7 @@ staking:
     no_vip: "You don't have a VIP Elite Edge Node yet"
     no_tfuel_staked: "You don't have any Tfuel staked."
     earn: "Stake your Tfuel to earn TFUEL"
-  ### Staking Affiliate 
+  ### Staking Affiliate
   affiliate:
     stake_to: "Stake Tfuel to"
     community_een: "community Elite Edge Nodes"
@@ -265,6 +273,7 @@ footer:
 menu:
   dashboard: "dashboard"
   wallet: "wallet"
+  nft: NFT
   staking: "staking"
   tfuel: "Tfuel"
   theta: "Theta"
@@ -419,7 +428,7 @@ faq:
                       NEVER enter your 12-word seed phrase, or keystore file and password, anywhere except the official Theta Wallet.
                        Thetaboard will never request this information.</p>
                        <br/><br/>"
-  
+
   provide: "What staking does Thetaboard provide?"
   provide_body: "<h4>Theta</h4>
                   <p>Stake to our Guardian Node, for anyone with over the minimum 1000 Theta tokens. There is no maximum number of Theta that can be staked to a Guardian Node.</p><br/>
@@ -443,8 +452,8 @@ faq:
                   <a target=\"_blank\" href=\"https://medium.com/theta-network/theta-wallet-v3-0-1-released-to-enable-tfuel-staking-at-block-height-10-968-061-on-june-30-c90bf080ef93\">https://medium.com/theta-network/theta-wallet-v3-0-1-released-to-enable-tfuel-staking-at-block-height-10-968-061-on-june-30-c90bf080ef93</a></p><br/>
                   <br/><br/>"
   stake: "Can I stake my Tfuel or Theta tokens from an exchange?"
-  stake_body: "<p>No, staking on the Theta Network is currently only possible using the tokens you have deposited into your official Theta wallet.<br/> 
-                    We suggest using the Wallet link available at the top of the <a href=\"https://www.thetatoken.org/\" target=\"_blank\">https://www.thetatoken.org/</a> and bookmarking 
+  stake_body: "<p>No, staking on the Theta Network is currently only possible using the tokens you have deposited into your official Theta wallet.<br/>
+                    We suggest using the Wallet link available at the top of the <a href=\"https://www.thetatoken.org/\" target=\"_blank\">https://www.thetatoken.org/</a> and bookmarking
                     this as the way to access your official wallet and avoid scams. This is the only location you should ever enter your 12 word seed phrase, or keystore file and password.</p><br/>
                   <br/><br/>"
   where_nodes: "Where are the nodes Thetaboard uses?"
@@ -468,7 +477,7 @@ faq:
                   Theta staking reward amounts are assigned by the Theta blockchain in multiples of 12. Thetaboard fees will
                    be taken out by the time the transaction arrives in your wallet, meaning the amounts will be in multiples of 11.64.</p><br/>
                   <h4>Tfuel</h4>
-                  <p>Tfuel staking rewards are paid out every 100 blocks to Edge Nodes, with amount of 
+                  <p>Tfuel staking rewards are paid out every 100 blocks to Edge Nodes, with amount of
                     Tfuel staked to that Edge Node increasing the chance of regular payouts. The size of the individual Tfuel stake makes no difference.<br/>
                   Tfuel staking reward amounts vary greatly, based on the size of your stake. They are often three decimal places and are regularly 5 Tfuel and under.</p><br/>
                   <br/><br/>"
@@ -478,31 +487,31 @@ faq:
   public_private: "Should I use a Public or Private Elite Edge Node?"
   public_private_body: "<p>Many Thetaboard customers use both. Sharing a node will increase the frequency (but not the amount) of your payments,
                   as the node will hold more Tfuel than if you were staking alone, so the chances of being picked in the rewards algorithm is increased.
-                  Your place is not reserved when you unstake, but we will continue to provide more Public Elite Edge Nodes as required. 
-                  Also, separating out a 10,000 Tfuel stake and placing it on a Public Elite Edge Node allows for a smaller amount of your 
+                  Your place is not reserved when you unstake, but we will continue to provide more Public Elite Edge Nodes as required.
+                  Also, separating out a 10,000 Tfuel stake and placing it on a Public Elite Edge Node allows for a smaller amount of your
                   Tfuel to be withdrawn and added to, so unstaking does not affect your entire staked amount.</p><br/>
                   <br/><br/>"
   where_rewards_from: "Where do these rewards come from?"
-  where_rewards_from_body: "<p>Theta Network uses inflation of Tfuel tokens to pay staking rewards. This inflation of Tfuel is set at 38 Tfuel per block for Tfuel staking, 
-                  and 48 Tfuel per block for Theta staking. The Theta Network aims for 6 second blocks, at which point the inflation rates correspond to 
+  where_rewards_from_body: "<p>Theta Network uses inflation of Tfuel tokens to pay staking rewards. This inflation of Tfuel is set at 38 Tfuel per block for Tfuel staking,
+                  and 48 Tfuel per block for Theta staking. The Theta Network aims for 6 second blocks, at which point the inflation rates correspond to
                   roughly 4% (Tfuel staking rewards) and 5% (Theta staking rewards) inflation of the initial Tfuel supply of 5 billion.</p><br/>
-                  <p>This inflation is planned to be offset by burning of a portion of fees paid to use the Theta Network. Theta Labs has stated they 
+                  <p>This inflation is planned to be offset by burning of a portion of fees paid to use the Theta Network. Theta Labs has stated they
                   aim to keep the total supply of Tfuel close to the initial 5 billion supply.</p><br/>
                   <br/><br/>"
   staking_wallet: "What do staking rewards look like in my wallet?"
-  staking_wallet_body: "<p>Staking rewards on our dashboard, in the form of a ‘coinbase’ transaction, will be sent to the wallet you staked your tokens from. 
+  staking_wallet_body: "<p>Staking rewards on our dashboard, in the form of a ‘coinbase’ transaction, will be sent to the wallet you staked your tokens from.
                   The ‘from’ address in these coinbase transactions will be one of the 16 Validator Node addresses in the Theta Network.</p><br/>
                   <p>If you are using the Theta Wallet to track your rewards, they will not appear as transactions, but only as an increase in the available Tfuel balance.</p><br/>
                   <br/><br/>"
   no_rewards: "How come I have not received Theta staking rewards for a week?"
-  no_rewards_body: "<p>If you are staking an amount of Theta closer to the minimum, it is possible you may go weeks without payment due to the Theta Labs staking rewards algorithm. 
+  no_rewards_body: "<p>If you are staking an amount of Theta closer to the minimum, it is possible you may go weeks without payment due to the Theta Labs staking rewards algorithm.
                   Be assured, you are still accruing rewards, and just need the staking algorithm to select you for reward payment.</p><br/>
-                  <p>Even if you go through long periods without staking rewards, your rewards are still accruing. 
+                  <p>Even if you go through long periods without staking rewards, your rewards are still accruing.
                   Often you will receive more than normal a short period following a long dry spell without rewards.</p><br/>
                   <p>Discussion of the randomized block reward for Theta by Theta Labs is found here:</p><br/>
                   <p><a traget=\"_blank\" href=\"https://medium.com/theta-network/theta-protocol-code-v2-2-0-released-with-important-performance-related-updates-6b9e2261d0ae\">https://medium.com/theta-network/theta-protocol-code-v2-2-0-released-with-important-performance-related-updates-6b9e2261d0ae</a></p><br/>
-                  <p>Prior to Mainnet 3.0 in June 2021, all theta staking rewards were delivered in transactions with a multiple of 12. However, since then, instances where Theta staking rewards have been joined to Tfuel staking rewards have occurred. 
-                  This makes it harder to track which payment is coming for what stake. While our dashboard makes every attempt to correctly assign Theta and Tfuel staking rewards correctly, 
+                  <p>Prior to Mainnet 3.0 in June 2021, all theta staking rewards were delivered in transactions with a multiple of 12. However, since then, instances where Theta staking rewards have been joined to Tfuel staking rewards have occurred.
+                  This makes it harder to track which payment is coming for what stake. While our dashboard makes every attempt to correctly assign Theta and Tfuel staking rewards correctly,
                   it may not capture every joint payment, as these are not labelled on the Theta blockchain.</p>
                   <br/><br/>"
   withdraw_add_more: "Do I have to withdraw my stake to add new tokens?"
@@ -533,5 +542,5 @@ faq:
                   However, we won’t be able to migrate currently bought domains to the new version.<br/>
                   Further reading about the Theta Network can be found here.<br/>
                   <a href=\"https://docs.thetatoken.org/docs/what-is-theta-network\" target=\"_blank\">https://docs.thetatoken.org/docs/what-is-theta-network</a></p>
-                  <br/><br/>"  
+                  <br/><br/>"
 ###### FAQ END ######
