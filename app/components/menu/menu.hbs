@@ -1,43 +1,49 @@
 <div class="sidebar" data-color="purple" data-background-color="white">
-    <!--
-        Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
+  <!--
+      Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
 
-        Tip 2: you can also add an image using data-image tag
-    -->
-    <div class="logo">
-        <img class="thetaboard-logo" src="{{rootURL}}/assets/img/thetaboard-logo.png"/>
-    </div>
+      Tip 2: you can also add an image using data-image tag
+  -->
+  <div class="logo">
+    <img class="thetaboard-logo" src="{{rootURL}}/assets/img/thetaboard-logo.png"/>
+  </div>
 
-    <div class="sidebar-wrapper">
-        <ul class="nav">
-            {{#each menuItemList as |menuItem|}}
-                {{#if menuItem.children}}
-                  <li class="nav-item">
-                    <LinkTo @class="nav-link" @route="{{menuItem.route}}">
-                      <i class="tim-icons {{menuItem.icon}}"></i>
-                      <p class="menu-item">{{t menuItem.name}}</p>
-                    </LinkTo>
-                    <ul>
-                      {{#each menuItem.children as |child|}}
-                        <li style="list-style-type: none;" class="nav-item {{if child.classActive "active"}}">
-                          <LinkTo @class="nav-link" @route="{{child.route}}">
-                            <p class="menu-item"><img class="tim-icons"
-                                                      src="{{rootURL}}/assets/img/logo/{{child.icon}}"/>{{t child.name}}
-                            </p>
-                                </LinkTo>
-                              </li>
-                            {{/each}}
-                        </ul>
-                    </li>
-                {{else}}
-                    <li class="nav-item {{if menuItem.classActive "active"}}">
-                        <LinkTo @class="nav-link" @route="{{menuItem.route}}">
-                        <i class="tim-icons {{menuItem.icon}}"></i>
-                        <p class="menu-item">{{t menuItem.name}}</p>
-                        </LinkTo>
-                    </li>
-                {{/if}}
-            {{/each}}
-        </ul>
-    </div>
-    </div>
+  <div class="sidebar-wrapper">
+    <ul class="nav">
+      {{#each menuItemList as |menuItem|}}
+        {{#if menuItem.children}}
+          <li class="nav-item">
+            <LinkTo @class="nav-link" @route="{{menuItem.route}}">
+              <i class="tim-icons {{menuItem.icon}}"></i>
+              <p class="menu-item">{{t menuItem.name}}</p>
+            </LinkTo>
+            <ul>
+              {{#each menuItem.children as |child|}}
+                <li style="list-style-type: none;" class="nav-item {{if child.classActive "active"}}">
+                  <LinkTo @class="nav-link" @route="{{child.route}}">
+                    {{#if child.icon}}
+                      <p class="menu-item"><i class="tim-icons {{child.icon}}"></i>{{t child.name}}
+                      </p>
+                    {{else}}
+                      <p class="menu-item"><img class="tim-icons"
+                                                src="{{rootURL}}/assets/img/logo/{{child.image}}"/>{{t child.name}}
+                      </p>
+                    {{/if}}
+
+                  </LinkTo>
+                </li>
+              {{/each}}
+            </ul>
+          </li>
+        {{else}}
+          <li class="nav-item {{if menuItem.classActive "active"}}">
+            <LinkTo @class="nav-link" @route="{{menuItem.route}}">
+              <i class="tim-icons {{menuItem.icon}}"></i>
+              <p class="menu-item">{{t menuItem.name}}</p>
+            </LinkTo>
+          </li>
+        {{/if}}
+      {{/each}}
+    </ul>
+  </div>
+</div>

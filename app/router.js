@@ -27,7 +27,10 @@ export default class Router extends EmberRouter {
 Router.map(function () {
   this.route('dashboard', {path: '/'});
   this.route('guardian');
-  this.route('wallet');
+  this.route('wallet', function () {
+    this.route('explorer');
+    this.route('nft');
+  });
   this.route('domain');
   this.route('policy', function () {
     this.route('terms');

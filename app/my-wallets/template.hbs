@@ -1,24 +1,24 @@
 {{page-title "My Wallets"}}
 
 <div class="card card-user">
-    <div class="card-body card-min-390">
-        <p class="card-text"></p>
-        <div class="author">
-            <div class="block block-one"></div>
-            <div class="block block-two"></div>
-            <div class="block block-three"></div>
-            <div class="block block-four"></div>
-            <img class="" src="{{rootURL}}assets/img/logo/thetaTfuel.png" alt="..."/>
-            <br/>
-            <br/>
-        </div>
-        <div class="card-body-stake">
-            <div class="stakes-no-activity">
-                {{#if model.wallets.length}}
-                    <p class="title">{{t 'my_wallets.wallet_list'}}</p>
-                    <div class="table-responsive transac-history-table">
-                        <table class="table">
-                            <thead>
+  <div class="card-body card-min-390">
+    <p class="card-text"></p>
+    <div class="author">
+      <div class="block block-one"></div>
+      <div class="block block-two"></div>
+      <div class="block block-three"></div>
+      <div class="block block-four"></div>
+      <img class="" src="{{rootURL}}/assets/img/logo/thetaTfuel.png" alt="..."/>
+      <br/>
+      <br/>
+    </div>
+    <div class="card-body-stake">
+      <div class="stakes-no-activity">
+        {{#if model.wallets.length}}
+          <p class="title">{{t 'my_wallets.wallet_list'}}</p>
+          <div class="table-responsive transac-history-table">
+            <table class="table">
+              <thead>
                             <tr>
                                 <th class="text-center">{{t 'global.wallet_address'}}</th>
                                 <th class="text-center">{{t 'global.name'}}</th>
@@ -27,7 +27,7 @@
                             </tr>
                             </thead>
                             <tbody>
-                                {{#each currentUser.wallets as |wallet|}}            
+                            {{#each currentUser.wallets as |wallet|}}
                                     <tr>
                                         <td class="text-center">
                                             <span class="long-address">{{wallet.address}}</span>
@@ -68,10 +68,10 @@
                             </tr>
                             </thead>
                             <tbody>
-                                {{#each currentUser.groups as |group|}}            
+                            {{#each currentUser.groups as |group|}}
                                     <tr>
                                         <td class="text-center">
-                                            {{#each group.wallets as |wallet|}}            
+                                          {{#each group.wallets as |wallet|}}
                                                 <span class="long-address">{{wallet.name}}<br/>({{wallet.address}})</span>
                                                 <span class="short-address">{{wallet.name}}<br/><span {{shortener wallet.address}}>{{wallet.address}}</span></span><br/>
                                             {{/each}}

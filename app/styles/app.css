@@ -45,7 +45,7 @@ button.connect-wallet-button.btn.btn-fill {
   margin: 0;
 }
 
-p.wallet-placeholder{ 
+p.wallet-placeholder {
   position: absolute;
   top: 170px;
   font-size: 20px;
@@ -108,7 +108,7 @@ div.card.card-chart.card-holdings div.card-body.pie-chart-card-body{
 }
 
 .main-loader {
-    width: 100px; 
+  width: 100px;
 }
 
 .main-loader.rotate.coinbases {
@@ -125,7 +125,7 @@ div.card.card-chart.card-holdings div.card-body.pie-chart-card-body{
 .rotate {
     animation: rotation 2s infinite linear;
   }
-  
+
   @keyframes rotation {
     from {
       transform: rotate(0deg);
@@ -416,7 +416,8 @@ ul.guardian-status-ul.dropdown-menu.dropdown-menu-right.dropdown-navbar button {
 .card-logs div.AccordionToggle .author.small .title {
   font-size: 12px;
 }
-.card-logs 
+
+.card-logs
 iv.AccordionToggle .author.border-right {
   border-right: 3px solid #ff9f89;
 }
@@ -486,6 +487,11 @@ div.card-header  .card-title.forecast-description {
 
 .pie-chart-card-body {
   margin: 5px 0 5px;
+}
+
+.nft-card-body {
+  display: block;
+  text-align: center;
 }
 
 td.transaction-type img {
@@ -639,7 +645,7 @@ form.domain-available-container label.emphesized {
 #stakesModal .modal-content,
 #domainModal .modal-content {
   text-align: center;
-  
+
 }
 
 #offerMadeModal .domain-title,
@@ -979,7 +985,7 @@ a.logout {
   .long-address {
     display: none;
   }
-  
+
   .short-address{
     display: inline-block;
   }
@@ -987,7 +993,7 @@ a.logout {
   .dropdown-content, .dropdown .selected-dropdown-item {
     width: 240px;
     padding: 7px 15px;
-  }  
+  }
 }
 
 @media screen and (max-width: 560px) {
@@ -1039,7 +1045,7 @@ a.logout {
 
   .export-container {
     width: 100%;
-  }  
+  }
 
   div.main-panel div.content {
     padding-left: 5px;

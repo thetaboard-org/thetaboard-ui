@@ -1,21 +1,21 @@
 {{page-title "Reset password"}}
 
 <div class="card login-card" style="margin: 80px auto;">
-    {{navbar/i18n-selection}}
-    <br/>
-    <div class="logo">
-        <LinkTo @route='dashboard' @class="">
-            <img class="thetaboard-logo" src="{{rootURL}}assets/img/thetaboard-logo.png"/>
-        </LinkTo>
-    </div>
-    <div class="card-body">
-        <h4 class="card-title">{{t 'reset_pass.reset_pass'}}</h4>
-        {{#if resetPasswordLinkSent}}
-            <label>{{t 'reset_pass.submission_received'}}</label>
-            <br/>
-            <p>{{t 'reset_pass.will_receive_email'}}</p>
-        {{else}}
-            <form {{on 'submit' this.resetPassword}}>
+  {{navbar/i18n-selection}}
+  <br/>
+  <div class="logo">
+    <LinkTo @route='dashboard' @class="">
+      <img class="thetaboard-logo" src="{{rootURL}}/assets/img/thetaboard-logo.png"/>
+    </LinkTo>
+  </div>
+  <div class="card-body">
+    <h4 class="card-title">{{t 'reset_pass.reset_pass'}}</h4>
+    {{#if resetPasswordLinkSent}}
+      <label>{{t 'reset_pass.submission_received'}}</label>
+      <br/>
+      <p>{{t 'reset_pass.will_receive_email'}}</p>
+    {{else}}
+      <form {{on 'submit' this.resetPassword}}>
                 <div class="row">
                     <div class="col-md-6" style=" margin: auto;">
                         <div class="form-group">

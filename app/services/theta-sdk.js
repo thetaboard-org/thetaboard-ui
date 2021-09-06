@@ -3,7 +3,6 @@ import { inject as service } from '@ember/service';
 import ThetaWalletConnect from '@thetalabs/theta-wallet-connect';
 import * as thetajs from '@thetalabs/theta-js';
 import {tracked} from '@glimmer/tracking';
-import BigNumber from "bignumber.js";
 import {htmlSafe} from '@ember/template';
 import {cancel} from '@ember/runloop';
 import {later} from '@ember/runloop';

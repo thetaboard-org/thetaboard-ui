@@ -17,18 +17,20 @@
             </thead>
             <tbody>
             {{#each thetaSdk.walletList as |balance|}}
-            <tr>
+              <tr>
                 <td class="text-center">
-                <img src="{{rootURL}}assets/img/logo/{{balance.currency}}.png"
-                        class="img-fluid rounded-circle" style="width: 20px;min-width: 20px;">
+                  <img src="{{rootURL}}/assets/img/logo/{{balance.currency}}.png"
+                       class="img-fluid rounded-circle" style="width: 20px;min-width: 20px;">
                 </td>
                 <td class="text-center d-none d-sm-none d-md-table-cell">{{balance.type}}</td>
                 <td class="text-center ">
-                    <LinkTo {{shortener balance.wallet_address}} @route="wallet" @query={{hash wa=balance.wallet_address}}>{{balance.wallet_address}}</LinkTo>
-                    {{#if balance.node_address}}
-                        <br/>{{t 'wallet_list.node_address'}}:<br/>
-                        <LinkTo {{shortener balance.node_address}} @route="wallet" @query={{hash wa=balance.node_address}}>{{balance.node_address}}</LinkTo>
-                    {{/if}}
+                  <LinkTo {{shortener balance.wallet_address}} @route="wallet" @query={{hash
+                    wa=balance.wallet_address}}>{{balance.wallet_address}}</LinkTo>
+                  {{#if balance.node_address}}
+                    <br/>{{t 'wallet_list.node_address'}}:<br/>
+                    <LinkTo {{shortener balance.node_address}} @route="wallet" @query={{hash
+                      wa=balance.node_address}}>{{balance.node_address}}</LinkTo>
+                  {{/if}}
                 </td>
                 <td class="text-center d-none d-sm-none d-md-none d-lg-table-cell">{{currency.currentCurrency.symbol}}<span class="nostyle" {{numberformat balance.market_price 2}}></span></td>
                 <td class="text-center"><span class="nostyle" {{numberformat balance.amount 3}}></span></td>
