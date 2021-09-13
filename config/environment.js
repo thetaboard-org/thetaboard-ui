@@ -9,7 +9,6 @@ module.exports = function (environment) {
     environment,
     rootURL: '/',
     locationType: 'auto',
-    downloadCsvUrl: 'http://localhost:8000/transaction-exports.csv',
     EmberENV: {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
@@ -68,11 +67,6 @@ module.exports = function (environment) {
 
     ENV.APP.rootElement = '#ember-testing';
     ENV.APP.autoboot = false;
-  }
-
-  if (environment === 'production') {
-    // here you can enable a production-specific feature
-    ENV.downloadCsvUrl = 'https://thetaboard.io/transaction-exports.csv';
   }
   return ENV;
 };

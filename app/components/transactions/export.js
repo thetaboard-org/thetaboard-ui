@@ -74,11 +74,16 @@ export default class TransactionsExportComponent extends Component {
       .join('&');
     let self = this;
     document.getElementById('my_iframe').onload = function () {
-      var that = $(this)[0];
+      const that = $(this)[0];
       that.contentDocument;
       self.utils.errorNotify(self.intl.t('export.need_fifty_percent'));
     };
-    const url = `${config.downloadCsvUrl}?${queryString}`;
+    let url = `${window.location.origin}/transaction-exports.csv?${queryString}`;
+
+    // This is a hack to because we use ember s --proxy ""
+    // so we guess that if running on port 8080 the proxy port is 8000
+    url = url.replace(8080, 8000);
+
     document.getElementById('my_iframe').src = url;
     this.utils.successNotify(this.intl.t('export.generating'));
   }
