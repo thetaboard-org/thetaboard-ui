@@ -24,17 +24,19 @@
                 </td>
                 <td class="text-center d-none d-sm-none d-md-table-cell">{{balance.type}}</td>
                 <td class="text-center ">
-                  <LinkTo {{shortener balance.wallet_address}} @route="wallet" @query={{hash
+                  <LinkTo {{shortener balance.wallet_address}} @route="wallet.explorer" @query={{hash
                     wa=balance.wallet_address}}>{{balance.wallet_address}}</LinkTo>
                   {{#if balance.node_address}}
                     <br/>{{t 'wallet_list.node_address'}}:<br/>
-                    <LinkTo {{shortener balance.node_address}} @route="wallet" @query={{hash
+                    <LinkTo {{shortener balance.node_address}} @route="wallet.explorer" @query={{hash
                       wa=balance.node_address}}>{{balance.node_address}}</LinkTo>
                   {{/if}}
                 </td>
-                <td class="text-center d-none d-sm-none d-md-none d-lg-table-cell">{{currency.currentCurrency.symbol}}<span class="nostyle" {{numberformat balance.market_price 2}}></span></td>
+                <td class="text-center d-none d-sm-none d-md-none d-lg-table-cell">{{currency.currentCurrency.symbol}}
+                  <span class="nostyle" {{numberformat balance.market_price 2}}></span></td>
                 <td class="text-center"><span class="nostyle" {{numberformat balance.amount 3}}></span></td>
-                <td class="text-right">{{currency.currentCurrency.symbol}}<span class="nostyle" {{numberformat balance.value 2}}></span></td>
+                <td class="text-right">{{currency.currentCurrency.symbol}}<span class="nostyle" {{numberformat
+                  balance.value 2}}></span></td>
             </tr>
             {{else}}
             <p>{{t 'wallet_list.no_wallet'}} <LinkTo @route="my-wallets">{{t 'global.link_wallet'}}</LinkTo> {{t 'global.or'}} <a href="" data-toggle="modal" data-target="#searchModal">{{t 'global.enter_address'}}</a>.</p>
