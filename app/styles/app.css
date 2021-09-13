@@ -326,13 +326,13 @@ nav[aria-label="Page navigation"] .pager li.pager-inner {
 }
 
 @keyframes auto-progress {
-0% {
-  width: 0%;
-}
+  0% {
+    width: 0%;
+  }
 
-100% {
-  width: 100%;
-}
+  100% {
+    width: 100%;
+  }
 }
 
 .progress-bar {

@@ -72,6 +72,12 @@ export default class TransactionsExportComponent extends Component {
     const queryString = Object.keys(params)
       .map((key) => key + '=' + params[key])
       .join('&');
+    let self = this;
+    document.getElementById('my_iframe').onload = function () {
+      var that = $(this)[0];
+      that.contentDocument;
+      self.utils.errorNotify(self.intl.t('export.nedd_fifty_percent'));
+    };
     const url = `${config.downloadCsvUrl}?${queryString}`;
     document.getElementById('my_iframe').src = url;
     this.utils.successNotify(this.intl.t('export.generating'));

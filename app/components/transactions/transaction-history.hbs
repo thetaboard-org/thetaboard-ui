@@ -4,8 +4,7 @@
   </div>
   <div class="card-body">
     {{#if this.args.loading}}
-      <p style="text-align: center;"><img class="main-loader rotate transactions" width="50"
-                                          src="{{rootURL}}/assets/img/theta-logo.png"/></p>
+      <p style="text-align: center;"><img class="main-loader rotate transactions" width="50" src="{{rootURL}}/assets/img/theta-logo.png"/></p>
     {{else}}
       {{#if this.thetaSdk.walletList.length}}
         {{transactions/export}}
@@ -30,26 +29,21 @@
               <td class="text-center transaction-type"><img
                 src="{{rootURL}}/assets/img/transactions/{{transaction.type}}.png"/> {{transaction.typeName}}</td>
               <td class="text-center d-none d-sm-none d-md-table-cell">{{transaction.blockHeight}}</td>
-              <td class="text-center"><a href="{{explorerEndpoint}}/txs/{{transaction.txnHash}}"
-                                         target="_blank">{{moment-from transaction.txTimestamp}}</a></td>
+              <td class="text-center"><a href="{{explorerEndpoint}}/txs/{{transaction.txnHash}}" target="_blank">{{moment-from transaction.txTimestamp}}</a></td>
               <td class="text-center d-none d-sm-none d-md-none d-lg-none d-xl-table-cell">
-                <LinkTo {{shortener transaction.fromAddress}} @route="wallet" @query={{hash group=null
-                                                                                            wa=transaction.fromAddress}}>{{transaction.fromAddress}}</LinkTo>
+                <LinkTo {{shortener transaction.fromAddress}} @route="wallet" @query={{hash group=null wa=transaction.fromAddress}}>{{transaction.fromAddress}}</LinkTo>
               </td>
               <td class="text-center d-none d-sm-table-cell" id="in-or-out"><img
                 src="/assets/img/transaction-{{transaction.inOrOut}}.png"/></td>
               <td class="text-center d-none d-sm-none d-md-none d-lg-none d-xl-table-cell">
-                <LinkTo {{shortener transaction.toAddress}} @route="wallet" @query={{hash group=null
-                                                                                          wa=transaction.toAddress}}>{{transaction.toAddress}}</LinkTo>
+                <LinkTo {{shortener transaction.toAddress}} @route="wallet" @query={{hash group=null wa=transaction.toAddress}}>{{transaction.toAddress}}</LinkTo>
               </td>
               <td class="text-left td-value">
                 <div>
                   <img src="/assets/img/logo/theta.png" class="img-fluid rounded-circle" style="width: 20px;"
                        alt="logo"/>
-                  <span class="coin-amount"><span class="nostyle" {{numberformat transaction.thetaAmount
-                                                                                 3}}></span> <span class="capitalize">Theta</span> </span>
-                  <span class="coin-value">[{{currency.currentCurrency.symbol}}<span class="nostyle" {{numberformat
-                    transaction.thetaValue 2}}></span>]</span>
+                  <span class="coin-amount"><span class="nostyle" {{numberformat transaction.thetaAmount 3}}></span> <span class="capitalize">Theta</span> </span>
+                  <span class="coin-value">[{{currency.currentCurrency.symbol}}<span class="nostyle" {{numberformat transaction.thetaValue 2}}></span>]</span>
                 </div>
                 <div>
                   <img src="/assets/img/logo/tfuel.png" class="img-fluid rounded-circle" style="width: 20px;"
