@@ -127,10 +127,8 @@ transaction_history:
 
 
 ###### NFT START ######
-
 NFT:
   no_nft: "Ce portefeuille n'a pas de NFT"
-
 ###### NFT END ######
 
 
@@ -271,6 +269,7 @@ footer:
   github: "Allez voir le projet sur github"
 ###### FOOTER END ######
 
+
 ###### MENU START ######
 menu:
   dashboard: "Tableau de bord"
@@ -283,6 +282,7 @@ menu:
   domain: domaine
   faq: faq
 ###### MENU END ######
+
 
 ###### NAVBAR START ######
 navbar:
@@ -350,6 +350,8 @@ locale:
   en: "English"
   fr: "Français"
   es: "Español"
+  ja: "日本"
+  ko: "한국인"
 ###### LOCALE END ######
 
 
@@ -360,11 +362,15 @@ currency:
   aud: "AUD"
   eur: "EUR"
   gbp: "GBP"
+  krw: "KRW"
+  jpy: "JPY"
   symbol:
     usd: "$"
     aud: "A$"
     eur: "€"
     gbp: "£"
+    krw: "₩"
+    jpy: "¥"
 ###### CURRENCY END ######
 
 
@@ -399,6 +405,7 @@ export:
   button_label: "Exporter l'historique des transactions (CSV)"
   date_incorrect: "Veuillez sélectionner des dates à partir du 1er janvier 2021 jusqu'à aujourd'hui."
   generating: "Le rapport est en cours de génération, cela peut prendre jusqu'à une minute."
+  need_fifty_percent: " Le téléchargement de l'historique des transactions est disponible pour les portefeuilles staking au moins 50% de leur tfuel sur un nœud Edge hébergé par Thetaboard"
 ###### TRANSACTION EXPORT END ######
 
 

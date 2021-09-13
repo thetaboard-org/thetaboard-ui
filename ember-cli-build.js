@@ -25,7 +25,7 @@ module.exports = function (defaults) {
     },
     flatpickr: {
       theme: 'dark',
-      locales: ['fr', 'es'],
+      locales: ['fr', 'es', 'ja', 'ko'],
     },
   });
 

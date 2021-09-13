@@ -127,10 +127,8 @@ transaction_history:
 
 
 ###### NFT START ######
-
 NFT:
   no_nft: "This wallet doesn't have any NFT"
-
 ###### NFT END ######
 
 
@@ -251,7 +249,7 @@ my_wallets:
   addresses: "Addresses"
   no_group: "You don't have any group in your collection yet."
   wallets: "wallets"
-  ###### MY-WALLETS END ######
+###### MY-WALLETS END ######
 
 
 ###### DOWNLOAD WALLET START ######
@@ -271,6 +269,7 @@ footer:
   github: "Check the project on github"
 ###### FOOTER END ######
 
+
 ###### MENU START ######
 menu:
   dashboard: "dashboard"
@@ -283,6 +282,7 @@ menu:
   domain: "domain"
   faq: "faq"
 ###### MENU END ######
+
 
 ###### NAVBAR START ######
 navbar:
@@ -350,6 +350,8 @@ locale:
   en: "English"
   fr: "Français"
   es: "Español"
+  ja: "日本"
+  ko: "한국인"
 ###### LOCALE END ######
 
 
@@ -360,11 +362,15 @@ currency:
   aud: "AUD"
   eur: "EUR"
   gbp: "GBP"
+  krw: "KRW"
+  jpy: "JPY"
   symbol:
     usd: "$"
     aud: "A$"
     eur: "€"
     gbp: "£"
+    krw: "₩"
+    jpy: "¥"
 ###### CURRENCY END ######
 
 
@@ -399,6 +405,7 @@ export:
   button_label: "Export Transaction History (CSV)"
   date_incorrect: "Please select dates starting on January 1st, 2021 up to today."
   generating: "The report is being generated, it can take up to a minute."
+  need_fifty_percent: "The transaction history download is available for wallets staking at least 50% of their tfuel to a Thetaboard hosted Edge Node."
 ###### TRANSACTION EXPORT END ######
 
 

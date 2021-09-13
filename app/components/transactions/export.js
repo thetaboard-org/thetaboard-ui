@@ -76,7 +76,7 @@ export default class TransactionsExportComponent extends Component {
     document.getElementById('my_iframe').onload = function () {
       var that = $(this)[0];
       that.contentDocument;
-      self.utils.errorNotify(self.intl.t('export.nedd_fifty_percent'));
+      self.utils.errorNotify(self.intl.t('export.need_fifty_percent'));
     };
     const url = `${config.downloadCsvUrl}?${queryString}`;
     document.getElementById('my_iframe').src = url;

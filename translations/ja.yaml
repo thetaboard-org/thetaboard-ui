@@ -1,0 +1,566 @@
+###### GLOBAL START ######
+global:
+  year: "年"
+  year_short: "年"
+  month: "月"
+  month_short: "月"
+  week: "週"
+  week_short: "週"
+  ratio_theta_tfuel: "Theta/Tfuel比率"
+  last:
+    24h: "過去24時間"
+    7d: "過去7日間"
+    m: "過去数ヶ月"
+    6m: "過去6ヶ月"
+  market_cap: "時価総額"
+  24_volume: "24時間の取引量"
+  theta_staked: "Thetaがステーキングされました"
+  tfuel_staked: "Tfuelがステーキングされました"
+  apr_not_guarentee: "Theta Networkに依存するため、Thetaboardは、この年間利回り（APR)を保証できません。"
+  in: "の中"
+  or: "または"
+  for: "ため"
+  please: "お願いします"
+  link_wallet: "ウォレットをリンクする"
+  enter_address: "アドレスを入力する"
+  total: "合計"
+  type: "タイプ"
+  block: "ブロック"
+  apr: "年間利回り（APR)"
+  theta_doc: "Thetaのドキュメンテーション"
+  vip_een: "VIPエリートエッジノード"
+  copy_summary: "サマリをコピーする"
+  close: "閉じる"
+  staked: "ステーキング済み"
+  available: "利用可能です"
+  en_summary: "エッジノードのサマリ"
+  your_stakes: "あなたのステーキング"
+  staked_on: "ノードアドレスでステーキングしました"
+  clear: "クリア"
+  submit: "送信"
+  date: "日時"
+  summary: "サマリ"
+  wallet_address: "ウォレットアドレス"
+  search: 検索
+  cancel: キャンセル
+  search_a_wallet: "ウォレットアドレスを入力する"
+  search_a_wallet_short: "ウォレットを入力する"
+  enter_wallet: "ウォレットアドレスを入力する"
+  tfuel: "Tfuel"
+  refresh: "更新"
+  you: "あなた"
+  was: "過去"
+  click: "クリック"
+  here: "こちら"
+  by: "by"
+  login: "ログイン"
+  email: "Eメール"
+  password: "パスワード"
+  go_dash: "ダッシュボードに進む"
+  password_format: "パスワードは8文字以上必要で、大文字/小文字/数字/特殊文字をそれぞれ1文字以上含まなければいけません"
+  welcome: "Thetaboardへようこそ!"
+  add_wallet: "ウォレットに追加"
+  name: "名前"
+  default: "デフォルト"
+  action: "アクション"
+  remove: "削除"
+  reward: "報酬"
+  transfer: "送信"
+  reserve_fund: "資金留保"
+  service_payment: "サービス決済"
+  split_contract: "分割請負"
+  smart_contract: "スマートコントラクト"
+  withdraw_stake: "ステーキングを引き出し"
+  deposit_stake: "ステーキングをデポジット"
+  stake_reward_distribution: "報酬分配をステーキング"
+  selected: "選択済み"
+  not_selected: "未選択"
+  next: "次へ"
+  previous: "前へ"
+###### GLOBAL END ######
+
+
+###### DASHBOARD START ######
+### Price-chart component
+price_chart:
+  title: "Theta/Tfuel価格"
+  is_worth: "価値あり"
+### earnings-forecast components 
+reward_forecast:
+  title_tfuel: "エリートエッジノードTFuel報酬フォーキャスト"
+  title_theta: "ガーディアンノードTFuel報酬フォーキャスト"
+  subtitle: "フォーキャスト対象"
+  estimated_earning: "Tfuel概算獲得数"
+  per_day: "1日あたり"
+  per_month: "1月あたり"
+  per_year: "1年あたり"
+###### DASHBOARD END ######
+
+
+###### WALLET START ######
+### Wallet-list component
+wallet_list:
+  title: "保有物"
+  wallet_address: "ウォレットアドレス"
+  add_wallet_group: "ウォレット/グループを追加"
+  market_price: "市場価格"
+  amount: "数量"
+  node_address: "ノードアドレス"
+  no_wallet: "ウォレットはいりません"
+### holding-pie component
+holding_pie:
+  title: "構成元"
+### Coinbase-history component
+coinbase_history:
+  title: "{token}ステーキング報酬"
+  rewards_received: "報酬を受け取りました"
+  reward_received: "報酬を受け取りました"
+### transaction-history component
+transaction_history:
+  title: "トランザクション"
+  no_transaction: "トランザクションはありません"
+  age: "年齢"
+  from: "差出人"
+  to: "送信先"
+  value: "価値"
+###### WALLET END ######
+
+
+###### NFT START ######
+NFT:
+  no_nft: "このウォレットにはNFTがありません"
+###### NFT END ######
+
+
+###### STAKING START ######
+staking: 
+  earn_up_to: "最大獲得額"
+  tfuel_fees: "ステーキング報酬の3％の手数料（10 Tfuelを獲得するごとに、Thetaboardの手数料は0.3 Tfuelに相当します）."
+  tfuel_fees_affiliate: "2021年8月31日まで0％(2021年9月1日から3%）。"
+  ### Staking Tfuel
+  tfuel:
+    title: "Tfuelパブリックステーキング"
+    subtitle: "当社のデリゲートエリートエッジノードにTfuelをステーキングすることができます"
+    follow: "以下のサマリを使用してください"
+    using_summary: "よくある質問ページ"
+    stake_on: "100,000Tfuel以上をお持ちであれば、ステーキングしてください"
+  ### Staking Tfuel
+  theta:
+    title: "Thetaステーキング"
+    subtitle: "当社のデリゲートガーディアンノードにThetaをステーキングすることができます"
+    fees: "ステーキング報酬の3％の手数料（12 Tfuelを獲得するごとに、Thetaboardの手数料は0.36 Tfuelに相当します。報酬は11.64Tfuelの倍数で受け取ることになります）"
+    tuto: "以下のサマリを使用してください"
+    use_summary: "よくある質問ページ"
+    no_theta_staked: "ステーキングされたThetaを保有していません。"
+    earn: "THETAをステーキングしてTFUELをゲットしましょう"
+  ### Staking VIP
+  vip:
+    title: "Tfuel VIPエリートエッジノードステーキング"
+    subtitle: "ウォレットアドレスを以下に入力して新しいエッジノードを取得してください。"
+    once_summary: "サマリを手に入れたら、使用することができます"
+    start_staking: "ステーキングを始める."
+    node_list: "VIPエリートエッジノード一覧"
+    stake_amount: "ステーキング額"
+    see_summary: "サマリを確認する"
+    summary_will_appear: "サマリは間もなく表示されます"
+    no_vip: "まだVIPエリートエッジノードを持っていません"
+    no_tfuel_staked: "ステーキングされたTfuelを保有していません。"
+    earn: "Tfuelをステーキングして、TFUELをゲットしましょう"
+  ### Staking Affiliate 
+  affiliate:
+    stake_to: "Tfuelのステーキング先"
+    community_een: "コミュニティ・エリートエッジノード"
+###### STAKING END ######
+
+
+###### DOMAIN START ######
+domain:
+  offer_amount: "オファー金額:"
+  ### Contract/domain component
+  buy:
+    title: "Thetaのドメイン名を買う"
+    subtitle: "ドメイン名を入力して利用可能状況を確認する"
+    placeholder: "ドメイン名を入力する"
+    domain_name: "ドメイン名"
+    available: "5Tfuelが購入できます。"
+    will_assign: "デフォルトあたりウォレットアドレスに割り当てられます。"
+    but: "ただし、別のウォレットアドレスに割り当て/贈ることも可能です"
+    gift: "このドメイン名を使って他の人にプレゼント！"
+    enter_wallet_assign: "割り当てられるウォレットアドレスを入力する"
+    to_domain: "ドメイン名宛：:"
+    your_wallet: "または自分のウォレットアドレスに割り当てます！"
+    already_taken: "既に使用済みです。"
+    can_make_offer: "ただし、購入する提案はできます！"
+    offer_amount: "提案のTfuel数量"
+    amount_tfuel: "数量 (Tfuel)"
+    review_order: "注文を確認"
+    review_offer: "オファーを確認"
+    enter_receiver: "受取人のウォレットアドレスを入力する"
+  ### Contract/address component
+  lookup:
+    title: "アドレスのルックアップ"
+    check_domain: "アドレスを入力して、関連するドメイン名を確認する："
+    domain_list: "ドメイン名一覧："
+    no_associated_domain: "ウォレットアドレスに関連するドメインはありません："
+    my_domain: "マイ・ドメイン名"
+  ### Offer-made-list component
+  offer_made:
+    offer_submitted: "オファーが送信されました"
+    you_made_offer: "ドメインを買い取るオファーを送りました："
+    cancel_offer: "オファーを取り消す"
+    no_offer: "送られたオファーはありません。"
+    to_access: "オファーにアクセスする。"
+  ### Offer-received-list component
+  offer_received:
+    title: "オファーを受け取りました"
+    offer_made: "ドメインを買い取るオファーを送りました："
+    reject_offer: "オファーを拒否する"
+    accept_offer: "オファーを受け入れる"
+    no_offer: "受け取られたオファーはありません。"
+  #### domain-assigned-modal
+  ### offer-made-modal
+  modal:
+    congrats: "おめでとうございます！"
+    is_assigned: "アドレスに割り当てられました："
+    offer_sent: "オファーが送られました。"
+    you_offered: "オファーを送りました"
+    tfuel_buy: "ドメイン名購入に必要なTfuel"
+    from: "ウォレットアドレスから："
+    offer_cancelled: "オファーが取り消されました。"
+    offer_to_buy: "ドメインを買い取るオファー"
+    tfuel_canceled: "Tfuelは取り消されました"
+    the_offer: "オファーです！"
+    the_offer_to_buy: "ドメイン名を買い取るオファー"
+    from_wallet: "ウォレットアドレスのTfuel："
+    now_own: "現在、ドメイン名を保有しています"
+###### DOMAIN END ######
+
+
+###### MY-WALLETS START ######
+my_wallets:
+  add_collection: "ウォレットをコレクションに追加する"
+  enter_name_wallet: "このウォレットの名前を入力する"
+  no_wallet: "まだコレクションにウォレットがありません。"
+  wallet_list: "ウォレットリスト"
+  enter_name_group: "このグループの名前を入力する"
+  add_group: "グループを作成する"
+  click_wallet: "ウォレットをクリックして自分のグループに追加："
+  group_list: "グループリスト"
+  addresses: "アドレス"
+  no_group: "まだコレクションにグループがありません。"
+  wallets: "ウォレット"
+###### MY-WALLETS END ######
+
+
+###### DOWNLOAD WALLET START ######
+download_wallet:
+  make_sure: "必ず公式を使用して認証してください"
+  theta_wallet_extension: "Thetaウォレットの拡張"
+  download: "ダウンロードする。"
+###### DOWNLOAD WALLET END ######
+
+
+###### FOOTER START ######
+footer:
+  terms: "利用規約"
+  privacy: "プライバシーポリシー"
+  join_discord: "Discordで参加する"
+  follow_twitter: "Twitterでフォローする"
+  github: "githubでプロジェクトをチェックする"
+###### FOOTER END ######
+
+
+###### MENU START ######
+menu:
+  dashboard: "ダッシュボード"
+  wallet: "ウォレット"
+  nft: NFT
+  staking: "ステーキング"
+  tfuel: "Tfuel"
+  theta: "Theta"
+  tfuel_vip: "Tfuel VIP"
+  domain: "ドメイン"
+  faq: "よくある質問"
+###### MENU END ######
+
+
+###### NAVBAR START ######
+navbar:
+  signed_as: "以下でサインインする"
+  my_wallets: "マイウォレット"
+  logout: "ログアウト"
+###### NAVBAR END ######
+
+
+###### VERIFY START ######
+verify:
+  please_verify: "メールアドレスを認証してください"
+  resend: "認証リンクを再送する"
+  email_verified: "あなたのメールアドレスが今認証されました。"
+  can_login: "アカウントにログインできるようになりました"
+  link_invalid: "認証リンクが無効です。"
+  click_banner: "アカウントにログインして、[認証用リンクを再送する]というバナーをクリックします。"
+###### VERIFY END ######
+
+
+###### LOGIN START ######
+login:
+  no_account: "まだアカウントを持っていませんか？アカウントにサインアップしましょう"
+  cant_login: "ログインできませんか？"
+###### LOGIN END ######
+
+
+###### SIGN UP START ######
+signup:
+  title: "サインアップ"
+  password_confirm: "パスワードの確認"
+  register: "登録"
+  already_account: "既にアカウントを持っていますか？"
+  click_to_login: "こちらをクリックしてログイン"
+###### SIGN UP END ######
+
+
+###### PASSWORD RESET START ######
+reset_pass:
+  reset_pass: "パスワードを再設定する"
+  submission_received: "パスワードの再設定通知を受け取りました"
+  will_receive_email: "メールアドレスに合致するアカウントがありましたら、パスワードの再設定用のリンクが付いたメールをお送りします。"
+  no_account_yet: "まだアカウントを持っていませんか？アカウントにサインアップしましょう"
+  pass_updated: "パスワードが更新されました。ログインできるようになりました"
+###### PASSWORD RESET END ######
+
+
+###### REGISTERED START ######
+registered:
+  title: "認証リンクがメールアドレス宛に送られました。"
+  subtitle: "メールでお送りしたリンクをクリックして、登録手続きを完了させてください。"
+###### REGISTERED END ######
+
+
+###### 404 START ######
+notfound:
+  oops: "あらら！"
+  page_doesnt_exist: "お探しのページは存在しません。"
+###### 404 END ######
+
+
+###### LOCALE START ######
+locale:
+  language: "Language"
+  en: "English"
+  fr: "Français"
+  es: "Español"
+  ja: "日本"
+  ko: "한국인"
+###### LOCALE END ######
+
+
+###### CURRENCY START ######
+currency:
+  currency: "通貨"
+  usd: "USD"
+  aud: "AUD"
+  eur: "EUR"
+  gbp: "GBP"
+  krw: "KRW"
+  jpy: "JPY"
+  symbol:
+    usd: "$"
+    aud: "A$"
+    eur: "€"
+    gbp: "£"
+    krw: "₩"
+    jpy: "¥"
+###### CURRENCY END ######
+
+
+###### UTILS NOTIFY START ######
+notif:
+  invalid_address: "無効なウォレットアドレスまたはドメイン名です"
+  something_wrong: "エラーが発生しました。後ほどもう一度お試しください"
+  wallet_no_domain: "こちらはウォレットアドレスです。ドメイン名ではありません"
+  invalid_goup: "無効なグループ名です"
+  invalid_wallet_name: "無効なウォレット名です"
+  invalid_wallet_address: "無効なウォレットアドレスです"
+  group_created: "グループを作成しました"
+  wallet_added: "ウォレットを追加しました"
+  group_removed: "グループを削除しました"
+  wallet_removed: "ウォレットを削除しました"
+  setup_as_default: "{name}はデフォルトとして設定されています"
+  verification_sent: "{email}宛に認証リンクが送信されました"
+  vip_creation: "VIPエリートエッジノードが作成されています"
+  vip_ready: "VIPエリートエッジノードの準備が整いました！"
+  not_enough_tfuel: "ウォレットのTfuelが不足しています"
+###### UTILS NOTIFY END ######
+
+
+###### COPY CLIPBOARD START ######
+clip:
+  succesfully: "{label}が正常にクリップボードにコピーされました"
+###### COPY CLIPBOARD END ######
+
+
+###### TRANSACTION EXPORT START ######
+export:
+  button_label: "トランザクション履歴（CSV)をエクスポート"
+  date_incorrect: "2021年1月1日から本日までの日付を選択してください。"
+  generating: "レポートを生成中です。1分ほどお待ちください。"
+  need_fifty_percent: "取引履歴をダウンロードするには、Tfuelの少なくとも50％がThetaboardステーキングである必要があります"
+###### TRANSACTION EXPORT END ######
+
+
+############ BACK-END ERROR START ############
+error:
+  no_empty_email_password: "メールアドレスおよび/またはパスワードが空欄です"
+  incorrect_email_password: "メールアドレスおよび/またはパスワードが誤っています"
+############ BACK-END ERROR END ############
+
+
+###### FAQ START ######
+faq:
+  title: "Thetaboardのよくある質問"
+  subtitle: "Thetaboardとは何ですか？"
+  description: "Thetaを愛する人にとっての中心的な場所になることが、Thetaboardの使命です。 <br>
+              Thetaに関する情報へのアクセスを簡素化する機能、またはユーザーフレンドリーなUIであるTfuelやThetaステーキングなどのエコシステムを充実させる機能を提供することで、Thetaエコシステムに価値をもたらしたいと考えています。
+              <br>
+              <br/>
+              ご不明な点がありましたら、<a target=\"_blank\" href=\"https://discord.gg/SGUtY7zBU3\"> Discord</a>または<a href=\"https://twitter.com/Thetaboard1\" target=\"_blank\">Twitter</a>上からお問い合わせいただけます。
+              <br>"
+  quick_links: "クイックリンク集"
+  how_to_stake_tfuel : "Tfuelをステーキングする方法は？"
+  how_to_stake_tfuel_link : "/assets/pdf/How_to_stake_TFUEL.pdf"
+  how_to_stake_theta : "Thetaをステーキングする方法は？"
+  how_to_stake_theta_link : "/assets/pdf/How_to_stake_THETA.pdf"
+  how_to_withdraw : "ステーキングを引き出す方法は？"
+  how_to_withdraw_link : "/assets/pdf/How_to_WITHDRAW_stake.pdf"
+  what_staking: "ステーキングとは何ですか？"
+  what_staking_body: "<p>ステーキングとは、自分のトークンを作業を完了するマシンに関連付け、ネットワークにセキュリティを提供することなどを含むプロセスです。
+                   そうすることで、さらに報酬を獲得できるようになります。<br/>
+                  報酬はステーキングするトークン数とノードのアップタイムに基づいています。
+                     ステーキング獲得額を最大化するには、ノードをホスティングしているコンピューターを24時間365日稼働させたままにしておく必要があります。<br/>
+                  Thetaネットワーク上では、ThetaトークンとTfuelトークンの両方のステーキング可能です。両方のトークンとも、Tfuel形式でステーキングをしたことに対して報酬が支払われます。
+                     所有しているトークンをステーキングするには、ガーディアンノード（Theta）またはエリートエッジノード（Tfuel）のどちらかにトークンを送る必要があります。
+                      どちらのノードも、Thetaの分散型ネットワーク内で重要な役割を担っています。<br/>
+                  ステーキングのプロセス中は、トークンは常にご自分の正式なThetaウォレットの中に保有することになります。ノードがオフになっても、
+                     トークンは自分のウォレットに保持され、ウォレットへのアクセス権を持っている人のみがコントロールできます。
+                      公式のThetaウォレット以外の場所では、12文字のシードフレーズ、またはキーストアファイルおよびパスワードを絶対に入力しないでください。
+                       Thetaboardがこの情報を要求することは決してありません。</p>
+                       <br/><br/>"
+  
+  provide: "Thetaboardは、どのようなステーキングを提供していますか？"
+  provide_body: "<h4>Theta</h4>
+                  <p>Thetaトークンを1,000以上保有している方は、ガーディアンノードにステーキングしてください。ガーディアンノードにステーキングできるTheta量に制限はありません。</p><br/>
+                  <h4>Tfuel</h4>
+                  <p>Tfuelを10,000以上保有している方は、パブリックエリートエッジノードのいずれかにステーキングしてください。エリートエッジノードでは、いずれか一つのノードに最大500,000までのTfuelをステーキングできます。</p><br/>
+                  <h4>Tfuel VIP</h4>
+                  <p>Tfuelを100,000以上保有する個人の方。これらのエリートエッジノードはあなたのために確保され、ステーキングを増やす余地を保証します。そして自分のステーキングを引き出して、再びデポジットに戻す場合は同じノードサマリを保証します。</p>
+                  <br/><br/>"
+  deposit: "Thetaネットワーク上で自分のステーキングをデポジットするにはどうすればよいですか？"
+  deposit_body: "<p>自分の正式なThetaウォレット内からThetaまたはTfuelのステーキングをデポジットできます。</p><br/>
+                  <h4>Thetaをガーディアンノードにステーキングする</h4>
+                  <p><a target=\"_blank\" href=\"https://docs.thetatoken.org/docs/guardian-staking-process\">https://docs.thetatoken.org/docs/guardian-staking-process</a><br/>
+                  Thetaウォレット内のプロセス中に、Thetaboardのワンクリック・ガーディアンノードアドレスを使用できます。<br/>
+                  Thetaを10,000以上、ガーディアンノードにステーキングする場合は、 <a href=\"/staking/theta\">Thetaステーキングに関するページ</a>に記載されているサマリを使用してください。Theta Labsには、ワンクリック送信用に最大10,000のThetaがあります。<br/>
+                  Thetaのワンクリック送信ステーキングに関するTheta Labsからの詳しい情報：<br/>
+                  <a target=\"_blank\" href=\"https://medium.com/theta-network/theta-1-click-delegated-staking-now-live-in-the-theta-web-wallet-b80d499aae71\">https://medium.com/theta-network/theta-1-click-delegated-staking-now-live-in-the-theta-web-wallet-b80d499aae71</a></p><br/>
+                  <h4>Tfuelをエリートエッジノードにステーキングする</h4>
+                  <p><a target=\"_blank\" href=\"https://docs.thetatoken.org/docs/elite-edge-node-staking-process\">https://docs.thetatoken.org/docs/elite-edge-node-staking-process</a><br/>
+                  Thetaウォレット内のエッジステーキングプロセス中に、<a href=\"/staking/tfuel\">Tfuelページ</a>またはVIPノードの要求後に提供される<a href=\/staking/tfuelvip\">VIPサマリ</a>で入手できるパブリックステーキングサマリを使用できます。<br/>
+                  Tfuelステーキングに関するTheta Labsからの詳しい情報：<br/>
+                  <a target=\"_blank\" href=\"https://medium.com/theta-network/theta-wallet-v3-0-1-released-to-enable-tfuel-staking-at-block-height-10-968-061-on-june-30-c90bf080ef93\">https://medium.com/theta-network/theta-wallet-v3-0-1-released-to-enable-tfuel-staking-at-block-height-10-968-061-on-june-30-c90bf080ef93</a></p><br/>
+                  <br/><br/>"
+  stake: "取引所からTfuelまたはThetaをステーキングしてもよいですか？"
+  stake_body: "<p>いいえ。Thetaネットワーク上でのステーキングは、現在自分のThetaウォレットにデポジットされたトークンを使用することでのみ可能です。<br/> 
+                    <a href=\"https://www.thetatoken.org/\" target=\"_blank\">https://www.thetatoken.org/</a>の上部にあるウォレットリンクを使うことをお勧めします。 
+                    また、こちらをブックマークすることで、自分にウォレットに安全にアクセスできるようになります。12文字のシードフレーズ、またはキーストアファイルとパスワードの入力が必要なのはこの場所だけです。</p><br/>
+                  <br/><br/>"
+  where_nodes: "Thetaboardの使っているノードはどこにありますか？"
+  where_nodes_body: "<p>Thetaboardは、アメリカとカナダ中にノードを保有しています。今後は他の国にも拡大していく予定です。</p><br/>
+                  <br/><br/>"
+  fees: "Thetaboardではどのような手数料がありますか？"
+  fees_body: "<p>ThetaおよびTfuelノードをホスティングするためのThetaboard手数料は、獲得した報酬の3％です。現在のTfuelの年間利回り（APR）8％だとして、
+                     7.76%のAPR、Thetaboardは0.24%を得ることになります。</p><br/>
+                  <br/><br/>"
+  minimum: "現在の最小ステーキング数はどれくらいですか？"
+  minimum_body: "<p>Thetaネットワーク上でステーキングするための最小数量は、</p><br/>
+                  <p>1,000Thetaトークン、または<br/>
+                  10,000Tfue;トークンです。</p><br/>
+                  <p>これらの下限は、Theta Labsによって設定され、過去に変更になったことがあります。これらの最小数量の今後の変更について、ThetaLabsによって定められたスケジュールはありません。</p><br/>
+                  <br/><br/>"
+  when_earn: "報酬を獲得するのはいつですか？"
+  when_earn_body: "<p>Thetaネットワークでは、加重型ランダム割当方式を使用して、ステーキング報酬を送信しています。そのアルゴリズムはトークンによってさまざまです。</p><br/>
+                  <h4>Theta</h4>
+                  <p>Thetaのステーキング報酬は、100ブロックごとにさまざまなステーキングに支払われ、そのサイズによって定期的に支払われる可能性が高まります。
+                     ガーディアンノードにステーキングされるThetaの量に違いはありません。<br/>
+                  Thetaのステーキング報酬額は、Thetaブロックチェーンによって12の倍数で割り当てられます。Thetaboard手数料は、
+                   トランザクションがウォレットに到着するまでに徴収されます。つまり、金額は11.64の倍数になります。</ p> <br/>
+                  <h4>Tfuel</h4>
+                  <p>Tfuelのステーキング報酬は、100ブロックごとにエッジノードに支払われ、 
+                    エッジノードにステーキングされたTfuelの数量によって定期的に支払われる可能性が高まります。個々のTfuelステーキングのサイズに違いはありません。<br/>
+                  Tfuelのステーキング報酬額は、ステーキングのサイズによって大きく変動します。多くの場合、小数点以下3桁で、通常は5Tfuel以下です。.</p><br/>
+                  <br/><br/>"
+  how_much_earn: "獲得できるTfuelはどれくらいですか？"
+  how_much_earn_body: "<p>Thetaboardダッシュボードにある報酬予測計算ツールを使って、ステーキングサイズによる獲得額予測を確認してください。</p><br/>
+                  <br/><br/>"
+  public_private: "エリートエッジノードは、パブリックまたはプライベートのどちらを使えばよいですか？"
+  public_private_body: "<p>Thetaboardユーザーの多くは両方使っています。ノードをシェアすると、支払いの頻度（ただし、金額ではない）が増えます。
+                  ノードは、単独でステーキングしている場合よりも多くのTfuelを保持するため、報酬アルゴリズムで選ばれる可能性が高くなります。
+                  ステーキングしなければ、あなたの場所は確保されません。ただし、必要に応じて、引き続きパブリックエリートエッジノードを提供します。 
+                  また、10,000のTfueｌステーキングを分離し、それをパブリックエリートエッジノードに配置すると、より少量のTfuelを引き出して追加できるため、 
+                  ステーキングを解除してもステーキング数量全体に影響することはありません。</p><br/>
+                  <br/><br/>"
+  where_rewards_from: "これらの報酬の出どころは？"
+  where_rewards_from_body: "<p>Thetaネットワークは、Tfuelトークンのインフレを使用してステーキング報酬を支払います。このTfuelのインフレは、Tfuelステーキングのブロックあたり38Tfuel、 
+                  Thetaステーキングのブロックあたり48Tfuelで設定されています。Thetaネットワークは6秒のブロックを目指しており、 
+                  その時点でインフレ率はTfuel初回供給50億の約4％（Tfuelステーキング報酬）と5％（Thetaステーキング報酬）のインフレに相当します。.</p><br/>
+                  <p>このインフレは、Thetaネットワークを使用するために支払われた手数料の一部を燃焼することによって相殺される予定です。ThetaLabsは、 
+                  Tfuelの合計供給を初回供給の50億に近づけることを目標にしています。</p><br/>
+                  <br/><br/>"
+  staking_wallet: "ウォレット内で報酬はどのように見えますか？"
+  staking_wallet_body: "<p>ダッシュボードでのステーキング報酬は、「コインベース」トランザクションの形式で、トークンをステーキングしたウォレットに送信されます。 
+ 
+                  これらのコインベーストランザクションの「差出人」アドレスは、Thetaネットワークの16のバリデーターノードアドレスの1つになります。</p><br/>
+                  <p>Thetaウォレットを使用して報酬をトラッキングしている場合、それらはトランザクションとしてではなく、利用可能なTfuel残高の増加分としてのみ表示されます。</p><br/>
+                  <br/><br/>"
+  no_rewards: "Thetaのステーキング報酬を1週間受け取っていません。なぜですか？"
+  no_rewards_body: "<p>Thetaの最低額に近い金額をステーキングしている場合、Theta Labsのステーキング報酬アルゴリズムにより、数週間支払いがない可能性があります。 
+                  報酬は確実に受け取れますのでご安心ください。ステーキングアルゴリズムから、報酬の支払先として選定される必要があるだけです。</p><br/>
+                  <p>ステーキング報酬なしで長期間経っても、報酬はまだ発生しています。 
+                  多くの場合、報酬のない長い閑散期がありますが、通常よりも短期間で多くの額を受け取ります。</p><br/>
+                  <p>Theta LabsによるThetaのランダム化ブロック報酬の議論はここにあります：</p><br/>
+                  <p><a traget=\"_blank\" href=\"https://medium.com/theta-network/theta-protocol-code-v2-2-0-released-with-important-performance-related-updates-6b9e2261d0ae\">https://medium.com/theta-network/theta-protocol-code-v2-2-0-released-with-important-performance-related-updates-6b9e2261d0ae</a></p><br/>
+                  <P>2021年6月のメインネット3.0以前は、すべてのThetaステーキング報酬は12の倍数のトランザクションで提供されていました。しかし、それ以降は、Thetaステーキング報酬がTfuelステーキング報酬にジョインしている事例が発生しました。 
+                  これにより、支払いに対する適当なステーキングのトラッキングがより困難になります。当社のダッシュボードは、ThetaとTfuelのステーキング報酬を正しく割り当てるためにあらゆる手段を講じますが、 
+                  これらはThetaブロックチェーンにラベル付けされていないため、すべての合算決済をキャプチャできない場合があります。</p>
+                  <br/><br/>"
+  withdraw_add_more: "新しいトークンを追加するにはステーキングを引き出さなければいけませんか？"
+  withdraw_add_more_body: "<p>追加する数量がステーキングの最小要件（1000Thetaと10,000Tfuel）を下回っている場合、新しいトークンを追加するためには元の数量をアンステークする必要があります。
+                  数量が最小要件を超えていれば、新規ステーキングとして新しい数量をステーキングしてください。</p><br/>
+                  <br/><br/>"
+  how_withdraw: "ステーキングを引き出すにはどうすれば良いですか？"
+  how_withdraw_body: "<p>Thetaウォレットの中からステーキングしたトークンを引き出すことができます。</p><br/>
+                  <p>ステーキングの引き出し手順についての詳細は、Thetaの公式書類をご覧ください。<br/>
+                  <a href=\"https://docs.thetatoken.org/docs/withdrawing-your-stake-from-the-guardian-node\" target=\"_blank\">https://docs.thetatoken.org/docs/withdrawing-your-stake-from-the-guardian-node</a></p>
+                  <br/><br/>"
+  where_coin: "ステーキングトークンを引き出しましたが、まだウォレットにありません。どこにありますか？"
+  where_coin_body: "<p>ThetaとTfuelトークンは、両方ともアンステークに約54時間かかります。元のウォレット内に表示されます。</p><br/>
+                  <br/><br/>"
+  rewards_withdraw: "54時間のアンステーキング期間中に報酬を獲得できますか？"
+  rewards_withdraw_body: "<p>いいえ、できません。</p><br/>
+                  <br/><br/>"
+  rewards_paid: "アンステーキング期間を開始したときに支払報酬は引き続き支払われますか？"
+  rewards_paid_body: "<p>はい、支払われます。</p><br/>
+                  <br/><br/>"
+  new_address: "自宅にあるエッジノードの新しいウォレットアドレスは何ですか？"
+  new_address_body: "<p>エッジノードには、キャッシュを収集して報酬を計算するための独自のウォレットアドレスがあります。詳細については、こちらをご覧ください。</p><br/>
+                  <p><a target=\"_blank\" href=\"https://medium.com/Theta-network/Theta-elite-edge-node-v3-0-6-released-to-enable-mainnet-3-0-features-7b07fc4bc7b3\">https://medium.com/Theta-network/Theta-elite-edge-node-v3-0-6-released-to-enable-mainnet-3-0-features-7b07fc4bc7b3</a></p>
+                  <br/><br/>"
+  domain: "Thetaboardを通じて購入可能なThetaドメインネームは何ですか？"
+  domain_body: "<p>ドメインは現在、Proof of Concept（POC)のみです。現在、ドメインを売買し、それらを使用してThetaboardのウェブサイト内で名前でウォレットを検索し、Thetaboardへのサポートを示すことができます。 <br/>
+                  2021年のある時点で、最終契約に移行します。それはNFTであり、ウォレットアドレスの代わりにドメイン名を使用してトランザクションを実行するために、Thetaウォレットに統合されます。<br/>
+                  ただし、現在購入しているドメインを新しいバージョンに移行することはできません。<br/>
+                  Thetaネットワークの詳細については、こちらをご覧ください。<br/>
+                  <a href=\"https://docs.thetatoken.org/docs/what-is-theta-network\" target=\"_blank\">https://docs.thetatoken.org/docs/what-is-theta-network</a></p>
+                  <br/><br/>"  
+###### FAQ END ######
+

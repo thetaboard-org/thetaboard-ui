@@ -1184,3 +1184,11 @@ input.flatpicker-input {
 .capitalize-first {
   text-transform: capitalize;
 }
+
+p.menu-item {
+  font-weight: 500;
+}
+
+a.active p.menu-item {
+  font-weight: 650;
+}

@@ -30,6 +30,14 @@ export default class CurrencyService extends Service {
         value: 'gbp',
         name: this.intl.t(`currency.gbp`),
       },
+      {
+        value: 'jpy',
+        name: this.intl.t(`currency.jpy`),
+      },
+      {
+        value: 'krw',
+        name: this.intl.t(`currency.krw`),
+      },
     ];
   }
 

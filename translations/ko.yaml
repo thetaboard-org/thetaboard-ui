@@ -1,0 +1,564 @@
+###### GLOBAL START ######
+global:
+  year: "년"
+  year_short: "Y"
+  month: "월"
+  month_short: "M"
+  week: "주"
+  week_short: "W"
+  ratio_theta_tfuel: "Theta/Tfuel 비율"
+  last:
+    24h: "지난 24시간"
+    7d: "지난 7일"
+    m: "지난 달"
+    6m: "지난 6개월"
+  market_cap: "시가총액"
+  24_volume: "24시간 볼륨"
+  theta_staked: "Theta 스테이킹"
+  tfuel_staked: "Tfuel 스테이킹"
+  apr_not_guarentee: " Thetaboard는 Theta 네트워크에 의존하기 때문에 이 APR을 보장할 수 없습니다."
+  in: "~에"
+  or: "또는"
+  for: "~를 위해"
+  please: "제발"
+  link_wallet: "지갑 연결"
+  enter_address: "주소를 입력하세요"
+  total: "총계"
+  type: "유형"
+  block: "차단"
+  apr: "APR"
+  theta_doc: "세타 문서"
+  vip_een: " VIP 엘리트 엣지 노드"
+  copy_summary: "요약 복사"
+  close: "닫기"
+  staked: "스테이킹"
+  available: "사용 가능"
+  en_summary: "에지 노드 요약"
+  your_stakes: "귀하의 지분"
+  staked_on: "노드 주소에 스테이킹"
+  clear: "클리어"
+  submit: "제출"
+  date: "날짜"
+  summary: "요약"
+  wallet_address: "지갑 주소"
+  search: 검색
+  cancel: 취소
+  search_a_wallet: "지갑 주소를 입력하세요"
+  search_a_wallet_short: "지갑 입력"
+  enter_wallet: "지갑 주소 입력"
+  tfuel: "Tfuel"
+  refresh: "새로고침"
+  you: "너"
+  was: "이었다"
+  click: "클릭"
+  here: "여기"
+  by: "~에 의해"
+  login: "로그인"
+  email: "이메일"
+  password: "비밀번호"
+  go_dash: "대시보드로 이동"
+  password_format: "비밀번호는 최소 8자 이상이어야 하며 대문자 1개, 소문자 1개, 숫자 1개 또는 특수 문자 1개 이상을 포함해야 합니다"
+  welcome: "환영합니다!"
+  add_wallet: "지갑 추가"
+  name: "이름"
+  default: "기본값"
+  action: "액션"
+  remove: "제거"
+  reward: "보상"
+  transfer: "전송"
+  reserve_fund: "예비금"
+  service_payment: "서비스 결제"
+  split_contract: "계약 분할"
+  smart_contract: "스마트 계약"
+  withdraw_stake: "지분 인출"
+  deposit_stake: "예금 지분"
+  stake_reward_distribution: "지분 보상 분배"
+  selected: "선택됨"
+  not_selected: "선택되지 않음"
+  next: "다음"
+  previous: "이전"
+###### GLOBAL END ######
+
+
+###### DASHBOARD START ######
+### Price-chart component
+price_chart:
+  title: "Theta/Tfuel 가격"
+  is_worth: "가치가 있다"
+### earnings-forecast components 
+reward_forecast:
+  title_tfuel: "엘리트 엣지 노드 TFuel 보상 예측"
+  title_theta: "가디언 노드 TFuel 보상 예측"
+  subtitle: "예측"
+  estimated_earning: "예상 Tfuel 수입"
+  per_day: "하루당"
+  per_month: "월별"
+  per_year: "연간"
+###### DASHBOARD END ######
+
+
+###### WALLET START ######
+### Wallet-list component
+wallet_list:
+  title: "홀딩스"
+  wallet_address: "지갑 주소"
+  add_wallet_group: "지갑/그룹 추가"
+  market_price: "시장 가격"
+  amount: "금액"
+  node_address: "노드 주소"
+  no_wallet: "지갑이 없습니다."
+### holding-pie component
+holding_pie:
+  title: "구성"
+### Coinbase-history component
+coinbase_history:
+  title: "{token} 스테이킹 보상"
+  rewards_received: "받은 보상"
+  reward_received: "보상을 받았습니다"
+### transaction-history component
+transaction_history:
+  title: "거래"
+  no_transaction: "거래 없음"
+  age: "나이"
+  from: "에서"
+  to: "~에"
+  value: "값"
+###### WALLET END ######
+
+
+###### NFT START ######
+NFT:
+  no_nft: "이 지갑에는 NFT가 없습니다."
+###### NFT END ######
+
+
+###### STAKING START ######
+staking: 
+  earn_up_to: "최대 적립"
+  tfuel_fees: "스테이킹 보상에 대한 3% 수수료(매 10 Tfuel 적립에 대해 Thetaboard 수수료는 0.3 Tfuel입니다)."
+  tfuel_fees_affiliate: "2021년 8월 31일까지 수수료 0%(2021년 9월 1일부터 수수료 3%)"
+  ### Staking Tfuel
+  tfuel:
+    title: " Tfuel 공개 스테이킹"
+    subtitle: "델리게이트 엘리트 엣지 노드에 Tfuel을 스테이킹할 수 있습니다"
+    follow: "아래 요약을 사용하고 우리를 따르십시오"
+    using_summary: "FAQ 페이지"
+    stake_on: "100,000 Tfuel 이상이면 우리의 지분을 확보하세요"
+  ### Staking Tfuel
+  theta:
+    title: "Theta 스테이킹"
+    subtitle: "당신은 우리 대리인 수호자 노드에 당신을 스테이크할 수 있습니다"
+    fees: "스테이킹 보상에 대한 3% 수수료(매 12 Tfuel 적립에 대해 Thetaboard 수수료는 0.36 Tfuel입니다. 보상은 11.64 Tfuel의 배수로 받게 됩니다)"
+    tuto: "아래 요약을 사용하고 우리의 것을 따르십시오"
+    use_summary: "FAQ 페이지"
+    no_theta_staked: "세타 스테이킹이 없습니다."
+    earn: " THETA를 스테이킹하여 TFUEL을 적립하세요"
+  ### Staking VIP
+  vip:
+    title: " Tfuel VIP 엘리트 엣지 노드 스테이킹"
+    subtitle: "아래에 지갑 주소를 입력하여 새 에지 노드를 받으세요."
+    once_summary: "요약이 있으면 사용할 수 있습니다"
+    start_staking: "스테이킹을 시작합니다."
+    node_list: "VIP 엘리트 에지 노드 목록"
+    stake_amount: "지분 금액"
+    see_summary: "요약 보기"
+    summary_will_appear: "요약이 곧 나타날 것입니다"
+    no_vip: " VIP 엘리트 엣지 노드가 아직 없습니다."
+    no_tfuel_staked: "당신은 스테이킹된 Tfuel이 없습니다."
+    earn: " TFUEL을 적립하려면 Tfuel을 스테이킹하세요."
+  ### Staking Affiliate 
+  affiliate:
+    stake_to: " Tfuel을 스테이크로"
+    community_een: "커뮤니티 엘리트 엣지 노드"
+###### STAKING END ######
+
+
+###### DOMAIN START ######
+domain:
+  offer_amount: "제안 금액:"
+  ### Contract/domain component
+  buy:
+    title: " Theta 도메인 이름 구입"
+    subtitle: "사용 가능한지 확인하려면 도메인 이름을 입력하십시오"
+    placeholder: "도메인 이름 입력"
+    domain_name: "도메인 이름"
+    available: "사용 가능합니다. 5 Tfuel에 구입할 수 있습니다!"
+    will_assign: "기본적으로 지갑 주소에 할당됩니다."
+    but: "하지만 다른 지갑 주소로 할당/선물할 수도 있습니다"
+    gift: "이 도메인 이름을 가진 다른 사람에게 선물하세요!"
+    enter_wallet_assign: "할당될 지갑 주소를 입력하세요"
+    to_domain: "도메인 이름으로:"
+    your_wallet: "또는 지갑 주소에 할당하세요!"
+    already_taken: "이미 촬영되었습니다!"
+    can_make_offer: "하지만 구매 제안을 할 수 있습니다!"
+    offer_amount: " Tfuel의 제안 금액"
+    amount_tfuel: "금액(Tfuel)"
+    review_order: "주문 검토"
+    review_offer: "제안 검토"
+    enter_receiver: "수취인의 지갑 주소 입력"
+  ### Contract/address component
+  lookup:
+    title: "주소 조회"
+    check_domain: "연결된 도메인 이름을 확인하려면 주소를 입력하세요:"
+    domain_list: "도메인 이름 목록:"
+    no_associated_domain: "지갑 주소와 연결된 도메인이 없습니다:"
+    my_domain: "내 도메인 이름"
+  ### Offer-made-list component
+  offer_made:
+    offer_submitted: "제안 제출됨"
+    you_made_offer: "도메인 구매를 제안하셨습니다:"
+    cancel_offer: "제안 취소"
+    no_offer: "제안이 제출되지 않았습니다."
+    to_access: "귀하의 제안에 액세스합니다."
+  ### Offer-received-list component
+  offer_received:
+    title: "제안을 받았습니다"
+    offer_made: "도메인 구매 제안을 했습니다:"
+    reject_offer: "제안 거부"
+    accept_offer: "제안 수락"
+    no_offer: "제안을 받지 못했습니다."
+  #### domain-assigned-modal
+  ### offer-made-modal
+  modal:
+    congrats: "축하합니다!"
+    is_assigned: "이 주소에 할당됨:"
+    offer_sent: "귀하의 제안이 전송되었습니다!"
+    you_offered: "당신이 제안했습니다"
+    tfuel_buy: "도메인 이름을 구매하기 위한 Tfuel "
+    from: "지갑 주소에서:"
+    offer_cancelled: "귀하의 제안이 취소되었습니다!"
+    offer_to_buy: "도메인 이름 구매 제안"
+    tfuel_canceled: " Tfuel이 취소되었습니다"
+    the_offer: "제안!"
+    the_offer_to_buy: "도메인 이름 구매 제안"
+    from_wallet: "지갑 주소의 Tfuel:"
+    now_own: "이제 도메인 이름을 소유"
+###### DOMAIN END ######
+
+
+###### MY-WALLETS START ######
+my_wallets:
+  add_collection: "컬렉션에 지갑 추가"
+  enter_name_wallet: "이 지갑의 이름을 입력하세요"
+  no_wallet: "아직 컬렉션에 지갑이 없습니다."
+  wallet_list: "지갑 목록"
+  enter_name_group: "이 그룹의 이름을 입력하세요"
+  add_group: "그룹 생성"
+  click_wallet: "그룹에 추가하려면 지갑을 클릭하세요:"
+  group_list: "그룹 목록"
+  addresses: "주소"
+  no_group: "아직 컬렉션에 그룹이 없습니다."
+  wallets: "지갑"
+###### MY-WALLETS END ######
+
+
+###### DOWNLOAD WALLET START ######
+download_wallet:
+  make_sure: "공식 인증을 받았는지 확인하세요"
+  theta_wallet_extension: " Theta 지갑 확장 프로그램"
+  download: "다운로드합니다."
+###### DOWNLOAD WALLET END ######
+
+
+###### FOOTER START ######
+footer:
+  terms: "이용 약관"
+  privacy: "개인 정보 보호 정책"
+  join_discord: "디스코드에 참여하세요"
+  follow_twitter: "트위터에서 우리를 팔로우하세요"
+  github: " github에서 프로젝트 확인"
+###### FOOTER END ######
+
+
+###### MENU START ######
+menu:
+  dashboard: "대시보드"
+  wallet: "지갑"
+  nft: NFT
+  staking: "스테이킹"
+  tfuel: "Tfuel"
+  theta: "Theta"
+  tfuel_vip: "Tfuel VIP"
+  domain: "도메인"
+  faq: "FAQ"
+###### MENU END ######
+
+
+###### NAVBAR START ######
+navbar:
+  signed_as: "다음으로 로그인"
+  my_wallets: "내 지갑"
+  logout: "로그아웃"
+###### NAVBAR END ######
+
+
+###### VERIFY START ######
+verify:
+  please_verify: "이메일 주소를 확인해 주세요"
+  resend: "확인 링크 재전송"
+  email_verified: "이제 이메일이 확인되었습니다."
+  can_login: "이제 계정에 로그인할 수 있습니다."
+  link_invalid: "인증 링크가 잘못되었습니다."
+  click_banner: "계정에 로그인하고 'Resend verification Link' 배너를 클릭하세요."
+###### VERIFY END ######
+
+
+###### LOGIN START ######
+login:
+  no_account: "아직 계정이 없습니까? 계정에 가입하세요"
+  cant_login: "로그인할 수 없습니까?"
+###### LOGIN END ######
+
+
+###### SIGN UP START ######
+signup:
+  title: "가입"
+  password_confirm: "비밀번호 확인"
+  register: "등록"
+  already_account: "이미 계정이 있습니까?"
+  click_to_login: "로그인하려면 여기를 클릭하십시오"
+###### SIGN UP END ######
+
+
+###### PASSWORD RESET START ######
+reset_pass:
+  reset_pass: "비밀번호 재설정"
+  submission_received: "비밀번호 재설정 제출이 접수되었습니다."
+  will_receive_email: "귀하의 이메일 주소와 일치하는 계정이 있는 경우 비밀번호 재설정 링크가 포함된 이메일을 받게 됩니다."
+  no_account_yet: "아직 계정이 없습니까? 계정에 가입하세요."
+  pass_updated: "비밀번호가 업데이트되었습니다. 이제 로그인할 수 있습니다."
+###### PASSWORD RESET END ######
+
+
+###### REGISTERED START ######
+registered:
+  title: "확인 링크가 귀하의 이메일 주소로 전송되었습니다."
+  subtitle: "방금 이메일로 보내드린 링크를 클릭하여 등록 절차를 완료하세요."
+###### REGISTERED END ######
+
+
+###### 404 START ######
+notfound:
+  oops: "앗!"
+  page_doesnt_exist: "찾고 있는 페이지가 존재하지 않습니다."
+###### 404 END ######
+
+
+###### LOCALE START ######
+locale:
+  language: "언어"
+  en: "English"
+  fr: "Français"
+  es: "Español"
+  ja: "日本"
+  ko: "한국인"
+###### LOCALE END ######
+
+
+###### CURRENCY START ######
+currency:
+  currency: "통화"
+  usd: "USD"
+  aud: "AUD"
+  eur: "EUR"
+  gbp: "GBP"
+  krw: "KRW"
+  jpy: "JPY"
+  symbol:
+    usd: "$"
+    aud: "A$"
+    eur: "€"
+    gbp: "£"
+    krw: "₩"
+    jpy: "¥"
+###### CURRENCY END ######
+
+
+###### UTILS NOTIFY START ######
+notif:
+  invalid_address: "잘못된 지갑 주소 또는 도메인 이름"
+  something_wrong: "문제가 발생했습니다. 나중에 다시 시도하세요"
+  wallet_no_domain: "도메인 이름이 아닌 지갑 주소입니다"
+  invalid_goup: "잘못된 그룹 이름"
+  invalid_wallet_name: "잘못된 지갑 이름"
+  invalid_wallet_address: "잘못된 지갑 주소"
+  group_created: "그룹 생성"
+  wallet_added: "지갑 추가됨"
+  group_removed: "그룹 제거됨"
+  wallet_removed: "지갑 제거됨"
+  setup_as_default: "{name} 이(가) 이제 기본값으로 설정되었습니다"
+  verification_sent: "확인 링크를 {email}(으)로 보냈습니다"
+  vip_creation: " VIP 엘리트 엣지 노드 생성"
+  vip_ready: "귀하의 VIP 엘리트 엣지 노드가 준비되었습니다!"
+  not_enough_tfuel: "지갑에 Tfuel이 충분하지 않습니다"
+###### UTILS NOTIFY END ######
+
+
+###### COPY CLIPBOARD START ######
+clip:
+  succesfully: "{label} 이(가) 귀하의 클립보드에 성공적으로 복사되었습니다"
+###### COPY CLIPBOARD END ######
+
+
+###### TRANSACTION EXPORT START ######
+export:
+  button_label: "거래 내역 내보내기(CSV)"
+  date_incorrect: "2021년 1월 1일부터 오늘까지의 날짜를 선택하세요."
+  generating: "보고서를 생성하는 중입니다. 최대 1분이 소요될 수 있습니다."
+  need_fifty_percent: "거래 내역을 다운로드하려면 Thetaboard에 스테이킹된 Tfuel의 최소 50%가 필요합니다."
+###### TRANSACTION EXPORT END ######
+
+
+############ BACK-END ERROR START ############
+error:
+  no_empty_email_password: "이메일 주소 및/또는 비밀번호는 비워둘 수 없습니다"
+  incorrect_email_password: "잘못된 이메일 주소 및/또는 비밀번호"
+############ BACK-END ERROR END ############
+
+
+###### FAQ START ######
+faq:
+  title: "Thetaboard FAQ"
+  subtitle: " Thetaboard는 무엇입니까?"
+  description: " Thetaboard의 사명은 모든 Theta 애호가의 중심이 되는 것입니다.<br>
+              기능을 제공하여 Theta 생태계에 가치를 부여하고자 합니다.
+              Theta에 대한 정보에 대한 액세스를 단순화하거나 사용자 친화적인 UI인 Tfuel 및 Theta Staking과 같은 생태계를 강화하는...<br>
+              <br/>
+              에 대한 지원이나 제안을 위해 연락할 수 있습니다 <a target=\"_blank\" href=\"https://discord.gg/SGUtY7zBU3\"> Discord</a> or <a href=\"https://twitter.com/Thetaboard1\" target=\"_blank\">Twitter</a>.
+              <br>"
+  quick_links: "빠른 링크"
+  how_to_stake_tfuel : " Tfuel을 스테이킹하는 방법?"
+  how_to_stake_tfuel_link : "/assets/pdf/How_to_stake_TFUEL.pdf"
+  how_to_stake_theta : " Theta를 어떻게 스테이킹하나요?"
+  how_to_stake_theta_link : "/assets/pdf/How_to_stake_THETA.pdf"
+  how_to_withdraw : "지분을 인출하는 방법?"
+  how_to_withdraw_link : "/assets/pdf/How_to_WITHDRAW_stake.pdf"
+  what_staking: "스테이킹이 무엇인가요?"
+  what_staking_body: "<p>스테이킹은 작업을 완료하는 시스템에 토큰을 연결하는 과정입니다
+                   네트워크에 보안을 제공하여 추가 보상을 받을 수 있습니다.<br/>
+                  스테이킹에 대한 보상은 스테이킹한 토큰 수와 노드 가동 시간을 기반으로 합니다.
+                     스테이킹 수입을 극대화하려면 노드를 호스팅하는 컴퓨터가 연중무휴로 실행되어야 합니다.<br/>
+                  Theta 네트워크에서는 Theta 토큰과 Tfuel 토큰 모두 스테이킹이 가능합니다. 두 토큰 모두 Tfuel 형태로 스테이킹하면 보상을 받습니다.
+                     토큰을 스테이킹하려면 가디언 노드(Theta) 또는 엘리트 엣지 노드(Tfuel)에 토큰을 위임해야 합니다.
+                      두 가지 유형의 노드 모두 Theta 분산 네트워크 내에서 중요한 역할을 합니다.<br/>
+                  스테이킹 과정에서 토큰은 항상 공식 Theta 지갑에 보관됩니다. 노드가 꺼지면
+                     토큰은 지갑에 남아 있으며 지갑에 액세스할 수 있는 사람만 제어할 수 있습니다.
+                      공식 Theta Wallet을 제외하고는 절대 12단어 시드 문구 또는 키 저장소 파일 및 비밀번호를 입력하지 마십시오.
+                       Thetaboard는 이 정보를 절대 요청하지 않습니다.</p>
+                       <br/><br/>"
+  
+  provide: "어떤 스테이킹을 제공합니까?"
+  provide_body: "<h4>Theta</h4>
+                  <p>최소 1000 Theta 토큰 이상을 보유한 모든 사람을 위해 가디언 노드에 지분을 투자하십시오. 가디언 노드에 스테이킹할 수 있는 최대 테타 수는 없습니다.</p><br/>
+                  <h4>Tfuel</h4>
+                  <p>10,000 Tfuel 이상을 보유한 모든 사람을 위해 퍼블릭 엘리트 엣지 노드 중 하나에 지분을 투자하십시오. 엘리트 에지 노드에는 한 노드에 스테이킹할 수 있는 최대 500,000 Tfuel이 있습니다.</p><br/>
+                  <h4>Tfuel VIP</h4>
+                  <p>100,000 Tfuel 이상 개인용. 이 엘리트 엣지 노드는 귀하를 위해 예약되어 귀하의 지분을 늘릴 수 있는 여지를 보장하고 지분을 인출하고 다시 입금하는 경우 동일한 노드 요약을 보장합니다.</p>
+                  <br/><br/>"
+  deposit: "내 지분을 Theta 네트워크에 어떻게 예치합니까?"
+  deposit_body: "<p>공식 Theta 지갑 내부에서 Theta 또는 Tfuel의 지분을 입금할 수 있습니다.</p><br/>
+                  <h4>가디언 노드에 스테이킹하기</h4>
+                  <p><a target=\"_blank\" href=\"https://docs.thetatoken.org/docs/guardian-staking-process\">https://docs.thetatoken.org/docs/guardian-staking-process</a><br/>
+                  Theta 지갑 내 프로세스 중에 Thetaboard에 대한 원 클릭 가디언 노드 주소를 사용할 수 있습니다.<br/>
+                  10,000개 이상의 Theta를 가디언 노드에 스테이킹하는 경우 Theta Labs는 1개에 대해 최대 10,000개를 가지고 있으므로<a href=\"/staking/theta\"> Theta 스테이킹 페이지</a>, Theta 스테이킹 페이지</a>에 있는 요약을 사용하십시오 Theta 위임을 클릭하십시오.<br/>
+                  Theta 1 클릭 위임 스테이킹에 대한 Theta Labs의 추가 정보:<br/>
+                  <a target=\"_blank\" href=\"https://medium.com/theta-network/theta-1-click-delegated-staking-now-live-in-the-theta-web-wallet-b80d499aae71\">https://medium.com/theta-network/theta-1-click-delegated-staking-now-live-in-the-theta-web-wallet-b80d499aae71</a></p><br/>
+                  <h4> Tfuel을 Elite Edge 노드에 스테이킹</h4>
+                  <p><a target=\"_blank\" href=\"https://docs.thetatoken.org/docs/elite-edge-node-staking-process\">https://docs.thetatoken.org/docs/elite-edge-node-staking-process</a><br/>
+                  <a href=\"/staking/tfuel\">Tfuel 페이지</a> 또는 <a href=\"/staking/tfuelvip\">VIP 요약</a>에서 볼 수 있는 공개 스테이킹 요약을 사용할 수 있습니다. > Theta 지갑 내부의 Edge Staking 과정에서 VIP 노드를 요청한 후 제공됩니다.<br/>
+                  Tfuel 스테이킹에 관한 Theta Labs의 추가 정보:<br/>
+                  <a target=\"_blank\" href=\"https://medium.com/theta-network/theta-wallet-v3-0-1-released-to-enable-tfuel-staking-at-block-height-10-968-061-on-june-30-c90bf080ef93\">https://medium.com/theta-network/theta-wallet-v3-0-1-released-to-enable-tfuel-staking-at-block-height-10-968-061-on-june-30-c90bf080ef93</a></p><br/>
+                  <br/><br/>"
+  stake: "거래소에서 Tfuel 또는 Theta 토큰을 스테이킹할 수 있습니까?"
+  stake_body: "<p>아니요, Theta 네트워크에 스테이킹하는 것은 현재 공식 Theta 지갑에 예치한 토큰을 통해서만 가능합니다.<br/> 
+                                        <a href=\"https://www.thetatoken.org/\" target=\"_blank\">https://www.thetatoken.org/</a href=\"https://www.thetatoken.org/\" target=\"_blank\">https://www.thetatoken.org/</ > 및 북마크
+                    이것은 공식 지갑에 액세스하고 사기를 피하는 방법입니다. 이것은 12단어 시드 구문 또는 키 저장소 파일 및 비밀번호를 입력해야 하는 유일한 위치입니다.</p><br/>
+                  <br/><br/>"
+  where_nodes: " Thetaboard가 사용하는 노드는 어디에 있습니까?"
+  where_nodes_body: "<p> Thetaboard에는 미국과 캐나다 전역에 노드가 있습니다. 우리는 세계 다른 지역으로도 확장할 계획입니다.</p><br/>
+                  <br/><br/>"
+  fees: " Thetaboard에는 어떤 수수료가 있습니까?"
+  fees_body: "<p> Theta 및 Tfuel 노드를 호스팅하기 위한 Thetaboard 수수료는 획득한 보상의 3%입니다. 현재 Tfuel에 대한 8% APR로,
+                     APR 7.76%, 세타보드 0.24%</p><br/>
+                  <br/><br/>"
+  minimum: "스테이킹을 위한 현재 최소 토큰 수는 얼마입니까?"
+  minimum_body: "<p> Theta 네트워크에 스테이킹하기 위한 최소 금액은 다음과 같습니다:</p><br/>
+                  <p>1000 Theta 토큰 또는<br/>
+                  10,000 Tfuel 토큰.</p><br/>
+                  <p>이 한도는 Theta Labs에서 설정한 것이며 과거에 변경되었습니다. 가능한 한 이러한 최소값의 향후 변경에 대해 Theta Labs에서 명시한 일정은 없습니다.</p><br/>
+                  <br/><br/>"
+  when_earn: "언제 보상을 받을 수 있나요?"
+  when_earn_body: "<p> Theta 네트워크는 가중 무작위 할당 방식을 사용하여 스테이킹 보상을 발송합니다. 알고리즘은 토큰마다 다릅니다.</p><br/>
+                  <h4>Theta</h4>
+                  <p> Theta 스테이킹 보상은 100블록마다 다른 스테이크에 지급되며, 스테이크의 크기는 정기적인 지불 가능성을 높입니다.
+                     가디언 노드에 스테이킹된 Theta의 양은 차이가 없습니다.<br/>
+                  Theta 스테이킹 보상 금액은 Theta 블록체인에 의해 12의 배수로 할당됩니다. Thetaboard 수수료는
+                   거래가 지갑에 도착할 때까지 인출됩니다. 금액은 11.64의 배수가 됩니다.</p><br/>
+                  <h4>Tfuel</h4>
+                  <p> Tfuel 스테이킹 보상은 에지 노드에 100블록마다 지급됩니다
+                    Tfuel은 해당 Edge 노드에 스테이킹되어 정기적인 지불 가능성을 높입니다. 개별 Tfuel 지분의 크기는 차이가 없습니다.<br/>
+                  Tfuel 스테이킹 보상 금액은 스테이크 크기에 따라 크게 다릅니다. 소수점 이하 3자리인 경우가 많으며 정기적으로 5Tfuel 이하입니다.</p><br/>
+                  <br/><br/>"
+  how_much_earn: "나는 얼마나 많은 Tfuel을 벌 수 있습니까?"
+  how_much_earn_body: "<p> Thetaboard 대시보드 페이지에서 제공되는 보상 예측 계산기를 사용하여 판돈 규모에 대해 예상되는 수입을 계산하세요.</p><br/>
+                  <br/><br/>"
+  public_private: "공용 또는 사설 엘리트 엣지 노드를 사용해야 합니까?"
+  public_private_body: "<p>많은 Thetaboard 고객이 두 가지를 모두 사용합니다. 노드를 공유하면 지불 빈도(금액은 아님)가 증가합니다,
+                  노드가 단독으로 스테이킹하는 것보다 더 많은 Tfuel을 보유하므로 보상 알고리즘에서 선택될 확률이 높아집니다.
+                  귀하가 언스테이킹할 때 귀하의 자리는 예약되어 있지 않지만 필요에 따라 계속해서 더 많은 퍼블릭 엘리트 에지 노드를 제공할 것입니다.
+                  또한 10,000 Tfuel 지분을 분리하여 퍼블릭 엘리트 엣지 노드에 배치하면 더 적은 양의
+                  인출 및 추가할 T연료이므로 언스테이킹은 전체 스테이킹 금액에 영향을 미치지 않습니다.</p><br/>
+                  <br/><br/>"
+  where_rewards_from: "이 보상은 어디에서 오나요?"
+  where_rewards_from_body: "<p> Theta 네트워크는 Tfuel 토큰의 인플레이션을 사용하여 스테이킹 보상을 지불합니다. 이 Tfuel 인플레이션은 Tfuel 스테이킹에 대해 블록당 38 Tfuel로 설정됩니다.
+                  그리고 Theta 스테이킹을 위한 블록당 48 Tfuel. Theta 네트워크는 6초 블록을 목표로 하며, 이 시점에서 인플레이션율은
+                  약 4%(Tfuel 스테이킹 보상) 및 5%(Theta 스테이킹 보상)의 초기 Tfuel 공급 50억의 인플레이션.</p><br/>
+                  <p>이 인플레이션은 Theta 네트워크를 사용하기 위해 지불한 수수료의 일부를 소각하여 상쇄할 계획입니다. Theta Labs는 다음과 같이 밝혔습니다
+                  Tfuel의 총 공급을 초기 50억 공급에 가깝게 유지하는 것을 목표로 합니다.</p><br/>
+                  <br/><br/>"
+  staking_wallet: "내 지갑에서 스테이킹 보상은 어떻게 되나요?"
+  staking_wallet_body: "<p>'coinbase' 거래의 형태로 대시보드의 스테이킹 보상이 토큰을 스테이킹한 지갑으로 전송됩니다.
+                  이러한 코인베이스 트랜잭션의 '보낸 사람' 주소는 Theta 네트워크의 16개 검증자 노드 주소 중 하나가 됩니다.</p><br/>
+                  <p>보상을 추적하기 위해 Theta 지갑을 사용하는 경우 거래로 표시되지 않고 사용 가능한 Tfuel 잔액의 증가로만 표시됩니다.</p><br/>
+                  <br/><br/>"
+  no_rewards: "왜 일주일 동안 Theta 스테이킹 보상을 받지 못했나요?"
+  no_rewards_body: "<p> Theta 금액을 최소 금액에 가깝게 스테이킹하는 경우 Theta Labs 스테이킹 보상 알고리즘으로 인해 지불하지 않고 몇 주를 보낼 수 있습니다.
+                  계속해서 보상을 받고 있으므로 보상 지급 대상으로 선택하려면 스테이킹 알고리즘만 있으면 됩니다.</p><br/>
+                  <p>보상을 걸지 않고 오랜 시간을 보내더라도 보상은 계속 누적됩니다. 
+                  종종 보상 없이 긴 건조 기간 후에 짧은 기간 동안 평소보다 더 많은 것을 받게 됩니다.</p><br/>
+                  <p> Theta Labs의 Theta에 대한 무작위 블록 보상에 대한 논의는 여기에서 확인할 수 있습니다:</p><br/>
+                  <p><a traget=\"_blank\" href=\"https://medium.com/theta-network/theta-protocol-code-v2-2-0-released-with-important-performance-related-updates-6b9e2261d0ae\">https://medium.com/theta-network/theta-protocol-code-v2-2-0-released-with-important-performance-related-updates-6b9e2261d0ae</a></p><br/>
+                  <p>2021년 6월 메인넷 3.0 이전에는 모든 theta 스테이킹 보상이 12의 배수로 거래되어 전달되었지만, 이후 Theta 스테이킹 보상이 Tfuel 스테이킹 보상으로 결합되는 사례가 발생했습니다.
+                  이것은 어떤 지분에 대해 어떤 지불이 오는지 추적하기 어렵게 만듭니다. 우리 대시보드는 Ta 및 Tfuel 스테이킹 보상을 올바르게 할당하기 위해 모든 시도를 하지만,
+                  모든 공동 지불은 Theta 블록체인에 표시되지 않기 때문에 캡처되지 않을 수 있습니다.</p>
+                  <br/><br/>"
+  withdraw_add_more: "새 토큰을 추가하려면 내 지분을 철회해야 하나요?"
+  withdraw_add_more_body: "<p>추가하려는 금액이 최소 스테이킹 요구 사항(1000 Theta 및 10,000 Tfuel) 미만인 경우 새 토큰을 추가하려면 원래 금액을 언스테이킹해야 합니다.
+                  금액이 최소 요구 사항을 초과하는 경우 새 금액을 새 스테이크로 스테이킹하십시오.</p><br/>
+                  <br/><br/>"
+  how_withdraw: "지분을 인출하려면 어떻게 해야 하나요?"
+  how_withdraw_body: "<p> Theta 지갑에서 스테이킹된 토큰을 인출할 수 있습니다.</p><br/>
+                  <p>지분 인출 프로세스에 대한 자세한 내용은 여기에서 공식 Theta 문서를 참조하십시오:<br/>
+                  <a href=\"https://docs.thetatoken.org/docs/withdrawing-your-stake-from-the-guardian-node\" target=\"_blank\">https://docs.thetatoken.org/docs/withdrawing-your-stake-from-the-guardian-node</a></p>
+                  <br/><br/>"
+  where_coin: "스테이킹된 토큰을 인출했는데 아직 지갑에 없습니다. 어디에 있습니까?"
+  where_coin_body: "<p> Theta와 Tfuel 토큰은 모두 스테이킹을 해제하는 데 약 54시간이 걸립니다. 그러면 원래 지갑에 표시됩니다.</p><br/>
+                  <br/><br/>"
+  rewards_withdraw: "54시간의 언스테이킹 기간 동안 보상이 적립되나요?"
+  rewards_withdraw_body: "<p>아니요.</p><br/>
+                  <br/><br/>"
+  rewards_paid: "언스테이킹 기간을 시작할 때 나에게 지불해야 하는 보상을 계속 받을 수 있나요?"
+  rewards_paid_body: "<p>네.</p><br/>
+                  <br/><br/>"
+  new_address: "집에 있는 Edge 노드의 새 지갑 주소는 무엇입니까?"
+  new_address_body: "<p>에지 노드에는 이제 캐시를 수집하고 보상을 계산할 자체 지갑 주소가 있습니다. 자세한 내용은 여기를 참조하세요:</p><br/>
+                  <p><a target=\"_blank\" href=\"https://medium.com/Theta-network/Theta-elite-edge-node-v3-0-6-released-to-enable-mainnet-3-0-features-7b07fc4bc7b3\">https://medium.com/Theta-network/Theta-elite-edge-node-v3-0-6-released-to-enable-mainnet-3-0-features-7b07fc4bc7b3</a></p>
+                  <br/><br/>"
+  domain: " Thetaboard를 통해 구입할 수 있는 Theta 도메인 이름은 무엇입니까?"
+  domain_body: "<p> 도메인은 현재 개념 증명입니다. 현재 도메인을 사고 팔 수 있으며, 이를 사용하여 Thetaboard 웹사이트에서 이름으로 지갑을 검색하고 Thetaboard에 지원을 표시할 수 있습니다. <br/>
+                  2021년의 어느 시점에서 우리는 최종 계약으로 이동할 것입니다. 이들은 NFT가 될 것이며 지갑 주소 대신 도메인 이름을 사용하여 거래를 수행하기 위해 세타 지갑에 통합될 것입니다.<br/>
+                  그러나 현재 구입한 도메인을 새 버전으로 이전할 수는 없습니다.<br/>
+                  Theta 네트워크에 대한 자세한 내용은 여기에서 확인할 수 있습니다.<br/>
+                  <a href=\"https://docs.thetatoken.org/docs/what-is-theta-network\" target=\"_blank\">https://docs.thetatoken.org/docs/what-is-theta-network</a></p>
+                  <br/><br/>"  
+###### FAQ END ######
