@@ -428,11 +428,11 @@ faq:
               <br>"
   quick_links: "クイックリンク集"
   how_to_stake_tfuel : "Tfuelをステーキングする方法は？"
-  how_to_stake_tfuel_link : "/assets/pdf/How_to_stake_TFUEL.pdf"
+  how_to_stake_tfuel_link : "/assets/pdf/JA_How_to_stake_TFUEL.pdf"
   how_to_stake_theta : "Thetaをステーキングする方法は？"
-  how_to_stake_theta_link : "/assets/pdf/How_to_stake_THETA.pdf"
+  how_to_stake_theta_link : "/assets/pdf/JA_How_to_stake_THETA.pdf"
   how_to_withdraw : "ステーキングを引き出す方法は？"
-  how_to_withdraw_link : "/assets/pdf/How_to_WITHDRAW_stake.pdf"
+  how_to_withdraw_link : "/assets/pdf/JA_How_to_stake_WITHDRAW.pdf"
   what_staking: "ステーキングとは何ですか？"
   what_staking_body: "<p>ステーキングとは、自分のトークンを作業を完了するマシンに関連付け、ネットワークにセキュリティを提供することなどを含むプロセスです。
                    そうすることで、さらに報酬を獲得できるようになります。<br/>

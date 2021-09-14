@@ -428,11 +428,11 @@ faq:
               <br>"
   quick_links: "빠른 링크"
   how_to_stake_tfuel : " Tfuel을 스테이킹하는 방법?"
-  how_to_stake_tfuel_link : "/assets/pdf/How_to_stake_TFUEL.pdf"
+  how_to_stake_tfuel_link : "/assets/pdf/KO_How_to_stake_TFUEL.pdf"
   how_to_stake_theta : " Theta를 어떻게 스테이킹하나요?"
-  how_to_stake_theta_link : "/assets/pdf/How_to_stake_THETA.pdf"
+  how_to_stake_theta_link : "/assets/pdf/KO_How_to_stake_THETA.pdf"
   how_to_withdraw : "지분을 인출하는 방법?"
-  how_to_withdraw_link : "/assets/pdf/How_to_WITHDRAW_stake.pdf"
+  how_to_withdraw_link : "/assets/pdf/KO_How_to_stake_WITHDRAW.pdf"
   what_staking: "스테이킹이 무엇인가요?"
   what_staking_body: "<p>스테이킹은 작업을 완료하는 시스템에 토큰을 연결하는 과정입니다
                    네트워크에 보안을 제공하여 추가 보상을 받을 수 있습니다.<br/>
