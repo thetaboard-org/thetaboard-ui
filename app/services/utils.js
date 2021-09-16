@@ -22,10 +22,9 @@ export default class UtilsService extends Service {
 
   @action
   copyToClipboard(inputId, message) {
-    var copyText = document.querySelector(`#${inputId}`);
-    copyText.select();
-    document.execCommand("copy");
-
+    const copyText = document.querySelector(`#${inputId}`);
+    const text = copyText.value || copyText.text.trim("\n");
+    navigator.clipboard.writeText(text)
 
     $.notify(
       {
@@ -33,7 +32,7 @@ export default class UtilsService extends Service {
         title: '',
         message: message,
       },
-      { type: 'success' }
+      {type: 'success'}
     );
   }
 
