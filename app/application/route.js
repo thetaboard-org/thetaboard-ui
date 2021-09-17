@@ -10,6 +10,7 @@ export default class ApplicationRoute extends Route {
     wa: {
       refreshModel: true,
     },
+    lang: {},
   };
   locales = storageFor('locales');
 
@@ -19,13 +20,28 @@ export default class ApplicationRoute extends Route {
   @service intl;
   @service currency;
   @service moment;
+  @service i18n;
 
-  async beforeModel() {
+  async setLanguage() {
     const locale = await this.getLocaleLanguage();
     this.intl.setLocale([locale]);
     this.moment.setLocale(locale);
-    await this.setCurrency();
+  }
+
+  async beforeModel() {
     const params = this.paramsFor('application');
+    if (params.lang) {
+      if (this.intl.get('locales').indexOf(params.lang) > -1) {
+        this.intl.setLocale([params.lang]);
+        this.moment.setLocale(params.lang);
+        await this.i18n.setLocale(params.lang);
+      } else {
+        await this.setLanguage();
+      }
+    } else {
+      await this.setLanguage();
+    }
+    await this.setCurrency();
     await this.envManager.setParameters(params);
     return this._loadCurrentUser();
   }
