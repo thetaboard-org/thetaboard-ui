@@ -85,7 +85,7 @@ global:
 price_chart:
   title: "Theta/Tfuel価格"
   is_worth: "価値あり"
-### earnings-forecast components 
+### earnings-forecast components
 reward_forecast:
   title_tfuel: "エリートエッジノードTFuel報酬フォーキャスト"
   title_theta: "ガーディアンノードTFuel報酬フォーキャスト"
@@ -129,11 +129,16 @@ transaction_history:
 ###### NFT START ######
 NFT:
   no_nft: "このウォレットにはNFTがありません"
+  early_nft_1: "20 Tfuelsをに送信して、ThetaboardアーリーアダプターNFTを入手してください:”
+  early_nft_2: "スマートコントラクトは、ThetaboardNFTを1分以内に20Tfuelを送信したウォレットに自動的に配信します。 <br>
+  エディション番号はランダムに作成されます。 2021年10月31日までのみ利用可能で、最大1000のNFTが作成されます。<br>
+  トランザクションごとに1つのNFTのみ。複数購入する場合は、20Tfuelを複数回取引する必要があります。<br>
+  ThetaboardアーリーアダプターNFTを保持しているウォレットは、将来の報酬の対象となります。”
 ###### NFT END ######
 
 
 ###### STAKING START ######
-staking: 
+staking:
   earn_up_to: "最大獲得額"
   tfuel_fees: "ステーキング報酬の3％の手数料（10 Tfuelを獲得するごとに、Thetaboardの手数料は0.3 Tfuelに相当します）."
   tfuel_fees_affiliate: "2021年8月31日まで0％(2021年9月1日から3%）。"
@@ -166,7 +171,7 @@ staking:
     no_vip: "まだVIPエリートエッジノードを持っていません"
     no_tfuel_staked: "ステーキングされたTfuelを保有していません。"
     earn: "Tfuelをステーキングして、TFUELをゲットしましょう"
-  ### Staking Affiliate 
+  ### Staking Affiliate
   affiliate:
     stake_to: "Tfuelのステーキング先"
     community_een: "コミュニティ・エリートエッジノード"
@@ -446,7 +451,7 @@ faq:
                       公式のThetaウォレット以外の場所では、12文字のシードフレーズ、またはキーストアファイルおよびパスワードを絶対に入力しないでください。
                        Thetaboardがこの情報を要求することは決してありません。</p>
                        <br/><br/>"
-  
+
   provide: "Thetaboardは、どのようなステーキングを提供していますか？"
   provide_body: "<h4>Theta</h4>
                   <p>Thetaトークンを1,000以上保有している方は、ガーディアンノードにステーキングしてください。ガーディアンノードにステーキングできるTheta量に制限はありません。</p><br/>
@@ -470,8 +475,8 @@ faq:
                   <a target=\"_blank\" href=\"https://medium.com/theta-network/theta-wallet-v3-0-1-released-to-enable-tfuel-staking-at-block-height-10-968-061-on-june-30-c90bf080ef93\">https://medium.com/theta-network/theta-wallet-v3-0-1-released-to-enable-tfuel-staking-at-block-height-10-968-061-on-june-30-c90bf080ef93</a></p><br/>
                   <br/><br/>"
   stake: "取引所からTfuelまたはThetaをステーキングしてもよいですか？"
-  stake_body: "<p>いいえ。Thetaネットワーク上でのステーキングは、現在自分のThetaウォレットにデポジットされたトークンを使用することでのみ可能です。<br/> 
-                    <a href=\"https://www.thetatoken.org/\" target=\"_blank\">https://www.thetatoken.org/</a>の上部にあるウォレットリンクを使うことをお勧めします。 
+  stake_body: "<p>いいえ。Thetaネットワーク上でのステーキングは、現在自分のThetaウォレットにデポジットされたトークンを使用することでのみ可能です。<br/>
+                    <a href=\"https://www.thetatoken.org/\" target=\"_blank\">https://www.thetatoken.org/</a>の上部にあるウォレットリンクを使うことをお勧めします。
                     また、こちらをブックマークすることで、自分にウォレットに安全にアクセスできるようになります。12文字のシードフレーズ、またはキーストアファイルとパスワードの入力が必要なのはこの場所だけです。</p><br/>
                   <br/><br/>"
   where_nodes: "Thetaboardの使っているノードはどこにありますか？"
@@ -495,7 +500,7 @@ faq:
                   Thetaのステーキング報酬額は、Thetaブロックチェーンによって12の倍数で割り当てられます。Thetaboard手数料は、
                    トランザクションがウォレットに到着するまでに徴収されます。つまり、金額は11.64の倍数になります。</ p> <br/>
                   <h4>Tfuel</h4>
-                  <p>Tfuelのステーキング報酬は、100ブロックごとにエッジノードに支払われ、 
+                  <p>Tfuelのステーキング報酬は、100ブロックごとにエッジノードに支払われ、
                     エッジノードにステーキングされたTfuelの数量によって定期的に支払われる可能性が高まります。個々のTfuelステーキングのサイズに違いはありません。<br/>
                   Tfuelのステーキング報酬額は、ステーキングのサイズによって大きく変動します。多くの場合、小数点以下3桁で、通常は5Tfuel以下です。.</p><br/>
                   <br/><br/>"
@@ -505,32 +510,32 @@ faq:
   public_private: "エリートエッジノードは、パブリックまたはプライベートのどちらを使えばよいですか？"
   public_private_body: "<p>Thetaboardユーザーの多くは両方使っています。ノードをシェアすると、支払いの頻度（ただし、金額ではない）が増えます。
                   ノードは、単独でステーキングしている場合よりも多くのTfuelを保持するため、報酬アルゴリズムで選ばれる可能性が高くなります。
-                  ステーキングしなければ、あなたの場所は確保されません。ただし、必要に応じて、引き続きパブリックエリートエッジノードを提供します。 
-                  また、10,000のTfueｌステーキングを分離し、それをパブリックエリートエッジノードに配置すると、より少量のTfuelを引き出して追加できるため、 
+                  ステーキングしなければ、あなたの場所は確保されません。ただし、必要に応じて、引き続きパブリックエリートエッジノードを提供します。
+                  また、10,000のTfueｌステーキングを分離し、それをパブリックエリートエッジノードに配置すると、より少量のTfuelを引き出して追加できるため、
                   ステーキングを解除してもステーキング数量全体に影響することはありません。</p><br/>
                   <br/><br/>"
   where_rewards_from: "これらの報酬の出どころは？"
-  where_rewards_from_body: "<p>Thetaネットワークは、Tfuelトークンのインフレを使用してステーキング報酬を支払います。このTfuelのインフレは、Tfuelステーキングのブロックあたり38Tfuel、 
-                  Thetaステーキングのブロックあたり48Tfuelで設定されています。Thetaネットワークは6秒のブロックを目指しており、 
+  where_rewards_from_body: "<p>Thetaネットワークは、Tfuelトークンのインフレを使用してステーキング報酬を支払います。このTfuelのインフレは、Tfuelステーキングのブロックあたり38Tfuel、
+                  Thetaステーキングのブロックあたり48Tfuelで設定されています。Thetaネットワークは6秒のブロックを目指しており、
                   その時点でインフレ率はTfuel初回供給50億の約4％（Tfuelステーキング報酬）と5％（Thetaステーキング報酬）のインフレに相当します。.</p><br/>
-                  <p>このインフレは、Thetaネットワークを使用するために支払われた手数料の一部を燃焼することによって相殺される予定です。ThetaLabsは、 
+                  <p>このインフレは、Thetaネットワークを使用するために支払われた手数料の一部を燃焼することによって相殺される予定です。ThetaLabsは、
                   Tfuelの合計供給を初回供給の50億に近づけることを目標にしています。</p><br/>
                   <br/><br/>"
   staking_wallet: "ウォレット内で報酬はどのように見えますか？"
-  staking_wallet_body: "<p>ダッシュボードでのステーキング報酬は、「コインベース」トランザクションの形式で、トークンをステーキングしたウォレットに送信されます。 
- 
+  staking_wallet_body: "<p>ダッシュボードでのステーキング報酬は、「コインベース」トランザクションの形式で、トークンをステーキングしたウォレットに送信されます。
+
                   これらのコインベーストランザクションの「差出人」アドレスは、Thetaネットワークの16のバリデーターノードアドレスの1つになります。</p><br/>
                   <p>Thetaウォレットを使用して報酬をトラッキングしている場合、それらはトランザクションとしてではなく、利用可能なTfuel残高の増加分としてのみ表示されます。</p><br/>
                   <br/><br/>"
   no_rewards: "Thetaのステーキング報酬を1週間受け取っていません。なぜですか？"
-  no_rewards_body: "<p>Thetaの最低額に近い金額をステーキングしている場合、Theta Labsのステーキング報酬アルゴリズムにより、数週間支払いがない可能性があります。 
+  no_rewards_body: "<p>Thetaの最低額に近い金額をステーキングしている場合、Theta Labsのステーキング報酬アルゴリズムにより、数週間支払いがない可能性があります。
                   報酬は確実に受け取れますのでご安心ください。ステーキングアルゴリズムから、報酬の支払先として選定される必要があるだけです。</p><br/>
-                  <p>ステーキング報酬なしで長期間経っても、報酬はまだ発生しています。 
+                  <p>ステーキング報酬なしで長期間経っても、報酬はまだ発生しています。
                   多くの場合、報酬のない長い閑散期がありますが、通常よりも短期間で多くの額を受け取ります。</p><br/>
                   <p>Theta LabsによるThetaのランダム化ブロック報酬の議論はここにあります：</p><br/>
                   <p><a traget=\"_blank\" href=\"https://medium.com/theta-network/theta-protocol-code-v2-2-0-released-with-important-performance-related-updates-6b9e2261d0ae\">https://medium.com/theta-network/theta-protocol-code-v2-2-0-released-with-important-performance-related-updates-6b9e2261d0ae</a></p><br/>
-                  <P>2021年6月のメインネット3.0以前は、すべてのThetaステーキング報酬は12の倍数のトランザクションで提供されていました。しかし、それ以降は、Thetaステーキング報酬がTfuelステーキング報酬にジョインしている事例が発生しました。 
-                  これにより、支払いに対する適当なステーキングのトラッキングがより困難になります。当社のダッシュボードは、ThetaとTfuelのステーキング報酬を正しく割り当てるためにあらゆる手段を講じますが、 
+                  <P>2021年6月のメインネット3.0以前は、すべてのThetaステーキング報酬は12の倍数のトランザクションで提供されていました。しかし、それ以降は、Thetaステーキング報酬がTfuelステーキング報酬にジョインしている事例が発生しました。
+                  これにより、支払いに対する適当なステーキングのトラッキングがより困難になります。当社のダッシュボードは、ThetaとTfuelのステーキング報酬を正しく割り当てるためにあらゆる手段を講じますが、
                   これらはThetaブロックチェーンにラベル付けされていないため、すべての合算決済をキャプチャできない場合があります。</p>
                   <br/><br/>"
   withdraw_add_more: "新しいトークンを追加するにはステーキングを引き出さなければいけませんか？"
@@ -561,6 +566,8 @@ faq:
                   ただし、現在購入しているドメインを新しいバージョンに移行することはできません。<br/>
                   Thetaネットワークの詳細については、こちらをご覧ください。<br/>
                   <a href=\"https://docs.thetatoken.org/docs/what-is-theta-network\" target=\"_blank\">https://docs.thetatoken.org/docs/what-is-theta-network</a></p>
-                  <br/><br/>"  
+                  <br/><br/>"
 ###### FAQ END ######
+
+
 

@@ -1,12 +1,14 @@
 {{page-title "Nft"}}
 
 <div class="card card-body" style="flex-direction: row;">
-
   <div>
-    Get your Thetaboard early adopter NFT by sending 20 Tfuels to :
-    <a href="#" id="walletAddr" {{action this.copySummaryToClipBoard 'NFT Address' 'walletAddr'}}>
-      0xBDfc0c687861a65F54211C55E4c53A140FE0Bf32</a><br>
-    Available only until 31 oct 2021
+    <p>
+      {{t 'NFT.early_nft_1'}}
+
+      <a href="#" id="walletAddr" {{action this.copySummaryToClipBoard 'NFT Address' 'walletAddr'}}>
+        0x34f573dE2416C8C4e968cA16A18b46C2a7d833C2</a><br>
+      {{t 'NFT.early_nft_2' htmlSafe=true}}
+    </p>
   </div>
   <div style="margin-left: auto">
     <img src="{{rootURL}}/assets/nft/early_adopter.png" alt="Thetaboard NFT Early Adopter"
@@ -54,6 +56,7 @@
           {{/if}}
         </div>
       </div>
+
     {{/each}}
   </div>
 </div>
