@@ -7,4 +7,5 @@ export default class CoinbaseHistoryModel extends Model {
   @attr('string') toAddress
   @attr('number') value
   @attr('number') tfuelPrice
+  @attr('number') count
 }

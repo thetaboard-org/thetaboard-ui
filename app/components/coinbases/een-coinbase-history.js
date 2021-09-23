@@ -16,6 +16,11 @@ export default class EECoinbaseHistoryComponent extends Component {
     return Number.parseFloat(finalAmount).toFixed(2);
   }
 
+  get coinbasesLastDayTfuelCount() {
+    const finalAmount = this.coinbasesLastDay.reduce((a, b) => a + b.count, 0);
+    return Number.parseFloat(finalAmount);
+  }
+
   get coinbasesLastDayUsdValue() {
     if (this.thetaSdk.prices && this.thetaSdk.prices.tfuel) {
       return this.coinbasesLastDayTfuelAmount * this.thetaSdk.prices.tfuel.price;
@@ -31,6 +36,11 @@ export default class EECoinbaseHistoryComponent extends Component {
   get coinbasesLastWeekTfuelAmount() {
     const finalAmount = this.coinbasesLastWeek.reduce((a, b) => a + b.value, 0);
     return Number.parseFloat(finalAmount).toFixed(2);
+  }
+
+  get coinbasesLastWeekTfuelCount() {
+    const finalAmount = this.coinbasesLastWeek.reduce((a, b) => a + b.count, 0);
+    return Number.parseFloat(finalAmount);
   }
 
   get coinbasesLastWeekUsdValue() {
@@ -50,6 +60,11 @@ export default class EECoinbaseHistoryComponent extends Component {
     return Number.parseFloat(finalAmount).toFixed(2);
   }
 
+  get coinbasesLastMonthTfuelCount() {
+    const finalAmount = this.coinbasesLastMonth.reduce((a, b) => a + b.count, 0);
+    return Number.parseFloat(finalAmount);
+  }
+
   get coinbasesLastMonthUsdValue() {
     if (this.thetaSdk.prices && this.thetaSdk.prices.tfuel) {
       return this.coinbasesLastMonthTfuelAmount * this.thetaSdk.prices.tfuel.price;
@@ -65,6 +80,11 @@ export default class EECoinbaseHistoryComponent extends Component {
   get coinbasesLastSixMonthsTfuelAmount() {
     const finalAmount = this.coinbasesLastSixMonths.reduce((a, b) => a + b.value, 0);
     return Number.parseFloat(finalAmount).toFixed(2);
+  }
+
+  get coinbasesLastSixMonthsTfuelCount() {
+    const finalAmount = this.coinbasesLastSixMonths.reduce((a, b) => a + b.count, 0);
+    return Number.parseFloat(finalAmount);
   }
 
   get coinbasesLastSixMonthsUsdValue() {

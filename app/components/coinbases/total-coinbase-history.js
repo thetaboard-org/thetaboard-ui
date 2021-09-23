@@ -23,6 +23,11 @@ export default class TotalCoinbaseHistoryComponent extends Component {
     return 0;
   }
 
+  get coinbasesLastDayCount() {
+    const finalAmount = this.coinbasesLastDay.reduce((a, b) => a + b.count, 0);
+    return Number.parseFloat(finalAmount);
+  }
+
   get coinbasesLastWeek() {
     const lastWeekCoinbases = this.thetaSdk.coinbases.filter((x) => x.timeScale === 'last_week');
     return lastWeekCoinbases;
@@ -38,6 +43,11 @@ export default class TotalCoinbaseHistoryComponent extends Component {
       return this.coinbasesLastWeekTfuelAmount * this.thetaSdk.prices.tfuel.price;
     }
     return 0;
+  }
+
+  get coinbasesLastWeekCount() {
+    const finalAmount = this.coinbasesLastWeek.reduce((a, b) => a + b.count, 0);
+    return Number.parseFloat(finalAmount);
   }
 
   get coinbasesLastMonth() {
@@ -57,6 +67,11 @@ export default class TotalCoinbaseHistoryComponent extends Component {
     return 0;
   }
 
+  get coinbasesLastMonthCount() {
+    const finalAmount = this.coinbasesLastMonth.reduce((a, b) => a + b.count, 0);
+    return Number.parseFloat(finalAmount);
+  }
+
   get coinbasesLastSixMonths() {
     const lastSixMonthCoinbases = this.thetaSdk.coinbases.filter((x) => x.timeScale === 'last_six_months');
     return lastSixMonthCoinbases;
@@ -72,6 +87,11 @@ export default class TotalCoinbaseHistoryComponent extends Component {
       return this.coinbasesLastSixMonthsTfuelAmount * this.thetaSdk.prices.tfuel.price;
     }
     return 0;
+  }
+
+  get coinbasesLastSixMonthsCount() {
+    const finalAmount = this.coinbasesLastSixMonths.reduce((a, b) => a + b.count, 0);
+    return Number.parseFloat(finalAmount);
   }
 
   get explorerEndpoint() {
