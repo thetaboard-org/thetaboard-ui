@@ -1,5 +1,5 @@
 import Service from '@ember/service';
-import { inject as service } from '@ember/service';
+import {inject as service} from '@ember/service';
 import ThetaWalletConnect from '@thetalabs/theta-wallet-connect';
 import * as thetajs from '@thetalabs/theta-js';
 import {tracked} from '@glimmer/tracking';
@@ -100,31 +100,13 @@ export default class ThetaSdkService extends Service {
 
   get guardianCoinbases() {
     return this.coinbases.filter((x) => {
-      if (
-        x.value % 12 == 0 ||
-        x.value % 11.88 == 0 ||
-        x.value % 11.76 == 0 ||
-        x.value % 11.64 == 0 ||
-        x.value % 11.52 == 0
-      ) {
-        return true;
-      }
-      return false;
+      return x.type === 'gn';
     });
   }
 
   get eliteEdgeNodeCoinbases() {
     return this.coinbases.filter((x) => {
-      if (
-        x.value % 12 == 0 ||
-        x.value % 11.88 == 0 ||
-        x.value % 11.76 == 0 ||
-        x.value % 11.64 == 0 ||
-        x.value % 11.52 == 0
-      ) {
-        return false;
-      }
-      return true;
+      return x.type === 'en';
     });
   }
 

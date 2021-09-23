@@ -7,8 +7,7 @@ export default class EECoinbaseHistoryComponent extends Component {
   @service currency;
 
   get coinbasesLastDay() {
-    const yesterday = new Date(new Date().setDate(new Date().getDate() - 1));
-    const lastDayCoinbases = this.thetaSdk.eliteEdgeNodeCoinbases.filter((x) => x.timestamp > yesterday);
+    const lastDayCoinbases = this.thetaSdk.eliteEdgeNodeCoinbases.filter((x) => x.timeScale === 'last_day');
     return lastDayCoinbases;
   }
 
@@ -25,8 +24,7 @@ export default class EECoinbaseHistoryComponent extends Component {
   }
 
   get coinbasesLastWeek() {
-    const lastWeek = new Date(new Date().setDate(new Date().getDate() - 7));
-    const lastWeekCoinbases = this.thetaSdk.eliteEdgeNodeCoinbases.filter((x) => x.timestamp > lastWeek);
+    const lastWeekCoinbases = this.thetaSdk.eliteEdgeNodeCoinbases.filter((x) => x.timeScale === 'last_week');
     return lastWeekCoinbases;
   }
 
@@ -43,8 +41,7 @@ export default class EECoinbaseHistoryComponent extends Component {
   }
 
   get coinbasesLastMonth() {
-    const lastMonth = new Date(new Date().setMonth(new Date().getMonth() - 1));
-    const lastMonthCoinbases = this.thetaSdk.eliteEdgeNodeCoinbases.filter((x) => x.timestamp > lastMonth);
+    const lastMonthCoinbases = this.thetaSdk.eliteEdgeNodeCoinbases.filter((x) => x.timeScale === 'last_month');
     return lastMonthCoinbases;
   }
 
@@ -61,8 +58,7 @@ export default class EECoinbaseHistoryComponent extends Component {
   }
 
   get coinbasesLastSixMonths() {
-    const lastSixMonth = new Date(new Date().setMonth(new Date().getMonth() - 6));
-    const lastSixMonthCoinbases = this.thetaSdk.eliteEdgeNodeCoinbases.filter((x) => x.timestamp > lastSixMonth);
+    const lastSixMonthCoinbases = this.thetaSdk.eliteEdgeNodeCoinbases.filter((x) => x.timeScale === 'last_six_months');
     return lastSixMonthCoinbases;
   }
 
