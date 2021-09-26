@@ -285,8 +285,20 @@ menu:
   theta: "Theta"
   tfuel_vip: "Tfuel VIP"
   domain: "domain"
+  marketplace: "marketplace"
+  drop: "drop"
   faq: "faq"
 ###### MENU END ######
+
+
+###### DROP START ######
+drop:
+  title: "Thetaboard Drops"
+  is_live: "Drop is live"
+  over: "Drop is over"
+  coming_soon: "Drop is coming soon"
+###### DROP END ######
+
 
 
 ###### NAVBAR START ######

@@ -1192,3 +1192,76 @@ p.menu-item {
 a.active p.menu-item {
   font-weight: 650;
 }
+
+#card-drop .drop-tile-container {
+  padding: 15px;
+  text-align: left;
+}
+
+#card-drop .drop-tile {
+  height: 350px;
+  background-size: cover;
+  border-radius: 20px;
+  position: relative;
+  box-shadow: 2px 2px 12px #060606;
+}
+
+#card-drop .drop-bottom-container {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 7px 15px;
+  background: rgba(0,0,0,0.7);
+  backdrop-filter: blur(2px);
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+#card-drop .drop-tile p.small-description {
+  margin: 0;
+  font-weight: 500;
+  text-shadow: 0px 0px 3px black;
+}
+
+#card-drop p.drop-artist {
+  font-weight: 400;
+  color: #ffa500;
+  text-shadow: 0px 0px 3px black;
+}
+
+#card-drop .drop-status {
+  display: inline-block;
+  background: black;
+  padding: 5px 15px;
+  border-radius: 25px;
+  margin: 10px 0 0 10px;
+}
+
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
+}
+
+#card-drop .drop-status .dot {
+  height: 10px;
+  width: 10px;
+  background-color: #ff0303;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 5px;
+  animation: blinker 2s linear infinite;
+}
+
+#card-drop .drop-status.live {
+  color: #d2d2d2;
+}
+
+#card-drop .drop-status.coming {
+  background: #ffffff;
+  color: #000;
+}
+
+#card-drop .drop-status.over {
+  color: #525f7f
+}

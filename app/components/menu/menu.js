@@ -21,6 +21,12 @@ export default class MenuComponent extends Component {
       ],
     },
     {
+      name: 'menu.marketplace', icon: 'icon-refresh-02', route: 'marketplace.drop',
+      children: [
+        {name: 'menu.drop', icon: 'icon-app', route: 'marketplace.drop'},
+      ],
+    },
+    {
       name: 'menu.staking', icon: 'icon-align-center', route: 'staking.tfuel',
       children: [
         {name: 'menu.tfuel', image: 'tfuel-white.png', route: 'staking.tfuel'},

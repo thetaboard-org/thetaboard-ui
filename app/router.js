@@ -32,6 +32,9 @@ Router.map(function () {
     this.route('nft');
   });
   this.route('domain');
+  this.route('marketplace', function () {
+    this.route('drop');
+  });
   this.route('policy', function () {
     this.route('terms');
     this.route('privacy');
