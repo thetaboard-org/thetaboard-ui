@@ -7,14 +7,18 @@ export default class EECoinbaseHistoryComponent extends Component {
   @service currency;
 
   get coinbasesLastDay() {
-    const yesterday = new Date(new Date().setDate(new Date().getDate() - 1));
-    const lastDayCoinbases = this.thetaSdk.eliteEdgeNodeCoinbases.filter((x) => x.timestamp > yesterday);
+    const lastDayCoinbases = this.thetaSdk.eliteEdgeNodeCoinbases.filter((x) => x.timeScale === 'last_day');
     return lastDayCoinbases;
   }
 
   get coinbasesLastDayTfuelAmount() {
     const finalAmount = this.coinbasesLastDay.reduce((a, b) => a + b.value, 0);
     return Number.parseFloat(finalAmount).toFixed(2);
+  }
+
+  get coinbasesLastDayTfuelCount() {
+    const finalAmount = this.coinbasesLastDay.reduce((a, b) => a + b.count, 0);
+    return Number.parseFloat(finalAmount);
   }
 
   get coinbasesLastDayUsdValue() {
@@ -25,14 +29,18 @@ export default class EECoinbaseHistoryComponent extends Component {
   }
 
   get coinbasesLastWeek() {
-    const lastWeek = new Date(new Date().setDate(new Date().getDate() - 7));
-    const lastWeekCoinbases = this.thetaSdk.eliteEdgeNodeCoinbases.filter((x) => x.timestamp > lastWeek);
+    const lastWeekCoinbases = this.thetaSdk.eliteEdgeNodeCoinbases.filter((x) => x.timeScale === 'last_week');
     return lastWeekCoinbases;
   }
 
   get coinbasesLastWeekTfuelAmount() {
     const finalAmount = this.coinbasesLastWeek.reduce((a, b) => a + b.value, 0);
     return Number.parseFloat(finalAmount).toFixed(2);
+  }
+
+  get coinbasesLastWeekTfuelCount() {
+    const finalAmount = this.coinbasesLastWeek.reduce((a, b) => a + b.count, 0);
+    return Number.parseFloat(finalAmount);
   }
 
   get coinbasesLastWeekUsdValue() {
@@ -43,14 +51,18 @@ export default class EECoinbaseHistoryComponent extends Component {
   }
 
   get coinbasesLastMonth() {
-    const lastMonth = new Date(new Date().setMonth(new Date().getMonth() - 1));
-    const lastMonthCoinbases = this.thetaSdk.eliteEdgeNodeCoinbases.filter((x) => x.timestamp > lastMonth);
+    const lastMonthCoinbases = this.thetaSdk.eliteEdgeNodeCoinbases.filter((x) => x.timeScale === 'last_month');
     return lastMonthCoinbases;
   }
 
   get coinbasesLastMonthTfuelAmount() {
     const finalAmount = this.coinbasesLastMonth.reduce((a, b) => a + b.value, 0);
     return Number.parseFloat(finalAmount).toFixed(2);
+  }
+
+  get coinbasesLastMonthTfuelCount() {
+    const finalAmount = this.coinbasesLastMonth.reduce((a, b) => a + b.count, 0);
+    return Number.parseFloat(finalAmount);
   }
 
   get coinbasesLastMonthUsdValue() {
@@ -61,14 +73,18 @@ export default class EECoinbaseHistoryComponent extends Component {
   }
 
   get coinbasesLastSixMonths() {
-    const lastSixMonth = new Date(new Date().setMonth(new Date().getMonth() - 6));
-    const lastSixMonthCoinbases = this.thetaSdk.eliteEdgeNodeCoinbases.filter((x) => x.timestamp > lastSixMonth);
+    const lastSixMonthCoinbases = this.thetaSdk.eliteEdgeNodeCoinbases.filter((x) => x.timeScale === 'last_six_months');
     return lastSixMonthCoinbases;
   }
 
   get coinbasesLastSixMonthsTfuelAmount() {
     const finalAmount = this.coinbasesLastSixMonths.reduce((a, b) => a + b.value, 0);
     return Number.parseFloat(finalAmount).toFixed(2);
+  }
+
+  get coinbasesLastSixMonthsTfuelCount() {
+    const finalAmount = this.coinbasesLastSixMonths.reduce((a, b) => a + b.count, 0);
+    return Number.parseFloat(finalAmount);
   }
 
   get coinbasesLastSixMonthsUsdValue() {
