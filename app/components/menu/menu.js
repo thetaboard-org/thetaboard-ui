@@ -21,9 +21,9 @@ export default class MenuComponent extends Component {
       ],
     },
     {
-      name: 'menu.marketplace', icon: 'icon-refresh-02', route: 'marketplace.drop',
+      name: 'menu.marketplace', icon: 'icon-refresh-02', route: 'marketplace.drops',
       children: [
-        {name: 'menu.drop', icon: 'icon-app', route: 'marketplace.drop'},
+        {name: 'menu.drops', icon: 'icon-app', route: 'marketplace.drops'},
       ],
     },
     {

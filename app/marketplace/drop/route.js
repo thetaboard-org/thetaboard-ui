@@ -1,8 +1,8 @@
 import Route from '@ember/routing/route';
 
 export default class DropRoute extends Route {
-  async model() {
-    const drops = await this.store.findAll('drop');
-    return { drops: drops };
+  async model(params) {
+    const drop = await this.store.findRecord('drop', params.dropId);
+    return { drop: drop };
   }
 }

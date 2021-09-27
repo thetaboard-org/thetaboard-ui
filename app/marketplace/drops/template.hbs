@@ -1,0 +1,26 @@
+{{page-title "Drops"}}
+
+<div class="card card-user" id="card-drops">
+  <div class="card-body card-min-390">
+    <p class="card-text"></p>
+    <div class="author">
+      <div class="block block-one"></div>
+      <div class="block block-two"></div>
+      <div class="block block-three"></div>
+      <div class="block block-four"></div>
+    </div>
+    <div class="card-body-stake">
+      <h5 class="title">{{t 'drop.title'}}</h5>
+      <div class="row justify-content-lg-center justify-content-md-center">
+        <label>toto</label>
+      </div>
+      <div class="row">
+        {{#each dropList as |drop|}}
+          {{marketplace/drop-tile drop=drop}}
+        {{/each}}
+      </div>
+    </div>
+  </div>
+  <div class="card-footer">
+  </div>
+</div>

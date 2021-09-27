@@ -1,5 +1,5 @@
 <div class="col-sm-12 col-md-4 drop-tile-container">
-    <LinkTo @route="marketplace.drop">
+    <LinkTo @route="marketplace.drop" @model={{drop.id}}>
         <div class="drop-tile" style="background-image: url({{drop.image}})">
             <div>
                 {{#if drop.isDropLive}}

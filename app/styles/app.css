@@ -1193,12 +1193,14 @@ a.active p.menu-item {
   font-weight: 650;
 }
 
-#card-drop .drop-tile-container {
+/****** DROPS START ******/
+
+#card-drops .drop-tile-container {
   padding: 15px;
   text-align: left;
 }
 
-#card-drop .drop-tile {
+#card-drops .drop-tile {
   height: 350px;
   background-size: cover;
   border-radius: 20px;
@@ -1206,7 +1208,7 @@ a.active p.menu-item {
   box-shadow: 2px 2px 12px #060606;
 }
 
-#card-drop .drop-bottom-container {
+#card-drops .drop-bottom-container {
   position: absolute;
   bottom: 0;
   width: 100%;
@@ -1217,24 +1219,64 @@ a.active p.menu-item {
   border-bottom-right-radius: 20px;
 }
 
-#card-drop .drop-tile p.small-description {
+#card-drops .drop-tile p.small-description {
   margin: 0;
   font-weight: 500;
   text-shadow: 0px 0px 3px black;
 }
 
-#card-drop p.drop-artist {
+#card-drops p.drop-artist {
   font-weight: 400;
   color: #ffa500;
   text-shadow: 0px 0px 3px black;
 }
 
-#card-drop .drop-status {
+#card-drops .drop-status {
   display: inline-block;
   background: black;
   padding: 5px 15px;
   border-radius: 25px;
   margin: 10px 0 0 10px;
+}
+
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
+}
+
+#card-drops .drop-status .dot {
+  height: 10px;
+  width: 10px;
+  background-color: #ff0303;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 5px;
+  animation: blinker 2s linear infinite;
+}
+
+#card-drops .drop-status.live {
+  color: #d2d2d2;
+}
+
+#card-drops .drop-status.coming {
+  background: #ffffff;
+  color: #000;
+}
+
+#card-drops .drop-status.over {
+  color: #525f7f
+}
+
+
+/****** DROP START ******/
+
+
+#card-drop .drop-status {
+  display: inline-block;
+  background: black;
+  padding: 10px 20px;
+  border-radius: 25px;
 }
 
 @keyframes blinker {
@@ -1264,4 +1306,23 @@ a.active p.menu-item {
 
 #card-drop .drop-status.over {
   color: #525f7f
+}
+
+#card-drop .artist-container {
+  margin-top: 20px;
+  text-align: center;
+}
+
+#card-drop .drop-artist {
+  font-weight: 400;
+  color: #ffa500;
+  text-shadow: 0px 0px 3px black;
+  font-size: 20px;
+  margin: 20px 0 10px;
+}
+
+#card-drop .description {
+  font-weight: 400;
+  margin: 15px;
+  font-size: 20px;
 }

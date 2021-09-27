@@ -33,7 +33,8 @@ Router.map(function () {
   });
   this.route('domain');
   this.route('marketplace', function () {
-    this.route('drop');
+    this.route('drops');
+    this.route('drop', {path: '/drop/:dropId'});
   });
   this.route('policy', function () {
     this.route('terms');
