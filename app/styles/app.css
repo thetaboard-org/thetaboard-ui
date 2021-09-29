@@ -1223,6 +1223,8 @@ a.active p.menu-item {
   margin: 0;
   font-weight: 500;
   text-shadow: 0px 0px 3px black;
+  max-height: 86px;
+  overflow: hidden;
 }
 
 #card-drops p.drop-artist {
@@ -1268,6 +1270,9 @@ a.active p.menu-item {
   color: #525f7f
 }
 
+#card-drops .drop-status.in-few-hours {
+  color: #ff3056;
+}
 
 /****** DROP START ******/
 
@@ -1305,7 +1310,11 @@ a.active p.menu-item {
 }
 
 #card-drop .drop-status.over {
-  color: #525f7f
+  color: #525f7f;
+}
+
+#card-drop .drop-status.in-few-hours {
+  color: #ff3056;
 }
 
 #card-drop .artist-container {
@@ -1317,7 +1326,7 @@ a.active p.menu-item {
   font-weight: 400;
   color: #ffa500;
   text-shadow: 0px 0px 3px black;
-  font-size: 20px;
+  font-size: 30px;
   margin: 20px 0 10px;
 }
 
@@ -1326,3 +1335,100 @@ a.active p.menu-item {
   margin: 15px;
   font-size: 20px;
 }
+
+#card-drop .date-label {
+  margin-top: 5px;
+}
+
+#card-drop .nft-tile {
+  height: 350px;
+  border-radius: 20px;
+  position: relative;
+  box-shadow: 2px 2px 12px #060606;
+  margin: 50px 15px;
+  text-align: left;
+  background: #1e1e2c;
+}
+
+#card-drop .nft-tile-body {
+  display: inline-block;
+}
+
+#card-drop .nft-tile-body-left {
+  height: 100%;
+  padding: 25px;
+}
+
+#card-drop .nft-tile-body-right {
+  padding: 30px 20px 30px 0;
+  position: absolute;
+  height: 100%;
+}
+
+#card-drop .nft-main-img {
+  height: 300px;
+}
+
+#card-drop .nft-tile h3 {
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+#card-drop .nft-tile .edition-type {
+  margin-bottom: 10px;
+  display: inline-block;
+  background: #272a3c;
+  padding: 7px 15px;
+  border-radius: 4px;
+}
+
+#card-drop .nft-tile .nft-small-desc {
+  margin-bottom: 10px;
+  font-weight: 400;
+  height: 125px;
+  overflow: hidden;
+}
+
+#card-drop .nft-tile .nft-price {
+  font-size: 25px;
+  position: absolute;
+  bottom: 30px;
+  font-weight: 600;
+  right: 45px;
+  color: white;
+}
+
+#card-drop .nft-tile .nft-button {
+  margin-right: 30px;
+}
+
+@media screen and (max-width: 1050px) {
+  #card-drop .nft-tile {
+    height: auto;
+    text-align: center;
+  }
+
+  #card-drop .nft-tile-body-left {
+    height: 350px;
+    display: block;
+  }
+
+  #card-drop .nft-tile-body-right {
+    padding: 10px;
+    position: relative;
+    height: auto;
+  }
+
+  #card-drop .nft-tile .nft-small-desc {
+    max-height: 125px;
+    height: auto;
+  }
+
+  #card-drop .nft-tile .nft-price {
+    position: relative;
+    right: 0;
+    bottom: 0;
+  }
+}
+
+/****** NFT START ******/

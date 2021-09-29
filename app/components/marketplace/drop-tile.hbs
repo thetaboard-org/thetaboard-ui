@@ -6,6 +6,8 @@
                     <div class="drop-status live"><span class="dot"></span>{{t 'drop.is_live'}}</div>
                 {{else if drop.isDropEnded}}
                     <div class="drop-status over">{{t 'drop.over'}}</div>
+                {{else if drop.isStartingInLessThan24Hours}}
+                    <div class="drop-status in-few-hours">{{moment-from drop.startDate}}</div>
                 {{else}}
                     <div class="drop-status coming">{{t 'drop.coming_soon'}}</div>
                 {{/if}}

@@ -10,4 +10,5 @@ export default class ArtistModel extends Model {
   @attr('string') twitter;
   @attr('string') website;
   @hasMany('drop') drops;
+  @hasMany('nft') nfts;
 }

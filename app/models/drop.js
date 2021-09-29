@@ -9,7 +9,7 @@ export default class DropModel extends Model {
   @attr('date') startDate;
   @attr('date') endDate;
   @belongsTo('artist') artist;
-  // @hasMany('nft') nft;
+  @hasMany('nft') nfts;
 
   @computed('startDate')
   get isDropStarted() {
@@ -26,4 +26,11 @@ export default class DropModel extends Model {
     const today = new Date();
     return this.startDate < today && this.endDate > today;
   }
+
+  @computed('startDate')
+  get isStartingInLessThan24Hours() {
+    const in24hours = new Date(new Date().getTime() + 60 * 60 * 24 * 1000);
+    return this.startDate < in24hours;
+  }
+
 }

@@ -297,8 +297,13 @@ drop:
   is_live: "Drop is live"
   over: "Drop is over"
   coming_soon: "Drop is coming soon"
+  ending_on: "Ending on"
+  ended_on: "Ended on"
+  starting_on: "Starting on"
+  edition_available: "Edition available"
+  open_edition: "Open edition"
+  artist: "Artist"
 ###### DROP END ######
-
 
 
 ###### NAVBAR START ######
