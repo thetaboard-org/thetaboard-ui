@@ -1322,14 +1322,6 @@ a.active p.menu-item {
   text-align: center;
 }
 
-#card-drop .drop-artist {
-  font-weight: 400;
-  color: #ffa500;
-  text-shadow: 0px 0px 3px black;
-  font-size: 30px;
-  margin: 20px 0 10px;
-}
-
 #card-drop .description {
   font-weight: 400;
   margin: 15px;
@@ -1431,9 +1423,21 @@ a.active p.menu-item {
   }
 }
 
+.artist-container .drop-artist {
+  font-weight: 400;
+  color: #ffa500;
+  text-shadow: 0px 0px 3px black;
+  font-size: 30px;
+  margin: 10px 0 10px;
+}
+
 .artist-container .social-img {
   width: 40px;
   margin: 0 0 0 5px;
+}
+
+.artist-container .drop-artist-bio {
+  margin-top: 20px;
 }
 
 /****** NFT START ******/
