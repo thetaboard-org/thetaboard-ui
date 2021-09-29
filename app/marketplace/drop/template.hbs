@@ -31,12 +31,7 @@
         {{marketplace/nft-tile nft=nft drop=drop}}
       {{/each}}
       <br/>
-      <div class="artist-container">
-        <h1 style="margin-bottom: 25px;">{{t 'drop.artist'}}:</h1>
-        <img src="{{drop.artist.image}}" width="60px" height="60px" alt="{{drop.artist.name}}"/>
-        <h3 class="drop-artist">{{drop.artist.name}}</h3>
-        <p class="drop-artist-bio">{{drop.artist.bio}}</p>
-      </div>
+      {{marketplace/artist-tile artist=drop.artist}}
     </div>
   </div>
   <div class="card-footer">

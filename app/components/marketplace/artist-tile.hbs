@@ -1,0 +1,26 @@
+<div class="artist-container">
+    <h1 style="margin-bottom: 25px;">{{t 'drop.artist'}}:</h1>
+    <img src="{{artist.image}}" width="100px" height="100px" alt="{{artist.name}}"/>
+    {{#if artist.instagram}}
+        <a href="{{artist.instagram}}" target="_blank">
+            <img class="social-img" src="/assets/img/logo/instagram.png" alt="instagram"/>
+        </a>
+    {{/if}}
+    {{#if artist.youtube}}
+        <a href="{{artist.youtube}}" target="_blank">
+            <img class="social-img" src="/assets/img/logo/youtube.png" alt="youtube"/>
+        </a>
+    {{/if}}
+    {{#if artist.twitter}}
+        <a href="{{artist.twitter}}" target="_blank">
+            <img class="social-img" src="/assets/img/logo/twitter.png" alt="twitter"/>
+        </a>
+    {{/if}}
+    {{#if artist.website}}
+        <a href="{{artist.website}}" target="_blank">
+            <img class="social-img" src="/assets/img/logo/website.png" alt="website"/>
+        </a>
+    {{/if}}
+    <h3 class="drop-artist">{{artist.name}}</h3>
+    <p class="drop-artist-bio">{{artist.bio}}</p>
+</div>

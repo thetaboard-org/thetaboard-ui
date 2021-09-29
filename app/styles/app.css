@@ -1431,4 +1431,9 @@ a.active p.menu-item {
   }
 }
 
+.artist-container .social-img {
+  width: 40px;
+  margin: 0 0 0 5px;
+}
+
 /****** NFT START ******/
