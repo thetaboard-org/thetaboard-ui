@@ -129,11 +129,7 @@ transaction_history:
 ###### NFT START ######
 NFT:
   no_nft: "Esta wallet no tiene NFT"
-  early_nft_1: "Obtén tu NFT de adopción temprana de Thetaboard enviando 20 Tfuel a:"
-  early_nft_2: "El contrato inteligente entregará automáticamente tu Thetaboard NFT en la wallet desde donde se enviaron los 20 Tfuel un 1 minuto después. . <br>
-Los números de edición se acuñan al azar. Disponible solo hasta el 31 de octubre de 2021, se acuñarán 1000 NFT como máximo. <br>
-Solo un NFT por transacción. Si quieres comprar más de uno, deberás realizar múltiples transacciones de 20 Tfuel. <br>
-Las wallets que tengan NFT de los primeros usuarios de Thetaboard serán elegibles para futuras recompensas."
+
 ###### NFT END ######
 
 
