@@ -7,9 +7,9 @@ export default class MarketplaceDropStatusComponent extends Component {
     super(...args);
     this.countDownCall;
     this.countDown = '';
-    if (this.drop.isStartingInLessThan24Hours) {
+    if (this.drop.get('isStartingInLessThan24Hours')) {
       this.countDownTime(this.drop.startDate);
-    } else if (this.drop.isEndingInLessThan24Hours) {
+    } else if (this.drop.get('isEndingInLessThan24Hours')) {
       this.countDownTime(this.drop.endDate);
     }
   }
