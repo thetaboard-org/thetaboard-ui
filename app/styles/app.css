@@ -1152,7 +1152,7 @@ a.logout {
   display: inline-block;
   width: 1px;
   border-right: 1px solid #f1f1f1;
-  height: 90px;
+  height: 210px;
   margin-top: 60px;
 }
 
@@ -1239,6 +1239,9 @@ a.active p.menu-item {
   padding: 5px 15px;
   border-radius: 25px;
   margin: 10px 0 0 10px;
+  font-weight: 500;
+  border: 1px solid;
+  box-shadow: 2px 2px 12px #060606;
 }
 
 @keyframes blinker {
@@ -1271,7 +1274,8 @@ a.active p.menu-item {
 }
 
 #card-drops .drop-status.in-few-hours {
-  color: #ff3056;
+  color: white;
+  background: red;
 }
 
 /****** DROP START ******/
@@ -1283,6 +1287,9 @@ a.active p.menu-item {
   background: black;
   padding: 10px 20px;
   border-radius: 25px;
+  font-weight: 500;
+  border: 1px solid;
+  box-shadow: 2px 2px 12px #060606;
 }
 
 @keyframes blinker {
@@ -1320,7 +1327,8 @@ a.active p.menu-item {
 
 #card-drop .drop-status.in-few-hours,
 #card-nft .drop-status.in-few-hours {
-  color: #ff3056;
+  color: white;
+  background: red;
 }
 
 .nft-tile .nft-tile-body .nft-tile-body-left a {
@@ -1410,7 +1418,7 @@ a.active p.menu-item {
   margin-right: 10px;
 }
 
-@media screen and (max-width: 1050px) {
+@media screen and (max-width: 1090px) {
   #card-drop .nft-tile {
     height: auto;
     text-align: center;

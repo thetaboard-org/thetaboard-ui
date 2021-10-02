@@ -22,7 +22,7 @@
       <p class="description">{{nft.description}}</p>
       <br/>
       <div class="nft-price">
-        {{currency.currentCurrency.symbol}}<span class="nostyle" {{numberformat nft.price 2}}></span>
+        <span class="nostyle" {{numberformat nft.price 2}}></span> {{t 'global.tfuel'}}
       </div>
       <br/>
       {{#if drop.isDropLive}}

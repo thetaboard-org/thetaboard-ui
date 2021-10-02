@@ -30,7 +30,14 @@ export default class DropModel extends Model {
   @computed('startDate')
   get isStartingInLessThan24Hours() {
     const in24hours = new Date(new Date().getTime() + 60 * 60 * 24 * 1000);
-    return this.startDate < in24hours;
+    const now = new Date();
+    return this.startDate < in24hours && this.startDate > now;
   }
 
+  @computed('endDate', 'isDropLive')
+  get isEndingInLessThan24Hours() {
+    const in24hours = new Date(new Date().getTime() + 60 * 60 * 24 * 1000);
+    const now = new Date();
+    return this.endDate < in24hours && this.endDate > now;
+  }
 }

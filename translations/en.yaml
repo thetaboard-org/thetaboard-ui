@@ -294,11 +294,14 @@ menu:
 ###### DROP START ######
 drop:
   title: "Thetaboard Drops"
+  subtitle: "Toto"
   is_live: "Drop is live"
   over: "Drop is over"
   coming_soon: "Drop is coming soon"
   ending_on: "Ending on"
+  ending_in: "Ending in"
   ended_on: "Ended on"
+  starting_in: "Starting in"
   starting_on: "Starting on"
   edition_available: "Edition available"
   open_edition: "Open edition"
@@ -387,6 +390,7 @@ currency:
   currency: "Currency"
   usd: "USD"
   aud: "AUD"
+  cad: "CAD"
   eur: "EUR"
   gbp: "GBP"
   krw: "KRW"
@@ -394,6 +398,7 @@ currency:
   symbol:
     usd: "$"
     aud: "A$"
+    cad: "C$"
     eur: "€"
     gbp: "£"
     krw: "₩"
