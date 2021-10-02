@@ -35,6 +35,8 @@ Router.map(function () {
   this.route('marketplace', function () {
     this.route('drops');
     this.route('drop', {path: '/drop/:dropId'});
+    this.route('nft', {path: '/nft/:nftId'});
+    this.route('artist', {path: '/artist/:artistId'});
   });
   this.route('policy', function () {
     this.route('terms');

@@ -1,6 +1,8 @@
 <div class="nft-tile">
     <div class="nft-tile-body nft-tile-body-left">
-    <img class="nft-main-img" src="{{nft.image}}" alt="{{nft.name}}"/>
+    <LinkTo @route="marketplace.nft" @model="{{nft.id}}">
+        <img class="nft-main-img" src="{{nft.image}}" alt="{{nft.name}}"/>
+    </LinkTo>
     </div>
     <div class="nft-tile-body nft-tile-body-right">
         <h3>{{nft.name}}</h3>
@@ -10,11 +12,14 @@
             <p class="edition-type">{{t 'drop.open_edition'}}</p>
         {{/if}}
         <h4 class="nft-small-desc">{{nft.smallDescription}}</h4>
+        <LinkTo @class="nft-view-more" @route="marketplace.nft" @model="{{nft.id}}">{{t 'drop.view_more'}}</LinkTo>
         <div class="nft-price">
             {{#if drop.isDropLive}}
-                <button class="nft-button btn btn-primary">BUY</button>
+                <button class="nft-button btn btn-primary">{{t 'drop.buy'}}</button>
+            {{else if drop.isDropEnded}}
+                <button class="nft-button btn btn-primary" disabled>{{t 'drop.closed'}}</button>
             {{else}}
-                <button class="nft-button btn btn-primary" disabled>Closed</button>
+                <button class="nft-button btn btn-primary" disabled>{{t 'drop.coming'}}</button>
             {{/if}}
             {{currency.currentCurrency.symbol}}<span class="nostyle" {{numberformat nft.price 2}}></span>
         </div>

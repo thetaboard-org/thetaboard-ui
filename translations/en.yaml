@@ -303,6 +303,11 @@ drop:
   edition_available: "Edition available"
   open_edition: "Open edition"
   artist: "Artist"
+  view_more: "View more"
+  additional_assets: "Additional Assets"
+  buy: "BUY THIS NFT"
+  coming: "COMING SOON"
+  closed: "CLOSED"
 ###### DROP END ######
 
 

@@ -1,7 +1,7 @@
 import Model, { attr, belongsTo, hasMany } from '@ember-data/model';
 import { computed } from '@ember/object';
 
-export default class DropModel extends Model {
+export default class NftModel extends Model {
   @attr('string') smallDescription;
   @attr('string') description;
   @attr('string') name;
@@ -13,6 +13,7 @@ export default class DropModel extends Model {
   @attr('string', { defaultValue: 'open' }) type;
   @belongsTo('artist') artist;
   @belongsTo('drop') drop;
+  @hasMany('nftAsset') nftAssets;
 
   @computed('type')
   get isOpenEdition() {

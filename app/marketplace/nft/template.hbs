@@ -1,0 +1,49 @@
+{{page-title "NFT"}}
+
+<div class="card card-user" id="card-nft">
+  <div class="card-body card-min-390">
+    <p class="card-text"></p>
+    <div class="author">
+      <div class="block block-one"></div>
+      <div class="block block-two"></div>
+      <div class="block block-three"></div>
+      <div class="block block-four"></div>
+    </div>
+    <div class="card-body-stake">
+      <h5 class="title">{{nft.name}}</h5>
+      {{marketplace/drop-status drop=drop}}
+      <br/>
+      <div class="nft-main-image-container">
+        <a href="{{nft.image}}" target="_blanc">
+          <img class="nft-main-image" src="{{nft.image}}" alt="{{nft.name}}"/>
+        </a>
+      </div>
+      <br/>
+      <p class="description">{{nft.description}}</p>
+      <br/>
+      <div class="nft-price">
+        {{currency.currentCurrency.symbol}}<span class="nostyle" {{numberformat nft.price 2}}></span>
+      </div>
+      <br/>
+      {{#if drop.isDropLive}}
+          <button class="nft-button btn btn-primary">{{t 'drop.buy'}}</button>
+      {{else if drop.isDropEnded}}
+          <button class="nft-button btn btn-primary" disabled>{{t 'drop.closed'}}</button>
+      {{else}}
+          <button class="nft-button btn btn-primary" disabled>{{t 'drop.coming'}}</button>
+      {{/if}}
+      <br/>
+      <br/>
+      {{#if nft.nftAssets.length}}
+        <h3>{{t 'drop.additional_assets'}}:</h3>
+        {{#each nft.nftAssets as |nftAsset|}}
+          {{marketplace/nft-asset-tile nftAsset=nftAsset}}
+        {{/each}}
+      {{/if}}
+      <br/>
+      {{marketplace/artist-tile artist=nft.artist}}
+    </div>
+  </div>
+  <div class="card-footer">
+  </div>
+</div>

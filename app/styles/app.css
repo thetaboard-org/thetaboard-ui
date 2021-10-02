@@ -1277,8 +1277,9 @@ a.active p.menu-item {
 /****** DROP START ******/
 
 
-#card-drop .drop-status {
-  display: inline-block;
+#card-drop .drop-status,
+#card-nft .drop-status {
+    display: inline-block;
   background: black;
   padding: 10px 20px;
   border-radius: 25px;
@@ -1290,7 +1291,8 @@ a.active p.menu-item {
   }
 }
 
-#card-drop .drop-status .dot {
+#card-drop .drop-status .dot,
+#card-nft .drop-status .dot{
   height: 10px;
   width: 10px;
   background-color: #ff0303;
@@ -1300,21 +1302,29 @@ a.active p.menu-item {
   animation: blinker 2s linear infinite;
 }
 
-#card-drop .drop-status.live {
+#card-drop .drop-status.live,
+#card-nft .drop-status.live {
   color: #d2d2d2;
 }
 
-#card-drop .drop-status.coming {
+#card-drop .drop-status.coming,
+#card-nft .drop-status.coming {
   background: #ffffff;
   color: #000;
 }
 
-#card-drop .drop-status.over {
+#card-drop .drop-status.over,
+#card-nft .drop-status.over {
   color: #525f7f;
 }
 
-#card-drop .drop-status.in-few-hours {
+#card-drop .drop-status.in-few-hours,
+#card-nft .drop-status.in-few-hours {
   color: #ff3056;
+}
+
+.nft-tile .nft-tile-body .nft-tile-body-left a {
+  margin: 0;
 }
 
 #card-drop .artist-container {
@@ -1328,8 +1338,9 @@ a.active p.menu-item {
   font-size: 20px;
 }
 
-#card-drop .date-label {
-  margin-top: 5px;
+#card-drop .date-label,
+#card-nft .date-label {
+  margin-top: 7px;
 }
 
 #card-drop .nft-tile {
@@ -1377,12 +1388,17 @@ a.active p.menu-item {
 #card-drop .nft-tile .nft-small-desc {
   margin-bottom: 10px;
   font-weight: 400;
-  height: 125px;
+  height: 75px;
   overflow: hidden;
 }
 
+#card-drop .nft-tile .nft-view-more {
+  margin: 10px 0;
+  display: block;
+}
+
 #card-drop .nft-tile .nft-price {
-  font-size: 25px;
+  font-size: 20px;
   position: absolute;
   bottom: 30px;
   font-weight: 600;
@@ -1391,7 +1407,7 @@ a.active p.menu-item {
 }
 
 #card-drop .nft-tile .nft-button {
-  margin-right: 30px;
+  margin-right: 10px;
 }
 
 @media screen and (max-width: 1050px) {
@@ -1423,6 +1439,8 @@ a.active p.menu-item {
   }
 }
 
+/****** ARTIST START ******/
+
 .artist-container .drop-artist {
   font-weight: 400;
   color: #ffa500;
@@ -1441,3 +1459,26 @@ a.active p.menu-item {
 }
 
 /****** NFT START ******/
+
+#card-nft .nft-main-image-container {
+  margin: auto;
+  max-width: 480px;
+}
+
+#card-nft .nft-assets-container {
+  margin: auto;
+  max-width: 600px;
+}
+
+#card-nft .nft-main-image {
+
+}
+
+#card-nft .nft-main-video {
+  width: 100%;
+}
+
+#card-nft .nft-price {
+  font-size: 20px;
+  color: white;
+}
