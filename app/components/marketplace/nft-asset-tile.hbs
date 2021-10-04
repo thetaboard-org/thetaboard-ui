@@ -1,0 +1,17 @@
+<h2>{{nftAsset.name}}</h2>
+<div class="nft-assets-container">
+<a href="{{nftAsset.asset}}" target="_blanc">
+    {{#if nftAsset.isImage}}
+    <img class="nft-main-image" src="{{nftAsset.asset}}" alt="{{nftAsset.name}}"/>
+    {{else if nftAsset.isVideo}}
+    <video class="nft-main-video" autoplay loop>
+        <source src="{{nftAsset.asset}}" type="video/mp4">
+    </video>
+    {{else if nftAsset.isObject3D}}
+
+    {{/if}}
+</a>
+</div>
+<br/>
+<p class="description">{{nftAsset.description}}</p>
+<br/>

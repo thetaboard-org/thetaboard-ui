@@ -11,21 +11,7 @@
     </div>
     <div class="card-body-stake">
       <h5 class="title">{{drop.name}}</h5>
-      <div class="justify-content-lg-center justify-content-md-center">
-        {{#if drop.isDropLive}}
-          <div class="drop-status live"><span class="dot"></span>{{t 'drop.is_live'}}</div>
-          <p class="date-label">{{t 'drop.ending_on'}} {{moment-format drop.endDate 'll'}}</p>
-        {{else if drop.isDropEnded}}
-          <div class="drop-status over">{{t 'drop.over'}}</div>
-          <p class="date-label">{{t 'drop.ended_on'}} {{moment-format drop.endDate 'll'}}</p>
-        {{else if drop.isStartingInLessThan24Hours}}
-          <div class="drop-status in-few-hours">{{moment-from drop.startDate}}</div>
-          <p class="date-label">{{t 'drop.starting_on'}} {{moment-format drop.startDate 'll, LT'}}</p>
-        {{else}}
-          <div class="drop-status coming">{{t 'drop.coming_soon'}}</div>
-          <p class="date-label">{{t 'drop.starting_on'}} {{moment-format drop.startDate 'll, LT'}}</p>
-        {{/if}}
-      </div>
+      {{marketplace/drop-status drop=drop}}
       <p class="description">{{drop.description}}</p>
       {{#each drop.nfts as |nft|}}
         {{marketplace/nft-tile nft=nft drop=drop}}

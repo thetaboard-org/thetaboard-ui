@@ -2,14 +2,14 @@ import Component from '@glimmer/component';
 import { later } from '@ember/runloop';
 import { tracked } from '@glimmer/tracking';
 
-export default class MarketplaceDropTileComponent extends Component {
+export default class MarketplaceDropStatusComponent extends Component {
   constructor(...args) {
     super(...args);
     this.countDownCall;
     this.countDown = '';
-    if (this.drop.isStartingInLessThan24Hours) {
+    if (this.drop.get('isStartingInLessThan24Hours')) {
       this.countDownTime(this.drop.startDate);
-    } else if (this.drop.isEndingInLessThan24Hours) {
+    } else if (this.drop.get('isEndingInLessThan24Hours')) {
       this.countDownTime(this.drop.endDate);
     }
   }
