@@ -19,7 +19,7 @@ export default class NFTRoute extends Route {
       return [].concat(...(await Promise.all(this.wallets.map(async (wallet) => {
         const fetched = await fetch(`/explorer/wallet-nft/${wallet}`);
         return await fetched.json();
-      })))).filter((x) => x.type === 'image');
+      }))));
     }
   }
 }
