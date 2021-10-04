@@ -129,10 +129,6 @@ transaction_history:
 ###### NFT START ######
 NFT:
   no_nft: "This wallet doesn't have any NFT"
-  early_nft_1: "Get your Thetaboard early adopter NFT by sending 20 Tfuels to :"
-  early_nft_2: "The smart contract will automatically deliver your Thetaboard NFT to the wallet you sent 20 Tfuel from within 1 minute. <br>
-Edition numbers are randomly minted. Available only until 31 oct 2021, maximum 1000 NFTs will be minted."
-
 
 ###### NFT END ######
 

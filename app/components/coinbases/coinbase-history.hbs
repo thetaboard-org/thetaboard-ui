@@ -23,7 +23,7 @@
                 src="{{rootURL}}/assets/img/logo/tfuel.png" class="img-fluid rounded-circle" style="width: 20px;"></p>
               <span class="trend-usd-change coinbases">({{currency.currentCurrency.symbol}}<span
                 class="nostyle" {{numberformat coinbasesLastDayUsdValue 2}}></span>
-                   | {{coinbasesLastDay.length}}
+                   | {{coinbasesLastDayCount}}
                 {{#if coinbasesLastDay.length}}{{t 'coinbase_history.rewards_received'}}{{else}}{{t
                   'coinbase_history.reward_received'}}{{/if}})</span>
             </div>
@@ -33,7 +33,7 @@
                 src="{{rootURL}}/assets/img/logo/tfuel.png" class="img-fluid rounded-circle" style="width: 20px;"></p>
               <span class="trend-usd-change coinbases">({{currency.currentCurrency.symbol}}<span
                 class="nostyle" {{numberformat coinbasesLastWeekUsdValue 2}}></span>
-                   | {{coinbasesLastWeek.length}}
+                   | {{coinbasesLastWeekCount}}
                 {{#if coinbasesLastWeek.length}}{{t 'coinbase_history.rewards_received'}}{{else}}{{t
                   'coinbase_history.reward_received'}}{{/if}})</span>
             </div>
@@ -46,7 +46,7 @@
                 src="{{rootURL}}/assets/img/logo/tfuel.png" class="img-fluid rounded-circle" style="width: 20px;"></p>
               <span class="trend-usd-change coinbases">({{currency.currentCurrency.symbol}}<span
                 class="nostyle" {{numberformat coinbasesLastMonthUsdValue 2}}></span>
-                   | {{coinbasesLastMonth.length}}
+                   | {{coinbasesLastMonthCount}}
                 {{#if coinbasesLastMonth.length}}{{t 'coinbase_history.rewards_received'}}{{else}}{{t
                   'coinbase_history.reward_received'}}{{/if}})</span>
             </div>
@@ -56,15 +56,20 @@
                 src="{{rootURL}}/assets/img/logo/tfuel.png" class="img-fluid rounded-circle" style="width: 20px;"></p>
               <span class="trend-usd-change coinbases">({{currency.currentCurrency.symbol}}<span
                 class="nostyle" {{numberformat coinbasesLastSixMonthsUsdValue 2}}></span>
-                   | {{coinbasesLastSixMonths.length}}
+                   | {{coinbasesLastSixMonthsCount}}
                 {{#if coinbasesLastSixMonths.length}}{{t 'coinbase_history.rewards_received'}}{{else}}{{t
                   'coinbase_history.reward_received'}}{{/if}})</span>
             </div>
           </div>
         </div>
       {{else}}
-          <p class="wallet-placeholder">{{t 'global.please'}} <LinkTo @route="my-wallets">{{t 'global.link_wallet'}}</LinkTo> {{t 'global.or'}} <a href="" data-toggle="modal" data-target="#searchModal">{{t 'global.enter_address'}}</a>.</p>
-        {{/if}}
-      </div>
+        <p class="wallet-placeholder">{{t 'global.please'}}
+          <LinkTo @route="my-wallets">{{t 'global.link_wallet'}}</LinkTo> {{t 'global.or'}} <a href=""
+                                                                                               data-toggle="modal"
+                                                                                               data-target="#searchModal">{{t
+            'global.enter_address'}}</a>.
+        </p>
+      {{/if}}
+    </div>
   </div>
 </div>

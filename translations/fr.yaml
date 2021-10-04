@@ -129,11 +129,6 @@ transaction_history:
 ###### NFT START ######
 NFT:
   no_nft: "Ce portefeuille n'a pas de NFT"
-  early_nft_1: “Obtenez votre "NFT premiers utilisateurs de Thetaboard" en envoyant 20 Tfuel à:”
-  early_nft_2: "Le contrat intelligent livrera automatiquement, en moins d'une minute, votre NFT Thetaboard au portefeuille avec lequel vous avez envoyé 20 Tfuel. <br>
-Les numéros d'édition sont au hasard. Disponible uniquement jusqu'au 31 octobre 2021, un maximum de 1000 NFT sera frappé. <br>
-Un seul NFT par transaction. Si vous souhaitez en acheter plusieurs, vous devrez faire plusieurs transactions de 20 Tfuel. <br>
-Les portefeuilles contenant des NFT premiers utilisateurs de Thetaboard seront éligibles pour de futures récompenses."
 
 ###### NFT END ######
 
