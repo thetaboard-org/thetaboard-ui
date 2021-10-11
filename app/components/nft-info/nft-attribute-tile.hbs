@@ -1,0 +1,15 @@
+{{#if hasValue}}
+    <div class="nft-attribute-container">
+        <span class="nft-attribute-label">{{attribute.trait_type}}</span>:
+        {{#if isValueAnObject}}
+            {{#if attribute.value.amount}}
+                <span class="nft-attribute-value">{{attribute.value.amount}}</span>
+            {{/if}}
+            {{#if attribute.value.from}}
+                <span class="nft-attribute-value"> {{t 'drop.from'}} {{attribute.value.from}}</span>
+            {{/if}}
+        {{else}}
+            <span class="nft-attribute-value">{{attribute.value}}</span>
+        {{/if}}
+    </div>
+{{/if}}

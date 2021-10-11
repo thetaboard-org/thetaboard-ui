@@ -1,6 +1,12 @@
 <div class="artist-container">
     <h1 style="margin-bottom: 0px;">{{t 'drop.artist'}}:</h1>
-    <h3 class="drop-artist">{{artist.name}}</h3>
+    {{#if artist.logoName}}
+        <img style="max-width: 300px;display: block;margin: 20px auto;" src="{{artist.logoName}}" alt="{{artist.name}}"/>
+    {{else if artist.logo-name}}
+        <img style="max-width: 300px;display: block;margin: 20px auto;" src="{{artist.logo-name}}" alt="{{artist.name}}"/>
+    {{else}}
+        <h3 class="drop-artist">{{artist.name}}</h3>
+    {{/if}}
     <img src="{{artist.image}}" width="100px" height="100px" alt="{{artist.name}}"/>
     {{#if artist.instagram}}
         <a href="{{artist.instagram}}" target="_blank">

@@ -1,0 +1,46 @@
+{{page-title "NFT Info"}}
+
+<div class="card card-user" id="card-nft">
+  <div class="card-body card-min-390">
+    <p class="card-text"></p>
+    <div class="author">
+      <div class="block block-one"></div>
+      <div class="block block-two"></div>
+      <div class="block block-three"></div>
+      <div class="block block-four"></div>
+    </div>
+    <div class="card-body-stake">
+      <h5 class="title">{{nft.name}}</h5>
+      <br/>
+      <div class="nft-main-image-container">
+        <a href="{{nft.image}}" target="_blanc">
+          <img class="nft-main-image" src="{{nft.image}}" alt="{{nft.name}}"/>
+        </a>
+      </div>
+      <br/>
+      <p class="description">{{nft.description}}</p>
+      <br/>
+      {{#if nft.attributes.length}}
+        <h3 style="margin-bottom: 0px;">{{t 'drop.attributes'}}:</h3>
+        <br/>
+        {{#each nft.attributes as |attribute|}}
+          {{nft-info/nft-attribute-tile attribute=attribute}}
+        {{/each}}
+        <br/>
+      {{/if}}
+      <br/>
+      {{#if nft.properties.assets.length}}
+        <h3>{{t 'drop.additional_assets'}}:</h3>
+        {{#each nft.properties.assets as |nftAsset|}}
+          {{nft-info/nft-asset-tile nftAsset=nftAsset}}
+        {{/each}}
+      {{/if}}
+      <br/>
+      {{#if nft.properties.artist}}
+        {{marketplace/artist-tile artist=nft.properties.artist}}
+      {{/if}}
+    </div>
+  </div>
+  <div class="card-footer">
+  </div>
+</div>

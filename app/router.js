@@ -30,6 +30,7 @@ Router.map(function () {
   this.route('wallet', function () {
     this.route('explorer');
     this.route('nft');
+    this.route('nft-info', {path: '/nft-info/:contractAddr/:tokenId'});
   });
   this.route('domain');
   this.route('marketplace', function () {

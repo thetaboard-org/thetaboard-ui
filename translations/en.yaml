@@ -307,6 +307,8 @@ drop:
   buy: "BUY THIS NFT"
   coming: "COMING SOON"
   closed: "CLOSED"
+  attributes: "Attributes"
+  from: "from"
 ###### DROP END ######
 
 

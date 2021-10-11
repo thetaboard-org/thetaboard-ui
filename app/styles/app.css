@@ -1490,3 +1490,46 @@ a.active p.menu-item {
   font-size: 20px;
   color: white;
 }
+
+
+/****** NFT LIST START ******/
+
+#nft-list .card.nft-card-holdings .card-title {
+  font-size: 17px;
+  font-weight: 400;
+  position: relative;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.nft-card-holdings.card-user .author {
+  margin: 0;
+}
+
+.nft-card-holdings .nft-image{
+  max-height: 300px;
+  position: relative;
+}
+
+/****** NFT ATTRIBUTES START ******/
+
+.nft-attribute-container {
+  display: inline-block;
+  background: black;
+  padding: 5px 15px;
+  border-radius: 25px;
+  margin: 10px 0px 10px 10px;
+  font-weight: 500;
+  border: 1px solid;
+  box-shadow: 2px 2px 12px #060606;
+  color: #d2d2d2;
+}
+
+.nft-attribute-container .nft-attribute-label {
+  text-transform: capitalize;
+}
+
+.nft-attribute-container .nft-attribute-value {
+
+}
