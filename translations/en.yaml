@@ -129,7 +129,7 @@ transaction_history:
 ###### NFT START ######
 NFT:
   no_nft: "This wallet doesn't have any NFT"
-
+  back_to_wallet: "<- Go back to NFT wallet"
 ###### NFT END ######
 
 

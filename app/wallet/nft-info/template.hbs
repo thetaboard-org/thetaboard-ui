@@ -3,11 +3,12 @@
 <div class="card card-user" id="card-nft">
   <div class="card-body card-min-390">
     <p class="card-text"></p>
-    <div class="author">
+    <div class="author" style="text-align: left;">
       <div class="block block-one"></div>
       <div class="block block-two"></div>
       <div class="block block-three"></div>
       <div class="block block-four"></div>
+      <LinkTo @route="wallet.nft" @class="nft-back-to-wallet">{{t 'NFT.back_to_wallet'}}</LinkTo>
     </div>
     <div class="card-body-stake">
       <h5 class="title">{{nft.name}}</h5>

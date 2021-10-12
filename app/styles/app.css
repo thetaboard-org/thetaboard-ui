@@ -1512,6 +1512,17 @@ a.active p.menu-item {
   position: relative;
 }
 
+#card-nft .nft-back-to-wallet {
+  position: relative;
+  z-index: 9;
+  margin-bottom: 10px;
+  display: inline-block;
+  background: black;
+  border: 1px solid #ba54f5;
+  border-radius: 10px;
+  padding: 10px;
+}
+
 /****** NFT ATTRIBUTES START ******/
 
 .nft-attribute-container {
