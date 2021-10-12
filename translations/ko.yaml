@@ -361,6 +361,7 @@ currency:
   currency: "통화"
   usd: "USD"
   aud: "AUD"
+  cad: "CAD"
   eur: "EUR"
   gbp: "GBP"
   krw: "KRW"
@@ -368,6 +369,7 @@ currency:
   symbol:
     usd: "$"
     aud: "A$"
+    cad: "C$"
     eur: "€"
     gbp: "£"
     krw: "₩"
