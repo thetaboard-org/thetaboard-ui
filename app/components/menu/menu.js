@@ -40,7 +40,12 @@ export default class MenuComponent extends Component {
       route: 'domain',
     },
     {name: 'menu.faq', icon: 'icon-compass-05', route: 'faq'},
-    {name: 'guardian', icon: 'icon-align-center', route: 'guardian', scope: 'Admin'},
+    {
+      name: 'menu.creators', icon: 'icon-align-center', route: 'creators.artists',
+      children: [
+        {name: 'menu.creators', image: 'tfuel-white.png', route: 'creators.artists'}
+      ],
+    },
   ];
   @service router;
 

@@ -1,4 +1,4 @@
-import Model, { attr, hasMany } from '@ember-data/model';
+import Model, {attr, hasMany} from '@ember-data/model';
 
 export default class ArtistModel extends Model {
   @attr('string') bio;
@@ -9,6 +9,8 @@ export default class ArtistModel extends Model {
   @attr('string') youtube;
   @attr('string') twitter;
   @attr('string') website;
+  @attr('string') walletAddr;
+  @attr('number') userId;
   @hasMany('drop') drops;
   @hasMany('nft') nfts;
 }

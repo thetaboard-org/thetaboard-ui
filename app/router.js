@@ -62,4 +62,12 @@ Router.map(function () {
     this.route('affiliate', {path: '/affiliate/:affiliate'});
   });
   this.route('my-wallets');
+
+  this.route('creators', function () {
+    this.route('artists');
+    this.route('drops');
+    this.route('drop', {path: '/drop/:dropId'});
+    this.route('nft', {path: '/nft/:nftId'});
+    this.route('artist', {path: '/artist/:artistId'});
+  });
 });

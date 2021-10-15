@@ -1,0 +1,150 @@
+{{page-title "Creators  Artist"}}
+
+<div class="content">
+  {{#each this.model.artists as |artist|}}
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header">
+            <h5 class="title">Artist Profile</h5>
+          </div>
+          <div class="card-body">
+            <form {{action "saveArtist" artist on="submit"}}>
+              <div class="row">
+                <div class="col-md-5 pr-md-1">
+                  <div class="form-group">
+                    <label>Name</label>
+                    <Input
+                      @class="form-control"
+                      @type="text"
+                      placeholder="Name"
+                      @value={{artist.name}}
+                    />
+                  </div>
+                </div>
+                {{#if isAdmin}}
+                  <div class="col-md-5 pr-md-1">
+                    <div class="form-group">
+                      <label>User id</label>
+                      <Input
+                        @class="form-control"
+                        @type="text"
+                        placeholder="user id"
+                        @value={{artist.userId}}
+                      />
+                    </div>
+                  </div>
+                {{/if}}
+              </div>
+              <div class="row">
+                <div class="col-md-6 pr-md-1">
+                  <div class="form-group">
+                    <label>Instagram</label>
+                    <Input
+                      @class="form-control"
+                      @type="text"
+                      placeholder="Instagram"
+                      @value={{artist.instagram}}
+                    />
+                  </div>
+                </div>
+                <div class="col-md-6 pl-md-1">
+                  <div class="form-group">
+                    <label>Youtube</label>
+                    <Input
+                      @class="form-control"
+                      @type="text"
+                      placeholder="Youtube"
+                      @value={{artist.youtube}}
+                    />
+                  </div>
+                </div>
+                <div class="col-md-6 pr-md-1">
+                  <div class="form-group">
+                    <label>Twitter</label>
+                    <Input
+                      @class="form-control"
+                      @type="text"
+                      placeholder="Twitter"
+                      @value={{artist.twitter}}
+                    />
+                  </div>
+                </div>
+                <div class="col-md-6 pl-md-1">
+                  <div class="form-group">
+                    <label>Website</label>
+                    <Input
+                      @class="form-control"
+                      @type="text"
+                      placeholder="Website"
+                      @value={{artist.website}}
+                    />
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-8">
+                  <div class="form-group">
+                    <label>Wallet to which the payments are made</label>
+                    <Input
+                      @class="form-control"
+                      @type="text"
+                      placeholder="Wallet Address"
+                      @value={{artist.walletAddr}}
+                    />
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <FileDropzone @name="photos-{{artist.id}}" as |dropzone queue|>
+                    <h4>A logo of your artist name (if you have one)</h4>
+                    <img src="{{artist.logoName}}">
+                    <p>
+                      <FileUpload @name="photos-{{artist.id}}"
+                                  @accept="image/*"
+                                  @multiple={{false}}
+                                  @onFileAdd= {{fn this.uploadImage artist "logoName"}}>
+                        <a tabindex=0>Add an Image.</a>
+                      </FileUpload>
+                    </p>
+                  </FileDropzone>
+                </div>
+                <div class="col-md-6">
+                  <FileDropzone @name="photos-{{artist.id}}-image" as |dropzone queue|>
+                    <h4>An image of you, or your avatar,...</h4>
+                    <img src="{{artist.image}}">
+                    <p>
+                      <FileUpload @name="photos-{{artist.id}}-image"
+                                  @accept="image/*"
+                                  @multiple={{false}}
+                                  @onFileAdd= {{fn this.uploadImage artist "image"}}>
+                        <a tabindex=0>Add an Image.</a>
+                      </FileUpload>
+                    </p>
+                  </FileDropzone>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label>About Me</label>
+                    <Textarea @rows="4" @class="form-control" @value={{artist.bio}} />
+                  </div>
+                </div>
+              </div>
+              <div class="card-footer">
+                <button type="submit" class="btn btn-fill btn-primary">Save</button>
+              </div>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  {{/each}}
+</div>
+
+{{#if isAdmin}}
+  <button {{on "click" this.addNewArtist}} class="btn btn-fill btn-primary">Add new Artist</button>
+{{/if}}
