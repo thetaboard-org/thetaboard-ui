@@ -129,7 +129,7 @@ transaction_history:
 ###### NFT START ######
 NFT:
   no_nft: "이 지갑에는 NFT가 없습니다."
-
+  back_to_wallet: "NFT 지갑으로 돌아가기"
 ###### NFT END ######
 
 
@@ -281,8 +281,36 @@ menu:
   theta: "Theta"
   tfuel_vip: "Tfuel VIP"
   domain: "도메인"
+  marketplace: "시장"
+  drops: "drops"
   faq: "FAQ"
+  creators: "Creators"
 ###### MENU END ######
+
+
+###### DROP START ######
+drop:
+  title: "Thetaboard Drops"
+  subtitle: "아티스트에게 Theta Network 에서 디지털 홈 제공하기"
+  is_live: "Drop 라이브입니다"
+  over: "Drop 끝났습니다"
+  coming_soon: "Drop 곧 온다"
+  ending_on: "종료일"
+  ending_in: "끝나는 시간"
+  ended_on: "종료일"
+  starting_in: "시작"
+  starting_on: "시작일"
+  edition_available: "사용 가능한 에디션"
+  open_edition: "오픈 에디션"
+  artist: "아티스트"
+  view_more: "더보기"
+  additional_assets: "추가 자산"
+  buy: "이 NFT 구매"
+  coming: "출시 예정"
+  closed: "닫은"
+  attributes: "속성"
+  from: "부터"
+###### DROP END ######
 
 
 ###### NAVBAR START ######

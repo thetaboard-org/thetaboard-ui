@@ -129,7 +129,7 @@ transaction_history:
 ###### NFT START ######
 NFT:
   no_nft: "This wallet doesn't have any NFT"
-  back_to_wallet: "<- Go back to NFT wallet"
+  back_to_wallet: "Go back to NFT wallet"
 ###### NFT END ######
 
 
@@ -291,7 +291,7 @@ menu:
 ###### DROP START ######
 drop:
   title: "Thetaboard Drops"
-  subtitle: "Toto"
+  subtitle: "Providing artists with a digital home on the Theta Network"
   is_live: "Drop is live"
   over: "Drop is over"
   coming_soon: "Drop is coming soon"
