@@ -129,6 +129,7 @@ transaction_history:
 ###### NFT START ######
 NFT:
   no_nft: "このウォレットにはNFTがありません"
+  back_to_wallet: "NFTウォレットに戻る"
   early_nft_1: "Thetaboard 2021NFTを入手するために20Tfuelsを送信します。"
   early_nft_2: "スマートコントラクトは、ThetaboardNFTを1分以内に20Tfuelを送信したウォレットに自動的に配信します。 <br>
   エディション番号はランダムに作成されます。 2021年12月31日までのみご利用いただけます。"
@@ -284,8 +285,36 @@ menu:
   theta: "Theta"
   tfuel_vip: "Tfuel VIP"
   domain: "ドメイン"
+  marketplace: "市場"
+  drops: "drops"
   faq: "よくある質問"
+  creators: "Creators"
 ###### MENU END ######
+
+
+###### DROP START ######
+drop:
+  title: "Thetaboard Drops"
+  subtitle: "Theta Network でアーティストにデジタルホームを提供する"
+  is_live: "Drop はライブです"
+  over: "Drop は終わりました"
+  coming_soon: "Drop はすぐに来ています"
+  ending_on: "終了日"
+  ending_in: "で終わる"
+  ended_on: "終了日"
+  starting_in: "から"
+  starting_on: "開始日"
+  edition_available: "利用可能なエディション"
+  open_edition: "オープンエディション"
+  artist: "アーティスト"
+  view_more: "もっと見る"
+  additional_assets: "追加の資産"
+  buy: "このNFTを購入する"
+  coming: "近日公開"
+  closed: "休業"
+  attributes: "属性"
+  from: "から"
+###### DROP END ######
 
 
 ###### NAVBAR START ######

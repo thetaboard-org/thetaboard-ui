@@ -129,6 +129,7 @@ transaction_history:
 ###### NFT START ######
 NFT:
   no_nft: "Ce portefeuille n'a pas de NFT"
+  back_to_wallet: "Revenir au portefeuille NFT"
   early_nft_1: "Obtenez votre \"NFT 2021 de Thetaboard\" en envoyant 20 Tfuel à:"
   early_nft_2: "Le contrat intelligent livrera automatiquement, en moins d'une minute, votre NFT Thetaboard au portefeuille avec lequel vous avez envoyé 20 Tfuel. <br>
   Les numéros d'édition sont au hasard. Disponible uniquement jusqu'au 31 decembre 2021 <br>"
@@ -285,8 +286,36 @@ menu:
   theta: "Theta"
   tfuel_vip: "Tfuel VIP"
   domain: domaine
+  marketplace: "marketplace"
+  drops: "drops"
   faq: faq
+  creators: "Creators"
 ###### MENU END ######
+
+
+###### DROP START ######
+drop:
+  title: "Thetaboard Drops"
+  subtitle: "Offrir aux artistes un foyer numérique sur Theta Network"
+  is_live: "Drop est en direct"
+  over: "Drop est terminé"
+  coming_soon: "Drop à venir"
+  ending_on: Fin le"
+  ending_in: "Fin dans"
+  ended_on: "Terminé le"
+  starting_in: "Démarrage dans"
+  starting_on: "À partir du"
+  edition_available: Édition disponible"
+  open_edition: "Édition ouverte"
+  artist: "Artiste"
+  view_more: "Voir plus"
+  additional_assets: "Actifs supplémentaires"
+  buy: "ACHETER CE NFT"
+  coming: "BIENTÔT DISPONIBLE"
+  closed: "CLOS"
+  attributes: "Les attributs"
+  from: "depuis"
+###### DROP END ######
 
 
 ###### NAVBAR START ######

@@ -129,6 +129,7 @@ transaction_history:
 ###### NFT START ######
 NFT:
   no_nft: "이 지갑에는 NFT가 없습니다."
+  back_to_wallet: "NFT 지갑으로 돌아가기"
   early_nft_1: "20 Tfuel을 보내 Thetaboard 얼리 어답터 NFT를 얻으십시오:"
   early_nft_2: "스마트 계약은 1분 이내에 20Tfuel을 보낸 지갑으로 자동으로 귀하의 Thetaboard NFT를 전달합니다. <br>
   에디션 번호는 무작위로 발행됩니다. 2021년 12월 31일까지만 사용 가능 <br>"
@@ -284,8 +285,36 @@ menu:
   theta: "Theta"
   tfuel_vip: "Tfuel VIP"
   domain: "도메인"
+  marketplace: "시장"
+  drops: "drops"
   faq: "FAQ"
+  creators: "Creators"
 ###### MENU END ######
+
+
+###### DROP START ######
+drop:
+  title: "Thetaboard Drops"
+  subtitle: "아티스트에게 Theta Network 에서 디지털 홈 제공하기"
+  is_live: "Drop 라이브입니다"
+  over: "Drop 끝났습니다"
+  coming_soon: "Drop 곧 온다"
+  ending_on: "종료일"
+  ending_in: "끝나는 시간"
+  ended_on: "종료일"
+  starting_in: "시작"
+  starting_on: "시작일"
+  edition_available: "사용 가능한 에디션"
+  open_edition: "오픈 에디션"
+  artist: "아티스트"
+  view_more: "더보기"
+  additional_assets: "추가 자산"
+  buy: "이 NFT 구매"
+  coming: "출시 예정"
+  closed: "닫은"
+  attributes: "속성"
+  from: "부터"
+###### DROP END ######
 
 
 ###### NAVBAR START ######
