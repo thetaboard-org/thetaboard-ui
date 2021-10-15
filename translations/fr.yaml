@@ -129,6 +129,10 @@ transaction_history:
 ###### NFT START ######
 NFT:
   no_nft: "Ce portefeuille n'a pas de NFT"
+  early_nft_1: "Obtenez votre \"NFT 2021 de Thetaboard\" en envoyant 20 Tfuel à:"
+  early_nft_2: "Le contrat intelligent livrera automatiquement, en moins d'une minute, votre NFT Thetaboard au portefeuille avec lequel vous avez envoyé 20 Tfuel. <br>
+  Les numéros d'édition sont au hasard. Disponible uniquement jusqu'au 31 decembre 2021 <br>"
+
 
 ###### NFT END ######
 

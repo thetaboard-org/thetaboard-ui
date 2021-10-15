@@ -129,6 +129,9 @@ transaction_history:
 ###### NFT START ######
 NFT:
   no_nft: "このウォレットにはNFTがありません"
+  early_nft_1: "Thetaboard 2021NFTを入手するために20Tfuelsを送信します。"
+  early_nft_2: "スマートコントラクトは、ThetaboardNFTを1分以内に20Tfuelを送信したウォレットに自動的に配信します。 <br>
+  エディション番号はランダムに作成されます。 2021年12月31日までのみご利用いただけます。"
 
 ###### NFT END ######
 

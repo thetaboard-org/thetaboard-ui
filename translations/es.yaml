@@ -129,7 +129,9 @@ transaction_history:
 ###### NFT START ######
 NFT:
   no_nft: "Esta wallet no tiene NFT"
-
+  early_nft_1: "Obtenga su NFT de 2021 Thetaboard enviando 20 Tfuel a:"
+  early_nft_2: " El contrato inteligente entregará automáticamente su Thetaboard NFT a la billetera que envió 20 Tfuel desde dentro de 1 minuto. <br>
+  Los números de edición se acuñan al azar. Disponible solo hasta el 31 de diciembre de 2021. <br>"
 ###### NFT END ######
 
 
