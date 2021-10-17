@@ -53,7 +53,7 @@ module.exports = function (defaults) {
   app.import('vendor/black-dashboard/js/plugins/bootstrap-notify.js');
 
   // smart contracts:
-  // app.import('node_modules/web3-utils/src/index.js');
+  app.import('node_modules/web3/dist/web3.min.js');
 
 
   return app.toTree();
