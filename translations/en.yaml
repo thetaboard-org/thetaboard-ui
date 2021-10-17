@@ -130,7 +130,8 @@ transaction_history:
 NFT:
   no_nft: "This wallet doesn't have any NFT"
   back_to_wallet: "Go back to NFT wallet"
-  early_nft_1: "Get your Thetaboard 2021 NFT by sending 20 Tfuels to :"
+  use_metamask: "Get using metamask"
+  early_nft_1: " Or get your Thetaboard 2021 NFT by sending 20 Tfuels to :"
   early_nft_2: "The smart contract will automatically deliver your Thetaboard NFT to the wallet you sent 20 Tfuel from within 1 minute. <br>
   Edition numbers are randomly minted. Available only until 31 dec 2021"
 ###### NFT END ######
