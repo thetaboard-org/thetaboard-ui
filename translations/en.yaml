@@ -428,7 +428,7 @@ notif:
   not_enough_tfuel: "You don't have enough Tfuel in your wallet"
   success_nft: "Successfully got the Thetaboard 2021 NFT"
   no_metamask: "Metamask was not detected"
-  not_theta_blockchain: "Metamaskis not configured for the theta blockchain"
+  not_theta_blockchain: "Metamask is not configured for the theta blockchain"
 
 ###### UTILS NOTIFY END ######
 
