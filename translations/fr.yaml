@@ -130,11 +130,10 @@ transaction_history:
 NFT:
   no_nft: "Ce portefeuille n'a pas de NFT"
   back_to_wallet: "Revenir au portefeuille NFT"
-  early_nft_1: "Obtenez votre \"NFT 2021 de Thetaboard\" en envoyant 20 Tfuel à:"
-  early_nft_2: "Le contrat intelligent livrera automatiquement, en moins d'une minute, votre NFT Thetaboard au portefeuille avec lequel vous avez envoyé 20 Tfuel. <br>
-  Les numéros d'édition sont au hasard. Disponible uniquement jusqu'au 31 decembre 2021 <br>"
-
-
+  use_metamask: "Acheter en utilisant Metamask"
+  early_nft_1: "Envoyez 20 Tfuel à ... en utilisant Metamask ci-dessus ou votre portefeuille officiel Theta pour obtenir votre NFT Thetaboard 2021"
+  early_nft_2: "Le contrat intelligent livrera automatiquement votre NFT Thetaboard, en moins d' 1 minute, sur le portefeuille avec lequel vous avez envoyé 20 Tfuel. <br>
+Les numéros d'édition sont aléatoires pour les 1000 premiers, puis séquentiels. Disponible jusqu'au 31 décembre 2021"
 ###### NFT END ######
 
 
@@ -289,7 +288,7 @@ menu:
   marketplace: "marketplace"
   drops: "drops"
   faq: faq
-  creators: "Créateurs"
+  creators: "Creators"
 ###### MENU END ######
 
 
@@ -427,6 +426,9 @@ notif:
   vip_creation: "Créer votre nœud VIP Elite Edge"
   vip_ready: “Votre nœud VIP Elite Edge est prêt!”
   not_enough_tfuel: "Vous n'avez pas assez de Tfuel dans votre portefeuille"
+  success_nft: "NFT acheté avec succès"
+  no_metamask: "Metamask n'a pas été détecté"
+  not_theta_blockchain: "Votre Metamask n'est actuellement pas lié au réseau Theta Mainnet"
 ###### UTILS NOTIFY END ######
 
 
@@ -504,6 +506,5 @@ faq:
   new_address_body: "<p>Les Edge Nodes ont maintenant leur propre adresse de portefeuille pour collecter le cache et calculer les récompenses. Plus d'informations ici</p> <p><a target=\"_blank\" href=\"https://medium.com/Theta-network/Theta-elite-edge-node-v3-0-6-released-to-enable-mainnet-3-0-features-7b07fc4bc7b3\">https://medium.com/Theta-network/Theta-elite-edge-node-v3-0-6-released-to-enable-mainnet-3-0-features-7b07fc4bc7b3</a></p> <br/><br/>"
   domain: "Quels sont les noms de domaine Theta disponibles à l'achat sur ThetaBoard ?"
   domain_body: "<p>Les domaines sont actuellement en version beta. Vous pouvez actuellement acheter et vendre des domaines, les utiliser pour rechercher des portefeuilles par nom sur le site Web de ThetaBoard et pour nous apporter votre soutien. Courant 2021, nous passerons aux contrats finaux. Il s'agira de NFT et ils seront intégrés aux portefeuilles Theta, afin d'effectuer des transactions en utilisant des noms de domaine au lieu des adresses de portefeuilles. Cependant, nous ne serons pas en mesure de migrer les domaines actuellement achetés vers la nouvelle version. Pour en savoir plus sur le réseau Theta : <a href=\"https://docs.thetatoken.org/docs/what-is-theta-network\" target=\"_blank\">https://docs.thetatoken.org/docs/what-is-theta-network</a></p> <br/><br/>"
-
 
 

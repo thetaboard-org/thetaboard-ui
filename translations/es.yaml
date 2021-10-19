@@ -130,15 +130,16 @@ transaction_history:
 NFT:
   no_nft: "Esta wallet no tiene NFT"
   back_to_wallet: "Volver a NFT wallet"
-  early_nft_1: "Obtenga su NFT de 2021 Thetaboard enviando 20 Tfuel a:"
-  early_nft_2: " El contrato inteligente entregará automáticamente su Thetaboard NFT a la billetera que envió 20 Tfuel desde dentro de 1 minuto. <br>
-  Los números de edición se acuñan al azar. Disponible solo hasta el 31 de diciembre de 2021. <br>"
+  use_metamask: "Compra usando Metamask"
+  early_nft_1: "Usa Metamask arriba u obten tu Thetaboard 2021 NFT enviando 20 Tfuels a:"
+  early_nft_2: "El contrato inteligente te entregará automáticamente tu Thetaboard NFT a la wallet que envió esos 20 Tfuels en aprox. 1 minuto. <br>
+Los números de edición son aleatorios para los primeros 1000 y luego secuenciales. Disponibles hasta el 31 de diciembre de 2021”
 ###### NFT END ######
 
 
 ###### STAKING START ######
 staking:
-  earn_up_to: "Ganar hasta"
+earn_up_to: "Ganar hasta"
   tfuel_fees: "Comisión del 3% sobre recompensas por stake (por cada 10 Tfuels generados, la comisión de Thetaboard será de 0,3 Tfuels)."
   tfuel_fees_affiliate: "Comisión del 0% hasta el 31/08/2021 (Comisión del 3% a partir del 01/09/2021)."
   ### Staking Tfuel
@@ -287,7 +288,7 @@ menu:
   marketplace: "mercado"
   drops: "drops"
   faq: "faq"
-  creators: "Creadores"
+  creators: "Creators"
 ###### MENU END ######
 
 
@@ -425,6 +426,9 @@ notif:
   vip_creation: "Creación de su nodo VIP Elite Edge"
   vip_ready: "Su nodo VIP Elite Edge está listo!"
   not_enough_tfuel: "No tienes suficiente Tfuel en tu billetera"
+  success_nft: "NFT comprado con éxito"
+  no_metamask: "No se detectó Metamask"
+  not_theta_blockchain: "Tu Metamask no está actualmente vinculada a la  Mainnet de Theta Network"
 ###### UTILS NOTIFY END ######
 
 
@@ -462,112 +466,111 @@ faq:
   how_to_stake_theta : "Cómo hacer stake de Thetas?"
   how_to_withdraw : "Cómo retirar un stake?"
   description: "La misión de Thetaboard es convertirse en el lugar central para cualquier entusiasta de Theta.
-              Queremos aportar valor al ecosistema Theta proporcionando funcionalidades que simplifiquen el acceso a la información sobre Theta o enriquezcan el ecosistema como Tfuel y Theta Staking, una interfaz de usuario fácil de usar.
-              <br>
-              Podemos ser contactados para soporte o sugerencias sobre <a target=\"_blank\" href=\"https://discord.gg/SGUtY7zBU3\"> discord</a> o <a href=\"https://twitter.com/Thetaboard1\" target=\"_blank\">Twitter</a>.
-              <br>"
+            Queremos aportar valor al ecosistema Theta proporcionando funcionalidades que simplifiquen el acceso a la información sobre Theta o enriquezcan el ecosistema como Tfuel y Theta Staking, una interfaz de usuario fácil de usar.
+            <br>
+            Podemos ser contactados para soporte o sugerencias sobre <a target=\"_blank\" href=\"https://discord.gg/SGUtY7zBU3\"> discord</a> o <a href=\"https://twitter.com/Thetaboard1\" target=\"_blank\">Twitter</a>.
+            <br>"
   what_staking: "Qué es staking?"
   what_staking_body: "<p>El replanteo es un proceso que implica asociar sus tokens a una máquina que está completando el trabajo y brindando seguridad a una red, lo que le permite obtener recompensas adicionales.<br/>
-                  Sus recompensas por staking se basan en la cantidad de tokens que apueste, así como en el tiempo de actividad de su nodo. Para maximizar sus ganancias de apuesta, la computadora que aloja su nodo debe dejarse funcionando las 24 horas del día, los 7 días de la semana.<br/>
-                  En Theta Network, es posible staking tanto el token Theta como el token Tfuel. Ambos tokens son recompensados por staking en forma de Tfuel. Para staking sus tokens, deben delegarse a un Nodo Guardián (Theta) o un Nodo Elite Edge (Tfuel). Ambos tipos de nodos juegan un papel importante dentro de la red descentralizada Theta.<br/>
-                  Durante todo el proceso de apuesta, los tokens siempre permanecen dentro de su billetera Theta oficial. Si el nodo alguna vez se apaga, los tokens permanecen en su billetera y solo serán controlados por quien tenga acceso a la billetera. NUNCA ingrese su frase inicial de 12 palabras, o su archivo de almacén de claves y contraseña, en ningún lugar excepto en el Theta Wallet oficial. Thetaboard nunca solicitará esta información.</p>
-                       <br/><br/>"
+                Sus recompensas por staking se basan en la cantidad de tokens que apueste, así como en el tiempo de actividad de su nodo. Para maximizar sus ganancias de apuesta, la computadora que aloja su nodo debe dejarse funcionando las 24 horas del día, los 7 días de la semana.<br/>
+                En Theta Network, es posible staking tanto el token Theta como el token Tfuel. Ambos tokens son recompensados por staking en forma de Tfuel. Para staking sus tokens, deben delegarse a un Nodo Guardián (Theta) o un Nodo Elite Edge (Tfuel). Ambos tipos de nodos juegan un papel importante dentro de la red descentralizada Theta.<br/>
+                Durante todo el proceso de apuesta, los tokens siempre permanecen dentro de su billetera Theta oficial. Si el nodo alguna vez se apaga, los tokens permanecen en su billetera y solo serán controlados por quien tenga acceso a la billetera. NUNCA ingrese su frase inicial de 12 palabras, o su archivo de almacén de claves y contraseña, en ningún lugar excepto en el Theta Wallet oficial. Thetaboard nunca solicitará esta información.</p>
+                     <br/><br/>"
 
   provide: "Qué participación ofrece Thetaboard?"
   provide_body: "<h4>Theta</h4>
-                  <p>Apueste a nuestro Nodo Guardián, para cualquier persona con más del mínimo de 1000 tokens Theta. No hay un número máximo de Theta que se pueda staking a un Nodo Guardián.</p><br/>
-                  <h4>Tfuel</h4>
-                  <p>Apueste a uno de nuestros nodos públicos Elite Edge, para cualquier persona con más de 10,000 Tfuel. Los nodos Elite Edge tienen una cantidad máxima de 500.000 Tfuel que se pueden staking a cualquier nodo.</p><br/>
-                  <h4>Tfuel VIP</h4>
-                  <p>Para personas con más de 100.000 Tfuel. Estos nodos Elite Edge se reservarán para usted, lo que le garantizará espacio para aumentar su apuesta y el mismo resumen de nodo si alguna vez retira su apuesta y deposita nuevamente.</p>
-                  <br/><br/>"
+                <p>Apueste a nuestro Nodo Guardián, para cualquier persona con más del mínimo de 1000 tokens Theta. No hay un número máximo de Theta que se pueda staking a un Nodo Guardián.</p><br/>
+                <h4>Tfuel</h4>
+                <p>Apueste a uno de nuestros nodos públicos Elite Edge, para cualquier persona con más de 10,000 Tfuel. Los nodos Elite Edge tienen una cantidad máxima de 500.000 Tfuel que se pueden staking a cualquier nodo.</p><br/>
+                <h4>Tfuel VIP</h4>
+                <p>Para personas con más de 100.000 Tfuel. Estos nodos Elite Edge se reservarán para usted, lo que le garantizará espacio para aumentar su apuesta y el mismo resumen de nodo si alguna vez retira su apuesta y deposita nuevamente.</p>
+                <br/><br/>"
   deposit: "Cómo deposito mi participación en Theta Network?"
   deposit_body: "<p>Puede depositar su participación en Theta o Tfuel desde el interior de su Theta Wallet oficial.</p><br/>
-                  <h4>Replanteando Theta a un Guardian Node</h4>
-                  <p><a target=\"_blank\" href=\"https://docs.thetatoken.org/docs/guardian-staking-process\">https://docs.thetatoken.org/docs/guardian-staking-process</a><br/>
-                  Puede usar la dirección del nodo guardián de un clic para Thetaboard durante el proceso dentro de su billetera Theta.<br/>
-                  Si está apostando más de 10,000 Theta a nuestro Nodo Guardián, use el resumen disponible en nuestra página de <a href=\"/staking/theta\">Theta Staking page</a>, ya que Theta Labs tiene un máximo de 10,000 para delegaciones Theta con un solo clic.<br/>
-                  Más lecturas de Theta Labs sobre la participación delegada de Theta 1 clic:<br/>
-                  <a target=\"_blank\" href=\"https://medium.com/theta-network/theta-1-click-delegated-staking-now-live-in-the-theta-web-wallet-b80d499aae71\">https://medium.com/theta-network/theta-1-click-delegated-staking-now-live-in-the-theta-web-wallet-b80d499aae71</a></p><br/>
-                  <h4>Replantear Tfuel a un Elite Edge Node</h4>
-                  <p><a target=\"_blank\" href=\"https://docs.thetatoken.org/docs/elite-edge-node-staking-process\">https://docs.thetatoken.org/docs/elite-edge-node-staking-process</a><br/>
-                  Puede utilizar los resúmenes de Public Staking disponibles en nuestra página de Tfuel, o el resumen VIP proporcionado después de solicitar un nodo VIP, durante el proceso de Edge Staking dentro de su billetera Theta.<br/>
-                  Más lecturas de Theta Labs sobre la participación de Tfuel:<br/>
-                  <a target=\"_blank\" href=\"https://medium.com/theta-network/theta-wallet-v3-0-1-released-to-enable-tfuel-staking-at-block-height-10-968-061-on-june-30-c90bf080ef93\">https://medium.com/theta-network/theta-wallet-v3-0-1-released-to-enable-tfuel-staking-at-block-height-10-968-061-on-june-30-c90bf080ef93</a></p><br/>
-                  <br/><br/>"
+                <h4>Replanteando Theta a un Guardian Node</h4>
+                <p><a target=\"_blank\" href=\"https://docs.thetatoken.org/docs/guardian-staking-process\">https://docs.thetatoken.org/docs/guardian-staking-process</a><br/>
+                Puede usar la dirección del nodo guardián de un clic para Thetaboard durante el proceso dentro de su billetera Theta.<br/>
+                Si está apostando más de 10,000 Theta a nuestro Nodo Guardián, use el resumen disponible en nuestra página de <a href=\"/staking/theta\">Theta Staking page</a>, ya que Theta Labs tiene un máximo de 10,000 para delegaciones Theta con un solo clic.<br/>
+                Más lecturas de Theta Labs sobre la participación delegada de Theta 1 clic:<br/>
+                <a target=\"_blank\" href=\"https://medium.com/theta-network/theta-1-click-delegated-staking-now-live-in-the-theta-web-wallet-b80d499aae71\">https://medium.com/theta-network/theta-1-click-delegated-staking-now-live-in-the-theta-web-wallet-b80d499aae71</a></p><br/>
+                <h4>Replantear Tfuel a un Elite Edge Node</h4>
+                <p><a target=\"_blank\" href=\"https://docs.thetatoken.org/docs/elite-edge-node-staking-process\">https://docs.thetatoken.org/docs/elite-edge-node-staking-process</a><br/>
+                Puede utilizar los resúmenes de Public Staking disponibles en nuestra página de Tfuel, o el resumen VIP proporcionado después de solicitar un nodo VIP, durante el proceso de Edge Staking dentro de su billetera Theta.<br/>
+                Más lecturas de Theta Labs sobre la participación de Tfuel:<br/>
+                <a target=\"_blank\" href=\"https://medium.com/theta-network/theta-wallet-v3-0-1-released-to-enable-tfuel-staking-at-block-height-10-968-061-on-june-30-c90bf080ef93\">https://medium.com/theta-network/theta-wallet-v3-0-1-released-to-enable-tfuel-staking-at-block-height-10-968-061-on-june-30-c90bf080ef93</a></p><br/>
+                <br/><br/>"
   stake: "Puedo staking mis tokens Tfuel o Theta en un intercambio?"
   stake_body: "<p>No, staking en Theta Network actualmente solo es posible usando los tokens que ha depositado en su billetera Theta oficial.<br/>
-                    Sugerimos usar el enlace Wallet disponible en la parte superior de <a href=\"https://www.thetatoken.org/\" target=\"_blank\">https://www.thetatoken.org/</a> y marcarlo como la forma de acceder a su billetera oficial y evitar estafas. Esta es la única ubicación en la que debe ingresar su frase inicial de 12 palabras, o archivo de almacén de claves y contraseña.</p><br/>
-                  <br/><br/>"
+                  Sugerimos usar el enlace Wallet disponible en la parte superior de <a href=\"https://www.thetatoken.org/\" target=\"_blank\">https://www.thetatoken.org/</a> y marcarlo como la forma de acceder a su billetera oficial y evitar estafas. Esta es la única ubicación en la que debe ingresar su frase inicial de 12 palabras, o archivo de almacén de claves y contraseña.</p><br/>
+                <br/><br/>"
   where_nodes: "Dónde están los nodos que usa Thetaboard?"
   where_nodes_body: "<p>Thetaboard tiene nodos repartidos por EE. UU. Y Canadá. Planeamos extendernos a otras partes del mundo también.</p><br/>
-                  <br/><br/>"
+                <br/><br/>"
   fees: "Qué tarifas tiene Thetaboard?"
   fees_body: "<p>Las tarifas de Thetaboard por alojar el nodo Theta y Tfuel son el 3% de las recompensas obtenidas. Con el 8% APR actual para Tfuel, significa que obtienes 7.76% APR y thetaboard obtiene 0.24%.</p><br/>
-                  <br/><br/>"
+                <br/><br/>"
   minimum: "Cuál es el número mínimo actual de tokens para staking?"
   minimum_body: "<p>Para staking en Theta Network, las cantidades mínimas son:</p><br/>
-                  <p>1000 Theta tokens, or<br/>
-                  10,000 Tfuel tokens.</p><br/>
-                  <p>Estos límites los establece Theta Labs y han cambiado en el pasado. Si bien es posible, Theta Labs no ha establecido un cronograma para futuros cambios de estos mínimos.</p><br/>
-                  <br/><br/>"
+                <p>1000 Theta tokens, or<br/>
+                10,000 Tfuel tokens.</p><br/>
+                <p>Estos límites los establece Theta Labs y han cambiado en el pasado. Si bien es posible, Theta Labs no ha establecido un cronograma para futuros cambios de estos mínimos.</p><br/>
+                <br/><br/>"
   when_earn: "Cuándo obtengo mis recompensas?"
   when_earn_body: "<p>Theta Network utiliza un método ponderado asignado aleatoriamente para enviar recompensas de apuesta. Los algoritmos son diferentes para cada token.</p><br/>
-                  <h4>Theta</h4>
-                  <p>Las recompensas de apuesta de Theta se pagan cada 100 bloques a diferentes apuestas, y el tamaño de la apuesta aumenta la posibilidad de pagos regulares. La cantidad de Theta apostada al Guardian Node no hace ninguna diferencia.<br/>
-                  Los montos de recompensa de apuesta de Theta son asignados por la cadena de bloques de Theta en múltiplos de 12. Las tarifas de Thetaboard se descontarán cuando la transacción llegue a su billetera, lo que significa que los montos estarán en múltiplos de 11.64.</p><br/>
-                  <h4>Tfuel</h4>
-                  <p>Las recompensas de Tfuel staking se pagan cada 100 bloques a los Edge Nodes, y la cantidad de Tfuel apostada a ese Edge Node aumenta la posibilidad de pagos regulares. El tamaño de la participación individual de Tfuel no hace ninguna diferencia.<br/>
-                  Las cantidades de recompensa por apuesta de combustible varían mucho, según el tamaño de su apuesta. A menudo son tres lugares decimales y un re regularmente 5 Tfuel y menos.</p><br/>
-                  <br/><br/>"
+                <h4>Theta</h4>
+                <p>Las recompensas de apuesta de Theta se pagan cada 100 bloques a diferentes apuestas, y el tamaño de la apuesta aumenta la posibilidad de pagos regulares. La cantidad de Theta apostada al Guardian Node no hace ninguna diferencia.<br/>
+                Los montos de recompensa de apuesta de Theta son asignados por la cadena de bloques de Theta en múltiplos de 12. Las tarifas de Thetaboard se descontarán cuando la transacción llegue a su billetera, lo que significa que los montos estarán en múltiplos de 11.64.</p><br/>
+                <h4>Tfuel</h4>
+                <p>Las recompensas de Tfuel staking se pagan cada 100 bloques a los Edge Nodes, y la cantidad de Tfuel apostada a ese Edge Node aumenta la posibilidad de pagos regulares. El tamaño de la participación individual de Tfuel no hace ninguna diferencia.<br/>
+                Las cantidades de recompensa por apuesta de combustible varían mucho, según el tamaño de su apuesta. A menudo son tres lugares decimales y un re regularmente 5 Tfuel y menos.</p><br/>
+                <br/><br/>"
   how_much_earn: "Cuánto Tfuel gano?"
   how_much_earn_body: "<p>Utilice la calculadora de previsión de recompensas disponible en la página del Panel de control de Thetaboard para calcular las ganancias que se prevé que verá para el tamaño de su apuesta.</p><br/>
-                  <br/><br/>"
+                <br/><br/>"
   public_private: "Debo usar un nodo Elite Edge público o privado?"
   public_private_body: "<p>Muchos clientes de Thetaboard usan ambos. Compartir un nodo aumentará la frecuencia (pero no la cantidad) de sus pagos, ya que el nodo tendrá más Tfuel que si estuviera apostando solo, por lo que aumentan las posibilidades de ser elegido en el algoritmo de recompensas. Su lugar no está reservado cuando se retira, pero continuaremos brindando más Public Elite Edge Nodes según sea necesario. Además, separar una apuesta de 10,000 Tfuel y colocarla en un Public Elite Edge Node permite retirar y agregar una cantidad más pequeña de su Tfuel, por lo que no staking no afecta la cantidad total apostada.</p><br/>
-                  <br/><br/>"
+                <br/><br/>"
   where_rewards_from: "De dónde provienen estas recompensas?"
   where_rewards_from_body: "<p>Theta Network utiliza la inflación de los tokens de Tfuel para pagar recompensas de apuesta. Esta inflación de Tfuel se fija en 38 Tfuel por bloque para el replanteo de Tfuel y 48 Tfuel por bloque para el replanteo de Theta. Theta Network apunta a bloques de 6 segundos, momento en el que las tasas de inflación corresponden aproximadamente al 4% (recompensas de participación de Tfuel) y al 5% (recompensas de participación de Theta) de la inflación inicial de Tfuel de 5 mil millones.</p><br/>
-                  <p>Se planea compensar esta inflación mediante la quema de una parte de las tarifas pagadas para usar Theta Network. Theta Labs ha declarado que su objetivo es mantener el suministro total de Tfuel cerca del suministro inicial de 5 mil millones.</p><br/>
-                  <br/><br/>"
+                <p>Se planea compensar esta inflación mediante la quema de una parte de las tarifas pagadas para usar Theta Network. Theta Labs ha declarado que su objetivo es mantener el suministro total de Tfuel cerca del suministro inicial de 5 mil millones.</p><br/>
+                <br/><br/>"
   staking_wallet: "Cómo se ven las recompensas de apuesta en mi billetera?"
   staking_wallet_body: "<p>Las recompensas de apuesta en nuestro panel, en forma de una transacción 'coinbase', se enviarán a la billetera desde la que apostaste tus tokens. La dirección 'de' en estas transacciones de coinbase será una de las 16 direcciones de nodo de validación en la red Theta.</p><br/>
-                  <p>Si está utilizando Theta Wallet para realizar un seguimiento de sus recompensas, no aparecerán como transacciones, sino solo como un aumento en el saldo disponible de Tfuel.</p><br/>
-                  <br/><br/>"
+                <p>Si está utilizando Theta Wallet para realizar un seguimiento de sus recompensas, no aparecerán como transacciones, sino solo como un aumento en el saldo disponible de Tfuel.</p><br/>
+                <br/><br/>"
   no_rewards: "Cómo es que no he recibido recompensas de stake Theta durante una semana?"
   no_rewards_body: "<p>Si está apostando una cantidad de Theta más cercana al mínimo, es posible que pueda pasar semanas sin pago debido al algoritmo de recompensas de stake de Theta Labs. Tenga la seguridad de que todavía está acumulando recompensas y solo necesita el algoritmo de participación para seleccionarlo para el pago de recompensas.</p><br/>
-                  <p>Incluso si pasa por largos períodos sin staking recompensas, sus recompensas aún se acumulan. A menudo, recibirá más de lo normal en un período corto después de un período prolongado de sequía sin recompensas.</p><br/>
-                  <p>La discusión de la recompensa de bloques aleatorios para Theta por Theta Labs se encuentra aquí:</p><br/>
-                  <p><a traget=\"_blank\" href=\"https://medium.com/theta-network/theta-protocol-code-v2-2-0-released-with-important-performance-related-updates-6b9e2261d0ae\">https://medium.com/theta-network/theta-protocol-code-v2-2-0-released-with-important-performance-related-updates-6b9e2261d0ae</a></p><br/>
-                  <p>Antes de Mainnet 3.0 en junio de 2021, todas las recompensas de participación de theta se entregaban en transacciones con un múltiplo de 12. Sin embargo, desde entonces, se han producido casos en los que las recompensas de participación de Theta se han unido a las recompensas de participación de Tfuel. Esto hace que sea más difícil rastrear qué pago viene por qué participación. Si bien nuestro tablero hace todo lo posible por asignar correctamente las recompensas de participación de Theta y Tfuel, es posible que no capture todos los pagos conjuntos, ya que estos no están etiquetados en la cadena de bloques Theta.</p>
-                  <br/><br/>"
+                <p>Incluso si pasa por largos períodos sin staking recompensas, sus recompensas aún se acumulan. A menudo, recibirá más de lo normal en un período corto después de un período prolongado de sequía sin recompensas.</p><br/>
+                <p>La discusión de la recompensa de bloques aleatorios para Theta por Theta Labs se encuentra aquí:</p><br/>
+                <p><a traget=\"_blank\" href=\"https://medium.com/theta-network/theta-protocol-code-v2-2-0-released-with-important-performance-related-updates-6b9e2261d0ae\">https://medium.com/theta-network/theta-protocol-code-v2-2-0-released-with-important-performance-related-updates-6b9e2261d0ae</a></p><br/>
+                <p>Antes de Mainnet 3.0 en junio de 2021, todas las recompensas de participación de theta se entregaban en transacciones con un múltiplo de 12. Sin embargo, desde entonces, se han producido casos en los que las recompensas de participación de Theta se han unido a las recompensas de participación de Tfuel. Esto hace que sea más difícil rastrear qué pago viene por qué participación. Si bien nuestro tablero hace todo lo posible por asignar correctamente las recompensas de participación de Theta y Tfuel, es posible que no capture todos los pagos conjuntos, ya que estos no están etiquetados en la cadena de bloques Theta.</p>
+                <br/><br/>"
   withdraw_add_more: "Tengo que retirar mi stake para agregar nuevos tokens?"
   withdraw_add_more_body: "<p>Si la cantidad que desea agregar está por debajo de los requisitos mínimos para staking (1000 Theta y 10,000 Tfuel), entonces sí, tendrá que deshacer su cantidad original para agregar nuevos tokens. Si la cantidad supera los requisitos mínimos, simplemente apueste la nueva cantidad como una nueva stake.</p><br/>
-                  <br/><br/>"
+                <br/><br/>"
   how_withdraw: "Cómo retiro mi stake?"
   how_withdraw_body: "<p>Puede retirar sus tokens apostados desde el interior de su billetera Theta.</p><br/>
-                  <p>Para obtener más información sobre el proceso de Retirada de participación, lea la documentación oficial de Theta aquí:<br/>
-                  <a href=\"https://docs.thetatoken.org/docs/withdrawing-your-stake-from-the-guardian-node\" target=\"_blank\">https://docs.thetatoken.org/docs/withdrawing-your-stake-from-the-guardian-node</a></p>
-                  <br/><br/>"
+                <p>Para obtener más información sobre el proceso de Retirada de participación, lea la documentación oficial de Theta aquí:<br/>
+                <a href=\"https://docs.thetatoken.org/docs/withdrawing-your-stake-from-the-guardian-node\" target=\"_blank\">https://docs.thetatoken.org/docs/withdrawing-your-stake-from-the-guardian-node</a></p>
+                <br/><br/>"
   where_coin: "He retirado mis tokens apostados y aún no están en mi billetera. Dónde están?"
   where_coin_body: "<p>Tanto los tokens Theta como los Tfuel tardan aproximadamente 54 horas en desencadenarse. Luego aparecerán en su billetera original.</p><br/>
-                  <br/><br/>"
+                <br/><br/>"
   rewards_withdraw: "Acumulo recompensas durante mi período de reserva de 54 horas?"
   rewards_withdraw_body: "<p>No.</p><br/>
-                  <br/><br/>"
+                <br/><br/>"
   rewards_paid: "Se me seguirán pagando las recompensas que se me adeudan cuando comencé el período de devolución?"
   rewards_paid_body: "<p>Si.</p><br/>
-                  <br/><br/>"
+                <br/><br/>"
   new_address: "Cuál es la nueva dirección de billetera en mi nodo Edge en casa?"
   new_address_body: "<p>Los nodos Edge ahora tienen su propia dirección de billetera para recopilar caché y calcular recompensas. Lea más aquí:</p><br/>
-                  <p><a target=\"_blank\" href=\"https://medium.com/Theta-network/Theta-elite-edge-node-v3-0-6-released-to-enable-mainnet-3-0-features-7b07fc4bc7b3\">https://medium.com/Theta-network/Theta-elite-edge-node-v3-0-6-released-to-enable-mainnet-3-0-features-7b07fc4bc7b3</a></p>
-                  <br/><br/>"
+                <p><a target=\"_blank\" href=\"https://medium.com/Theta-network/Theta-elite-edge-node-v3-0-6-released-to-enable-mainnet-3-0-features-7b07fc4bc7b3\">https://medium.com/Theta-network/Theta-elite-edge-node-v3-0-6-released-to-enable-mainnet-3-0-features-7b07fc4bc7b3</a></p>
+                <br/><br/>"
   domain: "Cuáles son los nombres de dominio Theta disponibles para comprar a través de Thetaboard?"
   domain_body: "<p>Los dominios son actualmente una prueba de concepto. Actualmente puede comprar y vender dominios y usarlos para buscar carteras por nombre en el sitio web de Thetaboard y mostrar su apoyo a Thetaboard.<br/>
-                  En algún momento de 2021 migraremos a contratos finales. Estos serán NFT y se integrarán en las carteras theta, con el fin de realizar transacciones utilizando nombres de dominio en lugar de direcciones de cartera.<br/>
-                  Sin embargo, no podremos migrar los dominios comprados actualmente a la nueva versión.<br/>
-                  Leer más puede encontrar información sobre Theta Network aquí.<br/>
-                  <a href=\"https://docs.thetatoken.org/docs/what-is-theta-network\" target=\"_blank\">https://docs.thetatoken.org/docs/what-is-theta-network</a></p>
-                  <br/><br/>"
+                En algún momento de 2021 migraremos a contratos finales. Estos serán NFT y se integrarán en las carteras theta, con el fin de realizar transacciones utilizando nombres de dominio en lugar de direcciones de cartera.<br/>
+                Sin embargo, no podremos migrar los dominios comprados actualmente a la nueva versión.<br/>
+                Leer más puede encontrar información sobre Theta Network aquí.<br/>
+                <a href=\"https://docs.thetatoken.org/docs/what-is-theta-network\" target=\"_blank\">https://docs.thetatoken.org/docs/what-is-theta-network</a></p>
+                <br/><br/>"
 ###### FAQ END ######
-

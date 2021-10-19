@@ -23,7 +23,7 @@ export default class NFTController extends Controller {
   @action
   async metamask() {
     try {
-      if (!ethereum || !ethereum.isConnected()) {
+      if (typeof ethereum === 'undefined' || !ethereum.isConnected()) {
         return this.utils.errorNotify(this.intl.t('notif.no_metamask'));
       } else if (parseInt(ethereum.chainId) !== 361) {
         return this.utils.errorNotify(this.intl.t('notif.not_theta_blockchain'));
