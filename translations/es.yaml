@@ -133,13 +133,13 @@ NFT:
   use_metamask: "Compra usando Metamask"
   early_nft_1: "Usa Metamask arriba u obten tu Thetaboard 2021 NFT enviando 20 Tfuels a:"
   early_nft_2: "El contrato inteligente te entregará automáticamente tu Thetaboard NFT a la wallet que envió esos 20 Tfuels en aprox. 1 minuto. <br>
-Los números de edición son aleatorios para los primeros 1000 y luego secuenciales. Disponibles hasta el 31 de diciembre de 2021”
+Los números de edición son aleatorios para los primeros 1000 y luego secuenciales. Disponibles hasta el 31 de diciembre de 2021"
 ###### NFT END ######
 
 
 ###### STAKING START ######
 staking:
-earn_up_to: "Ganar hasta"
+  earn_up_to: "Ganar hasta"
   tfuel_fees: "Comisión del 3% sobre recompensas por stake (por cada 10 Tfuels generados, la comisión de Thetaboard será de 0,3 Tfuels)."
   tfuel_fees_affiliate: "Comisión del 0% hasta el 31/08/2021 (Comisión del 3% a partir del 01/09/2021)."
   ### Staking Tfuel
