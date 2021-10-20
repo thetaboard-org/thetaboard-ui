@@ -131,7 +131,7 @@ NFT:
   no_nft: "Ce portefeuille n'a pas de NFT"
   back_to_wallet: "Revenir au portefeuille NFT"
   use_metamask: "Acheter en utilisant Metamask"
-  early_nft_1: "Envoyez 20 Tfuel à ... en utilisant Metamask ci-dessus ou votre portefeuille officiel Theta pour obtenir votre NFT Thetaboard 2021"
+  early_nft_1: "Vous pouvez obtenir votre NFT Thetaboard 2021 en utilisant Metamask ci-dessus ou en utilisant portefeuille officiel Theta en envoyant 20 Tfuel à: "
   early_nft_2: "Le contrat intelligent livrera automatiquement votre NFT Thetaboard, en moins d' 1 minute, sur le portefeuille avec lequel vous avez envoyé 20 Tfuel. <br>
 Les numéros d'édition sont aléatoires pour les 1000 premiers, puis séquentiels. Disponible jusqu'au 31 décembre 2021"
 ###### NFT END ######
