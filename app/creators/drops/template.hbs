@@ -46,7 +46,7 @@
                     <label>Start Date</label>
                     <Input
                       @class="form-control"
-                      @type="text"
+                      @type="datetime-local"
                       placeholder="startDate"
                       @value={{drop.startDate}}
                     />
@@ -57,7 +57,7 @@
                     <label>End Date</label>
                     <Input
                       @class="form-control"
-                      @type="text"
+                      @type="datetime-local"
                       placeholder="endDate"
                       @value={{drop.endDate}}
                     />
@@ -98,6 +98,7 @@
               </div>
               <div class="card-footer">
                 <button type="submit" class="btn btn-fill btn-primary">Save</button>
+                <button {{on "click" (fn delete drop)}}class="btn btn-fill btn-dark">Delete</button>
               </div>
             </form>
           </div>

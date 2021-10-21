@@ -12,14 +12,12 @@ export default class DropsController extends Controller {
 
   @action
   addNewDrop() {
-    const newDrop = this.store.createRecord('drop');
-    this.model.drop.toArray().push(newDrop);
+    this.store.createRecord('drop');
   }
 
   @action
   async saveDrop(drop) {
     try {
-      debugger
       await drop.save();
     } catch (e) {
       console.error(e);
@@ -38,7 +36,8 @@ export default class DropsController extends Controller {
   }
 
   @action
-  selectArtist(drop, artist) {
-    debugger
+  async delete(drop) {
+    await drop.deleteRecord();
+    // TODO;  do something to refresh
   }
 }
