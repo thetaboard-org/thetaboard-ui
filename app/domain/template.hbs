@@ -1,15 +1,20 @@
 {{page-title "Domain"}}
 
-<div class="content" id="domain-page-content">
-  <div class="row">
-    <div class="col-lg-6 col-md-6">
-        {{contract/domain}}
+<div class="card card-user" id="card-domain">
+  <div class="card-body card-min-390">
+    <p class="card-text"></p>
+    <div class="author">
+      <div class="block block-one"></div>
+      <div class="block block-two"></div>
+      <div class="block block-three"></div>
+      <div class="block block-four"></div>
+      {{domains/connection-to-metamask}}
     </div>
-    <div class="col-lg-6 col-md-6">
-        {{contract/address onRouteChange=this.setQueryParam}}
+    <div class="card-body-stake card-body-domain">
+      <h5 class="title">{{t 'domain.title'}}</h5>
+      <div class="row justify-content-lg-center justify-content-md-center">
+          {{domains/search}}
+      </div>
     </div>
-  </div>
- <div class="row">
-    {{contract/offers onRouteChange=this.setQueryParam}}
   </div>
 </div>

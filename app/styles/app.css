@@ -1544,3 +1544,88 @@ a.active p.menu-item {
 .nft-attribute-container .nft-attribute-value {
 
 }
+
+
+/****** DOMAINS START ******/
+
+#card-domain .author {
+  margin: 0;
+}
+
+#card-domain .left-menu {
+  float: left;
+}
+
+#card-domain .right-menu {
+  float: right;
+}
+
+#card-domain .domain-connect {
+  position: relative;
+  z-index: 9;
+  margin-bottom: 10px;
+  display: inline-block;
+  background: black;
+  border: 1px solid #ba54f5;
+  color: #ba54f5;
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow: 2px 2px 12px #060606;
+}
+
+#card-domain .domain-connect:hover {
+  box-shadow: 2px 2px 6px #060606;
+}
+
+#card-domain .metamask-account {
+
+}
+
+.domain-centered {
+  text-align: center;
+}
+
+#card-domain .input-domain-search {
+  border-radius: 6px;
+  font-size: 20px;
+  width: 80%;
+  padding: 15px;
+  display: block;
+  margin: 25px auto;
+}
+
+#card-domain .domain-search-button {
+  font-size: 18px;
+  padding: 20px 40px;
+}
+
+#card-domain .invalid-domain {
+  width: 80%;
+  margin: 25px auto;
+}
+
+#card-domain .buy-domain {
+  width: 80%;
+  margin: 25px auto;
+  font-size: 18px;
+}
+
+#card-domain .buy-title {
+  margin: 25px auto;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+#card-domain .card-domain-steps {
+  box-shadow: 2px 2px 12px #060606;
+}
+
+#card-domain .card-domain-steps .card-title {
+  margin-top: 20px;
+  font-weight: bold;
+}
+
+#card-domain .card-domain-steps .card-body {
+  color: rgba(255, 255, 255, 0.8);
+  min-height: 170px;
+}

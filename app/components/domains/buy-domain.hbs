@@ -1,0 +1,76 @@
+<div class="alert alert-success buy-domain">
+    <span><b> {{domainName}}.theta </b> {{t 'domain.available_domain'}} PRICE</span>
+</div>
+<div>
+    <p class="buy-title">{{t 'domain.buying_steps'}}</p>
+    <div class="row">
+        <div class="steps-domain col-lg-4 col-md-12">
+            <div class="card card-chart card-user card-domain-steps">
+                <div class="card-header ">
+                    <p class="card-text"></p>
+                    <div class="author">
+                        <div class="block block-one"></div>
+                        <div class="block block-two"></div>
+                        <div class="block block-three"></div>
+                        <div class="block block-four"></div>
+                        <img width="75" src="/assets/img/1.png" alt="1"/>
+                        <p class="card-title">{{t 'domain.step1_title'}}</p>
+                    </div>
+                </div>
+                <div class="card-body">
+                {{t 'domain.step1'}}
+                </div>
+            </div>
+        </div>
+        <div class="steps-domain col-lg-4 col-md-12">
+            <div class="card card-chart card-user card-domain-steps">
+                <div class="card-header ">
+                    <p class="card-text"></p>
+                    <div class="author">
+                        <div class="block block-one"></div>
+                        <div class="block block-two"></div>
+                        <div class="block block-three"></div>
+                        <div class="block block-four"></div>
+                        <img width="75" src="/assets/img/2.png" alt="1"/>
+                        <p class="card-title">{{t 'domain.step2_title'}}</p>
+                    </div>
+                </div>
+                <div class="card-body">
+                    {{t 'domain.step2'}}
+                </div>
+            </div>
+        </div>
+        <div class="steps-domain col-lg-4 col-md-12">
+            <div class="card card-chart card-user card-domain-steps">
+                <div class="card-header ">
+                    <p class="card-text"></p>
+                    <div class="author">
+                        <div class="block block-one"></div>
+                        <div class="block block-two"></div>
+                        <div class="block block-three"></div>
+                        <div class="block block-four"></div>
+                        <img width="75" src="/assets/img/3.png" alt="1"/>
+                        <p class="card-title">{{t 'domain.step3_title'}}</p>
+                    </div>
+                </div>
+                <div class="card-body">
+                    {{t 'domain.step3'}}
+                </div>
+            </div>
+        </div>
+    </div>
+        <div style="{{if commitingName '' 'display:none;'}}" class="progress-bar-container">
+            <div class="progress-bar stripes">
+                <span class="progress-bar-inner"></span>
+            </div>
+        </div>
+    {{#if commitingName}}
+
+    {{else}}
+        {{#if canBuy}}
+            <button {{on "click" buyName}}  class="btn btn-primary">{{t 'domain.buy_domain'}}</button>
+        {{else}}
+            <button {{on "click" commitName}}  class="btn btn-primary">{{t 'domain.request_to_register'}}</button>
+        {{/if}}
+    {{/if}}
+</div>
