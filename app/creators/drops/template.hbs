@@ -1,7 +1,7 @@
 {{page-title "Creators  Drops"}}
 
 <div class="content">
-  {{#each this.model.drops as |drop|}}
+  {{#each Drops as |drop|}}
     <div class="row">
       <div class="col-md-12">
         <div class="card">
@@ -19,6 +19,10 @@
               </LinkTo>
             {{else}}
               <h5 class="title">New Drop</h5>
+              <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#drop-{{drop.id}}"
+                      aria-expanded="false" aria-controls="drop-{{drop.id}}">
+                Edit drop
+              </button>
             {{/if}}
           </div>
           <div class="collapse" id="drop-{{drop.id}}">
@@ -36,23 +40,21 @@
                       />
                     </div>
                   </div>
-                  {{#if isAdmin}}
-                    <div class="col-md-5 pr-md-1">
-                      <div class="form-group">
+                  <div class="col-md-5 pr-md-1">
+                    <div class="form-group">
 
-                        <label>Artist</label>
+                      <label>Artist</label>
 
-                        <PowerSelect
-                          @searchEnabled={{true}}
-                          @searchField="name"
-                          @options={{model.artists}}
-                          @selected={{drop.artist}}
-                          @onChange={{fn (mut drop.artist)}} as |artist|>
-                          {{artist.name}}
-                        </PowerSelect>
-                      </div>
+                      <PowerSelect
+                        @searchEnabled={{true}}
+                        @searchField="name"
+                        @options={{model.artists}}
+                        @selected={{drop.artist}}
+                        @onChange={{fn (mut drop.artist)}} as |artist|>
+                        {{artist.name}}
+                      </PowerSelect>
                     </div>
-                  {{/if}}
+                  </div>
                 </div>
                 <div class="row">
                   <div class="col-md-6 pr-md-1">
@@ -112,7 +114,7 @@
                 </div>
                 <div class="card-footer">
                   <button type="submit" class="btn btn-fill btn-primary">Save</button>
-                  <button {{on "click" (fn delete drop)}}class="btn btn-fill btn-dark">Delete</button>
+                  <button {{on "click" (fn delete drop)}} type='button' class="btn btn-fill btn-dark">Delete</button>
                 </div>
               </form>
             </div>
@@ -124,6 +126,5 @@
   {{/each}}
 </div>
 
-{{#if isAdmin}}
-  <button {{on "click" this.addNewDrop}} class="btn btn-fill btn-primary">Add new Drop</button>
-{{/if}}
+
+<button {{on "click" this.addNewDrop}} class="btn btn-fill btn-primary">Add new Drop</button>

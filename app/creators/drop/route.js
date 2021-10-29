@@ -10,15 +10,8 @@ export default class MyWalletsRoute extends Route {
   }
 
   async model(params) {
-    const scope = this.session.currentUser.user.scope;
-    let drop = null, NFTs = [];
-    if (scope === "Admin") {
-      drop = this.store.find("drop", params.dropId);
-      NFTs = this.store.query('NFT', {dropId: params.dropId});
-    } else if (scope === "Creator") {
-      //TODO
-
-    }
+    const drop = this.store.find("drop", params.dropId);
+    const NFTs = this.store.query('NFT', {dropId: params.dropId});
     return {drop: drop, nfts: await NFTs};
   }
 

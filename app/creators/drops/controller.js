@@ -1,26 +1,43 @@
 import Controller from '@ember/controller';
-import {action} from '@ember/object';
+import {action, computed} from '@ember/object';
 import {inject as service} from '@ember/service';
 
 
 export default class DropsController extends Controller {
   @service session;
+  @service utils;
+
+  newDrop = null;
 
   get isAdmin() {
     return this.session.currentUser.user.scope === 'Admin'
   }
 
+  @computed('newDrop', 'model.drops.@each.isDeleted')
+  get Drops() {
+    const drops = this.model.drops.toArray().filter(x => !x.isDeleted);
+    if (this.newDrop) {
+      return [...drops, this.newDrop];
+    } else {
+      return drops;
+    }
+  }
+
   @action
   addNewDrop() {
-   this.store.createRecord('drop');
+    this.set('newDrop', this.store.createRecord('drop', {
+      artist: this.model.artists.firstObject
+    }));
   }
 
   @action
   async saveDrop(drop) {
     try {
       await drop.save();
+      this.utils.successNotify("Drop saved successfully");
     } catch (e) {
       console.error(e);
+      this.utils.errorNotify(e.errors.message);
     }
   }
 
@@ -37,7 +54,7 @@ export default class DropsController extends Controller {
 
   @action
   async delete(drop) {
-    await drop.deleteRecord();
+    await drop.destroyRecord();
     // TODO;  do something to refresh
   }
 }

@@ -57,12 +57,10 @@ export default class DropsController extends Controller {
   @action
   async delete(nft) {
     try {
-      debugger
-      const deleted = await nft.deleteRecord();
+      const deleted = await nft.destroyRecord();
       this.utils.successNotify("NFT deleted successfully");
     } catch (e) {
       this.utils.errorNotify(e.errors.message);
-
     }
   }
 }

@@ -9,15 +9,21 @@ export default class MyWalletsRoute extends Route {
   }
 
   async model() {
-    const scope = this.session.currentUser.user.scope;
+    const user = this.session.currentUser.user
+    const scope = user.scope;
     let artists = [], drops = [];
+
+
     if (scope === "Admin") {
-      artists = await this.store.findAll("artist");
-      drops = await this.store.findAll("drop");
+      artists = this.store.findAll("artist");
+      drops = this.store.findAll("drop");
 
     } else if (scope === "Creator") {
-      //TODO
-
+      artists = await this.store.query("artist", {user_id: user.id});
+      if (!artists.firstObject) {
+        this.transitionTo('/creators/artists')
+      }
+      drops = this.store.query("drop", {artists: artists.firstObject.id})
     }
     return {drops: drops, artists: artists};
   }

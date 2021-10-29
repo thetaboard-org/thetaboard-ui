@@ -1,7 +1,7 @@
 {{page-title "Creators  Artist"}}
 
 <div class="content">
-  {{#each this.model.artists as |artist|}}
+  {{#each Artists as |artist|}}
     <div class="row">
       <div class="col-md-12">
         <div class="card">
@@ -135,6 +135,7 @@
               </div>
               <div class="card-footer">
                 <button type="submit" class="btn btn-fill btn-primary">Save</button>
+                <button {{on "click" (fn delete artist)}} type="button" class="btn btn-fill btn-dark">Delete</button>
               </div>
             </form>
           </div>
