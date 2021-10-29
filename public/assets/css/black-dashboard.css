@@ -20431,4 +20431,8 @@ Copyright (c) 2015 Daniel Eden
   padding-right: 0;
 }
 
+.collapse:not(.show) {
+  display: none;
+}
+
 /*# sourceMappingURL=dashboard-free.css.map */

@@ -6,101 +6,116 @@
       <div class="col-md-12">
         <div class="card">
           <div class="card-header">
-            <h5 class="title">Drop</h5>
+
+            <!-- if drop already exists-->
+            {{#if drop.id}}
+              <h5 class="title">{{drop.name}}</h5>
+              <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#drop-{{drop.id}}"
+                      aria-expanded="false" aria-controls="drop-{{drop.id}}">
+                Edit drop
+              </button>
+              <LinkTo @route="creators.drop" @model="{{drop.id}}" @class="btn btn-primary">
+                Edit NFTs
+              </LinkTo>
+            {{else}}
+              <h5 class="title">New Drop</h5>
+            {{/if}}
           </div>
-          <div class="card-body">
-            <form {{action "saveDrop" drop on="submit"}}>
-              <div class="row">
-                <div class="col-md-5 pr-md-1">
-                  <div class="form-group">
-                    <label>Name</label>
-                    <Input
-                      @class="form-control"
-                      @type="text"
-                      placeholder="Name"
-                      @value={{drop.name}}
-                    />
-                  </div>
-                </div>
-                {{#if isAdmin}}
+          <div class="collapse" id="drop-{{drop.id}}">
+            <div class="card-body">
+              <form {{action "saveDrop" drop on="submit"}}>
+                <div class="row">
                   <div class="col-md-5 pr-md-1">
                     <div class="form-group">
-
-                      <label>Artist</label>
-
-                      <PowerSelect
-                        @searchEnabled={{true}}
-                        @searchField="name"
-                        @options={{model.artists}}
-                        @selected={{drop.artist}}
-                        @onChange={{fn (mut drop.artist)}} as |artist|>
-                        {{artist.name}}
-                      </PowerSelect>
+                      <label>Name</label>
+                      <Input
+                        @class="form-control"
+                        @type="text"
+                        placeholder="Name"
+                        @value={{drop.name}}
+                      />
                     </div>
                   </div>
-                {{/if}}
-              </div>
-              <div class="row">
-                <div class="col-md-6 pr-md-1">
-                  <div class="form-group">
-                    <label>Start Date</label>
-                    <Input
-                      @class="form-control"
-                      @type="datetime-local"
-                      placeholder="startDate"
-                      @value={{drop.startDate}}
-                    />
+                  {{#if isAdmin}}
+                    <div class="col-md-5 pr-md-1">
+                      <div class="form-group">
+
+                        <label>Artist</label>
+
+                        <PowerSelect
+                          @searchEnabled={{true}}
+                          @searchField="name"
+                          @options={{model.artists}}
+                          @selected={{drop.artist}}
+                          @onChange={{fn (mut drop.artist)}} as |artist|>
+                          {{artist.name}}
+                        </PowerSelect>
+                      </div>
+                    </div>
+                  {{/if}}
+                </div>
+                <div class="row">
+                  <div class="col-md-6 pr-md-1">
+                    <div class="form-group">
+                      <label>Start Date</label>
+                      <Input
+                        @class="form-control"
+                        @type="datetime-local"
+                        placeholder="startDate"
+                        @value={{drop.startDate}}
+                      />
+                    </div>
+                  </div>
+                  <div class="col-md-6 pl-md-1">
+                    <div class="form-group">
+                      <label>End Date</label>
+                      <Input
+                        @class="form-control"
+                        @type="datetime-local"
+                        placeholder="endDate"
+                        @value={{drop.endDate}}
+                      />
+                    </div>
                   </div>
                 </div>
-                <div class="col-md-6 pl-md-1">
-                  <div class="form-group">
-                    <label>End Date</label>
-                    <Input
-                      @class="form-control"
-                      @type="datetime-local"
-                      placeholder="endDate"
-                      @value={{drop.endDate}}
-                    />
+                <div class="row">
+                  <div class="col-md-6">
+                    <FileDropzone @name="photos-{{drop.id}}-image" as |dropzone queue|>
+                      <h4>An image that represent the drop</h4>
+                      <img src="{{drop.image}}">
+                      <p>
+                        <FileUpload @name="photos-{{drop.id}}-image"
+                                    @accept="image/*"
+                                    @multiple={{false}}
+                                    @onFileAdd= {{fn this.uploadImage drop "image"}}>
+                          <a tabindex=0>Add an Image.</a>
+                        </FileUpload>
+                      </p>
+                    </FileDropzone>
                   </div>
                 </div>
-              </div>
-              <div class="row">
-                <div class="col-md-6">
-                  <FileDropzone @name="photos-{{drop.id}}-image" as |dropzone queue|>
-                    <h4>An image that represent the drop</h4>
-                    <img src="{{drop.image}}">
-                    <p>
-                      <FileUpload @name="photos-{{drop.id}}-image"
-                                  @accept="image/*"
-                                  @multiple={{false}}
-                                  @onFileAdd= {{fn this.uploadImage drop "image"}}>
-                        <a tabindex=0>Add an Image.</a>
-                      </FileUpload>
-                    </p>
-                  </FileDropzone>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-md-12">
-                  <div class="form-group">
-                    <label>one line description</label>
-                    <Textarea @rows="4" @class="form-control" @value={{drop.smallDescription}} />
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label>one line description</label>
+                      <Textarea @rows="4" @class="form-control" @value={{drop.smallDescription}} />
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div class="row">
-                <div class="col-md-12">
-                  <div class="form-group">
-                    <label>Description</label>
-                    <Textarea @rows="4" @class="form-control" @value={{drop.description}} />
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label>Description</label>
+                      <Textarea @rows="4" @class="form-control" @value={{drop.description}} />
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div class="card-footer">
-                <button type="submit" class="btn btn-fill btn-primary">Save</button>
-                <button {{on "click" (fn delete drop)}}class="btn btn-fill btn-dark">Delete</button>
-              </div>
-            </form>
+                <div class="card-footer">
+                  <button type="submit" class="btn btn-fill btn-primary">Save</button>
+                  <button {{on "click" (fn delete drop)}}class="btn btn-fill btn-dark">Delete</button>
+                </div>
+              </form>
+            </div>
           </div>
 
         </div>

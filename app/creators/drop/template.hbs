@@ -1,0 +1,115 @@
+{{page-title "Creators  NFTs"}}
+
+<div class="content">
+  {{#each NFTs as |nft|}}
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header">
+            <h5 class="title">NFT</h5>
+          </div>
+          <div class="card-body">
+            <form {{action "saveNFT" nft on="submit"}}>
+              <div class="row">
+                <div class="col-md-5 pr-md-1">
+                  <div class="form-group">
+                    <label>Name</label>
+                    <Input
+                      @class="form-control"
+                      @type="text"
+                      placeholder="Name"
+                      @value={{nft.name}}
+                    />
+                  </div>
+                </div>
+                <div class="col-md-5 pr-md-1">
+                  <div class="form-group">
+                    <label>Type</label>
+                    <PowerSelect
+                      @options={{nft.possibleTypes}}
+                      @selected={{nft.type}}
+                      @onChange={{fn (mut nft.type)}} as |type|>
+                      {{type}}
+                    </PowerSelect>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-5 pr-md-1">
+                  <div class="form-group">
+                    <label>Price</label>
+                    <Input
+                      @class="form-control"
+                      @type="number"
+                      placeholder="editions"
+                      @value={{nft.price}}
+                    />
+                  </div>
+                </div>
+                {{#if nft.isLimitedOrAuction}}
+                  <div class="col-md-5 pr-md-1">
+                    <div class="form-group">
+                      <label>How Many Edition</label>
+                      <Input
+                        @class="form-control"
+                        @type="number"
+                        placeholder="editions"
+                        @value={{nft.editionNumber}}
+                      />
+                    </div>
+                  </div>
+                {{/if}}
+              </div>
+
+              <div class="row">
+                <div class="col-md-6">
+                  <FileDropzone @name="photos-{{nft.id}}-image" as |nftzone queue|>
+                    <h4>The NFT</h4>
+                    <img src="{{nft.image}}">
+                    <p>
+                      <FileUpload @name="photos-{{nft.id}}-image"
+                                  @accept="image/*"
+                                  @multiple={{false}}
+                                  @onFileAdd= {{fn this.uploadImage nft "image"}}>
+                        <a tabindex=0>Add an Image.</a>
+                      </FileUpload>
+                    </p>
+                  </FileDropzone>
+                </div>
+              </div>
+              {{#each nft as |nft|}}
+
+              {{/each}}
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label>One line description</label>
+                    <Textarea @rows="4" @class="form-control" @value={{nft.smallDescription}} />
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label>Description</label>
+                    <Textarea @rows="4" @class="form-control" @value={{nft.description}} />
+                  </div>
+                </div>
+              </div>
+              <div class="card-footer">
+                <button type="submit" class="btn btn-fill btn-primary">Save</button>
+                <button {{on "click" (fn delete nft)}} type="button" class="btn btn-fill btn-dark">Delete</button>
+              </div>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  {{/each}}
+</div>
+
+{{#if isAdmin}}
+  <button {{on "click" this.addNewNft}} class="btn btn-fill btn-primary">Add new nft</button>
+{{/if}}

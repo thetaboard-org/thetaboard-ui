@@ -12,7 +12,7 @@ export default class DropsController extends Controller {
 
   @action
   addNewDrop() {
-    this.store.createRecord('drop');
+   this.store.createRecord('drop');
   }
 
   @action
