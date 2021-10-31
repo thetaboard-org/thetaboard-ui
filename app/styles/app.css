@@ -1629,3 +1629,7 @@ a.active p.menu-item {
   color: rgba(255, 255, 255, 0.8);
   min-height: 170px;
 }
+
+#card-domain .opacity50 {
+  opacity: 0.5;
+}

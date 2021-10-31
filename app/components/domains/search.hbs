@@ -1,22 +1,26 @@
 <div class="col-md-10 domain-centered">
-    <label>{{t 'domain.subtitle'}}:</label> 
-    <form {{on "submit" checkNameAvailable}}>
-        <Input @placeholder={{t 'domain.enter_domain_name'}} @type="text" class="input-domain-search" @value={{domainName}}/>
-        <button type="submit" class="domain-search-button btn btn-primary">{{t 'domain.search'}}</button>
-    </form>
-    {{#if searchInProgress}}
-        {{#if domainAvailable}}
-            {{domains/buy-domain domainName=domainNameToBuy}}
-        {{else if domainNameInvalid}}
-            <div class="alert alert-danger invalid-domain">
-                <span><b> {{domainNameToBuy}} </b> {{t 'domain.invalid_name'}}</span>
-            </div>
-        {{else}}
-            <div class="alert alert-warning buy-domain">
-                <span><b> {{domainNameToBuy}}.theta </b> {{t 'domain.already_registered'}}</span>
-            </div>
+    {{#if metamask.currentAccount}}
+        <label>{{t 'domain.subtitle'}}:</label> 
+        <form {{on "submit" checkNameAvailable}}>
+            <Input @placeholder={{t 'domain.enter_domain_name'}} @type="text" class="input-domain-search" @value={{domainName}}/>
+            <button type="submit" class="domain-search-button btn btn-primary {{if searchDisabled 'disabled'}}">{{t 'domain.search'}}</button>
+        </form>
+    {{else}}
+        <button {{on 'click' metamask.connect}} class="domain-search-button btn btn-primary">{{t 'domain.connect'}}</button>
+    {{/if}}
+    {{#if metamask.currentAccount}}
+        {{#if searchInProgress}}
+            {{#if domainAvailable}}
+                {{domains/buy-domain domainName=domainNameToBuy price=price isBalanceEnough=isBalanceEnough}}
+            {{else if domainNameInvalid}}
+                <div class="alert alert-danger invalid-domain">
+                    <span><b> {{domainNameToBuy}} </b> {{t 'domain.invalid_name'}}</span>
+                </div>
+            {{else}}
+                <div class="alert alert-warning buy-domain">
+                    <span><b> {{domainNameToBuy}}.theta </b> {{t 'domain.already_registered'}}</span>
+                </div>
+            {{/if}}
         {{/if}}
     {{/if}}
-
-
 </div>

@@ -11,9 +11,12 @@ export default class MetamaskService extends Service {
   }
   @service utils;
   @service intl;
+  @service domain;
   @tracked isInstalled;
   @tracked isConnected;
   @tracked currentAccount;
+  @tracked provider;
+  @tracked networkId;
 
   initMeta() {
     if (typeof window.ethereum !== 'undefined') {
@@ -34,14 +37,14 @@ export default class MetamaskService extends Service {
   @action
   async connect() {
     try {
-      const provider = await detectEthereumProvider();
-      if (provider) {
+      this.provider = await detectEthereumProvider();
+      if (this.provider) {
         this.isInstalled = true;
-        if (provider !== window.ethereum) {
+        if (this.provider !== window.ethereum) {
           return this.utils.errorNotify(this.intl.t('domain.multiple_wallet'));
         }
-        const chainId = await window.ethereum.request({ method: 'eth_chainId' });
-        if (parseInt(chainId) !== 361) {
+        this.networkId = parseInt(await window.ethereum.request({ method: 'eth_chainId' }));
+        if (this.networkId !== 365) {
           return this.utils.errorNotify(this.intl.t('domain.select_theta'));
         }
         const accounts = await window.ethereum.request({method: 'eth_requestAccounts'});
@@ -62,14 +65,15 @@ export default class MetamaskService extends Service {
     } else if (accounts[0] !== this.currentAccount) {
       this.isConnected = true;
       this.currentAccount = accounts[0];
+      this.domain.initDomain();
       this.utils.successNotify(this.intl.t('domain.connect_to') + this.currentAccount);
     }
   }
 
   @action
-  async handleChainChanged(chainId) {
+  async handleChainChanged(networkId) {
     this.disconnect(true);
-    if (parseInt(chainId) !== 361) {
+    if (parseInt(networkId) !== 365) {
       return this.utils.errorNotify(this.intl.t('domain.select_theta'));
     }
     return await this.connect();
