@@ -15,7 +15,7 @@ export default class DropsController extends Controller {
 
   @computed('newDrop', 'model.drops.@each.isDeleted')
   get Drops() {
-    const drops = this.model.drops.toArray().filter(x => !x.isDeleted);
+    const drops = this.model.drops.toArray().filter(x => !x.isDeleted && !!x.id);
     if (this.newDrop) {
       return [...drops, this.newDrop];
     } else {
@@ -54,7 +54,11 @@ export default class DropsController extends Controller {
 
   @action
   async delete(drop) {
-    await drop.destroyRecord();
-    // TODO;  do something to refresh
+    try {
+      const deleted = await drop.destroyRecord();
+      this.utils.successNotify("Drop deleted successfully");
+    } catch (e) {
+      this.utils.errorNotify(e.errors.message);
+    }
   }
 }

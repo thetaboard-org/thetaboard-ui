@@ -13,7 +13,7 @@ export default class ArtistsController extends Controller {
 
   @computed('newArtist', 'model.artists.@each.isDeleted')
   get Artists() {
-    const artists = this.model.artists.toArray().filter(x => !x.isDeleted);
+    const artists = this.model.artists.toArray().filter(x => !x.isDeleted && !!x.id);
     if (this.newArtist) {
       return [...artists, this.newArtist];
     } else {

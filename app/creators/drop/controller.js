@@ -11,7 +11,7 @@ export default class DropsController extends Controller {
 
   @computed('newNft', 'model.nfts.@each.isDeleted')
   get NFTs() {
-    const nfts = this.model.nfts.toArray().filter(x => !x.isDeleted);
+    const nfts = this.model.nfts.toArray().filter(x => !x.isDeleted && !!x.id);
     if (this.newNft) {
       return [...nfts, this.newNft];
     } else {
