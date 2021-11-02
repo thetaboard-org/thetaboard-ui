@@ -1,5 +1,5 @@
-import Model, { attr, belongsTo } from '@ember-data/model';
-import { computed } from '@ember/object';
+import Model, {attr, belongsTo} from '@ember-data/model';
+import {computed} from '@ember/object';
 
 export default class NftAssetModel extends Model {
   @attr('string') description;
@@ -22,5 +22,9 @@ export default class NftAssetModel extends Model {
   @computed('type')
   get isObject3D() {
     return this.type === 'object3D';
+  }
+
+  get possibleTypes() {
+    return ['image', 'video'];
   }
 }

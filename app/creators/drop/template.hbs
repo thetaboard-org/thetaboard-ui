@@ -78,9 +78,6 @@
                   </FileDropzone>
                 </div>
               </div>
-              {{#each nft as |nft|}}
-
-              {{/each}}
               <div class="row">
                 <div class="col-md-12">
                   <div class="form-group">
@@ -97,9 +94,61 @@
                   </div>
                 </div>
               </div>
+              {{#each nft.nftAssets as |asset|}}
+                <div class="row">
+                  <div class="col-md-5 pr-md-1">
+                    <div class="form-group">
+                      <label>Asset Name</label>
+                      <Input
+                        @class="form-control"
+                        @type="text"
+                        placeholder="Name"
+                        @value={{asset.name}}
+                      />
+                    </div>
+                  </div>
+                  <div class="col-md-5 pr-md-1">
+                    <div class="form-group">
+                      <label>Asset Type</label>
+                      <PowerSelect
+                        @options={{asset.possibleTypes}}
+                        @selected={{asset.type}}
+                        @onChange={{fn (mut asset.type)}} as |type|>
+                        {{type}}
+                      </PowerSelect>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label>Asset Description</label>
+                      <Textarea @rows="4" @class="form-control" @value={{asset.description}} />
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <FileDropzone @name="photos-{{asset.id}}-image" as |nftzone queue|>
+                      <h4>Asset</h4>
+                      <img src="{{asset.asset}}">
+                      <p>
+                        <FileUpload @name="photos-{{asset.id}}-image"
+                                    @accept="image/*"
+                                    @multiple={{false}}
+                                    @onFileAdd={{fn this.uploadImage asset "asset"}}>
+                          <a tabindex=0>Add an Image.</a>
+                        </FileUpload>
+                      </p>
+                    </FileDropzone>
+                  </div>
+                </div>
+              {{/each}}
               <div class="card-footer">
                 <button type="submit" class="btn btn-fill btn-primary">Save</button>
                 <button {{on "click" (fn delete nft)}} type="button" class="btn btn-fill btn-dark">Delete</button>
+                <button {{on "click" (fn newAsset nft)}} type="button" class="btn btn-fill btn-darker">New Asset
+                </button>
               </div>
             </form>
           </div>

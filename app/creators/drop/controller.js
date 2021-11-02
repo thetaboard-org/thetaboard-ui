@@ -33,6 +33,8 @@ export default class DropsController extends Controller {
   @action
   async saveNFT(nft) {
     try {
+      const assets = await nft.nftAssets.save();
+      debugger
       await nft.save();
       this.utils.successNotify("NFT saved successfully");
     } catch (e) {
@@ -46,7 +48,6 @@ export default class DropsController extends Controller {
     try {
       file.name = 'nft/' + file.name;
       const response = await file.upload('/nft/assets/upload');
-      debugger
       drop[property] = response.body.fileUrl;
     } catch (e) {
       console.error(e);
@@ -62,5 +63,14 @@ export default class DropsController extends Controller {
     } catch (e) {
       this.utils.errorNotify(e.errors.message);
     }
+  }
+
+
+  @action
+  async newAsset(nft) {
+    const newAsset = await this.store.createRecord('NFT-asset', {
+      nftId: nft.get('id')
+    });
+    nft.nftAssets.addObject(newAsset)
   }
 }
