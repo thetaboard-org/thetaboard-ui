@@ -38,11 +38,12 @@
               <div class="row">
                 <div class="col-md-5 pr-md-1">
                   <div class="form-group">
-                    <label>Price</label>
+                    <label>Price in Tfuel</label>
                     <Input
                       @class="form-control"
                       @type="number"
-                      placeholder="editions"
+                      placeholder="Tfuels"
+                      min="0"
                       @value={{nft.price}}
                     />
                   </div>
@@ -55,6 +56,7 @@
                         @class="form-control"
                         @type="number"
                         placeholder="editions"
+                        min="1"
                         @value={{nft.editionNumber}}
                       />
                     </div>
@@ -131,13 +133,19 @@
                   <div class="col-md-6">
                     <FileDropzone @name="photos-{{asset.id}}-image" as |nftzone queue|>
                       <h4>Asset</h4>
-                      <img src="{{asset.asset}}">
+                      {{#if asset.isImage}}
+                        <img class="nft-main-image" src="{{asset.asset}}" alt="{{asset.name}}" style="width: 200px"/>
+                      {{else if asset.isVideo}}
+                        <video class="nft-main-video" autoplay loop style="width: 200px">
+                          <source src="{{asset.asset}}" type="video/mp4">
+                        </video>
+                      {{/if}}
                       <p>
                         <FileUpload @name="photos-{{asset.id}}-image"
-                                    @accept="image/*"
+                                    @accept="*"
                                     @multiple={{false}}
                                     @onFileAdd={{fn this.uploadImage asset "asset"}}>
-                          <a tabindex=0>Add an Image.</a>
+                          <a tabindex=0>Add an Image or MP4.</a>
                         </FileUpload>
                       </p>
                     </FileDropzone>

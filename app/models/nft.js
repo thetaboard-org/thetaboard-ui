@@ -15,7 +15,7 @@ export default class NftModel extends Model {
   @attr('number') artistId;
   @belongsTo('artist') artist;
   @belongsTo('drop') drop;
-  @hasMany('nftAsset', {
+  @hasMany('nft-asset', {
     async: false
   }) nftAssets;
 

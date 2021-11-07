@@ -34,7 +34,6 @@ export default class DropsController extends Controller {
   async saveNFT(nft) {
     try {
       const assets = await nft.nftAssets.save();
-      debugger
       await nft.save();
       this.utils.successNotify("NFT saved successfully");
     } catch (e) {
