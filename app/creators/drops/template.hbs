@@ -17,6 +17,10 @@
               <LinkTo @route="creators.drop" @model="{{drop.id}}" @class="btn btn-primary">
                 Edit NFTs
               </LinkTo>
+
+              <button class="btn btn-danger" type="button" {{action "deployDrop" drop}}>
+                Deploy drop to Blockchain
+              </button>
             {{else}}
               <h5 class="title">New Drop</h5>
               <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#drop-{{drop.id}}"

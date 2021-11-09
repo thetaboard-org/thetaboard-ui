@@ -26,15 +26,20 @@ export default class DropsController extends Controller {
   @action
   async addNewNft() {
     this.set('newNft', await this.store.createRecord('NFT', {
-      dropId: this.model.drop.get('id')
+      dropId: this.model.drop.get('id'),
     }));
   }
 
   @action
   async saveNFT(nft) {
     try {
-      const assets = await nft.nftAssets.save();
       await nft.save();
+      // adding the NFT id is required for newly created NFTs
+      nft.nftAssets = nft.nftAssets.map((asset) => {
+        asset.nftId = nft.get('id');
+        return asset;
+      });
+      await nft.nftAssets.save();
       this.utils.successNotify("NFT saved successfully");
     } catch (e) {
       console.error(e);
@@ -57,8 +62,18 @@ export default class DropsController extends Controller {
   @action
   async delete(nft) {
     try {
-      const deleted = await nft.destroyRecord();
+      await nft.destroyRecord();
       this.utils.successNotify("NFT deleted successfully");
+    } catch (e) {
+      this.utils.errorNotify(e.errors.message);
+    }
+  }
+
+  @action
+  async deleteAsset(asset) {
+    try {
+      await asset.destroyRecord();
+      this.utils.successNotify("Asset deleted successfully");
     } catch (e) {
       this.utils.errorNotify(e.errors.message);
     }

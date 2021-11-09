@@ -61,4 +61,9 @@ export default class DropsController extends Controller {
       this.utils.errorNotify(e.errors.message);
     }
   }
+
+  @action
+  async deployDrop(drop){
+    debugger
+  }
 }
