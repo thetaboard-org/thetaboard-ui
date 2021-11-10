@@ -6,6 +6,7 @@ import {inject as service} from '@ember/service';
 export default class DropsController extends Controller {
   @service session;
   @service utils;
+  @service abi;
 
   newDrop = null;
 
@@ -63,7 +64,24 @@ export default class DropsController extends Controller {
   }
 
   @action
-  async deployDrop(drop){
+  async deployDrop(drop) {
+    // web3/metamask
+    window.web3 = new Web3(window.web3.currentProvider);
+    const NFTcontract = new window.web3.eth.Contract(this.abi.ThetaboardNFT);
+    const accounts = await ethereum.request({method: 'eth_requestAccounts'});
+    const account = accounts[0];
+    // prep contracts :
+    const nfts = await drop.get('nfts');
+    debugger
+    const contractData = NFTcontract.deploy({
+      data: this.abi.ThetaboardNFTByteCode,
+      arguments: ["Thetaboard 2021 NFT", "TB", "https://nft.thetaboard.io/nft/2/"]
+    })
+    const contractData2 = NFTcontract.deploy({
+      data: this.abi.ThetaboardNFTByteCode,
+      arguments: ["Thetaboard 2021 NFT", "TB", "https://nft.thetaboard.io/nft/2/"]
+    })
+    const newContractInstance = await Promise.all([contractData.send({from: account}), contractData2.send({from: account})]);
     debugger
   }
 }
