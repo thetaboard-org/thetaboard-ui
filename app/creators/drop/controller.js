@@ -53,8 +53,10 @@ export default class DropsController extends Controller {
       file.name = 'nft/' + file.name;
       const response = await file.upload('/nft/assets/upload');
       drop[property] = response.body.fileUrl;
+      this.utils.successNotify("Successfully uploaded");
     } catch (e) {
       console.error(e);
+      this.utils.errorNotify("upload failed");
       this.utils.errorNotify(e.errors.message);
     }
   }

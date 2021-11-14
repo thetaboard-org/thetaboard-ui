@@ -17,10 +17,17 @@
               <LinkTo @route="creators.drop" @model="{{drop.id}}" @class="btn btn-primary">
                 Edit NFTs
               </LinkTo>
+              {{#if deployNFTLoading}}
+                <button class="btn btn-darker disabled" type="button" {{action "deployNFTs" drop}}>
+                  <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                  Deploy NFTs to Blockchain
+                </button>
+              {{else}}
+                <button class="btn btn-darker" type="button" {{action "deployNFTs" drop}}>
+                  Deploy NFTs to Blockchain
+                </button>
+              {{/if}}
 
-              <button class="btn btn-danger" type="button" {{action "deployDrop" drop}}>
-                Deploy drop to Blockchain
-              </button>
             {{else}}
               <h5 class="title">New Drop</h5>
               <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#drop-{{drop.id}}"

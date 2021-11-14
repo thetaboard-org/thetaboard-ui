@@ -16,7 +16,8 @@ div.wallet-address-search-container {
   z-index: 1051;
   max-width: 500px;
   height: 33px;
-  text-align: center;}
+  text-align: center;
+}
 
 button.connect-wallet-button.btn.btn-fill {
   padding: 7px 20px;
@@ -26,10 +27,10 @@ button.connect-wallet-button.btn.btn-fill {
 
 #searchModal, #downloadThetaExtension {
   z-index: 9998;
-  background: rgb(0,0,0,0.7);
+  background: rgb(0, 0, 0, 0.7);
 }
 
-#searchModal form{
+#searchModal form {
   width: 100%
 }
 
@@ -53,7 +54,7 @@ p.wallet-placeholder {
   text-align: center;
 }
 
-div.card.card-chart.card-holdings div.card-body.pie-chart-card-body{
+div.card.card-chart.card-holdings div.card-body.pie-chart-card-body {
   min-height: 295px;
 }
 
@@ -123,17 +124,17 @@ div.card.card-chart.card-holdings div.card-body.pie-chart-card-body{
 }
 
 .rotate {
-    animation: rotation 2s infinite linear;
-  }
+  animation: rotation 2s infinite linear;
+}
 
-  @keyframes rotation {
-    from {
-      transform: rotate(0deg);
-    }
-    to {
-      transform: rotate(359deg);
-    }
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
   }
+  to {
+    transform: rotate(359deg);
+  }
+}
 
 .notification.ready {
   background: #00bf9a;
@@ -175,7 +176,7 @@ div.card.card-chart.card-holdings div.card-body.pie-chart-card-body{
   font-size: 20px;
 }
 
-input.border-color{
+input.border-color {
   border: 1px solid #bdbdc4;
 }
 
@@ -225,8 +226,8 @@ td#in-or-out img {
 }
 
 .td-value {
-    min-width: 170px;
-    text-indent: 10%;
+  min-width: 170px;
+  text-indent: 10%;
 }
 
 nav[aria-label="Page navigation"] .pager {
@@ -282,7 +283,7 @@ nav[aria-label="Page navigation"] .pager li.pager-inner {
 
 .card-logs.card-user .avatar, .card-status.card-user .avatar {
   width: 55px;
-  height:57px;
+  height: 57px;
   border-radius: 0px;
   border: none;
 }
@@ -292,7 +293,7 @@ nav[aria-label="Page navigation"] .pager li.pager-inner {
 }
 
 .card-logs.card-user .card-description, .card-status.card-user .card-description {
-  background:#22252b;
+  background: #22252b;
   font-size: 12px;
   font-family: monospace;
   padding: 15px;
@@ -317,11 +318,11 @@ nav[aria-label="Page navigation"] .pager li.pager-inner {
 
 @keyframes animate-stripes {
   0% {
-      background-position: 0 0;
+    background-position: 0 0;
   }
 
   100% {
-      background-position: 60px 0;
+    background-position: 60px 0;
   }
 }
 
@@ -347,14 +348,14 @@ nav[aria-label="Page navigation"] .pager li.pager-inner {
 .stripes {
   background-size: 30px 30px;
   background-image: linear-gradient(
-      135deg,
-      rgba(255, 255, 255, .15) 25%,
-      transparent 25%,
-      transparent 50%,
-      rgba(255, 255, 255, .15) 50%,
-      rgba(255, 255, 255, .15) 75%,
-      transparent 75%,
-      transparent
+    135deg,
+    rgba(255, 255, 255, .15) 25%,
+    transparent 25%,
+    transparent 50%,
+    rgba(255, 255, 255, .15) 50%,
+    rgba(255, 255, 255, .15) 75%,
+    transparent 75%,
+    transparent
   );
 }
 
@@ -376,7 +377,7 @@ ul.guardian-status-ul.dropdown-menu.dropdown-menu-right.dropdown-navbar {
   text-align: center;
 }
 
-.guardian-status-ul .guardian-status-alert{
+.guardian-status-ul .guardian-status-alert {
   width: 100%;
   margin: 0;
   z-index: 9999;
@@ -457,12 +458,12 @@ iv.AccordionToggle .author.border-right {
   max-height: 462px;
 }
 
-div.card-header  .card-title.forecast-title {
+div.card-header .card-title.forecast-title {
   font-size: 16px;
   font-weight: 600;
 }
 
-div.card-header  .card-title.forecast-description {
+div.card-header .card-title.forecast-description {
   font-size: 16px;
 }
 
@@ -583,7 +584,7 @@ div.domain-block-centered {
   text-align: center;
 }
 
-div.card-body.card-domain{
+div.card-body.card-domain {
   min-height: 145px;
 }
 
@@ -627,6 +628,7 @@ form.domain-available-container label.emphesized {
   font-weight: bolder;
   color: #ccc;
 }
+
 .domain-list-body-block {
   text-align: center;
 }
@@ -636,7 +638,7 @@ form.domain-available-container label.emphesized {
 #offerMadeModal,
 #offerCanceledModal,
 #offerReceivedModal {
-  background: rgb(0,0,0,0.7);
+  background: rgb(0, 0, 0, 0.7);
 }
 
 #offerMadeModal .modal-content,
@@ -711,8 +713,8 @@ form.domain-available-container label.emphesized {
 @media screen and (max-width: 768px) {
   .table-responsive.transac-history-table,
   .table-responsive.wallet-list-table,
-  .table-responsive.transac-history-table .table>thead>tr>th,
-  .table-responsive.wallet-list-table .table>thead>tr>th  {
+  .table-responsive.transac-history-table .table > thead > tr > th,
+  .table-responsive.wallet-list-table .table > thead > tr > th {
     font-size: 0.8em;
 
   }
@@ -728,8 +730,8 @@ form.domain-available-container label.emphesized {
   }
 
   .main-panel .content #faq-page, .main-panel .content #domain-page-content {
-      padding-left: 0px;
-      padding-right: 0px;
+    padding-left: 0px;
+    padding-right: 0px;
   }
 
   div.card.login-card {
@@ -775,7 +777,7 @@ form.domain-available-container label.emphesized {
   margin: 20px auto;
   width: 100%;
   box-shadow: 2px 2px 12px #555;
-  background: rgb(0,0,0,0.4);
+  background: rgb(0, 0, 0, 0.4);
   max-width: 550px;
 }
 
@@ -785,7 +787,7 @@ form.domain-available-container label.emphesized {
 }
 
 .offer-made-cards div {
-  color:rgb(189, 189, 196);
+  color: rgb(189, 189, 196);
 }
 
 .offer-made-cards p {
@@ -849,7 +851,7 @@ button.btn.btn-fill.btn-primary.connect-wallet-offer-button.refresh-offer {
 }
 
 .coinbases {
-  color:rgba(255, 255, 255, .8)
+  color: rgba(255, 255, 255, .8)
 }
 
 .social-login {
@@ -916,7 +918,7 @@ a.logout {
   display: block;
 }
 
-.dropdown .selected-dropdown-item{
+.dropdown .selected-dropdown-item {
   background: white;
   padding: 7px 20px;
   border-radius: 10px;
@@ -946,7 +948,7 @@ a.logout {
   display: inline-block;
 }
 
-.short-address{
+.short-address {
   display: none;
 }
 
@@ -986,7 +988,7 @@ a.logout {
     display: none;
   }
 
-  .short-address{
+  .short-address {
     display: inline-block;
   }
 
@@ -1005,7 +1007,7 @@ a.logout {
   a.login-button.btn.btn-fill.btn-primary {
     font-size: 11px;
     padding: 10px 10px;
-    margin-top: 10px!important;
+    margin-top: 10px !important;
   }
 
   .main-panel .navbar div.container-fluid {
@@ -1105,6 +1107,7 @@ a.logout {
   font-size: 0.9rem;
   font-weight: 600;
 }
+
 .wallet-list-item p.p-selected.not {
   background-color: #e14eca;
 }
@@ -1129,7 +1132,7 @@ a.logout {
   color: #9A9A9A;
 }
 
-.dropdown-menu.dropdown-navbar.show p.title{
+.dropdown-menu.dropdown-navbar.show p.title {
   color: #9A9A9A;
   margin-top: 5px;
 }
@@ -1156,8 +1159,8 @@ a.logout {
   margin-top: 60px;
 }
 
-.i18n-selector{
-  background: rgba(255,255,255,0.26);
+.i18n-selector {
+  background: rgba(255, 255, 255, 0.26);
   padding: 10px 10px;
   border-radius: 25px;
 }
@@ -1213,7 +1216,7 @@ a.active p.menu-item {
   bottom: 0;
   width: 100%;
   padding: 7px 15px;
-  background: rgba(0,0,0,0.7);
+  background: rgba(0, 0, 0, 0.7);
   backdrop-filter: blur(2px);
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
@@ -1283,7 +1286,7 @@ a.active p.menu-item {
 
 #card-drop .drop-status,
 #card-nft .drop-status {
-    display: inline-block;
+  display: inline-block;
   background: black;
   padding: 10px 20px;
   border-radius: 25px;
@@ -1299,7 +1302,7 @@ a.active p.menu-item {
 }
 
 #card-drop .drop-status .dot,
-#card-nft .drop-status .dot{
+#card-nft .drop-status .dot {
   height: 10px;
   width: 10px;
   background-color: #ff0303;
@@ -1507,7 +1510,7 @@ a.active p.menu-item {
   margin: 0;
 }
 
-.nft-card-holdings .nft-image{
+.nft-card-holdings .nft-image {
   max-height: 300px;
   position: relative;
 }
@@ -1543,4 +1546,47 @@ a.active p.menu-item {
 
 .nft-attribute-container .nft-attribute-value {
 
+}
+
+.spinner-border {
+  display: inline-block;
+  width: 2rem;
+  height: 2rem;
+  vertical-align: text-bottom;
+  border: 0.25em solid currentColor;
+  border-right-color: transparent;
+  border-radius: 50%;
+  -webkit-animation: spinner-border .75s linear infinite;
+  animation: spinner-border .75s linear infinite;
+  animation-duration: 0.75s;
+  animation-timing-function: linear;
+  animation-delay: 0s;
+  animation-iteration-count: infinite;
+  animation-direction: normal;
+  animation-fill-mode: none;
+  animation-play-state: running;
+  animation-name: spinner-border;
+}
+
+@keyframes spinner-border {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.spinner-border {
+  display: inline-block;
+  width: 2rem;
+  height: 2rem;
+  vertical-align: text-bottom;
+  border: 0.25em solid currentColor;
+  border-right-color: transparent;
+  border-radius: 50%;
+  animation: spinner-border .75s linear infinite;
+}
+
+.spinner-border-sm {
+  width: 1rem;
+  height: 1rem;
+  border-width: .2em;
 }

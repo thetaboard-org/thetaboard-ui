@@ -6,7 +6,20 @@
       <div class="col-md-12">
         <div class="card">
           <div class="card-header">
-            <h5 class="title">NFT</h5>
+            <h5 class="title">
+              {{#if nft.id}}
+                {{nft.name}}
+              {{else}}
+                New NFT
+              {{/if}}
+            </h5>
+            <h6>
+              {{#if nft.nftContractId}}
+                Deployed at: {{nft.nftContractId}}
+              {{else}}
+                NFT not deployed to the blockchain
+              {{/if}}
+            </h6>
           </div>
           <div class="card-body">
             <form {{action "saveNFT" nft on="submit"}}>
@@ -17,6 +30,7 @@
                     <Input
                       @class="form-control"
                       @type="text"
+                      @disabled={{if nft.nftContractId true}}
                       placeholder="Name"
                       @value={{nft.name}}
                     />
@@ -136,9 +150,11 @@
                       {{#if asset.isImage}}
                         <img class="nft-main-image" src="{{asset.asset}}" alt="{{asset.name}}" style="width: 200px"/>
                       {{else if asset.isVideo}}
-                        <video class="nft-main-video" autoplay loop style="width: 200px">
-                          <source src="{{asset.asset}}" type="video/mp4">
-                        </video>
+                        {{#if asset.asset}}{
+                          <video class="nft-main-video" autoplay loop style="width: 200px">
+                            <source src="{{asset.asset}}" type="video/mp4">
+                          </video>
+                        {{/if}}
                       {{/if}}
                       <p>
                         <FileUpload @name="photos-{{asset.id}}-image"
@@ -149,7 +165,9 @@
                         </FileUpload>
                       </p>
                     </FileDropzone>
-                    <button {{on "click" (fn deleteAsset asset)}} type="button" class="btn btn-fill btn-dark">Delete Asset</button>
+                    <button {{on "click" (fn deleteAsset asset)}} type="button" class="btn btn-fill btn-dark">Delete
+                      Asset
+                    </button>
                   </div>
                 </div>
               {{/each}}

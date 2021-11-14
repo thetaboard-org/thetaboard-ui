@@ -63,25 +63,40 @@ export default class DropsController extends Controller {
     }
   }
 
+
+  // state for deployNFTs
+  deployNFTLoading = false;
   @action
-  async deployDrop(drop) {
+  async deployNFTs(drop) {
     // web3/metamask
-    window.web3 = new Web3(window.web3.currentProvider);
-    const NFTcontract = new window.web3.eth.Contract(this.abi.ThetaboardNFT);
-    const accounts = await ethereum.request({method: 'eth_requestAccounts'});
-    const account = accounts[0];
-    // prep contracts :
     const nfts = await drop.get('nfts');
-    debugger
-    const contractData = NFTcontract.deploy({
-      data: this.abi.ThetaboardNFTByteCode,
-      arguments: ["Thetaboard 2021 NFT", "TB", "https://nft.thetaboard.io/nft/2/"]
-    })
-    const contractData2 = NFTcontract.deploy({
-      data: this.abi.ThetaboardNFTByteCode,
-      arguments: ["Thetaboard 2021 NFT", "TB", "https://nft.thetaboard.io/nft/2/"]
-    })
-    const newContractInstance = await Promise.all([contractData.send({from: account}), contractData2.send({from: account})]);
-    debugger
+    const nfts_to_deploy = nfts.filter((x)=> !x.nftContractId)
+    if(nfts_to_deploy.length === 0){
+      return this.utils.successNotify("All NFTs are already deployed");
+    }
+    this.set('deployNFTLoading', true);
+    try{
+      window.web3 = new Web3(window.web3.currentProvider);
+      const NFTcontract = new window.web3.eth.Contract(this.abi.ThetaboardNFT);
+      const accounts = await ethereum.request({method: 'eth_requestAccounts'});
+      const account = accounts[0];
+      // deploy contracts :
+      const contracts = await Promise.all(nfts_to_deploy.map(async (nft)=>{
+        return NFTcontract.deploy({
+          data: this.abi.ThetaboardNFTByteCode,
+          arguments: [nft.name, "TB", `https://nft.thetaboard.io/nft/${nft.id}/`]
+        }).send({from: account});
+      }));
+      // save contracts addresses
+      await Promise.all(nfts_to_deploy.map((nft, idx)=>{
+        nft.nftContractId = contracts[idx]._address;
+        return nft.save();
+      }));
+      this.utils.successNotify("NFTs successfully deployed");
+    } catch (e) {
+      console.error(e);
+      this.utils.errorNotify(e);
+    }
+    this.set('deployNFTLoading', false);
   }
 }
