@@ -66,29 +66,35 @@ export default class DropsController extends Controller {
 
   // state for deployNFTs
   deployNFTLoading = false;
+
   @action
   async deployNFTs(drop) {
     // web3/metamask
     const nfts = await drop.get('nfts');
-    const nfts_to_deploy = nfts.filter((x)=> !x.nftContractId)
-    if(nfts_to_deploy.length === 0){
+    const nfts_to_deploy = nfts.filter((x) => !x.nftContractId)
+    if (nfts_to_deploy.length === 0) {
       return this.utils.successNotify("All NFTs are already deployed");
     }
     this.set('deployNFTLoading', true);
-    try{
+    try {
+      if (typeof ethereum === 'undefined' || !ethereum.isConnected()) {
+        return this.utils.errorNotify(this.intl.t('notif.no_metamask'));
+      } else if (parseInt(ethereum.chainId) !== 361) {
+        return this.utils.errorNotify(this.intl.t('notif.not_theta_blockchain'));
+      }
       window.web3 = new Web3(window.web3.currentProvider);
       const NFTcontract = new window.web3.eth.Contract(this.abi.ThetaboardNFT);
       const accounts = await ethereum.request({method: 'eth_requestAccounts'});
       const account = accounts[0];
       // deploy contracts :
-      const contracts = await Promise.all(nfts_to_deploy.map(async (nft)=>{
+      const contracts = await Promise.all(nfts_to_deploy.map(async (nft) => {
         return NFTcontract.deploy({
           data: this.abi.ThetaboardNFTByteCode,
           arguments: [nft.name, "TB", `https://nft.thetaboard.io/nft/${nft.id}/`]
         }).send({from: account});
       }));
       // save contracts addresses
-      await Promise.all(nfts_to_deploy.map((nft, idx)=>{
+      await Promise.all(nfts_to_deploy.map((nft, idx) => {
         nft.nftContractId = contracts[idx]._address;
         return nft.save();
       }));
