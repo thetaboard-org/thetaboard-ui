@@ -19,11 +19,11 @@ export default class MyWalletsRoute extends Route {
       drops = this.store.findAll("drop");
 
     } else if (scope === "Creator") {
-      artists = await this.store.query("artist", {user_id: user.id});
+      artists = await this.store.query("artist", {userId: user.id});
       if (!artists.firstObject) {
         this.transitionTo('/creators/artists')
       }
-      drops = this.store.query("drop", {artists: artists.firstObject.id})
+      drops = this.store.query("drop", {artistId: artists.firstObject.id})
     }
     return {drops: drops, artists: artists};
   }

@@ -7,9 +7,11 @@ export default class ArtistsController extends Controller {
   @service session;
   @service utils;
 
-  get isAdmin() {
-    return this.session.currentUser.user.scope === 'Admin'
+  get canCreateArtist() {
+    const scope = this.session.currentUser.user.scope
+    return scope === 'Admin' || (scope === 'Creator' && this.Artists.length === 0);
   }
+
 
   @computed('newArtist', 'model.artists.@each.isDeleted')
   get Artists() {
@@ -23,7 +25,10 @@ export default class ArtistsController extends Controller {
 
   @action
   addNewArtist() {
-    this.set('newArtist', this.store.createRecord('artist'));
+    this.set('newArtist', this.store.createRecord('artist', {
+      userId: this.session.currentUser.user.id
+    }));
+
   }
 
   @action

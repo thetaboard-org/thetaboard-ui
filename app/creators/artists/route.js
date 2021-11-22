@@ -15,9 +15,7 @@ export default class MyWalletsRoute extends Route {
       artists = await this.store.findAll("artist");
     } else if (scope === "Creator") {
       artists = this.store.query("artist", {
-        filter: {
-          user_id: this.session.currentUser.user.id
-        }
+        userId: this.session.currentUser.user.id
       });
     }
     return {artists: artists};

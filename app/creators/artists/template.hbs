@@ -146,6 +146,7 @@
   {{/each}}
 </div>
 
-{{#if isAdmin}}
+
+{{#if canCreateArtist}}
   <button {{on "click" this.addNewArtist}} class="btn btn-fill btn-primary">Add new Artist</button>
 {{/if}}
