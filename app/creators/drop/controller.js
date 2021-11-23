@@ -1,7 +1,6 @@
 import Controller from '@ember/controller';
 import {action, computed} from '@ember/object';
 import {inject as service} from '@ember/service';
-import { TrackedAsyncData } from 'ember-async-data';
 
 export default class DropsController extends Controller {
   @service session;
