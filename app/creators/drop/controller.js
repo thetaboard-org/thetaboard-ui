@@ -1,11 +1,12 @@
 import Controller from '@ember/controller';
 import {action, computed} from '@ember/object';
 import {inject as service} from '@ember/service';
-
+import { TrackedAsyncData } from 'ember-async-data';
 
 export default class DropsController extends Controller {
   @service session;
   @service utils;
+  @service abi;
 
   newNft = null;
 
@@ -21,6 +22,16 @@ export default class DropsController extends Controller {
 
   get isAdmin() {
     return this.session.currentUser.user.scope === 'Admin'
+  }
+
+  @action
+  async sellingInfo(nft) {
+    window.web3 = new Web3(window.web3.currentProvider);
+    const NFTsellContract = new window.web3.eth.Contract(this.abi.ThetaboardDirectSell, nft.nftSellController);
+    const contractInfo = await NFTsellContract.methods.getNftSell(nft.nftContractId).call();
+    let keys = Object.keys(contractInfo);
+    keys = keys.slice(keys.length/2);
+    nft.blockChainInfo = keys.map((x)=>`${x} = ${contractInfo[x]}`).join('; ');
   }
 
   @action

@@ -4,11 +4,11 @@
 
       Tip 2: you can also add an image using data-image tag
   -->
-  <div class="logo">
-    <img class="thetaboard-logo" src="{{rootURL}}/assets/img/thetaboard-logo.png"/>
-  </div>
-
   <div class="sidebar-wrapper">
+    <div class="logo">
+      <img class="thetaboard-logo" src="{{rootURL}}/assets/img/thetaboard-logo.png"/>
+    </div>
+
     <ul class="nav">
       {{#each menuItemList as |menuItem|}}
         {{#if menuItem.children}}

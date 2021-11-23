@@ -117,12 +117,13 @@ export default class DropsController extends Controller {
         new Date(nft.drop.get('endDate') + 'Z').getTime() / 1000,
         nft.editionNumber || 0,
         nft.drop.get('artist.walletAddr'),
-        10]
-
+        90]
+      nft.nftSellController = nftDirectSell;
       return Promise.all([
         NFTcontract.methods.grantRole(minter_role, nftDirectSell).send({from: account}),
         NFTcontract.methods.grantRole(minter_role, thetaboard_wallet).send({from: account}),
-        NFTsellContract.methods.newSell(...params).send({from: account})
+        NFTsellContract.methods.newSell(...params).send({from: account}),
+        nft.save()
       ]);
     }));
 
@@ -138,10 +139,12 @@ export default class DropsController extends Controller {
         nft.editionNumber || 0,
         nft.drop.get('artist.walletAddr'),
         90];
+      nft.nftSellController = nftAuctionSell;
       return Promise.all([
         NFTcontract.methods.grantRole(minter_role, nftAuctionSell).send({from: account}),
         NFTcontract.methods.grantRole(minter_role, thetaboard_wallet).send({from: account}),
-        NFTauctionContract.methods.newSell(...params).send({from: account})
+        NFTauctionContract.methods.newSell(...params).send({from: account}),
+        nft.save()
       ]);
     }));
   }

@@ -20,6 +20,18 @@
                 NFT not deployed to the blockchain
               {{/if}}
             </h6>
+            <h6>
+              {{#if nft.nftSellController}}
+                Selling at: {{nft.nftSellController}} <br>
+                BlockChain info: {{nft.blockChainInfo}} <br>
+
+                <button {{on "click" (fn sellingInfo nft)}} type="button" class="btn btn-fill btn-dark"> get blockchain
+                  infos
+                </button>
+              {{/if}}
+            </h6>
+
+
           </div>
           <div class="card-body">
             <form {{action "saveNFT" nft on="submit"}}>
@@ -42,6 +54,7 @@
                     <PowerSelect
                       @options={{nft.possibleTypes}}
                       @selected={{nft.type}}
+                      @disabled={{if nft.nftSellController true}}
                       @onChange={{fn (mut nft.type)}} as |type|>
                       {{type}}
                     </PowerSelect>
@@ -56,6 +69,7 @@
                     <Input
                       @class="form-control"
                       @type="number"
+                      @disabled={{if nft.nftSellController true}}
                       placeholder="Tfuels"
                       min="0"
                       @value={{nft.price}}
@@ -69,6 +83,7 @@
                       <Input
                         @class="form-control"
                         @type="number"
+                        @disabled={{if nft.nftSellController true}}
                         placeholder="editions"
                         min="1"
                         @value={{nft.editionNumber}}
@@ -173,7 +188,9 @@
               {{/each}}
               <div class="card-footer">
                 <button type="submit" class="btn btn-fill btn-primary">Save</button>
-                <button {{on "click" (fn delete nft)}} type="button" class="btn btn-fill btn-dark">Delete</button>
+                {{#unless nft.nftSellController}}
+                  <button {{on "click" (fn delete nft)}} type="button" class="btn btn-fill btn-dark">Delete</button>
+                {{/unless}}
                 <button {{on "click" (fn newAsset nft)}} type="button" class="btn btn-fill btn-darker">New Asset
                 </button>
               </div>

@@ -13,6 +13,7 @@ export default class NftModel extends Model {
   @attr('string', {defaultValue: 'open'}) type;
   @attr('number') dropId;
   @attr('number') artistId;
+  @attr('string') blockChainInfo; // this is used only in the ui. It fetch info from the nftSellController
   @belongsTo('artist') artist;
   @belongsTo('drop') drop;
   @hasMany('nft-asset', {
@@ -42,5 +43,7 @@ export default class NftModel extends Model {
   get possibleTypes() {
     return ['open', 'limited', 'auction']
   }
+
+
 
 }
