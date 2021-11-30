@@ -1,5 +1,7 @@
 {{page-title "Creators  NFTs"}}
 
+<button {{on "click" this.addNewNft}} class="btn btn-fill btn-primary">Add new nft</button>
+
 <div class="content">
   {{#each NFTs as |nft|}}
     <div class="row">
@@ -97,7 +99,7 @@
                 <div class="col-md-6">
                   <FileDropzone @name="photos-{{nft.id}}-image" as |nftzone queue|>
                     <h4>The NFT</h4>
-                    <img src="{{nft.image}}">
+                    <img src="{{nft.image}}" style="max-height: 500px">
                     <p>
                       <FileUpload @name="photos-{{nft.id}}-image"
                                   @accept="image/*"

@@ -123,6 +123,19 @@
                     </div>
                   </div>
                 </div>
+                <div>
+                  <div class="col-md-12">
+                    <label class="form-check-label">
+                      <Input
+                        @class="form-check-input"
+                        @type="checkbox"
+                        @checked={{drop.isPublic}}
+                      />
+                      Show drop to the public
+
+                    </label>
+                  </div>
+                </div>
                 <div class="card-footer">
                   <button type="submit" class="btn btn-fill btn-primary">Save</button>
                   <button {{on "click" (fn delete drop)}} type='button' class="btn btn-fill btn-dark">Delete</button>
