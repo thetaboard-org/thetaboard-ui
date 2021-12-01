@@ -20,12 +20,12 @@ export default class MenuComponent extends Component {
         {name: 'menu.nft', icon: 'icon-image-02', route: 'wallet.nft'},
       ],
     },
-    // {
-    //   name: 'menu.marketplace', icon: 'icon-refresh-02', route: 'marketplace.drops',
-    //   children: [
-    //     {name: 'menu.drops', icon: 'icon-app', route: 'marketplace.drops'},
-    //   ],
-    // },
+    {
+      name: 'menu.marketplace', icon: 'icon-refresh-02', route: 'marketplace.drops',
+      children: [
+        {name: 'menu.drops', icon: 'icon-app', route: 'marketplace.drops'},
+      ],
+    },
     {
       name: 'menu.staking', icon: 'icon-align-center', route: 'staking.tfuel',
       children: [
