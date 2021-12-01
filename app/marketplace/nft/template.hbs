@@ -19,18 +19,24 @@
         </a>
       </div>
       <br/>
-      <p class="description">{{nft.description}}</p>
+      <div style="text-align: center;">
+        <p class="description"
+           style="display: inline-block; text-align: left;
+           white-space: pre-line">
+          {{nft.description}}
+        </p>
+      </div>
       <br/>
       <div class="nft-price">
         <span class="nostyle" {{numberformat nft.price 2}}></span> {{t 'global.tfuel'}}
       </div>
       <br/>
       {{#if drop.isDropLive}}
-          <button class="nft-button btn btn-primary">{{t 'drop.buy'}}</button>
+        <button class="nft-button btn btn-primary">{{t 'drop.buy'}}</button>
       {{else if drop.isDropEnded}}
-          <button class="nft-button btn btn-primary" disabled>{{t 'drop.closed'}}</button>
+        <button class="nft-button btn btn-primary" disabled>{{t 'drop.closed'}}</button>
       {{else}}
-          <button class="nft-button btn btn-primary" disabled>{{t 'drop.coming'}}</button>
+        <button class="nft-button btn btn-primary" disabled>{{t 'drop.coming'}}</button>
       {{/if}}
       <br/>
       <br/>

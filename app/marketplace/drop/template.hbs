@@ -12,7 +12,7 @@
     <div class="card-body-stake">
       <h5 class="title">{{drop.name}}</h5>
       {{marketplace/drop-status drop=drop}}
-      <p class="description">{{drop.description}}</p>
+      <p class="description" style="text-align: left; white-space: pre-line">{{drop.description}}</p>
       {{#each drop.nfts as |nft|}}
         {{marketplace/nft-tile nft=nft drop=drop}}
       {{/each}}

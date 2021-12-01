@@ -1,32 +1,34 @@
 <div class="artist-container">
-    <h1 style="margin-bottom: 0px;">{{t 'drop.artist'}}:</h1>
-    {{#if artist.logoName}}
-        <img style="max-width: 300px;display: block;margin: 20px auto;" src="{{artist.logoName}}" alt="{{artist.name}}"/>
-    {{else if artist.logo-name}}
-        <img style="max-width: 300px;display: block;margin: 20px auto;" src="{{artist.logo-name}}" alt="{{artist.name}}"/>
-    {{else}}
-        <h3 class="drop-artist">{{artist.name}}</h3>
-    {{/if}}
+  <h1 style="margin-bottom: 0px;">{{t 'drop.artist'}}:</h1>
+  {{#if artist.logoName}}
+    <img style="max-width: 300px;display: block;margin: 20px auto;" src="{{artist.logoName}}" alt="{{artist.name}}"/>
+  {{else if artist.logo-name}}
+    <img style="max-width: 300px;display: block;margin: 20px auto;" src="{{artist.logo-name}}" alt="{{artist.name}}"/>
+  {{else}}
+    <h3 class="drop-artist">{{artist.name}}</h3>
+  {{/if}}
+  {{#if artist.image}}
     <img src="{{artist.image}}" width="100px" height="100px" alt="{{artist.name}}"/>
-    {{#if artist.instagram}}
-        <a href="{{artist.instagram}}" target="_blank">
-            <img class="social-img" src="/assets/img/logo/instagram.png" alt="instagram"/>
-        </a>
-    {{/if}}
-    {{#if artist.youtube}}
-        <a href="{{artist.youtube}}" target="_blank">
-            <img class="social-img" src="/assets/img/logo/youtube.png" alt="youtube"/>
-        </a>
-    {{/if}}
-    {{#if artist.twitter}}
-        <a href="{{artist.twitter}}" target="_blank">
-            <img class="social-img" src="/assets/img/logo/twitter.png" alt="twitter"/>
-        </a>
-    {{/if}}
-    {{#if artist.website}}
-        <a href="{{artist.website}}" target="_blank">
-            <img class="social-img" src="/assets/img/logo/website.png" alt="website"/>
-        </a>
-    {{/if}}
-    <p class="drop-artist-bio">{{artist.bio}}</p>
+  {{/if}}
+  {{#if artist.instagram}}
+    <a href="{{artist.instagram}}" target="_blank">
+      <img class="social-img" src="/assets/img/logo/instagram.png" alt="instagram"/>
+    </a>
+  {{/if}}
+  {{#if artist.youtube}}
+    <a href="{{artist.youtube}}" target="_blank">
+      <img class="social-img" src="/assets/img/logo/youtube.png" alt="youtube"/>
+    </a>
+  {{/if}}
+  {{#if artist.twitter}}
+    <a href="{{artist.twitter}}" target="_blank">
+      <img class="social-img" src="/assets/img/logo/twitter.png" alt="twitter"/>
+    </a>
+  {{/if}}
+  {{#if artist.website}}
+    <a href="{{artist.website}}" target="_blank">
+      <img class="social-img" src="/assets/img/logo/website.png" alt="website"/>
+    </a>
+  {{/if}}
+  <p class="drop-artist-bio">{{artist.bio}}</p>
 </div>
