@@ -34,11 +34,11 @@ export default class MenuComponent extends Component {
         {name: 'menu.tfuel_vip', image: 'tfuel-white.png', route: 'staking.tfuelvip'},
       ],
     },
-    {
-      name: 'menu.domain',
-      icon: 'icon-book-bookmark',
-      route: 'domain',
-    },
+    // {
+    //   name: 'menu.domain',
+    //   icon: 'icon-book-bookmark',
+    //   route: 'domain',
+    // },
     {name: 'menu.faq', icon: 'icon-compass-05', route: 'faq'},
     {
       name: 'menu.creators', icon: 'icon-align-center', route: 'creators.artists', scope: ['Admin', 'Creator'],
