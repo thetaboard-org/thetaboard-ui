@@ -49,17 +49,20 @@ export default class DropsController extends Controller {
       const auctions_nft = nfts.filter((x) => x.isAuction);
       await Promise.all(auctions_nft.map(async (nft) => {
         const bidsInfo = await nft.blockChainInfo;
-        // get an ordered array with index order of highest to lowest bid
-        const bidsValue = bidsInfo.bidsValue.map(Number);
-        const bidsValueSorted = [...bidsValue].sort((a, b) => b - a);
-        const indices = bidsValue.map(x => bidsValueSorted.indexOf(x));
-        const account = await this.setupMetaMask();
-        const NFTauctionContract = new window.web3.eth.Contract(this.abi.ThetaboardAuctionSell, nft.nftSellController);
-        return NFTauctionContract.methods.concludeAuction(nft.nftContractId, indices).send({
-          from: account
-        });
+        if (!bidsInfo.concluded) {
+          // get an ordered array with index order of highest to lowest bid
+          const bidsValue = bidsInfo.bidsValue.map(Number);
+          const bidsValueSorted = [...bidsValue].sort((a, b) => b - a);
+          const indices = bidsValue.map(x => bidsValueSorted.indexOf(x));
+          const account = await this.setupMetaMask();
+          const NFTauctionContract = new window.web3.eth.Contract(this.abi.ThetaboardAuctionSell, nft.nftSellController);
+          return NFTauctionContract.methods.concludeAuction(nft.nftContractId, indices).send({
+            from: account
+          });
+        } else {
+          return null;
+        }
       }));
-
     } catch (e) {
       this.utils.errorNotify(e);
     }
