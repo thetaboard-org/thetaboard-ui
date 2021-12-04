@@ -62,7 +62,7 @@ export default class BuyComponent extends Component {
 
         const auction_contract = new window.web3.eth.Contract(this.abi.ThetaboardAuctionSell, nft.nftSellController);
         await auction_contract.methods.placeBid(nft.nftContractId).send({
-          value: window.web3.utils.toWei("20"),
+          value: window.web3.utils.toWei(String(this.bid)),
           from: account
         });
         return this.utils.successNotify(this.intl.t('notif.success_nft'));
