@@ -304,7 +304,7 @@ drop:
   ended_on: "Ended on"
   starting_in: "Starting in"
   starting_on: "Starting on"
-  edition_available: "Edition available"
+  edition_available: "Edition(s) available"
   open_edition: "Open edition"
   artist: "Artist"
   view_more: "View more"

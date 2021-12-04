@@ -610,6 +610,12 @@ const thetaboardNFTByteCode = "0x60806040523480156200001157600080fd5b50604051620
 
 
 export default class ABIService extends Service {
+  get thetaRpc() {
+    // TODO this should live somewhere else
+    return "https://eth-rpc-api.thetatoken.org/rpc"
+  }
+
+
   get ThetaboardDirectSell() {
     return ThetaboardDirectSell;
   }
@@ -618,11 +624,11 @@ export default class ABIService extends Service {
     return ThetaboardNFT
   }
 
-  get ThetaboardNFTByteCode(){
+  get ThetaboardNFTByteCode() {
     return thetaboardNFTByteCode;
   }
 
-  get ThetaboardAuctionSell(){
+  get ThetaboardAuctionSell() {
     return ThetaboardAuctionSell;
   }
 }

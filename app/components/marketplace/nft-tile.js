@@ -5,7 +5,16 @@ export default class MarketplaceNftTileComponent extends Component {
     return this.args.nft;
   }
 
+  get availableNft() {
+    const getInfo = async () => {
+      const totalMinted = await this.nft.totalMinted;
+      return this.nft.editionNumber - totalMinted;
+    }
+    return getInfo();
+  }
+
   get drop() {
     return this.args.drop;
   }
+
 }

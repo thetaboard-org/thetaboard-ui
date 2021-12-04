@@ -25,11 +25,9 @@
             <h6>
               {{#if nft.nftSellController}}
                 Selling at: {{nft.nftSellController}} <br>
-                BlockChain info: {{nft.blockChainInfo}} <br>
-
-                <button {{on "click" (fn sellingInfo nft)}} type="button" class="btn btn-fill btn-dark"> get blockchain
-                  infos
-                </button>
+                {{#async-await  nft.blockChainInfoStr as |blockChainInfo|}}
+                  BlockChain info: {{blockChainInfo}}
+                {{/async-await}}
               {{/if}}
             </h6>
 

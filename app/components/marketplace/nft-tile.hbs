@@ -1,27 +1,38 @@
 <div class="nft-tile">
-    <div class="nft-tile-body nft-tile-body-left">
+  <div class="nft-tile-body nft-tile-body-left">
     <LinkTo @route="marketplace.nft" @model="{{nft.id}}">
-        <img class="nft-main-img" src="{{nft.image}}" alt="{{nft.name}}"/>
+      <img class="nft-main-img" src="{{nft.image}}" alt="{{nft.name}}"/>
     </LinkTo>
+  </div>
+  <div class="nft-tile-body nft-tile-body-right">
+    <h3>{{nft.name}}</h3>
+    {{#if nft.isLimitedEdition}}
+      {{#async-await this.availableNft as |availableNft|}}
+        <p class="edition-type">{{t 'drop.edition_available'}}: {{availableNft}}
+          / {{nft.editionNumber}}</p>
+      {{else}}
+        <p class="edition-type">{{t 'drop.edition_available'}}: {{nft.editionNumber}}</p>
+      {{/async-await}}
+    {{else if nft.isAuction}}
+      <p class="edition-type">Auction for {{nft.editionNumber}} edition(s)</p>
+    {{else if nft.isOpenEdition}}
+      <p class="edition-type">{{t 'drop.open_edition'}}</p>
+    {{/if}}
+    <h4 class="nft-small-desc">{{nft.smallDescription}}</h4>
+    <LinkTo @class="nft-view-more" @route="marketplace.nft" @model="{{nft.id}}">{{t 'drop.view_more'}}</LinkTo>
+    <div class="nft-price">
+      {{#if drop.isDropLive}}
+        {{marketplace/buy nft=nft}} <br>
+      {{else if drop.isDropEnded}}
+        <button class="nft-button btn btn-primary" disabled>{{t 'drop.closed'}}</button>
+      {{else}}
+        <button class="nft-button btn btn-primary" disabled>{{t 'drop.coming'}}</button>
+      {{/if}}
+      {{#if nft.isAuction}}
+        Current min bid: <span class="nostyle" {{numberformat nft.price 2}}></span> {{t 'global.tfuel'}}
+      {{else}}
+        <span class="nostyle" {{numberformat nft.price 2}}></span> {{t 'global.tfuel'}}
+      {{/if}}
     </div>
-    <div class="nft-tile-body nft-tile-body-right">
-        <h3>{{nft.name}}</h3>
-        {{#if nft.isLimitedOrAuction}}
-            <p class="edition-type">{{t 'drop.edition_available'}}: {{nft.editionNumber}}</p>
-        {{else if nft.isOpenEdition}}
-            <p class="edition-type">{{t 'drop.open_edition'}}</p>
-        {{/if}}
-        <h4 class="nft-small-desc">{{nft.smallDescription}}</h4>
-        <LinkTo @class="nft-view-more" @route="marketplace.nft" @model="{{nft.id}}">{{t 'drop.view_more'}}</LinkTo>
-        <div class="nft-price">
-            {{#if drop.isDropLive}}
-                <button class="nft-button btn btn-primary">{{t 'drop.buy'}}</button>
-            {{else if drop.isDropEnded}}
-                <button class="nft-button btn btn-primary" disabled>{{t 'drop.closed'}}</button>
-            {{else}}
-                <button class="nft-button btn btn-primary" disabled>{{t 'drop.coming'}}</button>
-            {{/if}}
-            <span class="nostyle" {{numberformat nft.price 2}}></span> {{t 'global.tfuel'}}
-        </div>
-    </div>
+  </div>
 </div>

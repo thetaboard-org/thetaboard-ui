@@ -32,7 +32,8 @@
       </div>
       <br/>
       {{#if drop.isDropLive}}
-        <button class="nft-button btn btn-primary">{{t 'drop.buy'}}</button>
+
+        {{marketplace/buy nft=nft}}
       {{else if drop.isDropEnded}}
         <button class="nft-button btn btn-primary" disabled>{{t 'drop.closed'}}</button>
       {{else}}

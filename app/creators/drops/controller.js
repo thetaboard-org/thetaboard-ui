@@ -122,8 +122,7 @@ export default class DropsController extends Controller {
       return Promise.all([
         NFTcontract.methods.grantRole(minter_role, nftDirectSell).send({from: account}),
         NFTcontract.methods.grantRole(minter_role, thetaboard_wallet).send({from: account}),
-        NFTsellContract.methods.newSell(...params).send({from: account}),
-        nft.save()
+        NFTsellContract.methods.newSell(...params).send({from: account})
       ]);
     }));
 
@@ -143,8 +142,7 @@ export default class DropsController extends Controller {
       return Promise.all([
         NFTcontract.methods.grantRole(minter_role, nftAuctionSell).send({from: account}),
         NFTcontract.methods.grantRole(minter_role, thetaboard_wallet).send({from: account}),
-        NFTauctionContract.methods.newSell(...params).send({from: account}),
-        nft.save()
+        NFTauctionContract.methods.newAuction(...params).send({from: account})
       ]);
     }));
   }
@@ -189,8 +187,8 @@ export default class DropsController extends Controller {
       this.utils.successNotify("All NFTs are already ready to be sold");
     } else {
       try {
-        this.utils.successNotify(`Will deploy ${nfts_to_sell.length} Sell Contracts`);
         await this.deployNFTsSell(account, nfts_to_sell);
+        await Promise.all(nfts_to_sell.map((nft) => nft.save()));
         this.utils.successNotify(`Successfully deployed ${nfts_to_sell.length} Sell Contracts`);
       } catch (e) {
         console.log(e);
