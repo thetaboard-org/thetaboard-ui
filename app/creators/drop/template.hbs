@@ -1,6 +1,11 @@
 {{page-title "Creators  NFTs"}}
 
-<button {{on "click" this.addNewNft}} class="btn btn-fill btn-primary">Add new nft</button>
+
+{{#if this.model.drop.isDeployed}}
+  <button class="btn btn-fill btn-primary" disabled>Add new nft</button>
+{{else}}
+  <button {{on "click" this.addNewNft}} class="btn btn-fill btn-primary">Add new nft</button>
+{{/if}}
 
 <div class="content">
   {{#each NFTs as |nft|}}
@@ -15,21 +20,20 @@
                 New NFT
               {{/if}}
             </h5>
-            <h6>
+            <p>
               {{#if nft.nftContractId}}
                 Deployed at: {{nft.nftContractId}}
               {{else}}
                 NFT not deployed to the blockchain
               {{/if}}
-            </h6>
-            <h6>
+              <br>
               {{#if nft.nftSellController}}
                 Selling at: {{nft.nftSellController}} <br>
                 {{#async-await  nft.blockChainInfoStr as |blockChainInfo|}}
                   BlockChain info: {{blockChainInfo}}
                 {{/async-await}}
               {{/if}}
-            </h6>
+            </p>
 
 
           </div>
@@ -203,5 +207,8 @@
   {{/each}}
 </div>
 
-
-<button {{on "click" this.addNewNft}} class="btn btn-fill btn-primary">Add new nft</button>
+{{#if this.model.drop.isDeployed}}
+  <button class="btn btn-fill btn-primary" disabled>Add new nft</button>
+{{else}}
+  <button {{on "click" this.addNewNft}} class="btn btn-fill btn-primary">Add new nft</button>
+{{/if}}

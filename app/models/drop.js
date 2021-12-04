@@ -9,6 +9,7 @@ export default class DropModel extends Model {
   @attr('isodate') startDate;
   @attr('isodate') endDate;
   @attr('boolean') isPublic;
+  @attr('boolean') isDeployed;
   @belongsTo('artist') artist;
   @hasMany('nft') nfts;
 

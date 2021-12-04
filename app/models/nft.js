@@ -86,9 +86,22 @@ export default class NftModel extends Model {
     return fetchInfo();
   }
 
+  @computed('blockChainInfo')
+  get minBid() {
+    const fetchInfo = async () => {
+      const contractInfo = await this.blockChainInfo;
+      return contractInfo.minBid;
+    }
+    if (this.isAuction) {
+      return fetchInfo();
+    } else {
+      return null;
+    }
+  }
+
   // used to be able to parse an id automatically
   @computed('price', 'id')
-  get price_id(){
+  get price_id() {
     return `${this.price}.${String("0000000" + this.id).slice(-7)}`
   }
 }

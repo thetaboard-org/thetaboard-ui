@@ -43,6 +43,29 @@ export default class DropsController extends Controller {
   }
 
   @action
+  async concludeAuctions(drop) {
+    try {
+      const nfts = await drop.get('nfts');
+      const auctions_nft = nfts.filter((x) => x.isAuction);
+      await Promise.all(auctions_nft.map(async (nft) => {
+        const bidsInfo = await nft.blockChainInfo;
+        // get an ordered array with index order of highest to lowest bid
+        const bidsValue = bidsInfo.bidsValue.map(Number);
+        const bidsValueSorted = [...bidsValue].sort((a, b) => b - a);
+        const indices = bidsValue.map(x => bidsValueSorted.indexOf(x));
+        const account = await this.setupMetaMask();
+        const NFTauctionContract = new window.web3.eth.Contract(this.abi.ThetaboardAuctionSell, nft.nftSellController);
+        return NFTauctionContract.methods.concludeAuction(nft.nftContractId, indices).send({
+          from: account
+        });
+      }));
+
+    } catch (e) {
+      this.utils.errorNotify(e);
+    }
+  }
+
+  @action
   async uploadImage(drop, property, file) {
     try {
       file.name = 'drop/' + file.name;
@@ -71,7 +94,7 @@ export default class DropsController extends Controller {
     } else if (parseInt(ethereum.chainId) !== 361) {
       return this.utils.errorNotify(this.intl.t('notif.not_theta_blockchain'));
     }
-    window.web3 = new Web3(window.web3.currentProvider);
+    window.web3 = new Web3(ethereum);
     const accounts = await ethereum.request({method: 'eth_requestAccounts'});
     return accounts[0];
   }
@@ -196,6 +219,8 @@ export default class DropsController extends Controller {
         return this.utils.errorNotify(`There was an error deploying the Sell Contracts`);
       }
     }
+    drop.isDeployed = true;
+    await drop.save();
     this.set('deployNFTLoading', false);
   }
 }

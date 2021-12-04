@@ -1,6 +1,7 @@
 import {action} from '@ember/object';
 import {inject as service} from '@ember/service';
 import Component from "@glimmer/component";
+import {tracked} from '@glimmer/tracking';
 
 
 export default class BuyComponent extends Component {
@@ -8,12 +9,17 @@ export default class BuyComponent extends Component {
   @service abi;
   @service intl;
 
-  bid = 0;
+  @tracked bid = 0;
+
+  @action
+  updateBid(event) {
+    this.bid = event.target.value;
+  }
 
   get minBid() {
     const getMinBid = async () => {
       const infos = await this.nft.blockChainInfo;
-      // TODO; this is also used as a setted which is quite bad..
+      // TODO; this is also used as a set which is quite bad..
       this.bid = Number(infos.minBid) + 1;
       return this.bid;
     }
@@ -56,7 +62,7 @@ export default class BuyComponent extends Component {
       } else if (parseInt(ethereum.chainId) !== 361) {
         return this.utils.errorNotify(this.intl.t('notif.not_theta_blockchain'));
       } else {
-        window.web3 = new Web3(window.web3.currentProvider);
+        window.web3 = new Web3(window.ethereum);
         const accounts = await ethereum.request({method: 'eth_requestAccounts'});
         const account = accounts[0];
 

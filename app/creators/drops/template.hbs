@@ -22,9 +22,22 @@
                   <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
                   Deploy NFTs to Blockchain
                 </button>
+              {{else if drop.isDeployed}}
+                <button class="btn btn-darker" type="button" disabled>
+                  Deploy NFTs to Blockchain
+                </button>
               {{else}}
                 <button class="btn btn-darker" type="button" {{action "deployNFTs" drop}}>
                   Deploy NFTs to Blockchain
+                </button>
+              {{/if}}
+              {{#if (and drop.isDeployed drop.isDropEnded)}}
+                <button class="btn btn-darker" type="button" {{action "concludeAuctions" drop}}>
+                  Conclude auctions
+                </button>
+              {{else}}
+                <button class="btn btn-darker" type="button" disabled>
+                  Conclude auctions
                 </button>
               {{/if}}
 
@@ -75,6 +88,7 @@
                         @class="form-control"
                         @type="datetime-local"
                         placeholder="startDate"
+                        @disabled={{drop.isDeployed}}
                         @value={{drop.startDate}}
                       />
                     </div>
@@ -86,6 +100,7 @@
                         @class="form-control"
                         @type="datetime-local"
                         placeholder="endDate"
+                        @disabled={{drop.isDeployed}}
                         @value={{drop.endDate}}
                       />
                     </div>
@@ -130,8 +145,14 @@
                         @class="form-check-input"
                         @type="checkbox"
                         @checked={{drop.isPublic}}
+                        @disabled={{not drop.isDeployed}}
                       />
                       Show drop to the public
+                      {{#if (not drop.isDeployed)}}
+                        <p class="alert alert-warning" style="font-size: 10px;">
+                          Must Deploy all the contracts first
+                        </p>
+                      {{/if}}
 
                     </label>
                   </div>

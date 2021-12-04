@@ -29,9 +29,13 @@
         <button class="nft-button btn btn-primary" disabled>{{t 'drop.coming'}}</button>
       {{/if}}
       {{#if nft.isAuction}}
-        Current min bid: <span class="nostyle" {{numberformat nft.price 2}}></span> {{t 'global.tfuel'}}
+        {{#async-await nft.minBid as |minBid|}}
+          Current min bid: <span class="nostyle" {{numberformat minBid 2}}></span> {{t 'global.tfuel'}}
+        {{else}}
+          Current min bid: <span class="nostyle" {{numberformat nft.price 2}}></span> {{t 'global.tfuel'}}
+        {{/async-await}}
       {{else}}
-        <span class="nostyle" {{numberformat nft.price 2}}></span> {{t 'global.tfuel'}}
+        Price : <span class="nostyle" {{numberformat nft.price 2}}></span> {{t 'global.tfuel'}}
       {{/if}}
     </div>
   </div>
