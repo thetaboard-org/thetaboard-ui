@@ -22,7 +22,13 @@
     <LinkTo @class="nft-view-more" @route="marketplace.nft" @model="{{nft.id}}">{{t 'drop.view_more'}}</LinkTo>
     <div class="nft-price">
       {{#if drop.isDropLive}}
-        {{marketplace/buy nft=nft}} <br>
+        {{#async-await this.availableNft as |availableNft|}}
+          {{#if (not-eq availableNft 0)}}
+            {{marketplace/buy nft=nft}} <br>
+          {{else}}
+            <button class="nft-button btn btn-primary" disabled>{{t 'drop.closed'}}</button>
+          {{/if}}
+        {{/async-await}}
       {{else if drop.isDropEnded}}
         <button class="nft-button btn btn-primary" disabled>{{t 'drop.closed'}}</button>
       {{else}}

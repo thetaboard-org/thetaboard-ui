@@ -51,16 +51,24 @@ export default class NftModel extends Model {
   @computed('nftSellController', 'nftContractId')
   get blockChainInfo() {
     const fetchInfo = async () => {
-      window.web3 = new Web3(this.abi.thetaRpc);
+      const web3 = new window.Web3(this.abi.thetaRpc);
       let contractInfo;
+      let modifiableContract = {};
       if (this.isAuction) {
-        const NFTauctionContract = new window.web3.eth.Contract(this.abi.ThetaboardAuctionSell, this.nftSellController);
+        const NFTauctionContract = new web3.eth.Contract(this.abi.ThetaboardAuctionSell, this.nftSellController);
         contractInfo = await NFTauctionContract.methods.getNftAuction(this.nftContractId).call();
+        Object.assign(modifiableContract, contractInfo);
+        if (Number(contractInfo.minBid) !== this.price) {
+          modifiableContract.minBid = web3.utils.fromWei(contractInfo.minBid);
+        }
+        modifiableContract.bidsValue = contractInfo.bidsValue.map(x => web3.utils.fromWei(x))
       } else {
-        const NFTsellContract = new window.web3.eth.Contract(this.abi.ThetaboardDirectSell, this.nftSellController);
+        const NFTsellContract = new web3.eth.Contract(this.abi.ThetaboardDirectSell, this.nftSellController);
         contractInfo = await NFTsellContract.methods.getNftSell(this.nftContractId).call();
+        Object.assign(modifiableContract, contractInfo);
       }
-      return contractInfo
+      return modifiableContract
+
     }
     return fetchInfo();
   }
@@ -79,8 +87,8 @@ export default class NftModel extends Model {
   @computed('nftContractId')
   get totalMinted() {
     const fetchInfo = async () => {
-      window.web3 = new Web3(this.abi.thetaRpc);
-      const NFTContract = new window.web3.eth.Contract(this.abi.ThetaboardNFT, this.nftContractId);
+      const web3 = new window.Web3(this.abi.thetaRpc);
+      const NFTContract = new web3.eth.Contract(this.abi.ThetaboardNFT, this.nftContractId);
       return await NFTContract.methods.totalSupply().call();
     }
     return fetchInfo();

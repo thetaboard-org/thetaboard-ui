@@ -12,6 +12,9 @@ export default class ArtistsController extends Controller {
     return scope === 'Admin' || (scope === 'Creator' && this.Artists.length === 0);
   }
 
+  get isAdmin() {
+    return this.session.currentUser.user.scope === 'Admin'
+  }
 
   @computed('newArtist', 'model.artists.@each.isDeleted')
   get Artists() {
