@@ -110,12 +110,10 @@ export default class DropsController extends Controller {
       return NFTcontract.deploy({
         data: this.abi.ThetaboardNFTByteCode,
         arguments: [nft.name, "TB", `https://nft.thetaboard.io/nft/${nft.id}/`]
-      }).send({from: account});
-    }));
-    // save contracts addresses
-    await Promise.all(nfts_to_deploy.map((nft, idx) => {
-      nft.nftContractId = contracts[idx]._address;
-      return nft.save();
+      }).send({from: account}).then((contract)=>{
+        nft.nftContractId = contract._address;
+        return nft.save();
+      });
     }));
   }
 
@@ -135,7 +133,6 @@ export default class DropsController extends Controller {
       const NFTcontract = new window.web3.eth.Contract(this.abi.ThetaboardNFT, nft.nftContractId);
       const minter_role = await NFTcontract.methods.MINTER_ROLE().call();
 
-
       // _nftAddress, _nftPrice, _maxDate, _maxMint, _artistWallet, _artistSplit
       const params = [
         nft.nftContractId,
@@ -145,11 +142,10 @@ export default class DropsController extends Controller {
         nft.drop.get('artist.walletAddr'),
         90]
       nft.nftSellController = nftDirectSell;
-      return Promise.all([
-        NFTcontract.methods.grantRole(minter_role, nftDirectSell).send({from: account}),
+      await Promise.all([NFTcontract.methods.grantRole(minter_role, nftDirectSell).send({from: account}),
         NFTcontract.methods.grantRole(minter_role, thetaboard_wallet).send({from: account}),
-        NFTsellContract.methods.newSell(...params).send({from: account})
-      ]);
+        NFTsellContract.methods.newSell(...params).send({from: account})]);
+      return nft.save();
     }));
 
     this.utils.successNotify(`Will deploy ${auction_nfts.length} auctions Contracts`);
@@ -165,11 +161,12 @@ export default class DropsController extends Controller {
         nft.drop.get('artist.walletAddr'),
         90];
       nft.nftSellController = nftAuctionSell;
-      return Promise.all([
+      await Promise.all([
         NFTcontract.methods.grantRole(minter_role, nftAuctionSell).send({from: account}),
         NFTcontract.methods.grantRole(minter_role, thetaboard_wallet).send({from: account}),
         NFTauctionContract.methods.newAuction(...params).send({from: account})
       ]);
+      return nft.save();
     }));
   }
 
@@ -214,7 +211,6 @@ export default class DropsController extends Controller {
     } else {
       try {
         await this.deployNFTsSell(account, nfts_to_sell);
-        await Promise.all(nfts_to_sell.map((nft) => nft.save()));
         this.utils.successNotify(`Successfully deployed ${nfts_to_sell.length} Sell Contracts`);
       } catch (e) {
         console.log(e);
