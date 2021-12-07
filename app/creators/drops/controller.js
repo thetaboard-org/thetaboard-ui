@@ -1,7 +1,9 @@
 import Controller from '@ember/controller';
 import {action, computed} from '@ember/object';
 import {inject as service} from '@ember/service';
-
+// Unfortunate usage of thetajs to get the EVM error
+const thetajs = require("@thetalabs/theta-js");
+const provider = new thetajs.providers.HttpProvider(thetajs.networks.ChainIds.Mainnet);
 
 export default class DropsController extends Controller {
   @service session;
@@ -110,7 +112,7 @@ export default class DropsController extends Controller {
       return NFTcontract.deploy({
         data: this.abi.ThetaboardNFTByteCode,
         arguments: [nft.name, "TB", `https://nft.thetaboard.io/nft/${nft.id}/`]
-      }).send({from: account}).then((contract)=>{
+      }).send({from: account}).then((contract) => {
         nft.nftContractId = contract._address;
         return nft.save();
       });
@@ -129,6 +131,25 @@ export default class DropsController extends Controller {
     const NFTauctionContract = new window.web3.eth.Contract(this.abi.ThetaboardAuctionSell, nftAuctionSell);
 
     this.utils.successNotify(`Will deploy ${sell_nfts.length} direct sell Contracts`);
+
+    const ignore_error_if_already_exists = async (e) => {
+      // get tx error, check if error match with  "contract already exists for this nft"
+      // ignore error if it is the case
+      let throw_error = true;
+      if (e.receipt && e.receipt.transactionHash) {
+        const tx = await provider.getTransaction(e.receipt.transactionHash);
+        if (tx.receipt
+          && tx.receipt.EvmRet
+          && atob(tx.receipt.EvmRet).includes("contract already exists for this nft")) {
+          throw_error = false;
+        }
+      }
+      if (throw_error) {
+        throw e;
+      }
+    }
+
+
     await Promise.all(sell_nfts.map(async (nft) => {
       const NFTcontract = new window.web3.eth.Contract(this.abi.ThetaboardNFT, nft.nftContractId);
       const minter_role = await NFTcontract.methods.MINTER_ROLE().call();
@@ -142,9 +163,16 @@ export default class DropsController extends Controller {
         nft.drop.get('artist.walletAddr'),
         90]
       nft.nftSellController = nftDirectSell;
-      await Promise.all([NFTcontract.methods.grantRole(minter_role, nftDirectSell).send({from: account}),
-        NFTcontract.methods.grantRole(minter_role, thetaboard_wallet).send({from: account}),
-        NFTsellContract.methods.newSell(...params).send({from: account})]);
+      try {
+        await Promise.all([NFTcontract.methods.grantRole(minter_role, nftDirectSell).send({from: account}),
+          NFTcontract.methods.grantRole(minter_role, thetaboard_wallet).send({from: account}),
+          NFTsellContract.methods.newSell(...params).send({from: account})]);
+
+      } catch (e) {
+        // get the EVM error ( not possible with web3 today..)
+        // and if it is that the contract already exists just move along
+        await ignore_error_if_already_exists(e);
+      }
       return nft.save();
     }));
 
@@ -161,11 +189,17 @@ export default class DropsController extends Controller {
         nft.drop.get('artist.walletAddr'),
         90];
       nft.nftSellController = nftAuctionSell;
-      await Promise.all([
-        NFTcontract.methods.grantRole(minter_role, nftAuctionSell).send({from: account}),
-        NFTcontract.methods.grantRole(minter_role, thetaboard_wallet).send({from: account}),
-        NFTauctionContract.methods.newAuction(...params).send({from: account})
-      ]);
+      try {
+        await Promise.all([
+          NFTcontract.methods.grantRole(minter_role, nftAuctionSell).send({from: account}),
+          NFTcontract.methods.grantRole(minter_role, thetaboard_wallet).send({from: account}),
+          NFTauctionContract.methods.newAuction(...params).send({from: account})
+        ]);
+      } catch (e) {
+        // get the EVM error
+        // and if it is that the contract already exists just move along
+        await ignore_error_if_already_exists(e);
+      }
       return nft.save();
     }));
   }

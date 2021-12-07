@@ -3,7 +3,6 @@ import { getOwner } from '@ember/application';
 import * as thetajs from '@thetalabs/theta-js';
 import { tracked } from '@glimmer/tracking';
 import ThetaWalletConnect from '@thetalabs/theta-wallet-connect';
-import BigNumber from "bignumber.js";
 
 export default class ContractService extends Service {
   constructor(...args) {
