@@ -15,7 +15,13 @@
       <br/>
       <div class="nft-main-image-container">
         <a href="{{nft.image}}" target="_blanc">
-          <img class="nft-main-image" src="{{nft.image}}" alt="{{nft.name}}"/>
+          {{#if nft.isFirstAssetVideo}}
+            <video class="nft-main-video" autoplay loop>
+              <source src="{{nft.firstAsset}}" type="video/mp4">
+            </video>
+          {{else}}
+            <img class="nft-main-image" src="{{nft.image}}" alt="{{nft.name}}"/>
+          {{/if}}
         </a>
       </div>
       <br/>
@@ -32,7 +38,6 @@
       </div>
       <br/>
       {{#if drop.isDropLive}}
-
         {{marketplace/buy nft=nft}}
       {{else if drop.isDropEnded}}
         <button class="nft-button btn btn-primary" disabled>{{t 'drop.closed'}}</button>
@@ -43,8 +48,12 @@
       <br/>
       {{#if nft.nftAssets.length}}
         <h3>{{t 'drop.additional_assets'}}:</h3>
-        {{#each nft.nftAssets as |nftAsset|}}
-          {{marketplace/nft-asset-tile nftAsset=nftAsset}}
+        {{#each nft.nftAssets as |nftAsset index|}}
+          {{#if (and (eq index 0) nft.isFirstAssetVideo)}}
+            <!-- Do nothing as we already show the video-->
+          {{else}}
+            {{marketplace/nft-asset-tile nftAsset=nftAsset}}
+          {{/if}}
         {{/each}}
       {{/if}}
       <br/>
