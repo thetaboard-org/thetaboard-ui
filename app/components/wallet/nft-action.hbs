@@ -1,0 +1,17 @@
+{{#if this.transfer_initiated}}
+  <Input
+    @class="form-control"
+    @type="text"
+    placeholder="Destination Address"
+    @value={{this.destinationAddr}}
+  />
+
+  <button type="button" {{on "click" this.transfer}} class="btn btn-fill btn-primary">
+    Execute transfer
+  </button>
+{{else}}
+  <button type="button" {{on "click" this.init_transfer}} class="btn btn-fill btn-primary">
+    Transfer NFT
+  </button>
+{{/if}}
+

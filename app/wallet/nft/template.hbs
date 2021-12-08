@@ -25,27 +25,33 @@
   <div class="row">
     {{#each this.model as |NFT|}}
       <div class="col-lg-3 col-md-12">
-        <LinkTo @route="wallet.nft-info" @models={{array NFT.contract_adr NFT.original_token_id}}>
-          <div class="card card-chart card-user nft-card-holdings">
-            <div class="card-header ">
-              <div class="row">
-                <div class="col-sm-12 text-left">
-                  <p class="card-text"></p>
-                  <div class="author">
-                    <div class="block block-one"></div>
-                    <div class="block block-two"></div>
-                    <div class="block block-three"></div>
-                    <div class="block block-four"></div>
-                    <p alt="{{NFT.name}}" title="{{NFT.name}}" class="card-title">{{NFT.name}}</p>
-                  </div>
+
+        <div class="card card-chart card-user nft-card-holdings">
+          <div class="card-header ">
+            <div class="row">
+              <div class="col-sm-12 text-left">
+                <p class="card-text"></p>
+                <div class="author">
+                  <div class="block block-one"></div>
+                  <div class="block block-two"></div>
+                  <div class="block block-three"></div>
+                  <div class="block block-four"></div>
+                  <p alt="{{NFT.name}}" title="{{NFT.name}}" class="card-title">{{NFT.name}}</p>
                 </div>
               </div>
             </div>
-            <div class="" class="card-body nft-card-body">
-              <img src="{{NFT.image}}" alt="{{NFT.name}}" class="nft-image">
-            </div>
           </div>
-        </LinkTo>
+          <div class="card-body nft-card-body">
+
+            <LinkTo @route="wallet.nft-info" @models={{array NFT.contract_addr NFT.original_token_id}}>
+              <img src="{{NFT.image}}" alt="{{NFT.name}}" class="nft-image"><br>
+              See More
+            </LinkTo>
+          </div>
+          <div class="card-footer-actions">
+            {{wallet/nft-action nft=NFT}}
+          </div>
+        </div>
       </div>
     {{else}}
       <div class="card">
