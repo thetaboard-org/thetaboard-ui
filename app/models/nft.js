@@ -112,4 +112,19 @@ export default class NftModel extends Model {
   get price_id() {
     return `${this.price}.${String("0000000" + this.id).slice(-7)}`
   }
+
+  @computed()
+  get isFirstAssetVideo(){
+    try{
+      return this.nftAssets.firstObject.isVideo;
+    } catch (e) {
+      return false
+    }
+  }
+
+  @computed()
+  get firstAsset(){
+    return this.nftAssets.firstObject.asset;
+  }
 }
+
