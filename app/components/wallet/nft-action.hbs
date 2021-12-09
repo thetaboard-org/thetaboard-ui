@@ -1,17 +1,37 @@
 {{#if this.transfer_initiated}}
-  <Input
-    @class="form-control"
-    @type="text"
-    placeholder="Destination Address"
-    @value={{this.destinationAddr}}
-  />
+  <form {{on 'submit' this.transfer}}>
+    <Input
+      @class="form-control"
+      @type="text"
+      placeholder="Destination Address"
+      @value={{this.destinationAddr}}
+      pattern="^0x[a-fA-F0-9]{40}$"
+      required
+    />
 
-  <button type="button" {{on "click" this.transfer}} class="btn btn-fill btn-primary">
-    Execute transfer
-  </button>
+    <button type="submit" class="btn btn-fill btn-primary">
+      Execute transfer
+    </button>
+  </form>
 {{else}}
-  <button type="button" {{on "click" this.init_transfer}} class="btn btn-fill btn-primary">
-    Transfer NFT
-  </button>
+  {{#async-await metamaskAvailable as |available|}}
+    {{#if (eq available true)}}
+      <button type="button" {{on "click" this.init_transfer}} class="btn btn-fill btn-primary">
+        Transfer NFT
+      </button>
+    {{else}}
+      <span data-toggle="tooltip" data-placement="top"
+            title="{{available}}" data-original-title="Tooltip on top">
+        <button type="button" class="btn btn-fill btn-primary" disabled>
+          Transfer NFT
+        </button>
+      </span>
+      {{enableTooltip}}
+    {{/if}}
+  {{else}}
+    <button type="button" class="btn btn-fill btn-primary" disabled>
+      Transfer NFT
+    </button>
+  {{/async-await}}
 {{/if}}
 
