@@ -110,6 +110,9 @@
                                   @onFileAdd= {{fn this.uploadImage nft "image"}}>
                         <a tabindex=0>Add an Image.</a>
                       </FileUpload>
+                      {{#if queue.files.length}}
+                        Uploading {{queue.files.length}} files. ({{queue.progress}}%)
+                      {{/if}}
                     </p>
                   </FileDropzone>
                 </div>
@@ -183,6 +186,9 @@
                                     @onFileAdd={{fn this.uploadImage asset "asset"}}>
                           <a tabindex=0>Add an Image or MP4.</a>
                         </FileUpload>
+                        {{#if queue.files.length}}
+                          Uploading {{queue.files.length}} files. ({{queue.progress}}%)
+                        {{/if}}
                       </p>
                     </FileDropzone>
                     <button {{on "click" (fn deleteAsset asset)}} type="button" class="btn btn-fill btn-dark">Delete
