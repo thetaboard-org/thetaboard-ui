@@ -9,7 +9,7 @@ export default class DropController extends Controller {
     if(!this.model.drop.get('nfts')){
       return []
     } else {
-      return this.model.drop.get('nfts').sortBy('price').reverse();
+      return this.model.drop.get('nfts').sortBy('price');
     }
   }
 }
