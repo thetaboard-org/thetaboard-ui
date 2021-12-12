@@ -55,7 +55,12 @@ export default class DropsController extends Controller {
           // get an ordered array with index order of highest to lowest bid
           const bidsValue = bidsInfo.bidsValue.map(Number);
           const bidsValueSorted = [...bidsValue].sort((a, b) => b - a);
-          const indices = bidsValue.map(x => bidsValueSorted.indexOf(x));
+          const indices = bidsValue.map(x => {
+            const index = bidsValueSorted.indexOf(x);
+            // once we picked an index we set it to null, to not pick it again.
+            bidsValueSorted[index] = null;
+            return index;
+          });
           const account = await this.setupMetaMask();
           const NFTauctionContract = new window.web3.eth.Contract(this.abi.ThetaboardAuctionSell, nft.nftSellController);
           return NFTauctionContract.methods.concludeAuction(nft.nftContractId, indices).send({
