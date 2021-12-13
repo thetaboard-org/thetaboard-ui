@@ -1380,7 +1380,7 @@ a.active p.menu-item {
 }
 
 #card-drop .nft-main-img {
-  height: 300px;
+  max-height: 300px;
 }
 
 #card-drop .nft-tile h3 {
