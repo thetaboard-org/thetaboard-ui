@@ -32,7 +32,10 @@ Router.map(function () {
     this.route('nft');
     this.route('nft-info', {path: '/nft-info/:contractAddr/:tokenId'});
   });
-  this.route('domain');
+  this.route('domain', function() {
+    this.route('search');
+    this.route('my-account');
+  });
   this.route('marketplace', function () {
     this.route('drops');
     this.route('drop', {path: '/drop/:dropId'});

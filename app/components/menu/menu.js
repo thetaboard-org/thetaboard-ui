@@ -37,7 +37,7 @@ export default class MenuComponent extends Component {
     {
       name: 'menu.domain',
       icon: 'icon-book-bookmark',
-      route: 'domain',
+      route: 'domain.search',
     },
     {name: 'menu.faq', icon: 'icon-compass-05', route: 'faq'},
     // {

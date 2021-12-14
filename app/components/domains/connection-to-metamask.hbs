@@ -1,14 +1,20 @@
 <div class="left-menu">
     {{#if metamask.isConnected}}
-        <button {{on 'click' metamask.disconnect}} class="domain-connect">{{t 'domain.disconnect'}} - <span class="metamask-account" {{shortener metamask.currentAccount}}>{{metamask.currentAccount}}</span></button>
-        
+        <button {{on 'click' metamask.disconnect}} class="domain-connect">{{t 'domain.disconnect'}} - 
+            <span class="metamask-account" {{shortener metamask.currentAccount}}>{{metamask.currentAccount}}</span>
+            {{#if metamask.currentName}}
+                <br/><span class="metamask-account">{{metamask.currentName}}</span>
+            {{/if}}
+        </button>
     {{else}}
         <button {{on 'click' metamask.connect}} class="domain-connect">{{t 'domain.connect'}}</button>     
     {{/if}}   
 </div>
 <div class="right-menu">
     {{#if metamask.currentAccount}}
-        <button class="domain-connect">{{t 'domain.my_account'}}</button>        
+        <LinkTo @route="domain.my-account">
+            <button class="domain-connect">{{t 'domain.my_account'}}</button>        
+        </LinkTo>
     {{/if}}
 </div>    
 <div style="clear:both;"></div>

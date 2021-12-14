@@ -15,6 +15,7 @@ export default class MetamaskService extends Service {
   @tracked isInstalled;
   @tracked isConnected;
   @tracked currentAccount;
+  @tracked currentName;
   @tracked provider;
   @tracked networkId;
 
@@ -30,6 +31,7 @@ export default class MetamaskService extends Service {
     this.isInstalled = null;
     this.isConnected = null;
     this.currentAccount = null;
+    this.currentName = null;
     if (hideNotif) return;
     this.utils.successNotify(this.intl.t('domain.disconnected_from_metmask'));
   }
@@ -48,24 +50,43 @@ export default class MetamaskService extends Service {
           return this.utils.errorNotify(this.intl.t('domain.select_theta'));
         }
         const accounts = await window.ethereum.request({method: 'eth_requestAccounts'});
-        return this.handleAccountsChanged(accounts);
+        return await this.handleAccountsChanged(accounts);
       } else {
         return this.utils.errorNotify(this.intl.t('domain.install_metamask'));
       }
     } catch (e) {
+      if (e.code == -32002) {
+        return this.utils.errorNotify(this.intl.t('domain.error.check_metamask'));
+      }
       return this.utils.errorNotify(e.message);
     }
   }
 
   @action
-  handleAccountsChanged(accounts) {
+  async handleAccountsChanged(accounts) {
     if (accounts.length === 0) {
       this.disconnect();
       return this.utils.errorNotify(this.intl.t('domain.connect_to_metamask'));
     } else if (accounts[0] !== this.currentAccount) {
       this.isConnected = true;
       this.currentAccount = accounts[0];
-      this.domain.initDomain();
+      await this.domain.initDomain();
+      const name = await this.domain.getNameForAddress(this.currentAccount);
+      debugger
+      if (name && name.name) {
+        const nameOwner = await this.domain.getDomainOwner(name.name.replace(".theta", ""));
+        if (
+          nameOwner &&
+          nameOwner.address &&
+          nameOwner.address.toLowerCase() == this.currentAccount.toLowerCase()
+        ) {
+          this.currentName = name.name;
+        } else {
+          this.currentName = null;
+        }
+      } else {
+        this.currentName = null;
+      }
       this.utils.successNotify(this.intl.t('domain.connect_to') + this.currentAccount);
     }
   }

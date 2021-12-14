@@ -28,13 +28,11 @@ export default class ArtistsController extends Controller {
   @action
   async uploadImage(artist, property, file) {
     try {
-      debugger
       file.name = 'artist/' + file.name;
       const response = await file.upload('/nft/assets/upload');
       artist[property] = response.body.fileUrl;
     } catch (e) {
       console.error(e);
     }
-
   }
 }

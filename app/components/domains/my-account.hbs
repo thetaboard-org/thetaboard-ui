@@ -1,0 +1,18 @@
+{{#if metamask.currentAccount}}
+    <p>{{t 'domain.connected_to_address'}}:</p>
+    <p>{{metamask.currentAccount}}</p>
+{{/if}}
+
+{{#if metamask.currentName}}
+    <p>{{t 'domain.reverse_name_set_to'}}:</p>
+    <p>{{metamask.currentName}}</p>
+{{/if}}
+
+
+<button {{on 'click' test}}>check address</button>
+<button {{on 'click' setReverseName}}>setReverseName</button>
+<Input @placeholder="Address to tranfer domain to" @type="text" class="form-control border-color" @value={{this.transferToAddress}}/>
+<button {{on 'click' transferDomain}}>transferDomain</button>
+<button {{on 'click' getAddrForDomain}}>getAddrForDomain</button>
+<button {{on 'click' reclaimOwnership}}>reclaimOwnership</button>
+

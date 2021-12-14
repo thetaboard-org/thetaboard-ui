@@ -17,9 +17,7 @@
                     <span><b> {{domainNameToBuy}} </b> {{t 'domain.invalid_name'}}</span>
                 </div>
             {{else}}
-                <div class="alert alert-warning buy-domain">
-                    <span><b> {{domainNameToBuy}}.theta </b> {{t 'domain.already_registered'}}</span>
-                </div>
+                {{domains/already-registered domainName=domainNameToBuy}}
             {{/if}}
         {{/if}}
     {{/if}}

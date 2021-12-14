@@ -1592,6 +1592,7 @@ a.active p.menu-item {
   padding: 15px;
   display: block;
   margin: 25px auto;
+  text-align: center;
 }
 
 #card-domain .domain-search-button {
@@ -1631,5 +1632,26 @@ a.active p.menu-item {
 }
 
 #card-domain .opacity50 {
-  opacity: 0.5;
+  opacity: 0.2;
+}
+
+#card-domain .input-domain-transfer-address {
+  width: 80%;
+  margin: 35px auto 5px;
+  text-align: center;
+  height: 50px;
+}
+
+#card-domain p.lookup-address-transfer {
+  font-weight: bold;
+  display: inline-block;
+  background: black;
+  padding: 10px 25px;
+  border-radius: 25px;
+  border: 1px solid #e14eca;
+  margin-top: 10px;  
+}
+
+.bold {
+  font-weight: bold;
 }
