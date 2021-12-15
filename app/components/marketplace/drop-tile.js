@@ -1,6 +1,6 @@
 import Component from '@glimmer/component';
-import { later } from '@ember/runloop';
-import { tracked } from '@glimmer/tracking';
+import {later} from '@ember/runloop';
+import {tracked} from '@glimmer/tracking';
 
 export default class MarketplaceDropTileComponent extends Component {
   constructor(...args) {
@@ -20,7 +20,7 @@ export default class MarketplaceDropTileComponent extends Component {
     this.countDownCall = later(
       this,
       function () {
-        const countDownDate = new Date(date).getTime();
+        const countDownDate = new Date(date + 'Z').getTime();
         const now = new Date().getTime();
         const distance = countDownDate - now;
         let hours = Math.floor(
