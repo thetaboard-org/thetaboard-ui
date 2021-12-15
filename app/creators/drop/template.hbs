@@ -174,7 +174,7 @@
                         <img class="nft-main-image" src="{{asset.asset}}" alt="{{asset.name}}" style="width: 200px"/>
                       {{else if asset.isVideo}}
                         {{#if asset.asset}}
-                          <video class="nft-main-video" autoplay loop style="width: 200px">
+                          <video class="nft-main-video" playsinline autoplay loop style="width: 200px">
                             <source src="{{asset.asset}}" type="video/mp4">
                           </video>
                         {{/if}}

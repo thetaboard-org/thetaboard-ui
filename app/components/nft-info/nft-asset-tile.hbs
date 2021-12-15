@@ -3,7 +3,7 @@
   {{#if isImage}}
     <img class="nft-main-image" src="{{nftAsset.asset}}" alt="{{nftAsset.name}}"/>
   {{else if isVideo}}
-    <video class="nft-main-video" controls loop>
+    <video class="nft-main-video" controls loop playsinline>
       <source src="{{nftAsset.asset}}" type="video/mp4">
     </video>
   {{/if}}

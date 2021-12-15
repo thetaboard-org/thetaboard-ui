@@ -4,7 +4,7 @@
     {{#if nftAsset.isImage}}
     <img class="nft-main-image" src="{{nftAsset.asset}}" alt="{{nftAsset.name}}"/>
     {{else if nftAsset.isVideo}}
-    <video class="nft-main-video" autoplay loop>
+    <video class="nft-main-video" autoplay loop playsinline>
         <source src="{{nftAsset.asset}}" type="video/mp4">
     </video>
     {{else if nftAsset.isObject3D}}

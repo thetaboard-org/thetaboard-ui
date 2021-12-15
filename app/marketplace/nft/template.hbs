@@ -16,7 +16,7 @@
       <div class="nft-main-image-container">
         <a href="{{nft.image}}" target="_blanc">
           {{#if nft.isFirstAssetVideo}}
-            <video class="nft-main-video" autoplay loop>
+            <video class="nft-main-video" autoplay loop playsinline>
               <source src="{{nft.firstAsset}}" type="video/mp4">
             </video>
           {{else}}
