@@ -5,7 +5,10 @@ export default class DropsRoute extends Route {
     const drops = await this.store.query('drop', {
       isPublic: 1
     });
-
-    return {drops: drops.sortBy('startDate')};
+    const drops_sorted = [
+      ...drops.filterBy('isDropLive').sortBy('endDate'),
+      ...drops.filter((x)=>!x.isDropStarted).sortBy('startDate'),
+      ...drops.filterBy('isDropEnded').sortBy('endDate')]
+    return {drops: drops_sorted};
   }
 }
