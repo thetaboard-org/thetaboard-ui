@@ -1,0 +1,162 @@
+<div class="card">
+  <div class="card-header">
+
+    <!-- if drop already exists-->
+    {{#if drop.id}}
+      <h5 class="title">{{drop.name}}</h5>
+      <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#drop-{{drop.id}}"
+              aria-expanded="false" aria-controls="drop-{{drop.id}}">
+        Edit drop
+      </button>
+      <LinkTo @route="creators.drop" @model="{{drop.id}}" @class="btn btn-primary">
+        Edit NFTs
+      </LinkTo>
+      {{#if deployNFTLoading}}
+        <button class="btn btn-darker disabled" type="button" {{action "deployNFTs" drop}}>
+          <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+          Deploy NFTs to Blockchain
+        </button>
+      {{else if drop.isDeployed}}
+        <button class="btn btn-darker" type="button" disabled>
+          Deploy NFTs to Blockchain
+        </button>
+      {{else}}
+        <button class="btn btn-darker" type="button" {{action "deployNFTs" drop}}>
+          Deploy NFTs to Blockchain
+        </button>
+      {{/if}}
+      {{#if (and drop.isDeployed drop.isDropEnded)}}
+        <button class="btn btn-darker" type="button" {{action "concludeAuctions" drop}}>
+          Conclude auctions
+        </button>
+      {{else}}
+        <button class="btn btn-darker" type="button" disabled>
+          Conclude auctions
+        </button>
+      {{/if}}
+
+    {{else}}
+      <h5 class="title">New Drop</h5>
+      <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#drop-{{drop.id}}"
+              aria-expanded="false" aria-controls="drop-{{drop.id}}">
+        Edit drop
+      </button>
+    {{/if}}
+  </div>
+  <div class="collapse" id="drop-{{drop.id}}">
+    <div class="card-body">
+      <form {{action "saveDrop" drop on="submit"}}>
+        <div class="row">
+          <div class="col-md-5 pr-md-1">
+            <div class="form-group">
+              <label>Name</label>
+              <Input
+                @class="form-control"
+                @type="text"
+                placeholder="Name"
+                @value={{drop.name}}
+              />
+            </div>
+          </div>
+          <div class="col-md-5 pr-md-1">
+            <div class="form-group">
+
+              <label>Artist</label>
+
+              <PowerSelect
+                @searchEnabled={{true}}
+                @searchField="name"
+                @options={{model.artists}}
+                @selected={{drop.artist}}
+                @onChange={{fn (mut drop.artist)}} as |artist|>
+                {{artist.name}}
+              </PowerSelect>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6 pr-md-1">
+            <div class="form-group">
+              <label>Start Date</label>
+              <Input
+                @class="form-control"
+                @type="datetime-local"
+                placeholder="startDate"
+                @disabled={{drop.isDeployed}}
+                @value={{drop.startDate}}
+              />
+            </div>
+          </div>
+          <div class="col-md-6 pl-md-1">
+            <div class="form-group">
+              <label>End Date</label>
+              <Input
+                @class="form-control"
+                @type="datetime-local"
+                placeholder="endDate"
+                @disabled={{drop.isDeployed}}
+                @value={{drop.endDate}}
+              />
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <FileDropzone @name="photos-{{drop.id}}-image" as |dropzone queue|>
+              <h4>An image that represent the drop</h4>
+              <img src="{{drop.image}}">
+              <p>
+                <FileUpload @name="photos-{{drop.id}}-image"
+                            @accept="image/*"
+                            @multiple={{false}}
+                            @onFileAdd= {{fn this.uploadImage drop "image"}}>
+                  <a tabindex=0>Add an Image.</a>
+                </FileUpload>
+              </p>
+            </FileDropzone>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <label>one line description</label>
+              <Textarea @rows="4" @class="form-control" @value={{drop.smallDescription}} />
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <label>Description</label>
+              <Textarea @rows="4" @class="form-control" @value={{drop.description}} />
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="col-md-12">
+            <label class="form-check-label">
+              <Input
+                @class="form-check-input"
+                @type="checkbox"
+                @checked={{drop.isPublic}}
+                @disabled={{not drop.isDeployed}}
+              />
+              Show drop to the public
+              {{#if (not drop.isDeployed)}}
+                <p class="alert alert-warning" style="font-size: 10px;">
+                  Must Deploy all the contracts first
+                </p>
+              {{/if}}
+
+            </label>
+          </div>
+        </div>
+        <div class="card-footer">
+          <button type="submit" class="btn btn-fill btn-primary">Save</button>
+          <button {{on "click" (fn delete drop)}} type='button' class="btn btn-fill btn-dark">Delete</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+</div>
