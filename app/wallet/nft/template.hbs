@@ -23,7 +23,7 @@
 
 <div class="content" id="nft-list">
   <div class="row">
-    {{#each this.model as |NFT|}}
+    {{#each this.model.NFTs as |NFT|}}
       <div class="col-lg-3 col-md-12">
 
         <div class="card card-chart card-user nft-card-holdings">
@@ -73,4 +73,16 @@
 
     {{/each}}
   </div>
+
+  <PaginationPager
+    @pager={{true}}
+    @count={{totalPageNumber}}
+    @current={{currentPage}}
+    @change={{this.pageChanged}}
+    @pagerFirst="|<"
+    @pagerLast=">|"
+    @pagerNext={{t 'global.next'}}
+    @pagerPrevious={{t 'global.previous'}}>
+    {{currentPage}} of {{totalPageNumber}}
+  </PaginationPager>
 </div>
