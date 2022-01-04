@@ -6,6 +6,6 @@ export default class NftController extends Controller {
   }
 
   get drop() {
-    return this.model.nft.drop;
+    return this.model.drop;
   }
 }

@@ -11,6 +11,6 @@ export default class NftRoute extends Route {
 
   async model(params) {
     const nft = await this.store.findRecord('nft', params.nftId);
-    return {nft: nft};
+    return {nft: nft, drop: await nft.drop};
   }
 }
