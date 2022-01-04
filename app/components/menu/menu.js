@@ -68,9 +68,13 @@ export default class MenuComponent extends Component {
         classActive: this.routeName === x.route,
         icon: x.icon,
         route: x.route,
+        childActive: false
       };
       if (x.children) {
         result.children = x.children.map((child) => {
+          if (this.routeName === child.route) {
+            result.childActive = true;
+          }
           return {
             name: child.name,
             classActive: this.routeName === child.route,

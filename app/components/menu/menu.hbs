@@ -10,30 +10,36 @@
     </div>
 
     <ul class="nav">
-      {{#each menuItemList as |menuItem|}}
+      {{#each menuItemList as |menuItem index|}}
         {{#if menuItem.children}}
           <li class="nav-item">
-            <LinkTo @class="nav-link" @route="{{menuItem.route}}">
+            <a data-toggle="collapse" href="#menu-{{index}}" aria-expanded="{{if menuItem.childActive "true"}}">
               <i class="tim-icons {{menuItem.icon}}"></i>
-              <p class="menu-item">{{t menuItem.name}}</p>
-            </LinkTo>
-            <ul>
-              {{#each menuItem.children as |child|}}
-                <li style="list-style-type: none;" class="nav-item {{if child.classActive "active"}}">
-                  <LinkTo @class="nav-link" @route="{{child.route}}">
-                    {{#if child.icon}}
-                      <p class="menu-item"><i class="tim-icons {{child.icon}}"></i>{{t child.name}}
-                      </p>
-                    {{else}}
-                      <p class="menu-item"><img class="tim-icons"
-                                                src="{{rootURL}}/assets/img/logo/{{child.image}}"/>{{t child.name}}
-                      </p>
-                    {{/if}}
+              <p>
+                {{t menuItem.name}}
+                <b class="caret"></b>
+              </p>
+            </a>
 
-                  </LinkTo>
-                </li>
-              {{/each}}
-            </ul>
+            <div class="collapse {{if menuItem.childActive "show"}}" id="menu-{{index}}">
+              <ul>
+                {{#each menuItem.children as |child|}}
+                  <li style="list-style-type: none;" class="nav-item {{if child.classActive "active"}}">
+                    <LinkTo @class="nav-link" @route="{{child.route}}">
+                      {{#if child.icon}}
+                        <p class="menu-item"><i class="tim-icons {{child.icon}}"></i>{{t child.name}}
+                        </p>
+                      {{else}}
+                        <p class="menu-item"><img class="tim-icons"
+                                                  src="{{rootURL}}/assets/img/logo/{{child.image}}"/>{{t child.name}}
+                        </p>
+                      {{/if}}
+
+                    </LinkTo>
+                  </li>
+                {{/each}}
+              </ul>
+            </div>
           </li>
         {{else}}
           <li class="nav-item {{if menuItem.classActive "active"}}">
