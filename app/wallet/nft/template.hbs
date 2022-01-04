@@ -73,16 +73,17 @@
 
     {{/each}}
   </div>
-
-  <PaginationPager
-    @pager={{true}}
-    @count={{totalPageNumber}}
-    @current={{currentPage}}
-    @change={{this.pageChanged}}
-    @pagerFirst="|<"
-    @pagerLast=">|"
-    @pagerNext={{t 'global.next'}}
-    @pagerPrevious={{t 'global.previous'}}>
-    {{currentPage}} of {{totalPageNumber}}
-  </PaginationPager>
+  {{#if totalPageNumber}}
+    <PaginationPager
+      @pager={{true}}
+      @count={{totalPageNumber}}
+      @current={{currentPage}}
+      @change={{this.pageChanged}}
+      @pagerFirst="|<"
+      @pagerLast=">|"
+      @pagerNext={{t 'global.next'}}
+      @pagerPrevious={{t 'global.previous'}}>
+      {{currentPage}} of {{totalPageNumber}}
+    </PaginationPager>
+  {{/if}}
 </div>
