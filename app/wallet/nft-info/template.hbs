@@ -14,7 +14,13 @@
       <h5 class="title">{{nft.name}}</h5>
       <br/>
       <div class="nft-main-image-container">
-        <img class="nft-main-image" src="{{nft.image}}" alt="{{nft.name}}"/>
+        {{#if nft.isFirstAssetVideo}}
+          <video class="nft-main-video" id="vid" loop autoplay playsinline>
+            <source src="{{nft.firstAsset}}" type="video/mp4">
+          </video>
+        {{else}}
+          <img class="nft-main-image" src="{{nft.image}}" alt="{{nft.name}}"/>
+        {{/if}}
       </div>
       <br/>
       <p class="description">{{nft.description}}</p>
