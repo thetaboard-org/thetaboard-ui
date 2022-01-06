@@ -16,13 +16,14 @@ export default class NFTRoute extends Route {
     if (!this.wallets) {
       return [];
     } else {
-      return this.wallets.reduce(async (total, wallet) => {
+      const total =  {totalCount: 0, NFTs: [], wallets: this.wallets};
+      await Promise.all(this.wallets.map(async (wallet)=>{
         const fetched = await fetch(`/explorer/wallet-nft/${wallet}`);
         const fetchedJSON = await fetched.json();
         total.totalCount += fetchedJSON.totalCount;
         total.NFTs.push(...fetchedJSON.NFTs);
-        return total;
-      }, {totalCount: 0, NFTs: [], wallets: this.wallets});
+      }));
+      return total;
     }
   }
 }
