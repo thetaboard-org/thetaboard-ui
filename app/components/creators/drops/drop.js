@@ -202,7 +202,7 @@ export default class DropComponent extends Component {
 
   @action
   async deployNFTs(drop) {
-    this.set('deployNFTLoading', true);
+    this.deployNFTLoading = true;
 
     // get NFTs
     const nfts = await drop.get('nfts');
@@ -220,7 +220,7 @@ export default class DropComponent extends Component {
         this.utils.successNotify(`Successfully deployed ${nfts_to_deploy.length} NFTs`);
       } catch (e) {
         console.log(e);
-        this.set('deployNFTLoading', false);
+        this.deployNFTLoading = false;
         return this.utils.errorNotify(`There was an error deploying the NFTs`);
       }
     }
@@ -228,10 +228,10 @@ export default class DropComponent extends Component {
     // check state for sell Contracts and deploy what is needed
     const nfts_to_sell = nfts.filter((x) => !x.nftSellController);
     if (!drop.get('endDate') || new Date(drop.get('endDate')) < new Date()) {
-      this.set('deployNFTLoading', false);
+      this.deployNFTLoading = false;
       return this.utils.errorNotify(`The drop end date is invalid`);
     } else if (!drop.get('artist.walletAddr')) {
-      this.set('deployNFTLoading', false);
+      this.deployNFTLoading = false;
       return this.utils.errorNotify(`Artist need a wallet address`);
     } else if (nfts_to_sell.length === 0) {
       this.utils.successNotify("All NFTs are already ready to be sold");
@@ -241,12 +241,12 @@ export default class DropComponent extends Component {
         this.utils.successNotify(`Successfully deployed ${nfts_to_sell.length} Sell Contracts`);
       } catch (e) {
         console.log(e);
-        this.set('deployNFTLoading', false);
+        this.deployNFTLoading = false;
         return this.utils.errorNotify(`There was an error deploying the Sell Contracts`);
       }
     }
     drop.isDeployed = true;
     await drop.save();
-    this.set('deployNFTLoading', false);
+    this.deployNFTLoading = false;
   }
 }
