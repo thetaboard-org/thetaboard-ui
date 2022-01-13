@@ -91,10 +91,13 @@
     "edition": "octane"
   },
   "dependencies": {
+    "@metamask/detect-provider": "^1.2.0",
     "@thetalabs/theta-js": "0.0.56-alpha.2",
     "@thetalabs/theta-wallet-connect": "0.0.15",
     "bignumber.js": "^9.0.1",
     "ember-cli-gzip": "^1.2.0",
+    "ethers": "^5.5.1",
+    "thetaboard-tns": "0.0.4",
     "web3": "^1.6.0"
   }
 }
