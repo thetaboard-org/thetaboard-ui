@@ -1,37 +1,74 @@
-{{#if this.transfer_initiated}}
-  <form {{on 'submit' this.transfer}}>
-    <Input
-      @class="form-control"
-      @type="text"
-      placeholder="Destination Address"
-      @value={{this.destinationAddr}}
-      pattern="^0x[a-fA-F0-9]{40}$"
-      required
-    />
+{{#async-await metamaskAvailable as |availiability|}}
 
-    <button type="submit" class="btn btn-fill btn-primary">
-      Execute transfer
+  {{#if (eq availiability 0)}}
+    <a href="/assets/pdf/HOW_TO_Metamask_LR.pdf" target="_blank">
+      Setup Metamask to transfer or sell your NFT
+    </a>
+  {{else if (eq availiability 1)}}
+    <a href="/assets/pdf/HOW_TO_Metamask_LR.pdf" target="_blank">
+      Setup Metamask for theta blockchain
+    </a>
+  {{else if (eq availiability 2)}}
+    <button type="submit" class="btn btn-fill btn-primary"  {{on "click" this.metamask_connect}}>
+      Connect to metamask
     </button>
-  </form>
-{{else}}
-  {{#async-await metamaskAvailable as |available|}}
-    {{#if (eq available true)}}
+  {{else if (eq availiability 3)}}
+    Your Metamask Wallet is not the token owner
+  {{else if (eq availiability 4)}}
+    {{#if this.transfer_initiated}}
+      <form {{on 'submit' this.transfer}}>
+        <Input
+          @class="form-control"
+          @type="text"
+          placeholder="Destination Address"
+          @value={{this.destinationAddr}}
+          pattern="^0x[a-fA-F0-9]{40}$"
+          required
+        />
+
+        <button type="submit" class="btn btn-fill btn-primary">
+          Execute transfer
+        </button>
+      </form>
+    {{else}}
       <button type="button" {{on "click" this.init_transfer}} class="btn btn-fill btn-primary">
         Transfer NFT
       </button>
-    {{else}}
-      <span data-toggle="tooltip" data-placement="top"
-            title="{{available}}" data-original-title="Tooltip on top">
-        <button type="button" class="btn btn-fill btn-primary" disabled>
-          Transfer NFT
-        </button>
-      </span>
-      {{enableTooltip}}
     {{/if}}
-  {{else}}
-    <button type="button" class="btn btn-fill btn-primary" disabled>
-      Transfer NFT
-    </button>
-  {{/async-await}}
-{{/if}}
+    {{#async-await marketPlaceStatus as |isApproved|}}
+      {{#if isApproved}}
+        <form {{on 'submit' this.sell_nft}}>
+          <Input
+            @class="form-control"
+            @type="number"
+            placeholder="Asking price"
+            @value={{this.sellPrice}}
+            @min="0"
+            @step="1"
+            required
+          />
+          <button type="submit" class="btn btn-fill btn-primary">
+            Sell item
+          </button>
+        </form>
+      {{else}}
+        <span data-toggle="tooltip" data-placement="top"
+              title="{{available}}"
+              data-original-title="Once you approve, you will be able to set a price and put your NFT on the marketplace">
+          <button type="button" class="btn btn-fill btn-primary" {{on "click" approve_for_sell}}>
+             Approve for sell
+          </button>
+        </span>
+        {{enableTooltip}}
+      {{/if}}
+    {{/async-await}}
+  {{/if}}
+
+
+{{else}}
+  <div class="spinner-border m-5" role="status">
+    <span class="sr-only">Loading...</span>
+  </div>
+{{/async-await}}
+
 
