@@ -3,6 +3,7 @@ import { inject as service } from '@ember/service';
 import { action } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
 import detectEthereumProvider from '@metamask/detect-provider';
+import { ethers } from 'ethers';
 
 export default class MetamaskService extends Service {
   constructor() {
@@ -49,8 +50,10 @@ export default class MetamaskService extends Service {
         if (this.networkId !== 365) {
           return this.utils.errorNotify(this.intl.t('domain.select_theta'));
         }
-        const accounts = await window.ethereum.request({method: 'eth_requestAccounts'});
-        return await this.handleAccountsChanged(accounts);
+        const etherProvider = new ethers.providers.Web3Provider(window.ethereum);
+        const signer = etherProvider.getSigner();
+        const address = await signer.getAddress();
+        return await this.handleAccountsChanged([address]);
       } else {
         return this.utils.errorNotify(this.intl.t('domain.install_metamask'));
       }
@@ -70,20 +73,10 @@ export default class MetamaskService extends Service {
     } else if (accounts[0] !== this.currentAccount) {
       this.isConnected = true;
       this.currentAccount = accounts[0];
-      await this.domain.initDomain();
-      const name = await this.domain.getNameForAddress(this.currentAccount);
-      debugger
-      if (name && name.name) {
-        const nameOwner = await this.domain.getDomainOwner(name.name.replace(".theta", ""));
-        if (
-          nameOwner &&
-          nameOwner.address &&
-          nameOwner.address.toLowerCase() == this.currentAccount.toLowerCase()
-        ) {
-          this.currentName = name.name;
-        } else {
-          this.currentName = null;
-        }
+      await this.domain.initDomains();
+      const reverseName = await this.domain.getReverseName(this.currentAccount);
+      if (reverseName && reverseName.domain) {
+        this.currentName = reverseName.domain;
       } else {
         this.currentName = null;
       }

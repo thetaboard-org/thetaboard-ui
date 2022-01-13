@@ -3,7 +3,7 @@
         <button {{on 'click' metamask.disconnect}} class="domain-connect">{{t 'domain.disconnect'}} - 
             <span class="metamask-account" {{shortener metamask.currentAccount}}>{{metamask.currentAccount}}</span>
             {{#if metamask.currentName}}
-                <br/><span class="metamask-account">{{metamask.currentName}}</span>
+                <br/><span class="metamask-account">{{metamask.currentName}}.theta</span>
             {{/if}}
         </button>
     {{else}}
