@@ -225,6 +225,7 @@ domain:
   did_transfer: "You initiated a transfer of this domain name to"
   see_domain: "See domain"
   domain_reversed: "is now assigned to your address"
+  domain_is_reverse_name: "is assigned to your address"
   error:
     check_metamask: "Check your MetaMask extension"
     not_owner: "You need to be the owner of the domain to perform this operation"

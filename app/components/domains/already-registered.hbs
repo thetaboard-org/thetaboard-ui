@@ -12,6 +12,10 @@
     {{#if isOwner}}
         <div class="alert alert-success buy-domain">
             <span><b>{{t 'domain.own_domain'}} {{domainName}}.theta</b></span>
+            {{#if isCurrentReverseName}}
+            <br/>
+            <span><b>{{domainName}}.theta {{t 'domain.domain_is_reverse_name'}}</b></span>
+            {{/if}}
         </div>
         {{#if reverseNameForm}}
             <p>{{t 'domain.about_to_reverse_name'}} <span class="bold">{{domainName}}.theta</span> {{t 'domain.to_address'}}</p>

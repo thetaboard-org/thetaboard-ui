@@ -11,6 +11,9 @@
     {{/if}}   
 </div>
 <div class="right-menu">
+     <LinkTo @route="domain.search">
+        <button class="domain-connect">{{t 'global.search'}}</button>        
+    </LinkTo>
     {{#if metamask.currentAccount}}
         <LinkTo @route="domain.my-account">
             <button class="domain-connect">{{t 'domain.my_account'}}</button>        

@@ -23,6 +23,10 @@ export default class DomainsAlreadyRegisteredComponent extends Component {
     return this.args.domainName;
   }
 
+  get isCurrentReverseName() {
+    return this.metamask.currentName == this.domainName;
+  }
+
   @action
   async setReverseName() {
     this.commitingToReverse = true;
