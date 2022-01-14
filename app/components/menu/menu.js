@@ -34,6 +34,11 @@ export default class MenuComponent extends Component {
         {name: 'menu.tfuel_vip', image: 'tfuel-white.png', route: 'staking.tfuelvip'},
       ],
     },
+    {
+      name: 'menu.domain',
+      icon: 'icon-book-bookmark',
+      route: 'domain.search',
+    },
     // {
     //   name: 'menu.domain',
     //   icon: 'icon-book-bookmark',

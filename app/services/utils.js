@@ -20,6 +20,16 @@ export default class UtilsService extends Service {
     return parts.join('.');
   }
 
+  randomHexa(length) {
+    let result = '';
+    const characters = '0123456789abcdef';
+    var charactersLength = characters.length;
+    for (var i = 0; i < length; i++) {
+      result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    }
+    return result;
+  }
+
   @action
   copyToClipboard(inputId, message) {
     const copyText = document.querySelector(`#${inputId}`);

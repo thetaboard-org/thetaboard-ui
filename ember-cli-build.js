@@ -17,7 +17,7 @@ module.exports = function (defaults) {
     autoImport: {
       webpack: {
         node: {
-          Buffer: false,
+          Buffer: true,
           global: true,
           process: true,
         },
@@ -54,7 +54,6 @@ module.exports = function (defaults) {
 
   // smart contracts:
   app.import('node_modules/web3/dist/web3.min.js');
-
 
   return app.toTree();
 };
