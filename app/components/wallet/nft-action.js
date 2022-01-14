@@ -20,6 +20,14 @@ export default class NftActionComponent extends Component {
     return;
   }
 
+  get marketplaceContract() {
+    return new window.web3.eth.Contract(this.abi.ThetaboardMarketplace, this.abi.ThetaboardMarketplaceAddr);
+  }
+
+  get nftContract() {
+
+  }
+
   get metamaskAvailable() {
     // return 0 if metamask is not installed
     // return 1 if not theta blockchain
@@ -54,14 +62,27 @@ export default class NftActionComponent extends Component {
     // return 1 if approved
     // return 2 if on sale
 
-    const checkIfApproved = async () => {
+    const checkStatus = async () => {
       const account = await this.metamask_connect();
       const nft_contract = new window.web3.eth.Contract(this.abi.ThetaboardNFT, this.nft.contract_addr);
       const approved = await nft_contract.methods.getApproved(this.nft.original_token_id).call();
-      debugger
-      return approved === this.abi.ThetaboardMarketplaceAddr;
+      if (approved !== this.abi.ThetaboardMarketplaceAddr) {
+        return 0;
+      } else {
+
+        const itemOnMarketplace = await this.marketplaceContract
+          .methods.getByNftContractTokenId(this.nft.contract_addr, this.nft.original_token_id)
+          .call();
+        debugger
+        if (itemOnMarketplace.itemId === 0) {
+          // is approved but not on sale
+          return 1;
+        } else {
+          return 2;
+        }
+      }
     }
-    return checkIfApproved();
+    return checkStatus();
   }
 
   async metamask_connect() {
@@ -111,15 +132,14 @@ export default class NftActionComponent extends Component {
   }
 
   @action
-  async sell_nft(event){
+  async sell_nft(event) {
     event.preventDefault();
-    try{
+    try {
       const account = await this.metamask_connect();
-      const market = new window.web3.eth.Contract(this.abi.ThetaboardMarketplace, this.abi.ThetaboardMarketplaceAddr);
-      await market.methods.createMarketItem(this.nft.contract_addr, 2, this.sellPrice, "ThetaboardUser").send({
+      await this.marketplaceContract.methods.createMarketItem(this.nft.contract_addr, 2, this.sellPrice, "ThetaboardUser").send({
         from: account
       });
-    }catch (e) {
+    } catch (e) {
       return this.utils.errorNotify(e.message);
     }
 

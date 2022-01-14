@@ -1280,6 +1280,83 @@ const thetaboardMarketplace = [
   {
     "inputs": [
       {
+        "internalType": "address",
+        "name": "nftContract",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "tokenId",
+        "type": "uint256"
+      }
+    ],
+    "name": "getByNftContractTokenId",
+    "outputs": [
+      {
+        "components": [
+          {
+            "internalType": "uint256",
+            "name": "itemId",
+            "type": "uint256"
+          },
+          {
+            "internalType": "address",
+            "name": "nftContract",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "tokenId",
+            "type": "uint256"
+          },
+          {
+            "internalType": "address payable",
+            "name": "seller",
+            "type": "address"
+          },
+          {
+            "internalType": "address payable",
+            "name": "buyer",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "highestOffer",
+            "type": "uint256"
+          },
+          {
+            "internalType": "address payable",
+            "name": "bidder",
+            "type": "address"
+          },
+          {
+            "internalType": "string",
+            "name": "category",
+            "type": "string"
+          },
+          {
+            "internalType": "uint256",
+            "name": "price",
+            "type": "uint256"
+          },
+          {
+            "internalType": "bool",
+            "name": "isSold",
+            "type": "bool"
+          }
+        ],
+        "internalType": "struct ThetaboardMarketPlace.MarketItem",
+        "name": "",
+        "type": "tuple"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function",
+    "constant": true
+  },
+  {
+    "inputs": [
+      {
         "internalType": "uint256",
         "name": "amount",
         "type": "uint256"
@@ -1336,6 +1413,6 @@ export default class ABIService extends Service {
   }
 
   get ThetaboardMarketplaceAddr() {
-    return "0x16c18Ab09183a40997D203C2601bd46933F64295";
+    return "0x533c8425897b3E10789C1d6F576b96Cb55E6F47d";
   }
 }
