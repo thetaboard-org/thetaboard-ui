@@ -7,6 +7,7 @@ export default class NftActionComponent extends Component {
   @service utils;
   @service intl;
   @service('abi') abi;
+  @service metamask;
 
   @tracked transfer_initiated = false;
   @tracked destinationAddr;
@@ -36,25 +37,26 @@ export default class NftActionComponent extends Component {
     // return 4 if everything is good
 
     const checkMetamask = async () => {
-      if (typeof ethereum === 'undefined' || !ethereum.isConnected()) {
+
+      if (!this.metamask.isInstalled) {
         return 0;
-      } else if (parseInt(ethereum.chainId) !== 361) {
+      } else if (!this.metamask.isThetaBlockchain) {
         return 1;
       } else {
-        window.web3 = new Web3(window.web3.currentProvider);
-        const accounts = await window.web3.eth.getAccounts();
-        if (accounts.length === 0) {
+        if (!this.metamask.isConnected) {
           return 2;
         }
         const nft_contract = new window.web3.eth.Contract(this.abi.ThetaboardNFT, this.nft.contract_addr);
         const token_owner = await nft_contract.methods.ownerOf(this.nft.original_token_id).call();
-        if (token_owner !== accounts[0]) {
+        if (token_owner !== this.metamask.currentAccount) {
           return 3;
         }
         return 4;
       }
+
     }
     return checkMetamask();
+
   }
 
   get marketPlaceStatus() {
@@ -73,7 +75,6 @@ export default class NftActionComponent extends Component {
         const itemOnMarketplace = await this.marketplaceContract
           .methods.getByNftContractTokenId(this.nft.contract_addr, this.nft.original_token_id)
           .call();
-        debugger
         if (itemOnMarketplace.itemId === 0) {
           // is approved but not on sale
           return 1;
@@ -111,7 +112,7 @@ export default class NftActionComponent extends Component {
       await nft_contract.methods.transferFrom(account, this.destinationAddr, this.nft.original_token_id).send({
         from: account
       });
-      return this.utils.successNotify("Successfully approved for sell");
+      return this.utils.successNotify("Successfully transfered");
     } catch (e) {
       return this.utils.errorNotify(e.message);
     }
@@ -119,13 +120,14 @@ export default class NftActionComponent extends Component {
 
   @action
   async approve_for_sell() {
+    debugger
     try {
       const account = await this.metamask_connect();
       const nft_contract = new window.web3.eth.Contract(this.abi.ThetaboardNFT, this.nft.contract_addr);
       await nft_contract.methods.approve(this.abi.ThetaboardMarketplaceAddr, this.nft.original_token_id).send({
         from: account
       });
-      return this.utils.successNotify(this.intl.t('notif.success_nft'));
+      return this.utils.successNotify("Approved for sell");
     } catch (e) {
       return this.utils.errorNotify(e.message);
     }

@@ -156,12 +156,17 @@ export default class DropComponent extends Component {
         nft.drop.get('artist.walletAddr'),
         90]
       nft.nftSellController = nftDirectSell;
-      try {
-        await Promise.all([NFTcontract.methods.grantRole(minter_role, nftDirectSell).send({from: account}),
-          NFTcontract.methods.grantRole(minter_role, thetaboard_wallet).send({from: account}),
-          NFTsellContract.methods.newSell(...params).send({from: account})]);
+      const roleMemberCount = await NFTcontract.methods.getRoleMemberCount(minter_role).call();
+      const tasks = [NFTsellContract.methods.newSell(...params).send({from: account})];
+      if (roleMemberCount !== "3") {
+        tasks.push(NFTcontract.methods.grantRole(minter_role, nftDirectSell).send({from: account}),
+          NFTcontract.methods.grantRole(minter_role, thetaboard_wallet).send({from: account}))
+      }
 
+      try {
+        await Promise.all(tasks);
       } catch (e) {
+        debugger
         // get the EVM error ( not possible with web3 today..)
         // and if it is that the contract already exists just move along
         await ignore_error_if_already_exists(e);
