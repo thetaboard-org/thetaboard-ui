@@ -61,6 +61,12 @@ export default class MetamaskService extends Service {
       if (e.code == -32002) {
         return this.utils.errorNotify(this.intl.t('domain.error.check_metamask'));
       }
+      if (e.operation == 'getAddress') {
+        const provider = new ethers.providers.Web3Provider(window.ethereum);
+        this.utils.errorNotify(this.intl.t('domain.error.check_metamask'))
+        await provider.send("eth_requestAccounts", []);
+        return;
+      }
       return this.utils.errorNotify(e.message);
     }
   }
