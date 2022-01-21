@@ -1,6 +1,5 @@
 {{#if nft.isAuction}}
   {{#async-await this.minBid as |minBid|}}
-    Bid:
     <Input required @type="number" @min="{{minBid}}" value={{this.bid}} {{on "change" this.updateBid}} />
     <button class="nft-button btn btn-primary" {{action "placeBid" nft}}>Place Bid</button>
   {{else}}
