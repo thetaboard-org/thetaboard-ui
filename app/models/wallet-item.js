@@ -11,6 +11,6 @@ export default class WalletItemModel extends Model {
 
   @computed('amount', 'market_price')
   get value() {
-    return this.amount * this.market_price;
+    return this.amount * this.market_price || 0;
   }
 }
