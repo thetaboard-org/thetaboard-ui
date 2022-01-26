@@ -24,6 +24,7 @@ export default class MenuComponent extends Component {
       name: 'menu.marketplace', icon: 'icon-refresh-02', route: 'marketplace.drops',
       children: [
         {name: 'menu.drops', icon: 'icon-app', route: 'marketplace.drops'},
+        // {name: 'menu.domain', icon: 'icon-book-bookmark', route: 'domain.search'},
       ],
     },
     {
@@ -34,11 +35,7 @@ export default class MenuComponent extends Component {
         {name: 'menu.tfuel_vip', image: 'tfuel-white.png', route: 'staking.tfuelvip'},
       ],
     },
-    {
-      name: 'menu.domain',
-      icon: 'icon-book-bookmark',
-      route: 'domain.search',
-    },
+    
     // {
     //   name: 'menu.domain',
     //   icon: 'icon-book-bookmark',

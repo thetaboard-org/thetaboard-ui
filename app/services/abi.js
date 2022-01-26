@@ -606,6 +606,242 @@ const ThetaboardAuctionSell = [
   }
 ];
 
+const thetaboardDeploymentManager = [
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "nftContract",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "string",
+        "name": "name",
+        "type": "string"
+      },
+      {
+        "indexed": false,
+        "internalType": "string",
+        "name": "url",
+        "type": "string"
+      }
+    ],
+    "name": "NFTDeployed",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "previousOwner",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "newOwner",
+        "type": "address"
+      }
+    ],
+    "name": "OwnershipTransferred",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "string",
+        "name": "sellType",
+        "type": "string"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "nftContract",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "price",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "endDate",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "editionNumber",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "artistWallet",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint8",
+        "name": "split",
+        "type": "uint8"
+      }
+    ],
+    "name": "SellCreated",
+    "type": "event"
+  },
+  {
+    "inputs": [],
+    "name": "owner",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function",
+    "constant": true
+  },
+  {
+    "inputs": [],
+    "name": "renounceOwnership",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "newOwner",
+        "type": "address"
+      }
+    ],
+    "name": "transferOwnership",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "string",
+        "name": "name",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "url",
+        "type": "string"
+      },
+      {
+        "internalType": "address[]",
+        "name": "toBeMinters",
+        "type": "address[]"
+      },
+      {
+        "internalType": "address",
+        "name": "directSellContract",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "price",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "endDate",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "editionNumber",
+        "type": "uint256"
+      },
+      {
+        "internalType": "address",
+        "name": "artistWallet",
+        "type": "address"
+      },
+      {
+        "internalType": "uint8",
+        "name": "split",
+        "type": "uint8"
+      }
+    ],
+    "name": "deployNFTandSell",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "string",
+        "name": "name",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "url",
+        "type": "string"
+      },
+      {
+        "internalType": "address[]",
+        "name": "toBeMinters",
+        "type": "address[]"
+      },
+      {
+        "internalType": "address",
+        "name": "auctionSellContract",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "minBid",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "endDate",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "editionNumber",
+        "type": "uint256"
+      },
+      {
+        "internalType": "address",
+        "name": "artistWallet",
+        "type": "address"
+      },
+      {
+        "internalType": "uint8",
+        "name": "split",
+        "type": "uint8"
+      }
+    ],
+    "name": "deployNFTandAuction",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  }
+];
+
 const thetaboardMarketplace = [
   {
     "inputs": [],
@@ -1391,11 +1627,6 @@ export default class ABIService extends Service {
     return "https://eth-rpc-api.thetatoken.org/rpc"
   }
 
-
-  get ThetaboardDirectSell() {
-    return ThetaboardDirectSell;
-  }
-
   get ThetaboardNFT() {
     return ThetaboardNFT
   }
@@ -1406,6 +1637,26 @@ export default class ABIService extends Service {
 
   get ThetaboardAuctionSell() {
     return ThetaboardAuctionSell;
+  }
+
+  get ThetaboardAuctionSellAddr() {
+    return "0xa061Aa177bC383369AaC266939C8A845DeF51d30";
+  }
+
+  get ThetaboardDirectSell() {
+    return ThetaboardDirectSell;
+  }
+
+  get ThetaboardDirectSellAddr(){
+    return "0x0d2bD4F9b8966D026a07D9Dc97C379AAdD64C912";
+  }
+
+  get ThetaboardDeploymentManager() {
+    return thetaboardDeploymentManager;
+  }
+
+  get ThetaboardDeploymentManagerAddr() {
+    return "0x4d3C120d2CbfCEb65564BE0c4cACf4F724F254A2";
   }
 
   get ThetaboardMarketplace() {
