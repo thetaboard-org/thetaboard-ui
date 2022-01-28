@@ -16,6 +16,7 @@ import {
   getPrice,
   commitDomain,
   getCommitmentTimestamp,
+  getTokenId
 } from "thetaboard-tns";
 
 export default class DomainService extends Service {
@@ -65,20 +66,20 @@ export default class DomainService extends Service {
   }
 
   @action
-  async commitName(commitName) {
+  async commitName(committedName) {
     try {
-      return await commitDomain(commitName.nameToCommit, commitName.secret);
+      return await commitDomain(committedName.nameToCommit, committedName.secret);
     } catch (e) {
       return this.utils.errorNotify(e.message);
     }
   }
 
   @action
-  async getCommitmentTimestamp(commitName) {
+  async getCommitmentTimestamp(committedName) {
     try {
       const commitmentTimestamp = await getCommitmentTimestamp(
-        commitName.nameToCommit,
-        commitName.secret
+        committedName.nameToCommit,
+        committedName.secret
       );
       return commitmentTimestamp.commitmentTimestamp.toNumber() * 1000;
     } catch (e) {
@@ -92,14 +93,23 @@ export default class DomainService extends Service {
     return Number(balance);
   }
 
-  async getPrice(nameToCommit) {
-    const price = await getPrice(nameToCommit);
+  async getPrice(domain) {
+    const price = await getPrice(domain);
     return Number(price.price);
   }
 
-  async buyDomain(commitName) {
+  async getTokenId(domain) {
     try {
-      return await registerDomain(commitName.nameToCommit, commitName.secret);
+      const tokenId = await getTokenId(domain);
+      return tokenId.tokenId;
+    } catch (e) {
+      return this.utils.errorNotify(e.message);
+    }
+  }
+
+  async buyDomain(committedName) {
+    try {
+      return await registerDomain(committedName.nameToCommit, committedName.secret);
     } catch (e) {
       return this.utils.errorNotify(e.message);
     }

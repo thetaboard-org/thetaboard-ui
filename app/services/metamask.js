@@ -19,6 +19,7 @@ export default class MetamaskService extends Service {
   @tracked currentName;
   @tracked provider;
   @tracked networkId;
+  @tracked etherProvider;
 
   initMeta() {
     if (typeof window.ethereum !== 'undefined') {
@@ -78,7 +79,10 @@ export default class MetamaskService extends Service {
       return this.utils.errorNotify(this.intl.t('domain.connect_to_metamask'));
     } else if (accounts[0] !== this.currentAccount) {
       this.isConnected = true;
-      this.currentAccount = accounts[0];
+      const etherProvider = new ethers.providers.Web3Provider(window.ethereum);
+      const signer = etherProvider.getSigner();
+      const address = await signer.getAddress();
+      this.currentAccount = address;
       await this.domain.initDomains();
       const reverseName = await this.domain.getReverseName(this.currentAccount);
       if (reverseName && reverseName.domain) {

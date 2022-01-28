@@ -1,112 +1,83 @@
 
 {{#if nameBought}}
-    <div class="alert alert-success buy-domain">
+    <div id="domain-right-panel" class="col-md-5 domain-left">
+        <button {{on "click" refreshPage}}  class="btn btn-primary btn-fixed-width">{{t 'domain.see_domain'}}</button>
+    </div>
+    <div class="alert alert-thetaboard buy-domain">
         <span> {{t 'domain.domain_bought'}} <b> {{domainName}}.theta </b> </span>
     </div>
-    <button {{on "click" refreshPage}}  class="btn btn-primary">{{t 'domain.see_domain'}}</button>
 {{else}}
-    <div class="alert alert-success buy-domain">
-        <span><b> {{domainName}}.theta </b> {{t 'domain.available_domain'}} {{price}} {{t 'global.tfuel'}}</span>
-    </div>
-    <div>
-        <p class="buy-title">{{t 'domain.buying_steps'}}</p>
-        <div class="row">
-            <div class="steps-domain col-lg-4 col-md-12 {{if isStep1 '' 'opacity50'}}">
-                <div class="card card-chart card-user card-domain-steps">
-                    <div class="card-header ">
-                        <p class="card-text"></p>
-                        <div class="author">
-                            <div class="block block-one"></div>
-                            <div class="block block-two"></div>
-                            <div class="block block-three"></div>
-                            <div class="block block-four"></div>
-                            <img width="75" src="/assets/img/1.png" alt="1"/>
-                            <p class="card-title">{{t 'domain.step1_title'}}</p>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                    {{t 'domain.step1'}}
-                    <br/>
-                    <br/>
-                    {{#if isBalanceEnough}}
-                        {{#if canBuy}}
+    <div id="domain-right-panel" class="col-md-5 domain-left">
+        {{#if isStep1}}
+            {{#if isBalanceEnough}}
+                {{#if canBuy}}
+                {{else}}
+                    <span data-toggle="tooltip" data-placement="top"
+                    title="{{t 'domain.step1'}}">
+                    <button {{on "click" commitName}}  class="btn btn-fixed-width btn-primary {{if commitingName 'disabled'}}">
+                        {{#if timerOn}}
+                            {{t 'domain.registering'}}
+                        {{else if nameCommited}}
+                            {{t 'domain.transaction_pending'}}
+                        {{else if commitingName}}
+                            {{t 'domain.check_metamask'}}
                         {{else}}
-                            <button {{on "click" commitName}}  class="btn btn-primary {{if commitingName 'disabled'}}">
-                                {{#if timerOn}}
-                                    {{t 'domain.registering'}}
-                                {{else if nameCommited}}
-                                    {{t 'domain.transaction_pending'}}
-                                {{else if commitingName}}
-                                    {{t 'domain.check_metamask'}}
-                                {{else}}
-                                    {{t 'domain.request_to_register'}}
-                                {{/if}}
-                            </button>
-                        {{/if}}     
-                    {{/if}}     
-                    </div>
-                </div>
-            </div>
-            <div class="steps-domain col-lg-4 col-md-12 {{if isStep2 '' 'opacity50'}}">
-                <div class="card card-chart card-user card-domain-steps">
-                    <div class="card-header ">
-                        <p class="card-text"></p>
-                        <div class="author">
-                            <div class="block block-one"></div>
-                            <div class="block block-two"></div>
-                            <div class="block block-three"></div>
-                            <div class="block block-four"></div>
-                            <img width="75" src="/assets/img/2.png" alt="1"/>
-                            <p class="card-title">{{t 'domain.step2_title'}}</p>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        {{t 'domain.step2'}}
-                    </div>
-                </div>
-            </div>
-            <div class="steps-domain col-lg-4 col-md-12 {{if isStep3 '' 'opacity50'}}">
-                <div class="card card-chart card-user card-domain-steps">
-                    <div class="card-header ">
-                        <p class="card-text"></p>
-                        <div class="author">
-                            <div class="block block-one"></div>
-                            <div class="block block-two"></div>
-                            <div class="block block-three"></div>
-                            <div class="block block-four"></div>
-                            <img width="75" src="/assets/img/3.png" alt="1"/>
-                            <p class="card-title">{{t 'domain.step3_title'}}</p>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        {{t 'domain.step3'}}
-                        <br/>
-                        <br/>
-                        {{#if isBalanceEnough}}
-                            {{#if canBuy}}
-                                <button {{on "click" buyName}}  class="btn btn-primary {{if commitBuyingName 'disabled'}}">
-                                    {{#if buyingName}}
-                                        {{t 'domain.transaction_pending'}}
-                                    {{else if commitBuyingName}}
-                                        {{t 'domain.check_metamask'}}
-                                    {{else}}
-                                        {{t 'domain.buy_domain'}}
-                                    {{/if}}
-                                </button>
-                            {{/if}}
+                            {{t 'domain.request_to_register'}}
                         {{/if}}
-                    </div>
-                </div>
-            </div>
-        </div>
-            <div style="{{if timerOn '' 'display:none;'}}" class="progress-bar-container">
-                <div class="progress-bar stripes">
+                    </button>
+                    </span>
+                    {{enableTooltip}}
+                {{/if}}
+            {{/if}}
+        {{/if}}
+
+        {{#if isStep2}}
+            <span data-toggle="tooltip" data-placement="top" title="{{t 'domain.valid_for_24h'}} {{formattedTimestamp}}">
+                <div class="btn btn-fixed-width domain-connect ">{{t 'domain.requested'}}<br/></div>
+            </span>
+        {{/if}}
+
+        <div style="{{if timerOn '' displayNone}}" class="progress-bar-container domain">
+            <span data-toggle="tooltip" data-placement="top" title="{{t 'domain.step2'}}">
+                <div class="progress-bar">
                     <span class="progress-bar-inner"></span>
                 </div>
-            </div>
+                <div class="progress-placeholder-text">
+                    <img class="progress-clock" src="/assets/img/clock.png"/> {{t 'domain.1min'}}
+                </div>
+            </span>
+        </div>
+
+        {{#if isStep3}}
+            {{#if isBalanceEnough}}
+                {{#if canBuy}}
+                    <span data-toggle="tooltip" data-placement="top" title="{{t 'domain.valid_for_24h'}}  {{formattedTimestamp}}">
+                        <div class="btn btn-fixed-width domain-connect ">{{t 'domain.requested'}}<br/></div>
+                    </span>
+                    <br/>
+                    <div class="btn btn-fixed-width domain-connect">{{t 'domain.ready'}}</div>
+                    <br/>
+                    <span data-toggle="tooltip" data-placement="top" title="{{t 'domain.step3'}}">
+                        <button {{on "click" buyName}} class="btn btn-fixed-width btn-primary {{if commitBuyingName 'disabled'}}">
+                            {{#if buyingName}}
+                                {{t 'domain.transaction_pending'}}
+                            {{else if commitBuyingName}}
+                                {{t 'domain.check_metamask'}}
+                            {{else}}
+                                {{t 'domain.buy_domain'}}
+                            {{/if}}
+                        </button>
+                    </span>
+                {{/if}}
+            {{/if}}
+        {{/if}}
+
         {{#if isBalanceEnough}}
         {{else}}
             <button class="btn btn-secondary">{{t 'domain.insufficient_funds'}}</button>
         {{/if}}
+    </div>
+     <div class="alert alert-success buy-domain">
+        <span><b> {{domainName}}.theta </b> {{t 'domain.available_domain'}} {{price}} {{t 'global.tfuel'}}</span>
     </div>
 {{/if}}

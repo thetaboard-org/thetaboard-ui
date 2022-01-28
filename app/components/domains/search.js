@@ -11,6 +11,14 @@ export default class DomainsSearchComponent extends Component {
     if (this.tns) {
       this.initWithTNS();
     }
+    if (typeof window.ethereum !== 'undefined') {
+      window.ethereum.on('chainChanged', () => {
+        this.checkNameAvailable();
+      });
+      window.ethereum.on('accountsChanged', () => {
+        this.checkNameAvailable();
+      });
+    }
   }
 
   @service domain;
