@@ -15,6 +15,12 @@
   {{else if (eq availiability 3)}}
     Your Metamask Wallet is not the token owner
   {{else if (eq availiability 4)}}
+    Selling NFT for : {{nft.properties.selling_info.price}} <img
+      src="{{rootURL}}/assets/img/logo/tfuel.png" style="width: 15px; margin-left: 3px; vertical-align: unset;"><br>
+    <button type="button" {{on "click" this.cancel_sell}} class="btn btn-fill btn-warning">
+      Cancel Sell
+    </button>
+  {{else if (eq availiability 5)}}
     {{#if this.transfer_initiated}}
       <form {{on 'submit' this.transfer}}>
         <Input

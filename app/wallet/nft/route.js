@@ -5,6 +5,8 @@ import fetch from 'fetch';
 export default class NFTRoute extends Route {
   @service('theta-sdk') thetaSdk;
   @service('store') store;
+  @service metamask;
+  @service abi;
 
   async model() {
     if (this.thetaSdk.currentGroup) {
@@ -16,8 +18,8 @@ export default class NFTRoute extends Route {
     if (!this.wallets) {
       return [];
     } else {
-      const total =  {totalCount: 0, NFTs: [], wallets: this.wallets};
-      await Promise.all(this.wallets.map(async (wallet)=>{
+      const total = {totalCount: 0, NFTs: [], wallets: this.wallets};
+      await Promise.all(this.wallets.map(async (wallet) => {
         const fetched = await fetch(`/explorer/wallet-nft/${wallet}`);
         const fetchedJSON = await fetched.json();
         total.totalCount += fetchedJSON.totalCount;

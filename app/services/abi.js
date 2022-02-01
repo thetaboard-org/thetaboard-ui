@@ -1628,7 +1628,7 @@ export default class ABIService extends Service {
   }
 
   get ThetaboardNFT() {
-    return ThetaboardNFT
+    return ThetaboardNFT;
   }
 
   get ThetaboardNFTByteCode() {
