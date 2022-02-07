@@ -41,10 +41,14 @@ export default class HoldingPieComponent extends Component {
       een_amount = eliteEdgeNodes.reduce((a, b) => a + b.amount, 0);
     }
 
-    let theta_value = this.thetaSdk.walletList.filter((x) => x.type === 'wallet' && x.currency === 'theta').reduce((a, b) => a + b.value, 0);
-    let theta_amount = this.thetaSdk.walletList.filter((x) => x.type === 'wallet' && x.currency === 'theta').reduce((a, b) => a + b.amount, 0);
-    let tfuel_value = this.thetaSdk.walletList.filter((x) => x.type === 'wallet' && x.currency === 'tfuel').reduce((a, b) => a + b.value, 0);
-    let tfuel_amount = this.thetaSdk.walletList.filter((x) => x.type === 'wallet' && x.currency === 'tfuel').reduce((a, b) => a + b.amount, 0);
+    const theta_value = this.thetaSdk.walletList.filter((x) => x.type === 'wallet' && x.currency === 'theta').reduce((a, b) => a + b.value, 0);
+    const theta_amount = this.thetaSdk.walletList.filter((x) => x.type === 'wallet' && x.currency === 'theta').reduce((a, b) => a + b.amount, 0);
+    const tfuel_value = this.thetaSdk.walletList.filter((x) => x.type === 'wallet' && x.currency === 'tfuel').reduce((a, b) => a + b.value, 0);
+    const tfuel_amount = this.thetaSdk.walletList.filter((x) => x.type === 'wallet' && x.currency === 'tfuel').reduce((a, b) => a + b.amount, 0);
+    const tdrop_value = this.thetaSdk.walletList.filter((x) => x.type === 'wallet' && x.currency === 'tdrop').reduce((a, b) => a + b.value, 0);
+    const tdrop_amount = this.thetaSdk.walletList.filter((x) => x.type === 'wallet' && x.currency === 'tdrop').reduce((a, b) => a + b.amount, 0);
+    const tdrop_stacked_value = this.thetaSdk.walletList.filter((x) => x.type !== 'wallet' && x.currency === 'tdrop').reduce((a, b) => a + b.value, 0);
+    const tdrop_stacked_amount = this.thetaSdk.walletList.filter((x) => x.type !== 'wallet' && x.currency === 'tdrop').reduce((a, b) => a + b.amount, 0);
     const types = [
       {
         label: `EEN (${numberWithCommas(een_amount.toFixed(2))})`,
@@ -59,16 +63,26 @@ export default class HoldingPieComponent extends Component {
       {
         label: `Theta (${numberWithCommas(theta_amount.toFixed(2))})`,
         value: theta_value,
-        color: '#58d8f5',
+        color: '#317d8e',
       },
       {
         label: `Tfuel (${numberWithCommas(tfuel_amount.toFixed(2))})`,
         value: tfuel_value,
         color: '#ffa113',
       },
+      {
+        label: `Tdrop (${numberWithCommas(tdrop_amount.toFixed(2))})`,
+        value: tdrop_value,
+        color: '#00e4fc',
+      },
+      {
+        label: `Tdrop stake (${numberWithCommas(tdrop_stacked_amount.toFixed(2))})`,
+        value: tdrop_stacked_value,
+        color: '#a0d4d9',
+      },
     ];
-    // this.thetaSdk.walletList.map((x) => x.value);
-    let data = {
+
+    const data = {
       datasets: [
         {
           data: types.map((x) => x.value),
