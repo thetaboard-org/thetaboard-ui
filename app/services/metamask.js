@@ -48,7 +48,7 @@ export default class MetamaskService extends Service {
           return this.utils.errorNotify(this.intl.t('domain.multiple_wallet'));
         }
         this.networkId = parseInt(await window.ethereum.request({ method: 'eth_chainId' }));
-        if (this.networkId !== 365) {
+        if (this.networkId !== 361) {
           return this.utils.errorNotify(this.intl.t('domain.select_theta'));
         }
         const etherProvider = new ethers.providers.Web3Provider(window.ethereum);
@@ -91,6 +91,7 @@ export default class MetamaskService extends Service {
         this.currentName = null;
       }
       this.utils.successNotify(this.intl.t('domain.connect_to') + this.currentAccount);
+      return address;
     }
   }
 

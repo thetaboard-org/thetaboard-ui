@@ -1,49 +1,14 @@
-{{!-- <Input {{on "keyup" checkAddressToName}} @placeholder="{{t 'domain.transfer_placeholder'}}" @type="text" class="form-control border-color input-domain-transfer-address" @value={{transferToAddress}}/>
-{{#if transferLookup}}
-    <p class="lookup-address-transfer">{{transferLookup}}</p>
-    <p></p>
-{{/if}} --}}
-
-
-{{!-- {{#if reversed}}
-    <div class="alert alert-success buy-domain">
-        <span><b> {{domainName}}.theta </b> {{t 'domain.domain_reversed'}}</span>
+{{#if isOwner}}
+    <div class="alert alert-thetaboard buy-domain">
+        <span><b>{{t 'domain.own_domain'}} {{domainName}}.theta</b></span>
     </div>
-    <button {{on "click" refreshPage}}  class="btn btn-primary">{{t 'domain.see_domain'}}</button>
-{{else}} --}}
-    {{#if isOwner}}
+    {{#if isCurrentReverseName}}
         <div class="alert alert-thetaboard buy-domain">
-            <span><b>{{t 'domain.own_domain'}} {{domainName}}.theta</b></span>
-        </div>
-        {{#if isCurrentReverseName}}
-            <div class="alert alert-thetaboard buy-domain">
-                <span><b>{{domainName}}.theta {{t 'domain.domain_is_reverse_name'}}</b></span>
-            </div>
-        {{/if}}
-        {{!-- {{#if reverseNameForm}}
-            <p>{{t 'domain.about_to_reverse_name'}} <span class="bold">{{domainName}}.theta</span> {{t 'domain.to_address'}}</p>
-            <p>{{metamask.currentAccount}}</p>
-            {{#if commitingToReverse}}
-            {{else}}
-                <button class="btn btn-secondary" {{on 'click' toggleReverseNameForm}}>{{t 'global.cancel'}}</button>
-            {{/if}}
-            <button class="btn btn-primary {{if commitingToReverse 'disabled'}}" {{on 'click' setReverseName}}>
-                {{#if reversing}}
-                    {{t 'domain.transaction_pending'}}
-                {{else if commitingToReverse}}
-                    {{t 'domain.check_metamask'}}
-                {{else}}
-                    {{t 'global.submit'}}
-                {{/if}}
-            </button>
-        {{else}}
-            {{#if canReverseName}}
-                <button class="btn btn-primary" {{on 'click' toggleReverseNameForm}}>{{t 'domain.set_reverse_name'}}</button>
-            {{/if}}
-        {{/if}} --}}
-    {{else}}
-        <div class="alert alert-warning buy-domain">
-            <span><b> {{domainName}}.theta </b> {{t 'domain.already_registered'}}</span>
+            <span><b>{{domainName}}.theta {{t 'domain.domain_is_reverse_name'}}</b></span>
         </div>
     {{/if}}
-{{!-- {{/if}} --}}
+{{else}}
+    <div class="alert alert-warning buy-domain">
+        <span><b> {{domainName}}.theta </b> {{t 'domain.already_registered'}}</span>
+    </div>
+{{/if}}

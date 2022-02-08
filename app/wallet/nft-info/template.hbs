@@ -8,7 +8,7 @@
       <div class="block block-two"></div>
       <div class="block block-three"></div>
       <div class="block block-four"></div>
-      <LinkTo @route="wallet.nft" @class="nft-back-to-wallet">{{t 'NFT.back_to_wallet'}}</LinkTo>
+      <LinkTo @route="wallet.nft" @class="nft-back-to-wallet"><img width="50" src="/assets/img/back-medium.png"/></LinkTo>
     </div>
     <div class="card-body-stake">
       <h5 class="title">{{nft.name}}</h5>
@@ -24,8 +24,8 @@
       </div>
       <br/>
       <p class="description">{{nft.description}}</p>
-      <br/>
       {{#if nft.attributes.length}}
+        <br/>
         <h3 style="margin-bottom: 0px;">{{t 'drop.attributes'}}:</h3>
         <br/>
         {{#each nft.attributes as |attribute|}}
@@ -33,16 +33,20 @@
         {{/each}}
         <br/>
       {{/if}}
-      <br/>
       {{#if nft.properties.assets.length}}
+        <br/>
         <h3>{{t 'drop.additional_assets'}}:</h3>
         {{#each nft.properties.assets as |nftAsset|}}
           {{nft-info/nft-asset-tile nftAsset=nftAsset}}
         {{/each}}
       {{/if}}
-      <br/>
       {{#if nft.properties.artist}}
+        <br/>
         {{marketplace/artist-tile artist=nft.properties.artist}}
+        <br/>
+      {{/if}}
+      {{#if isTNS}}
+        {{domains/nft-info/tns nft=nft}}
       {{/if}}
     </div>
   </div>

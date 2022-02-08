@@ -1,0 +1,62 @@
+{{#if metamask.currentAccount}}
+    {{#if isOwner}}
+        <div class="tns-control-panel">
+            <div class="tns-item">
+                <span class="tns-span green">{{t 'domain.owned'}}</span>
+                {{domains/nft-info/tns-transfer refreshComponent=initComponent domainName=nft.name}}
+            </div>
+
+            {{#if canReclaimController}}
+                <div class="tns-item">
+                    <span class="tns-span red">{{t 'domain.not_registered'}}</span>
+                    {{domains/nft-info/tns-reclaim-controller refreshComponent=initComponent domainName=nft.name}}
+                </div>
+
+            {{else}}
+                <div class="tns-item">
+                    <span class="tns-span green">{{t 'domain.registered'}}</span>
+                    <img class="float" src="/assets/img/done-small.png"/>
+                </div>
+            {{/if}}
+
+            {{#if canEditAddressRecord}}
+                <div class="tns-item">
+                    <span class="tns-span red">{{t 'domain.not_assigned'}}</span>
+                    {{domains/nft-info/tns-edit-address-record refreshComponent=initComponent domainName=nft.name}}
+                </div>
+            {{else if isAddressRecord}}
+                <div class="tns-item">
+                    <span class="tns-span green">{{t 'domain.assigned'}}</span>
+                    <img class="float" src="/assets/img/done-small.png"/>
+                </div>
+            {{else}}
+                <div class="tns-item">
+                    <span class="tns-span grey">{{t 'domain.not_assigned'}}</span>
+                    <img class="float" src="/assets/img/not-done-small.png"/>
+                </div>
+            {{/if}}
+
+
+            {{#if canReverseName}}
+                <div class="tns-item">
+                    <span class="tns-span red">{{t 'domain.not_activted'}}</span>
+                    {{domains/nft-info/tns-reverse-name refreshComponent=initComponent domainName=nft.name}}
+                </div>
+            {{else if isReverseName}}
+                <div class="tns-item">
+                    <span class="tns-span green">{{t 'domain.activated'}}</span>
+                    <img class="float" src="/assets/img/done-small.png"/>
+                    {{domains/nft-info/tns-unset-address-record refreshComponent=initComponent domainName=nft.name}}
+                </div>
+            {{else}}
+                <div class="tns-item">
+                    <span class="tns-span grey">{{t 'domain.not_activted'}}</span>
+                    <img class="float" src="/assets/img/not-done-small.png"/>
+                </div>
+            {{/if}}
+
+        </div>
+    {{/if}}
+{{else}}
+    <button {{on 'click' metamask.connect}} class="btn connect-metamask btn-primary">{{t 'domain.connect'}}</button>
+{{/if}}

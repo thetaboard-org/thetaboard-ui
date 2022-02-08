@@ -882,4 +882,8 @@ export default class ABIService extends Service {
   get ThetaboardDeploymentManagerAddr() {
     return "0x4d3C120d2CbfCEb65564BE0c4cACf4F724F254A2";
   }
+
+  get tnsRegistrarContractAddr() {
+    return "0xbb4d339a7517c81c32a01221ba51cbd5d3461a94"
+  }
 }

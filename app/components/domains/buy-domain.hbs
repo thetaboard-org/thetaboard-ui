@@ -1,7 +1,8 @@
 
 {{#if nameBought}}
     <div id="domain-right-panel" class="col-md-5 domain-left">
-        <button {{on "click" refreshPage}}  class="btn btn-primary btn-fixed-width">{{t 'domain.see_domain'}}</button>
+        <LinkTo @route="wallet.nft-info" @models={{array abi.tnsRegistrarContractAddr tokenId}} @class="btn btn-primary btn-fixed-width">{{t 'domain.see_domain'}}</LinkTo>
+
     </div>
     <div class="alert alert-thetaboard buy-domain">
         <span> {{t 'domain.domain_bought'}} <b> {{domainName}}.theta </b> </span>
@@ -14,17 +15,23 @@
                 {{else}}
                     <span data-toggle="tooltip" data-placement="top"
                     title="{{t 'domain.step1'}}">
-                    <button {{on "click" commitName}}  class="btn btn-fixed-width btn-primary {{if commitingName 'disabled'}}">
                         {{#if timerOn}}
-                            {{t 'domain.registering'}}
+                            <button class="btn btn-fixed-width btn-primary disabled">
+                                {{t 'domain.registering'}}
+                            </button>
                         {{else if nameCommited}}
-                            {{t 'domain.transaction_pending'}}
+                            <button class="padding510 btn btn-fixed-width btn-primary disabled">
+                                <img width="46" src="/assets/img/loader.gif" />
+                            </button>
                         {{else if commitingName}}
-                            {{t 'domain.check_metamask'}}
+                            <button class="padding510 btn btn-fixed-width btn-primary disabled">
+                                <img width="46" src="/assets/img/mm-on-small.png" />
+                            </button>
                         {{else}}
-                            {{t 'domain.request_to_register'}}
+                            <button {{on "click" commitName}}  class="btn btn-fixed-width btn-primary {{if commitingName 'disabled'}}">
+                                {{t 'domain.request_to_register'}}
+                            </button>
                         {{/if}}
-                    </button>
                     </span>
                     {{enableTooltip}}
                 {{/if}}
@@ -43,7 +50,7 @@
                     <span class="progress-bar-inner"></span>
                 </div>
                 <div class="progress-placeholder-text">
-                    <img class="progress-clock" src="/assets/img/clock.png"/> {{t 'domain.1min'}}
+                    <img class="progress-clock" src="/assets/img/wait-small.png"/> {{t 'domain.1min'}}
                 </div>
             </span>
         </div>
@@ -58,15 +65,19 @@
                     <div class="btn btn-fixed-width domain-connect">{{t 'domain.ready'}}</div>
                     <br/>
                     <span data-toggle="tooltip" data-placement="top" title="{{t 'domain.step3'}}">
-                        <button {{on "click" buyName}} class="btn btn-fixed-width btn-primary {{if commitBuyingName 'disabled'}}">
-                            {{#if buyingName}}
-                                {{t 'domain.transaction_pending'}}
-                            {{else if commitBuyingName}}
-                                {{t 'domain.check_metamask'}}
-                            {{else}}
+                        {{#if buyingName}}
+                            <button class="padding510 btn btn-fixed-width btn-primary disabled">
+                                <img width="46" src="/assets/img/loader.gif" />
+                            </button>
+                        {{else if commitBuyingName}}
+                            <button class="padding510 btn btn-fixed-width btn-primary disabled">
+                                <img width="46" src="/assets/img/mm-on-small.png" />
+                            </button>
+                        {{else}}
+                            <button {{on "click" buyName}} class="btn btn-fixed-width btn-primary {{if commitBuyingName 'disabled'}}">
                                 {{t 'domain.buy_domain'}}
-                            {{/if}}
-                        </button>
+                            </button>
+                        {{/if}}
                     </span>
                 {{/if}}
             {{/if}}

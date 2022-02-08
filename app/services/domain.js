@@ -16,7 +16,11 @@ import {
   getPrice,
   commitDomain,
   getCommitmentTimestamp,
-  getTokenId
+  getTokenId,
+  changeRegistrant,
+  changeController,
+  reclaimControl,
+  setAddressRecord,
 } from "thetaboard-tns";
 
 export default class DomainService extends Service {
@@ -24,6 +28,9 @@ export default class DomainService extends Service {
   @service utils;
   @service intl;
   @tracked ethersProvider;
+  @tracked addressLookup;
+  @tracked inputAddress;
+  @tracked inputDomain;
 
   async initDomains() {
     this.ethersProvider = new ethers.providers.Web3Provider(this.metamask.provider);
@@ -57,6 +64,24 @@ export default class DomainService extends Service {
   async getRegistrant(domainName) {
     const registrant = await getRegistrant(domainName);
     return registrant;
+  }
+
+  @action
+  async changeRegistrant(domainName, address) {
+    try {
+      return await changeRegistrant(domainName.replace('.theta', ''), address);
+    } catch (e) {
+      return this.utils.errorNotify(e.message);
+    }
+  }
+
+  @action
+  async changeController(domainName, address) {
+    try {
+      return await changeController(domainName.replace('.theta', ''), address);
+    } catch (e) {
+      return this.utils.errorNotify(e.message);
+    }
   }
 
   @action
@@ -124,7 +149,27 @@ export default class DomainService extends Service {
   }
 
   async getAddrForDomain(domain) {
-    return await getAddressRecord(domain);
+    try {
+      return await getAddressRecord(domain);
+    } catch (e) {
+      return this.utils.errorNotify(e.message);
+    }
+  }
+
+  async reclaimControl(domain) {
+    try {
+      return await reclaimControl(domain.replace('.theta', ''), this.metamask.currentAccount);
+    } catch (e) {
+      return this.utils.errorNotify(e.message);
+    }
+  }
+
+  async setAddressRecord(domain, address) {
+    try {
+      return await setAddressRecord(domain.replace('.theta', ''), address);
+    } catch (e) {
+      return this.utils.errorNotify(e.message);
+    }
   }
 
   async waitForTransaction(hash) {
@@ -139,6 +184,45 @@ export default class DomainService extends Service {
       );
     } else {
       return { success: !!receipt.status };
+    }
+  }
+
+  @action
+  async inputHandler(e) {
+    e.preventDefault();
+    this.addressLookup = '';
+    let inputValue = e.currentTarget.value;
+    if (inputValue.endsWith(".theta")) {
+      const address = await this.getAddrForDomain(inputValue.replace(".theta", ""));
+      if (
+        address.addressRecord &&
+        address.addressRecord != '0x0000000000000000000000000000000000000000'
+      ) {
+        const reverse = await this.getReverseName(address.addressRecord);
+        if (reverse.domain == inputValue.replace(".theta", "")) {
+          this.addressLookup = address.addressRecord;
+          this.inputDomain = inputValue;
+        } else {
+          this.addressLookup = '';
+          this.inputDomain = '';
+        }
+      } else {
+        this.inputDomain = '';
+      }
+      this.inputAddress = this.addressLookup;
+    } else if (
+      inputValue.toLowerCase().startsWith('0x') &&
+      inputValue.length == '42'
+    ) {
+      const value = await this.getReverseName(inputValue);
+      if (value.domain) {
+        this.addressLookup = value.domain + ".theta";
+      }
+      this.inputAddress = inputValue;
+      this.inputDomain = this.addressLookup;
+    } else {
+      this.inputAddress = '';
+      this.inputDomain = '';
     }
   }
 }

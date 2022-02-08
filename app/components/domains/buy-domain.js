@@ -17,6 +17,7 @@ export default class DomainsBuyDomainComponent extends Component {
   @service utils;
   @service intl;
   @service store;
+  @service abi;
   @tracked commitingName;
   @tracked timerOn;
   @tracked canBuy;
@@ -26,6 +27,7 @@ export default class DomainsBuyDomainComponent extends Component {
   @tracked nameCommited;
   @tracked nameBought;
   @tracked formattedTimestamp
+  @tracked tokenId;
 
   async initialize() {
     const commitNames = await this.store.query('commitName', {
@@ -162,11 +164,12 @@ export default class DomainsBuyDomainComponent extends Component {
         const price = await this.domain.getPrice(this.nameCommited.nameToCommit);
         const isBalanceEnough = accountBalance >= price;
         if (isBalanceEnough) {
-          const tokentId = await this.domain.getTokenId(this.nameCommited.nameToCommit);
+          this.tokenId = await this.domain.getTokenId(this.nameCommited.nameToCommit);
           const tnsTokenId = this.store.createRecord('tnsTokenId', {
             name: this.nameCommited.nameToCommit,
-            tokenId: tokentId,
+            tokenId: this.tokenId,
           });
+          debugger
           tnsTokenId.save();
           const result = await this.domain.buyDomain(this.nameCommited);
           if (result.tx) {
@@ -205,11 +208,6 @@ export default class DomainsBuyDomainComponent extends Component {
     } else {
       return this.utils.errorNotify(this.intl.t('domain.registration_expired'));
     }
-  }
-
-  @action
-  refreshPage() {
-    return window.location.reload();
   }
 
   get displayNone() {

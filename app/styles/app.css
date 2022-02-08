@@ -1519,10 +1519,7 @@ a.active p.menu-item {
   z-index: 9;
   margin-bottom: 10px;
   display: inline-block;
-  background: black;
-  border: 1px solid #ba54f5;
-  border-radius: 10px;
-  padding: 10px;
+  padding: 0 0 0 10px;
 }
 
 /****** NFT ATTRIBUTES START ******/
@@ -1615,6 +1612,7 @@ a.active p.menu-item {
   border-radius: 10px;
   padding: 10px;
   box-shadow: 2px 2px 12px #060606;
+  cursor: default;
 }
 
 #card-domain .domain-search-button {
@@ -1707,7 +1705,7 @@ a.active p.menu-item {
   height: 50px;
 }
 
-#card-domain p.lookup-address-transfer {
+p.lookup-address-transfer {
   font-weight: bold;
   display: inline-block;
   background: black;
@@ -1828,4 +1826,60 @@ span[data-toggle="tooltip"] {
 
 #card-domain .connect-metamask {
   margin: auto;
+}
+
+.tns-control-panel {
+  margin: auto;
+  max-width: 480px;
+  background: #1e1e25;
+  text-align: left;
+  padding: 20px 80px;
+}
+
+.tns-control-panel .tns-item {
+  margin: 25px 0;
+ }
+
+ .tns-control-panel .tns-item span.tns-span {
+  color: white;
+  font-size: 20px;
+}
+
+.tns-control-panel .tns-item span.green {
+  color: #00bf9a;
+}
+
+.tns-control-panel .tns-item span.red {
+  color: #fd5d93;
+}
+
+.tns-control-panel .tns-item span.grey {
+  color: grey;
+}
+
+.tns-control-panel .tns-item img.float {
+  width: 40px;
+  float: right;
+}
+
+.tns-control-panel .tns-item img.float.spacing {
+  margin-right: 10px;
+}
+
+.cursor {
+  cursor: pointer;
+}
+
+.wrapper button.btn.padding510 {
+  padding: 4px 10px;
+}
+
+.btn-icon-global {
+  cursor: pointer;
+  width: 40px;
+  margin-top: 2px;
+}
+
+.btn-icon-global.right-margin {
+  margin-right: 5px;
 }
