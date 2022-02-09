@@ -169,7 +169,6 @@ export default class DomainsBuyDomainComponent extends Component {
             name: this.nameCommited.nameToCommit,
             tokenId: this.tokenId,
           });
-          debugger
           tnsTokenId.save();
           const result = await this.domain.buyDomain(this.nameCommited);
           if (result.tx) {

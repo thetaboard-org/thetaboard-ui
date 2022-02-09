@@ -8,6 +8,7 @@ import * as thetajs from '@thetalabs/theta-js';
 import {
   isDomainAvailable,
   getReverseName,
+  getRawReverseName,
   setReverseName,
   getRegistrant,
   getController,
@@ -33,7 +34,7 @@ export default class DomainService extends Service {
   @tracked inputDomain;
 
   async initDomains() {
-    this.ethersProvider = new ethers.providers.Web3Provider(this.metamask.provider);
+    this.ethersProvider = new ethers.providers.Web3Provider(window.ethereum);
   }
 
   @action
@@ -57,6 +58,12 @@ export default class DomainService extends Service {
   @action
   async getReverseName(domainName) {
     const name = await getReverseName(domainName);
+    return name;
+  }
+
+  @action
+  async getRawReverseName(domainName) {
+    const name = await getRawReverseName(domainName);
     return name;
   }
 

@@ -231,7 +231,7 @@ domain:
   # reclaim_controller: "Claim control"
   # set_address_record: "Set address record"
   about_to_update_address_record: "The domain's address record will matches your address"
-  about_to_unset_address_record: "You are about to unlink your domain and your address"
+  about_to_unset_address_record: "You are about to unlink your domain from your address"
   address_record_updated: "The domain's address record now matches your address"
   owned: "Owned"
   registered: "Registered"
@@ -241,6 +241,9 @@ domain:
   activated: "Activated"
   not_activted: "Not activated"
   address_record_unset: "Domain is no longer assigned to your address"
+  about_to_assign_all: "You are about to link your domain to your address"
+  multiple_transactions: "It might takes up to 3 metamask transactions"
+  needs_to_own: "The account connected on metamask needs to be the owner of the nft"
   error:
     check_metamask: "Check your MetaMask extension"
     not_owner: "You need to be the owner of the domain to perform this operation"

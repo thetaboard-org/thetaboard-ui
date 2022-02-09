@@ -17,6 +17,8 @@ export default class DomainsNftInfoTnsComponent extends Component {
   @tracked canReverseName;
   @tracked canReclaimController;
   @tracked canEditAddressRecord;
+  @tracked rawReverseName;
+  @tracked addressRecord;
 
   get tnsLabel() {
     return this.nft.name.replace('.theta', '');
@@ -35,6 +37,7 @@ export default class DomainsNftInfoTnsComponent extends Component {
     this.canReverseName = false;
     this.canReclaimController = false;
     this.canEditAddressRecord = false;
+    this.rawReverseName = '';
 
     let currentAddress = this.metamask.currentAccount;
     if (!currentAddress) {
@@ -46,11 +49,18 @@ export default class DomainsNftInfoTnsComponent extends Component {
     //Check if owner of NFT
     if (currentAddress == registrant.registrant) {
       this.isOwner = true;
+
+      //check domain raw reverse name
+      this.rawReverseName = await this.domain.getRawReverseName(currentAddress);
+
+      //check domain raw reverse name
+      let addressRecord = await this.domain.getAddrForDomain(this.tnsLabel);
+      this.addressRecord = addressRecord.addressRecord;
+
       //Check if controller of NFT
       const controller = await this.domain.getController(this.tnsLabel);
       if (currentAddress == controller.controller) {
         this.isController = true;
-        const addressRecord = await this.domain.getAddrForDomain(this.tnsLabel);
 
         //Check if address record match controller and registrant
         if (currentAddress == addressRecord.addressRecord) {

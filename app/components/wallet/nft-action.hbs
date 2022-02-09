@@ -1,37 +1,48 @@
-{{#if this.transfer_initiated}}
-  <form {{on 'submit' this.transfer}}>
-    <Input
-      @class="form-control"
-      @type="text"
-      placeholder="Destination Address"
-      @value={{this.destinationAddr}}
-      pattern="^0x[a-fA-F0-9]{40}$"
-      required
-    />
-
-    <button type="submit" class="btn btn-fill btn-primary">
-      Execute transfer
-    </button>
-  </form>
-{{else}}
-  {{#async-await metamaskAvailable as |available|}}
-    {{#if (eq available true)}}
-      <button type="button" {{on "click" this.init_transfer}} class="btn btn-fill btn-primary">
-        Transfer NFT
-      </button>
+{{#if metamask.currentAccount}}
+    {{!-- can transfer --}}
+    {{#async-await isOwner as |owner|}}
+        {{#if (eq owner true)}}
+            {{#if transferPanel}}
+                <p>{{t 'global.transfer'}}</p>
+                <p></p>
+                <Input {{on "keyup" inputHandler}} 
+                    @placeholder="{{t 'domain.transfer_placeholder'}}" 
+                    @type="text" class="form-control border-color input-domain-transfer-address"
+                    @value=""
+                    pattern="^0x[a-fA-F0-9]{40}$"
+                    required/>
+                {{#if addressLookup}}
+                    <p class="lookup-address-transfer">{{addressLookup}}</p>
+                    <p></p>
+                {{/if}}
+                <p></p>
+                {{#if commitingToTransfer}}
+                {{else}}
+                    <img class="btn-icon-global right-margin" {{on 'click' toggleTransferPanel}} src="/assets/img/cancel-small.png" />
+                {{/if}}
+                {{#if transfering}}
+                    <img width="40" src="/assets/img/loader-square-fixed-small.png" />
+                {{else if commitingToTransfer}}
+                    <img width="40" src="/assets/img/see-mm-small.png" />
+                {{else}}
+                    <img class="btn-icon-global" {{on 'click' transfer}} src="/assets/img/ok-small.png" />
+                {{/if}}
+            {{else}}
+                <img class="cursor float" {{on 'click' toggleTransferPanel}} src="/assets/img/transfer-small.png"/>
+            {{/if}}
+        {{else}}
+            <span data-toggle="tooltip" data-placement="top"
+                title="{{owner}}" data-original-title="Tooltip on top">
+                <img class="cursor float" src="/assets/img/transfer-greyed-small.png"/>
+            </span>
+        {{/if}}
     {{else}}
-      <span data-toggle="tooltip" data-placement="top"
-            title="{{available}}" data-original-title="Tooltip on top">
-        <button type="button" class="btn btn-fill btn-primary" disabled>
-          Transfer NFT
-        </button>
-      </span>
-      {{enableTooltip}}
-    {{/if}}
-  {{else}}
-    <button type="button" class="btn btn-fill btn-primary" disabled>
-      Transfer NFT
-    </button>
-  {{/async-await}}
+        <img class="cursor float" src="/assets/img/transfer-greyed-small.png"/>
+    {{/async-await}}
+{{else}}
+    <span data-toggle="tooltip" data-placement="top"
+        title="{{t 'domain.connect_to_metamask'}}" data-original-title="Tooltip on top">
+        <img class="cursor float" src="/assets/img/transfer-greyed-small.png"/>
+    </span>
+    {{enableTooltip}}
 {{/if}}
-

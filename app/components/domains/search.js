@@ -42,12 +42,8 @@ export default class DomainsSearchComponent extends Component {
     if (commitNames.length) {
       const twentyFourHours = 86400000;
       commitNames.forEach((commitName) => {
-        console.log(commitName.nameToCommit);
-        console.log(commitName.account);
-        console.log(commitName.timestamp);
         const timeDifference = moment(new Date()).diff(commitName.timestamp);
         if (timeDifference >= twentyFourHours) {
-          console.log("destroyed record");
           commitName.destroyRecord();
         }
       });
