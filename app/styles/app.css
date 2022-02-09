@@ -1519,10 +1519,7 @@ a.active p.menu-item {
   z-index: 9;
   margin-bottom: 10px;
   display: inline-block;
-  background: black;
-  border: 1px solid #ba54f5;
-  border-radius: 10px;
-  padding: 10px;
+  padding: 0 0 0 10px;
 }
 
 /****** NFT ATTRIBUTES START ******/
@@ -1615,6 +1612,15 @@ a.active p.menu-item {
   border-radius: 10px;
   padding: 10px;
   box-shadow: 2px 2px 12px #060606;
+  cursor: default;
+}
+
+#card-domain .domain-search-button {
+  margin-right: 67px;
+}
+
+#card-domain .domain-left-main-container {
+  text-align: right;
 }
 
 #card-domain .domain-connect:hover {
@@ -1629,19 +1635,32 @@ a.active p.menu-item {
   text-align: center;
 }
 
-#card-domain .input-domain-search {
-  border-radius: 6px;
-  font-size: 20px;
-  width: 80%;
-  padding: 15px;
-  display: block;
-  margin: 25px auto;
-  text-align: center;
+.domain-left {
+  text-align: left;
+  margin-top: 25px;
 }
 
-#card-domain .domain-search-button {
-  font-size: 18px;
-  padding: 20px 40px;
+#card-domain .input-domain-search {
+  border-radius: 6px 0px 0 6px;
+  font-size: 15px;
+  width: 250px;
+  padding: 15px;
+  display: inline-block;
+  margin: 25px 0 10px;
+  text-align: right;
+  border-right: none;
+}
+
+#card-domain .theta-search-label {
+  color: white;
+  border-right: 1px solid rgb(118, 118, 118);
+  border-top: 1px solid rgb(118, 118, 118);
+  border-bottom: 2px solid rgb(118, 118, 118);
+  padding: 15px;
+  display: inline-block;
+  margin: 0;
+  font-size: 15px;
+  border-radius: 0px 6px 6px 0px;
 }
 
 #card-domain .invalid-domain {
@@ -1650,9 +1669,9 @@ a.active p.menu-item {
 }
 
 #card-domain .buy-domain {
-  width: 80%;
+  width: 60%;
   margin: 25px auto;
-  font-size: 18px;
+  font-size: 16px;
 }
 
 #card-domain .buy-title {
@@ -1686,16 +1705,182 @@ a.active p.menu-item {
   height: 50px;
 }
 
-#card-domain p.lookup-address-transfer {
+p.lookup-address-transfer {
   font-weight: bold;
   display: inline-block;
   background: black;
   padding: 10px 25px;
   border-radius: 25px;
   border: 1px solid #e14eca;
-  margin-top: 10px;  
+  margin-top: 10px;
+  width: 100%;  
 }
 
 .bold {
   font-weight: bold;
+}
+
+.btn-fixed-width {
+  width: 190px;
+}
+
+div.btn.btn-fixed-width.btn-primary {
+  cursor: default;
+  display: block;
+  margin: 0 0 5px;
+}
+
+.btn.btn-fixed-width.btn-primary {
+  padding: 17px 10px;
+  margin-top: 2px;
+}
+
+#card-domain .btn.btn-fixed-width.domain-connect {
+  padding: 17px 10px;
+  margin-top: 2px;
+}
+
+div.btn.btn-fixed-width.btn-primary:hover {
+  transform: none;
+  -webkit-transform: none;
+}
+
+
+.progress-bar-container.domain {
+  width: 190px;
+  position: relative;
+}
+
+.progress-bar-container.domain .progress-bar {
+  width: 190px;
+  background: black;
+  border: 1px solid #ba54f5;
+  color: #ba54f5;
+  border-radius: 10px;
+  box-shadow: 2px 2px 12px #060606;
+  height: 55px;
+  margin: 0;
+}
+
+.progress-bar-container.domain .progress-bar .progress-bar-inner {
+  height: 55px;
+  background-image: linear-gradient(to bottom left, #e14eca, #ba54f5, #e14eca);
+  background-image: -webkit-linear-gradient(to bottom left, #e14eca, #ba54f5, #e14eca);
+  background-image: -o-linear-gradient(to bottom left, #e14eca, #ba54f5, #e14eca);
+  background-image: -moz-linear-gradient(to bottom left, #e14eca, #ba54f5, #e14eca);
+  border-radius: 9px;
+}
+
+.progress-placeholder-text {
+  position: absolute;
+  top: 11px;
+  left: 55px;
+  color: white;
+  font-weight: 600;
+}
+
+.progress-clock {
+  width: 32px;
+  margin-right: 5px;
+}
+
+span[data-toggle="tooltip"] {
+  display: inline-block;
+}
+
+
+@media screen and (max-width: 768px) {
+  #domain-right-panel {
+    text-align: center;
+  }
+
+  #domain-right-panel div.btn {
+    margin: 10px auto;
+  }
+
+  #domain-right-panel .progress-bar-container.domain {
+    margin: auto;
+  }
+
+  #card-domain .domain-search-button {
+    margin-right: 0;
+  }
+  
+  #card-domain .domain-left-main-container {
+    text-align: center;
+  }
+}
+
+.alert.alert-thetaboard{
+  background-image: -webkit-linear-gradient(to bottom left, #e14eca, #ba54f5, #e14eca);
+  background-image: -o-linear-gradient(to bottom left, #e14eca, #ba54f5, #e14eca);
+  background-image: -moz-linear-gradient(to bottom left, #e14eca, #ba54f5, #e14eca);
+  background-image: linear-gradient(to bottom left, #e14eca, #ba54f5, #e14eca);
+  background-size: 210% 210%;
+  background-position: top right;
+  background-color: #e14eca;
+}
+
+#card-domain .buy-domain.alert.alert-thetaboard{
+  margin: 10px auto;
+}
+
+#card-domain .connect-metamask {
+  margin: auto;
+}
+
+.tns-control-panel {
+  margin: auto;
+  max-width: 480px;
+  background: #1e1e25;
+  text-align: left;
+  padding: 20px 80px;
+}
+
+.tns-control-panel .tns-item {
+  margin: 25px 0;
+ }
+
+ .tns-control-panel .tns-item span.tns-span {
+  color: white;
+  font-size: 20px;
+}
+
+.tns-control-panel .tns-item span.green {
+  color: #00bf9a;
+}
+
+.tns-control-panel .tns-item span.red {
+  color: #fd5d93;
+}
+
+.tns-control-panel .tns-item span.grey {
+  color: grey;
+}
+
+.tns-control-panel .tns-item img.float {
+  width: 40px;
+  float: right;
+}
+
+.tns-control-panel .tns-item img.float.spacing {
+  margin-right: 10px;
+}
+
+.cursor {
+  cursor: pointer;
+}
+
+.wrapper button.btn.padding510 {
+  padding: 4px 10px;
+}
+
+.btn-icon-global {
+  cursor: pointer;
+  width: 40px;
+  margin-top: 2px;
+}
+
+.btn-icon-global.right-margin {
+  margin-right: 5px;
 }

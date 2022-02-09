@@ -1,0 +1,21 @@
+{{#if edited}}
+{{else}}
+    {{#if editPanel}}
+        <p>{{t 'domain.about_to_update_address_record'}} <b>{{metamask.currentAccount}}</b></p>
+        {{#if commitingToEdit}}
+        {{else}}
+            <img class="btn-icon-global right-margin" {{on 'click' toggleEditPanel}} src="/assets/img/cancel-small.png" />
+        {{/if}}
+            {{#if editing}}
+                <img width="40" src="/assets/img/loader-square-fixed-small.png" />
+            {{else if commitingToEdit}}
+                <img width="40" src="/assets/img/see-mm-small.png" />
+            {{else}}
+                <img class="btn-icon-global" {{on 'click' editAddressRecord}} src="/assets/img/ok-small.png" />
+            {{/if}}
+    {{else}}
+        <img class="cursor float" {{on 'click' toggleEditPanel}} src="/assets/img/set-action-small.png"/>
+    {{/if}}
+{{/if}}
+
+

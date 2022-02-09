@@ -12,6 +12,7 @@ export default class ApplicationController extends Controller {
   @service router;
   @service session;
   @service currentUser;
+  @service metamask;
 
   get isShowMenu() {
     return (

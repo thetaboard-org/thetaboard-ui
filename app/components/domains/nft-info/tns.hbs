@@ -1,0 +1,34 @@
+{{#if metamask.currentAccount}}
+    {{#if isOwner}}
+        <div class="tns-control-panel">
+            <div class="tns-item">
+                <span class="tns-span green">{{t 'domain.owned'}}</span>
+                {{domains/nft-info/tns-transfer refreshComponent=initComponent domainName=nft.name}}
+            </div>
+
+            {{#if isReverseName}}
+                <div class="tns-item">
+                    <span class="tns-span green">{{t 'domain.assigned'}}</span>
+                    <img class="float" src="/assets/img/done-small.png"/>
+                    {{domains/nft-info/tns-unset-address-record refreshComponent=initComponent domainName=nft.name}}
+                </div>
+            {{else}}
+                <div class="tns-item">
+                    <span class="tns-span red">{{t 'domain.not_assigned'}}</span>
+                    {{domains/nft-info/tns-assign-all
+                        refreshComponent=initComponent
+                        domainName=nft.name
+                        canReclaimController=canReclaimController
+                        canEditAddressRecord=canEditAddressRecord
+                        canReverseName=canReverseName
+                        rawReverseName=rawReverseName
+                        addressRecord=addressRecord
+                    }}
+                </div>
+            {{/if}}
+
+        </div>
+    {{/if}}
+{{else}}
+    <button {{on 'click' metamask.connect}} class="btn connect-metamask btn-primary">{{t 'domain.connect'}}</button>
+{{/if}}

@@ -20,6 +20,7 @@ export default class MetamaskService extends Service {
   @tracked currentName;
   @tracked provider;
   @tracked networkId;
+  @tracked etherProvider;
 
   async initMeta() {
     if (typeof window.ethereum !== 'undefined') {
@@ -52,12 +53,12 @@ export default class MetamaskService extends Service {
     this.isConnected = null;
     this.currentAccount = null;
     this.currentName = null;
-    if (hideNotif) return;
+    if (hideNotif == true) return;
     this.utils.successNotify(this.intl.t('domain.disconnected_from_metmask'));
   }
 
   @action
-  async connect() {
+  async connect(silent) {
     try {
       this.provider = await detectEthereumProvider();
       if (this.provider) {
@@ -66,13 +67,13 @@ export default class MetamaskService extends Service {
           return this.utils.errorNotify(this.intl.t('domain.multiple_wallet'));
         }
         this.networkId = parseInt(await window.ethereum.request({ method: 'eth_chainId' }));
-        if (this.networkId !== 365) {
+        if (this.networkId !== 361) {
           return this.utils.errorNotify(this.intl.t('domain.select_theta'));
         }
         const etherProvider = new ethers.providers.Web3Provider(window.ethereum);
         const signer = etherProvider.getSigner();
         const address = await signer.getAddress();
-        return await this.handleAccountsChanged([address]);
+        return await this.handleAccountsChanged([address], silent == true);
       } else {
         return this.utils.errorNotify(this.intl.t('domain.install_metamask'));
       }
@@ -82,7 +83,7 @@ export default class MetamaskService extends Service {
       }
       if (e.operation == 'getAddress') {
         const provider = new ethers.providers.Web3Provider(window.ethereum);
-        this.utils.errorNotify(this.intl.t('domain.error.check_metamask'))
+        this.utils.errorNotify(this.intl.t('domain.error.check_metamask'));
         await provider.send("eth_requestAccounts", []);
         return;
       }
@@ -91,13 +92,19 @@ export default class MetamaskService extends Service {
   }
 
   @action
-  async handleAccountsChanged(accounts) {
+  async handleAccountsChanged(accounts, silent) {
     if (accounts.length === 0) {
       this.disconnect();
       return this.utils.errorNotify(this.intl.t('domain.connect_to_metamask'));
     } else if (accounts[0] !== this.currentAccount) {
       this.isConnected = true;
-      this.currentAccount = accounts[0];
+      const etherProvider = new ethers.providers.Web3Provider(window.ethereum);
+      const signer = etherProvider.getSigner();
+      const address = await signer.getAddress();
+      this.currentAccount = address;
+      if (!silent) {
+        this.utils.successNotify(this.intl.t('domain.connect_to') + this.currentAccount);
+      }
       await this.domain.initDomains();
       const reverseName = await this.domain.getReverseName(this.currentAccount);
       if (reverseName && reverseName.domain) {
@@ -105,14 +112,14 @@ export default class MetamaskService extends Service {
       } else {
         this.currentName = null;
       }
-      this.utils.successNotify(this.intl.t('domain.connect_to') + this.currentAccount);
+      return address;
     }
   }
 
   @action
   async handleChainChanged(networkId) {
     this.disconnect(true);
-    if (parseInt(networkId) !== 365) {
+    if (parseInt(networkId) !== 361) {
       return this.utils.errorNotify(this.intl.t('domain.select_theta'));
     }
     return await this.connect();

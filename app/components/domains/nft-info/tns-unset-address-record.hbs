@@ -1,0 +1,21 @@
+{{#if edited}}
+{{else}}
+    {{#if editPanel}}
+        <p>{{t 'domain.about_to_unset_address_record'}}</p>
+        {{#if commitingToEdit}}
+        {{else}}
+            <img class="btn-icon-global right-margin" {{on 'click' toggleEditPanel}} src="/assets/img/cancel-small.png" />
+        {{/if}}
+            {{#if editing}}
+                <img width="40" src="/assets/img/loader-square-fixed-small.png" />
+            {{else if commitingToEdit}}
+                <img width="40" src="/assets/img/see-mm-small.png" />
+            {{else}}
+                <img class="btn-icon-global" {{on 'click' resetAddressRecord}} src="/assets/img/ok-small.png" />
+            {{/if}}
+    {{else}}
+        <img class="cursor float spacing" {{on 'click' toggleEditPanel}} src="/assets/img/unlink-button-small.png"/>
+    {{/if}}
+{{/if}}
+
+

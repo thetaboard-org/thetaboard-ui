@@ -1666,4 +1666,8 @@ export default class ABIService extends Service {
   get ThetaboardMarketplaceAddr() {
     return "0x533c8425897b3E10789C1d6F576b96Cb55E6F47d";
   }
+
+  get tnsRegistrarContractAddr() {
+    return "0xbb4d339a7517c81c32a01221ba51cbd5d3461a94"
+  }
 }
