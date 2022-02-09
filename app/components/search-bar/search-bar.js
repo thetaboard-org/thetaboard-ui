@@ -24,28 +24,28 @@ export default class SearchBarSearchBarComponent extends Component {
     event.preventDefault();
     if (
       this.walletAddress.length == 42 &&
-      this.walletAddress.substr(1, 1).toLocaleLowerCase() == 'x'
+      this.walletAddress.toLowerCase().startsWith('0x')
     ) {
       await this.thetaSdk.getWalletsInfo('wallet', [this.walletAddress]);
-      this.contract.domainName
-        ? this.args.onRouteChange(this.contract.domainName)
-        : this.args.onRouteChange(this.walletAddress);
+      // this.contract.domainName
+      //   ? this.args.onRouteChange(this.contract.domainName)
+      //   : this.args.onRouteChange(this.walletAddress);
     } else {
-      const nameToAddress = await this.contract.getNameToAddress(
-        this.walletAddress
-      );
-      if (
-        nameToAddress.length &&
-        nameToAddress['ownerAddr'] !=
-          '0x0000000000000000000000000000000000000000'
-      ) {
-        await this.thetaSdk.getWalletsInfo('wallet', [nameToAddress['ownerAddr']]);
-        this.args.onRouteChange(this.walletAddress);
-      } else {
+      // const nameToAddress = await this.contract.getNameToAddress(
+      //   this.walletAddress
+      // );
+      // if (
+      //   nameToAddress.length &&
+      //   nameToAddress['ownerAddr'] !=
+      //     '0x0000000000000000000000000000000000000000'
+      // ) {
+      //   await this.thetaSdk.getWalletsInfo('wallet', [nameToAddress['ownerAddr']]);
+      //   this.args.onRouteChange(this.walletAddress);
+      // } else {
         this.utils.errorNotify(this.intl.t('notif.invalid_address'));
-        this.args.onRouteChange('');
-        this.contract.domainName = '';
-      }
+      //   this.args.onRouteChange('');
+      //   this.contract.domainName = '';
+      // }
     }
     $('#searchModal').modal('hide');
   }
