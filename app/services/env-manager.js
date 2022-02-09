@@ -4,7 +4,6 @@ import { inject as service } from '@ember/service';
 
 export default class EnvManagerService extends Service {
   @service thetaSdk;
-  @service contract;
   @service utils;
   @service currentUser;
   @service wallet;
@@ -15,7 +14,7 @@ export default class EnvManagerService extends Service {
     explorerEndpoint: '',
     queryParams: '',
     thetaNetwork: '',
-    contractAddress: ''
+    contractAddress: '',
   };
 
   async setParameters(params) {

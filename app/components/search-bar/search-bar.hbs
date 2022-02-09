@@ -3,11 +3,17 @@
         <div class="modal-content">
             <div class="modal-header">
                 <form>
-                <Input {{on "submit" this.search}} {{did-insert this.setupEventListener}}
-                @type="text" 
-                @value={{walletAddress}} 
-                @id="searchInput" 
-                @class="form-control search-bar-input" 
+                    inputAddress: {{inputAddress}}<br/>
+                    walletAddress: {{walletAddress}}<br/>
+                {{#if invalidAddress}}
+                    {{t 'notif.invalid_address'}}
+                {{/if}}
+                <Input {{on "submit" this.search}}  {{on "keyup" inputHandler}} {{did-insert this.setupEventListener}}
+                @type="text"
+                @value={{walletAddress}}
+                @id="searchInput"
+                @class="form-control search-bar-input"
+                pattern="^0x[a-fA-F0-9]{40}$"
                 @placeholder={{t 'global.enter_wallet'}}/>
                 <button {{on 'click' this.search}} type="submit" class="d-none d-md-block d-lg-block search-bar-button btn btn-fill btn-primary">{{t 'global.search'}}</button>
                 <button {{on 'click' this.search}} type="submit" style="margin: 75px 0 0; width:100%; right:0;" class="d-block d-md-none d-lg-none search-bar-button btn btn-fill btn-primary">{{t 'global.search'}}</button>
@@ -17,5 +23,10 @@
                 </form>
             </div>
         </div>
+        {{#if addressLookup}}
+            <p class="lookup-address-transfer">{{addressLookup}}</p>
+            <p></p>
+        {{/if}}
+
     </div>
 </div>

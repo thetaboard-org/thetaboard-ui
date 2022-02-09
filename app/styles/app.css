@@ -1711,6 +1711,12 @@ p.lookup-address-transfer {
   width: 100%;  
 }
 
+ .modal.modal-search p.lookup-address-transfer {
+  width: auto;
+  position: relative;
+  z-index: 999999;
+ }
+
 .bold {
   font-weight: bold;
 }
