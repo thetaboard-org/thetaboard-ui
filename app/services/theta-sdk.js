@@ -1,11 +1,9 @@
-import Service from '@ember/service';
-import {inject as service} from '@ember/service';
+import Service, {inject as service} from '@ember/service';
 import ThetaWalletConnect from '@thetalabs/theta-wallet-connect';
 import * as thetajs from '@thetalabs/theta-js';
 import {tracked} from '@glimmer/tracking';
 import {htmlSafe} from '@ember/template';
-import {cancel} from '@ember/runloop';
-import {later} from '@ember/runloop';
+import {cancel, later} from '@ember/runloop';
 
 export default class ThetaSdkService extends Service {
   constructor(...args) {
@@ -77,16 +75,19 @@ export default class ThetaSdkService extends Service {
   get walletList() {
     const tfuelPrice = this.prices.tfuel.price;
     const thetaPrice = this.prices.theta.price;
-    const walletList  = Ember.A(this.wallets.map((wallet) => {
+    const tdropPrice = this.prices.tdrop.price;
+
+    return Ember.A(this.wallets.map((wallet) => {
       let walletItem = this.store.createRecord('walletItem', wallet);
-      if (wallet.currency == 'theta') {
+      if (wallet.currency === 'theta') {
         walletItem.market_price = thetaPrice;
-      } else if (wallet.currency == 'tfuel') {
+      } else if (wallet.currency === 'tfuel') {
         walletItem.market_price = tfuelPrice;
+      } else if (wallet.currency === 'tdrop') {
+        walletItem.market_price = tdropPrice;
       }
       return walletItem;
     }));
-    return walletList;
   }
 
   get walletTotal() {
