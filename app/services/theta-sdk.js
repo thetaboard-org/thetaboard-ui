@@ -180,30 +180,18 @@ export default class ThetaSdkService extends Service {
     //object: Either the group or the wallet
     if (type == 'wallet') {
       let wallets = {wallets: []};
-      // this.contract.domainName = '';
       const walletInfo = await fetch(
         '/explorer/wallet-info/' + object[0] + this.envManager.config.queryParams
       );
       if (walletInfo.status == 200) {
         wallets = await walletInfo.json();
       }
-      // if (object.length) {
-      //   this.currentAccountDomainList = await this.contract.getAddressToNames(
-      //     object[0]
-      //   );
-      //   if (this.currentAccountDomainList && this.currentAccountDomainList.length) {
-      //     this.contract.domainName = this.currentAccountDomainList[0];
-      //   }
-      // } else {
-      //   this.currentAccountDomainList = [];
-      // }
       this.wallets = wallets.wallets;
       this.currentAccount = object;
       this.currentGroup = null;
       return wallets;
     } else if (type == 'group') {
       let wallets = {wallets: []};
-      // this.contract.domainName = '';
       let uuid = '';
       if (typeof object == 'string') {
         uuid = object;
@@ -217,7 +205,6 @@ export default class ThetaSdkService extends Service {
       if (goupInfo.status == 200) {
         wallets = await goupInfo.json();
       }
-      // this.currentAccountDomainList = [];
       this.wallets = wallets.wallets;
       this.currentAccount = null;
       this.currentGroup = uuid;

@@ -47,7 +47,7 @@ export default class SearchBarSearchBarComponent extends Component {
           const reverse = await this.domain.getReverseName(address.addressRecord);
           if (reverse.domain == inputVal.replace(".theta", "")){
             await this.thetaSdk.getWalletsInfo('wallet', [address.addressRecord]);
-            this.args.onRouteChange(inputVal);
+            this.args.onRouteChange(address.addressRecord);
             $('#searchModal').modal('hide');
             return;
           }
