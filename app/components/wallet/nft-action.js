@@ -2,8 +2,9 @@ import Component from "@glimmer/component";
 import {inject as service} from '@ember/service';
 import {action} from '@ember/object';
 import {tracked} from "@glimmer/tracking";
-import { ethers } from "ethers";
-import {computed} from '@ember/object';
+import {ethers} from "ethers";
+import {set, computed} from '@ember/object';
+
 
 export default class NftActionComponent extends Component {
   @service utils;
@@ -19,6 +20,8 @@ export default class NftActionComponent extends Component {
   @tracked commitingToTransfer;
   @tracked transfering;
 
+  marketplaceChanged = 0;
+
   get nft() {
     return this.args.nft;
   }
@@ -29,18 +32,17 @@ export default class NftActionComponent extends Component {
   }
 
   get marketplaceContract() {
-    return new window.web3.eth.Contract(this.abi.ThetaboardMarketplace, this.abi.ThetaboardMarketplaceAddr);
+    return new ethers.Contract(this.abi.ThetaboardMarketplaceAddr, this.abi.ThetaboardMarketplace, this.metamask.provider);
   }
 
   @computed("metamask.isInstalled", "metamask.isThetaBlockchain", "metamask.isConnected", "metamask.currentAccount")
-  get isOwner() {
+  get metamaskAvailable() {
     // return 0 if metamask is not installed
     // return 1 if not theta blockchain
     // return 2 if metamask is installed but not linked to thetaboard.io
     // return 3 if metamask is installed and linked but account is not the same as the NFT
     // return 4  if NFT is getting sold by current metamask wallet
     // return 5 if NFT is owned by current metamask wallet
-
 
     const checkOwner = async () => {
       if (!this.metamask.isInstalled) {
@@ -51,9 +53,11 @@ export default class NftActionComponent extends Component {
         if (!this.metamask.isConnected) {
           return 2;
         }
+
         const currentAccount = this.metamask.currentAccount.toLowerCase();
-        const nft_contract = new window.web3.eth.Contract(this.abi.ThetaboardNFT, this.nft.contract_addr);
-        const token_owner = await nft_contract.methods.ownerOf(this.nft.original_token_id).call();
+        const nft_contract = new ethers.Contract(this.nft.contract_addr, this.abi.ThetaboardNFT, this.metamask.provider);
+
+        const token_owner = await nft_contract.ownerOf(this.nft.original_token_id);
         if (token_owner.toLowerCase() === currentAccount) {
           return 5;
         } else if (this.nft.properties.selling_info && this.nft.properties.selling_info.seller.toLowerCase() === currentAccount) {
@@ -62,28 +66,25 @@ export default class NftActionComponent extends Component {
           return 3;
         }
       }
-
     }
-    return checkMetamask();
-
+    return checkOwner();
   }
 
+  @computed('marketplaceChanged')
   get marketPlaceStatus() {
     // return 0 not approved
     // return 1 if approved
     // return 2 if on sale
 
     const checkStatus = async () => {
-      const account = await this.metamask_connect();
-      const nft_contract = new window.web3.eth.Contract(this.abi.ThetaboardNFT, this.nft.contract_addr);
-      const approved = await nft_contract.methods.getApproved(this.nft.original_token_id).call();
+      const nft_contract = new ethers.Contract(this.nft.contract_addr, this.abi.ThetaboardNFT, this.metamask.provider);
+      const approved = await nft_contract.getApproved(this.nft.original_token_id);
+
       if (approved !== this.abi.ThetaboardMarketplaceAddr) {
         return 0;
       } else {
-
         const itemOnMarketplace = await this.marketplaceContract
-          .methods.getByNftContractTokenId(this.nft.contract_addr, this.nft.original_token_id)
-          .call();
+          .getByNftContractTokenId(this.nft.contract_addr, this.nft.original_token_id);
         if (itemOnMarketplace.itemId === 0) {
           // is approved but not on sale
           return 1;
@@ -93,20 +94,6 @@ export default class NftActionComponent extends Component {
       }
     }
     return checkStatus();
-  }
-
-  async metamask_connect() {
-    if (typeof ethereum === 'undefined' || !ethereum.isConnected()) {
-      return this.utils.errorNotify(this.intl.t('notif.no_metamask'));
-    } else if (parseInt(ethereum.chainId) !== 361) {
-      return this.utils.errorNotify(this.intl.t('notif.not_theta_blockchain'));
-    } else {
-      window.web3 = new Web3(window.web3.currentProvider);
-      const accounts = await ethereum.request({method: 'eth_requestAccounts'});
-      return accounts[0];
-    }
-    };
-    return checkOwner();
   }
 
   @action
@@ -120,9 +107,7 @@ export default class NftActionComponent extends Component {
     try {
       this.commitingToTransfer = true;
       const account = this.metamask.currentAccount;
-
-      const provider = new ethers.providers.Web3Provider(window.ethereum);
-      const signer = provider.getSigner();
+      const signer = this.metamask.provider.getSigner();
       const nft_contract = new ethers.Contract(this.nft.contract_addr, this.abi.ThetaboardNFT, signer)
       const transfer = await nft_contract.transferFrom(account, this.inputAddress, this.nft.original_token_id);
       if (transfer && transfer.hash) {
@@ -155,47 +140,48 @@ export default class NftActionComponent extends Component {
   }
 
 
+  @action
+  async approve_for_sell() {
+    try {
+      const signer = this.metamask.provider.getSigner();
+      const nft_contract = new ethers.Contract(this.nft.contract_addr, this.abi.ThetaboardNFT, signer);
+      const tx = await nft_contract.approve(this.abi.ThetaboardMarketplaceAddr, this.nft.original_token_id);
+      await tx.wait();
 
-@action
-async approve_for_sell() {
-  try {
-    const account = await this.metamask_connect();
-    const nft_contract = new window.web3.eth.Contract(this.abi.ThetaboardNFT, this.nft.contract_addr);
-    await nft_contract.methods.approve(this.abi.ThetaboardMarketplaceAddr, this.nft.original_token_id).send({
-      from: account
-    });
-    return this.utils.successNotify("Approved for sell");
-  } catch (e) {
-    return this.utils.errorNotify(e.message);
-  }
-}
+      // hack to update computed property of marketplace status
+      set(this, 'marketplaceChanged', this.marketplaceChanged + 1);
 
-@action
-async sell_nft(event) {
-  event.preventDefault();
-  try {
-    const account = await this.metamask_connect();
-    await this.marketplaceContract.methods.createMarketItem(this.nft.contract_addr, this.nft.original_token_id, this.sellPrice, "ThetaboardUser").send({
-      from: account
-    });
-    return this.utils.successNotify("Selling on marketplace");
-  } catch (e) {
-    return this.utils.errorNotify(e.message);
+      return this.utils.successNotify("Approved for sell");
+    } catch (e) {
+      return this.utils.errorNotify(e.message);
+    }
   }
-}
 
-@action
-async cancel_sell() {
-  try {
-    const account = await this.metamask_connect();
-    await this.marketplaceContract.methods.cancelMarketItem(this.nft.properties.selling_info.itemId).send({
-      from: account
-    });
-    return this.utils.successNotify("Canceled the sell");
-  } catch (e) {
-    return this.utils.errorNotify(e.message);
+  @action
+  async sell_nft(event) {
+    event.preventDefault();
+    try {
+      const account = await this.metamask_connect();
+      await this.marketplaceContract.createMarketItem(this.nft.contract_addr, this.nft.original_token_id, this.sellPrice, "ThetaboardUser").send({
+        from: account
+      });
+      return this.utils.successNotify("Selling on marketplace");
+    } catch (e) {
+      return this.utils.errorNotify(e.message);
+    }
   }
-}
+
+  @action
+  async cancel_sell() {
+    try {
+      await this.marketplaceContract.cancelMarketItem(this.nft.properties.selling_info.itemId).send({
+        from: account
+      });
+      return this.utils.successNotify("Canceled the sell");
+    } catch (e) {
+      return this.utils.errorNotify(e.message);
+    }
+  }
 
   @action
   async inputHandler(e) {

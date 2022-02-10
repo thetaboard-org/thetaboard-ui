@@ -286,6 +286,7 @@ menu:
   tfuel_vip: "Tfuel VIP"
   domain: domaine
   marketplace: "marketplace"
+  secondary: "marketplace"
   drops: "drops"
   faq: faq
   creators: "Creators"

@@ -1,21 +1,22 @@
 import Service from '@ember/service';
-import { inject as service } from '@ember/service';
-import { action } from '@ember/object';
-import { tracked } from '@glimmer/tracking';
+import {inject as service} from '@ember/service';
+import {action} from '@ember/object';
+import {tracked} from '@glimmer/tracking';
 import detectEthereumProvider from '@metamask/detect-provider';
-import { ethers } from 'ethers';
+import {ethers} from 'ethers';
 
 export default class MetamaskService extends Service {
-   constructor() {
+  constructor() {
     super(...arguments);
     this.initMeta();
   }
+
   @service utils;
   @service intl;
   @service domain;
   @tracked isInstalled;
   @tracked isConnected;
-  @tracked isThetaBlockchain
+  @tracked isThetaBlockchain;
   @tracked currentAccount;
   @tracked currentName;
   @tracked provider;
@@ -29,23 +30,30 @@ export default class MetamaskService extends Service {
     }
 
     // check if already connected
-    this.provider = await detectEthereumProvider();
-    if (!this.provider) {
-      this.isInstalled = false;
+    const metamaskProvider = await detectEthereumProvider();
+    if (!metamaskProvider) {
+      // default provider
+      this.provider = new ethers.providers.JsonRpcProvider("https://eth-rpc-api.thetatoken.org/rpc");
+      return this.isInstalled = false;
+    } else {
+      this.provider = new ethers.providers.Web3Provider(metamaskProvider);
     }
+
     this.isInstalled = true;
     if (parseInt(ethereum.chainId) !== 361) {
-      this.isThetaBlockchain = false;
+      return this.isThetaBlockchain = false;
     }
     this.isThetaBlockchain = true;
     window.web3 = new Web3(window.web3.currentProvider);
     const accounts = await window.web3.eth.getAccounts();
     if (accounts.length === 0) {
-      this.isConnected = false;
+      return this.isConnected = false;
     }
     this.isConnected = true;
     this.currentAccount = accounts[0];
-   }
+
+
+  }
 
   @action
   disconnect(hideNotif) {
@@ -66,7 +74,7 @@ export default class MetamaskService extends Service {
         if (this.provider !== window.ethereum) {
           return this.utils.errorNotify(this.intl.t('domain.multiple_wallet'));
         }
-        this.networkId = parseInt(await window.ethereum.request({ method: 'eth_chainId' }));
+        this.networkId = parseInt(await window.ethereum.request({method: 'eth_chainId'}));
         if (this.networkId !== 361) {
           return this.utils.errorNotify(this.intl.t('domain.select_theta'));
         }

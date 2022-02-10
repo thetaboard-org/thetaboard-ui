@@ -358,6 +358,7 @@ menu:
   tfuel_vip: "Tfuel VIP"
   domain: "domain"
   marketplace: "marketplace"
+  secondary: "marketplace"
   drops: "drops"
   faq: "faq"
   creators: "Creators"

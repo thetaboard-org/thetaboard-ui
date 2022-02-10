@@ -1,5 +1,4 @@
 {{#async-await metamaskAvailable as |availiability|}}
-
   {{#if (eq availiability 0)}}
     <a href="/assets/pdf/HOW_TO_Metamask_LR.pdf" target="_blank">
       Setup Metamask to transfer or sell your NFT
@@ -9,11 +8,15 @@
       Setup Metamask for theta blockchain
     </a>
   {{else if (eq availiability 2)}}
-    <button type="submit" class="btn btn-fill btn-primary"  {{on "click" this.metamask_connect}}>
-      Connect to metamask
-    </button>
+    <span data-toggle="tooltip" data-placement="top"
+          title="{{t 'domain.connect_to_metamask'}}" data-original-title="Tooltip on top">
+        <img class="cursor float" src="/assets/img/transfer-greyed-small.png"/>
+    </span>
   {{else if (eq availiability 3)}}
-    Your Metamask Wallet is not the token owner
+    <span data-toggle="tooltip" data-placement="top"
+          title=" Your Metamask Wallet is not the token owner" data-original-title="Tooltip on top">
+        <img class="cursor float" src="/assets/img/transfer-greyed-small.png"/>
+    </span>
   {{else if (eq availiability 4)}}
     Selling NFT for : {{nft.properties.selling_info.price}} <img
       src="{{rootURL}}/assets/img/logo/tfuel.png" style="width: 15px; margin-left: 3px; vertical-align: unset;"><br>
@@ -77,7 +80,7 @@
             title="{{available}}"
             data-original-title="Once you approve, you will be able to set a price and put your NFT on the marketplace">
           <button type="button" class="btn btn-fill btn-primary" {{on "click" approve_for_sell}}>
-             Approve for sell
+             <i class="tim-icons icon-cart"></i>
           </button>
         </span>
       {{enableTooltip}}

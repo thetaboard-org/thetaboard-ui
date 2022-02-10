@@ -40,6 +40,7 @@ Router.map(function () {
     this.route('drop', {path: '/drop/:dropId'});
     this.route('nft', {path: '/nft/:nftId'});
     this.route('artist', {path: '/artist/:artistId'});
+    this.route('secondary', {path: '/secondary'});
   });
   this.route('policy', function () {
     this.route('terms');
