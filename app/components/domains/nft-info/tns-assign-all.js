@@ -12,9 +12,22 @@ export default class DomainsNftInfoTnsAssignAllComponent extends Component {
   @tracked transfering;
   @tracked transfered;
   @tracked transferPanel;
+  @tracked canUnlink;
 
   get domainName() {
     return this.args.domainName;
+  }
+
+  get transactionCount() {
+    return [
+      this.args.isController,
+      this.args.isAddressRecord,
+      this.args.isReverseName,
+    ].filter((x) => x === false).length;
+  }
+
+  get multipleTransactions() {
+    return this.transactionCount > 1;
   }
 
   @action

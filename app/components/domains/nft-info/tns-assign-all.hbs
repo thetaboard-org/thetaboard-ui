@@ -1,5 +1,8 @@
 {{#if transferPanel}}
-    <p>{{t 'domain.about_to_assign_all'}} <b>{{metamask.currentAccount}}</b><br/>{{t 'domain.multiple_transactions'}}</p>
+    <p>{{t 'domain.about_to_assign_all'}} <b>{{metamask.currentAccount}}</b></p>
+    {{#if multipleTransactions}}
+        <p>{{t 'domain.multiple_transactions'}} {{transactionCount}} {{t 'domain.multiple_transactions_end'}}</p>
+    {{/if}}
     {{#if commitingToTransfer}}
     {{else}}
         <img class="btn-icon-global right-margin" {{on 'click' toggleTransferPanel}} src="/assets/img/cancel-small.png" />
