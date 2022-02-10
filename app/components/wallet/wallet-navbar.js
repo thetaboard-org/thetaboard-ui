@@ -1,7 +1,6 @@
 import Component from '@glimmer/component';
 import { inject as service } from '@ember/service';
 import { action } from '@ember/object';
-import { tracked } from '@glimmer/tracking';
 
 export default class WalletWalletNavbarComponent extends Component {
   constructor(...args) {
@@ -37,14 +36,23 @@ export default class WalletWalletNavbarComponent extends Component {
       let result = {
         name: '',
         address: '',
+        walletName: '',
       };
-      if (this.thetaSdk.currentAccount) {
+      if (this.wallet.isSearchedWalletOwned) {
+        result.walletName = this.wallet.isSearchedWalletOwned.name;
+        result.address = this.wallet.isSearchedWalletOwned.address;
+      } else if (this.thetaSdk.currentAccount) {
         result.address = this.thetaSdk.currentAccount.firstObject;
-        if (!this.metamask.currentAccount) {
-          return result;
-        }
+      }
+      if (!this.metamask.currentAccount) {
+        return result;
+      }
+
+      if (result.address) {
         const reverse = await this.domain.getReverseName(result.address);
-        result.name = reverse.domain + ".theta";
+        if (reverse.domain) {
+          result.name = reverse.domain + ".theta";
+        }
       }
       return result;
     };

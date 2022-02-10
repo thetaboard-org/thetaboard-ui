@@ -1,0 +1,12 @@
+{{#async-await this.args.getWalletLabel as |walletLabel|}}
+    {{#if walletLabel.name}}
+        <span class="long-address">{{walletLabel.name}} (<span {{shortener walletLabel.address}}>{{walletLabel.address}}</span>)</span>
+        <span class="short-address" {{shortener walletLabel.address}}>{{walletLabel.address}}</span>
+    {{else}}
+        <span class="long-address">{{walletLabel.address}}</span>
+        <span class="short-address" {{shortener walletLabel.address}}>{{walletLabel.address}}</span>
+    {{/if}}
+{{else}}
+    <span class="long-address">{{thetaSdk.currentAccount}}</span>
+    <span class="short-address" {{shortener thetaSdk.currentAccount.firstObject}}>{{thetaSdk.currentAccount}}</span>
+{{/async-await}}

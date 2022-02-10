@@ -5,24 +5,11 @@
             {{!-- Specific for android --}}
                 <div class="selected-dropdown-item">
                     {{#if wallet.isSearchedWalletOwned}}
-                        <span class="long-address">{{wallet.isSearchedWalletOwned.name}} (<span {{shortener wallet.isSearchedWalletOwned.address}}>{{wallet.isSearchedWalletOwned.address}}</span>)</span>
-                        <span class="short-address">{{wallet.isSearchedWalletOwned.name}}</span>
+                        {{search-bar/label-owned-wallet getWalletLabel=getWalletLabel}}
                     {{else if group.isSearchedGroupOwned}}
-                        <span class="long-address">{{group.isSearchedGroupOwned.name}} (<span>{{group.isSearchedGroupOwned.wallets.length}} {{t 'my_wallets.wallets'}}</span>)</span>
-                        <span class="short-address">{{group.isSearchedGroupOwned.name}}</span>
+                        {{search-bar/label-owned-group}}
                     {{else if thetaSdk.currentAccount}}
-                    {{#async-await getWalletLabel as |walletLabel|}}
-                            {{#if walletLabel.name}}
-                                <span class="long-address">{{walletLabel.name}} (<span {{shortener walletLabel.address}}>{{walletLabel.address}}</span>)</span>
-                                <span class="short-address" {{shortener walletLabel.address}}>{{walletLabel.address}}</span>
-                            {{else}}
-                                <span class="long-address">{{walletLabel.address}}</span>
-                                <span class="short-address" {{shortener walletLabel.address}}>{{walletLabel.address}}</span>
-                            {{/if}}
-                        {{else}}
-                            <span class="long-address">{{thetaSdk.currentAccount}}</span>
-                            <span class="short-address" {{shortener thetaSdk.currentAccount.firstObject}}>{{thetaSdk.currentAccount}}</span>
-                        {{/async-await}}
+                        {{search-bar/label-current-address getWalletLabel=getWalletLabel}}
                     {{else}}
                         <span class="long-address">{{t 'global.search_a_wallet'}}</span>
                         <span class="short-address">{{t 'global.search_a_wallet_short'}}</span>
@@ -33,24 +20,11 @@
             {{else}}
                 <div data-toggle="modal" data-target="#searchModal" class="selected-dropdown-item">
                     {{#if wallet.isSearchedWalletOwned}}
-                        <span class="long-address">{{wallet.isSearchedWalletOwned.name}} (<span {{shortener wallet.isSearchedWalletOwned.address}}>{{wallet.isSearchedWalletOwned.address}}</span>)</span>
-                        <span class="short-address">{{wallet.isSearchedWalletOwned.name}}</span>
+                        {{search-bar/label-owned-wallet getWalletLabel=getWalletLabel}}
                     {{else if group.isSearchedGroupOwned}}
-                        <span class="long-address">{{group.isSearchedGroupOwned.name}} (<span>{{group.isSearchedGroupOwned.wallets.length}} {{t 'my_wallets.wallets'}}</span>)</span>
-                        <span class="short-address">{{group.isSearchedGroupOwned.name}}</span>
+                        {{search-bar/label-owned-group}}
                     {{else if thetaSdk.currentAccount}}
-                        {{#async-await getWalletLabel as |walletLabel|}}
-                            {{#if walletLabel.name}}
-                                <span class="long-address">{{walletLabel.name}} (<span {{shortener walletLabel.address}}>{{walletLabel.address}}</span>)</span>
-                                <span class="short-address" {{shortener walletLabel.address}}>{{walletLabel.address}}</span>
-                            {{else}}
-                                <span class="long-address">{{walletLabel.address}}</span>
-                                <span class="short-address" {{shortener walletLabel.address}}>{{walletLabel.address}}</span>
-                            {{/if}}
-                        {{else}}
-                            <span class="long-address">{{thetaSdk.currentAccount}}</span>
-                            <span class="short-address" {{shortener thetaSdk.currentAccount.firstObject}}>{{thetaSdk.currentAccount}}</span>
-                        {{/async-await}}
+                        {{search-bar/label-current-address getWalletLabel=getWalletLabel}}
                     {{else}}
                         <span class="long-address">{{t 'global.search_a_wallet'}}</span>
                         <span class="short-address">{{t 'global.search_a_wallet_short'}}</span>
@@ -77,18 +51,7 @@
             {{!-- Specific for android --}}
                 <div class="selected-dropdown-item">
                     {{#if this.thetaSdk.currentAccount}} 
-                        {{#async-await getWalletLabel as |walletLabel|}}
-                            {{#if walletLabel.name}}
-                                <span class="long-address">{{walletLabel.name}} (<span {{shortener walletLabel.address}}>{{walletLabel.address}}</span>)</span>
-                                <span class="short-address" {{shortener walletLabel.address}}>{{walletLabel.address}}</span>
-                            {{else}}
-                                <span class="long-address">{{walletLabel.address}}</span>
-                                <span class="short-address" {{shortener walletLabel.address}}>{{walletLabel.address}}</span>
-                            {{/if}}
-                        {{else}}
-                            <span class="long-address">{{thetaSdk.currentAccount}}</span>
-                            <span class="short-address" {{shortener thetaSdk.currentAccount.firstObject}}>{{thetaSdk.currentAccount}}</span>
-                        {{/async-await}}
+                        {{search-bar/label-current-address getWalletLabel=getWalletLabel}}
                     {{else}}
                         <span class="long-address">{{t 'global.search_a_wallet'}}</span>
                         <span class="short-address">{{t 'global.search_a_wallet_short'}}</span>
@@ -99,18 +62,8 @@
             {{else}}
                 <div data-toggle="modal" data-target="#searchModal" class="selected-dropdown-item">
                     {{#if this.thetaSdk.currentAccount}} 
-                        {{#async-await getWalletLabel as |walletLabel|}}
-                            {{#if walletLabel.name}}
-                                <span class="long-address">{{walletLabel.name}} (<span {{shortener walletLabel.address}}>{{walletLabel.address}}</span>)</span>
-                                <span class="short-address" {{shortener walletLabel.address}}>{{walletLabel.address}}</span>
-                            {{else}}
-                                <span class="long-address">{{walletLabel.address}}</span>
-                                <span class="short-address" {{shortener walletLabel.address}}>{{walletLabel.address}}</span>
-                            {{/if}}
-                        {{else}}
-                            <span class="long-address">{{thetaSdk.currentAccount}}</span>
-                            <span class="short-address" {{shortener thetaSdk.currentAccount.firstObject}}>{{thetaSdk.currentAccount}}</span>
-                        {{/async-await}}                    {{else}}
+                        {{search-bar/label-current-address getWalletLabel=getWalletLabel}}
+                    {{else}}
                         <span class="long-address">{{t 'global.search_a_wallet'}}</span>
                         <span class="short-address">{{t 'global.search_a_wallet_short'}}</span>
                     {{/if}}
