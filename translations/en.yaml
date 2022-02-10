@@ -242,7 +242,8 @@ domain:
   not_activted: "Not activated"
   address_record_unset: "Domain is no longer assigned to your address"
   about_to_assign_all: "You are about to link your domain to your address"
-  multiple_transactions: "It might takes up to 3 metamask transactions"
+  multiple_transactions: "It will take"
+  multiple_transactions_end:  "metamask transactions"
   needs_to_own: "The account connected on metamask needs to be the owner of the nft"
   error:
     check_metamask: "Check your MetaMask extension"

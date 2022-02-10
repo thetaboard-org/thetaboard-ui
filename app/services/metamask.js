@@ -8,6 +8,7 @@ import {ethers} from 'ethers';
 export default class MetamaskService extends Service {
   constructor() {
     super(...arguments);
+    this.initPromise = null;
     this.initMeta();
   }
 
@@ -23,12 +24,13 @@ export default class MetamaskService extends Service {
   @tracked networkId;
   @tracked etherProvider;
 
-  async initMeta() {
+  initPromise = null;
+
+  async getStatus() {
     if (typeof window.ethereum !== 'undefined') {
       window.ethereum.on('chainChanged', this.handleChainChanged);
       window.ethereum.on('accountsChanged', this.handleAccountsChanged);
     }
-
     // check if already connected
     const metamaskProvider = await detectEthereumProvider();
     if (!metamaskProvider) {
@@ -51,8 +53,13 @@ export default class MetamaskService extends Service {
     }
     this.isConnected = true;
     this.currentAccount = accounts[0];
+  }
 
-
+  async initMeta() {
+    if (!this.initPromise) {
+      this.initPromise = this.getStatus();
+    }
+    return this.initPromise;
   }
 
   @action
@@ -113,7 +120,6 @@ export default class MetamaskService extends Service {
       if (!silent) {
         this.utils.successNotify(this.intl.t('domain.connect_to') + this.currentAccount);
       }
-      await this.domain.initDomains();
       const reverseName = await this.domain.getReverseName(this.currentAccount);
       if (reverseName && reverseName.domain) {
         this.currentName = reverseName.domain;
@@ -128,6 +134,7 @@ export default class MetamaskService extends Service {
   async handleChainChanged(networkId) {
     this.disconnect(true);
     if (parseInt(networkId) !== 361) {
+      this.isThetaBlockchain = false;
       return this.utils.errorNotify(this.intl.t('domain.select_theta'));
     }
     return await this.connect();

@@ -12,6 +12,8 @@ export default class WalletWalletNavbarComponent extends Component {
   @service group;
   @service thetaSdk;
   @service isMobile;
+  @service metamask;
+  @service domain;
 
   @action
   async selectWallet(wallet) {
@@ -27,5 +29,35 @@ export default class WalletWalletNavbarComponent extends Component {
       await this.thetaSdk.getWalletsInfo('group', group);
       this.args.onRouteChange(group.uuid, 'group');
     }
+  }
+
+  get getWalletLabel() {
+    const walletLabel = async () => {
+      let result = {
+        name: '',
+        address: '',
+        walletName: '',
+      };
+      if (this.wallet.isSearchedWalletOwned) {
+        result.walletName = this.wallet.isSearchedWalletOwned.name;
+        result.address = this.wallet.isSearchedWalletOwned.address;
+      } else if (this.thetaSdk.currentAccount) {
+        result.address = this.thetaSdk.currentAccount.firstObject;
+      }
+
+      if (!this.metamask.currentAccount) {
+        return result;
+      }
+
+      if (result.address) {
+        const reverse = await this.domain.getReverseName(result.address);
+        if (reverse.domain) {
+          result.name = reverse.domain + ".theta";
+        }
+      }
+      return result;
+    };
+
+    return walletLabel();
   }
 }

@@ -1,9 +1,9 @@
 {{#if metamask.currentAccount}}
-    <div class="col-md-7 domain-centered domain-left-main-container">
+    <div class="col-md-12 domain-centered domain-left-main-container">
         {{!-- <label>{{t 'domain.subtitle'}}:</label>  --}}
         <form {{on "submit" checkNameAvailable}}>
             <Input @placeholder={{t 'domain.enter_domain_name'}} @type="text" class="input-domain-search" @value={{domainName}}/><span class="theta-search-label">.theta</span>
-            <br/><button type="submit" class="domain-search-button btn-fixed-width btn btn-primary {{if searchDisabled 'disabled'}}">{{t 'domain.search'}}</button>
+            <button type="submit" class="domain-search-button btn-fixed-width btn btn-primary {{if searchDisabled 'disabled'}}"><i class="tim-icons icon-zoom-split"></i></button>
         </form>
     </div>
 {{else}}

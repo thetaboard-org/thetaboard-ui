@@ -16,7 +16,7 @@ export default class ThetaSdkService extends Service {
     this.pagination = {};
     this.currentAccount = '';
     this.currentGroup = '';
-    this.currentAccountDomainList = [];
+    // this.currentAccountDomainList = [];
     this.prices = {
       theta: {price: 0, market_cap: 0, volume_24h: 0},
       tfuel: {
@@ -40,14 +40,11 @@ export default class ThetaSdkService extends Service {
   @tracked pagination;
   @tracked transactions;
   @tracked coinbases;
-  @tracked currentAccountDomainList
   @tracked totalStake
   @tracked totalTfuelStake
 
   @service envManager;
   @service guardian;
-  @service contract;
-  @service offer;
   @service utils;
   @service store;
   @service currency;
@@ -134,49 +131,6 @@ export default class ThetaSdkService extends Service {
     return false;
   }
 
-  async getThetaAccount() {
-    try {
-      let provider = new thetajs.providers.HttpProvider(
-        this.envManager.config.thetaNetwork
-      );
-      await ThetaWalletConnect.connect();
-      const timeoutId = later(
-        this,
-        function () {
-          this.showDownloadExtensionPopup();
-        },
-        4000
-      );
-      const account = await ThetaWalletConnect.requestAccounts();
-      return this.setupWalletAddress(account, timeoutId);
-    } catch (error) {
-      console.log(error);
-      // this.utils.errorNotify(error.message);
-    }
-  }
-
-  async connectWallet() {
-    $('.connect-wallet-offer-button').addClass("disabled");
-    $('.connect-wallet-button').addClass("disabled");
-    const address = await this.getThetaAccount();
-    await this.getWalletsInfo('wallet', address);
-    await this.offer.setupOffers(address);
-    $('.connect-wallet-offer-button').removeClass("disabled");
-    $('.connect-wallet-button').removeClass("disabled");
-    return this.contract.domainName ? this.contract.domainName : address[0];
-  }
-
-  setupWalletAddress(account, timeoutId) {
-    cancel(timeoutId);
-    this.currentAccount = account;
-    $('#downloadThetaExtension').modal('hide');
-    return account;
-  }
-
-  showDownloadExtensionPopup() {
-    $('#downloadThetaExtension').modal('show');
-  }
-
   async getPrices(currency = 'USD', start_date = null, end_date = null) {
     let api_call = `/explorer/prices?currency=${currency}`;
     if (start_date && end_date) {
@@ -226,22 +180,11 @@ export default class ThetaSdkService extends Service {
     //object: Either the group or the wallet
     if (type == 'wallet') {
       let wallets = {wallets: []};
-      this.contract.domainName = '';
       const walletInfo = await fetch(
         '/explorer/wallet-info/' + object[0] + this.envManager.config.queryParams
       );
       if (walletInfo.status == 200) {
         wallets = await walletInfo.json();
-      }
-      if (object.length) {
-        this.currentAccountDomainList = await this.contract.getAddressToNames(
-          object[0]
-        );
-        if (this.currentAccountDomainList && this.currentAccountDomainList.length) {
-          this.contract.domainName = this.currentAccountDomainList[0];
-        }
-      } else {
-        this.currentAccountDomainList = [];
       }
       this.wallets = wallets.wallets;
       this.currentAccount = object;
@@ -249,7 +192,6 @@ export default class ThetaSdkService extends Service {
       return wallets;
     } else if (type == 'group') {
       let wallets = {wallets: []};
-      this.contract.domainName = '';
       let uuid = '';
       if (typeof object == 'string') {
         uuid = object;
@@ -263,7 +205,6 @@ export default class ThetaSdkService extends Service {
       if (goupInfo.status == 200) {
         wallets = await goupInfo.json();
       }
-      this.currentAccountDomainList = [];
       this.wallets = wallets.wallets;
       this.currentAccount = null;
       this.currentGroup = uuid;
@@ -283,7 +224,7 @@ export default class ThetaSdkService extends Service {
 
   async getAllCoinbases(wallets) {
     this.coinbases = await this.store.query('coinbaseHistory', {
-      wallets: wallets
+      wallets: wallets,
     });
     return this.coinbases;
   }

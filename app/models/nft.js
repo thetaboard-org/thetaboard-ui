@@ -1,10 +1,12 @@
 import Model, {attr, belongsTo, hasMany} from '@ember-data/model';
 import {computed} from '@ember/object';
 import {inject as service} from '@ember/service';
+import {ethers} from "ethers";
 
 
 export default class NftModel extends Model {
   @service abi;
+  @service metamask;
 
   @attr('string') smallDescription;
   @attr('string') description;
@@ -48,23 +50,23 @@ export default class NftModel extends Model {
   }
 
 
-  @computed('nftSellController', 'nftContractId')
+  @computed('nftSellController', 'nftContractId', 'metamask.provider')
   get blockChainInfo() {
     const fetchInfo = async () => {
-      const web3 = new window.Web3(this.abi.thetaRpc);
+      await this.metamask.initMeta();
       let contractInfo;
       let modifiableContract = {};
       if (this.isAuction) {
-        const NFTauctionContract = new web3.eth.Contract(this.abi.ThetaboardAuctionSell, this.nftSellController);
-        contractInfo = await NFTauctionContract.methods.getNftAuction(this.nftContractId).call();
+        const NFTauctionContract = new ethers.Contract(this.nftSellController, this.abi.ThetaboardAuctionSell, this.metamask.provider);
+        contractInfo = await NFTauctionContract.getNftAuction(this.nftContractId);
         Object.assign(modifiableContract, contractInfo);
         if (Number(contractInfo.minBid) !== this.price) {
           modifiableContract.minBid = web3.utils.fromWei(contractInfo.minBid);
         }
         modifiableContract.bidsValue = contractInfo.bidsValue.map(x => web3.utils.fromWei(x))
       } else {
-        const NFTsellContract = new web3.eth.Contract(this.abi.ThetaboardDirectSell, this.nftSellController);
-        contractInfo = await NFTsellContract.methods.getNftSell(this.nftContractId).call();
+        const NFTsellContract = new ethers.Contract(this.nftSellController, this.abi.ThetaboardDirectSell, this.metamask.provider);
+        contractInfo = await NFTsellContract.getNftSell(this.nftContractId);
         Object.assign(modifiableContract, contractInfo);
       }
       return modifiableContract
@@ -87,9 +89,9 @@ export default class NftModel extends Model {
   @computed('nftContractId')
   get totalMinted() {
     const fetchInfo = async () => {
-      const web3 = new window.Web3(this.abi.thetaRpc);
-      const NFTContract = new web3.eth.Contract(this.abi.ThetaboardNFT, this.nftContractId);
-      return await NFTContract.methods.totalSupply().call();
+      await this.metamask.initMeta();
+      const NFTContract = new ethers.Contract(this.nftContractId, this.abi.ThetaboardNFT, this.metamask.provider);
+      return await NFTContract.totalSupply();
     }
     return fetchInfo();
   }
@@ -114,8 +116,8 @@ export default class NftModel extends Model {
   }
 
   @computed()
-  get isFirstAssetVideo(){
-    try{
+  get isFirstAssetVideo() {
+    try {
       return this.nftAssets.firstObject.isVideo;
     } catch (e) {
       return false
@@ -123,7 +125,7 @@ export default class NftModel extends Model {
   }
 
   @computed()
-  get firstAsset(){
+  get firstAsset() {
     return this.nftAssets.firstObject.asset;
   }
 }

@@ -4,7 +4,6 @@ import { inject as service } from '@ember/service';
 
 export default class EnvManagerService extends Service {
   @service thetaSdk;
-  @service contract;
   @service utils;
   @service currentUser;
   @service wallet;
@@ -15,7 +14,7 @@ export default class EnvManagerService extends Service {
     explorerEndpoint: '',
     queryParams: '',
     thetaNetwork: '',
-    contractAddress: ''
+    contractAddress: '',
   };
 
   async setParameters(params) {
@@ -43,20 +42,12 @@ export default class EnvManagerService extends Service {
     }
     if (params && params.wa) {
       const wa = params.wa;
-      if (wa.length == 42 && wa.substr(1, 1).toLocaleLowerCase() == 'x') {
+      //is it a wallet address
+      if (wa.length == 42 && wa.toLowerCase().startsWith('0x')) {
+        //get domain for name
         await this.thetaSdk.getWalletsInfo('wallet', [wa]);
       } else {
-        const nameToAddress = await this.contract.getNameToAddress(wa);
-        if (
-          nameToAddress.length &&
-          nameToAddress['ownerAddr'] !=
-            '0x0000000000000000000000000000000000000000'
-        ) {
-          await this.thetaSdk.getWalletsInfo('wallet', [nameToAddress['ownerAddr']]);
-        } else {
-          this.utils.errorNotify(this.intl.t('notif.invalid_address'));
-          this.contract.domainName = '';
-        }
+        this.utils.errorNotify(this.intl.t('notif.invalid_address'));
       }
     }
 

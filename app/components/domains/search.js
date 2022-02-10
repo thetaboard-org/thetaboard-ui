@@ -65,6 +65,9 @@ export default class DomainsSearchComponent extends Component {
     if (event) {
       event.preventDefault();
     }
+    if (!this.domainName || this.domainName == '') {
+      return;
+    }
     this.searchDisabled = true;
     this.searchInProgress = false;
     this.domainNameInvalid = false;
