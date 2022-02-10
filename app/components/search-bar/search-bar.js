@@ -38,7 +38,7 @@ export default class SearchBarSearchBarComponent extends Component {
       $('#searchModal').modal('hide');
       return;
     } else if (inputVal.endsWith(".theta")) {
-      if (this.metamask.currentAccount) {
+      if (this.metamask.isConnected) {
         const address = await this.domain.getAddrForDomain(inputVal.replace(".theta", ""));
         if (
           address.addressRecord &&
@@ -64,7 +64,7 @@ export default class SearchBarSearchBarComponent extends Component {
     if (e.key !== 'Enter') {
       this.invalidAddress = false;
     }
-    if (!this.metamask.currentAccount) {
+    if (!this.metamask.isConnected) {
       return;
     }
     this.addressLookup = '';

@@ -1,31 +1,55 @@
 import Service from '@ember/service';
-import { inject as service } from '@ember/service';
-import { action } from '@ember/object';
-import { tracked } from '@glimmer/tracking';
+import {inject as service} from '@ember/service';
+import {action} from '@ember/object';
+import {tracked} from '@glimmer/tracking';
 import detectEthereumProvider from '@metamask/detect-provider';
-import { ethers } from 'ethers';
+import {ethers} from 'ethers';
 
 export default class MetamaskService extends Service {
   constructor() {
     super(...arguments);
     this.initMeta();
   }
+
   @service utils;
   @service intl;
   @service domain;
   @tracked isInstalled;
   @tracked isConnected;
+  @tracked isThetaBlockchain;
   @tracked currentAccount;
   @tracked currentName;
   @tracked provider;
   @tracked networkId;
   @tracked etherProvider;
 
-  initMeta() {
+  async initMeta() {
     if (typeof window.ethereum !== 'undefined') {
       window.ethereum.on('chainChanged', this.handleChainChanged);
       window.ethereum.on('accountsChanged', this.handleAccountsChanged);
     }
+    // check if already connected
+    const metamaskProvider = await detectEthereumProvider();
+    if (!metamaskProvider) {
+      // default provider
+      this.provider = new ethers.providers.JsonRpcProvider("https://eth-rpc-api.thetatoken.org/rpc");
+      return this.isInstalled = false;
+    } else {
+      this.provider = new ethers.providers.Web3Provider(metamaskProvider);
+    }
+
+    this.isInstalled = true;
+    if (parseInt(ethereum.chainId) !== 361) {
+      return this.isThetaBlockchain = false;
+    }
+    this.isThetaBlockchain = true;
+    window.web3 = new Web3(window.web3.currentProvider);
+    const accounts = await window.web3.eth.getAccounts();
+    if (accounts.length === 0) {
+      return this.isConnected = false;
+    }
+    this.isConnected = true;
+    this.currentAccount = accounts[0];
   }
 
   @action
@@ -47,7 +71,7 @@ export default class MetamaskService extends Service {
         if (this.provider !== window.ethereum) {
           return this.utils.errorNotify(this.intl.t('domain.multiple_wallet'));
         }
-        this.networkId = parseInt(await window.ethereum.request({ method: 'eth_chainId' }));
+        this.networkId = parseInt(await window.ethereum.request({method: 'eth_chainId'}));
         if (this.networkId !== 361) {
           return this.utils.errorNotify(this.intl.t('domain.select_theta'));
         }
@@ -86,7 +110,6 @@ export default class MetamaskService extends Service {
       if (!silent) {
         this.utils.successNotify(this.intl.t('domain.connect_to') + this.currentAccount);
       }
-      await this.domain.initDomains();
       const reverseName = await this.domain.getReverseName(this.currentAccount);
       if (reverseName && reverseName.domain) {
         this.currentName = reverseName.domain;
@@ -101,6 +124,7 @@ export default class MetamaskService extends Service {
   async handleChainChanged(networkId) {
     this.disconnect(true);
     if (parseInt(networkId) !== 361) {
+      this.isThetaBlockchain = false;
       return this.utils.errorNotify(this.intl.t('domain.select_theta'));
     }
     return await this.connect();

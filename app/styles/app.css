@@ -1610,12 +1610,8 @@ a.active p.menu-item {
   cursor: default;
 }
 
-#card-domain .domain-search-button {
-  margin-right: 67px;
-}
-
 #card-domain .domain-left-main-container {
-  text-align: right;
+  text-align: center;
 }
 
 #card-domain .domain-connect:hover {
@@ -1659,14 +1655,15 @@ a.active p.menu-item {
 }
 
 #card-domain .invalid-domain {
-  width: 80%;
+  width: 393px;
   margin: 25px auto;
+  font-size: 15px;;
 }
 
 #card-domain .buy-domain {
-  width: 60%;
+  width: 393px;
   margin: 25px auto;
-  font-size: 16px;
+  font-size: 15px;
 }
 
 #card-domain .buy-title {
@@ -1705,7 +1702,7 @@ p.lookup-address-transfer {
   display: inline-block;
   background: black;
   padding: 10px 25px;
-  border-radius: 25px;
+  border-radius: 6px;
   border: 1px solid #e14eca;
   margin-top: 10px;
   width: 100%;  
@@ -1789,27 +1786,16 @@ span[data-toggle="tooltip"] {
   display: inline-block;
 }
 
+#domain-right-panel {
+  text-align: center;
+}
 
-@media screen and (max-width: 768px) {
-  #domain-right-panel {
-    text-align: center;
-  }
+#domain-right-panel div.btn {
+  margin: 10px auto;
+}
 
-  #domain-right-panel div.btn {
-    margin: 10px auto;
-  }
-
-  #domain-right-panel .progress-bar-container.domain {
-    margin: auto;
-  }
-
-  #card-domain .domain-search-button {
-    margin-right: 0;
-  }
-  
-  #card-domain .domain-left-main-container {
-    text-align: center;
-  }
+#domain-right-panel .progress-bar-container.domain {
+  margin: auto;
 }
 
 .alert.alert-thetaboard{
@@ -1884,4 +1870,12 @@ span[data-toggle="tooltip"] {
 
 .btn-icon-global.right-margin {
   margin-right: 5px;
+}
+
+.domain-search-button.btn.btn-primary {
+  height: 55px;
+  margin-left: 5px;
+  width: 55px;
+  padding: 0;
+  font-size: 20px;
 }

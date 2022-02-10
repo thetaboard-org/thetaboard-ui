@@ -28,14 +28,9 @@ export default class DomainService extends Service {
   @service metamask;
   @service utils;
   @service intl;
-  @tracked ethersProvider;
   @tracked addressLookup;
   @tracked inputAddress;
   @tracked inputDomain;
-
-  async initDomains() {
-    this.ethersProvider = new ethers.providers.Web3Provider(window.ethereum);
-  }
 
   @action
   async checkNameAvailable(domainName) {
@@ -120,7 +115,8 @@ export default class DomainService extends Service {
   }
 
   async getBalance() {
-    const accountBalance = await this.ethersProvider.getBalance(this.metamask.currentAccount);
+    const ethersProvider = new ethers.providers.Web3Provider(window.ethereum);
+    const accountBalance = await ethersProvider.getBalance(this.metamask.currentAccount);
     const balance = thetajs.utils.fromWei(accountBalance.toString());
     return Number(balance);
   }
@@ -180,7 +176,8 @@ export default class DomainService extends Service {
   }
 
   async waitForTransaction(hash) {
-    const receipt = await this.ethersProvider.waitForTransaction(hash);
+    const ethersProvider = new ethers.providers.Web3Provider(window.ethereum);
+    const receipt = await ethersProvider.waitForTransaction(hash);
     if (receipt == null) {
       return await later(
         this,

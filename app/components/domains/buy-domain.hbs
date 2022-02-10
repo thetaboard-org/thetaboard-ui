@@ -1,14 +1,13 @@
 
 {{#if nameBought}}
-    <div id="domain-right-panel" class="col-md-5 domain-left">
+    <div id="domain-right-panel" class="col-md-12 domain-left">
         <LinkTo @route="wallet.nft-info" @models={{array abi.tnsRegistrarContractAddr tokenId}} @class="btn btn-primary btn-fixed-width">{{t 'domain.see_domain'}}</LinkTo>
-
     </div>
-    <div class="alert alert-thetaboard buy-domain">
+    <div class="alert alert-success buy-domain">
         <span> {{t 'domain.domain_bought'}} <b> {{domainName}}.theta </b> </span>
     </div>
 {{else}}
-    <div id="domain-right-panel" class="col-md-5 domain-left">
+    <div id="domain-right-panel" class="col-md-12 domain-left">
         {{#if isStep1}}
             {{#if isBalanceEnough}}
                 {{#if canBuy}}

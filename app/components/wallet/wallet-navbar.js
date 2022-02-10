@@ -44,6 +44,7 @@ export default class WalletWalletNavbarComponent extends Component {
       } else if (this.thetaSdk.currentAccount) {
         result.address = this.thetaSdk.currentAccount.firstObject;
       }
+
       if (!this.metamask.currentAccount) {
         return result;
       }
