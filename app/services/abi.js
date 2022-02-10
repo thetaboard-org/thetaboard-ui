@@ -846,10 +846,6 @@ const thetaboardNFTByteCode = "0x60806040523480156200001157600080fd5b50604051620
 
 
 export default class ABIService extends Service {
-  get thetaRpc() {
-    // TODO this should live somewhere else
-    return "https://eth-rpc-api.thetatoken.org/rpc"
-  }
 
   get ThetaboardNFT() {
     return ThetaboardNFT

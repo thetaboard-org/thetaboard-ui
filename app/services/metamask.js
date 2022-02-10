@@ -8,6 +8,7 @@ import {ethers} from 'ethers';
 export default class MetamaskService extends Service {
   constructor() {
     super(...arguments);
+    this.initPromise = null;
     this.initMeta();
   }
 
@@ -23,7 +24,9 @@ export default class MetamaskService extends Service {
   @tracked networkId;
   @tracked etherProvider;
 
-  async initMeta() {
+  initPromise = null;
+
+  async getStatus() {
     if (typeof window.ethereum !== 'undefined') {
       window.ethereum.on('chainChanged', this.handleChainChanged);
       window.ethereum.on('accountsChanged', this.handleAccountsChanged);
@@ -50,6 +53,13 @@ export default class MetamaskService extends Service {
     }
     this.isConnected = true;
     this.currentAccount = accounts[0];
+  }
+
+  async initMeta() {
+    if (!this.initPromise) {
+      this.initPromise = this.getStatus();
+    }
+    return this.initPromise;
   }
 
   @action
