@@ -17,7 +17,7 @@ export default class WalletService extends Service {
 
   get isSearchedWalletOwned() {
     let ownedWallet = false;
-    if (this.thetaSdk.currentAccount) {
+    if (this.thetaSdk.currentAccount && this.wallets) {
       this.wallets.forEach((wallet) => {
         if (wallet.address == this.thetaSdk.currentAccount) {
           ownedWallet = wallet;
