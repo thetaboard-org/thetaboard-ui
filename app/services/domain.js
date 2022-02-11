@@ -34,9 +34,10 @@ export default class DomainService extends Service {
 
   @action
   async checkNameAvailable(domainName) {
-    const checkNameAvailable = await isDomainAvailable(domainName);
+    await this.metamask.initMeta();
+    const checkNameAvailable = await isDomainAvailable(domainName, this.metamask.provider);
     if (checkNameAvailable.available) {
-      const price = await this.getPrice(domainName);
+      const price = await this.getPrice(domainName, this.metamask.provider);
       const balance = await this.getBalance();
       return {
         available: checkNameAvailable.available,
@@ -52,26 +53,30 @@ export default class DomainService extends Service {
 
   @action
   async getReverseName(domainName) {
-    const name = await getReverseName(domainName);
+    await this.metamask.initMeta();
+    const name = await getReverseName(domainName, this.metamask.provider);
     return name;
   }
 
   @action
   async getRawReverseName(domainName) {
-    const name = await getRawReverseName(domainName);
+    await this.metamask.initMeta();
+    const name = await getRawReverseName(domainName, this.metamask.provider);
     return name;
   }
 
   @action
   async getRegistrant(domainName) {
-    const registrant = await getRegistrant(domainName);
+    await this.metamask.initMeta();
+    const registrant = await getRegistrant(domainName, this.metamask.provider);
     return registrant;
   }
 
   @action
   async changeRegistrant(domainName, address) {
     try {
-      return await changeRegistrant(domainName.replace('.theta', ''), address);
+      await this.metamask.initMeta();
+      return await changeRegistrant(domainName.replace('.theta', ''), address, this.metamask.provider);
     } catch (e) {
       return this.utils.errorNotify(e.message);
     }
@@ -80,7 +85,8 @@ export default class DomainService extends Service {
   @action
   async changeController(domainName, address) {
     try {
-      return await changeController(domainName.replace('.theta', ''), address);
+      await this.metamask.initMeta();
+      return await changeController(domainName.replace('.theta', ''), address, this.metamask.provider);
     } catch (e) {
       return this.utils.errorNotify(e.message);
     }
@@ -88,14 +94,16 @@ export default class DomainService extends Service {
 
   @action
   async getController(domainName) {
-    const controller = await getController(domainName);
+    await this.metamask.initMeta();
+    const controller = await getController(domainName, this.metamask.provider);
     return controller;
   }
 
   @action
   async commitName(committedName) {
     try {
-      return await commitDomain(committedName.nameToCommit, committedName.secret);
+      await this.metamask.initMeta();
+      return await commitDomain(committedName.nameToCommit, committedName.secret, this.metamask.provider);
     } catch (e) {
       return this.utils.errorNotify(e.message);
     }
@@ -104,9 +112,11 @@ export default class DomainService extends Service {
   @action
   async getCommitmentTimestamp(committedName) {
     try {
+      await this.metamask.initMeta();
       const commitmentTimestamp = await getCommitmentTimestamp(
         committedName.nameToCommit,
-        committedName.secret
+        committedName.secret,
+        this.metamask.provider
       );
       return commitmentTimestamp.commitmentTimestamp.toNumber() * 1000;
     } catch (e) {
@@ -115,6 +125,10 @@ export default class DomainService extends Service {
   }
 
   async getBalance() {
+    await this.metamask.initMeta();
+    if (!this.metamask.currentAccount) {
+      return 0;
+    }
     const ethersProvider = new ethers.providers.Web3Provider(window.ethereum);
     const accountBalance = await ethersProvider.getBalance(this.metamask.currentAccount);
     const balance = thetajs.utils.fromWei(accountBalance.toString());
@@ -122,7 +136,8 @@ export default class DomainService extends Service {
   }
 
   async getPrice(domain) {
-    const price = await getPrice(domain);
+    await this.metamask.initMeta();
+    const price = await getPrice(domain, this.metamask.provider);
     return Number(price.price);
   }
 
@@ -137,7 +152,8 @@ export default class DomainService extends Service {
 
   async buyDomain(committedName) {
     try {
-      return await registerDomain(committedName.nameToCommit, committedName.secret);
+      await this.metamask.initMeta();
+      return await registerDomain(committedName.nameToCommit, committedName.secret, this.metamask.provider);
     } catch (e) {
       return this.utils.errorNotify(e.message);
     }
@@ -145,7 +161,8 @@ export default class DomainService extends Service {
 
   async setReverseName(domain) {
     try {
-      return await setReverseName(domain, this.metamask.currentAccount);
+      await this.metamask.initMeta();
+      return await setReverseName(domain, this.metamask.currentAccount, this.metamask.provider);
     } catch (e) {
       return this.utils.errorNotify(this.intl.t('domain.error.not_owner'));
     }
@@ -153,7 +170,8 @@ export default class DomainService extends Service {
 
   async getAddrForDomain(domain) {
     try {
-      return await getAddressRecord(domain);
+      await this.metamask.initMeta();
+      return await getAddressRecord(domain, this.metamask.provider);
     } catch (e) {
       return this.utils.errorNotify(e.message);
     }
@@ -161,7 +179,8 @@ export default class DomainService extends Service {
 
   async reclaimControl(domain) {
     try {
-      return await reclaimControl(domain.replace('.theta', ''), this.metamask.currentAccount);
+      await this.metamask.initMeta();
+      return await reclaimControl(domain.replace('.theta', ''), this.metamask.currentAccount, this.metamask.provider);
     } catch (e) {
       return this.utils.errorNotify(e.message);
     }
@@ -169,7 +188,8 @@ export default class DomainService extends Service {
 
   async setAddressRecord(domain, address) {
     try {
-      return await setAddressRecord(domain.replace('.theta', ''), address);
+      await this.metamask.initMeta();
+      return await setAddressRecord(domain.replace('.theta', ''), address, this.metamask.provider);
     } catch (e) {
       return this.utils.errorNotify(e.message);
     }

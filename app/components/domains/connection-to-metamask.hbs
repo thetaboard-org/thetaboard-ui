@@ -1,3 +1,4 @@
+{{#async-await metamask.initMeta as |init|}}
     {{#if metamask.isConnected}}
         <div {{on 'click' metamask.disconnect}} class="">{{t 'domain.disconnect'}} - 
             <span class="metamask-account" {{shortener metamask.currentAccount}}>{{metamask.currentAccount}}</span>
@@ -6,5 +7,8 @@
             {{/if}}
         </div>
     {{else}}
-        <div {{on 'click' metamask.connect}} class="">{{t 'domain.connect'}}</div>     
+        <div {{on 'click' metamask.connect}} class="">{{t 'domain.connect'}}</div>
     {{/if}}
+{{else}}
+    <div {{on 'click' metamask.connect}} class="">{{t 'domain.connect'}}</div>     
+{{/async-await}}

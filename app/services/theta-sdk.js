@@ -70,9 +70,9 @@ export default class ThetaSdkService extends Service {
   }
 
   get walletList() {
-    const tfuelPrice = this.prices.tfuel.price;
-    const thetaPrice = this.prices.theta.price;
-    const tdropPrice = this.prices.tdrop.price;
+    const tfuelPrice = this.prices.tfuel ? this.prices.tfuel.price : 0;
+    const thetaPrice = this.prices.theta ? this.prices.theta.price : 0;
+    const tdropPrice = this.prices.tdrop ? this.prices.tdrop.price : 0;
 
     return Ember.A(this.wallets.map((wallet) => {
       let walletItem = this.store.createRecord('walletItem', wallet);

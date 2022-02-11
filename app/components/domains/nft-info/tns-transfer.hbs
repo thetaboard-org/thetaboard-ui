@@ -3,10 +3,10 @@
     {{#if transferPanel}}
         <p>{{t 'global.transfer'}}</p>
         <p></p>
-        <Input {{on "keyup" domain.inputHandler}} @placeholder="{{t 'domain.transfer_placeholder'}}" @type="text" class="form-control border-color input-domain-transfer-address"
+        <Input {{on "keyup" inputHandler}} @placeholder="{{t 'domain.transfer_placeholder'}}" @type="text" class="form-control border-color input-domain-transfer-address"
          @value={{addressTo}}/>
-        {{#if domain.addressLookup}}
-            <p class="lookup-address-transfer">{{domain.addressLookup}}</p>
+        {{#if addressLookup}}
+            <p class="lookup-address-transfer">{{addressLookup}}</p>
             <p></p>
         {{/if}}
         <p></p>
