@@ -53,38 +53,51 @@
     {{else}}
       <img class="cursor float" {{on 'click' toggleTransferPanel}} src="/assets/img/transfer-small.png"/>
     {{/if}}
+    {{#async-await marketPlaceStatus as |isApproved|}}
+      {{#if isApproved}}
+        <button type="button" class="btn btn-fill btn-primary" {{on 'click' cancel_approve_for_sell}}>
+          Cancel Approve item
+        </button>
+
+        <form {{on 'submit' this.sell_nft}}>
+          <Input
+            @class="form-control"
+            @type="number"
+            placeholder="Asking price"
+            @value={{this.sellPrice}}
+            @min="0"
+            @step="1"
+            required
+          />
+          <button type="submit" class="btn btn-fill btn-primary">
+            Sell item
+          </button>
+        </form>
+      {{else if approveLoading}}
+        <span data-toggle="tooltip" data-placement="top"
+              title="{{available}}"
+              data-original-title="Once you approve, you will be able to set a price and put your NFT on the marketplace">
+          <button type="button" class="btn btn-fill btn-primary">
+             <img width="46" src="/assets/img/loader.gif"/>
+          </button>
+        </span>
+        {{enableTooltip}}
+      {{else}}
+        <span data-toggle="tooltip" data-placement="top"
+              title="{{available}}"
+              data-original-title="Once you approve, you will be able to set a price and put your NFT on the marketplace">
+          <button type="button" class="btn btn-fill btn-primary" {{on "click" approve_for_sell}}>
+             <i class="tim-icons icon-cart"></i>
+          </button>
+        </span>
+        {{enableTooltip}}
+      {{/if}}
+    {{/async-await}}
   {{else}}
     <span data-toggle="tooltip" data-placement="top"
           title="{{owner}}" data-original-title="Tooltip on top">
                 <img class="cursor float" src="/assets/img/transfer-greyed-small.png"/>
             </span>
   {{/if}}
-  {{#async-await marketPlaceStatus as |isApproved|}}
-    {{#if isApproved}}
-      <form {{on 'submit' this.sell_nft}}>
-        <Input
-          @class="form-control"
-          @type="number"
-          placeholder="Asking price"
-          @value={{this.sellPrice}}
-          @min="0"
-          @step="1"
-          required
-        />
-        <button type="submit" class="btn btn-fill btn-primary">
-          Sell item
-        </button>
-      </form>
-    {{else}}
-      <span data-toggle="tooltip" data-placement="top"
-            title="{{available}}"
-            data-original-title="Once you approve, you will be able to set a price and put your NFT on the marketplace">
-          <button type="button" class="btn btn-fill btn-primary" {{on "click" approve_for_sell}}>
-             <i class="tim-icons icon-cart"></i>
-          </button>
-        </span>
-      {{enableTooltip}}
-    {{/if}}
-  {{/async-await}}
 {{/async-await}}
 
