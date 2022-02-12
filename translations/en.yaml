@@ -180,7 +180,7 @@ staking:
 
 ###### DOMAIN START ######
 domain:
-  title: "Buy a Theta Domain Name"
+  title: "Buy a Theta Name Service"
   # subtitle: "Enter a Domain Name to check it's availability"
   connect: "Connect to Metamask"
   disconnect: "Disconnect"
@@ -246,6 +246,7 @@ domain:
   multiple_transactions_end:  "metamask transactions"
   needs_to_own: "The account connected on metamask needs to be the owner of the nft"
   install_to_buy: "Please install Metamask to buy the domain"
+  unlink_previous_owner: "this domain is link to another address. You are about to unlink this domain from "
   error:
     check_metamask: "Check your MetaMask extension"
     not_owner: "You need to be the owner of the domain to perform this operation"

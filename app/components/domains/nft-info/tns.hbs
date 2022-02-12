@@ -14,19 +14,32 @@
                 </div>
             {{else}}
                 <div class="tns-item">
-                    <span class="tns-span red">{{t 'domain.not_assigned'}}</span>
-                    {{domains/nft-info/tns-assign-all
-                        refreshComponent=initComponent
-                        domainName=nft.name
-                        canReclaimController=canReclaimController
-                        canEditAddressRecord=canEditAddressRecord
-                        canReverseName=canReverseName
-                        rawReverseName=rawReverseName
-                        addressRecord=addressRecord
-                        isController=isController
-                        isAddressRecord=isAddressRecord
-                        isReverseName=isReverseName
-                    }}
+                    {{#if canUlinkPrevious}}
+                        <span class="tns-span red">{{t 'domain.assigned'}}</span>
+                        {{domains/nft-info/tns-unassign-previous-owner
+                            refreshComponent=initComponent
+                            domainName=nft.name
+                            canReclaimController=canReclaimController
+                            addressRecord=addressRecord
+                            isController=isController
+                            isAddressRecord=isAddressRecord
+                            canUnlinkPreviousOwner=canUnlinkPreviousOwner
+                        }}
+                    {{else}}
+                        <span class="tns-span red">{{t 'domain.not_assigned'}}</span>
+                        {{domains/nft-info/tns-assign-all
+                            refreshComponent=initComponent
+                            domainName=nft.name
+                            canReclaimController=canReclaimController
+                            canEditAddressRecord=canEditAddressRecord
+                            canReverseName=canReverseName
+                            rawReverseName=rawReverseName
+                            addressRecord=addressRecord
+                            isController=isController
+                            isAddressRecord=isAddressRecord
+                            isReverseName=isReverseName
+                        }}
+                    {{/if}}
                 </div>
             {{/if}}
 
