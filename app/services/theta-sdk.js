@@ -48,6 +48,8 @@ export default class ThetaSdkService extends Service {
   @service utils;
   @service store;
   @service currency;
+  @service metamask;
+  @service domain;
 
   get guardianWallets() {
     if (this.walletList.length) {
@@ -212,14 +214,58 @@ export default class ThetaSdkService extends Service {
     }
   }
 
-  async getTransactions(wallets, current = 1, limit_number = 40) {
+  async getTransactions(wallets, current = 1, limit_number = 100) {
     this.transactions = await this.store.query('transactionHistory', {
       pageNumber: current,
       limitNumber: limit_number,
       wallets: wallets,
     });
     this.pagination = this.transactions.meta.pagination;
-    return this.transactions;
+    await this.metamask.initMeta();
+    if (!this.metamask.isThetaBlockchain) {
+      return this.transactions;
+    }
+    return await this.setTransactionsReverseName();
+  }
+
+  async setTransactionsReverseName() {
+    const transactionsResolved = [];
+    const cachedReverseName = {};
+    for (const transaction of this.transactions.toArray()) {
+      console.log("transaction");
+      if (transaction.toAddress) {
+        if (cachedReverseName[transaction.toAddress]) {
+          console.log("cached");
+          transaction.toAddressName = cachedReverseName[transaction.toAddress];
+        } else {
+          console.log("reverseName");
+          const reverseName = await this.domain.getReverseName(transaction.toAddress);
+          if (reverseName.domain) {
+            transaction.toAddressName = reverseName.domain;
+            cachedReverseName[transaction.toAddress] = reverseName.domain;
+          } else {
+            cachedReverseName[transaction.toAddress] = false;
+          }
+        }
+      }
+      if (transaction.fromAddress) {
+        if (cachedReverseName[transaction.fromAddress]) {
+          console.log("cached");
+          transaction.fromAddressName = cachedReverseName[transaction.fromAddress];
+        } else {
+          console.log("reverseName");
+          const reverseName = await this.domain.getReverseName(transaction.fromAddress);
+          if (reverseName.domain) {
+            transaction.fromAddressName = reverseName.domain;
+            cachedReverseName[transaction.fromAddress] = reverseName.domain;
+          } else {
+            cachedReverseName[transaction.fromAddress] = false;
+          }
+        }
+      }
+      transactionsResolved.push(transaction);
+    }
+    return transactionsResolved;
   }
 
   async getAllCoinbases(wallets) {

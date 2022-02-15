@@ -42,15 +42,21 @@ export default class EnvManagerService extends Service {
       this.config.explorerEndpoint = 'https://explorer.thetatoken.org';
       this.config.contractAddress = '0x5191de7a7f17dfcbb0e4e552188450abb13ff14b';
     }
+    if (params && params.group) {
+      await this.thetaSdk.getWalletsInfo('group', params.group);
+    }
     if (params && params.wa) {
       const wa = params.wa;
       //is it a wallet address
       if (wa.length == 42 && wa.toLowerCase().startsWith('0x')) {
         //get domain for name
         await this.thetaSdk.getWalletsInfo('wallet', [wa]);
-      }  else if (wa.endsWith(".theta")) {
+      } else if (wa.endsWith('.theta')) {
         //get address for domain
         await this.metamask.initMeta();
+        if (!this.metamask.isThetaBlockchain) {
+          return this.config;
+        }
         const address = await this.domain.getAddrForDomain(wa.replace(".theta", ""));
         if (
           address.addressRecord &&
@@ -70,9 +76,6 @@ export default class EnvManagerService extends Service {
       }
     }
 
-    if (params && params.group) {
-      await this.thetaSdk.getWalletsInfo('group', params.group);
-    }
     return this.config;
   }
 }
