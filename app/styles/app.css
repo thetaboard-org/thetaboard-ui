@@ -1893,3 +1893,42 @@ button.btn.button-icon-tb, button.button-icon-tb .icon-tb.logout-metamask {
   line-height: 29px;
   margin: 0;
 }
+
+.tns-title {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.purple-font {
+  color: #E24FCA;
+}
+
+.explanation-tile {
+  width: 350px;
+  margin: 20px auto;
+}
+
+.explanation-tile img {
+  vertical-align: middle;
+}
+
+.explanation-tile-title {
+  vertical-align: middle;
+  font-size: 26px;
+  color: #FFF;
+  font-weight: 600;
+}
+
+.explanation_sub {
+  color: white;
+  vertical-align: -webkit-baseline-middle;
+  vertical-align: -o-baseline-middle;
+  vertical-align: -moz-baseline-middle;
+  color:white;
+  font-size: 12px;;
+}
+
+.explanation-tile p {
+  margin-top: 5px;
+}
+
