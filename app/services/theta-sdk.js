@@ -40,8 +40,9 @@ export default class ThetaSdkService extends Service {
   @tracked pagination;
   @tracked transactions;
   @tracked coinbases;
-  @tracked totalStake
-  @tracked totalTfuelStake
+  @tracked totalStake;
+  @tracked totalTfuelStake;
+  @tracked cachedReverseName = {};
 
   @service envManager;
   @service guardian;
@@ -191,7 +192,7 @@ export default class ThetaSdkService extends Service {
       this.wallets = wallets.wallets;
       this.currentAccount = object;
       this.currentGroup = null;
-      return wallets;
+      // return wallets;
     } else if (type == 'group') {
       let wallets = {wallets: []};
       let uuid = '';
@@ -210,11 +211,17 @@ export default class ThetaSdkService extends Service {
       this.wallets = wallets.wallets;
       this.currentAccount = null;
       this.currentGroup = uuid;
-      return wallets;
+      // return wallets;
     }
+
+    await this.metamask.initMeta();
+    // if (!this.metamask.isThetaBlockchain) {
+    //   return this.wallets;
+    // }
+    return await this.setWalletsReverseName();
   }
 
-  async getTransactions(wallets, current = 1, limit_number = 100) {
+  async getTransactions(wallets, current = 1, limit_number = 40) {
     this.transactions = await this.store.query('transactionHistory', {
       pageNumber: current,
       limitNumber: limit_number,
@@ -222,46 +229,49 @@ export default class ThetaSdkService extends Service {
     });
     this.pagination = this.transactions.meta.pagination;
     await this.metamask.initMeta();
-    if (!this.metamask.isThetaBlockchain) {
-      return this.transactions;
-    }
+    // if (!this.metamask.isThetaBlockchain) {
+    //   return this.transactions;
+    // }
     return await this.setTransactionsReverseName();
+  }
+
+  async setWalletsReverseName() {
+    const walletsResolved = [];
+    for (const wallet of this.wallets.toArray()) {
+      if (wallet.wallet_address) {
+        wallet.wallet_tns = await this.setItemReverseName(wallet.wallet_address);
+      }
+      if (wallet.node_address) {
+        wallet.node_address_tns = await this.setItemReverseName(wallet.node_address);
+      }
+      walletsResolved.push(wallet);
+    }
+    return walletsResolved;
+  }
+
+  async setItemReverseName(address) {
+    if (this.cachedReverseName[address]) {
+      return this.cachedReverseName[address];
+    } else {
+      const reverseName = await this.domain.getReverseName(address);
+      if (reverseName.domain) {
+        this.cachedReverseName[address] = reverseName.domain;
+        return reverseName.domain;
+      } else {
+        this.cachedReverseName[address] = false;
+        return false;
+      }
+    }
   }
 
   async setTransactionsReverseName() {
     const transactionsResolved = [];
-    const cachedReverseName = {};
     for (const transaction of this.transactions.toArray()) {
-      console.log("transaction");
       if (transaction.toAddress) {
-        if (cachedReverseName[transaction.toAddress]) {
-          console.log("cached");
-          transaction.toAddressName = cachedReverseName[transaction.toAddress];
-        } else {
-          console.log("reverseName");
-          const reverseName = await this.domain.getReverseName(transaction.toAddress);
-          if (reverseName.domain) {
-            transaction.toAddressName = reverseName.domain;
-            cachedReverseName[transaction.toAddress] = reverseName.domain;
-          } else {
-            cachedReverseName[transaction.toAddress] = false;
-          }
-        }
+        transaction.toAddressName = await this.setItemReverseName(transaction.toAddress);
       }
       if (transaction.fromAddress) {
-        if (cachedReverseName[transaction.fromAddress]) {
-          console.log("cached");
-          transaction.fromAddressName = cachedReverseName[transaction.fromAddress];
-        } else {
-          console.log("reverseName");
-          const reverseName = await this.domain.getReverseName(transaction.fromAddress);
-          if (reverseName.domain) {
-            transaction.fromAddressName = reverseName.domain;
-            cachedReverseName[transaction.fromAddress] = reverseName.domain;
-          } else {
-            cachedReverseName[transaction.fromAddress] = false;
-          }
-        }
+        transaction.fromAddressName = await this.setItemReverseName(transaction.fromAddress);
       }
       transactionsResolved.push(transaction);
     }
