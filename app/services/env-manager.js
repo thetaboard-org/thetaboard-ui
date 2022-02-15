@@ -4,6 +4,8 @@ import { inject as service } from '@ember/service';
 
 export default class EnvManagerService extends Service {
   @service thetaSdk;
+  @service metamask;
+  @service domain;
   @service utils;
   @service currentUser;
   @service wallet;
@@ -40,20 +42,40 @@ export default class EnvManagerService extends Service {
       this.config.explorerEndpoint = 'https://explorer.thetatoken.org';
       this.config.contractAddress = '0x5191de7a7f17dfcbb0e4e552188450abb13ff14b';
     }
+    if (params && params.group) {
+      await this.thetaSdk.getWalletsInfo('group', params.group);
+    }
     if (params && params.wa) {
       const wa = params.wa;
       //is it a wallet address
       if (wa.length == 42 && wa.toLowerCase().startsWith('0x')) {
         //get domain for name
         await this.thetaSdk.getWalletsInfo('wallet', [wa]);
+      } else if (wa.endsWith('.theta')) {
+        //get address for domain
+        await this.metamask.initMeta();
+        if (!this.metamask.isThetaBlockchain) {
+          return this.config;
+        }
+        const address = await this.domain.getAddrForDomain(wa.replace(".theta", ""));
+        if (
+          address.addressRecord &&
+          address.addressRecord != '0x0000000000000000000000000000000000000000'
+        ) {
+          const reverse = await this.domain.getReverseName(address.addressRecord);
+          if (reverse.domain == wa.replace(".theta", "")) {
+            await this.thetaSdk.getWalletsInfo('wallet', [address.addressRecord]);
+          } else {
+            this.utils.errorNotify(this.intl.t('notif.invalid_address'));
+          }
+        } else {
+          this.utils.errorNotify(this.intl.t('notif.invalid_address'));
+        }
       } else {
         this.utils.errorNotify(this.intl.t('notif.invalid_address'));
       }
     }
 
-    if (params && params.group) {
-      await this.thetaSdk.getWalletsInfo('group', params.group);
-    }
     return this.config;
   }
 }

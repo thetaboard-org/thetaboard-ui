@@ -7,7 +7,16 @@ export default class DomainsNftInfoTnsComponent extends Component {
   constructor() {
     super(...arguments);
     this.initComponent();
+    if (typeof window.ethereum !== 'undefined') {
+      window.ethereum.on('chainChanged', () => {
+        setTimeout(this.initComponent, 2000);
+      });
+      window.ethereum.on('accountsChanged', () => {
+        setTimeout(this.initComponent, 2000);
+      });
+    }
   }
+
   @service metamask;
   @service domain;
   @tracked isOwner;
@@ -20,6 +29,7 @@ export default class DomainsNftInfoTnsComponent extends Component {
   @tracked rawReverseName;
   @tracked addressRecord;
   @tracked canUlink;
+  @tracked canUlinkPrevious;
 
   get tnsLabel() {
     return this.nft.name.replace('.theta', '');
@@ -40,11 +50,11 @@ export default class DomainsNftInfoTnsComponent extends Component {
     this.canEditAddressRecord = false;
     this.rawReverseName = '';
     this.canUlink = false;
-
+    this.canUlinkPrevious = false;
+    await this.metamask.initMeta();
     let currentAddress = this.metamask.currentAccount;
     if (!currentAddress) {
-      await this.metamask.connect();
-      currentAddress = this.metamask.currentAccount;
+      return;
     }
 
     const registrant = await this.domain.getRegistrant(this.tnsLabel);
@@ -63,6 +73,11 @@ export default class DomainsNftInfoTnsComponent extends Component {
       this.addressRecord = addressRecord.addressRecord;
       if (currentAddress == this.addressRecord) {
         this.isAddressRecord = true;
+      } else {
+        const reverseName = await this.domain.getReverseName(this.addressRecord);
+        if (reverseName && reverseName.domain == this.tnsLabel) {
+          this.canUlinkPrevious = true;
+        }
       }
 
       //Check if controller of NFT

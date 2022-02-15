@@ -26,11 +26,23 @@ export default class MetamaskService extends Service {
 
   initPromise = null;
 
+  async initMeta() {
+    if (!this.initPromise) {
+      this.initPromise = this.getStatus();
+    }
+    return this.initPromise;
+  }
+
   async getStatus() {
     if (typeof window.ethereum !== 'undefined') {
       window.ethereum.on('chainChanged', this.handleChainChanged);
       window.ethereum.on('accountsChanged', this.handleAccountsChanged);
     }
+
+    return await this.initProvider();
+  }
+
+  async initProvider() {
     // check if already connected
     const metamaskProvider = await detectEthereumProvider();
     if (!metamaskProvider) {
@@ -53,19 +65,22 @@ export default class MetamaskService extends Service {
     }
     this.isConnected = true;
     this.currentAccount = accounts[0];
+    this.setCurrentName();
   }
 
-  async initMeta() {
-    if (!this.initPromise) {
-      this.initPromise = this.getStatus();
+  async setCurrentName() {
+    const reverseName = await this.domain.getReverseName(this.currentAccount);
+    if (reverseName && reverseName.domain) {
+      this.currentName = reverseName.domain;
+    } else {
+      this.currentName = null;
     }
-    return this.initPromise;
   }
 
   @action
   disconnect(hideNotif) {
     this.isInstalled = null;
-    this.isConnected = null;
+    this.isConnected = false;
     this.currentAccount = null;
     this.currentName = null;
     if (hideNotif == true) return;
@@ -73,60 +88,39 @@ export default class MetamaskService extends Service {
   }
 
   @action
-  async connect(silent) {
+  async connect() {
     try {
-      this.provider = await detectEthereumProvider();
-      if (this.provider) {
-        this.isInstalled = true;
-        if (this.provider !== window.ethereum) {
-          return this.utils.errorNotify(this.intl.t('domain.multiple_wallet'));
+      await this.initProvider();
+      if (this.isConnected) {
+        return this.utils.successNotify(this.intl.t('domain.connect_to') + this.currentAccount);
+      } else {
+        if (!this.isInstalled) {
+          return this.utils.errorNotify(this.intl.t('domain.install_metamask'));
         }
-        this.networkId = parseInt(await window.ethereum.request({method: 'eth_chainId'}));
-        if (this.networkId !== 361) {
+        if (!this.isThetaBlockchain) {
           return this.utils.errorNotify(this.intl.t('domain.select_theta'));
         }
-        const etherProvider = new ethers.providers.Web3Provider(window.ethereum);
-        const signer = etherProvider.getSigner();
-        const address = await signer.getAddress();
-        return await this.handleAccountsChanged([address], silent == true);
-      } else {
-        return this.utils.errorNotify(this.intl.t('domain.install_metamask'));
-      }
-    } catch (e) {
-      if (e.code == -32002) {
-        return this.utils.errorNotify(this.intl.t('domain.error.check_metamask'));
-      }
-      if (e.operation == 'getAddress') {
+        //open metamask and ask to authorize connection to the page
         const provider = new ethers.providers.Web3Provider(window.ethereum);
         this.utils.errorNotify(this.intl.t('domain.error.check_metamask'));
         await provider.send("eth_requestAccounts", []);
         return;
       }
-      return this.utils.errorNotify(e.message);
+    } catch (e) {
+      console.log(e.message);
     }
   }
 
   @action
-  async handleAccountsChanged(accounts, silent) {
+  async handleAccountsChanged(accounts) {
     if (accounts.length === 0) {
       this.disconnect();
       return this.utils.errorNotify(this.intl.t('domain.connect_to_metamask'));
     } else if (accounts[0] !== this.currentAccount) {
-      this.isConnected = true;
-      const etherProvider = new ethers.providers.Web3Provider(window.ethereum);
-      const signer = etherProvider.getSigner();
-      const address = await signer.getAddress();
-      this.currentAccount = address;
-      if (!silent) {
+      await this.initProvider();
+      if (this.isConnected) {
         this.utils.successNotify(this.intl.t('domain.connect_to') + this.currentAccount);
       }
-      const reverseName = await this.domain.getReverseName(this.currentAccount);
-      if (reverseName && reverseName.domain) {
-        this.currentName = reverseName.domain;
-      } else {
-        this.currentName = null;
-      }
-      return address;
     }
   }
 
@@ -137,6 +131,9 @@ export default class MetamaskService extends Service {
       this.isThetaBlockchain = false;
       return this.utils.errorNotify(this.intl.t('domain.select_theta'));
     }
-    return await this.connect();
+    await this.initProvider();
+    if (this.isConnected) {
+      this.utils.successNotify(this.intl.t('domain.connect_to') + this.currentAccount);
+    }
   }
 }

@@ -84,7 +84,11 @@
 
         {{#if isBalanceEnough}}
         {{else}}
-            <button class="btn btn-secondary">{{t 'domain.insufficient_funds'}}</button>
+            {{#if metamask.isConnected}}
+                <button class="btn btn-secondary">{{t 'domain.insufficient_funds'}}</button>
+            {{else}}
+                <p>{{t 'domain.install_to_buy'}}</p>
+            {{/if}}
         {{/if}}
     </div>
      <div class="alert alert-success buy-domain">

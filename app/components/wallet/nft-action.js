@@ -214,6 +214,7 @@ export default class NftActionComponent extends Component {
     e.preventDefault();
     this.addressLookup = '';
     let inputValue = e.currentTarget.value;
+    await this.metamask.initMeta();
     if (inputValue.endsWith(".theta")) {
       const address = await this.domain.getAddrForDomain(inputValue.replace(".theta", ""));
       if (

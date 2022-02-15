@@ -31,28 +31,14 @@ export default class SearchBarSearchBarComponent extends Component {
   async search(event) {
     event.preventDefault();
     this.invalidAddress = false;
-    let inputVal = this.inputAddress || this.walletAddress;
+    let inputVal = this.inputAddress;
     if (inputVal.length == 42 && inputVal.toLowerCase().startsWith('0x')) {
       await this.thetaSdk.getWalletsInfo('wallet', [inputVal]);
-      this.args.onRouteChange(inputVal);
+      this.inputDomain
+        ? this.args.onRouteChange(this.inputDomain)
+        : this.args.onRouteChange(this.inputVal);
       $('#searchModal').modal('hide');
       return;
-    } else if (inputVal.endsWith(".theta")) {
-      if (this.metamask.isConnected) {
-        const address = await this.domain.getAddrForDomain(inputVal.replace(".theta", ""));
-        if (
-          address.addressRecord &&
-          address.addressRecord != '0x0000000000000000000000000000000000000000'
-        ) {
-          const reverse = await this.domain.getReverseName(address.addressRecord);
-          if (reverse.domain == inputVal.replace(".theta", "")){
-            await this.thetaSdk.getWalletsInfo('wallet', [address.addressRecord]);
-            this.args.onRouteChange(address.addressRecord);
-            $('#searchModal').modal('hide');
-            return;
-          }
-        }
-      }
     }
     this.invalidAddress = true;
     this.utils.errorNotify(this.intl.t('notif.invalid_address'));
@@ -64,11 +50,9 @@ export default class SearchBarSearchBarComponent extends Component {
     if (e.key !== 'Enter') {
       this.invalidAddress = false;
     }
-    if (!this.metamask.isConnected) {
-      return;
-    }
     this.addressLookup = '';
     let inputValue = e.currentTarget.value;
+    await this.metamask.initMeta();
     if (inputValue.endsWith(".theta")) {
       const address = await this.domain.getAddrForDomain(inputValue.replace(".theta", ""));
       if (

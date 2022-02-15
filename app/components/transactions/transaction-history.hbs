@@ -24,6 +24,11 @@
           </tr>
         </thead>
         <tbody>
+          {{#async-await transactionList as |transactions|}}
+            {{transactions.length}}
+          {{else}}
+            enableTooltip
+          {{/async-await}}
           {{#each transactionList as |transaction|}}
             <tr>
               <td class="text-center transaction-type"><img
@@ -32,14 +37,28 @@
               <td class="text-center"><a href="{{explorerEndpoint}}/txs/{{transaction.txnHash}}"
                                          target="_blank">{{moment-from transaction.txTimestamp}}</a></td>
               <td class="text-center d-none d-sm-none d-md-none d-lg-none d-xl-table-cell">
-                <LinkTo {{shortener transaction.fromAddress}} @route="wallet.explorer" @query={{hash group=null
-                                                                                                     wa=transaction.fromAddress}}>{{transaction.fromAddress}}</LinkTo>
+                {{#if transaction.fromAddressName}}
+                  <LinkTo 
+                  @route="wallet.explorer" 
+                  @query={{hash group=null wa=transaction.fromAddressName}}>{{transaction.fromAddressName}} (<span {{shortener transaction.fromAddress}}></span>)</LinkTo>  
+                {{else}}
+                  <LinkTo {{shortener transaction.fromAddress}} 
+                  @route="wallet.explorer" 
+                  @query={{hash group=null wa=transaction.fromAddress}}>{{transaction.fromAddress}}</LinkTo>
+                {{/if}}                                                                           
               </td>
               <td class="text-center d-none d-sm-table-cell" id="in-or-out"><img
                 src="/assets/img/transaction-{{transaction.inOrOut}}.png"/></td>
               <td class="text-center d-none d-sm-none d-md-none d-lg-none d-xl-table-cell">
-                <LinkTo {{shortener transaction.toAddress}} @route="wallet.explorer" @query={{hash group=null
-                                                                                                   wa=transaction.toAddress}}>{{transaction.toAddress}}</LinkTo>
+                {{#if transaction.toAddressName}}
+                  <LinkTo 
+                  @route="wallet.explorer" 
+                  @query={{hash group=null wa=transaction.toAddressName}}>{{transaction.toAddressName}} (<span {{shortener transaction.toAddress}}></span>)</LinkTo>  
+                {{else}}
+                  <LinkTo {{shortener transaction.toAddress}} 
+                  @route="wallet.explorer" 
+                  @query={{hash group=null wa=transaction.toAddress}}>{{transaction.toAddress}}</LinkTo>
+                {{/if}}                                                                           
               </td>
               <td class="text-left td-value">
                 <div>

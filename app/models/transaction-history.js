@@ -12,7 +12,9 @@ export default class TransactionHistoryModel extends Model {
   @attr('string') txnHash;
   @attr('number') type;
   @attr('string') fromAddress;
+  @attr('string') fromAddressName;
   @attr('string') toAddress;
+  @attr('string') toAddressName;
   @attr('string') contractAddress;
   @attr('date') txTimestamp;
   @attr('number') status;

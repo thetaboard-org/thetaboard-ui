@@ -52,12 +52,7 @@ export default class DomainsSearchComponent extends Component {
 
   async initWithTNS() {
     this.domainName = this.tns;
-    if (!this.metamask.currentAccount) {
-      await this.metamask.connect();
-    }
-    if (this.metamask.currentAccount) {
-      await this.checkNameAvailable();
-    }
+    await this.checkNameAvailable();
   }
 
   @action
@@ -65,6 +60,7 @@ export default class DomainsSearchComponent extends Component {
     if (event) {
       event.preventDefault();
     }
+    await this.metamask.initMeta();
     if (!this.domainName || this.domainName == '') {
       return;
     }

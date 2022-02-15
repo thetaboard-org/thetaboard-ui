@@ -40,14 +40,17 @@ export default class ThetaSdkService extends Service {
   @tracked pagination;
   @tracked transactions;
   @tracked coinbases;
-  @tracked totalStake
-  @tracked totalTfuelStake
+  @tracked totalStake;
+  @tracked totalTfuelStake;
+  @tracked cachedReverseName = {};
 
   @service envManager;
   @service guardian;
   @service utils;
   @service store;
   @service currency;
+  @service metamask;
+  @service domain;
 
   get guardianWallets() {
     if (this.walletList.length) {
@@ -70,9 +73,9 @@ export default class ThetaSdkService extends Service {
   }
 
   get walletList() {
-    const tfuelPrice = this.prices.tfuel.price;
-    const thetaPrice = this.prices.theta.price;
-    const tdropPrice = this.prices.tdrop.price;
+    const tfuelPrice = this.prices.tfuel ? this.prices.tfuel.price : 0;
+    const thetaPrice = this.prices.theta ? this.prices.theta.price : 0;
+    const tdropPrice = this.prices.tdrop ? this.prices.tdrop.price : 0;
 
     return Ember.A(this.wallets.map((wallet) => {
       let walletItem = this.store.createRecord('walletItem', wallet);
@@ -189,7 +192,7 @@ export default class ThetaSdkService extends Service {
       this.wallets = wallets.wallets;
       this.currentAccount = object;
       this.currentGroup = null;
-      return wallets;
+      // return wallets;
     } else if (type == 'group') {
       let wallets = {wallets: []};
       let uuid = '';
@@ -208,8 +211,14 @@ export default class ThetaSdkService extends Service {
       this.wallets = wallets.wallets;
       this.currentAccount = null;
       this.currentGroup = uuid;
-      return wallets;
+      // return wallets;
     }
+
+    await this.metamask.initMeta();
+    // if (!this.metamask.isThetaBlockchain) {
+    //   return this.wallets;
+    // }
+    return await this.setWalletsReverseName();
   }
 
   async getTransactions(wallets, current = 1, limit_number = 40) {
@@ -219,7 +228,54 @@ export default class ThetaSdkService extends Service {
       wallets: wallets,
     });
     this.pagination = this.transactions.meta.pagination;
-    return this.transactions;
+    await this.metamask.initMeta();
+    // if (!this.metamask.isThetaBlockchain) {
+    //   return this.transactions;
+    // }
+    return await this.setTransactionsReverseName();
+  }
+
+  async setWalletsReverseName() {
+    const walletsResolved = [];
+    for (const wallet of this.wallets.toArray()) {
+      if (wallet.wallet_address) {
+        wallet.wallet_tns = await this.setItemReverseName(wallet.wallet_address);
+      }
+      if (wallet.node_address) {
+        wallet.node_address_tns = await this.setItemReverseName(wallet.node_address);
+      }
+      walletsResolved.push(wallet);
+    }
+    return walletsResolved;
+  }
+
+  async setItemReverseName(address) {
+    if (this.cachedReverseName[address]) {
+      return this.cachedReverseName[address];
+    } else {
+      const reverseName = await this.domain.getReverseName(address);
+      if (reverseName.domain) {
+        this.cachedReverseName[address] = reverseName.domain;
+        return reverseName.domain;
+      } else {
+        this.cachedReverseName[address] = false;
+        return false;
+      }
+    }
+  }
+
+  async setTransactionsReverseName() {
+    const transactionsResolved = [];
+    for (const transaction of this.transactions.toArray()) {
+      if (transaction.toAddress) {
+        transaction.toAddressName = await this.setItemReverseName(transaction.toAddress);
+      }
+      if (transaction.fromAddress) {
+        transaction.fromAddressName = await this.setItemReverseName(transaction.fromAddress);
+      }
+      transactionsResolved.push(transaction);
+    }
+    return transactionsResolved;
   }
 
   async getAllCoinbases(wallets) {

@@ -45,10 +45,10 @@ export default class WalletWalletNavbarComponent extends Component {
         result.address = this.thetaSdk.currentAccount.firstObject;
       }
 
-      if (!this.metamask.currentAccount) {
+      await this.metamask.initMeta();
+      if (!this.metamask.isThetaBlockchain) {
         return result;
       }
-
       if (result.address) {
         const reverse = await this.domain.getReverseName(result.address);
         if (reverse.domain) {
