@@ -1632,7 +1632,7 @@ a.active p.menu-item {
 
 .metamask-account {
   float: right;
-  margin-top: 7px;
+  margin: -1px 0 0 5px;
   font-size: 12px;
 }
 
