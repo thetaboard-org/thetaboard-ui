@@ -23,6 +23,7 @@ export default class MetamaskService extends Service {
   @tracked provider;
   @tracked networkId;
   @tracked etherProvider;
+  @tracked balance = 0;
 
   initPromise = null;
 
@@ -43,6 +44,7 @@ export default class MetamaskService extends Service {
   }
 
   async initProvider() {
+    this.balance = 0;
     // check if already connected
     const metamaskProvider = await detectEthereumProvider();
     if (!metamaskProvider) {
@@ -65,7 +67,19 @@ export default class MetamaskService extends Service {
     }
     this.isConnected = true;
     this.currentAccount = accounts[0];
+    this.balance = await this.getBalance();
     this.setCurrentName();
+  }
+
+  async getBalance() {
+    if (!this.currentAccount) {
+      return 0;
+    }
+    const ethersProvider = new ethers.providers.Web3Provider(window.ethereum);
+    const accountBalance = await ethersProvider.getBalance(this.currentAccount);
+
+    const balance = web3.utils.fromWei(accountBalance.toString());
+    return Number(balance);
   }
 
   async setCurrentName() {
@@ -79,10 +93,10 @@ export default class MetamaskService extends Service {
 
   @action
   disconnect(hideNotif) {
-    this.isInstalled = null;
     this.isConnected = false;
     this.currentAccount = null;
     this.currentName = null;
+    this.balance = 0;
     if (hideNotif == true) return;
     this.utils.successNotify(this.intl.t('domain.disconnected_from_metmask'));
   }

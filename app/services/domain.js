@@ -38,7 +38,7 @@ export default class DomainService extends Service {
     const checkNameAvailable = await isDomainAvailable(domainName, this.metamask.provider);
     if (checkNameAvailable.available) {
       const price = await this.getPrice(domainName, this.metamask.provider);
-      const balance = await this.getBalance();
+      const balance = await this.metamask.balance;
       return {
         available: checkNameAvailable.available,
         price: price,
@@ -122,17 +122,6 @@ export default class DomainService extends Service {
     } catch (e) {
       return this.utils.errorNotify(e.message);
     }
-  }
-
-  async getBalance() {
-    await this.metamask.initMeta();
-    if (!this.metamask.currentAccount) {
-      return 0;
-    }
-    const ethersProvider = new ethers.providers.Web3Provider(window.ethereum);
-    const accountBalance = await ethersProvider.getBalance(this.metamask.currentAccount);
-    const balance = thetajs.utils.fromWei(accountBalance.toString());
-    return Number(balance);
   }
 
   async getPrice(domain) {

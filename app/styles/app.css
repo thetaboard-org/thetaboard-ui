@@ -1932,3 +1932,12 @@ button.btn.button-icon-tb, button.button-icon-tb .icon-tb.logout-metamask {
   margin-top: 5px;
 }
 
+.metamask-icon-connect {
+  border-width: 1px 1px 1px 0;
+  border-style: solid;
+  margin-left: -8px;
+}
+
+.button-metamask-container {
+  margin-top: 10px;
+}

@@ -6,7 +6,7 @@
 </div>
 {{#if searchInProgress}}
     {{#if domainAvailable}}
-        {{domains/buy-domain domainName=domainNameToBuy price=price isBalanceEnough=isBalanceEnough}}
+        {{domains/buy-domain domainName=domainNameToBuy price=price}}
     {{else if domainNameInvalid}}
         <div class="alert alert-danger invalid-domain">
             <span><b> {{domainNameToBuy}} </b> {{t 'domain.invalid_name'}}</span>
