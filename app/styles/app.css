@@ -1048,6 +1048,11 @@ a.logout {
     padding-left: 5px;
     padding-right: 5px;
   }
+
+  #card-domain input.input-domain-search {
+    width: 150px;
+  }
+  
 }
 
 .navbar .navbar-nav .dropdown .nav-link {
@@ -1940,4 +1945,11 @@ button.btn.button-icon-tb, button.button-icon-tb .icon-tb.logout-metamask {
 
 .button-metamask-container {
   margin-top: 10px;
+}
+
+@media screen and (max-width: 576px) {
+  .col-xs-11 {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
 }

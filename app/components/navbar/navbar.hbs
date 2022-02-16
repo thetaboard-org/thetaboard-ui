@@ -11,9 +11,12 @@
         </div>
         <div class="collapse navbar-collapse" id="navigation">
             <ul class="navbar-nav ml-auto">
+                {{#if isMobile.any}}
+                {{else}}
                 <li class="dropdown nav-item">
                     {{domains/connection-to-metamask}}
                 </li>
+                {{/if}}
                 {{navbar/i18n-currency-selection}}
                 <li class="dropdown nav-item">
                     {{#if this.session.isAuthenticated}}

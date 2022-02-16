@@ -11,6 +11,9 @@
       {{download-wallet/modal}}
       {{search-bar/search-bar onRouteChange=this.setQueryParam}}
       {{wallet/wallet-navbar onRouteChange=this.setQueryParam}}
+      {{#if isMobile.any}}
+        {{domains/connection-to-metamask}}
+      {{/if}}
       <div class="content">
         <div class="container-fluid">
           {{outlet}}

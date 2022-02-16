@@ -1,27 +1,17 @@
-{{#if isMobile.any}}
-{{else}}
-    {{#async-await metamask.initMeta as |init|}}
-        {{#if metamask.isConnected}}
-            <div class="button-metamask-container">
-                <button class="btn btn-primary button-icon-tb logout-metamask" {{on 'click' metamask.disconnect}}>
-                    <i class="icon-tb icon-logout"></i>
-                </button>
-                <img class="metamask-icon-connect" width="30" src="/assets/img/mmon.png"/>
-                <div class="metamask-account">
-                    {{#if metamask.currentName}}
-                        <span>{{metamask.currentName}}.theta</span><br/>
-                    {{/if}}
-                    <span {{shortener metamask.currentAccount}}></span>
-                </div>
+{{#async-await metamask.initMeta as |init|}}
+    {{#if metamask.isConnected}}
+        <div class="button-metamask-container">
+            <button class="btn btn-primary button-icon-tb logout-metamask" {{on 'click' metamask.disconnect}}>
+                <i class="icon-tb icon-logout"></i>
+            </button>
+            <img class="metamask-icon-connect" width="30" src="/assets/img/mmon.png"/>
+            <div class="metamask-account">
+                {{#if metamask.currentName}}
+                    <span>{{metamask.currentName}}.theta</span><br/>
+                {{/if}}
+                <span {{shortener metamask.currentAccount}}></span>
             </div>
-        {{else}}
-            <div class="button-metamask-container">
-                <button class="btn btn-primary button-icon-tb logout-metamask" {{on 'click' metamask.connect}}>
-                    <i class="icon-tb icon-login"></i>
-                </button>
-                <img class="metamask-icon-connect" width="30" src="/assets/img/mmoff.png"/>
-            </div>
-        {{/if}}
+        </div>
     {{else}}
         <div class="button-metamask-container">
             <button class="btn btn-primary button-icon-tb logout-metamask" {{on 'click' metamask.connect}}>
@@ -29,5 +19,12 @@
             </button>
             <img class="metamask-icon-connect" width="30" src="/assets/img/mmoff.png"/>
         </div>
-    {{/async-await}}
-{{/if}}
+    {{/if}}
+{{else}}
+    <div class="button-metamask-container">
+        <button class="btn btn-primary button-icon-tb logout-metamask" {{on 'click' metamask.connect}}>
+            <i class="icon-tb icon-login"></i>
+        </button>
+        <img class="metamask-icon-connect" width="30" src="/assets/img/mmoff.png"/>
+    </div>
+{{/async-await}}
