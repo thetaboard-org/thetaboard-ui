@@ -262,7 +262,7 @@ domain:
   timeline_theta: "Integration with Theta labs"
   timeline_ecosystem: "Integration with Ecosystem"
   timeline_reselling: "Reselling on Thetaboard"
-  help: "help"
+  help: "Help"
   error:
     check_metamask: "Check your MetaMask extension"
     not_owner: "You need to be the owner of the domain to perform this operation"
@@ -465,7 +465,6 @@ notif:
   success_nft: "Successfully purchased NFT"
   no_metamask: "Metamask was not detected"
   not_theta_blockchain: "Your Metamask is not currently linked to the Theta Mainnet Network"
-
 ###### UTILS NOTIFY END ######
 
 
