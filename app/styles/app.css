@@ -1052,7 +1052,14 @@ a.logout {
   #card-domain input.input-domain-search {
     width: 150px;
   }
+
+  #card-domain div.buy-domain {
+    width: 293px;
+  }
   
+  .video-help {
+    width: 320px;
+  }
 }
 
 .navbar .navbar-nav .dropdown .nav-link {
