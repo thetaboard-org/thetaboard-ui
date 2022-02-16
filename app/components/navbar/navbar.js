@@ -5,7 +5,6 @@ import { action } from '@ember/object';
 export default class NavbarNavbarComponent extends Component {
   @service session;
   @service currentUser;
-  @service isMobile;
 
   @action
   invalidateSession() {

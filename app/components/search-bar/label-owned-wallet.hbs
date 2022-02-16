@@ -1,12 +1,13 @@
 {{#async-await this.args.getWalletLabel as |walletLabel|}}
     {{#if walletLabel.name}}
         <span class="long-address">{{walletLabel.name}} <br/>{{walletLabel.walletName}} (<span {{shortener walletLabel.address}}>{{walletLabel.address}}</span>)</span>
-        <span class="short-address">{{walletLabel.name}}<br/>{{walletLabel.walletName}}</span>
+        <span class="short-address">{{walletLabel.name}} <br/>{{walletLabel.walletName}} (<span {{shortener walletLabel.address}}>{{walletLabel.address}}</span>)</span>
+        {{!-- <span class="short-address">{{walletLabel.name}}<br/>{{walletLabel.walletName}}</span> --}}
     {{else}}
         <span class="long-address">{{walletLabel.walletName}} (<span {{shortener walletLabel.address}}>{{walletLabel.address}}</span>)</span>
-        <span class="short-address">{{walletLabel.walletName}}</span>
+        <span class="short-address">{{walletLabel.walletName}}(<span {{shortener walletLabel.address}}>{{walletLabel.address}}</span>)</span>
     {{/if}}
 {{else}}
     <span class="long-address">{{wallet.isSearchedWalletOwned.name}} (<span {{shortener wallet.isSearchedWalletOwned.address}}>{{wallet.isSearchedWalletOwned.address}}</span>)</span>
-    <span class="short-address">{{wallet.isSearchedWalletOwned.name}}</span>
+    <span class="short-address">{{wallet.isSearchedWalletOwned.name}} (<span {{shortener wallet.isSearchedWalletOwned.address}}>{{wallet.isSearchedWalletOwned.address}}</span>)</span>
 {{/async-await}}
