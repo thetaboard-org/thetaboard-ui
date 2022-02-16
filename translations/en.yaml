@@ -262,6 +262,7 @@ domain:
   timeline_theta: "Integration with Theta labs"
   timeline_ecosystem: "Integration with Ecosystem"
   timeline_reselling: "Reselling on Thetaboard"
+  help: "help"
   error:
     check_metamask: "Check your MetaMask extension"
     not_owner: "You need to be the owner of the domain to perform this operation"
