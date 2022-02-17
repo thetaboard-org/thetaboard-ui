@@ -53,6 +53,7 @@ export default class NftModel extends Model {
   @computed('nftSellController', 'nftContractId', 'metamask.provider')
   get blockChainInfo() {
     const fetchInfo = async () => {
+      const web3 = new Web3(window.ethereum);
       await this.metamask.initMeta();
       let contractInfo;
       let modifiableContract = {};

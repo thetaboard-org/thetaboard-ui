@@ -61,8 +61,7 @@ export default class MetamaskService extends Service {
     this.provider = new ethers.providers.Web3Provider(metamaskProvider);
 
     this.isThetaBlockchain = true;
-    window.web3 = new Web3(window.web3.currentProvider);
-    const accounts = await window.web3.eth.getAccounts();
+    const accounts = await this.provider.send("eth_requestAccounts", []);
     if (accounts.length === 0) {
       return this.isConnected = false;
     }
@@ -76,9 +75,9 @@ export default class MetamaskService extends Service {
     if (!this.currentAccount) {
       return 0;
     }
+    const web3 = new Web3(window.ethereum);
     const ethersProvider = new ethers.providers.Web3Provider(window.ethereum);
     const accountBalance = await ethersProvider.getBalance(this.currentAccount);
-
     const balance = web3.utils.fromWei(accountBalance.toString());
     return Number(balance);
   }
