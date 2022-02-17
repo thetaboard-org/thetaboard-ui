@@ -118,9 +118,7 @@ export default class MetamaskService extends Service {
         //open metamask and ask to authorize connection to the page
         const provider = new ethers.providers.Web3Provider(window.ethereum);
         this.utils.errorNotify(this.intl.t('domain.error.check_metamask'));
-        const test = await provider.send("eth_requestAccounts", []);
-        debugger
-        console.log()
+        await provider.send("eth_requestAccounts", []);
         return;
       }
     } catch (e) {
