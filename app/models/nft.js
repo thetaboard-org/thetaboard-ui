@@ -53,18 +53,18 @@ export default class NftModel extends Model {
   @computed('nftSellController', 'nftContractId', 'metamask.provider')
   get blockChainInfo() {
     const fetchInfo = async () => {
-      const web3 = new Web3(window.ethereum);
       await this.metamask.initMeta();
       let contractInfo;
       let modifiableContract = {};
       if (this.isAuction) {
+        debugger
         const NFTauctionContract = new ethers.Contract(this.nftSellController, this.abi.ThetaboardAuctionSell, this.metamask.provider);
         contractInfo = await NFTauctionContract.getNftAuction(this.nftContractId);
         Object.assign(modifiableContract, contractInfo);
         if (Number(contractInfo.minBid) !== this.price) {
-          modifiableContract.minBid = web3.utils.fromWei(contractInfo.minBid);
+          modifiableContract.minBid = window.web3.utils.fromWei(contractInfo.minBid.toString());
         }
-        modifiableContract.bidsValue = contractInfo.bidsValue.map(x => web3.utils.fromWei(x))
+        modifiableContract.bidsValue = contractInfo.bidsValue.map(x => window.web3.utils.fromWei(x.toString()))
       } else {
         const NFTsellContract = new ethers.Contract(this.nftSellController, this.abi.ThetaboardDirectSell, this.metamask.provider);
         contractInfo = await NFTsellContract.getNftSell(this.nftContractId);

@@ -50,11 +50,13 @@ export default class MetamaskService extends Service {
     if (!metamaskProvider) {
       // default provider
       this.provider = new ethers.providers.JsonRpcProvider("https://eth-rpc-api.thetatoken.org/rpc");
+      window.web3 = new Web3("https://eth-rpc-api.thetatoken.org/rpc")
       return this.isInstalled = false;
     }
     this.isInstalled = true;
     if (parseInt(ethereum.chainId) !== 361) {
       this.provider = new ethers.providers.JsonRpcProvider("https://eth-rpc-api.thetatoken.org/rpc");
+      window.web3 = new Web3("https://eth-rpc-api.thetatoken.org/rpc")
       return this.isThetaBlockchain = false;
     }
     // if metamask is on the right blockchain, then use metamask
