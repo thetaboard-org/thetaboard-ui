@@ -215,9 +215,7 @@ export default class ThetaSdkService extends Service {
     }
 
     await this.metamask.initMeta();
-    // if (!this.metamask.isThetaBlockchain) {
-    //   return this.wallets;
-    // }
+
     return await this.setWalletsReverseName();
   }
 
@@ -229,9 +227,6 @@ export default class ThetaSdkService extends Service {
     });
     this.pagination = this.transactions.meta.pagination;
     await this.metamask.initMeta();
-    // if (!this.metamask.isThetaBlockchain) {
-    //   return this.transactions;
-    // }
     return await this.setTransactionsReverseName();
   }
 

@@ -51,14 +51,15 @@ export default class MetamaskService extends Service {
       // default provider
       this.provider = new ethers.providers.JsonRpcProvider("https://eth-rpc-api.thetatoken.org/rpc");
       return this.isInstalled = false;
-    } else {
-      this.provider = new ethers.providers.Web3Provider(metamaskProvider);
     }
-
     this.isInstalled = true;
     if (parseInt(ethereum.chainId) !== 361) {
+      this.provider = new ethers.providers.JsonRpcProvider("https://eth-rpc-api.thetatoken.org/rpc");
       return this.isThetaBlockchain = false;
     }
+    // if metamask is on the right blockchain, then use metamask
+    this.provider = new ethers.providers.Web3Provider(metamaskProvider);
+
     this.isThetaBlockchain = true;
     window.web3 = new Web3(window.web3.currentProvider);
     const accounts = await window.web3.eth.getAccounts();
@@ -68,7 +69,7 @@ export default class MetamaskService extends Service {
     this.isConnected = true;
     this.currentAccount = accounts[0];
     this.balance = await this.getBalance();
-    this.setCurrentName();
+    await this.setCurrentName();
   }
 
   async getBalance() {
@@ -117,7 +118,9 @@ export default class MetamaskService extends Service {
         //open metamask and ask to authorize connection to the page
         const provider = new ethers.providers.Web3Provider(window.ethereum);
         this.utils.errorNotify(this.intl.t('domain.error.check_metamask'));
-        await provider.send("eth_requestAccounts", []);
+        const test = await provider.send("eth_requestAccounts", []);
+        debugger
+        console.log()
         return;
       }
     } catch (e) {
