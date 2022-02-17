@@ -6,6 +6,14 @@ export default class DomainsAlreadyRegisteredComponent extends Component {
   constructor() {
     super(...arguments);
     this.initComponent();
+    if (typeof window.ethereum !== 'undefined') {
+      window.ethereum.on('chainChanged', () => {
+        setTimeout(this.initComponent, 2000);
+      });
+      window.ethereum.on('accountsChanged', () => {
+        setTimeout(this.initComponent, 2000);
+      });
+    }
   }
   @service domain;
   @service utils;
@@ -27,12 +35,12 @@ export default class DomainsAlreadyRegisteredComponent extends Component {
   }
 
   async initComponent() {
+    this.isOwner = false;
+    this.metamask.initMeta();
     const registrant = await this.domain.getRegistrant(this.domainName);
     const currentAddress = this.metamask.currentAccount;
-    if (currentAddress == registrant.registrant) {
+    if (currentAddress && currentAddress == registrant.registrant) {
       this.isOwner = true;
-    } else {
-      this.isOwner = false;
     }
   }
 }

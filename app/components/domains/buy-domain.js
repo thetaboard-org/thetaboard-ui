@@ -71,7 +71,7 @@ export default class DomainsBuyDomainComponent extends Component {
   }
 
   get isBalanceEnough() {
-    return this.metamask.balance >= this.price;
+    return this.metamask.isConnected && this.metamask.balance >= this.price;
   }
 
   get isStep1() {
