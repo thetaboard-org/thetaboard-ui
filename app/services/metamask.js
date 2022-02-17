@@ -69,7 +69,7 @@ export default class MetamaskService extends Service {
     this.isConnected = true;
     this.currentAccount = accounts[0];
     this.balance = await this.getBalance();
-    await this.setCurrentName();
+    this.setCurrentName();
   }
 
   async getBalance() {
