@@ -34,9 +34,9 @@ export default class NftActionComponent extends Component {
       } else if (parseInt(ethereum.chainId) !== 361) {
         return this.intl.t('notif.not_theta_blockchain');
       } else {
-        window.web3 = new Web3(window.web3.currentProvider);
+        const web3 = new Web3(window.web3.currentProvider);
         const account = this.metamask.currentAccount;
-        const nft_contract = new window.web3.eth.Contract(this.abi.ThetaboardNFT, this.nft.contract_addr);
+        const nft_contract = new web3.eth.Contract(this.abi.ThetaboardNFT, this.nft.contract_addr);
         const token_owner = await nft_contract.methods.ownerOf(this.nft.original_token_id).call();
         if (token_owner !== account) {
           setTimeout(() => {$('[data-toggle="tooltip"]').tooltip()}, 1000);

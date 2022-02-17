@@ -62,13 +62,13 @@ export default class BuyComponent extends Component {
       } else if (parseInt(ethereum.chainId) !== 361) {
         return this.utils.errorNotify(this.intl.t('notif.not_theta_blockchain'));
       } else {
-        window.web3 = new Web3(window.ethereum);
+        const web3 = new Web3(window.ethereum);
         const accounts = await ethereum.request({method: 'eth_requestAccounts'});
         const account = accounts[0];
 
-        const auction_contract = new window.web3.eth.Contract(this.abi.ThetaboardAuctionSell, nft.nftSellController);
+        const auction_contract = new web3.eth.Contract(this.abi.ThetaboardAuctionSell, nft.nftSellController);
         await auction_contract.methods.placeBid(nft.nftContractId).send({
-          value: window.web3.utils.toWei(String(this.bid)),
+          value: web3.utils.toWei(String(this.bid)),
           from: account
         });
         return this.utils.successNotify(this.intl.t('notif.success_nft'));
