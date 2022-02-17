@@ -37,7 +37,7 @@ export default class SearchBarSearchBarComponent extends Component {
       await this.thetaSdk.getWalletsInfo('wallet', [inputVal]);
       this.inputDomain
         ? this.args.onRouteChange(this.inputDomain)
-        : this.args.onRouteChange(this.inputVal);
+        : this.args.onRouteChange(inputVal);
       $('#searchModal').modal('hide');
       return;
     }
