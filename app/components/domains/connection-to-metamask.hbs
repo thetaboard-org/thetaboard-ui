@@ -1,11 +1,11 @@
 {{#async-await metamask.initMeta as |init|}}
     {{#if metamask.isConnected}}
-        <div class="">
+        <div class="button-metamask-container">
             <button class="btn btn-primary button-icon-tb logout-metamask" {{on 'click' metamask.disconnect}}>
-                <i class="icon-tb icon-logout"></i>
+                <img class="metamask-icon-connect" width="25" src="/assets/img/mmon.png"/>
+                <i class="icon-tb icon-logout" style="font-size: 35px;"></i>
             </button>
-            <img width="50" src="/assets/img/mmon.png"/>
-            <div class="metamask-account" >
+            <div class="metamask-account">
                 {{#if metamask.currentName}}
                     <span>{{metamask.currentName}}.theta</span><br/>
                 {{/if}}
@@ -13,18 +13,18 @@
             </div>
         </div>
     {{else}}
-        <div class="">
+        <div class="button-metamask-container">
             <button class="btn btn-primary button-icon-tb logout-metamask" {{on 'click' metamask.connect}}>
-                <i class="icon-tb icon-login"></i>
+                <img class="metamask-icon-connect" width="25" src="/assets/img/mmoff.png"/>
+                <i class="icon-tb icon-login" style="font-size: 35px;"></i>
             </button>
-            <img width="50" src="/assets/img/mmoff.png"/>
         </div>
     {{/if}}
 {{else}}
-    <div class="">
+    <div class="button-metamask-container">
         <button class="btn btn-primary button-icon-tb logout-metamask" {{on 'click' metamask.connect}}>
-            <i class="icon-tb icon-login"></i>
+            <img class="metamask-icon-connect" width="25" src="/assets/img/mmoff.png"/>
+            <i class="icon-tb icon-login" style="font-size: 35px;"></i>
         </button>
-        <img width="50" src="/assets/img/mmoff.png"/>
     </div>
 {{/async-await}}

@@ -230,7 +230,7 @@ domain:
   multiple_transactions: "It will take"
   multiple_transactions_end:  "metamask transactions"
   needs_to_own: "The account connected on metamask needs to be the owner of the nft"
-  install_to_buy: "Please install Metamask to buy the domain"
+  install_to_buy: "Please install or connect to Metamask to buy the domain"
   unlink_previous_owner: "this domain is link to another address. You are about to unlink this domain from "
   explanation_title: "TNS allows you to replace your wallet address"
   explanation_address: "0xBCfc0c687561a65F54211C55E4c353A240FE0Bf72"
@@ -262,6 +262,7 @@ domain:
   timeline_theta: "Integration with Theta labs"
   timeline_ecosystem: "Integration with Ecosystem"
   timeline_reselling: "Reselling on Thetaboard"
+  help: "Help"
   error:
     check_metamask: "Check your MetaMask extension"
     not_owner: "You need to be the owner of the domain to perform this operation"
@@ -465,7 +466,6 @@ notif:
   success_nft: "Successfully purchased NFT"
   no_metamask: "Metamask was not detected"
   not_theta_blockchain: "Your Metamask is not currently linked to the Theta Mainnet Network"
-
 ###### UTILS NOTIFY END ######
 
 

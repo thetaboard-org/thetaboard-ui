@@ -23,6 +23,7 @@ export default class MetamaskService extends Service {
   @tracked provider;
   @tracked networkId;
   @tracked etherProvider;
+  @tracked balance = 0;
 
   initPromise = null;
 
@@ -43,29 +44,44 @@ export default class MetamaskService extends Service {
   }
 
   async initProvider() {
+    this.balance = 0;
     // check if already connected
     const metamaskProvider = await detectEthereumProvider();
     if (!metamaskProvider) {
       // default provider
       this.provider = new ethers.providers.JsonRpcProvider("https://eth-rpc-api.thetatoken.org/rpc");
+      window.web3 = new Web3("https://eth-rpc-api.thetatoken.org/rpc")
       return this.isInstalled = false;
-    } else {
-      this.provider = new ethers.providers.Web3Provider(metamaskProvider);
     }
-
     this.isInstalled = true;
     if (parseInt(ethereum.chainId) !== 361) {
+      this.provider = new ethers.providers.JsonRpcProvider("https://eth-rpc-api.thetatoken.org/rpc");
+      window.web3 = new Web3("https://eth-rpc-api.thetatoken.org/rpc")
       return this.isThetaBlockchain = false;
     }
+    // if metamask is on the right blockchain, then use metamask
+    this.provider = new ethers.providers.Web3Provider(metamaskProvider);
+
     this.isThetaBlockchain = true;
-    window.web3 = new Web3(window.web3.currentProvider);
+    window.web3 = new Web3(metamaskProvider);
     const accounts = await window.web3.eth.getAccounts();
     if (accounts.length === 0) {
       return this.isConnected = false;
     }
     this.isConnected = true;
     this.currentAccount = accounts[0];
+    this.balance = await this.getBalance();
     this.setCurrentName();
+  }
+
+  async getBalance() {
+    if (!this.currentAccount) {
+      return 0;
+    }
+    const ethersProvider = new ethers.providers.Web3Provider(window.ethereum);
+    const accountBalance = await ethersProvider.getBalance(this.currentAccount);
+    const balance = window.web3.utils.fromWei(accountBalance.toString());
+    return Number(balance);
   }
 
   async setCurrentName() {
@@ -79,10 +95,10 @@ export default class MetamaskService extends Service {
 
   @action
   disconnect(hideNotif) {
-    this.isInstalled = null;
     this.isConnected = false;
     this.currentAccount = null;
     this.currentName = null;
+    this.balance = 0;
     if (hideNotif == true) return;
     this.utils.successNotify(this.intl.t('domain.disconnected_from_metmask'));
   }

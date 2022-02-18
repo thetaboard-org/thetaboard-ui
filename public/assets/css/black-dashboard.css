@@ -15933,7 +15933,7 @@ img {
 
   .navbar .navbar-nav .btn {
     margin-left: -3px;
-    display: flex;
+    /* display: flex; */
   }
 
   .navbar .navbar-nav .btn i {

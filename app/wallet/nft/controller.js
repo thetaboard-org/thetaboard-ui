@@ -48,4 +48,9 @@ export default class NFTController extends Controller {
       this.intl.t('clip.succesfully', {label: label})
     );
   }
+
+  @action
+  setQueryParam(walletAddress) {
+    this.transitionToRoute({ queryParams: { wa: walletAddress } });
+  }
 }

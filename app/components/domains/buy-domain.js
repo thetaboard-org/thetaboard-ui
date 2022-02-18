@@ -71,7 +71,7 @@ export default class DomainsBuyDomainComponent extends Component {
   }
 
   get isBalanceEnough() {
-    return this.args.isBalanceEnough;
+    return this.metamask.isConnected && this.metamask.balance >= this.price;
   }
 
   get isStep1() {
@@ -160,7 +160,7 @@ export default class DomainsBuyDomainComponent extends Component {
     const oneMinute = 60000;
     if (timeDifference < twentyFourHours) {
       if (timeDifference > oneMinute) {
-        const accountBalance = await this.domain.getBalance();
+        const accountBalance = await this.metamask.balance;
         const price = await this.domain.getPrice(this.nameCommited.nameToCommit);
         const isBalanceEnough = accountBalance >= price;
         if (isBalanceEnough) {

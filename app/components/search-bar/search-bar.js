@@ -30,13 +30,14 @@ export default class SearchBarSearchBarComponent extends Component {
   @action
   async search(event) {
     event.preventDefault();
+    await this.metamask.initMeta();
     this.invalidAddress = false;
     let inputVal = this.inputAddress;
     if (inputVal.length == 42 && inputVal.toLowerCase().startsWith('0x')) {
       await this.thetaSdk.getWalletsInfo('wallet', [inputVal]);
       this.inputDomain
         ? this.args.onRouteChange(this.inputDomain)
-        : this.args.onRouteChange(this.inputVal);
+        : this.args.onRouteChange(inputVal);
       $('#searchModal').modal('hide');
       return;
     }

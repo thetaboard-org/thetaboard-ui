@@ -54,9 +54,6 @@ export default class EnvManagerService extends Service {
       } else if (wa.endsWith('.theta')) {
         //get address for domain
         await this.metamask.initMeta();
-        if (!this.metamask.isThetaBlockchain) {
-          return this.config;
-        }
         const address = await this.domain.getAddrForDomain(wa.replace(".theta", ""));
         if (
           address.addressRecord &&

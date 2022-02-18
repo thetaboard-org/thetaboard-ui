@@ -1,5 +1,7 @@
 div.wallet-address-search-container {
-  text-align: center;
+  text-align: left;
+  margin: 5px 0 20px 0;
+  color: #1d1d2e;
 }
 
 .wallet-address-span {
@@ -895,7 +897,11 @@ a.logout {
   border-radius: 10px;
   cursor: pointer;
   margin-top: 1px;
-  color: black;
+  color: #1d1d2e;
+}
+
+.dropdown-select-wallet .dropdown-content p {
+  color: #1d1d2e;
 }
 
 .dropdown-content.my-wallet {
@@ -995,8 +1001,8 @@ a.logout {
 
 @media screen and (max-width: 560px) {
   .dropdown-content, .dropdown .selected-dropdown-item {
-    width: 185px;
-    padding: 7px 11px;
+    /* width: 185px; */
+    /* padding: 7px 11px; */
   }
 
   a.login-button.btn.btn-fill.btn-primary {
@@ -1018,9 +1024,9 @@ a.logout {
   }
 
   .wallet-address-search-container span.short-address {
-    overflow: hidden;
-    max-width: 120px;
-    max-height: 20px;
+    /* overflow: hidden;
+    max-width: 120px; */
+    /* max-height: 20px; */
   }
 
   a.login-button.btn.btn-fill.btn-primary {
@@ -1047,6 +1053,18 @@ a.logout {
   div.main-panel div.content {
     padding-left: 5px;
     padding-right: 5px;
+  }
+
+  #card-domain input.input-domain-search {
+    width: 150px;
+  }
+
+  #card-domain div.buy-domain {
+    width: 293px;
+  }
+  
+  .video-help {
+    width: 320px;
   }
 }
 
@@ -1620,7 +1638,7 @@ a.active p.menu-item {
 
 .metamask-account {
   float: right;
-  margin-top: 7px;
+  margin: -1px 0 0 5px;
   font-size: 12px;
 }
 
@@ -1887,10 +1905,15 @@ button.button-icon-tb, button.button-icon-tb .icon-tb {
   padding: 0;
 }
 
+.navbar .navbar-nav .btn.logout-metamask i {
+  margin: 0;
+
+}
+
 button.btn.button-icon-tb, button.button-icon-tb .icon-tb.logout-metamask {
-  width: 32px;
-  height: 32px;
-  line-height: 29px;
+  width: 82px;
+  height: 33px;
+  line-height: 2px;
   margin: 0;
 }
 
@@ -1932,3 +1955,13 @@ button.btn.button-icon-tb, button.button-icon-tb .icon-tb.logout-metamask {
   margin-top: 5px;
 }
 
+.button-metamask-container {
+  margin-top: 7px;
+}
+
+@media screen and (max-width: 576px) {
+  .col-xs-11 {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+}

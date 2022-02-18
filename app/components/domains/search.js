@@ -30,7 +30,6 @@ export default class DomainsSearchComponent extends Component {
   @tracked domainAvailable;
   @tracked domainNameInvalid;
   @tracked price;
-  @tracked isBalanceEnough;
   @tracked searchDisabled;
 
   get tns() {
@@ -87,13 +86,11 @@ export default class DomainsSearchComponent extends Component {
       if (nameAvailable.available) {
         this.domainAvailable = true;
         this.price = nameAvailable.price;
-        this.isBalanceEnough = nameAvailable.isBalanceEnough;
         this.searchInProgress = true;
         this.searchDisabled = false;
       } else {
         this.domainAvailable = false;
         this.price = null;
-        this.isBalanceEnough = false;
         this.searchInProgress = true;
         this.searchDisabled = false;
       }
