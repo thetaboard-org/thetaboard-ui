@@ -59,7 +59,6 @@ export default class NftActionComponent extends Component {
 
         const currentAccount = this.metamask.currentAccount.toLowerCase();
         const nft_contract = new ethers.Contract(this.nft.contract_addr, this.abi.ThetaboardNFT, this.metamask.provider);
-
         const token_owner = await nft_contract.ownerOf(this.nft.original_token_id);
         if (token_owner.toLowerCase() === currentAccount) {
           return 5;
