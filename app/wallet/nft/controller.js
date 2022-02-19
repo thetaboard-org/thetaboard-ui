@@ -20,7 +20,7 @@ export default class NFTController extends Controller {
 
   async changePagination(current) {
     this.model = await this.model.wallets.reduce(async (total, wallet) => {
-      const fetched = await fetch(`/explorer/wallet-nft/${wallet}?pageNumber=${current}`);
+      const fetched = await fetch(`/api/explorer/wallet-nft/${wallet}?pageNumber=${current}`);
       const fetchedJSON = await fetched.json();
       total.totalCount += fetchedJSON.totalCount;
       total.NFTs.push(...fetchedJSON.NFTs);

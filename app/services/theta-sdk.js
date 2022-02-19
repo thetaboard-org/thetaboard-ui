@@ -135,7 +135,7 @@ export default class ThetaSdkService extends Service {
   }
 
   async getPrices(currency = 'USD', start_date = null, end_date = null) {
-    let api_call = `/explorer/prices?currency=${currency}`;
+    let api_call = `/api/explorer/prices?currency=${currency}`;
     if (start_date && end_date) {
       api_call += `&start_date=${start_date}&end_date=${end_date}`
     }
@@ -148,7 +148,7 @@ export default class ThetaSdkService extends Service {
   async getTotalStake() {
     let totalStake = {totalAmount: '0', totalNodes: 0, percent: 0};
     const getStake = await fetch(
-      '/explorer/totalStake' + this.envManager.config.queryParams
+      '/api/explorer/totalStake' + this.envManager.config.queryParams
     );
     if (getStake.status == 200) {
       totalStake = await getStake.json();
@@ -164,7 +164,7 @@ export default class ThetaSdkService extends Service {
   async getTotalTfuelStake() {
     let totalTfuelStake = {totalAmount: '0', percent: 0};
     const getTfuelStake = await fetch(
-      '/explorer/totalTfuelStake' + this.envManager.config.queryParams
+      '/api/explorer/totalTfuelStake' + this.envManager.config.queryParams
     );
     if (getTfuelStake.status == 200) {
       totalTfuelStake = await getTfuelStake.json();
@@ -184,7 +184,7 @@ export default class ThetaSdkService extends Service {
     if (type == 'wallet') {
       let wallets = {wallets: []};
       const walletInfo = await fetch(
-        '/explorer/wallet-info/' + object[0] + this.envManager.config.queryParams
+        '/api/explorer/wallet-info/' + object[0] + this.envManager.config.queryParams
       );
       if (walletInfo.status == 200) {
         wallets = await walletInfo.json();
@@ -203,7 +203,7 @@ export default class ThetaSdkService extends Service {
       }
 
       const goupInfo = await fetch(
-        '/explorer/group-info/' + uuid + this.envManager.config.queryParams
+        '/api/explorer/group-info/' + uuid + this.envManager.config.queryParams
       );
       if (goupInfo.status == 200) {
         wallets = await goupInfo.json();
@@ -282,7 +282,7 @@ export default class ThetaSdkService extends Service {
 
   async getGuardianStatus() {
     const response = await fetch(
-      '/guardian/status' + this.envManager.config.queryParams
+      '/api/guardian/status' + this.envManager.config.queryParams
     );
     return await response.json();
   }
@@ -351,7 +351,7 @@ export default class ThetaSdkService extends Service {
 
   async getGuardianLogs() {
     const self = this;
-    return await fetch('/guardian/logs' + this.envManager.config.queryParams)
+    return await fetch('/api/guardian/logs' + this.envManager.config.queryParams)
       .then((response) => self.readableStream(response))
       .then((stream) => new Response(stream))
       .then((response) => response.blob())
@@ -365,42 +365,42 @@ export default class ThetaSdkService extends Service {
 
   async getGuardianSummary() {
     const response = await fetch(
-      '/guardian/summary' + this.envManager.config.queryParams
+      '/api/guardian/summary' + this.envManager.config.queryParams
     );
     return await response.json();
   }
 
   async getGuardianLatestSnapshot() {
     const response = await fetch(
-      '/guardian/latest_snapshot' + this.envManager.config.queryParams
+      '/api/guardian/latest_snapshot' + this.envManager.config.queryParams
     );
     return await response.json();
   }
 
   async startGuardian() {
     const response = await fetch(
-      '/guardian/start' + this.envManager.config.queryParams
+      '/api/guardian/start' + this.envManager.config.queryParams
     );
     return await response.json();
   }
 
   async stopGuardian() {
     const response = await fetch(
-      '/guardian/stop' + this.envManager.config.queryParams
+      '/api/guardian/stop' + this.envManager.config.queryParams
     );
     return await response.json();
   }
 
   async updateGuardian() {
     const response = await fetch(
-      '/guardian/update' + this.envManager.config.queryParams
+      '/api/guardian/update' + this.envManager.config.queryParams
     );
     return await response.json();
   }
 
   async downloadLatestGuardianSnapshot() {
     const self = this;
-    return await fetch('/guardian/download_snapshot' + this.envManager.config.queryParams)
+    return await fetch('/api/guardian/download_snapshot' + this.envManager.config.queryParams)
       .then((response) => self.readableStreamDownload(response))
       .then((stream) => {
         self.utils.successNotify('Downloading...');

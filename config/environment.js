@@ -39,7 +39,7 @@ module.exports = function (environment) {
   ENV['ember-simple-auth-token'] = {
     routeAfterAuthentication: 'dashboard',
     refreshAccessTokens: false,
-    serverTokenEndpoint: '/auth/login', // Server endpoint to send authenticate request
+    serverTokenEndpoint: '/api/auth/login', // Server endpoint to send authenticate request
     // tokenDataPropertyName: 'tokenData', // Key in session to store token data
     tokenPropertyName: 'token', // Key in server response that contains the access token
     refreshLeeway: 300, // refresh 5 minutes (300 seconds) before expiration

@@ -27,7 +27,7 @@ export default class PasswordresetController extends Controller {
         body: JSON.stringify({ password: this.password }),
       };
 
-      let response = await fetch(`/users/password_reset`, options);
+      let response = await fetch(`/api/users/password_reset`, options);
       if (response.status == 200) {
         let { data } = await response.json();
         this.isPasswordReset = true;

@@ -4,6 +4,7 @@ import { computed } from '@ember/object';
 
 export default class ApplicationAdapter extends JSONAPIAdapter {
   @service session;
+  namespace = 'api';
 
   @computed('session.{data.authenticated.token,isAuthenticated}')
   get headers() {

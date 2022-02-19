@@ -4,14 +4,16 @@
   <div class="card-body card-min-390">
     <h1 class="card-title">Marketplace - Exchange</h1>
     <div>
-      <div class="col-lg-4 col-md-12">
-        <div class="card">
-          <div class="card-body">
-            <h3 class="card-title" style="text-align: center;">nft name</h3>
-            <hr style="border-top: 5px solid #e14eca; width: 100%; margin:0 0"/>
-            <br>
-            <img src="https://nft.thetaboard.io/nft/assets/thetaboard/badge_2021.png"/>
-          </div>
+
+      {{#each sellingNFT as |NFT|}}
+        <div class="col-lg-4 col-md-12">
+          <div class="card">
+            <div class="card-body">
+              <h3 class="card-title" style="text-align: center;">nft name</h3>
+              <hr style="border-top: 5px solid #e14eca; width: 100%; margin:0 0"/>
+              <br>
+              <img src="https://nft.thetaboard.io/nft/assets/thetaboard/badge_2021.png"/>
+            </div>
             <div class="row">
               <div class="col col-lg-9">
                 <div class="row">
@@ -60,16 +62,13 @@
               </div>
             </div>
 
-          <div class="card-footer">
+            <div class="card-footer">
 
+            </div>
           </div>
         </div>
-      </div>
-
+      {{/each}}
     </div>
-    {{#each sellingNFT as |NFT|}}
-
-    {{/each}}
   </div>
   <div class="card-footer">
   </div>

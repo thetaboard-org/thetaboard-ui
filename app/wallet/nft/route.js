@@ -20,7 +20,7 @@ export default class NFTRoute extends Route {
     } else {
       const total = {totalCount: 0, NFTs: [], wallets: this.wallets};
       await Promise.all(this.wallets.map(async (wallet) => {
-        const fetched = await fetch(`/explorer/wallet-nft/${wallet}`);
+        const fetched = await fetch(`/api/explorer/wallet-nft/${wallet}`);
         const fetchedJSON = await fetched.json();
         total.totalCount += fetchedJSON.totalCount;
         total.NFTs.push(...fetchedJSON.NFTs);

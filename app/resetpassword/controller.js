@@ -14,7 +14,7 @@ export default class ResetpasswordController extends Controller {
     e.preventDefault();
     const body = { email: this.email };
     const options = { method: 'POST', body: JSON.stringify(body) };
-    let response = await fetch(`/users/reset_password`, options);
+    let response = await fetch(`/api/users/reset_password`, options);
     this.resetPasswordLinkSent = true;
   }
 }

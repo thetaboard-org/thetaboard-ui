@@ -20,7 +20,7 @@ export default class VerifyEmailComponent extends Component {
     ) {
       const options = { method: 'POST', headers: { Authorization: `Bearer ${this.session.data.authenticated.token}` } };
 
-      let response = await fetch(`/users/send_email_verification`, options);
+      let response = await fetch(`/api/users/send_email_verification`, options);
       if (response.status == 200) {
         let { data } = await response.json();
         this.utils.successNotify(this.intl.t("notif.verification_sent", {email: data.attributes.email}));

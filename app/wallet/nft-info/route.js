@@ -9,7 +9,7 @@ export default class NftInfoRoute extends Route {
   }
 
   async model(params) {
-    const fetched = await fetch(`/explorer/wallet-info/${params.contractAddr}/${params.tokenId}`);
+    const fetched = await fetch(`/api/explorer/wallet-info/${params.contractAddr}/${params.tokenId}`);
     const nftInfo = await fetched.json();
     // Some hack because we don't have an ember object but just a raw NFT
     if(!!Object.keys(nftInfo.properties).length && nftInfo.properties.assets.length !== 0 && nftInfo.properties.assets[0].type === "video"){
