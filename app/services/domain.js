@@ -22,6 +22,7 @@ import {
   changeController,
   reclaimControl,
   setAddressRecord,
+  getReverseNames
 } from "thetaboard-tns";
 
 export default class DomainService extends Service {
@@ -49,6 +50,12 @@ export default class DomainService extends Service {
         available: false,
       };
     }
+  }
+
+  @action
+  async getReverseNames(domainNames) {
+    await this.metamask.initMeta();
+    return await getReverseNames(domainNames, this.metamask.provider);
   }
 
   @action
