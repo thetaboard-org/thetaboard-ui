@@ -27,7 +27,7 @@
                 <td class="text-center ">
                   {{#if balance.wallet_tns}}
                     <LinkTo  @route="wallet.explorer" @query={{hash
-                      wa=balance.wallet_address}}>{{balance.wallet_tns}} (<span {{shortener balance.wallet_address}}></span>)</LinkTo>
+                      wa=balance.wallet_address}}>{{balance.wallet_tns}}<br/>(<span {{shortener balance.wallet_address}}></span>)</LinkTo>
                   {{else}}
                     <LinkTo {{shortener balance.wallet_address}} @route="wallet.explorer" @query={{hash
                       wa=balance.wallet_address}}>{{balance.wallet_address}}</LinkTo>

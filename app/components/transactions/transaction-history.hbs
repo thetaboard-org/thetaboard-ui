@@ -35,7 +35,7 @@
                 {{#if transaction.fromAddressName}}
                   <LinkTo
                   @route="wallet.explorer"
-                  @query={{hash group=null wa=transaction.fromAddressName}}>{{transaction.fromAddressName}} (<span {{shortener transaction.fromAddress}}></span>)</LinkTo>
+                  @query={{hash group=null wa=transaction.fromAddressName}}>{{transaction.fromAddressName}}<br/>(<span {{shortener transaction.fromAddress}}></span>)</LinkTo>
                 {{else}}
                   <LinkTo {{shortener transaction.fromAddress}}
                   @route="wallet.explorer"
@@ -48,7 +48,7 @@
                 {{#if transaction.toAddressName}}
                   <LinkTo
                   @route="wallet.explorer"
-                  @query={{hash group=null wa=transaction.toAddressName}}>{{transaction.toAddressName}} (<span {{shortener transaction.toAddress}}></span>)</LinkTo>
+                  @query={{hash group=null wa=transaction.toAddressName}}>{{transaction.toAddressName}}<br/>(<span {{shortener transaction.toAddress}}></span>)</LinkTo>
                 {{else}}
                   <LinkTo {{shortener transaction.toAddress}}
                   @route="wallet.explorer"
