@@ -14,7 +14,7 @@ export default class NFTController extends Controller {
   @tracked currentPage = 1;
 
   // Manage facets
-  onlyTNS = false;
+  @tracked onlyTNS = false;
 
   @computed('model.totalCount')
   get totalPageNumber() {
@@ -65,6 +65,6 @@ export default class NFTController extends Controller {
   async toggleTNS() {
     this.onlyTNS = !this.onlyTNS;
     this.currentPage = 1;
-    this.changePagination(this.currentPage);
+    await this.changePagination(this.currentPage);
   }
 }
