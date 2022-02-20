@@ -64,7 +64,7 @@ export default class DomainsNftInfoTnsComponent extends Component {
 
       //check domain raw reverse name
       this.rawReverseName = await this.domain.getRawReverseName(currentAddress);
-      if (this.rawReverseName.domain == this.tnsLabel) {
+      if (this.rawReverseName.domain == this.domain.sanitizeTNS(this.tnsLabel)) {
         this.isReverseName = true;
       }
 
@@ -75,7 +75,7 @@ export default class DomainsNftInfoTnsComponent extends Component {
         this.isAddressRecord = true;
       } else {
         const reverseName = await this.domain.getReverseName(this.addressRecord);
-        if (reverseName && reverseName.domain == this.tnsLabel) {
+        if (reverseName && reverseName.domain == this.domain.sanitizeTNS(this.tnsLabel)) {
           this.canUlinkPrevious = true;
         }
       }
@@ -91,8 +91,7 @@ export default class DomainsNftInfoTnsComponent extends Component {
           const reverseName = await this.domain.getReverseName(
             addressRecord.addressRecord
           );
-
-          if (reverseName.domain == this.tnsLabel) {
+          if (reverseName.domain == this.domain.sanitizeTNS(this.tnsLabel)) {
             this.canUlink = true;
             //can unlink the addressRecord (set to "")
           }

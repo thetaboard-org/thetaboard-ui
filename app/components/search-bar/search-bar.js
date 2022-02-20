@@ -32,6 +32,9 @@ export default class SearchBarSearchBarComponent extends Component {
     event.preventDefault();
     await this.metamask.initMeta();
     this.invalidAddress = false;
+    if (!this.inputAddress) {
+      await this.inputHandler();
+    }
     let inputVal = this.inputAddress;
     if (inputVal.length == 42 && inputVal.toLowerCase().startsWith('0x')) {
       await this.thetaSdk.getWalletsInfo('wallet', [inputVal]);
@@ -47,21 +50,25 @@ export default class SearchBarSearchBarComponent extends Component {
 
   @action
   async inputHandler(e) {
-    e.preventDefault();
-    if (e.key !== 'Enter') {
+    if (e) {
+      e.preventDefault();
+      if (e.key !== 'Enter') {
+        this.invalidAddress = false;
+      }
+    } else {
       this.invalidAddress = false;
     }
     this.addressLookup = '';
-    let inputValue = e.currentTarget.value;
+    let inputValue = e ? e.currentTarget.value : $('#searchInput')[0].value;
     await this.metamask.initMeta();
-    if (inputValue.endsWith(".theta")) {
-      const address = await this.domain.getAddrForDomain(inputValue.replace(".theta", ""));
+    if (inputValue.endsWith('.theta')) {
+      const address = await this.domain.getAddrForDomain(inputValue.replace('.theta', ''));
       if (
         address.addressRecord &&
         address.addressRecord != '0x0000000000000000000000000000000000000000'
       ) {
         const reverse = await this.domain.getReverseName(address.addressRecord);
-        if (reverse.domain == inputValue.replace(".theta", "")) {
+        if (reverse.domain == this.domain.sanitizeTNS(inputValue)) {
           this.addressLookup = address.addressRecord;
           this.inputDomain = inputValue;
         } else {
@@ -78,7 +85,7 @@ export default class SearchBarSearchBarComponent extends Component {
     ) {
       const value = await this.domain.getReverseName(inputValue);
       if (value.domain) {
-        this.addressLookup = value.domain + ".theta";
+        this.addressLookup = value.domain;
       }
       this.inputAddress = inputValue;
       this.inputDomain = this.addressLookup;
@@ -86,5 +93,6 @@ export default class SearchBarSearchBarComponent extends Component {
       this.inputAddress = '';
       this.inputDomain = '';
     }
+    return;
   }
 }

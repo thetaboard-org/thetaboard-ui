@@ -49,7 +49,7 @@ export default class WalletWalletNavbarComponent extends Component {
       if (result.address) {
         const reverse = await this.domain.getReverseName(result.address);
         if (reverse.domain) {
-          result.name = reverse.domain + ".theta";
+          result.name = reverse.domain;
         }
       }
       return result;

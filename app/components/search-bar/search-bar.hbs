@@ -6,7 +6,7 @@
                 {{#if invalidAddress}}
                     {{t 'notif.invalid_address'}}
                 {{/if}}
-                <Input {{on "submit" this.search}}  {{on "keyup" inputHandler}} {{did-insert this.setupEventListener}}
+                <Input {{on "submit" this.search}}  {{on "input" inputHandler}} {{did-insert this.setupEventListener}}
                 @type="text"
                 @value={{walletAddress}}
                 @id="searchInput"

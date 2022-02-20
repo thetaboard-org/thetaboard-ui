@@ -179,22 +179,21 @@ export default class ThetaSdkService extends Service {
   }
 
   async getWalletsInfo(type, object) {
+    let wallets = { wallets: [] };
     //type: group or wallet
     //object: Either the group or the wallet
     if (type == 'wallet') {
-      let wallets = {wallets: []};
       const walletInfo = await fetch(
         '/explorer/wallet-info/' + object[0] + this.envManager.config.queryParams
       );
       if (walletInfo.status == 200) {
         wallets = await walletInfo.json();
       }
-      this.wallets = wallets.wallets;
+      // this.wallets = wallets.wallets;
       this.currentAccount = object;
       this.currentGroup = null;
       // return wallets;
     } else if (type == 'group') {
-      let wallets = {wallets: []};
       let uuid = '';
       if (typeof object == 'string') {
         uuid = object;
@@ -208,7 +207,7 @@ export default class ThetaSdkService extends Service {
       if (goupInfo.status == 200) {
         wallets = await goupInfo.json();
       }
-      this.wallets = wallets.wallets;
+      // this.wallets = wallets.wallets;
       this.currentAccount = null;
       this.currentGroup = uuid;
       // return wallets;
@@ -216,7 +215,7 @@ export default class ThetaSdkService extends Service {
 
     await this.metamask.initMeta();
 
-    return await this.setWalletsReverseName();
+    return await this.setWalletsReverseName(wallets.wallets);
   }
 
   async getTransactions(wallets, current = 1, limit_number = 40) {
@@ -230,9 +229,9 @@ export default class ThetaSdkService extends Service {
     return await this.setTransactionsReverseName();
   }
 
-  async setWalletsReverseName() {
+  async setWalletsReverseName(wallets) {
     const walletsResolved = [];
-    for (const wallet of this.wallets.toArray()) {
+    for (const wallet of wallets.toArray()) {
       if (wallet.wallet_address) {
         wallet.wallet_tns = await this.setItemReverseName(wallet.wallet_address);
       }
@@ -241,6 +240,7 @@ export default class ThetaSdkService extends Service {
       }
       walletsResolved.push(wallet);
     }
+    this.wallets = walletsResolved;
     return walletsResolved;
   }
 

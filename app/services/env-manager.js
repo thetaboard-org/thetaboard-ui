@@ -60,7 +60,7 @@ export default class EnvManagerService extends Service {
           address.addressRecord != '0x0000000000000000000000000000000000000000'
         ) {
           const reverse = await this.domain.getReverseName(address.addressRecord);
-          if (reverse.domain == wa.replace(".theta", "")) {
+          if (reverse.domain == this.domain.sanitizeTNS(wa)) {
             await this.thetaSdk.getWalletsInfo('wallet', [address.addressRecord]);
           } else {
             this.utils.errorNotify(this.intl.t('notif.invalid_address'));
