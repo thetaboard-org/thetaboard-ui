@@ -70,7 +70,8 @@ export default class DomainsSearchComponent extends Component {
     if (
       regex.test(this.domainName) ||
       this.domainName == '' ||
-      this.domainName == undefined
+      this.domainName == undefined ||
+      this.domainName.includes('_')
     ) {
       this.domainNameToBuy =  this.domainName ? this.domainName.toLowerCase() : '';
       this.domainNameInvalid = true;
