@@ -22,7 +22,29 @@
 <!--</div>-->
 
 <div class="content" id="nft-list">
+  <div class="btn-group btn-group-toggle float-right" data-toggle="buttons">
+    <label class="btn btn-sm btn-primary btn-simple active" id="0" {{action "toggleTNS"}}>
+      {{input type="radio" checked=cbState}}
+      <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">All NFTs</span>
+      <span class="d-block d-sm-none">
+          <i class="tim-icons icon-image-02"></i>
+      </span>
+    </label>
+    <label class="btn btn-sm btn-primary btn-simple" id="1" {{action "toggleTNS"}}>
+      {{input type="radio" checked=cbState}}
+      <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">TNS</span>
+      <span class="d-block d-sm-none">
+        <i class="tim-icons  icon-book-bookmark"></i>
+      </span>
+    </label>
+  </div>
   {{wallet/wallet-navbar onRouteChange=this.setQueryParam}}
+
+  <div class="row">
+
+  </div>
+
+
   <div class="row">
     {{#each this.model.NFTs as |NFT|}}
       <div class="col-lg-3 col-md-12">
