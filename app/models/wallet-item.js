@@ -5,6 +5,7 @@ export default class WalletItemModel extends Model {
   @attr('string') currency;
   @attr('string') type;
   @attr('string') wallet_address;
+  @attr('string') wallet_tns;
   @attr('string') node_address;
   @attr('number') market_price;
   @attr('number') amount;

@@ -179,22 +179,21 @@ export default class ThetaSdkService extends Service {
   }
 
   async getWalletsInfo(type, object) {
+    let wallets = { wallets: [] };
     //type: group or wallet
     //object: Either the group or the wallet
     if (type == 'wallet') {
-      let wallets = {wallets: []};
       const walletInfo = await fetch(
         '/api/explorer/wallet-info/' + object[0] + this.envManager.config.queryParams
       );
       if (walletInfo.status == 200) {
         wallets = await walletInfo.json();
       }
-      this.wallets = wallets.wallets;
+      // this.wallets = wallets.wallets;
       this.currentAccount = object;
       this.currentGroup = null;
       // return wallets;
     } else if (type == 'group') {
-      let wallets = {wallets: []};
       let uuid = '';
       if (typeof object == 'string') {
         uuid = object;
@@ -208,7 +207,7 @@ export default class ThetaSdkService extends Service {
       if (goupInfo.status == 200) {
         wallets = await goupInfo.json();
       }
-      this.wallets = wallets.wallets;
+      // this.wallets = wallets.wallets;
       this.currentAccount = null;
       this.currentGroup = uuid;
       // return wallets;
@@ -216,60 +215,76 @@ export default class ThetaSdkService extends Service {
 
     await this.metamask.initMeta();
 
-    return await this.setWalletsReverseName();
+    return await this.setWalletsReverseName(wallets.wallets);
   }
 
   async getTransactions(wallets, current = 1, limit_number = 40) {
-    this.transactions = await this.store.query('transactionHistory', {
+    const transactions = await this.store.query('transactionHistory', {
       pageNumber: current,
       limitNumber: limit_number,
       wallets: wallets,
     });
-    this.pagination = this.transactions.meta.pagination;
     await this.metamask.initMeta();
-    return await this.setTransactionsReverseName();
+    return await this.setTransactionsReverseName(transactions);
   }
 
-  async setWalletsReverseName() {
+  uniqueByKey(array, key) {
+    const formattedArray = array.filter((n) => n[key]).map((x) => [x[key], x]);
+    const map = new Map(formattedArray);
+    const [firstKey] = map.keys();
+    if (firstKey) {
+      const values = map.keys();
+      return [...values];
+    }
+    return [];
+  }
+
+  arrayUnique(array) {
+    let a = array.concat();
+    for (var i = 0; i < a.length; ++i) {
+      for (var j = i + 1; j < a.length; ++j) {
+        if (a[i] === a[j]) a.splice(j--, 1);
+      }
+    }
+    return a;
+  }
+
+  async setWalletsReverseName(wallets) {
     const walletsResolved = [];
-    for (const wallet of this.wallets.toArray()) {
+    let walletAddresses = this.uniqueByKey(wallets.toArray(), 'wallet_address');
+    let nodeAddresses = this.uniqueByKey(wallets.toArray(), 'node_address');
+    const uniqueAddresses = this.arrayUnique(walletAddresses.concat(nodeAddresses));
+    const domainNames = await this.domain.getReverseNames(uniqueAddresses);
+    for (const wallet of wallets.toArray()) {
       if (wallet.wallet_address) {
-        wallet.wallet_tns = await this.setItemReverseName(wallet.wallet_address);
+        wallet.wallet_tns = domainNames[wallet.wallet_address];
       }
       if (wallet.node_address) {
-        wallet.node_address_tns = await this.setItemReverseName(wallet.node_address);
+        wallet.node_address_tns = domainNames[wallet.node_address];
       }
       walletsResolved.push(wallet);
     }
+    this.wallets = walletsResolved;
     return walletsResolved;
   }
 
-  async setItemReverseName(address) {
-    if (this.cachedReverseName[address]) {
-      return this.cachedReverseName[address];
-    } else {
-      const reverseName = await this.domain.getReverseName(address);
-      if (reverseName.domain) {
-        this.cachedReverseName[address] = reverseName.domain;
-        return reverseName.domain;
-      } else {
-        this.cachedReverseName[address] = false;
-        return false;
-      }
-    }
-  }
-
-  async setTransactionsReverseName() {
+  async setTransactionsReverseName(transactions) {
     const transactionsResolved = [];
-    for (const transaction of this.transactions.toArray()) {
+    let toAddresses = this.uniqueByKey(transactions, 'toAddress');
+    let fromAddresses = this.uniqueByKey(transactions, 'fromAddress');
+    const uniqueAddresses = this.arrayUnique(toAddresses.concat(fromAddresses));
+    const domainNames = await this.domain.getReverseNames(uniqueAddresses);
+    for (const transaction of transactions.toArray()) {
       if (transaction.toAddress) {
-        transaction.toAddressName = await this.setItemReverseName(transaction.toAddress);
+        transaction.toAddressName = domainNames[transaction.toAddress];
       }
       if (transaction.fromAddress) {
-        transaction.fromAddressName = await this.setItemReverseName(transaction.fromAddress);
+        transaction.fromAddressName = domainNames[transaction.fromAddress];
       }
       transactionsResolved.push(transaction);
     }
+    this.transactions = transactions;
+    this.pagination = transactions.meta.pagination;
     return transactionsResolved;
   }
 

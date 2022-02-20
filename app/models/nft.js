@@ -57,7 +57,6 @@ export default class NftModel extends Model {
       let contractInfo;
       let modifiableContract = {};
       if (this.isAuction) {
-        debugger
         const NFTauctionContract = new ethers.Contract(this.nftSellController, this.abi.ThetaboardAuctionSell, this.metamask.provider);
         contractInfo = await NFTauctionContract.getNftAuction(this.nftContractId);
         Object.assign(modifiableContract, contractInfo);

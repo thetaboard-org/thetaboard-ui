@@ -1,13 +1,16 @@
 import Controller from '@ember/controller';
+import { inject as service } from '@ember/service';
 
 export default class NftInfoController extends Controller {
+  @service abi;
+
   get nft() {
     return this.model.nft;
   }
 
   get isTNS() {
     return (
-      this.nft.contract_addr == '0xbb4d339a7517c81c32a01221ba51cbd5d3461a94'
+      this.nft.contract_addr === this.abi.tnsRegistrarContractAddr
     );
   }
 }

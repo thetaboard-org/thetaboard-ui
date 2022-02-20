@@ -71,9 +71,9 @@ export default class DomainsNftInfoTnsTransferComponent extends Component {
         address.addressRecord != '0x0000000000000000000000000000000000000000'
       ) {
         const reverse = await this.domain.getReverseName(address.addressRecord);
-        if (reverse.domain == inputValue.replace(".theta", "")) {
+        if (reverse.domain == this.domain.sanitizeTNS(inputValue)) {
           this.addressLookup = address.addressRecord;
-          this.inputDomain = inputValue;
+          this.inputDomain = this.domain.sanitizeTNS(inputValue);
         } else {
           this.addressLookup = '';
           this.inputDomain = '';
@@ -88,7 +88,7 @@ export default class DomainsNftInfoTnsTransferComponent extends Component {
     ) {
       const value = await this.domain.getReverseName(inputValue);
       if (value.domain) {
-        this.addressLookup = value.domain + ".theta";
+        this.addressLookup = value.domain;
       }
       this.inputAddress = inputValue;
       this.inputDomain = this.addressLookup;

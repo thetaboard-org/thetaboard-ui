@@ -22,6 +22,7 @@ import {
   changeController,
   reclaimControl,
   setAddressRecord,
+  getReverseNames
 } from "thetaboard-tns";
 
 export default class DomainService extends Service {
@@ -49,6 +50,12 @@ export default class DomainService extends Service {
         available: false,
       };
     }
+  }
+
+  @action
+  async getReverseNames(domainNames) {
+    await this.metamask.initMeta();
+    return await getReverseNames(domainNames, this.metamask.provider);
   }
 
   @action
@@ -200,6 +207,10 @@ export default class DomainService extends Service {
     }
   }
 
+  sanitizeTNS(domain) {
+    return domain.replace('.theta', '') + '.theta';
+  }
+
   @action
   async inputHandler(e) {
     e.preventDefault();
@@ -212,9 +223,9 @@ export default class DomainService extends Service {
         address.addressRecord != '0x0000000000000000000000000000000000000000'
       ) {
         const reverse = await this.getReverseName(address.addressRecord);
-        if (reverse.domain == inputValue.replace(".theta", "")) {
+        if (reverse.domain == this.domain.sanitizeTNS(inputValue)) {
           this.addressLookup = address.addressRecord;
-          this.inputDomain = inputValue;
+          this.inputDomain = this.domain.sanitizeTNS(inputValue);
         } else {
           this.addressLookup = '';
           this.inputDomain = '';
@@ -229,7 +240,7 @@ export default class DomainService extends Service {
     ) {
       const value = await this.getReverseName(inputValue);
       if (value.domain) {
-        this.addressLookup = value.domain + ".theta";
+        this.addressLookup = value.domain;
       }
       this.inputAddress = inputValue;
       this.inputDomain = this.addressLookup;

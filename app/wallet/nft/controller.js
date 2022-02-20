@@ -13,14 +13,21 @@ export default class NFTController extends Controller {
   // Manage pages
   @tracked currentPage = 1;
 
+  // Manage facets
+  @tracked onlyTNS = false;
+
   @computed('model.totalCount')
   get totalPageNumber() {
     return Math.ceil(this.model.totalCount / 12);
   }
 
   async changePagination(current) {
+    const filters = [`pageNumber=${current}`];
+    if (this.onlyTNS) {
+      filters.push(`contractAddr=${this.abi.tnsRegistrarContractAddr}`);
+    }
     this.model = await this.model.wallets.reduce(async (total, wallet) => {
-      const fetched = await fetch(`/api/explorer/wallet-nft/${wallet}?pageNumber=${current}`);
+      const fetched = await fetch(`/api/explorer/wallet-nft/${wallet}?${filters.join("&")}`);
       const fetchedJSON = await fetched.json();
       total.totalCount += fetchedJSON.totalCount;
       total.NFTs.push(...fetchedJSON.NFTs);
@@ -51,6 +58,13 @@ export default class NFTController extends Controller {
 
   @action
   setQueryParam(walletAddress) {
-    this.transitionToRoute({ queryParams: { wa: walletAddress } });
+    this.transitionToRoute({queryParams: {wa: walletAddress}});
+  }
+
+  @action
+  async toggleTNS() {
+    this.onlyTNS = !this.onlyTNS;
+    this.currentPage = 1;
+    await this.changePagination(this.currentPage);
   }
 }

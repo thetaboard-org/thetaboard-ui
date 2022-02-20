@@ -31,7 +31,7 @@ export default class DomainsAlreadyRegisteredComponent extends Component {
   }
 
   get isCurrentReverseName() {
-    return this.metamask.currentName == this.domainName;
+    return this.metamask.currentName == this.domain.sanitizeTNS(this.domainName);
   }
 
   async initComponent() {

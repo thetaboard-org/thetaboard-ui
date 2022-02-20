@@ -27,7 +27,7 @@
                 <td class="text-center ">
                   {{#if balance.wallet_tns}}
                     <LinkTo  @route="wallet.explorer" @query={{hash
-                      wa=balance.wallet_address}}>{{balance.wallet_tns}} (<span {{shortener balance.wallet_address}}></span>)</LinkTo>
+                      wa=balance.wallet_address}}>{{balance.wallet_tns}}<br/>(<span {{shortener balance.wallet_address}}></span>)</LinkTo>
                   {{else}}
                     <LinkTo {{shortener balance.wallet_address}} @route="wallet.explorer" @query={{hash
                       wa=balance.wallet_address}}>{{balance.wallet_address}}</LinkTo>
@@ -36,7 +36,7 @@
                     {{#if balance.node_address_tns}}
                       <br/>{{t 'wallet_list.node_address'}}:<br/>
                       <LinkTo @route="wallet.explorer" @query={{hash
-                        wa=balance.node_address}}>{{balance.node_address_tns}} (<span {{shortener balance.node_address}}></span>)</LinkTo>
+                        wa=balance.node_address}}>{{balance.node_address_tns}}<br/>(<span {{shortener balance.node_address}}></span>)</LinkTo>
                     {{else}}
                       <br/>{{t 'wallet_list.node_address'}}:<br/>
                       <LinkTo {{shortener balance.node_address}} @route="wallet.explorer" @query={{hash
