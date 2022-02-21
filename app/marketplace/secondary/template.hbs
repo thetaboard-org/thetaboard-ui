@@ -3,33 +3,29 @@
 <div class="card card-user">
   <div class="card-body card-min-390">
     <h1 class="card-title">Marketplace - Exchange</h1>
-    <div>
-
-      {{#each sellingNFT as |NFT|}}
+    <div class="row">
+      {{#each sellingNFTs as |NFT|}}
         <div class="col-lg-4 col-md-12">
           <div class="card">
             <div class="card-body">
-              <h3 class="card-title" style="text-align: center;">nft name</h3>
+              <h3 class="card-title" style="text-align: center;">{{NFT.name}}</h3>
               <hr style="border-top: 5px solid #e14eca; width: 100%; margin:0 0"/>
               <br>
-              <img src="https://nft.thetaboard.io/nft/assets/thetaboard/badge_2021.png"/>
+              <img src="{{NFT.image}}"/>
             </div>
             <div class="row">
               <div class="col col-lg-9">
                 <div class="row">
-                  <div class="col">
-                    Editions:
-                  </div>
-                  <div class="col">
-                    500
-                  </div>
-                </div>
-                <div class="row">
+
                   <div class="col">
                     Artist:
                   </div>
                   <div class="col">
-                    Thetapunks
+                    {{#if NFT.properties.artist}}
+                      {{NFT.properties.artist.name}}
+                    {{else}}
+                      Unknown
+                    {{/if}}
                   </div>
                 </div>
               </div>
@@ -46,7 +42,7 @@
               <div class="col col-lg-6">
                 <div class="row" style="text-align: right">
                   <div class="col ml-auto">
-                    3000
+                    {{NFT.properties.selling_info.price}}
                   </div>
                 </div>
                 <div class="row" style="text-align: right">
