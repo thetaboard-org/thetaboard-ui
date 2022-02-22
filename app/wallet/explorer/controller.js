@@ -50,7 +50,11 @@ export default class WalletController extends Controller {
   }
 
   @action
-  setQueryParam(walletAddress) {
-    this.transitionToRoute({ queryParams: { wa: walletAddress } });
+  setQueryParam(value, type) {
+    if (type == 'group') {
+      this.transitionToRoute({queryParams: {group: value, wa: null}});
+    } else {
+      this.transitionToRoute({queryParams: {wa: value, group: null}});
+    }
   }
 }
