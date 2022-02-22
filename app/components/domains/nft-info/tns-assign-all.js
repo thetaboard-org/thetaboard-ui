@@ -8,6 +8,7 @@ export default class DomainsNftInfoTnsAssignAllComponent extends Component {
   @service domain;
   @service intl;
   @service utils;
+  @service isMobile;
   @tracked commitingToTransfer;
   @tracked transfering;
   @tracked transfered;
@@ -47,11 +48,18 @@ export default class DomainsNftInfoTnsAssignAllComponent extends Component {
     }
 
     if (this.args.rawReverseName.domain !== this.domainName.replace('.theta', '') && this.args.addressRecord !== this.metamask.currentAccount) {
-      result = await Promise.all([this.editAddressRecord(), this.setReverseName()]);
+      if (this.isMobile.any) {
+        const resultAddr = await this.editAddressRecord();
+        const resultReverse = await this.setReverseName();
+        result = [resultAddr, resultReverse];
+      } else {
+        result = await Promise.all([this.editAddressRecord(), this.setReverseName()]);
+      }
       await this.args.refreshComponent();
       if (result[0] && result[1]) {
-        return this.utils.successNotify(`${this.domainName} ${this.intl.t('domain.domain_reversed')}`);
+        this.utils.successNotify(`${this.domainName} ${this.intl.t('domain.domain_reversed')}`);
       }
+      return;
     } else if (this.args.rawReverseName.domain !== this.domainName.replace('.theta', '')) {
       result = await this.setReverseName();
     } else if (this.args.addressRecord !== this.metamask.currentAccount) {
