@@ -18,11 +18,17 @@
         <img class="cursor float" src="/assets/img/transfer-greyed-small.png"/>
     </span>
   {{else if (eq availiability 4)}}
-    Selling NFT for : {{nft.properties.selling_info.price}} <img
+    Selling NFT for : {{priceEther}} <img
       src="{{rootURL}}/assets/img/logo/tfuel.png" style="width: 15px; margin-left: 3px; vertical-align: unset;"><br>
-    <button type="button" {{on "click" this.cancel_sell}} class="btn btn-fill btn-warning">
-      Cancel Sell
-    </button>
+    {{#if cancelLoading}}
+      <button type="button" class="btn btn-fill btn-warning">
+        <img width="46" src="/assets/img/loader.gif"/>
+      </button>
+    {{else}}
+      <button type="button" {{on "click" this.cancel_sell}} class="btn btn-fill btn-warning">
+        Cancel Sell
+      </button>
+    {{/if}}
   {{else if (eq availiability 5)}}
     {{#if transferPanel}}
       <p>{{t 'global.transfer'}}</p>

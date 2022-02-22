@@ -24,6 +24,7 @@ export default class MetamaskService extends Service {
   @tracked networkId;
   @tracked etherProvider;
   @tracked balance = 0;
+  @tracked web3;
 
   initPromise = null;
 
@@ -50,20 +51,26 @@ export default class MetamaskService extends Service {
     if (!metamaskProvider) {
       // default provider
       this.provider = new ethers.providers.JsonRpcProvider("https://eth-rpc-api.thetatoken.org/rpc");
-      window.web3 = new Web3("https://eth-rpc-api.thetatoken.org/rpc")
+      this.web3 =  new Web3("https://eth-rpc-api.thetatoken.org/rpc");
+      // TODO remove window.web3
+      window.web3 = this.web3;
       return this.isInstalled = false;
     }
     this.isInstalled = true;
     if (parseInt(ethereum.chainId) !== 361) {
       this.provider = new ethers.providers.JsonRpcProvider("https://eth-rpc-api.thetatoken.org/rpc");
-      window.web3 = new Web3("https://eth-rpc-api.thetatoken.org/rpc")
+      this.web3 =  new Web3("https://eth-rpc-api.thetatoken.org/rpc");
+      // TODO remove window.web3
+      window.web3 = this.web3;
       return this.isThetaBlockchain = false;
     }
     // if metamask is on the right blockchain, then use metamask
     this.provider = new ethers.providers.Web3Provider(metamaskProvider);
 
     this.isThetaBlockchain = true;
-    window.web3 = new Web3(metamaskProvider);
+    this.web3 =  new Web3(metamaskProvider);
+    // TODO remove window.web3
+    window.web3 = this.web3;
     const accounts = await window.web3.eth.getAccounts();
     if (accounts.length === 0) {
       return this.isConnected = false;

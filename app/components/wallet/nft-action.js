@@ -31,6 +31,10 @@ export default class NftActionComponent extends Component {
     return;
   }
 
+  get priceEther(){
+    return ethers.utils.formatUnits(this.nft.properties.selling_info.price, "ether");
+  }
+
   get marketplaceContract() {
     // when calling this contract, we assume that metamask is present.
     // otherwise we won't have a signer
@@ -163,11 +167,11 @@ export default class NftActionComponent extends Component {
     }
   }
 
-  @tracked cancelLoading = false;
+  @tracked cancelApproveLoading = false;
   @action
   async cancel_approve_for_sell() {
     try {
-      this.cancelLoading = true;
+      this.cancelApproveLoading = true;
       const signer = this.metamask.provider.getSigner();
       const nft_contract = new ethers.Contract(this.nft.contract_addr, this.abi.ThetaboardNFT, signer);
       const tx = await nft_contract.approve("0x0000000000000000000000000000000000000000", this.nft.original_token_id);
@@ -175,10 +179,10 @@ export default class NftActionComponent extends Component {
 
       // hack to update computed property of marketplace status
       set(this, 'marketplaceChanged', this.marketplaceChanged + 1);
-      this.cancelLoading = false;
+      this.cancelApproveLoading = false;
       return this.utils.successNotify("Approved for sell");
     } catch (e) {
-      this.cancelLoading = false;
+      this.cancelApproveLoading = false;
       return this.utils.errorNotify(e.message);
     }
   }
@@ -187,7 +191,8 @@ export default class NftActionComponent extends Component {
   async sell_nft(event) {
     event.preventDefault();
     try {
-      const tx = await this.marketplaceContract.createMarketItem(this.nft.contract_addr, this.nft.original_token_id, this.sellPrice, "ThetaboardUser");
+      const price = ethers.utils.parseEther(this.sellPrice);
+      const tx = await this.marketplaceContract.createMarketItem(this.nft.contract_addr, this.nft.original_token_id, price, "ThetaboardUser");
       await tx.wait();
       // hack to update computed property of marketplace status
       set(this, 'marketplaceChanged', this.marketplaceChanged + 1);
@@ -197,14 +202,18 @@ export default class NftActionComponent extends Component {
     }
   }
 
+  @tracked cancelLoading = false;
   @action
   async cancel_sell() {
     try {
-      await this.marketplaceContract.cancelMarketItem(this.nft.properties.selling_info.itemId).send({
-        from: account
-      });
+      this.cancelLoading = true;
+      const tx = await this.marketplaceContract.cancelMarketItem(this.nft.properties.selling_info.itemId);
+      await tx.wait();
+      this.cancelLoading = false;
+      set(this, 'marketplaceChanged', this.marketplaceChanged + 1);
       return this.utils.successNotify("Canceled the sell");
     } catch (e) {
+      this.cancelLoading = false;
       return this.utils.errorNotify(e.message);
     }
   }

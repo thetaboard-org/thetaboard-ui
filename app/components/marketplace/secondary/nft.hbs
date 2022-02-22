@@ -1,0 +1,58 @@
+<div class="col-lg-4 col-md-12">
+  <div class="card">
+    <div class="card-body">
+      <h3 class="card-title" style="text-align: center;">{{nft.name}}</h3>
+      <hr style="border-top: 5px solid #e14eca; width: 100%; margin:0 0"/>
+      <br>
+      <img src="{{nft.image}}"/>
+    </div>
+    <div class="row">
+      <div class="col col-lg-9">
+        <div class="row">
+
+          <div class="col">
+            Artist:
+          </div>
+          <div class="col">
+            {{#if nft.properties.artist}}
+              {{nft.properties.artist.name}}
+            {{else}}
+              Unknown
+            {{/if}}
+          </div>
+        </div>
+      </div>
+      <div class="col col-lg-3">
+        <button type="button" class="btn btn-primary" style="padding: 10px">
+          <i class="tim-icons icon-alert-circle-exc"></i>
+        </button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col col-lg-3">
+        <img class="avatar" src="{{rootURL}}/assets/img/logo/tfuel.png"/>
+      </div>
+      <div class="col col-lg-6">
+        <div class="row" style="text-align: right">
+          <div class="col ml-auto">
+            {{priceEther}}
+          </div>
+        </div>
+        <div class="row" style="text-align: right">
+          <div class="col ml-auto">
+            300$
+          </div>
+        </div>
+      </div>
+      <div class="col col-lg-3">
+        <button type="button" class="btn btn-primary" style="padding: 10px" {{action "buyNFT"}}>
+          <i class="tim-icons icon-cart"></i>
+        </button>
+      </div>
+    </div>
+
+    <div class="card-footer">
+
+    </div>
+  </div>
+</div>
