@@ -3,6 +3,18 @@
 <div class="card card-user">
   <div class="card-body card-min-390">
     <h1 class="card-title">Marketplace - Exchange</h1>
+    <br>
+    <Input @placeholder="Search" @type="text" @value={{search}}  {{on "keyup" this.searchMarketplace}}
+    />
+    <br>
+    <PowerSelectMultiple
+      @searchEnabled={{true}}
+      @options={{this.artists}}
+      @selected={{this.selectedArtists}}
+      @onChange={{this.changeArtist}} as |artist|>
+      {{artist.name}}
+    </PowerSelectMultiple>
+
     <div class="row">
       {{#each sellingNFTs as |NFT|}}
         {{marketplace/secondary/nft nft=NFT}}
