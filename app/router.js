@@ -68,6 +68,7 @@ Router.map(function () {
   this.route('creators', function () {
     this.route('artists');
     this.route('drops');
+    this.route('claim');
     this.route('drop', {path: '/drop/:dropId'});
   });
 });
