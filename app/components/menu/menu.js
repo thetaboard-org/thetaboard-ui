@@ -37,17 +37,13 @@ export default class MenuComponent extends Component {
       ],
     },
 
-    // {
-    //   name: 'menu.domain',
-    //   icon: 'icon-book-bookmark',
-    //   route: 'domain',
-    // },
     {name: 'menu.faq', icon: 'icon-compass-05', route: 'faq'},
     {
       name: 'menu.creators', icon: 'icon-align-center', route: 'creators.artists', scope: ['Admin', 'Creator'],
       children: [
         {name: 'menu.creators', image: 'tfuel-white.png', route: 'creators.artists'},
-        {name: 'menu.drops', image: 'tfuel-white.png', route: 'creators.drops'}
+        {name: 'menu.drops', image: 'tfuel-white.png', route: 'creators.drops'},
+        {name: 'menu.claim', icon: 'icon-align-center', route: 'creators.claim'}
       ],
     },
   ];

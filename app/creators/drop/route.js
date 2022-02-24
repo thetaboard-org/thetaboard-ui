@@ -1,5 +1,4 @@
 import Route from '@ember/routing/route';
-import {action} from '@ember/object';
 import {inject as service} from '@ember/service';
 
 export default class MyWalletsRoute extends Route {
@@ -11,13 +10,8 @@ export default class MyWalletsRoute extends Route {
 
   async model(params) {
     const drop = this.store.find("drop", params.dropId);
-    const NFTs = await  this.store.query('NFT', {dropId: params.dropId});
+    const NFTs = await this.store.query('NFT', {dropId: params.dropId});
     return {drop: drop, nfts: NFTs};
-  }
-
-  @action
-  refreshModel() {
-    this.refresh();
   }
 
 }

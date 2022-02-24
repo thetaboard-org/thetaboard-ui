@@ -87,7 +87,7 @@ export default class MetamaskService extends Service {
     }
     const ethersProvider = new ethers.providers.Web3Provider(window.ethereum);
     const accountBalance = await ethersProvider.getBalance(this.currentAccount);
-    const balance = window.web3.utils.fromWei(accountBalance.toString());
+    const balance = ethers.utils.formatEther(accountBalance.toString());
     return Number(balance);
   }
 

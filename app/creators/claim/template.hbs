@@ -1,0 +1,105 @@
+{{page-title "Creators  Claim NFT"}}
+
+{{#if isAdmin}}
+  <br>
+  Admin only, Pick an artist to view:
+  <PowerSelect
+    @searchEnabled={{true}}
+    @searchField="name"
+    @options={{model.artists}}
+    @selected={{artist}}
+    @onChange={{this.changeArtist}} as |artist|>
+    {{artist.name}}
+  </PowerSelect>
+  <br>
+{{/if}}
+
+
+
+
+{{#if claimNFTForm}}
+  <form {{on 'submit' this.claimNFTs}}>
+    <p>Claim your NFTs by entering a comma separated list of your NFTs Smart Contract Addresses</p>
+    <p class="alert alert-warning">
+      This list is manually reviewed.
+      Only claim the NFTs of which you are the creator.
+      Claiming other creators NFTs can result in a ban.
+    </p>
+    <Textarea style="width:100%" @value={{addresses}}
+              placeholder="0x71c7656ec7ab88b098defb751b7401b5f6d8976f,0xd178d2c271a17c0461eeb5e43759a6c0562fb5bb,...">
+    </Textarea>
+    <button type="submit" class="btn btn-fill btn-primary">Claim NFTs</button>
+  </form>
+{{else}}
+  <button {{on "click" this.showNFTForm}} class="btn btn-fill btn-primary">Claim NFTs</button>
+{{/if}}
+
+<div class="content">
+  <div class="row">
+    <div class="col-md-12 mb-5">
+      <div class="card ">
+        <div class="card-header">
+          <h4 class="card-title"> Your NFTs</h4>
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table tablesorter tablesorter-default tablesorter21c723b8b1751" id="simple-table" role="grid">
+              <thead class=" text-primary">
+              <tr role="row" class="tablesorter-headerRow">
+                <th data-column="0" class="tablesorter-header tablesorter-headerUnSorted" tabindex="0" scope="col"
+                    role="columnheader">
+                  <div class="tablesorter-header-inner">
+                    Name
+                  </div>
+                </th>
+                <th data-column="1" class="tablesorter-header tablesorter-headerUnSorted" tabindex="0" scope="col"
+                    role="columnheader">
+                  <div class="tablesorter-header-inner">
+                    Contract Addr
+                  </div>
+                </th>
+                <th data-column="2" class="tablesorter-header tablesorter-headerUnSorted" tabindex="0" scope="col"
+                    role="columnheader">
+                  <div class="tablesorter-header-inner">
+                    Royalties
+                  </div>
+                </th>
+                <th class="text-center tablesorter-header tablesorter-headerUnSorted" data-column="3" tabindex="0"
+                    scope="col" role="columnheader">
+                  <div class="tablesorter-header-inner">
+                    Remove
+                  </div>
+                </th>
+              </tr>
+              </thead>
+              <tbody aria-live="polite" aria-relevant="all">
+              {{#each NFTs as |NFT|}}
+                <tr role="row">
+                  <td>
+                    {{NFT.name}}
+                  </td>
+                  <td>
+                    {{NFT.nftContractId}}
+                  </td>
+                  <td>
+                    2.5%
+                  </td>
+                  <td class="text-center">
+                    {{#if NFT.dropId}}
+                      <i class="tim-icons icon-simple-remove" style="color:grey;" ></i>
+                    {{ else}}
+                      <i class="tim-icons icon-simple-remove" style="color:red;cursor: pointer;"
+                        {{action delete NFT}}></i>
+                    {{/if}}
+
+                  </td>
+                </tr>
+              {{/each}}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

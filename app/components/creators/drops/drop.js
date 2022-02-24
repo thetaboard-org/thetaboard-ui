@@ -1,9 +1,6 @@
 import Component from '@glimmer/component';
 import {action} from '@ember/object';
 import {inject as service} from '@ember/service';
-// Unfortunate usage of thetajs to get the EVM error
-const thetajs = require("@thetalabs/theta-js");
-const provider = new thetajs.providers.HttpProvider(thetajs.networks.ChainIds.Mainnet);
 
 
 export default class DropComponent extends Component {
