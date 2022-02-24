@@ -40,7 +40,7 @@ export default class ClaimController extends Controller {
     const addressesArray = this.addresses.split(',');
     let errorGettingNFTs = false;
     const TNT721s = await Promise.all(addressesArray.map(async (addr) => {
-      const fetched = await fetch(`/explorer/wallet-info/${addr}/${0}`);
+      const fetched = await fetch(`/explorer/wallet-info/${addr}/${1}`);
       if (fetched.status === 204) {
         errorGettingNFTs = true;
         return this.utils.errorNotify(`NFT doesn't exists: ${addr}`);
