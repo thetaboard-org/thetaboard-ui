@@ -15,6 +15,15 @@
       {{artist.name}}
     </PowerSelectMultiple>
 
+    <PowerSelectMultiple
+      @searchEnabled={{true}}
+      @options={{this.drops}}
+      @selected={{this.selectedDrops}}
+      @onChange={{this.changeDrop}} as |drop|>
+      {{drop.name}}
+    </PowerSelectMultiple>
+
+
     <div class="row">
       {{#each sellingNFTs as |NFT|}}
         {{marketplace/secondary/nft nft=NFT}}
