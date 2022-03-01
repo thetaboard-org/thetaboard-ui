@@ -1,50 +1,55 @@
 {{#if metamask.currentAccount}}
     {{#if isOwner}}
-        <div class="tns-control-panel">
-            <div class="tns-item">
-                <span class="tns-span green">{{t 'domain.owned'}}</span>
-                {{domains/nft-info/tns-transfer refreshComponent=initComponent domainName=nft.name}}
+        <div class="card card-user card-nft-info">
+            <h3 style="margin-bottom: 0px;">TNS:</h3>
+            <div class="tns-control-panel">
+                <div class="tns-item">
+                    <span class="tns-span green">{{t 'domain.owned'}}</span>
+                    {{domains/nft-info/tns-transfer refreshComponent=initComponent domainName=nft.name}}
+                </div>
+
+                {{#if canUlink}}
+                    <div class="tns-item">
+                        <span class="tns-span green">{{t 'domain.assigned'}}</span>
+                        <img class="float" src="/assets/img/done-small.png"/>
+                        {{domains/nft-info/tns-unset-address-record refreshComponent=initComponent domainName=nft.name}}
+                    </div>
+                {{else}}
+                    <div class="tns-item">
+                        {{#if canUlinkPrevious}}
+                            <span class="tns-span red">{{t 'domain.assigned'}}</span>
+                            {{domains/nft-info/tns-unassign-previous-owner
+                                refreshComponent=initComponent
+                                domainName=nft.name
+                                canReclaimController=canReclaimController
+                                addressRecord=addressRecord
+                                isController=isController
+                                isAddressRecord=isAddressRecord
+                                canUnlinkPreviousOwner=canUnlinkPreviousOwner
+                            }}
+                        {{else}}
+                            <span class="tns-span red">{{t 'domain.not_assigned'}}</span>
+                            {{domains/nft-info/tns-assign-all
+                                refreshComponent=initComponent
+                                domainName=nft.name
+                                canReclaimController=canReclaimController
+                                canEditAddressRecord=canEditAddressRecord
+                                canReverseName=canReverseName
+                                rawReverseName=rawReverseName
+                                addressRecord=addressRecord
+                                isController=isController
+                                isAddressRecord=isAddressRecord
+                                isReverseName=isReverseName
+                            }}
+                        {{/if}}
+                    </div>
+                {{/if}}
             </div>
-
-            {{#if canUlink}}
-                <div class="tns-item">
-                    <span class="tns-span green">{{t 'domain.assigned'}}</span>
-                    <img class="float" src="/assets/img/done-small.png"/>
-                    {{domains/nft-info/tns-unset-address-record refreshComponent=initComponent domainName=nft.name}}
-                </div>
-            {{else}}
-                <div class="tns-item">
-                    {{#if canUlinkPrevious}}
-                        <span class="tns-span red">{{t 'domain.assigned'}}</span>
-                        {{domains/nft-info/tns-unassign-previous-owner
-                            refreshComponent=initComponent
-                            domainName=nft.name
-                            canReclaimController=canReclaimController
-                            addressRecord=addressRecord
-                            isController=isController
-                            isAddressRecord=isAddressRecord
-                            canUnlinkPreviousOwner=canUnlinkPreviousOwner
-                        }}
-                    {{else}}
-                        <span class="tns-span red">{{t 'domain.not_assigned'}}</span>
-                        {{domains/nft-info/tns-assign-all
-                            refreshComponent=initComponent
-                            domainName=nft.name
-                            canReclaimController=canReclaimController
-                            canEditAddressRecord=canEditAddressRecord
-                            canReverseName=canReverseName
-                            rawReverseName=rawReverseName
-                            addressRecord=addressRecord
-                            isController=isController
-                            isAddressRecord=isAddressRecord
-                            isReverseName=isReverseName
-                        }}
-                    {{/if}}
-                </div>
-            {{/if}}
-
         </div>
     {{/if}}
 {{else}}
-    <button {{on 'click' metamask.connect}} class="btn connect-metamask btn-primary">{{t 'domain.connect'}}</button>
+    <div class="card card-user card-nft-info">
+        <h3 style="margin-bottom: 0px;">TNS:</h3>
+        <button {{on 'click' metamask.connect}} class="btn connect-metamask btn-primary">{{t 'domain.connect'}}</button>
+    </div>
 {{/if}}

@@ -1478,7 +1478,7 @@ a.active p.menu-item {
 }
 
 .artist-container .drop-artist-bio {
-  margin-top: 20px;
+  margin-top: 10px;
 }
 
 /****** NFT START ******/
@@ -1506,6 +1506,10 @@ a.active p.menu-item {
   color: white;
 }
 
+input.nft-sell-price-input {
+  width: 70%;
+  display: inline-block;
+}
 
 /****** NFT LIST START ******/
 
@@ -1530,22 +1534,44 @@ a.active p.menu-item {
 #card-nft .nft-back-to-wallet {
   position: relative;
   z-index: 9;
-  margin-bottom: 10px;
-  display: inline-block;
+  margin-top: 20px;
   padding: 0 0 0 10px;
+  float: left;
+}
+
+.nft-info-title {
+  display: inline-block;
+  border-bottom: 5px solid #e14eca;
+  margin: 0 0 50px 0;
+}
+
+div.card-user .author div.nft-info-block.block {
+  height: 65px;
+  width: 220px;
+}
+
+#card-nft-img,
+#card-nft-attr,
+#card-nft-description {
+  padding: 0px 15px;
+}
+
+#card-nft-img {
+  text-align: center;
+}
+
+.card-nft-info {
+  padding: 25px;
+}
+
+.nft-main-video {
+  max-width: 100%;
 }
 
 /****** NFT ATTRIBUTES START ******/
 
 .nft-attribute-container {
-  display: inline-block;
-  background: black;
-  padding: 5px 15px;
-  border-radius: 25px;
-  margin: 10px 0px 10px 10px;
-  font-weight: 500;
-  border: 1px solid;
-  box-shadow: 2px 2px 12px #060606;
+  margin: 5px 0px 5px 0px;
   color: #d2d2d2;
 }
 
@@ -1837,11 +1863,7 @@ span[data-toggle="tooltip"] {
 }
 
 .tns-control-panel {
-  margin: auto;
-  max-width: 480px;
-  background: #1e1e25;
   text-align: left;
-  padding: 20px 80px;
 }
 
 .tns-control-panel .tns-item {
@@ -1911,8 +1933,8 @@ button.button-icon-tb, button.button-icon-tb .icon-tb {
 }
 
 button.btn.button-icon-tb, button.button-icon-tb .icon-tb.logout-metamask {
-  width: 82px;
-  height: 33px;
+  width: 94.41px;
+  height: 41.44px;
   line-height: 2px;
   margin: 0;
 }

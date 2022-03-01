@@ -128,6 +128,17 @@ transaction_history:
 
 ###### NFT START ######
 NFT:
+  setup_to_transfer: "Setup Metamask to transfer or sell your NFT"
+  setup_to_mainnet: "Setup Metamask for the Theta Mainnet blockchain"
+  not_owner: "Your Metamask Wallet is not the token owner"
+  selling_for: "Selling NFT for"
+  sell_for: "Sell NFT for"
+  cancel_sell: "Cancel Sell"
+  cancel_approve: "Cancel Approve item"
+  sell_item: "Sell item"
+  transfer_nft: "Transfer NFT"
+  once_approved: "Once you approve, you will be able to set a price and put your NFT on the marketplace"
+  asking_price: "Asking price"
   no_nft: "This wallet doesn't have any NFT"
   back_to_wallet: "Go back to NFT wallet"
   use_metamask: "Purchase using Metamask"
@@ -351,6 +362,9 @@ drop:
   coming: "COMING SOON"
   closed: "CLOSED"
   attributes: "Attributes"
+  description: "Description"
+  editions: "Editions"
+  actions: "Actions"
   from: "from"
 ###### DROP END ######
 

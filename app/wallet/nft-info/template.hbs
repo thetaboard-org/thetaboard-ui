@@ -1,18 +1,25 @@
 {{page-title "NFT Info"}}
 
-<div class="card card-user" id="card-nft">
-  <div class="card-body card-min-390">
-    <p class="card-text"></p>
+<div class="card card-user col-md-12" id="card-nft">
+  <div class="">
     <div class="author" style="text-align: left;">
-      <div class="block block-one"></div>
-      <div class="block block-two"></div>
-      <div class="block block-three"></div>
-      <div class="block block-four"></div>
-      <LinkTo @route="wallet.nft" @class="nft-back-to-wallet"><img width="50" src="/assets/img/back-medium.png"/></LinkTo>
+      <div class="nft-info-block block block-one"></div>
+      <div class="nft-info-block block block-two"></div>
+      <div class="nft-info-block block block-three"></div>
+      <div class="nft-info-block block block-four"></div>
+      <LinkTo @route="wallet.nft" @class="nft-back-to-wallet"><img width="30" src="/assets/img/back-medium.png"/></LinkTo>
     </div>
     <div class="card-body-stake">
-      <h5 class="title">{{nft.name}}</h5>
       <br/>
+      <h5 class="title nft-info-title">{{nft.name}}</h5>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+
+  <div class="col-lg-6" id="card-nft-img">
+    <div class="card card-user card-nft-info">
       <div class="nft-main-image-container">
         {{#if nft.isFirstAssetVideo}}
           <video class="nft-main-video" id="vid" loop autoplay playsinline>
@@ -22,17 +29,6 @@
           <img class="nft-main-image" src="{{nft.image}}" alt="{{nft.name}}"/>
         {{/if}}
       </div>
-      <br/>
-      <p class="description">{{nft.description}}</p>
-      {{#if nft.attributes.length}}
-        <br/>
-        <h3 style="margin-bottom: 0px;">{{t 'drop.attributes'}}:</h3>
-        <br/>
-        {{#each nft.attributes as |attribute|}}
-          {{nft-info/nft-attribute-tile attribute=attribute}}
-        {{/each}}
-        <br/>
-      {{/if}}
       {{#if nft.properties.assets.length}}
         <br/>
         <h3>{{t 'drop.additional_assets'}}:</h3>
@@ -40,16 +36,48 @@
           {{nft-info/nft-asset-tile nftAsset=nftAsset}}
         {{/each}}
       {{/if}}
-      {{#if nft.properties.artist}}
-        <br/>
-        {{marketplace/artist-tile artist=nft.properties.artist}}
-        <br/>
-      {{/if}}
-      {{#if isTNS}}
-        {{domains/nft-info/tns nft=nft}}
-      {{/if}}
     </div>
   </div>
-  <div class="card-footer">
+
+  <div class="col-lg-6" id="card-nft-description">
+    <div class="card card-user card-nft-info">
+      <div class="nft-info-artist">
+          <h3 style="margin-bottom: 0px;">{{t 'drop.actions'}}:</h3>
+          {{wallet/nft-action nft=nft}}
+      </div>
+    </div>
+
+    {{#if nft.properties.artist}}
+      <div class="card card-user card-nft-info">
+        <div class="nft-info-artist">
+          {{marketplace/artist-tile artist=nft.properties.artist}}
+        </div>
+      </div>
+    {{/if}}
+    {{#if nft.description}}
+      <div class="card card-user card-nft-info">
+        <h3 style="margin-bottom: 0px;">{{t 'drop.description'}}:</h3>
+        <p class="description">{{nft.description}}</p>
+      </div>
+    {{/if}}
+    {{#async-await nft.totalMinted as |total|}}
+      {{#if total}}
+        <div class="card card-user card-nft-info">
+          <h3 style="margin-bottom: 0px;">{{t 'drop.editions'}}:</h3>
+          <p class="description">{{total}}</p>
+        </div>
+      {{/if}}
+    {{/async-await}}
+    {{#if nft.attributes.length}}
+      <div class="card card-user card-nft-info">
+        <h3 style="margin-bottom: 0px;">{{t 'drop.attributes'}}:</h3>
+        {{#each nft.attributes as |attribute|}}
+          {{nft-info/nft-attribute-tile attribute=attribute}}
+        {{/each}}
+      </div>
+    {{/if}}
+    {{#if isTNS}}
+      {{domains/nft-info/tns nft=nft}}
+    {{/if}}
   </div>
-</div>
+</div> 

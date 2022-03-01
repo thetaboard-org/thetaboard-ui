@@ -6,7 +6,9 @@ export default class NftInfoNftAttributeTileComponent extends Component {
   }
 
   get hasValue() {
-    return !!this.args.attribute.value;
+    return (
+      !!this.args.attribute.value && this.args.attribute.trait_type !== 'style'
+    );
   }
 
   get isValueAnObject() {

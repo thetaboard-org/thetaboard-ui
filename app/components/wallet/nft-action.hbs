@@ -1,109 +1,92 @@
 {{#async-await metamaskAvailable as |availiability|}}
   {{#if (eq availiability 0)}}
     <a href="/assets/pdf/HOW_TO_Metamask_LR.pdf" target="_blank">
-      Setup Metamask to transfer or sell your NFT
+      {{t 'NFT.setup_to_transfer'}}
     </a>
   {{else if (eq availiability 1)}}
     <a href="/assets/pdf/HOW_TO_Metamask_LR.pdf" target="_blank">
-      Setup Metamask for theta blockchain
+          {{t 'NFT.setup_to_mainnet'}}
     </a>
   {{else if (eq availiability 2)}}
     <span data-toggle="tooltip" data-placement="top"
-          title="{{t 'domain.connect_to_metamask'}}" data-original-title="Tooltip on top">
+          title="{{t 'domain.connect_to_metamask'}}">
         <img class="cursor float" src="/assets/img/transfer-greyed-small.png"/>
     </span>
   {{else if (eq availiability 3)}}
     <span data-toggle="tooltip" data-placement="top"
-          title=" Your Metamask Wallet is not the token owner" data-original-title="Tooltip on top">
+          title="{{t 'NFT.not_owner'}}">
         <img class="cursor float" src="/assets/img/transfer-greyed-small.png"/>
     </span>
   {{else if (eq availiability 4)}}
-    Selling NFT for : {{priceEther}} <img
-      src="{{rootURL}}/assets/img/logo/tfuel.png" style="width: 15px; margin-left: 3px; vertical-align: unset;"><br>
+    <p>{{t 'NFT.selling_for'}} : {{priceEther}} 
+      <img src="{{rootURL}}/assets/img/logo/tfuel.png" style="width: 20px; margin-left: 3px;"/>
+    </p>
     {{#if cancelLoading}}
       <button type="button" class="btn btn-fill btn-warning">
-        <img width="46" src="/assets/img/loader.gif"/>
+        <img width="14" src="/assets/img/loader.gif"/>
       </button>
     {{else}}
       <button type="button" {{on "click" this.cancel_sell}} class="btn btn-fill btn-warning">
-        Cancel Sell
+        {{t 'NFT.cancel_sell'}}
       </button>
     {{/if}}
   {{else if (eq availiability 5)}}
-    {{#if transferPanel}}
-      <p>{{t 'global.transfer'}}</p>
-      <p></p>
-      <Input {{on "keyup" inputHandler}}
-        @placeholder="{{t 'domain.transfer_placeholder'}}"
-        @type="text" class="form-control border-color input-domain-transfer-address"
-        @value=""
-        pattern="^0x[a-fA-F0-9]{40}$"
-        required/>
-      {{#if addressLookup}}
-        <p class="lookup-address-transfer">{{addressLookup}}</p>
-        <p></p>
-      {{/if}}
-      <p></p>
-      {{#if commitingToTransfer}}
-      {{else}}
-        <img class="btn-icon-global right-margin" {{on 'click' toggleTransferPanel}}
-             src="/assets/img/cancel-small.png"/>
-      {{/if}}
-      {{#if transfering}}
-        <img width="40" src="/assets/img/loader-square-fixed-small.png"/>
-      {{else if commitingToTransfer}}
-        <img width="40" src="/assets/img/see-mm-small.png"/>
-      {{else}}
-        <img class="btn-icon-global" {{on 'click' transfer}} src="/assets/img/ok-small.png"/>
-      {{/if}}
-    {{else}}
-      <img class="cursor float" {{on 'click' toggleTransferPanel}} src="/assets/img/transfer-small.png"/>
-    {{/if}}
+    {{nft-actions/transfer nft=nft setTooltip=setTooltip}}
     {{#async-await marketPlaceStatus as |isApproved|}}
       {{#if isApproved}}
-        <button type="button" class="btn btn-fill btn-primary" {{on 'click' cancel_approve_for_sell}}>
-          Cancel Approve item
-        </button>
-
         <form {{on 'submit' this.sell_nft}}>
+          <br/>
+          <p>{{t 'NFT.sell_for'}}:</p>
           <Input
-            @class="form-control"
+            @class="form-control nft-sell-price-input"
             @type="number"
-            placeholder="Asking price"
+            placeholder="{{t 'NFT.asking_price'}}"
             @value={{this.sellPrice}}
             @min="0"
             @step="1"
             required
           />
-          <button type="submit" class="btn btn-fill btn-primary">
-            Sell item
-          </button>
+          <img src="{{rootURL}}/assets/img/logo/tfuel.png" style="width: 28px; margin-left: 15px;"/>
+          <br/>
+          {{#if commitingToApprove}}
+            <button class="btn btn-fill btn-primary">
+              <img width="14" src="/assets/img/loader.gif"/>
+            </button>
+          {{else}}
+            <span data-toggle="tooltip" data-placement="top" title="{{t 'NFT.sell_item'}}">
+              <button type="submit" class="btn btn-fill btn-primary">
+                  <i class="tim-icons icon-cart"></i>
+              </button>
+            </span>
+          {{/if}}
         </form>
+        {{#if cancelApproveLoading}}
+          <button type="button" class="btn btn-fill btn-warning">
+            <img width="14" src="/assets/img/loader.gif"/>
+          </button>
+        {{else}}
+          <button type="button" class="btn btn-fill btn-warning" {{on 'click' cancel_approve_for_sell}}>
+            {{t 'NFT.cancel_approve'}}
+          </button>
+        {{/if}}
       {{else if approveLoading}}
         <span data-toggle="tooltip" data-placement="top"
-              title="{{available}}"
-              data-original-title="Once you approve, you will be able to set a price and put your NFT on the marketplace">
+              title="{{t 'NFT.once_approved'}}">
           <button type="button" class="btn btn-fill btn-primary">
-             <img width="46" src="/assets/img/loader.gif"/>
+             <img width="14" src="/assets/img/loader.gif"/>
           </button>
         </span>
-        {{enableTooltip}}
       {{else}}
-        <span data-toggle="tooltip" data-placement="top"
-              title="{{available}}"
-              data-original-title="Once you approve, you will be able to set a price and put your NFT on the marketplace">
+        <span data-toggle="tooltip" data-placement="top" title="{{t 'NFT.once_approved'}}">
           <button type="button" class="btn btn-fill btn-primary" {{on "click" approve_for_sell}}>
              <i class="tim-icons icon-cart"></i>
           </button>
         </span>
-        {{enableTooltip}}
       {{/if}}
     {{/async-await}}
   {{else}}
-    <span data-toggle="tooltip" data-placement="top"
-          title="{{owner}}" data-original-title="Tooltip on top">
-                <img class="cursor float" src="/assets/img/transfer-greyed-small.png"/>
-            </span>
+    <span data-toggle="tooltip" data-placement="top" title="">
+      <img class="cursor float" src="/assets/img/transfer-greyed-small.png"/>
+    </span>
   {{/if}}
 {{/async-await}}
-

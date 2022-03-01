@@ -9,8 +9,6 @@ export default class NftInfoController extends Controller {
   }
 
   get isTNS() {
-    return (
-      this.nft.contract_addr === this.abi.tnsRegistrarContractAddr
-    );
+    return this.nft.contract_addr === this.abi.tnsRegistrarContractAddr;
   }
 }

@@ -1,0 +1,34 @@
+{{#if transferPanel}}
+    <p>{{t 'global.transfer'}}</p>
+    <p></p>
+    <Input {{on "keyup" inputHandler}}
+    @placeholder="{{t 'domain.transfer_placeholder'}}"
+    @type="text" class="form-control border-color input-domain-transfer-address"
+    @value=""
+    pattern="^0x[a-fA-F0-9]{40}$"
+    required/>
+    {{#if addressLookup}}
+    <p class="lookup-address-transfer">{{addressLookup}}</p>
+    <p></p>
+    {{/if}}
+    <p></p>
+    {{#if commitingToTransfer}}
+    {{else}}
+    <img class="btn-icon-global right-margin" {{on 'click' toggleTransferPanel}}
+            src="/assets/img/cancel-small.png"/>
+    {{/if}}
+    {{#if transfering}}
+        <img width="40" src="/assets/img/loader.gif" />
+    {{else if commitingToTransfer}}
+    <img width="40" src="/assets/img/see-mm-small.png"/>
+    {{else}}
+    <img class="btn-icon-global" {{on 'click' transfer}} src="/assets/img/ok-small.png"/>
+    {{/if}}
+    <br/><br/>
+{{else}}
+    <span data-toggle="tooltip" data-placement="top" title="{{t 'NFT.transfer_nft'}}">
+    <button type="button" class="button-icon-tb btn btn-fill btn-primary" {{on 'click' toggleTransferPanel}}>
+        <i class="icon-tb icon-transfer"></i>
+    </button>
+    </span>
+{{/if}}

@@ -11,14 +11,11 @@ export default class NftActionComponent extends Component {
   @service intl;
   @service abi;
   @service metamask;
-  @service domain;
 
-  @tracked transferPanel;
-  @tracked addressLookup;
-  @tracked inputDomain;
-  @tracked inputAddress;
-  @tracked commitingToTransfer;
-  @tracked transfering;
+  @tracked commitingToApprove = false;
+  @tracked approveLoading = false;
+  @tracked cancelLoading = false;
+  @tracked cancelApproveLoading = false;
 
   marketplaceChanged = 0;
 
@@ -26,12 +23,7 @@ export default class NftActionComponent extends Component {
     return this.args.nft;
   }
 
-  get enableTooltip() {
-    $('[data-toggle="tooltip"]').tooltip();
-    return;
-  }
-
-  get priceEther(){
+  get priceEther() {
     return ethers.utils.formatUnits(this.nft.properties.selling_info.price, "ether");
   }
 
@@ -52,6 +44,7 @@ export default class NftActionComponent extends Component {
     // return 5 if NFT is owned by current metamask wallet
 
     const checkOwner = async () => {
+      this.setTooltip();
       if (!this.metamask.isInstalled) {
         return 0;
       } else if (!this.metamask.isThetaBlockchain) {
@@ -103,56 +96,16 @@ export default class NftActionComponent extends Component {
     return checkStatus();
   }
 
-  @action
-  toggleTransferPanel() {
-    this.transferPanel = !this.transferPanel;
+  setTooltip() {
+    $('[data-toggle="tooltip"]').tooltip('hide');
+    setTimeout(() => { $('[data-toggle="tooltip"]').tooltip() }, 1000);
   }
 
-  @action
-  async transfer(event) {
-    event.preventDefault();
-    try {
-      this.commitingToTransfer = true;
-      const account = this.metamask.currentAccount;
-      const provider = new ethers.providers.Web3Provider(window.ethereum);
-      const signer = provider.getSigner();
-      const nft_contract = new ethers.Contract(this.nft.contract_addr, this.abi.ThetaboardNFT, signer)
-      const transfer = await nft_contract.transferFrom(account, this.inputAddress, this.nft.original_token_id);
-      if (transfer && transfer.hash) {
-        this.transfering = true;
-        const receipt = await this.domain.waitForTransaction(transfer.hash);
-        if (receipt.success) {
-          this.transfering = false;
-          this.commitingToTransfer = false;
-          this.transferPanel = false;
-          return this.utils.successNotify(`${this.domainName} ${this.intl.t('domain.domain_transfered')} ${this.inputAddress}`);
-        } else {
-          this.commitingToTransfer = false;
-          this.transfering = false;
-          return this.utils.errorNotify(
-            this.intl.t('domain.error.problem_occured_check_metamask')
-          );
-        }
-      } else {
-        this.commitingToTransfer = false;
-        this.transfering = false;
-        return this.utils.errorNotify(
-          this.intl.t('domain.user_rejected_transaction')
-        );
-      }
-    } catch (e) {
-      this.commitingToTransfer = false;
-      this.transfering = false;
-      return this.utils.errorNotify(e.message);
-    }
-  }
-
-
-  @tracked approveLoading = false;
   @action
   async approve_for_sell() {
     try {
       this.approveLoading = true;
+      this.setTooltip();
       const signer = this.metamask.provider.getSigner();
       const nft_contract = new ethers.Contract(this.nft.contract_addr, this.abi.ThetaboardNFT, signer);
       const tx = await nft_contract.approve(this.abi.ThetaboardMarketplaceAddr, this.nft.original_token_id);
@@ -160,29 +113,32 @@ export default class NftActionComponent extends Component {
       this.approveLoading = false;
       // hack to update computed property of marketplace status
       set(this, 'marketplaceChanged', this.marketplaceChanged + 1);
+      this.setTooltip();
       return this.utils.successNotify("Approved for sell");
     } catch (e) {
       this.approveLoading = false;
+      this.setTooltip();
       return this.utils.errorNotify(e.message);
     }
   }
 
-  @tracked cancelApproveLoading = false;
   @action
   async cancel_approve_for_sell() {
     try {
       this.cancelApproveLoading = true;
+      this.setTooltip();
       const signer = this.metamask.provider.getSigner();
       const nft_contract = new ethers.Contract(this.nft.contract_addr, this.abi.ThetaboardNFT, signer);
       const tx = await nft_contract.approve("0x0000000000000000000000000000000000000000", this.nft.original_token_id);
       await tx.wait();
-
+      this.cancelApproveLoading = false;
       // hack to update computed property of marketplace status
       set(this, 'marketplaceChanged', this.marketplaceChanged + 1);
-      this.cancelApproveLoading = false;
+      this.setTooltip();
       return this.utils.successNotify("Approved for sell");
     } catch (e) {
       this.cancelApproveLoading = false;
+      this.setTooltip();
       return this.utils.errorNotify(e.message);
     }
   }
@@ -191,70 +147,38 @@ export default class NftActionComponent extends Component {
   async sell_nft(event) {
     event.preventDefault();
     try {
+      this.commitingToApprove = true;
+      this.setTooltip();
       const price = ethers.utils.parseEther(this.sellPrice);
       const tx = await this.marketplaceContract.createMarketItem(this.nft.contract_addr, this.nft.original_token_id, price, "ThetaboardUser");
       await tx.wait();
       // hack to update computed property of marketplace status
       set(this, 'marketplaceChanged', this.marketplaceChanged + 1);
+      this.commitingToApprove = false;
+      this.setTooltip();
       return this.utils.successNotify("Selling on marketplace");
     } catch (e) {
+      this.commitingToApprove = false;
+      this.setTooltip();
       return this.utils.errorNotify(e.message);
     }
   }
 
-  @tracked cancelLoading = false;
   @action
   async cancel_sell() {
     try {
       this.cancelLoading = true;
+      this.setTooltip();
       const tx = await this.marketplaceContract.cancelMarketItem(this.nft.properties.selling_info.itemId);
       await tx.wait();
       this.cancelLoading = false;
       set(this, 'marketplaceChanged', this.marketplaceChanged + 1);
+      this.setTooltip();
       return this.utils.successNotify("Canceled the sell");
     } catch (e) {
       this.cancelLoading = false;
+      this.setTooltip();
       return this.utils.errorNotify(e.message);
-    }
-  }
-
-  @action
-  async inputHandler(e) {
-    e.preventDefault();
-    this.addressLookup = '';
-    let inputValue = e.currentTarget.value;
-    await this.metamask.initMeta();
-    if (inputValue.endsWith(".theta")) {
-      const address = await this.domain.getAddrForDomain(inputValue.replace(".theta", ""));
-      if (
-        address.addressRecord &&
-        address.addressRecord != '0x0000000000000000000000000000000000000000'
-      ) {
-        const reverse = await this.domain.getReverseName(address.addressRecord);
-        if (reverse.domain == this.domain.sanitizeTNS(inputValue)) {
-          this.addressLookup = address.addressRecord;
-          this.inputDomain = this.domain.sanitizeTNS(inputValue);
-        } else {
-          this.addressLookup = '';
-          this.inputDomain = '';
-        }
-      } else {
-        this.inputDomain = '';
-      }
-      this.inputAddress = this.addressLookup;
-    } else if (
-      inputValue.toLowerCase().startsWith('0x') &&
-      inputValue.length == '42'
-    ) {
-      const value = await this.domain.getReverseName(inputValue);
-      if (value.domain) {
-        this.addressLookup = value.domain;
-      }
-      this.inputAddress = inputValue;
-      this.inputDomain = this.addressLookup;
-    } else {
-      this.inputAddress = '';
-      this.inputDomain = '';
     }
   }
 }

@@ -90,9 +90,15 @@ export default class NftModel extends Model {
   get totalMinted() {
     const fetchInfo = async () => {
       await this.metamask.initMeta();
-      const NFTContract = new ethers.Contract(this.nftContractId, this.abi.ThetaboardNFT, this.metamask.provider);
+      if (!this.nftContractId) return null;
+      if (this.abi.tnsRegistrarContractAddr === this.nftContractId) return 1;
+      const NFTContract = new ethers.Contract(
+        this.nftContractId,
+        this.abi.ThetaboardNFT,
+        this.metamask.provider
+      );
       return await NFTContract.totalSupply();
-    }
+    };
     return fetchInfo();
   }
 
