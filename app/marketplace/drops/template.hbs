@@ -16,7 +16,9 @@
       </div>
       <div class="row">
         {{#each dropList as |drop|}}
-          {{marketplace/drop-tile drop=drop}}
+          <div class="col-sm-12 col-md-4 drop-tile-container">
+            {{marketplace/drop-tile drop=drop}}
+          </div>
         {{/each}}
       </div>
     </div>

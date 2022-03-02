@@ -1,25 +1,23 @@
-<div class="col-sm-12 col-md-4 drop-tile-container">
-    <LinkTo @route="marketplace.drop" @model={{drop.id}}>
-        <div class="drop-tile" style="background-image: url({{drop.image}})">
-            <div>
-                {{#if drop.isDropLive}}
-                 {{#if drop.isEndingInLessThan24Hours}}
-                    <div class="drop-status live"><span class="dot"></span>{{t 'drop.ending_in'}} {{this.countDown}}</div>
-                {{else}}
-                    <div class="drop-status live"><span class="dot"></span>{{t 'drop.is_live'}}</div>
-                {{/if}}
-                {{else if drop.isDropEnded}}
-                    <div class="drop-status over">{{t 'drop.over'}}</div>
-                {{else if drop.isStartingInLessThan24Hours}}
-                    <div class="drop-status in-few-hours">{{t 'drop.starting_in'}} {{this.countDown}}</div>
-                {{else}}
-                    <div class="drop-status coming">{{t 'drop.coming_soon'}}</div>
-                {{/if}}
-                <div class="drop-bottom-container">
-                    <p class="drop-artist">{{drop.artist.name}}</p>
-                    <p class="small-description">{{drop.smallDescription}}</p>
-                </div>           
+<LinkTo @route="marketplace.drop" @model={{drop.id}}>
+    <div class="drop-tile" style="background-image: url({{drop.image}})">
+        <div>
+            {{#if drop.isDropLive}}
+                {{#if drop.isEndingInLessThan24Hours}}
+                <div class="drop-status live"><span class="dot"></span>{{t 'drop.ending_in'}} {{this.countDown}}</div>
+            {{else}}
+                <div class="drop-status live"><span class="dot"></span>{{t 'drop.is_live'}}</div>
+            {{/if}}
+            {{else if drop.isDropEnded}}
+                <div class="drop-status over">{{t 'drop.over'}}</div>
+            {{else if drop.isStartingInLessThan24Hours}}
+                <div class="drop-status in-few-hours">{{t 'drop.starting_in'}} {{this.countDown}}</div>
+            {{else}}
+                <div class="drop-status coming">{{t 'drop.coming_soon'}}</div>
+            {{/if}}
+            <div class="drop-bottom-container">
+                <p class="drop-artist">{{drop.artist.name}}</p>
+                <p class="small-description">{{drop.smallDescription}}</p>
             </div>
         </div>
-    </LinkTo>
-</div>
+    </div>
+</LinkTo>

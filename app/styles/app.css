@@ -1987,3 +1987,56 @@ button.btn.button-icon-tb, button.button-icon-tb .icon-tb.logout-metamask {
     max-width: 50%;
   }
 }
+
+  /*MARKET PLACE*/
+.tile-container-market {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.card.tile-nft-marketplace {
+  width: 350px;
+  padding: 10px 10px;
+  position: relative;
+  margin: 20px;
+  overflow: hidden;
+}
+
+.tile-bottom-marketplace {
+  padding: 5px 20px;
+}
+
+.tile-botom-label-marketplace {
+  font-size: 17px;
+  margin-top: 11px;
+  text-align: right;
+
+}
+
+.icon-tb.tfuel-marketplace {
+ font-size: 45px;
+
+}
+
+.tile-botom-price-marketplace {
+  font-weight: 600;
+  font-size: 22px;
+  margin-top: 7px;
+  text-align: right;
+}
+
+.white-font {
+  color: white;
+}
+
+.col .btn-info-marketplace {
+  width: 41px;
+  height: 41px;
+  padding: 0 0 0 0;
+  font-size: 22px;
+}
+
+.col .btn-info-marketplace-info {
+  padding: 5px 0 0 0;
+}

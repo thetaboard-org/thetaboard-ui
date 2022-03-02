@@ -365,6 +365,7 @@ drop:
   description: "Description"
   editions: "Editions"
   actions: "Actions"
+  contract_addr: "Contract Address"
   from: "from"
 ###### DROP END ######
 

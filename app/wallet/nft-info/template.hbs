@@ -25,6 +25,11 @@
           <video class="nft-main-video" id="vid" loop autoplay playsinline>
             <source src="{{nft.firstAsset}}" type="video/mp4">
           </video>
+          <br/>
+          {{#if nft.image}}
+            <h3>{{nft.name}}</h3>
+            <img class="nft-main-image" src="{{nft.image}}" alt="{{nft.name}}"/>
+          {{/if}}
         {{else}}
           <img class="nft-main-image" src="{{nft.image}}" alt="{{nft.name}}"/>
         {{/if}}
@@ -54,6 +59,7 @@
         </div>
       </div>
     {{/if}}
+
     {{#if nft.description}}
       <div class="card card-user card-nft-info">
         <h3 style="margin-bottom: 0px;">{{t 'drop.description'}}:</h3>
@@ -65,6 +71,12 @@
         <div class="card card-user card-nft-info">
           <h3 style="margin-bottom: 0px;">{{t 'drop.editions'}}:</h3>
           <p class="description">{{total}}</p>
+          <h3 style="margin-bottom: 0px;">{{t 'drop.contract_addr'}}:</h3>
+          {{#if nft.contractTns}}
+            <p class="description">{{nft.contractTns}} (<span {{shortener nft.contract_addr}}></span>)</p>
+          {{else}}
+            <p class="description">{{nft.contract_addr}}</p>
+          {{/if}}
         </div>
       {{/if}}
     {{/async-await}}

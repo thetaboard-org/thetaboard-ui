@@ -8,6 +8,8 @@ export default class MarketplaceNFTComponent extends Component {
   @service abi;
   @service metamask;
   @service utils;
+  @service thetaSdk;
+  @service currency;
 
   get marketplaceContract() {
     // when calling this contract, we assume that metamask is present.
@@ -20,7 +22,13 @@ export default class MarketplaceNFTComponent extends Component {
     return this.args.nft;
   }
 
-  get priceEther(){
+  get priceCurrency() {
+    const properties = this.nft.properties;
+    const price = ethers.utils.formatUnits(properties.selling_info.price);
+    return Number(this.thetaSdk.prices.tfuel.price * price).toFixed(2);
+  }
+
+  get priceEther() {
     const properties = this.nft.properties;
     return ethers.utils.formatUnits(properties.selling_info.price);
   }

@@ -14,6 +14,7 @@ export default class NftModel extends Model {
   @attr('string') image;
   @attr('string') nftContractId;
   @attr('string') nftSellController;
+  @attr('string') contractTns;
   @attr('number') editionNumber;
   @attr('number') price;
   @attr('string', {defaultValue: 'open'}) type;

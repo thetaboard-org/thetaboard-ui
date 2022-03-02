@@ -1,58 +1,53 @@
-<div class="col-lg-4 col-md-12">
-  <div class="card">
-    <div class="card-body">
-      <h3 class="card-title" style="text-align: center;">{{nft.name}}</h3>
-      <hr style="border-top: 5px solid #e14eca; width: 100%; margin:0 0"/>
-      <br>
-      <img src="{{nft.image}}"/>
-    </div>
-    <div class="row">
-      <div class="col col-lg-9">
-        <div class="row">
-
-          <div class="col">
-            Artist:
-          </div>
-          <div class="col">
-            {{#if nft.properties.artist}}
-              {{nft.properties.artist.name}}
-            {{else}}
-              Unknown
-            {{/if}}
-          </div>
-        </div>
-      </div>
-      <div class="col col-lg-3">
-        <button type="button" class="btn btn-primary" style="padding: 10px">
-          <i class="tim-icons icon-alert-circle-exc"></i>
-        </button>
-      </div>
-    </div>
+<div class="card tile-nft-marketplace">
+  <div class="card-body">
+    <h3 class="card-title" style="text-align: center;">{{nft.name}}</h3>
+    <hr style="border-top: 5px solid #e14eca; width: 100%; margin:0 0"/>
+    <br>
+    <img src="{{nft.image}}"/>
+  </div>
+  <div class="tile-bottom-marketplace">
     <div class="row">
       <div class="col col-lg-3">
-        <img class="avatar" src="{{rootURL}}/assets/img/logo/tfuel.png"/>
+        <p class="tile-botom-label-marketplace">Artist:</p>
       </div>
       <div class="col col-lg-6">
-        <div class="row" style="text-align: right">
-          <div class="col ml-auto">
-            {{priceEther}}
-          </div>
-        </div>
-        <div class="row" style="text-align: right">
-          <div class="col ml-auto">
-<!--            300$-->
-          </div>
-        </div>
+        {{#if nft.properties.artist}}
+          <p class="tile-botom-label-marketplace">{{nft.properties.artist.name}}</p>
+        {{else}}
+          <p class="tile-botom-label-marketplace">Unknown</p>
+        {{/if}}
       </div>
       <div class="col col-lg-3">
-        <button type="button" class="btn btn-primary" style="padding: 10px" {{action "buyNFT"}}>
+        <LinkTo @route="wallet.nft-info" @models={{array nft.contract_addr nft.original_token_id}}
+          @class="btn-info-marketplace btn-info-marketplace-info btn btn-primary">
+          <i class="tim-icons icon-alert-circle-exc"></i>
+        </LinkTo>
+      </div>
+    </div>
+    <hr style="margin: 6px 0;"/>
+    <div class="row">
+      <div class="col col-lg-3">
+        <i class="tfuel-marketplace icon-tb icon-tfuel-2"></i>
+      </div>
+      <div class="col col-lg-6">
+        <p class="tile-botom-price-marketplace">{{priceEther}}</p>
+      </div>
+      <div class="col col-lg-3">
+        <button type="button" class="btn-info-marketplace btn btn-primary" {{action "buyNFT"}}>
           <i class="tim-icons icon-cart"></i>
         </button>
       </div>
     </div>
-
-    <div class="card-footer">
-
+    <div class="row">
+      <div class="col col-lg-3">
+      </div>
+      <div class="col col-lg-6">
+          <div class="white-font" style="text-align:right;">
+             {{currency.currentCurrency.symbol}} {{priceCurrency}}
+          </div>
+      </div>
+      <div class="col col-lg-3">
+      </div>
     </div>
   </div>
 </div>

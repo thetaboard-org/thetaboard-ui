@@ -3,6 +3,7 @@ import { inject as service } from '@ember/service';
 
 export default class NftInfoRoute extends Route {
   @service abi;
+  @service domain;
 
   activate() {
     this._super(...arguments);
@@ -25,6 +26,10 @@ export default class NftInfoRoute extends Route {
       nftInfo.firstAsset = asset.asset;
     }
     nftInfo.nftContractId = params.contractAddr;
+    const tns = await this.domain.getReverseName(params.contractAddr);
+    if (tns && tns.domain) {
+      nftInfo.contractTns = tns.domain;
+    }
 
     return { nft: this.store.createRecord('nft', nftInfo) };
   }

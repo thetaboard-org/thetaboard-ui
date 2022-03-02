@@ -1,9 +1,12 @@
 {{page-title "Secondary"}}
-
 <div class="card card-user">
   <div class="card-body card-min-390">
     <h1 class="card-title">Marketplace - Exchange</h1>
-    <br>
+  </div>
+</div>
+
+<div class="card card-user">
+  <div class="card-body card-min-390">
     <Input @placeholder="Search" @type="text" @value={{search}}  {{on "keyup" this.searchMarketplace}}
     />
     <br>
@@ -22,14 +25,11 @@
       @onChange={{this.changeDrop}} as |drop|>
       {{drop.name}}
     </PowerSelectMultiple>
-
-
-    <div class="row">
-      {{#each sellingNFTs as |NFT|}}
-        {{marketplace/secondary/nft nft=NFT}}
-      {{/each}}
-    </div>
   </div>
-  <div class="card-footer">
-  </div>
+</div>
+
+<div class="tile-container-market">
+  {{#each sellingNFTs as |NFT|}}
+    {{marketplace/secondary/nft nft=NFT}}
+  {{/each}}
 </div>
