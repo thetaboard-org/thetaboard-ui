@@ -8,6 +8,7 @@ export default class SecondaryController extends Controller {
   @tracked search = '';
   @tracked selectedArtists = [];
   @tracked selectedDrops = [];
+  @tracked selectedPriceRanges = [];
 
   @computed("model.marketplaceInfo")
   get sellingNFTs() {
@@ -26,19 +27,24 @@ export default class SecondaryController extends Controller {
     return this.model.facets.categories;
   }
 
-  get priceRange() {
-    debugger
+  get priceRanges() {
+    return this.model.facets.priceRanges;
   }
 
   async searchMarketplaceFetch() {
-    if (this.search || this.selectedArtists.length !== 0 || this.selectedDrops.length !==  0) {
+    if (this.search
+      || this.selectedArtists.length !== 0
+      || this.selectedDrops.length !== 0
+      || this.selectedPriceRanges.length !== 0) {
+
       const artistIds = this.selectedArtists.map((x) => x.id).join(',');
       const dropsIds = this.selectedDrops.map((x) => x.id).join(',');
-      const marketplaceInfoFetch = await fetch(`/api/marketplace/search?search=${this.search}&artist=${artistIds}&drop=${dropsIds}`);
-      set(this.model, 'marketplaceInfo',  await marketplaceInfoFetch.json());
+      const priceRanges = this.selectedPriceRanges.join(',');
+      const marketplaceInfoFetch = await fetch(`/api/marketplace/search?search=${this.search}&artist=${artistIds}&drop=${dropsIds}&priceRange=${priceRanges}`);
+      set(this.model, 'marketplaceInfo', await marketplaceInfoFetch.json());
     } else {
       const marketplaceInfoFetch = await fetch(`/api/marketplace`);
-      set(this.model, 'marketplaceInfo',  await marketplaceInfoFetch.json());
+      set(this.model, 'marketplaceInfo', await marketplaceInfoFetch.json());
 
     }
   }
@@ -50,13 +56,19 @@ export default class SecondaryController extends Controller {
 
   @action
   changeArtist(artist) {
-    this.selectedArtists = artist
+    this.selectedArtists = artist;
     debounce(this, this.searchMarketplaceFetch, 500);
   }
 
   @action
   changeDrop(drop) {
-    this.selectedDrops = drop
+    this.selectedDrops = drop;
+    debounce(this, this.searchMarketplaceFetch, 500);
+  }
+
+  @action
+  changePriceRange(priceRange) {
+    this.selectedPriceRanges = priceRange;
     debounce(this, this.searchMarketplaceFetch, 500);
   }
 

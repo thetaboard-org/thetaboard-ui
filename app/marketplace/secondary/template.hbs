@@ -25,6 +25,14 @@
       @onChange={{this.changeDrop}} as |drop|>
       {{drop.name}}
     </PowerSelectMultiple>
+
+    <PowerSelectMultiple
+      @searchEnabled={{true}}
+      @options={{this.priceRanges}}
+      @selected={{this.selectedPriceRanges}}
+      @onChange={{this.changePriceRange}} as |priceRange|>
+      {{priceRange}}
+    </PowerSelectMultiple>
   </div>
 </div>
 
