@@ -8,6 +8,10 @@ export default class DropComponent extends Component {
   @service utils;
   @service abi;
 
+  get artists(){
+    return this.args.artists;
+  }
+
   get drop() {
     return this.args.drop;
   }
