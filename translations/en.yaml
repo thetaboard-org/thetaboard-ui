@@ -131,9 +131,9 @@ NFT:
   no_nft: "This wallet doesn't have any NFT"
   back_to_wallet: "Go back to NFT wallet"
   use_metamask: "Purchase using Metamask"
-  early_nft_1: " Use Metamask above, or get your Thetaboard 2021 NFT by sending 20 Tfuel to:"
-  early_nft_2: "The smart contract will automatically deliver your Thetaboard NFT to the wallet you sent 20 Tfuel from within approx. 1 minute. <br>
-Edition numbers are random for the first 1000, and then sequential. Available until 31 December 2021"
+  early_nft_1: " Use Metamask above, or get your Winter Thetaboard 2022 NFT by sending 20.0000190 Tfuel to:"
+  early_nft_2: "The smart contract will automatically deliver your Thetaboard NFT to the wallet you sent 20.0000190 Tfuel from within approx. 1 minute. <br>
+Edition numbers are random for the first 1000, and then sequential."
 ###### NFT END ######
 
 
