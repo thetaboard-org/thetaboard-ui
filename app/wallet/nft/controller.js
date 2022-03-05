@@ -61,7 +61,7 @@ export default class NFTController extends Controller {
         const accounts = await ethereum.request({method: 'eth_requestAccounts'});
         const account = accounts[0];
         const sell_contract = new window.web3.eth.Contract(this.abi.ThetaboardDirectSell, "0x0d2bD4F9b8966D026a07D9Dc97C379AAdD64C912");
-        await sell_contract.methods.purchaseToken("0x1d3ADbc9E20E05e9FcfD6424CA82290ef21BB400").send({
+        await sell_contract.methods.purchaseToken("0x956156267de1de8896E9cBE14BF59C1BCA0b1938").send({
           value: window.web3.utils.toWei(String(20)),
           from: account
         });
