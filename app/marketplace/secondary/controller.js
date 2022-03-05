@@ -9,6 +9,7 @@ export default class SecondaryController extends Controller {
   @tracked selectedArtists = [];
   @tracked selectedDrops = [];
   @tracked selectedPriceRanges = [];
+  @tracked selectedSortBy = {};
 
   @computed("model.marketplaceInfo")
   get sellingNFTs() {
@@ -31,7 +32,21 @@ export default class SecondaryController extends Controller {
     return this.model.facets.priceRanges;
   }
 
+  get sortBy() {
+    return [{
+      name: "Price: Low to High",
+      id: "price:asc"
+    },
+      {
+        name: "Price: High to Low",
+        id: "price:desc"
+      }]
+  }
+
   async searchMarketplaceFetch() {
+    const sortBy = this.selectedSortBy.id ? "price" : null;
+    const orderBy = this.selectedSortBy.id ? this.selectedSortBy.id.split(':')[1] : null;
+
     if (this.search
       || this.selectedArtists.length !== 0
       || this.selectedDrops.length !== 0
@@ -40,10 +55,12 @@ export default class SecondaryController extends Controller {
       const artistIds = this.selectedArtists.map((x) => x.id).join(',');
       const dropsIds = this.selectedDrops.map((x) => x.id).join(',');
       const priceRanges = this.selectedPriceRanges.join(',');
-      const marketplaceInfoFetch = await fetch(`/api/marketplace/search?search=${this.search}&artist=${artistIds}&drop=${dropsIds}&priceRange=${priceRanges}`);
+
+      const marketplaceInfoFetch = await fetch(
+        `/api/marketplace/search?search=${this.search}&artist=${artistIds}&drop=${dropsIds}&priceRange=${priceRanges}&sortBy=${sortBy}&orderBy=${orderBy}`);
       set(this.model, 'marketplaceInfo', await marketplaceInfoFetch.json());
     } else {
-      const marketplaceInfoFetch = await fetch(`/api/marketplace`);
+      const marketplaceInfoFetch = await fetch(`/api/marketplace?sortBy=${sortBy}&orderBy=${orderBy}`);
       set(this.model, 'marketplaceInfo', await marketplaceInfoFetch.json());
 
     }
@@ -69,6 +86,12 @@ export default class SecondaryController extends Controller {
   @action
   changePriceRange(priceRange) {
     this.selectedPriceRanges = priceRange;
+    debounce(this, this.searchMarketplaceFetch, 500);
+  }
+
+  @action
+  changeSortBy(sortBy) {
+    this.selectedSortBy = sortBy;
     debounce(this, this.searchMarketplaceFetch, 500);
   }
 

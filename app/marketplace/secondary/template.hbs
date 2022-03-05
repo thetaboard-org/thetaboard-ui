@@ -33,6 +33,13 @@
       @onChange={{this.changePriceRange}} as |priceRange|>
       {{priceRange}}
     </PowerSelectMultiple>
+
+    <PowerSelect
+      @options={{this.sortBy}}
+      @selected={{this.selectedSortBy}}
+      @onChange={{this.changeSortBy}} as |sortBy|>
+      {{sortBy.name}}
+    </PowerSelect>
   </div>
 </div>
 
