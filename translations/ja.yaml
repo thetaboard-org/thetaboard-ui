@@ -131,9 +131,9 @@ NFT:
   no_nft: "このウォレットにはNFTがありません"
   back_to_wallet: "NFTウォレットに戻る"
   use_metamask: "Metamask で購入"
-  early_nft_1: "上記のMetamaskを使用するか、20Tfuelを次の宛先に送信してThetaboard2021NFTを入手してください:"
-  early_nft_2: "スマートコントラクトは、約20Tfuelを送信したウォレットにThetaboardNFTを自動的に配信します。 1分。 <br>
- エディション番号は、最初の1000はランダムで、その後は連続しています。 2021年12月31日までご利用いただけます。"
+  early_nft_1: "上記のMetamaskを使用するか、20.0000190Tfuelを次の宛先に送信して Winter Thetaboard2022NFTを入手してください:"
+  early_nft_2: "スマートコントラクトは、約20.0000190Tfuelを送信したウォレットにThetaboardNFTを自動的に配信します。 1分。 <br>
+ エディション番号は、最初の1000はランダムで、その後は連続しています。"
 ###### NFT END ######
 
 

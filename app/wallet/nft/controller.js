@@ -9,6 +9,7 @@ export default class NFTController extends Controller {
   @service utils;
   @service intl;
   @service abi;
+  @service metamask;
 
   // Manage pages
   @tracked currentPage = 1;
@@ -46,6 +47,29 @@ export default class NFTController extends Controller {
   // Manage Metamask actions
   get isWallet() {
     return this.thetaSdk.currentAccount || this.thetaSdk.currentGroup;
+  }
+
+  @action
+  async buyMetamask() {
+    try {
+      if (typeof ethereum === 'undefined' || !ethereum.isConnected()) {
+        return this.utils.errorNotify(this.intl.t('notif.no_metamask'));
+      } else if (parseInt(ethereum.chainId) !== 361) {
+        return this.utils.errorNotify(this.intl.t('notif.not_theta_blockchain'));
+      } else {
+        window.web3 = new Web3(window.ethereum);
+        const accounts = await ethereum.request({method: 'eth_requestAccounts'});
+        const account = accounts[0];
+        const sell_contract = new window.web3.eth.Contract(this.abi.ThetaboardDirectSell, "0x0d2bD4F9b8966D026a07D9Dc97C379AAdD64C912");
+        await sell_contract.methods.purchaseToken("0x956156267de1de8896E9cBE14BF59C1BCA0b1938").send({
+          value: window.web3.utils.toWei(String(20)),
+          from: account
+        });
+        return this.utils.successNotify(this.intl.t('notif.success_nft'));
+      }
+    } catch (e) {
+      return this.utils.errorNotify(e.message);
+    }
   }
 
   @action
