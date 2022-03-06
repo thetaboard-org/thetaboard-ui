@@ -48,3 +48,17 @@
     {{marketplace/secondary/nft nft=NFT}}
   {{/each}}
 </div>
+
+{{#if showPagination}}
+  <PaginationPager
+    @pager={{true}}
+    @count={{totalPageNumber}}
+    @current={{currentPageNumber}}
+    @change={{this.pageChanged}}
+    @pagerFirst="|<"
+    @pagerLast=">|"
+    @pagerNext={{t 'global.next'}}
+    @pagerPrevious={{t 'global.previous'}}>
+    {{currentPageNumber}} of {{totalPageNumber}}
+  </PaginationPager>
+{{/if}}

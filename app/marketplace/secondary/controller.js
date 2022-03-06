@@ -10,6 +10,7 @@ export default class SecondaryController extends Controller {
   @tracked selectedDrops = [];
   @tracked selectedPriceRanges = [];
   @tracked selectedSortBy = {};
+  @tracked currentPageNumber = 1;
 
   @computed("model.marketplaceInfo")
   get sellingNFTs() {
@@ -43,6 +44,16 @@ export default class SecondaryController extends Controller {
       }]
   }
 
+  @computed('model.marketplaceInfo.totalCount')
+  get showPagination() {
+    return this.model.marketplaceInfo.totalCount > 20;
+  }
+
+  @computed('model.marketplaceInfo.totalCount')
+  get totalPageNumber() {
+    return Math.ceil(this.model.marketplaceInfo.totalCount / 20);
+  }
+
   async searchMarketplaceFetch() {
     const sortBy = this.selectedSortBy.id ? "price" : null;
     const orderBy = this.selectedSortBy.id ? this.selectedSortBy.id.split(':')[1] : null;
@@ -57,10 +68,10 @@ export default class SecondaryController extends Controller {
       const priceRanges = this.selectedPriceRanges.join(',');
 
       const marketplaceInfoFetch = await fetch(
-        `/api/marketplace/search?search=${this.search}&artist=${artistIds}&drop=${dropsIds}&priceRange=${priceRanges}&sortBy=${sortBy}&orderBy=${orderBy}`);
+        `/api/marketplace/search?search=${this.search}&artist=${artistIds}&drop=${dropsIds}&priceRange=${priceRanges}&sortBy=${sortBy}&orderBy=${orderBy}&pageNumber=${this.currentPageNumber}`);
       set(this.model, 'marketplaceInfo', await marketplaceInfoFetch.json());
     } else {
-      const marketplaceInfoFetch = await fetch(`/api/marketplace?sortBy=${sortBy}&orderBy=${orderBy}`);
+      const marketplaceInfoFetch = await fetch(`/api/marketplace?sortBy=${sortBy}&orderBy=${orderBy}&pageNumber=${this.currentPageNumber}`);
       set(this.model, 'marketplaceInfo', await marketplaceInfoFetch.json());
 
     }
@@ -92,6 +103,12 @@ export default class SecondaryController extends Controller {
   @action
   changeSortBy(sortBy) {
     this.selectedSortBy = sortBy;
+    debounce(this, this.searchMarketplaceFetch, 500);
+  }
+
+  @action
+  pageChanged(page){
+    this.currentPageNumber = page;
     debounce(this, this.searchMarketplaceFetch, 500);
   }
 

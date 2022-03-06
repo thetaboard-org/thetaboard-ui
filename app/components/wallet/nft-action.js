@@ -98,7 +98,9 @@ export default class NftActionComponent extends Component {
 
   setTooltip() {
     $('[data-toggle="tooltip"]').tooltip('hide');
-    setTimeout(() => { $('[data-toggle="tooltip"]').tooltip() }, 1000);
+    setTimeout(() => {
+      $('[data-toggle="tooltip"]').tooltip()
+    }, 1000);
   }
 
   @action
@@ -112,7 +114,11 @@ export default class NftActionComponent extends Component {
       await tx.wait();
       this.approveLoading = false;
       // hack to update computed property of marketplace status
-      set(this, 'marketplaceChanged', this.marketplaceChanged + 1);
+      try {
+        set(this, 'marketplaceChanged', this.marketplaceChanged + 1);
+      } catch (e) {
+        //do nothing
+      }
       this.setTooltip();
       return this.utils.successNotify("Approved for sell");
     } catch (e) {
@@ -133,7 +139,11 @@ export default class NftActionComponent extends Component {
       await tx.wait();
       this.cancelApproveLoading = false;
       // hack to update computed property of marketplace status
-      set(this, 'marketplaceChanged', this.marketplaceChanged + 1);
+      try {
+        set(this, 'marketplaceChanged', this.marketplaceChanged + 1);
+      } catch (e) {
+        //do nothing
+      }
       this.setTooltip();
       return this.utils.successNotify("Approved for sell");
     } catch (e) {
@@ -153,7 +163,11 @@ export default class NftActionComponent extends Component {
       const tx = await this.marketplaceContract.createMarketItem(this.nft.contract_addr, this.nft.original_token_id, price, "ThetaboardUser");
       await tx.wait();
       // hack to update computed property of marketplace status
-      set(this, 'marketplaceChanged', this.marketplaceChanged + 1);
+      try{
+        set(this, 'marketplaceChanged', this.marketplaceChanged + 1);
+      }catch (e) {
+        //do nothing
+      }
       this.commitingToApprove = false;
       this.setTooltip();
       return this.utils.successNotify("Selling on marketplace");
@@ -172,7 +186,11 @@ export default class NftActionComponent extends Component {
       const tx = await this.marketplaceContract.cancelMarketItem(this.nft.properties.selling_info.itemId);
       await tx.wait();
       this.cancelLoading = false;
-      set(this, 'marketplaceChanged', this.marketplaceChanged + 1);
+      try{
+        set(this, 'marketplaceChanged', this.marketplaceChanged + 1);
+      }catch (e) {
+        //do nothing
+      }
       this.setTooltip();
       return this.utils.successNotify("Canceled the sell");
     } catch (e) {
