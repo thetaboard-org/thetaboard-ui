@@ -9,7 +9,7 @@ export default class SecondaryController extends Controller {
   @tracked selectedArtists = [];
   @tracked selectedDrops = [];
   @tracked selectedPriceRanges = [];
-  @tracked selectedSortBy = {};
+  @tracked selectedSortBy = null;
   @tracked currentPageNumber = 1;
 
   @computed("model.marketplaceInfo")
@@ -55,8 +55,8 @@ export default class SecondaryController extends Controller {
   }
 
   async searchMarketplaceFetch() {
-    const sortBy = this.selectedSortBy.id ? "price" : null;
-    const orderBy = this.selectedSortBy.id ? this.selectedSortBy.id.split(':')[1] : null;
+    const sortBy = this.selectedSortBy && this.selectedSortBy.id ? "price" : null;
+    const orderBy = this.selectedSortBy && this.selectedSortBy.id ? this.selectedSortBy.id.split(':')[1] : null;
 
     if (this.search
       || this.selectedArtists.length !== 0

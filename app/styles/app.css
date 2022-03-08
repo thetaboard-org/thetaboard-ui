@@ -1507,8 +1507,27 @@ a.active p.menu-item {
 }
 
 input.nft-sell-price-input {
-  width: 70%;
+  width: 153px;
   display: inline-block;
+  margin-right: 6px;
+  border-color: white;
+  padding: 5px;
+}
+
+input.nft-sell-price-input::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: white;
+  opacity: 1; /* Firefox */
+  font-size: 13px;
+}
+
+input.nft-sell-price-input:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: white;
+  font-size: 13px;
+}
+
+input.nft-sell-price-input::-ms-input-placeholder { /* Microsoft Edge */
+  color: white;
+  font-size: 13px;
 }
 
 /****** NFT LIST START ******/
@@ -1922,9 +1941,15 @@ span[data-toggle="tooltip"] {
   font-size: 20px;
 }
 
-button.button-icon-tb, button.button-icon-tb .icon-tb {
+a.button-icon-tb, button.button-icon-tb,
+a.button-icon-tb .icon-tb,
+button.button-icon-tb .icon-tb {
   font-size: 30px;
   padding: 0;
+}
+
+a.button-icon-tb .icon-tb {
+  margin-top: 3px;
 }
 
 .navbar .navbar-nav .btn.logout-metamask i {
@@ -1932,11 +1957,32 @@ button.button-icon-tb, button.button-icon-tb .icon-tb {
 
 }
 
-button.btn.button-icon-tb, button.button-icon-tb .icon-tb.logout-metamask {
-  width: 94.41px;
+a.btn.button-icon-tb, 
+button.btn.button-icon-tb,
+button.btn.button-icon-square {
+  width: 35.41px;
+  height: 35.44px;
+  line-height: 2px;
+  margin: 0;
+  padding: 0;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+input[type=number] {
+    -moz-appearance:textfield; /* Firefox */
+}
+
+button.btn.btn-primary.button-icon-tb.logout-metamask {
+  width: 76.41px;
   height: 41.44px;
   line-height: 2px;
   margin: 0;
+  text-align: right;
 }
 
 .tns-title {
@@ -1989,10 +2035,45 @@ button.btn.button-icon-tb, button.button-icon-tb .icon-tb.logout-metamask {
 }
 
   /*MARKET PLACE*/
+.body-title-marketplace{
+  padding: 25px;
+  z-index: 999999;
+  position: relative;
+}
+
+.input-search-marketplace, .ember-basic-dropdown-trigger {
+  border-radius: 6px;
+  font-size: 15px;
+  width: 250px;
+  padding: 15px;
+  display: inline-block;
+  margin: 1px 0 0 0;
+  text-align: left;
+}
+
+.input-search-marketplace {
+  padding: 17px;
+  margin: 0px 0 3px;
+}
+
+.facet-container-marketplace {
+  padding: 20px;
+  text-align: center;
+}
+
+.search-input-container-marketplace {
+  display: inline-block;
+  vertical-align: top;
+}
+
 .tile-container-market {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+}
+
+.ember-power-select-option {
+  color:#1e1e2f;
 }
 
 .card.tile-nft-marketplace {

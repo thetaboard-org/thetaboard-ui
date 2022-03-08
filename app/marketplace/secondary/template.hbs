@@ -1,20 +1,34 @@
 {{page-title "Secondary"}}
 <div class="card card-user">
-  <div class="card-body card-min-390">
+    <div class="author">
+      <div class="block block-one"></div>
+      <div class="block block-two"></div>
+      <div class="block block-three"></div>
+      <div class="block block-four"></div>
+    </div>
+    <div class="body-title-marketplace">
     <h1 class="card-title">Marketplace - Exchange</h1>
+    <p>{{t 'marketplace.subtitle'}}</p>
   </div>
 </div>
 
 <div class="card card-user">
-  <div class="card-body card-min-390">
-    <Input @placeholder="Search" @type="text" @value={{search}}  {{on "keyup" this.searchMarketplace}}
-    />
-    <br>
+  <div class="facet-container-marketplace">
+    <div class="search-input-container-marketplace">
+      <Input
+        @placeholder="Search"
+        @type="text"
+        @class="input-search-marketplace"
+        @value={{search}}  
+        {{on "keyup" this.searchMarketplace}}
+      />
+    </div>
     <PowerSelectMultiple
       @searchEnabled={{true}}
       @searchField="name"
       @options={{this.artists}}
       @selected={{this.selectedArtists}}
+      @placeholder="Select artists"
       @onChange={{this.changeArtist}} as |artist|>
       {{artist.name}}
     </PowerSelectMultiple>
@@ -24,6 +38,7 @@
       @searchField="name"
       @options={{this.drops}}
       @selected={{this.selectedDrops}}
+      @placeholder="Select drops"
       @onChange={{this.changeDrop}} as |drop|>
       {{drop.name}}
     </PowerSelectMultiple>
@@ -32,6 +47,7 @@
       @searchEnabled={{true}}
       @options={{this.priceRanges}}
       @selected={{this.selectedPriceRanges}}
+      @placeholder="Select prices"
       @onChange={{this.changePriceRange}} as |priceRange|>
       {{priceRange}}
     </PowerSelectMultiple>
@@ -39,6 +55,7 @@
     <PowerSelect
       @options={{this.sortBy}}
       @searchField="name"
+      @placeholder="Sort by"
       @selected={{this.selectedSortBy}}
       @onChange={{this.changeSortBy}} as |sortBy|>
       {{sortBy.name}}

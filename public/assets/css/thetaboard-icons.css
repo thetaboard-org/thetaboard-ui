@@ -11,34 +11,72 @@ Generated using nucleoapp.com
   font-weight: normal;
   font-style: normal;
 }
-
-/* --------------------------------
-
-Reset
-
--------------------------------- */
-
-*::after, *::before {
-  box-sizing: inherit;
-}
-/* --------------------------------
-
-icons
-
--------------------------------- */
+/*------------------------
+	base class definition
+-------------------------*/
 .icon-tb {
   display: inline-block;
   font: normal normal normal 1em/1 'Thetaboard';
+  color: white;
+  flex-shrink: 0;
   speak: none;
   text-transform: none;
-  color: white;
   /* Better Font Rendering */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+/*------------------------
+  change icon size
+-------------------------*/
+/* relative units */
+.icon-sm {
+  font-size: 0.8em;
+}
+.icon-lg {
+  font-size: 1.2em;
+}
+/* absolute units */
+.icon-16 {
+  font-size: 16px;
+}
+.icon-32 {
+  font-size: 32px;
+}
 
 /*------------------------
-  font icons
+  spinning icons
+-------------------------*/
+.icon-is-spinning {
+  animation: icon-spin 1s infinite linear;
+}
+@keyframes icon-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+/*------------------------
+  rotated/flipped icons
+-------------------------*/
+.icon-rotate-90 {
+  transform: rotate(90deg);
+}
+.icon-rotate-180 {
+  transform: rotate(180deg);
+}
+.icon-rotate-270 {
+  transform: rotate(270deg);
+}
+.icon-flip-y {
+  transform: scaleY(-1);
+}
+.icon-flip-x {
+  transform: scaleX(-1);
+}
+/*------------------------
+	icons
 -------------------------*/
 
 .icon-link::before {
