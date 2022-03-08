@@ -12,6 +12,7 @@
     <br>
     <PowerSelectMultiple
       @searchEnabled={{true}}
+      @searchField="name"
       @options={{this.artists}}
       @selected={{this.selectedArtists}}
       @onChange={{this.changeArtist}} as |artist|>
@@ -20,6 +21,7 @@
 
     <PowerSelectMultiple
       @searchEnabled={{true}}
+      @searchField="name"
       @options={{this.drops}}
       @selected={{this.selectedDrops}}
       @onChange={{this.changeDrop}} as |drop|>
@@ -36,6 +38,7 @@
 
     <PowerSelect
       @options={{this.sortBy}}
+      @searchField="name"
       @selected={{this.selectedSortBy}}
       @onChange={{this.changeSortBy}} as |sortBy|>
       {{sortBy.name}}
