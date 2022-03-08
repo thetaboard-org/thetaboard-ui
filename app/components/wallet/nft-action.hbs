@@ -15,23 +15,31 @@
   {{else if (eq availiability 2)}}
     <span data-toggle="tooltip" data-placement="top"
           title="{{t 'domain.connect_to_metamask'}}">
-        <img class="cursor float" src="/assets/img/transfer-greyed-small.png"/>
+      <button type="button" disabled class="button-icon-tb btn btn-fill btn-grey">
+        <i class="icon-tb icon-transfer"></i>
+      </button>
     </span>
   {{else if (eq availiability 3)}}
     <span data-toggle="tooltip" data-placement="top"
           title="{{t 'NFT.not_owner'}}">
-        <img class="cursor float" src="/assets/img/transfer-greyed-small.png"/>
+      <button type="button" disabled class="button-icon-tb btn btn-fill btn-grey">
+        <i class="icon-tb icon-transfer"></i>
+      </button>
     </span>
   {{else if (eq availiability 4)}}
     {{#if cancelLoading}}
-      <button type="button" class="btn btn-fill btn-warning">
+      <button type="button" class="btn button-icon-square button-icon-square btn-fill btn-warning">
         <img width="14" src="/assets/img/loader.gif"/>
       </button>
     {{else}}
-      <button type="button" {{on "click" this.cancel_sell}} class="button-icon-tb btn btn-fill btn-warning">
-        <i class="icon-tb icon-cancelsell"></i>
-      </button>
+      <span data-toggle="tooltip" data-placement="top"
+          title="{{t 'NFT.cancel_sell'}}">
+        <button type="button" {{on "click" this.cancel_sell}} class="button-icon-tb btn btn-fill btn-warning">
+          <i class="icon-tb icon-cancelsell"></i>
+        </button>
+      </span>
     {{/if}}
+    <br/>
     <br/>
     <p>{{t 'NFT.selling_for'}} : {{priceEther}} 
       <img src="{{rootURL}}/assets/img/logo/tfuel.png" style="width: 20px; margin-left: 3px;"/>
@@ -58,7 +66,7 @@
               margin-left: -43px;
           "></i>
           {{#if commitingToApprove}}
-            <button class="btn btn-fill btn-primary">
+            <button class="btn btn-fill button-icon-square btn-success">
               <img width="14" src="/assets/img/loader.gif"/>
             </button>
           {{else}}
@@ -69,33 +77,38 @@
             </span>
           {{/if}}
         {{#if cancelApproveLoading}}
-          <button type="button" class="btn btn-fill btn-warning">
+          <button type="button" class="btn button-icon-square btn-fill btn-warning">
             <img width="14" src="/assets/img/loader.gif"/>
           </button>
         {{else}}
-          <button type="button" class="button-icon-tb btn btn-fill btn-warning" {{on 'click' cancel_approve_for_sell}}>
-            <i class="icon-tb icon-cancel"></i>
-          </button>
+          <span data-toggle="tooltip" data-placement="top"
+            title="{{t 'global.cancel'}}">
+            <button type="button" class="button-icon-tb btn btn-fill btn-warning" {{on 'click' cancel_approve_for_sell}}>
+              <i class="icon-tb icon-cancel"></i>
+            </button>
+          </span>
         {{/if}}
       </form>
       {{else if approveLoading}}
         <span data-toggle="tooltip" data-placement="top"
               title="{{t 'NFT.once_approved'}}">
-          <button type="button" class="btn btn-fill btn-primary">
+          <button type="button" class="btn button-icon-square btn-fill btn-primary">
              <img width="14" src="/assets/img/loader.gif"/>
           </button>
         </span>
       {{else}}
         <span data-toggle="tooltip" data-placement="top" title="{{t 'NFT.once_approved'}}">
-          <button type="button" class="btn btn-fill button-icon-square btn-primary" {{on "click" approve_for_sell}}>
-             <i class="tim-icons icon-cart"></i>
+          <button type="button" class="btn btn-fill button-icon-tb btn-primary" {{on "click" approve_for_sell}}>
+             <i class="icon-tb icon-sell"></i>
           </button>
         </span>
       {{/if}}
     {{/async-await}}
   {{else}}
     <span data-toggle="tooltip" data-placement="top" title="">
-      <img class="cursor float" src="/assets/img/transfer-greyed-small.png"/>
+      <button type="button" disabled class="button-icon-tb btn btn-fill btn-grey">
+        <i class="icon-tb icon-transfer"></i>
+      </button>
     </span>
   {{/if}}
 {{/async-await}}

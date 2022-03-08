@@ -38,15 +38,9 @@
     </label>
   </div>
   {{wallet/wallet-navbar onRouteChange=this.setQueryParam}}
-
-  <div class="row">
-
-  </div>
-
-
-  <div class="row">
+  <div class="tile-container-market">
     {{#each this.model.NFTs as |NFT|}}
-      <div class="col-lg-3 col-md-12">
+      <div class="card tile-nft-marketplace">
 
         <div class="card card-chart card-user nft-card-holdings">
           <div class="card-header ">
@@ -65,7 +59,8 @@
           </div>
           <div class="card-body nft-card-body">
             <LinkTo @route="wallet.nft-info" @models={{array NFT.contract_addr NFT.original_token_id}}>
-              <img src="{{NFT.image}}" alt="{{NFT.name}}" class="nft-image">
+              <div class="marketplace-nft-image-container" style="background-image: url('{{NFT.image}}')">
+              </div>
             </LinkTo>
           </div>
           <div class="card-footer-actions">

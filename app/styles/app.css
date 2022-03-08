@@ -490,6 +490,7 @@ div.card-header .card-title.forecast-description {
 .nft-card-body {
   display: block;
   text-align: center;
+  position: relative;
 }
 
 td.transaction-type img {
@@ -1530,6 +1531,14 @@ input.nft-sell-price-input::-ms-input-placeholder { /* Microsoft Edge */
   font-size: 13px;
 }
 
+.marketplace-nft-image-container {
+  height: 330px;
+  width: 330px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
 /****** NFT LIST START ******/
 
 #nft-list .card.nft-card-holdings .card-title {
@@ -1550,12 +1559,17 @@ input.nft-sell-price-input::-ms-input-placeholder { /* Microsoft Edge */
   position: relative;
 }
 
+.card.nft-card-holdings {
+  margin-bottom: 0;
+}
+
 #card-nft .nft-back-to-wallet {
   position: relative;
   z-index: 9;
   margin-top: 20px;
   padding: 0 0 0 10px;
   float: left;
+  cursor: pointer;
 }
 
 .nft-info-title {
@@ -2045,10 +2059,11 @@ button.btn.btn-primary.button-icon-tb.logout-metamask {
   border-radius: 6px;
   font-size: 15px;
   width: 250px;
-  padding: 15px;
+  padding: 10px;
   display: inline-block;
-  margin: 1px 0 0 0;
+  margin: 1px 5px 0 5px;
   text-align: left;
+  height: 50px;
 }
 
 .input-search-marketplace {
@@ -2120,4 +2135,11 @@ button.btn.btn-primary.button-icon-tb.logout-metamask {
 
 .col .btn-info-marketplace-info {
   padding: 5px 0 0 0;
+}
+
+.button-icon-tb.btn.btn-fill.btn-grey{
+  color: #ffffff;
+  background-color: #adb5bd;
+  border-color: #adb5bd;
+  background-image: none;
 }
