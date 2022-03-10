@@ -2133,6 +2133,17 @@ button.btn.btn-primary.button-icon-tb.logout-metamask {
   font-size: 22px;
 }
 
+.col .btn-info-marketplace, .col .button-icon-square-marketplace, .col .btn-info-marketplace-tb {
+  width: 41px;
+  height: 41px;
+  padding: 0 0 0 0;
+  font-size: 22px;
+}
+
+.col .btn-info-marketplace-tb {
+  font-size: 32px;
+}
+
 .col .btn-info-marketplace-info {
   padding: 5px 0 0 0;
 }
