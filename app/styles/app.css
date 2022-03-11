@@ -1532,8 +1532,8 @@ input.nft-sell-price-input::-ms-input-placeholder { /* Microsoft Edge */
 }
 
 .marketplace-nft-image-container {
-  height: 325px;
-  width: 325px;
+  height: 320px;
+  width: 320px;
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
