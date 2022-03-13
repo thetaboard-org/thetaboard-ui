@@ -1532,8 +1532,8 @@ input.nft-sell-price-input::-ms-input-placeholder { /* Microsoft Edge */
 }
 
 .marketplace-nft-image-container {
-  height: 320px;
-  width: 320px;
+  height: 270px;
+  width: 270px;
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
@@ -2092,33 +2092,33 @@ button.btn.btn-primary.button-icon-tb.logout-metamask {
 }
 
 .card.tile-nft-marketplace {
-  width: 350px;
-  padding: 10px 10px;
+  width: 280px;
+  padding: 5px 5px;
   position: relative;
-  margin: 20px;
+  margin: 10px;
   overflow: hidden;
 }
 
 .tile-bottom-marketplace {
-  padding: 5px 20px;
+  padding: 5px;
 }
 
 .tile-botom-label-marketplace {
-  font-size: 17px;
-  margin-top: 11px;
+  font-size: 13px;
+  margin-top: 15px;
   text-align: right;
 
 }
 
 .icon-tb.tfuel-marketplace {
- font-size: 45px;
+ font-size: 43px;
 
 }
 
 .tile-botom-price-marketplace {
   font-weight: 600;
-  font-size: 22px;
-  margin-top: 7px;
+  font-size: 21px;
+  margin-top: 11px;
   text-align: right;
 }
 

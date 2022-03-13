@@ -15,7 +15,7 @@
       <br/>
       <div class="nft-main-image-container">
         {{#if nft.isFirstAssetVideo}}
-          <video class="nft-main-video" autoplay loop playsinline>
+          <video class="nft-main-video" onloadstart="this.volume=0" autoplay controls loop playsinline>
             <source src="{{nft.firstAsset}}" type="video/mp4">
           </video>
         {{else}}
