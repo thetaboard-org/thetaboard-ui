@@ -80,6 +80,18 @@ global:
 ###### GLOBAL END ######
 
 
+###### LANDING START ######
+landing:
+  title: "Explore the future of the Theta Blockchain"
+  subtitle: "Thetaboard is a place dedicated to the proactive development of<br/>the Theta Blockchain activity and infrastructure through<br/>NFT creation,  trading, service and monitoring."
+  get_started: "Get started"
+  holdings: "Watch your holdings"
+  tns: "Get your Theta domain"
+  last_drop: "Check the last drop"
+  marketplace: "Trade rarities"
+###### LANDING END ######
+
+
 ###### DASHBOARD START ######
 ### Price-chart component
 price_chart:
@@ -128,12 +140,26 @@ transaction_history:
 
 ###### NFT START ######
 NFT:
+  setup_to_transfer: "Setup Metamask to transfer or sell your NFT"
+  setup_to_mainnet: "Setup Metamask for the Theta Mainnet blockchain"
+  not_owner: "Your Metamask Wallet is not the token owner"
+  selling_for: "Selling NFT for"
+  sell_for: "Sell NFT for"
+  cancel_sell: "Cancel Sell"
+  cancel_approve: "Cancel Approve"
+  sell_item: "Sell item"
+  see_more: "See More"
+  transfer_nft: "Transfer NFT"
+  once_approved: "Once you approve, you will be able to set a price and put your NFT on the marketplace"
+  asking_price: "Selling price"
+  sell_my_nft: "Sell my NFT"
+  buy_nft: "Buy this NFT"
+  item_aquired: "Item aquired"
   no_nft: "이 지갑에는 NFT가 없습니다."
   back_to_wallet: "NFT 지갑으로 돌아가기"
   use_metamask: "Metamask를 사용하여 구매"
   early_nft_1: "위의 Metamask를 사용하거나 다음 주소로 20.0000190 Tfuel을 보내 Winter Thetaboard 2022 NFT를 받으십시오:"
-  early_nft_2: "스마트 계약은 자동으로 약 20.0000190 Tfuel을 보낸 지갑으로 귀하의 Thetaboard NFT를 전달합니다. 1 분. <br>
- 에디션 번호는 처음 1000개에 대해 무작위이며 그 다음에는 순차적입니다."
+  early_nft_2: "스마트 계약은 자동으로 약 20.0000190 Tfuel을 보낸 지갑으로 귀하의 Thetaboard NFT를 전달합니다. 1 분. <br>에디션 번호는 처음 1000개에 대해 무작위이며 그 다음에는 순차적입니다."
 ###### NFT END ######
 
 
@@ -270,10 +296,6 @@ domain:
     try_again: "A problem occurred, try again"
     addr_cannot_empty: "Address can't be empty"
     invalid_addr: "Address is invalid"
-  # about_to_change_controller: "will control the domain named"
-  # controller_transfered: "You now control the domain named"
-  # about_to_update_address_record: "The domain's address record will matches your address"
-  # address_record_updated: "The domain's address record now matches your address"
 ###### DOMAIN END ######
 
 
@@ -351,6 +373,10 @@ drop:
   coming: "출시 예정"
   closed: "닫은"
   attributes: "속성"
+  description: "Description"
+  editions: "Editions"
+  actions: "Actions"
+  contract_addr: "Contract Address"
   from: "부터"
 ###### DROP END ######
 

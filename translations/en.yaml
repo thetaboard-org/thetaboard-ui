@@ -80,6 +80,18 @@ global:
 ###### GLOBAL END ######
 
 
+###### LANDING START ######
+landing:
+  title: "Explore the future of the Theta Blockchain"
+  subtitle: "Thetaboard is a place dedicated to the proactive development of<br/>the Theta Blockchain activity and infrastructure through<br/>NFT creation,  trading, service and monitoring."
+  get_started: "Get started"
+  holdings: "Watch your holdings"
+  tns: "Get your Theta domain"
+  last_drop: "Check the last drop"
+  marketplace: "Trade rarities"
+###### LANDING END ######
+
+
 ###### DASHBOARD START ######
 ### Price-chart component
 price_chart:

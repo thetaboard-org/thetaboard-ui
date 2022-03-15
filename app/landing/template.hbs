@@ -2,7 +2,25 @@
 
 <div class="landing-top-container">
     <h1 class="landing-title" style="font-family: azonix;">Thetaboard</h1>
-    <h4 class="landing-subtitle" style="font-family: arcon;">Explore the future of the Theta Blockchain</h4>
-    <p class="" style="font-family: arcon;">Thetaboard is a place dedicated to the proactive development of<br/>
-    the Theta Blockchain activity and infrastructure through<br/>NFT creation,  trading, service and monitoring.</p>
+    <h4 class="landing-subtitle" style="font-family: arcon;">{{t 'landing.title'}}</h4>
+    <p class="" style="font-family: arcon;">{{{t 'landing.subtitle'}}}</p>
+    <h3>{{t 'landing.get_started'}}</h3>
+    <div class="tile-container-market">
+        <div style="background: none;" class="card tile-nft-marketplace">
+            <img src="{{rooURL}}/assets/img/Dashboard_illustration.png" alt="holdings"/>
+            <LinkTo @route="dashboard" class="btn btn-primary">{{t 'landing.holdings'}}</LinkTo>
+        </div>
+         <div style="background: none;" class="card tile-nft-marketplace">
+            <img src="{{rooURL}}/assets/img/TNS_illustration.png" alt="tns"/>
+            <LinkTo @route="domain.search" class="btn btn-primary">{{t 'landing.tns'}}</LinkTo>
+        </div>
+         <div style="background: none;" class="card tile-nft-marketplace">
+            <img src="{{rooURL}}/assets/img/Drop_illustration.png" alt="last drop"/>
+            <LinkTo @route="marketplace.drops" class="btn btn-primary">{{t 'landing.last_drop'}}</LinkTo>
+        </div>
+         <div style="background: none;" class="card tile-nft-marketplace">
+            <img src="{{rooURL}}/assets/img/Marketplace_illustration.png" alt=""/>
+            <LinkTo @route="marketplace.secondary" class="btn btn-primary">{{t 'landing.marketplace'}}</LinkTo>
+        </div>
+    </div>
 </div>
