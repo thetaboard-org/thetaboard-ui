@@ -7,6 +7,11 @@ export default class MenuComponent extends Component {
 
   menuItems = [
     {
+      name: 'menu.home',
+      icon: 'icon-spaceship',
+      route: 'landing',
+    },
+    {
       name: 'menu.dashboard',
       icon: 'icon-chart-pie-36',
       route: 'dashboard',

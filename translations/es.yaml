@@ -335,6 +335,7 @@ footer:
 
 ###### MENU START ######
 menu:
+  home: "Home"
   dashboard: "dashboard"
   wallet: "wallet"
   nft: NFT
