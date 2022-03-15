@@ -2154,3 +2154,16 @@ button.btn.btn-primary.button-icon-tb.logout-metamask {
   border-color: #adb5bd;
   background-image: none;
 }
+
+.landing-top-container {
+  margin: 135px 0 0 15px;
+}
+
+.landing-title {
+  font-size: 55px;
+  font-family: azonix;
+}
+
+.landing-subtitle {
+  font-size: 22.6px;
+}

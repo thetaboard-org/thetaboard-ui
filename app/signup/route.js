@@ -5,6 +5,6 @@ export default class SignupRoute extends Route {
   @service session;
 
   beforeModel() {
-    this.session.prohibitAuthentication('dashboard');
+    this.session.prohibitAuthentication('landing');
   }
 }

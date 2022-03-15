@@ -1,0 +1,13 @@
+@font-face {
+    font-family: azonix;
+    src: url("../fonts/azonix.otf") format("opentype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: arcon;
+    src: url("../fonts/Arcon-Regular.otf") format("opentype");
+    font-weight: normal;
+    font-style: normal;
+}

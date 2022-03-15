@@ -33,11 +33,11 @@ module.exports = function (environment) {
   //Ember-simple-auth
 
   ENV['ember-simple-auth'] = {
-    routeAfterAuthentication: 'dashboard',
+    routeAfterAuthentication: 'landing',
   };
 
   ENV['ember-simple-auth-token'] = {
-    routeAfterAuthentication: 'dashboard',
+    routeAfterAuthentication: 'landing',
     refreshAccessTokens: false,
     serverTokenEndpoint: '/api/auth/login', // Server endpoint to send authenticate request
     // tokenDataPropertyName: 'tokenData', // Key in session to store token data

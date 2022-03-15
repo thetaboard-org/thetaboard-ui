@@ -5,7 +5,7 @@ export default class PasswordresetRoute extends Route {
   @service session;
 
   beforeModel() {
-    this.session.prohibitAuthentication('dashboard');
+    this.session.prohibitAuthentication('landing');
   }
 
   async model(params) {

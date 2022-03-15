@@ -284,10 +284,6 @@ domain:
     try_again: "A problem occurred, try again"
     addr_cannot_empty: "Address can't be empty"
     invalid_addr: "Address is invalid"
-  # about_to_change_controller: "will control the domain named"
-  # controller_transfered: "You now control the domain named"
-  # about_to_update_address_record: "The domain's address record will matches your address"
-  # address_record_updated: "The domain's address record now matches your address"
 ###### DOMAIN END ######
 
 
@@ -611,8 +607,8 @@ faq:
                 aim to keep the total supply of Tfuel close to the initial 5 billion supply.</p><br/>
                 <br/><br/>"
   staking_wallet: "What do staking rewards look like in my wallet?"
-  staking_wallet_body: "<p>Staking rewards on our dashboard, in the form of a ‘coinbase’ transaction, will be sent to the wallet you staked your tokens from.
-                The ‘from’ address in these coinbase transactions will be one of the 16 Validator Node addresses in the Theta Network.</p><br/>
+  staking_wallet_body: "<p>Staking rewards on our dashboard, in the form of a 'coinbase' transaction, will be sent to the wallet you staked your tokens from.
+                The 'from' address in these coinbase transactions will be one of the 16 Validator Node addresses in the Theta Network.</p><br/>
                 <p>If you are using the Theta Wallet to track your rewards, they will not appear as transactions, but only as an increase in the available Tfuel balance.</p><br/>
                 <br/><br/>"
   no_rewards: "How come I have not received Theta staking rewards for a week?"
@@ -650,8 +646,8 @@ faq:
                 <br/><br/>"
   domain: "What are the Theta Domain Names available to be purchased through Thetaboard?"
   domain_body: "<p>Domains are currently a proof of concept. You can currently buy and sell Domains, and use them to Search Wallets by name within Thetaboard's website, and toshow your support to Thetaboard.<br/>
-                At some point in 2021 we will migrate to final contracts. These will be NFT’s and will be integrated in the theta wallets, in order to do transactions using domain names instead of wallet addresses.<br/>
-                However, we won’t be able to migrate currently bought domains to the new version.<br/>
+                At some point in 2021 we will migrate to final contracts. These will be NFT's and will be integrated in the theta wallets, in order to do transactions using domain names instead of wallet addresses.<br/>
+                However, we won't be able to migrate currently bought domains to the new version.<br/>
                 Further reading about the Theta Network can be found here.<br/>
                 <a href=\"https://docs.thetatoken.org/docs/what-is-theta-network\" target=\"_blank\">https://docs.thetatoken.org/docs/what-is-theta-network</a></p>
                 <br/><br/>"

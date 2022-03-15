@@ -128,12 +128,26 @@ transaction_history:
 
 ###### NFT START ######
 NFT:
+  setup_to_transfer: "Configure Metamask para transferir o vender su NFT"
+  setup_to_mainnet: "Configure Metamask para la cadena de bloques Theta Mainnet"
+  not_owner: "Su billetera Metamask no es el propietario del token"
+  selling_for: "Vender NFT por"
+  sell_for: "Vender NFT por"
+  cancel_sell: "Cancelar Vender"
+  cancel_approve: "Cancelar Aprobar"
+  sell_item: "vender artículo"
+  see_more: "Ver más"
+  transfer_nft: "Transferir NFT"
+  once_approved: "Una vez que lo apruebe, podrá establecer un precio y poner su NFT en el mercado"
+  asking_price: "Precio de venta"
+  item_aquired: "Objeto adquirido"
+  sell_my_nft: "Vender mi NFT"
+  buy_nft: "Compre este NFT"
   no_nft: "Esta wallet no tiene NFT"
   back_to_wallet: "Volver a NFT wallet"
   use_metamask: "Compra usando Metamask"
   early_nft_1: "Usa Metamask arriba u obten tu Winter Thetaboard 2022 NFT enviando 20.0000190 Tfuels a:"
-  early_nft_2: "El contrato inteligente te entregará automáticamente tu Thetaboard NFT a la wallet que envió esos 20.0000190 Tfuels en aprox. 1 minuto. <br>
-Los números de edición son aleatorios para los primeros 1000 y luego secuenciales."
+  early_nft_2: "El contrato inteligente te entregará automáticamente tu Thetaboard NFT a la wallet que envió esos 20.0000190 Tfuels en aprox. 1 minuto. <br>Los números de edición son aleatorios para los primeros 1000 y luego secuenciales."
 ###### NFT END ######
 
 
@@ -347,6 +361,10 @@ drop:
   coming: "PRÓXIMAMENTE"
   closed: "FINALIZADO"
   attributes: "Atributos"
+  description: "Descripción"
+  editions: "Ediciones"
+  actions: "Actions"
+  contract_addr: "Dirección del contrato"
   from: "desde"
 ###### DROP END ######
 
