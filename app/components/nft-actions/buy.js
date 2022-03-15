@@ -71,7 +71,7 @@ export default class NftActionsBuyComponent extends Component {
         });
       this.commitingToBuy = false;
       this.setTooltip();
-      return this.utils.successNotify(this.intl.t('NFT.iten_aquired'));
+      return this.utils.successNotify(this.intl.t('NFT.item_aquired'));
     } catch (e) {
       this.commitingToBuy = false;
       this.setTooltip();
