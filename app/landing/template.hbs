@@ -7,19 +7,19 @@
     <h3>{{t 'landing.get_started'}}</h3>
     <div class="tile-container-market">
         <div style="background: none;" class="card tile-nft-marketplace">
-            <img src="{{rooURL}}/assets/img/Dashboard_illustration.png" alt="holdings"/>
+            <img src="{{rooURL}}/assets/img/Dashboard_illustration.png" alt="{{t 'landing.holdings'}}"/>
             <LinkTo @route="dashboard" class="btn btn-primary">{{t 'landing.holdings'}}</LinkTo>
         </div>
          <div style="background: none;" class="card tile-nft-marketplace">
-            <img src="{{rooURL}}/assets/img/TNS_illustration.png" alt="tns"/>
+            <img src="{{rooURL}}/assets/img/TNS_illustration.png" alt="{{t 'landing.tns'}}"/>
             <LinkTo @route="domain.search" class="btn btn-primary">{{t 'landing.tns'}}</LinkTo>
         </div>
          <div style="background: none;" class="card tile-nft-marketplace">
-            <img src="{{rooURL}}/assets/img/Drop_illustration.png" alt="last drop"/>
+            <img src="{{rooURL}}/assets/img/Drop_illustration.png" alt="{{t 'landing.last_drop'}}" />
             <LinkTo @route="marketplace.drops" class="btn btn-primary">{{t 'landing.last_drop'}}</LinkTo>
         </div>
          <div style="background: none;" class="card tile-nft-marketplace">
-            <img src="{{rooURL}}/assets/img/Marketplace_illustration.png" alt=""/>
+            <img src="{{rooURL}}/assets/img/Marketplace_illustration.png" alt="{{t 'landing.marketplace'}}"/>
             <LinkTo @route="marketplace.secondary" class="btn btn-primary">{{t 'landing.marketplace'}}</LinkTo>
         </div>
     </div>
