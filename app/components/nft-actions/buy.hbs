@@ -1,0 +1,39 @@
+{{#async-await metamaskAvailable as |availiability|}}
+  {{#if (eq availiability 0)}}
+    <span data-toggle="tooltip" data-placement="top" title="{{t 'NFT.setup_to_transfer'}}">
+        <a href="https://www.youtube.com/watch?v=Md-D3y5n_9o" target="_blank">
+            <button disabled type="button" class="btn-info-marketplace btn btn-primary">
+                <i class="tim-icons icon-cart"></i>
+            </button>
+        </a>
+    </span>
+  {{else if (eq availiability 1)}}
+    <span data-toggle="tooltip" data-placement="top" title="{{t 'NFT.setup_to_mainnet'}}">
+        <a href="https://www.youtube.com/watch?v=Md-D3y5n_9o" target="_blank">
+            <button disabled type="button" class="btn-info-marketplace btn btn-primary">
+                <i class="tim-icons icon-cart"></i>
+            </button>
+        </a>
+    </span>
+  {{else if (eq availiability 2)}}
+    <span data-toggle="tooltip" data-placement="top" title="{{t 'domain.connect_to_metamask'}}">
+        <a href="https://www.youtube.com/watch?v=4ht6wDGcoLk" target="_blank">
+            <button disabled type="button" class="btn-info-marketplace btn btn-primary">
+                <i class="tim-icons icon-cart"></i>
+            </button>
+        </a>
+    </span>
+  {{else if (eq availiability 3)}}
+    {{#if commitingToBuy}}
+        <button type="button" class="btn button-icon-square-marketplace btn-fill btn-primary">
+        <img width="14" src="/assets/img/loader.gif"/>
+        </button>
+    {{else}}
+        <span data-toggle="tooltip" data-placement="top" title="{{t 'NFT.buy_nft'}}">
+        <button type="button" class="btn-info-marketplace btn btn-primary" {{action "buyNFT"}}>
+            <i class="tim-icons icon-cart"></i>
+        </button>
+        </span>
+    {{/if}}
+  {{/if}}
+{{/async-await}}

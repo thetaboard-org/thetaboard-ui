@@ -35,17 +35,7 @@
         <p class="tile-botom-price-marketplace">{{priceEther}}</p>
       </div>
       <div class="col col-lg-3">
-        {{#if commitingToBuy}}
-          <button type="button" class="btn button-icon-square-marketplace btn-fill btn-primary">
-            <img width="14" src="/assets/img/loader.gif"/>
-          </button>
-        {{else}}
-          <span data-toggle="tooltip" data-placement="top" title="{{t 'NFT.buy_nft'}}">
-            <button type="button" class="btn-info-marketplace btn btn-primary" {{action "buyNFT"}}>
-              <i class="tim-icons icon-cart"></i>
-            </button>
-          </span>
-        {{/if}}
+        {{nft-actions/buy nft=nft}}
       </div>
     </div>
     <div class="row">
