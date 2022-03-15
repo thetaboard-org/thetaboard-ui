@@ -25,12 +25,14 @@ export default class MarketplaceNFTComponent extends Component {
 
   get priceCurrency() {
     const properties = this.nft.properties;
+    if (!properties) return 0;
     const price = ethers.utils.formatUnits(properties.selling_info.price);
     return Number(this.thetaSdk.prices.tfuel.price * price).toFixed(2);
   }
 
   get priceEther() {
     const properties = this.nft.properties;
+    if (!properties) return 0;
     return ethers.utils.formatUnits(properties.selling_info.price);
   }
 }

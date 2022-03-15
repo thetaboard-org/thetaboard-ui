@@ -24,7 +24,9 @@ export default class NftActionComponent extends Component {
   }
 
   get priceEther() {
-    return ethers.utils.formatUnits(this.nft.properties.selling_info.price, "ether");
+    const properties = this.nft.properties;
+    if (!properties) return 0;
+    return ethers.utils.formatUnits(properties.selling_info.price, 'ether');
   }
 
   get marketplaceContract() {
