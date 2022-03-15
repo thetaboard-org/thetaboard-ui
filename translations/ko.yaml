@@ -141,6 +141,7 @@ transaction_history:
 ###### NFT START ######
 NFT:
   setup_to_transfer: "Setup Metamask to transfer or sell your NFT"
+  setup_to_buy: "Setup Metamask to buy this NFT"
   setup_to_mainnet: "Setup Metamask for the Theta Mainnet blockchain"
   not_owner: "Your Metamask Wallet is not the token owner"
   selling_for: "Selling NFT for"
