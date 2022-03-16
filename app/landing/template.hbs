@@ -4,21 +4,21 @@
     <h1 class="landing-title" style="font-family: azonix;">Thetaboard</h1>
     <h4 class="landing-subtitle" style="font-family: arcon;">{{t 'landing.title'}}</h4>
     <p class="" style="font-family: arcon;">{{{t 'landing.subtitle'}}}</p>
-    <h3>{{t 'landing.get_started'}}</h3>
+    <h3 style="margin-top: 110px">{{t 'landing.get_started'}}</h3>
     <div class="tile-container-market">
-         <div style="background: none;" class="card tile-nft-marketplace">
+         <div style="background: none;" class="card tile-nft-marketplace tile-landing">
             <img src="{{rooURL}}/assets/img/landing-tns.png" alt="{{t 'landing.tns'}}"/>
             <LinkTo @route="domain.search" class="btn btn-primary">{{t 'landing.tns'}}</LinkTo>
         </div>
-         <div style="background: none;" class="card tile-nft-marketplace">
+         <div style="background: none;" class="card tile-nft-marketplace tile-landing">
             <img src="{{rooURL}}/assets/img/landing-drop.png" alt="{{t 'landing.last_drop'}}" />
             <LinkTo @route="marketplace.drops" class="btn btn-primary">{{t 'landing.last_drop'}}</LinkTo>
         </div>
-         <div style="background: none;" class="card tile-nft-marketplace">
+         <div style="background: none;" class="card tile-nft-marketplace tile-landing">
             <img src="{{rooURL}}/assets/img/landing-marketplace.png" alt="{{t 'landing.marketplace'}}"/>
             <LinkTo @route="marketplace.secondary" class="btn btn-primary">{{t 'landing.marketplace'}}</LinkTo>
         </div>
-        <div style="background: none;" class="card tile-nft-marketplace">
+        <div style="background: none;" class="card tile-nft-marketplace tile-landing">
             <img src="{{rooURL}}/assets/img/landing-dashboard.png" alt="{{t 'landing.holdings'}}"/>
             <LinkTo @route="dashboard" class="btn btn-primary">{{t 'landing.holdings'}}</LinkTo>
         </div>

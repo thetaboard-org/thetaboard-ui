@@ -2041,13 +2041,6 @@ button.btn.btn-primary.button-icon-tb.logout-metamask {
   margin-top: 7px;
 }
 
-@media screen and (max-width: 576px) {
-  .col-xs-11 {
-    flex: 0 0 50%;
-    max-width: 50%;
-  }
-}
-
   /*MARKET PLACE*/
 .body-title-marketplace{
   padding: 25px;
@@ -2166,4 +2159,24 @@ button.btn.btn-primary.button-icon-tb.logout-metamask {
 
 .landing-subtitle {
   font-size: 22.6px;
+}
+
+.card.tile-nft-marketplace.tile-landing {
+  margin: 40px;
+}
+
+
+@media screen and (max-width: 576px) {
+  .col-xs-11 {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+
+  .landing-title {
+    font-size: 45px;
+  }
+
+  .landing-subtitle {
+    font-size: 20px;
+  }
 }
