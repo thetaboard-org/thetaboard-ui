@@ -82,13 +82,13 @@ global:
 
 ###### LANDING START ######
 landing:
-  title: "Explore the future of the Theta Blockchain"
-  subtitle: "Thetaboard is a place dedicated to the proactive development of<br/>the Theta Blockchain activity and infrastructure through<br/>NFT creation,  trading, service and monitoring."
-  get_started: "Get started"
-  holdings: "Watch your holdings"
-  tns: "Get your Theta domain"
-  last_drop: "Check the last drop"
-  marketplace: "Trade rarities"
+  title: "Explore el futuro de Theta Blockchain"
+  subtitle: "Thetaboard es un lugar dedicado al desarrollo proactivo de<br/>la actividad e infraestructura de Theta Blockchain a través de<br/>la creación, el comercio, el servicio y la supervisión de NFT."
+  get_started: "Empezar"
+  holdings: "Vigila tus tenencias"
+  tns: "Consigue tu dominio Theta"
+  last_drop: "Mira la última gota"
+  marketplace: "Comercio de rarezas"
 ###### LANDING END ######
 
 
@@ -141,7 +141,7 @@ transaction_history:
 ###### NFT START ######
 NFT:
   setup_to_transfer: "Configure Metamask para transferir o vender su NFT"
-  setup_to_buy: "Setup Metamask to buy this NFT"
+  setup_to_buy: "Configure Metamask para comprar este NFT"
   setup_to_mainnet: "Configure Metamask para la cadena de bloques Theta Mainnet"
   not_owner: "Su billetera Metamask no es el propietario del token"
   selling_for: "Vender NFT por"
@@ -153,8 +153,8 @@ NFT:
   transfer_nft: "Transferir NFT"
   once_approved: "Una vez que lo apruebe, podrá establecer un precio y poner su NFT en el mercado"
   asking_price: "Precio de venta"
-  item_aquired: "Objeto adquirido"
   sell_my_nft: "Vender mi NFT"
+  item_aquired: "Objeto adquirido"
   buy_nft: "Compre este NFT"
   no_nft: "Esta wallet no tiene NFT"
   back_to_wallet: "Volver a NFT wallet"

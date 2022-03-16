@@ -82,13 +82,13 @@ global:
 
 ###### LANDING START ######
 landing:
-  title: "Explore the future of the Theta Blockchain"
-  subtitle: "Thetaboard is a place dedicated to the proactive development of<br/>the Theta Blockchain activity and infrastructure through<br/>NFT creation,  trading, service and monitoring."
-  get_started: "Get started"
-  holdings: "Watch your holdings"
-  tns: "Get your Theta domain"
-  last_drop: "Check the last drop"
-  marketplace: "Trade rarities"
+  title: "Explorez l'avenir de la blockchain Theta"
+  subtitle: "Thetaboard est un lieu dédié au développement proactif de<br/>l'activité et de l'infrastructure Theta Blockchain à travers<br/>la création, l'échange, le service et la surveillance de NFT."
+  get_started: "Commencer"
+  holdings: "Surveillez vos avoirs"
+  tns: "Obtenez votre domaine Theta"
+  last_drop: "Vérifier le dernier drop"
+  marketplace: "Echange de NFT"
 ###### LANDING END ######
 
 
@@ -141,13 +141,13 @@ transaction_history:
 ###### NFT START ######
 NFT:
   setup_to_transfer: "Configurez Metamask pour transférer ou vendre votre NFT"
-  setup_to_buy: "Setup Metamask to buy this NFT"
-  setup_to_mainnet: "Configurer Metamask pour la blockchain Theta Mainnet"
+  setup_to_buy: "Configurez Metamask pour acheter ce NFT"
+  setup_to_mainnet: "Configurez Metamask pour la blockchain Theta Mainnet"
   not_owner: "Votre portefeuille Metamask n'est pas le propriétaire du jeton"
   selling_for: "Vendre NFT pour"
   sell_for: "Vendre NFT pour"
   cancel_sell: "Annuler la vente"
-  cancel_approve: "Annuler Approuver"
+  cancel_approve: "Annuler l'approbation"
   sell_item: "Vendre l'article"
   see_more: "Voir plus"
   transfer_nft: "Transfert NFT"
@@ -336,7 +336,7 @@ footer:
 
 ###### MENU START ######
 menu:
-  home: "Home"
+  home: "Accueil"
   dashboard: "Tableau de bord"
   wallet: portefeuille
   nft: NFT
