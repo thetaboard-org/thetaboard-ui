@@ -12,6 +12,14 @@ export default class MenuComponent extends Component {
       route: 'landing',
     },
     {
+      name: 'menu.marketplace', icon: 'icon-refresh-02', route: 'marketplace.drops',
+      children: [
+        {name: 'menu.drops', icon: 'icon-app', route: 'marketplace.drops'},
+        {name: 'menu.domain', icon: 'icon-book-bookmark', route: 'domain.search'},
+        {name: 'menu.secondary', icon: 'icon-cart', route: 'marketplace.secondary' }
+      ],
+    },
+    {
       name: 'menu.dashboard',
       icon: 'icon-chart-pie-36',
       route: 'dashboard',
@@ -23,14 +31,6 @@ export default class MenuComponent extends Component {
       children: [
         {name: 'menu.wallet', icon: 'icon-money-coins', route: 'wallet.explorer'},
         {name: 'menu.nft', icon: 'icon-image-02', route: 'wallet.nft'},
-      ],
-    },
-    {
-      name: 'menu.marketplace', icon: 'icon-refresh-02', route: 'marketplace.drops',
-      children: [
-        {name: 'menu.drops', icon: 'icon-app', route: 'marketplace.drops'},
-        {name: 'menu.domain', icon: 'icon-book-bookmark', route: 'domain.search'},
-        {name: 'menu.secondary', icon: 'icon-cart', route: 'marketplace.secondary' }
       ],
     },
     {
@@ -72,7 +72,7 @@ export default class MenuComponent extends Component {
         classActive: this.routeName === x.route,
         icon: x.icon,
         route: x.route,
-        childActive: false
+        childActive: (this.routeName === 'landing' && x.name === 'menu.marketplace'),
       };
       if (x.children) {
         result.children = x.children.map((child) => {

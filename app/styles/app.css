@@ -2051,7 +2051,7 @@ button.btn.btn-primary.button-icon-tb.logout-metamask {
   /*MARKET PLACE*/
 .body-title-marketplace{
   padding: 25px;
-  z-index: 999999;
+  z-index: 1;
   position: relative;
 }
 
