@@ -87,7 +87,7 @@ landing:
   get_started: "Empezar"
   holdings: "Vigila tus tenencias"
   tns: "Consigue tu dominio Theta"
-  last_drop: "Mira la última gota"
+  last_drop: "Mira el último drop"
   marketplace: "Comercio de NFTs"
 ###### LANDING END ######
 
@@ -142,8 +142,8 @@ transaction_history:
 NFT:
   setup_to_transfer: "Configure Metamask para transferir o vender su NFT"
   setup_to_buy: "Configure Metamask para comprar este NFT"
-  setup_to_mainnet: "Configure Metamask para la cadena de bloques Theta Mainnet"
-  not_owner: "Su billetera Metamask no es el propietario del token"
+  setup_to_mainnet: "Configure Metamask para la blockchain Theta Mainnet"
+  not_owner: "Su billetera Metamask no es propietaria del token"
   selling_for: "Vender NFT por"
   sell_for: "Vender NFT por"
   cancel_sell: "Cancelar Vender"
@@ -377,7 +377,7 @@ drop:
   attributes: "Atributos"
   description: "Descripción"
   editions: "Ediciones"
-  actions: "Actions"
+  actions: "Acciones"
   contract_addr: "Dirección del contrato"
   from: "desde"
 ###### DROP END ######
