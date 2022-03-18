@@ -41,7 +41,7 @@
     {{/if}}
     <br/>
     <br/>
-    <p>{{t 'NFT.selling_for'}} : {{priceEther}} 
+    <p>{{t 'NFT.selling_for'}} : {{priceEther}}
       <img src="{{rootURL}}/assets/img/logo/tfuel.png" style="width: 20px; margin-left: 3px;"/>
     </p>
   {{else if (eq availiability 5)}}
@@ -104,6 +104,10 @@
         </span>
       {{/if}}
     {{/async-await}}
+  {{else if (eq availiability 6)}}
+    {{nft-actions/buy nft=nft}}
+    <br>
+    On sell for {{priceEther}} Tfuels
   {{else}}
     <span data-toggle="tooltip" data-placement="top" title="">
       <button type="button" disabled class="button-icon-tb btn btn-fill btn-grey">

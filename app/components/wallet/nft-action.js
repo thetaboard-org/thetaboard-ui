@@ -44,6 +44,7 @@ export default class NftActionComponent extends Component {
     // return 3 if metamask is installed and linked but account is not the same as the NFT
     // return 4 if NFT is getting sold by current metamask wallet
     // return 5 if NFT is owned by current metamask wallet
+    // return 6 if NFT is currently sold by someone else
 
     const checkOwner = async () => {
       this.setTooltip();
@@ -63,6 +64,8 @@ export default class NftActionComponent extends Component {
           return 5;
         } else if (this.nft.properties.selling_info && this.nft.properties.selling_info.seller.toLowerCase() === currentAccount) {
           return 4;
+        } else if (this.nft.properties.selling_info) {
+          return 6;
         } else {
           return 3;
         }
@@ -165,9 +168,9 @@ export default class NftActionComponent extends Component {
       const tx = await this.marketplaceContract.createMarketItem(this.nft.contract_addr, this.nft.original_token_id, price, "ThetaboardUser");
       await tx.wait();
       // hack to update computed property of marketplace status
-      try{
+      try {
         set(this, 'marketplaceChanged', this.marketplaceChanged + 1);
-      }catch (e) {
+      } catch (e) {
         //do nothing
       }
       this.commitingToApprove = false;
@@ -188,9 +191,9 @@ export default class NftActionComponent extends Component {
       const tx = await this.marketplaceContract.cancelMarketItem(this.nft.properties.selling_info.itemId);
       await tx.wait();
       this.cancelLoading = false;
-      try{
+      try {
         set(this, 'marketplaceChanged', this.marketplaceChanged + 1);
-      }catch (e) {
+      } catch (e) {
         //do nothing
       }
       this.setTooltip();

@@ -25,12 +25,12 @@
     </span>
   {{else if (eq availiability 3)}}
     {{#if commitingToBuy}}
-        <button type="button" class="btn button-icon-square-marketplace btn-fill btn-primary">
+      <button type="button" class="button-icon-tb btn btn-fill btn-primary">
         <img width="14" src="/assets/img/loader.gif"/>
-        </button>
+      </button>
     {{else}}
-        <span data-toggle="tooltip" data-placement="top" title="{{t 'NFT.buy_nft'}}">
-        <button type="button" class="btn-info-marketplace btn btn-primary" {{action "buyNFT"}}>
+      <span data-toggle="tooltip" data-placement="top" title="{{t 'NFT.buy_nft'}}">
+        <button type="button" class="button-icon-tb btn btn-fill btn-primary" {{action "buyNFT"}}>
             <i class="tim-icons icon-cart"></i>
         </button>
         </span>

@@ -1063,7 +1063,7 @@ a.logout {
   #card-domain div.buy-domain {
     width: 293px;
   }
-  
+
   .video-help {
     width: 320px;
   }
@@ -1784,7 +1784,7 @@ p.lookup-address-transfer {
   border-radius: 6px;
   border: 1px solid #e14eca;
   margin-top: 10px;
-  width: 100%;  
+  width: 100%;
 }
 
  .modal.modal-search p.lookup-address-transfer {
@@ -1958,8 +1958,8 @@ span[data-toggle="tooltip"] {
 a.button-icon-tb, button.button-icon-tb,
 a.button-icon-tb .icon-tb,
 button.button-icon-tb .icon-tb {
-  font-size: 30px;
   padding: 0;
+  font-size: 30px;
 }
 
 a.button-icon-tb .icon-tb {
@@ -1971,14 +1971,13 @@ a.button-icon-tb .icon-tb {
 
 }
 
-a.btn.button-icon-tb, 
+a.btn.button-icon-tb,
 button.btn.button-icon-tb,
 button.btn.button-icon-square {
-  width: 35.41px;
-  height: 35.44px;
+  width: 41px;
+  height: 41px;
   line-height: 2px;
   margin: 0;
-  padding: 0;
 }
 
 input::-webkit-outer-spin-button,
