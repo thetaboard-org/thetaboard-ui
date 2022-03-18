@@ -95,6 +95,7 @@ landing:
 ###### MARKETPLACE START ######
 marketplace:
   unknown_artist: "Unknown artist"
+  commision: "Thetaboard는 2.5%의 수수료를, 아티스트는 2.5%의 로열티를 받습니다. 마켓플레이스에서 항목을 구매하거나 판매하면 이 조건에 동의하는 것입니다."
 ###### MARKETPLACE END ######
 
 

@@ -95,6 +95,7 @@ landing:
 ###### MARKETPLACE START ######
 marketplace:
   unknown_artist: "Artista desconocido"
+  commision: "Thetaboard se lleva una comisión del 2,5 %, los artistas tienen un 2,5 % de regalías. Al comprar o vender un artículo en el mercado, aceptas esta condición"
 ###### MARKETPLACE END ######
 
 

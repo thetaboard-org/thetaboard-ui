@@ -1,13 +1,15 @@
 {{page-title "Secondary"}}
 <div class="card card-user">
-    <div class="author" style="margin-top:0;">
-      <div class="block block-one"></div>
-      <div class="block block-two"></div>
-      <div class="block block-three"></div>
-      <div class="block block-four"></div>
-    </div>
-    <div class="body-title-marketplace">
+  <div class="author" style="margin-top:0;">
+    <div class="block block-one"></div>
+    <div class="block block-two"></div>
+    <div class="block block-three"></div>
+    <div class="block block-four"></div>
+  </div>
+  <div class="body-title-marketplace">
     <h3 class="card-title">Marketplace - Exchange</h3>
+    <p><small> {{t 'marketplace.commision'}}</small></p>
+
     <LinkTo @route="wallet.nft" class="btn btn-primary">
       {{t 'NFT.sell_my_nft'}}
     </LinkTo>
@@ -21,7 +23,7 @@
         @placeholder="Search"
         @type="text"
         @class="input-search-marketplace"
-        @value={{search}}  
+        @value={{search}}
         {{on "keyup" this.searchMarketplace}}
       />
     </div>
@@ -52,6 +54,15 @@
       @placeholder="Select prices"
       @onChange={{this.changePriceRange}} as |priceRange|>
       {{priceRange}}
+    </PowerSelectMultiple>
+
+    <PowerSelectMultiple
+      @searchEnabled={{true}}
+      @options={{this.categories}}
+      @selected={{this.selectedCategories}}
+      @placeholder="Select category"
+      @onChange={{this.changeCategory}} as |category|>
+      {{category.name}}
     </PowerSelectMultiple>
 
     <PowerSelect

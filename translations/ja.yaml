@@ -95,6 +95,7 @@ landing:
 ###### MARKETPLACE START ######
 marketplace:
   unknown_artist: "Unknown artist"
+  commision: "シータボードには2.5％の手数料がかかり、アーティストには2.5％の使用料がかかります。 マーケットプレイスで商品を売買することにより、この条件に同意したことになります"
 ###### MARKETPLACE END ######
 
 

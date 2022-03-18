@@ -9,6 +9,7 @@ export default class SecondaryController extends Controller {
   @tracked selectedArtists = [];
   @tracked selectedDrops = [];
   @tracked selectedPriceRanges = [];
+  @tracked selectedCategories = [];
   @tracked selectedSortBy = null;
   @tracked currentPageNumber = 1;
 
@@ -31,6 +32,10 @@ export default class SecondaryController extends Controller {
 
   get priceRanges() {
     return this.model.facets.priceRanges;
+  }
+
+  get categories() {
+    return this.model.facets.categories;
   }
 
   get sortBy() {
@@ -61,14 +66,16 @@ export default class SecondaryController extends Controller {
     if (this.search
       || this.selectedArtists.length !== 0
       || this.selectedDrops.length !== 0
-      || this.selectedPriceRanges.length !== 0) {
+      || this.selectedPriceRanges.length !== 0
+      || this.selectedCategories.length !== 0) {
 
       const artistIds = this.selectedArtists.map((x) => x.id).join(',');
       const dropsIds = this.selectedDrops.map((x) => x.id).join(',');
       const priceRanges = this.selectedPriceRanges.join(',');
+      const categories = this.selectedCategories.map((x) => x.id).join(',');
 
       const marketplaceInfoFetch = await fetch(
-        `/api/marketplace/search?search=${this.search}&artist=${artistIds}&drop=${dropsIds}&priceRange=${priceRanges}&sortBy=${sortBy}&orderBy=${orderBy}&pageNumber=${this.currentPageNumber}`);
+        `/api/marketplace/search?search=${this.search}&artist=${artistIds}&drop=${dropsIds}&priceRange=${priceRanges}&category=${categories}&sortBy=${sortBy}&orderBy=${orderBy}&pageNumber=${this.currentPageNumber}`);
       set(this.model, 'marketplaceInfo', await marketplaceInfoFetch.json());
     } else {
       const marketplaceInfoFetch = await fetch(`/api/marketplace?sortBy=${sortBy}&orderBy=${orderBy}&pageNumber=${this.currentPageNumber}`);
@@ -79,36 +86,49 @@ export default class SecondaryController extends Controller {
 
   @action
   searchMarketplace() {
+    this.currentPageNumber = 1;
     debounce(this, this.searchMarketplaceFetch, 500);
   }
 
   @action
   changeArtist(artist) {
+    this.currentPageNumber = 1;
     this.selectedArtists = artist;
     debounce(this, this.searchMarketplaceFetch, 500);
   }
 
   @action
   changeDrop(drop) {
+    this.currentPageNumber = 1;
     this.selectedDrops = drop;
     debounce(this, this.searchMarketplaceFetch, 500);
   }
 
   @action
   changePriceRange(priceRange) {
+    this.currentPageNumber = 1;
     this.selectedPriceRanges = priceRange;
     debounce(this, this.searchMarketplaceFetch, 500);
   }
 
   @action
   changeSortBy(sortBy) {
+    this.currentPageNumber = 1;
     this.selectedSortBy = sortBy;
     debounce(this, this.searchMarketplaceFetch, 500);
   }
 
   @action
-  pageChanged(page){
+  pageChanged(page) {
+    this.currentPageNumber = 1;
     this.currentPageNumber = page;
+    debounce(this, this.searchMarketplaceFetch, 500);
+  }
+
+  @action
+  changeCategory(categories) {
+    this.currentPageNumber = 1;
+    this.selectedCategories = categories;
     debounce(this, this.searchMarketplaceFetch, 500);
   }
 
