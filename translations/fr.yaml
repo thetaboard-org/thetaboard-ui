@@ -92,6 +92,12 @@ landing:
 ###### LANDING END ######
 
 
+###### MARKETPLACE START ######
+marketplace:
+  unknown_artist: "Artiste inconnu"
+###### MARKETPLACE END ######
+
+
 ###### DASHBOARD START ######
 ### Price-chart component
 price_chart:

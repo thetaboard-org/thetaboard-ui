@@ -7,15 +7,14 @@
   </div>
   <div class="tile-bottom-marketplace">
     <div class="row">
-      <div class="col col-lg-3">
-        <p class="tile-botom-label-marketplace">Artist:</p>
-      </div>
-      <div class="col col-lg-6">
+      <div class="col col-lg-7 padding0">
         {{#if nft.properties.artist}}
           <p class="tile-botom-label-marketplace">{{nft.properties.artist.name}}</p>
         {{else}}
-          <p class="tile-botom-label-marketplace">Unknown</p>
+          <p class="tile-botom-label-marketplace">{{t 'marketplace.unknown_artist'}}</p>
         {{/if}}
+      </div>
+      <div class="col col-lg-1">
       </div>
       <div class="col col-lg-3">
         <span data-toggle="tooltip" data-placement="top" title="{{t 'NFT.see_more'}}">
@@ -28,23 +27,25 @@
     </div>
     <hr style="margin: 3px 0;"/>
     <div class="row">
-      <div class="col col-lg-3">
-        <i class="tfuel-marketplace icon-tb icon-tfuel-2"></i>
+      <div class="col col-lg-7 padding0">
+        <p class="tile-botom-price-marketplace">
+          <i class="tfuel-marketplace icon-tb icon-tfuel-2"></i>
+          <span style="display: inline-block;vertical-align: top;margin-top: 9px;" class="nostyle" {{numberformat priceEther 0}}></span>
+        </p>
       </div>
-      <div class="col col-lg-6">
-        <p class="tile-botom-price-marketplace">{{priceEther}}</p>
+      <div class="col col-lg-1">
       </div>
       <div class="col col-lg-3">
         {{nft-actions/buy nft=nft}}
       </div>
     </div>
     <div class="row">
-      <div class="col col-lg-3">
-      </div>
-      <div class="col col-lg-6">
+      <div class="col col-lg-7 padding0">
           <div class="white-font" style="text-align:right;">
-             {{currency.currentCurrency.symbol}} {{priceCurrency}}
+             {{currency.currentCurrency.symbol}} <span class="nostyle" {{numberformat priceCurrency 2}}></span>
           </div>
+      </div>
+      <div class="col col-lg-1">
       </div>
       <div class="col col-lg-3">
       </div>

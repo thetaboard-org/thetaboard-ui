@@ -2109,9 +2109,9 @@ button.btn.btn-primary.button-icon-tb.logout-metamask {
 }
 
 .tile-botom-price-marketplace {
-  font-weight: 600;
-  font-size: 21px;
-  margin-top: 11px;
+  font-weight: 700;
+  font-size: 19px;
+  margin-top: 0;
   text-align: right;
 }
 
@@ -2165,6 +2165,9 @@ button.btn.btn-primary.button-icon-tb.logout-metamask {
   margin: 40px;
 }
 
+.padding0 {
+  padding: 0;
+}
 
 @media screen and (max-width: 576px) {
   .col-xs-11 {
