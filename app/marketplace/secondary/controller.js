@@ -123,6 +123,7 @@ export default class SecondaryController extends Controller {
     this.currentPageNumber = 1;
     this.currentPageNumber = page;
     debounce(this, this.searchMarketplaceFetch, 500);
+    window.scrollTo(0, 0);
   }
 
   @action
