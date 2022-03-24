@@ -78,7 +78,7 @@ export default class TransactionsExportComponent extends Component {
       that.contentDocument;
       self.utils.errorNotify(self.intl.t('export.need_fifty_percent'));
     };
-    let url = `${window.location.origin}/transaction-exports.csv?${queryString}`;
+    let url = `${window.location.origin}/api/transaction-exports.csv?${queryString}`;
 
     // This is a hack to because we use ember s --proxy ""
     // so we guess that if running on port 8080 the proxy port is 8000
