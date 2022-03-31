@@ -1776,6 +1776,7 @@ div.card-user .author div.nft-info-block.block {
   height: 50px;
 }
 
+
 p.lookup-address-transfer {
   font-weight: bold;
   display: inline-block;
@@ -2166,6 +2167,28 @@ button.btn.btn-primary.button-icon-tb.logout-metamask {
 
 .padding0 {
   padding: 0!important;
+}
+
+#card-domain-prices span.higlight {
+  color: #ff8d72;
+}
+
+#card-domain-prices span.crossed-prices {
+  text-decoration: line-through;
+}
+
+#card-domain-prices .price-title p{
+  font-weight: normal;
+  font-size: 20px;
+}
+
+#card-domain-prices .icon-tfuel-2 {
+  vertical-align: sub;
+  font-size: 30px;
+}
+
+#card-domain-prices p {
+  font-size: 18px;
 }
 
 @media screen and (max-width: 576px) {

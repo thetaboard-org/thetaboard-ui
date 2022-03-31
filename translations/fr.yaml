@@ -296,6 +296,9 @@ domain:
   timeline_theta: "Association avec Theta Labs"
   timeline_ecosystem: "Association avec l'écosystème "
   timeline_reselling: "Revente sur Thetaboard"
+  prices: "Prices"
+  price_subtitle: "(Launch offer until April 30th!!)"
+  prices_char: "characters"
   help: "Aide"
   error:
     check_metamask: "Regardez votre extension MetaMask"
