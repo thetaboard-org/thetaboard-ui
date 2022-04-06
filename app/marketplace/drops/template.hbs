@@ -14,13 +14,107 @@
       <div class="row justify-content-lg-center justify-content-md-center">
         <label>{{t 'drop.subtitle'}}</label>
       </div>
-      <div class="row">
-        {{#each dropList as |drop|}}
-          <div class="col-sm-12 col-md-4 drop-tile-container">
-            {{marketplace/drop-tile drop=drop}}
-          </div>
-        {{/each}}
-      </div>
+      {{#if sponsored}}
+        <br>
+        <h3>Thetaboard Sponsored Drops</h3>
+        <div class="row">
+          {{#each sponsored as |drop|}}
+            <div class="col-sm-12 col-md-4 drop-tile-container">
+              {{marketplace/drop-tile drop=drop}}
+            </div>
+          {{/each}}
+        </div>
+
+        {{#if totalSponsoredPage}}
+          <PaginationPager
+            @pager={{true}}
+            @count={{totalSponsoredPage}}
+            @current={{currentSponsoredPage}}
+            @change={{pageChangedSponsored}}
+            @pagerFirst="|<"
+            @pagerLast=">|"
+            @pagerNext={{t 'global.next'}}
+            @pagerPrevious={{t 'global.previous'}}>
+            {{currentSponsoredPage}} of {{totalSponsoredPage}}
+          </PaginationPager>
+        {{/if}}
+      {{/if}}
+
+      {{#if live}}
+        <br>
+        <h3>Live Drops </h3>
+        <div class="row">
+          {{#each live as |drop|}}
+            <div class="col-sm-12 col-md-4 drop-tile-container">
+              {{marketplace/drop-tile drop=drop}}
+            </div>
+          {{/each}}
+        </div>
+
+        {{#if totalLivePage}}
+          <PaginationPager
+            @pager={{true}}
+            @count={{totalLivePage}}
+            @current={{currentLivePage}}
+            @change={{pageChangedLive}}
+            @pagerFirst="|<"
+            @pagerLast=">|"
+            @pagerNext={{t 'global.next'}}
+            @pagerPrevious={{t 'global.previous'}}>
+            {{currentLivePage}} of {{totalLivePage}}
+          </PaginationPager>
+        {{/if}}
+      {{/if}}
+
+      {{#if isComing}}
+        <br>
+        <h3>Coming Drops</h3>
+        <div class="row">
+          {{#each isComing as |drop|}}
+            <div class="col-sm-12 col-md-4 drop-tile-container">
+              {{marketplace/drop-tile drop=drop}}
+            </div>
+          {{/each}}
+        </div>
+        {{#if totalComingPage}}
+          <PaginationPager
+            @pager={{true}}
+            @count={{totalComingPage}}
+            @current={{currentComingPage}}
+            @change={{pageChangedComing}}
+            @pagerFirst="|<"
+            @pagerLast=">|"
+            @pagerNext={{t 'global.next'}}
+            @pagerPrevious={{t 'global.previous'}}>
+            {{currentComingPage}} of {{totalComingPage}}
+          </PaginationPager>
+        {{/if}}
+      {{/if}}
+
+      {{#if ended}}
+        <br>
+        <h3>Past Drops</h3>
+        <div class="row">
+          {{#each ended as |drop|}}
+            <div class="col-sm-12 col-md-4 drop-tile-container">
+              {{marketplace/drop-tile drop=drop}}
+            </div>
+          {{/each}}
+        </div>
+        {{#if totalEndedPage}}
+          <PaginationPager
+            @pager={{true}}
+            @count={{totalEndedPage}}
+            @current={{currentEndedPage}}
+            @change={{pageChangedEnded}}
+            @pagerFirst="|<"
+            @pagerLast=">|"
+            @pagerNext={{t 'global.next'}}
+            @pagerPrevious={{t 'global.previous'}}>
+            {{currentEndedPage}} of {{totalEndedPage}}
+          </PaginationPager>
+        {{/if}}
+      {{/if}}
     </div>
   </div>
   <div class="card-footer">

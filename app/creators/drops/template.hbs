@@ -2,27 +2,79 @@
 
 <div class="content">
   <div class="row">
-    <h2> Work in progress/Upcoming drops</h2>
-    {{#each upcomingDrops as |drop|}}
-      {{creators/drops/drop drop=drop artists=model.artists}}
-    {{/each}}
-
     <button {{on "click" this.addNewDrop}} class="btn btn-fill btn-primary">Add new Drop</button>
     <br>
+    {{#if newDrop}}
+      {{creators/drops/drop drop=newDrop artists=model.artists}}
+    {{/if}}
+  </div>
+  
+  <div class="row">
+    {{#if isComing}}
+      <h2> Work in progress/Upcoming drops</h2>
+      {{#each isComing as |drop|}}
+        {{creators/drops/drop drop=drop artists=model.artists}}
+      {{/each}}
+      {{#if totalComingPage}}
+        <PaginationPager
+          @pager={{true}}
+          @count={{totalComingPage}}
+          @current={{currentComingPage}}
+          @change={{pageChangedComing}}
+          @pagerFirst="|<"
+          @pagerLast=">|"
+          @pagerNext={{t 'global.next'}}
+          @pagerPrevious={{t 'global.previous'}}>
+          {{currentComingPage}} of {{totalComingPage}}
+        </PaginationPager>
+      {{/if}}
+    {{/if}}
+    <br>
+  </div>
 
-  </div>
-  <div class="row">
-    <h2> Live Drops </h2>
-    {{#each liveDrops as |drop|}}
-      {{creators/drops/drop drop=drop artists=model.artists}}
-    {{/each}}
-  </div>
-  <div class="row">
-    <h2> Past Drops</h2>
-    {{#each pastDrops as |drop|}}
-      {{creators/drops/drop drop=drop artists=model.artists}}
-    {{/each}}
-  </div>
+  {{#if live}}
+    <div class="row">
+      <h2> Live Drops </h2>
+      {{#each live as |drop|}}
+        {{creators/drops/drop drop=drop artists=model.artists}}
+      {{/each}}
+      {{#if totalLivePage}}
+        <PaginationPager
+          @pager={{true}}
+          @count={{totalLivePage}}
+          @current={{currentLivePage}}
+          @change={{pageChangedLive}}
+          @pagerFirst="|<"
+          @pagerLast=">|"
+          @pagerNext={{t 'global.next'}}
+          @pagerPrevious={{t 'global.previous'}}>
+          {{currentLivePage}} of {{totalLivePage}}
+        </PaginationPager>
+      {{/if}}
+    </div>
+  {{/if}}
+
+  {{#if ended}}
+    <div class="row">
+      <h2> Past Drops</h2>
+      {{#each ended as |drop|}}
+        {{creators/drops/drop drop=drop artists=model.artists}}
+      {{/each}}
+      {{#if totalEndedPage}}
+        <PaginationPager
+          @pager={{true}}
+          @count={{totalEndedPage}}
+          @current={{currentEndedPage}}
+          @change={{pageChangedEnded}}
+          @pagerFirst="|<"
+          @pagerLast=">|"
+          @pagerNext={{t 'global.next'}}
+          @pagerPrevious={{t 'global.previous'}}>
+          {{currentEndedPage}} of {{totalEndedPage}}
+        </PaginationPager>
+      {{/if}}
+    </div>
+  {{/if}}
 </div>
 
 

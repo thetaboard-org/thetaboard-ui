@@ -62,7 +62,6 @@
             <div class="form-group">
 
               <label>Artist</label>
-
               <PowerSelect
                 @searchEnabled={{true}}
                 @searchField="name"
@@ -150,6 +149,20 @@
 
             </label>
           </div>
+
+          {{#if isAdmin}}
+            <div class="col-md-12">
+              <label class="form-check-label">
+                <Input
+                  @class="form-check-input"
+                  @type="checkbox"
+                  @checked={{drop.isSponsored}}
+                />
+                Thetaboard sponsored drop
+              </label>
+            </div>
+          {{/if}}
+
         </div>
         <div class="card-footer">
           <button type="submit" class="btn btn-fill btn-primary">Save</button>
