@@ -7,7 +7,7 @@ export default class SecondaryRoute extends Route {
   async model(params) {
     const [marketplaceInfoFetch, facetsFetch] = await Promise.all([
       fetch(`/api/marketplace`),
-      fetch(`/api/marketplace/facets`)
+      fetch(`/api/marketplace/facets`),
     ]);
     const marketplaceInfo = await marketplaceInfoFetch.json();
     const facets = await facetsFetch.json();

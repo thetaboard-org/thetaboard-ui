@@ -60,8 +60,8 @@ export default class SecondaryController extends Controller {
   }
 
   async searchMarketplaceFetch() {
-    const sortBy = this.selectedSortBy && this.selectedSortBy.id ? "price" : null;
-    const orderBy = this.selectedSortBy && this.selectedSortBy.id ? this.selectedSortBy.id.split(':')[1] : null;
+    const sortBy = this.selectedSortBy && this.selectedSortBy.id ? "price" : '';
+    const orderBy = this.selectedSortBy && this.selectedSortBy.id ? this.selectedSortBy.id.split(':')[1] : '';
 
     if (this.search
       || this.selectedArtists.length !== 0

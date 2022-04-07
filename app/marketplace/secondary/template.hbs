@@ -34,7 +34,7 @@
       @selected={{this.selectedArtists}}
       @placeholder="Select artists"
       @onChange={{this.changeArtist}} as |artist|>
-      {{artist.name}}
+      {{artist.attributes.name}}
     </PowerSelectMultiple>
 
     <PowerSelectMultiple
@@ -44,7 +44,7 @@
       @selected={{this.selectedDrops}}
       @placeholder="Select drops"
       @onChange={{this.changeDrop}} as |drop|>
-      {{drop.name}}
+      {{drop.attributes.name}}
     </PowerSelectMultiple>
 
     <PowerSelectMultiple
