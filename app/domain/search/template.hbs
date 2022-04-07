@@ -12,7 +12,17 @@
     <div class="card-body-stake card-body-domain">
       <h5 class="col-md-12 title">{{t 'domain.title'}}</h5>
       <div class="">
-          {{domains/search tns=tns setTns=setTns}}
+        {{domains/search tns=tns setTns=setTns}}
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="card card-user" id="card-domain-prices">
+  <div class="card-body card-min-390">
+    <div class="card-body-stake card-body-domain">
+      <div class="row">
+        {{domains/prices}}
       </div>
     </div>
   </div>
@@ -29,17 +39,7 @@
     </div>
     <div class="card-body-stake card-body-domain">
       <div class="row">
-          {{domains/explanation}}
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="card card-user" id="card-domain-prices">
-  <div class="card-body card-min-390">
-    <div class="card-body-stake card-body-domain">
-      <div class="row">
-          {{domains/prices}}
+        {{domains/explanation}}
       </div>
     </div>
   </div>
@@ -49,7 +49,7 @@
   <div class="card-body card-min-390">
     <div class="card-body-stake card-body-domain">
       <div class="row">
-          {{domains/timeline}}
+        {{domains/timeline}}
       </div>
     </div>
   </div>
@@ -59,7 +59,7 @@
   <div class="card-body card-min-390">
     <div class="card-body-stake card-body-domain">
       <div class="row">
-          {{domains/help}}
+        {{domains/help}}
       </div>
     </div>
   </div>

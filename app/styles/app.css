@@ -1788,11 +1788,11 @@ p.lookup-address-transfer {
   width: 100%;
 }
 
- .modal.modal-search p.lookup-address-transfer {
+.modal.modal-search p.lookup-address-transfer {
   width: auto;
   position: relative;
   z-index: 999999;
- }
+}
 
 .bold {
   font-weight: bold;
@@ -1878,7 +1878,7 @@ span[data-toggle="tooltip"] {
   margin: auto;
 }
 
-.alert.alert-thetaboard{
+.alert.alert-thetaboard {
   background-image: -webkit-linear-gradient(to bottom left, #e14eca, #ba54f5, #e14eca);
   background-image: -o-linear-gradient(to bottom left, #e14eca, #ba54f5, #e14eca);
   background-image: -moz-linear-gradient(to bottom left, #e14eca, #ba54f5, #e14eca);
@@ -1888,7 +1888,7 @@ span[data-toggle="tooltip"] {
   background-color: #e14eca;
 }
 
-#card-domain .buy-domain.alert.alert-thetaboard{
+#card-domain .buy-domain.alert.alert-thetaboard {
   margin: 10px auto;
 }
 
@@ -1902,9 +1902,9 @@ span[data-toggle="tooltip"] {
 
 .tns-control-panel .tns-item {
   margin: 25px 0;
- }
+}
 
- .tns-control-panel .tns-item span.tns-span {
+.tns-control-panel .tns-item span.tns-span {
   color: white;
   font-size: 20px;
 }
@@ -1983,12 +1983,12 @@ button.btn.button-icon-square {
 
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+  -webkit-appearance: none;
+  margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
 }
 
 input[type=number] {
-    -moz-appearance:textfield; /* Firefox */
+  -moz-appearance: textfield; /* Firefox */
 }
 
 button.btn.btn-primary.button-icon-tb.logout-metamask {
@@ -2029,7 +2029,7 @@ button.btn.btn-primary.button-icon-tb.logout-metamask {
   vertical-align: -webkit-baseline-middle;
   vertical-align: -o-baseline-middle;
   vertical-align: -moz-baseline-middle;
-  color:white;
+  color: white;
   font-size: 12px;;
 }
 
@@ -2041,8 +2041,8 @@ button.btn.btn-primary.button-icon-tb.logout-metamask {
   margin-top: 7px;
 }
 
-  /*MARKET PLACE*/
-.body-title-marketplace{
+/*MARKET PLACE*/
+.body-title-marketplace {
   padding: 25px;
   z-index: 1;
   position: relative;
@@ -2081,7 +2081,7 @@ button.btn.btn-primary.button-icon-tb.logout-metamask {
 }
 
 .ember-power-select-option {
-  color:#1e1e2f;
+  color: #1e1e2f;
 }
 
 .card.tile-nft-marketplace {
@@ -2104,7 +2104,7 @@ button.btn.btn-primary.button-icon-tb.logout-metamask {
 }
 
 .icon-tb.tfuel-marketplace {
- font-size: 43px;
+  font-size: 43px;
 
 }
 
@@ -2141,7 +2141,7 @@ button.btn.btn-primary.button-icon-tb.logout-metamask {
   padding: 5px 0 0 0;
 }
 
-.button-icon-tb.btn.btn-fill.btn-grey{
+.button-icon-tb.btn.btn-fill.btn-grey {
   color: #ffffff;
   background-color: #adb5bd;
   border-color: #adb5bd;
@@ -2163,10 +2163,28 @@ button.btn.btn-primary.button-icon-tb.logout-metamask {
 
 .card.tile-nft-marketplace.tile-landing {
   margin: 40px;
+  height: 312px;
+  width: 270px;
+}
+
+.btn-landing {
+  position: absolute !important;
+  bottom:   0;
+  width: 97%;
+}
+
+.tile-landing-text {
+  text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;
+  color: white;
+  position: absolute;
+  top: 75%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 20px;
 }
 
 .padding0 {
-  padding: 0!important;
+  padding: 0 !important;
 }
 
 #card-domain-prices span.higlight {
@@ -2177,7 +2195,7 @@ button.btn.btn-primary.button-icon-tb.logout-metamask {
   text-decoration: line-through;
 }
 
-#card-domain-prices .price-title p{
+#card-domain-prices .price-title p {
   font-weight: normal;
   font-size: 20px;
 }
