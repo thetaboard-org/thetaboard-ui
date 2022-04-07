@@ -29,7 +29,7 @@
     </div>
     <PowerSelectMultiple
       @searchEnabled={{true}}
-      @searchField="name"
+      @searchField="attributes.name"
       @options={{this.artists}}
       @selected={{this.selectedArtists}}
       @placeholder="Select artists"
@@ -39,7 +39,7 @@
 
     <PowerSelectMultiple
       @searchEnabled={{true}}
-      @searchField="name"
+      @searchField="attributes.name"
       @options={{this.drops}}
       @selected={{this.selectedDrops}}
       @placeholder="Select drops"
