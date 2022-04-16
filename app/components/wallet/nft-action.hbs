@@ -1,5 +1,6 @@
 <span data-toggle="tooltip" data-placement="top" title="{{t 'NFT.see_more'}}">
-  <LinkTo @class="button-icon-tb btn btn-fill btn-primary" @route="wallet.nft-info" @models={{array nft.contract_addr nft.original_token_id}}>
+  <LinkTo @class="button-icon-tb btn btn-fill btn-primary" @route="wallet.nft-info" @models={{array nft.contract_addr
+                                                                                                    nft.original_token_id}}>
     <i class="icon-tb icon-see-more"></i>
   </LinkTo>
 </span>
@@ -10,7 +11,7 @@
     </a>
   {{else if (eq availiability 1)}}
     <a href="https://www.youtube.com/watch?v=Md-D3y5n_9o" target="_blank">
-          {{t 'NFT.setup_to_mainnet'}}
+      {{t 'NFT.setup_to_mainnet'}}
     </a>
   {{else if (eq availiability 2)}}
     <span data-toggle="tooltip" data-placement="top"
@@ -26,6 +27,9 @@
         <i class="icon-tb icon-transfer"></i>
       </button>
     </span>
+
+    {{nft-actions/offer nft=nft setTooltip=setTooltip}}
+
   {{else if (eq availiability 4)}}
     {{#if cancelLoading}}
       <button type="button" class="btn button-icon-square button-icon-square btn-fill btn-warning">
@@ -33,7 +37,7 @@
       </button>
     {{else}}
       <span data-toggle="tooltip" data-placement="top"
-          title="{{t 'NFT.cancel_sell'}}">
+            title="{{t 'NFT.cancel_sell'}}">
         <button type="button" {{on "click" this.cancel_sell}} class="button-icon-tb btn btn-fill btn-warning">
           <i class="icon-tb icon-cancelsell"></i>
         </button>
@@ -76,19 +80,20 @@
               </button>
             </span>
           {{/if}}
-        {{#if cancelApproveLoading}}
-          <button type="button" class="btn button-icon-square btn-fill btn-warning">
-            <img width="14" src="/assets/img/loader.gif"/>
-          </button>
-        {{else}}
-          <span data-toggle="tooltip" data-placement="top"
-            title="{{t 'global.cancel'}}">
-            <button type="button" class="button-icon-tb btn btn-fill btn-warning" {{on 'click' cancel_approve_for_sell}}>
+          {{#if cancelApproveLoading}}
+            <button type="button" class="btn button-icon-square btn-fill btn-warning">
+              <img width="14" src="/assets/img/loader.gif"/>
+            </button>
+          {{else}}
+            <span data-toggle="tooltip" data-placement="top"
+                  title="{{t 'global.cancel'}}">
+            <button type="button" class="button-icon-tb btn btn-fill btn-warning" {{on 'click'
+                                                                                       cancel_approve_for_sell}}>
               <i class="icon-tb icon-cancel"></i>
             </button>
           </span>
-        {{/if}}
-      </form>
+          {{/if}}
+        </form>
       {{else if approveLoading}}
         <span data-toggle="tooltip" data-placement="top"
               title="{{t 'NFT.once_approved'}}">
