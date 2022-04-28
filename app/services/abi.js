@@ -52,7 +52,7 @@ export default class ABIService extends Service {
   }
 
   get ThetaboardOfferAddr() {
-    return "0x5f1F95fCC2852faeAF564d6aF92d49f5A8C50951";
+    return "0x7831bA239b42acb4e9339991bE8b4B67bF18892B";
   }
 }
 
@@ -1797,6 +1797,12 @@ const thetaboardOffer = [
       },
       {
         "indexed": false,
+        "internalType": "address payable",
+        "name": "offered",
+        "type": "address"
+      },
+      {
+        "indexed": false,
         "internalType": "uint256",
         "name": "price",
         "type": "uint256"
@@ -1830,6 +1836,12 @@ const thetaboardOffer = [
         "indexed": false,
         "internalType": "address payable",
         "name": "offerer",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "address payable",
+        "name": "offered",
         "type": "address"
       },
       {
@@ -1886,31 +1898,6 @@ const thetaboardOffer = [
     "type": "event"
   },
   {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": false,
-        "internalType": "address",
-        "name": "sender",
-        "type": "address"
-      },
-      {
-        "indexed": false,
-        "internalType": "address",
-        "name": "owner",
-        "type": "address"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "tokenId",
-        "type": "uint256"
-      }
-    ],
-    "name": "test",
-    "type": "event"
-  },
-  {
     "stateMutability": "payable",
     "type": "fallback",
     "payable": true
@@ -1962,6 +1949,20 @@ const thetaboardOffer = [
       }
     ],
     "name": "createNewOffer",
+    "outputs": [],
+    "stateMutability": "payable",
+    "type": "function",
+    "payable": true
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "itemId",
+        "type": "uint256"
+      }
+    ],
+    "name": "changeOffer",
     "outputs": [],
     "stateMutability": "payable",
     "type": "function",
@@ -2194,7 +2195,7 @@ const thetaboardOffer = [
         "type": "uint256"
       }
     ],
-    "name": "getByMarketId",
+    "name": "getByItemId",
     "outputs": [
       {
         "components": [
