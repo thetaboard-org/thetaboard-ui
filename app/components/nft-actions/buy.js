@@ -64,7 +64,7 @@ export default class NftActionsBuyComponent extends Component {
         artistWallet = properties.artist['wallet-addr'];
       }
       await this.marketplaceContract.methods
-        .buyFromMarket(properties.selling_info.itemId, artistWallet, 250)
+        .buyFromMarket(properties.selling_info.itemId, artistWallet, 25)
         .send({
           value: properties.selling_info.price,
           from: this.metamask.currentAccount,
