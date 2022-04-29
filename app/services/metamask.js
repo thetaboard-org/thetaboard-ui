@@ -50,7 +50,7 @@ export default class MetamaskService extends Service {
     const metamaskProvider = await detectEthereumProvider();
     if (!metamaskProvider) {
       // default provider
-      this.provider = new ethers.providers.WebSocketProvider("ws://142.44.213.241:18889/rpc");
+      this.provider = new ethers.providers.JsonRpcProvider("https://eth-rpc-api.thetatoken.org/rpc");
       this.web3 =  new Web3("https://eth-rpc-api.thetatoken.org/rpc");
       // TODO remove window.web3
       window.web3 = this.web3;
@@ -58,7 +58,7 @@ export default class MetamaskService extends Service {
     }
     this.isInstalled = true;
     if (parseInt(ethereum.chainId) !== 361) {
-      this.provider = new ethers.providers.WebSocketProvider("ws://142.44.213.241:18889/rpc");
+      this.provider = new ethers.providers.JsonRpcProvider("https://eth-rpc-api.thetatoken.org/rpc");
       this.web3 =  new Web3("https://eth-rpc-api.thetatoken.org/rpc");
       // TODO remove window.web3
       window.web3 = this.web3;
