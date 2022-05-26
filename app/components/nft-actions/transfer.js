@@ -35,8 +35,7 @@ export default class NftActionsTransferComponent extends Component {
       this.commitingToTransfer = true;
       this.args.setTooltip();
       const account = this.metamask.currentAccount;
-      const provider = new ethers.providers.Web3Provider(window.ethereum);
-      const signer = provider.getSigner();
+      const signer = this.metamask.provider.getSigner();
       const nft_contract = new ethers.Contract(this.nft.contract_addr, this.abi.ThetaboardNFT, signer)
       const transfer = await nft_contract.transferFrom(account, this.inputAddress, this.nft.original_token_id);
       this.transfering = true;

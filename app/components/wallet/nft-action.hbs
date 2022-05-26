@@ -4,120 +4,122 @@
     <i class="icon-tb icon-see-more"></i>
   </LinkTo>
 </span>
-{{#async-await metamaskAvailable as |availiability|}}
-  {{#if (eq availiability 0)}}
-    <a href="https://www.youtube.com/watch?v=Md-D3y5n_9o" target="_blank">
-      {{t 'NFT.setup_to_transfer'}}
-    </a>
-  {{else if (eq availiability 1)}}
-    <a href="https://www.youtube.com/watch?v=Md-D3y5n_9o" target="_blank">
-      {{t 'NFT.setup_to_mainnet'}}
-    </a>
-  {{else if (eq availiability 2)}}
-    <span data-toggle="tooltip" data-placement="top"
-          title="{{t 'domain.connect_to_metamask'}}">
+
+{{#if (eq metamaskStatus 0)}}
+  <a href="https://www.youtube.com/watch?v=Md-D3y5n_9o" target="_blank">
+    {{t 'NFT.setup_to_transfer'}}
+  </a>
+{{else if (eq metamaskStatus 1)}}
+  <a href="https://www.youtube.com/watch?v=Md-D3y5n_9o" target="_blank">
+    {{t 'NFT.setup_to_mainnet'}}
+  </a>
+{{else if (eq metamaskStatus 2)}}
+  <span data-toggle="tooltip" data-placement="top"
+        title="{{t 'domain.connect_to_metamask'}}">
       <button type="button" disabled class="button-icon-tb btn btn-fill btn-grey">
         <i class="icon-tb icon-transfer"></i>
       </button>
     </span>
-  {{else if (eq availiability 3)}}
-    <span data-toggle="tooltip" data-placement="top"
-          title="{{t 'NFT.not_owner'}}">
-      <button type="button" disabled class="button-icon-tb btn btn-fill btn-grey">
-        <i class="icon-tb icon-transfer"></i>
-      </button>
-    </span>
+{{/if}}
 
-    {{nft-actions/offer nft=nft setTooltip=setTooltip}}
 
-  {{else if (eq availiability 4)}}
-    {{#if cancelLoading}}
-      <button type="button" class="btn button-icon-square button-icon-square btn-fill btn-warning">
-        <img width="14" src="/assets/img/loader.gif"/>
-      </button>
-    {{else}}
-      <span data-toggle="tooltip" data-placement="top"
-            title="{{t 'NFT.cancel_sell'}}">
-        <button type="button" {{on "click" this.cancel_sell}} class="button-icon-tb btn btn-fill btn-warning">
-          <i class="icon-tb icon-cancelsell"></i>
-        </button>
-      </span>
-    {{/if}}
-    <br/>
-    <br/>
-    <p>{{t 'NFT.selling_for'}} : {{priceEther}}
-      <img src="{{rootURL}}/assets/img/logo/tfuel.png" style="width: 20px; margin-left: 3px;"/>
-    </p>
-  {{else if (eq availiability 5)}}
-    {{nft-actions/transfer nft=nft setTooltip=setTooltip}}
-    {{#async-await marketPlaceStatus as |isApproved|}}
-      {{#if isApproved}}
-        <form {{on 'submit' this.sell_nft}}>
-          <br/>
-          <p>{{t 'NFT.sell_for'}}:</p>
-          <Input
-            @class="form-control nft-sell-price-input"
-            @type="number"
-            placeholder="{{t 'NFT.asking_price'}}"
-            @value={{this.sellPrice}}
-            @min="0"
-            @step="1"
-            required
-          />
-          <i class="icon-tb icon-tfuel-2" style="
+{{#if (eq sellStatus 0)}}
+  {{nft-actions/transfer nft=nft setTooltip=setTooltip}}
+  {{#async-await marketPlaceStatus as |isApproved|}}
+    {{#if isApproved}}
+      <form {{on 'submit' this.sell_nft}}>
+        <br/>
+        <p>{{t 'NFT.sell_for'}}:</p>
+        <Input
+          @class="form-control nft-sell-price-input"
+          @type="number"
+          placeholder="{{t 'NFT.asking_price'}}"
+          @value={{this.sellPrice}}
+          @min="0"
+          @step="1"
+          required
+        />
+        <i class="icon-tb icon-tfuel-2" style="
               font-size: 38px;
               position: absolute;
               margin-left: -43px;
           "></i>
-          {{#if commitingToApprove}}
-            <button class="btn btn-fill button-icon-square btn-success">
-              <img width="14" src="/assets/img/loader.gif"/>
-            </button>
-          {{else}}
-            <span data-toggle="tooltip" data-placement="top" title="{{t 'NFT.sell_item'}}">
+        {{#if commitingToApprove}}
+          <button class="btn btn-fill button-icon-square btn-success">
+            <img width="14" src="/assets/img/loader.gif"/>
+          </button>
+        {{else}}
+          <span data-toggle="tooltip" data-placement="top" title="{{t 'NFT.sell_item'}}">
               <button type="submit" class="button-icon-tb btn btn-fill btn-success">
                 <i class="icon-tb icon-ok"></i>
               </button>
             </span>
-          {{/if}}
-          {{#if cancelApproveLoading}}
-            <button type="button" class="btn button-icon-square btn-fill btn-warning">
-              <img width="14" src="/assets/img/loader.gif"/>
-            </button>
-          {{else}}
-            <span data-toggle="tooltip" data-placement="top"
-                  title="{{t 'global.cancel'}}">
+        {{/if}}
+        {{#if cancelApproveLoading}}
+          <button type="button" class="btn button-icon-square btn-fill btn-warning">
+            <img width="14" src="/assets/img/loader.gif"/>
+          </button>
+        {{else}}
+          <span data-toggle="tooltip" data-placement="top"
+                title="{{t 'global.cancel'}}">
             <button type="button" class="button-icon-tb btn btn-fill btn-warning" {{on 'click'
                                                                                        cancel_approve_for_sell}}>
               <i class="icon-tb icon-cancel"></i>
             </button>
           </span>
-          {{/if}}
-        </form>
-      {{else if approveLoading}}
-        <span data-toggle="tooltip" data-placement="top"
-              title="{{t 'NFT.once_approved'}}">
+        {{/if}}
+      </form>
+    {{else if approveLoading}}
+      <span data-toggle="tooltip" data-placement="top"
+            title="{{t 'NFT.once_approved'}}">
           <button type="button" class="btn button-icon-square btn-fill btn-primary">
              <img width="14" src="/assets/img/loader.gif"/>
           </button>
         </span>
-      {{else}}
-        <span data-toggle="tooltip" data-placement="top" title="{{t 'NFT.once_approved'}}">
+    {{else}}
+      <span data-toggle="tooltip" data-placement="top" title="{{t 'NFT.once_approved'}}">
           <button type="button" class="btn btn-fill button-icon-tb btn-primary" {{on "click" approve_for_sell}}>
              <i class="icon-tb icon-sell"></i>
           </button>
         </span>
-      {{/if}}
-    {{/async-await}}
-  {{else if (eq availiability 6)}}
-    {{nft-actions/buy nft=nft}}
-    <br>
-    On sell for {{priceEther}} Tfuels
+    {{/if}}
+  {{/async-await}}
+{{else if (eq sellStatus 1)}}
+  {{#if cancelLoading}}
+    <button type="button" class="btn button-icon-square button-icon-square btn-fill btn-warning">
+      <img width="14" src="/assets/img/loader.gif"/>
+    </button>
   {{else}}
-    <span data-toggle="tooltip" data-placement="top" title="">
+    <span data-toggle="tooltip" data-placement="top"
+          title="{{t 'NFT.cancel_sell'}}:  {{priceEther}}">
+        <button type="button" {{on "click" this.cancel_sell}} class="button-icon-tb btn btn-fill btn-warning">
+          <i class="icon-tb icon-cancelsell"></i>
+        </button>
+      </span>
+  {{/if}}
+{{else if (eq sellStatus 2)}}
+  <!--nothing to do here -->
+{{else if (eq sellStatus 3)}}
+  {{nft-actions/buy nft=nft}}
+{{else}}
+  <span data-toggle="tooltip" data-placement="top" title="">
       <button type="button" disabled class="button-icon-tb btn btn-fill btn-grey">
         <i class="icon-tb icon-transfer"></i>
       </button>
     </span>
-  {{/if}}
-{{/async-await}}
+{{/if}}
+
+{{#if (eq metamaskStatus 0)}}
+  <!--nothing to do here -->
+{{else if (eq metamaskStatus 1)}}
+  <!--nothing to do here -->
+{{else if (eq metamaskStatus 2)}}
+  <span data-toggle="tooltip" data-placement="top"
+        title="{{t 'domain.connect_to_metamask'}}">
+      <button type="button" disabled class="button-icon-tb btn btn-fill btn-grey">
+           <i class="tim-icons icon-coins"></i>
+      </button>
+    </span>
+{{else if (eq metamaskStatus 3)}}
+  {{nft-actions/offer nft=nft setTooltip=setTooltip}}
+{{/if}}

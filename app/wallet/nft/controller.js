@@ -16,6 +16,7 @@ export default class NFTController extends Controller {
 
   // Manage facets
   @tracked onlyTNS = false;
+  @tracked onlyOffers = false;
 
   @computed('model.totalCount')
   get totalPageNumber() {
@@ -26,6 +27,9 @@ export default class NFTController extends Controller {
     const filters = [`pageNumber=${current}`];
     if (this.onlyTNS) {
       filters.push(`contractAddr=${this.abi.tnsRegistrarContractAddr}`);
+    }
+    if (this.onlyOffers) {
+      filters.push(`onlyOffers=${true}`);
     }
     this.model = await this.model.wallets.reduce(async (total, wallet) => {
       const fetched = await fetch(`/api/explorer/wallet-nft/${wallet}?${filters.join("&")}`);
@@ -94,5 +98,25 @@ export default class NFTController extends Controller {
     this.onlyTNS = !this.onlyTNS;
     this.currentPage = 1;
     await this.changePagination(this.currentPage);
+  }
+
+  @action
+  async toggleOffers() {
+    this.onlyOffers = !this.onlyOffers;
+    this.currentPage = 1;
+    await this.changePagination(this.currentPage);
+  }
+
+  @action
+  async toggleOffered(){
+    this.currentPage = 1;
+    const filters = [`pageNumber=${this.currentPage}`];
+    this.model = await this.model.wallets.reduce(async (total, wallet) => {
+      const fetched = await fetch(`/api/explorer/wallet-nft-offers/${wallet}?${filters.join("&")}`);
+      const fetchedJSON = await fetched.json();
+      total.totalCount += fetchedJSON.totalCount;
+      total.NFTs.push(...fetchedJSON.NFTs);
+      return total;
+    }, {totalCount: 0, NFTs: [], wallets: this.model.wallets});
   }
 }

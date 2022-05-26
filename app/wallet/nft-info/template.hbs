@@ -52,6 +52,13 @@
       </div>
     </div>
 
+    <div class="card card-user card-nft-info">
+      <div class="nft-info-artist">
+        <h3 style="margin-bottom: 0px;">Offers :</h3>
+        {{marketplace/offers nft=nft}}
+      </div>
+    </div>
+
     {{#if nft.properties.artist}}
       <div class="card card-user card-nft-info">
         <div class="nft-info-artist">
@@ -92,4 +99,4 @@
       {{domains/nft-info/tns nft=nft}}
     {{/if}}
   </div>
-</div> 
+</div>

@@ -52,7 +52,7 @@ export default class ABIService extends Service {
   }
 
   get ThetaboardOfferAddr() {
-    return "0x7831bA239b42acb4e9339991bE8b4B67bF18892B";
+    return "0x97D3EdFe60c8976eaf5d2D7e87FA8229dFC897f2";
   }
 }
 
@@ -1899,8 +1899,7 @@ const thetaboardOffer = [
   },
   {
     "stateMutability": "payable",
-    "type": "fallback",
-    "payable": true
+    "type": "fallback"
   },
   {
     "inputs": [],
@@ -1913,13 +1912,11 @@ const thetaboardOffer = [
       }
     ],
     "stateMutability": "view",
-    "type": "function",
-    "constant": true
+    "type": "function"
   },
   {
     "stateMutability": "payable",
-    "type": "receive",
-    "payable": true
+    "type": "receive"
   },
   {
     "inputs": [],
@@ -1932,8 +1929,7 @@ const thetaboardOffer = [
       }
     ],
     "stateMutability": "view",
-    "type": "function",
-    "constant": true
+    "type": "function"
   },
   {
     "inputs": [
@@ -1951,8 +1947,7 @@ const thetaboardOffer = [
     "name": "createNewOffer",
     "outputs": [],
     "stateMutability": "payable",
-    "type": "function",
-    "payable": true
+    "type": "function"
   },
   {
     "inputs": [
@@ -1965,8 +1960,7 @@ const thetaboardOffer = [
     "name": "changeOffer",
     "outputs": [],
     "stateMutability": "payable",
-    "type": "function",
-    "payable": true
+    "type": "function"
   },
   {
     "inputs": [
@@ -2065,8 +2059,7 @@ const thetaboardOffer = [
       }
     ],
     "stateMutability": "view",
-    "type": "function",
-    "constant": true
+    "type": "function"
   },
   {
     "inputs": [
@@ -2127,8 +2120,7 @@ const thetaboardOffer = [
       }
     ],
     "stateMutability": "view",
-    "type": "function",
-    "constant": true
+    "type": "function"
   },
   {
     "inputs": [
@@ -2184,8 +2176,7 @@ const thetaboardOffer = [
       }
     ],
     "stateMutability": "view",
-    "type": "function",
-    "constant": true
+    "type": "function"
   },
   {
     "inputs": [
@@ -2241,8 +2232,7 @@ const thetaboardOffer = [
       }
     ],
     "stateMutability": "view",
-    "type": "function",
-    "constant": true
+    "type": "function"
   },
   {
     "inputs": [
@@ -2308,8 +2298,68 @@ const thetaboardOffer = [
       }
     ],
     "stateMutability": "view",
-    "type": "function",
-    "constant": true
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "nftContract",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "tokenId",
+        "type": "uint256"
+      }
+    ],
+    "name": "getByNftContractsTokenId",
+    "outputs": [
+      {
+        "components": [
+          {
+            "internalType": "uint256",
+            "name": "itemId",
+            "type": "uint256"
+          },
+          {
+            "internalType": "address",
+            "name": "nftContract",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "tokenId",
+            "type": "uint256"
+          },
+          {
+            "internalType": "address payable",
+            "name": "offerer",
+            "type": "address"
+          },
+          {
+            "internalType": "address payable",
+            "name": "offered",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "price",
+            "type": "uint256"
+          },
+          {
+            "internalType": "bool",
+            "name": "isSold",
+            "type": "bool"
+          }
+        ],
+        "internalType": "struct ThetaboardOffer.OfferItem[]",
+        "name": "",
+        "type": "tuple[]"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
   },
   {
     "inputs": [
