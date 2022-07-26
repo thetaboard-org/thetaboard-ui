@@ -9,8 +9,7 @@ export default class SecondaryRoute extends Route {
       fetch(`/api/marketplace`),
       fetch(`/api/marketplace/facets`),
     ]);
-    const marketplaceInfo = await marketplaceInfoFetch.json();
-    const facets = await facetsFetch.json();
+    const [marketplaceInfo, facets] = await Promise.all([marketplaceInfoFetch.json(), facetsFetch.json()]);
     return {marketplaceInfo: marketplaceInfo, facets: facets};
   }
 }

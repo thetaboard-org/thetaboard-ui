@@ -15,8 +15,27 @@ export default class NFTController extends Controller {
   @tracked currentPage = 1;
 
   // Manage facets
-  @tracked onlyTNS = false;
-  @tracked onlyOffers = false;
+  @tracked overallFilter = "all";
+  overallFiltersValues = ["all", "offers", "offered"];
+
+  // Search Options
+  @tracked search = '';
+  @tracked selectedArtists = [];
+  @tracked selectedDrops = [];
+  @tracked selectedCategories = [];
+  @tracked currentPageNumber = 1;
+
+  get artists() {
+    return this.model.facets.artists;
+  }
+
+  get drops() {
+    return this.model.facets.drops;
+  }
+
+  get categories() {
+    return this.model.facets.categories;
+  }
 
   @computed('model.totalCount')
   get totalPageNumber() {
@@ -25,27 +44,31 @@ export default class NFTController extends Controller {
 
   async changePagination(current) {
     const filters = [`pageNumber=${current}`];
-    if (this.onlyTNS) {
-      filters.push(`contractAddr=${this.abi.tnsRegistrarContractAddr}`);
-    }
-    if (this.onlyOffers) {
+    let apiPath = `/api/explorer/wallet-nft`;
+    if (this.overallFilter === "offered") {
+      apiPath = `/api/explorer/wallet-nft-offers`;
+    } else if (this.overallFilter === "offers") {
       filters.push(`onlyOffers=${true}`);
+    } else {
+      // do nothing
     }
-    this.model = await this.model.wallets.reduce(async (total, wallet) => {
-      const fetched = await fetch(`/api/explorer/wallet-nft/${wallet}?${filters.join("&")}`);
+    const newNFTs = await this.model.wallets.reduce(async (total, wallet) => {
+      const fetched = await fetch(`${apiPath}/${wallet}?${filters.join("&")}`);
       const fetchedJSON = await fetched.json();
       total.totalCount += fetchedJSON.totalCount;
       total.NFTs.push(...fetchedJSON.NFTs);
       return total;
-    }, {totalCount: 0, NFTs: [], wallets: this.model.wallets});
-    $('nav[aria-label="Page navigation"] .pager li').removeClass("disabled");
+    }, {totalCount: 0, NFTs: []});
+    this.model.totalCount = newNFTs.totalCount;
+    this.model.NFTs = newNFTs.NFTs;
+    //$('nav[aria-label="Page navigation"] .pager li').removeClass("disabled");
   }
 
   @action
   pageChanged(current) {
     this.currentPage = current;
-    $('nav[aria-label="Page navigation"] .pager li').addClass("disabled");
-    Ember.run.debounce(this, this.changePagination, current, 1000, true);
+    //$('nav[aria-label="Page navigation"] .pager li').addClass("disabled");
+    //Ember.run.debounce(this, this.changePagination, current, 1000, true);
   }
 
   // Manage Metamask actions
@@ -94,8 +117,8 @@ export default class NFTController extends Controller {
   }
 
   @action
-  async toggleTNS() {
-    this.onlyTNS = !this.onlyTNS;
+  async toggleOverallFilter(value) {
+    this.overallFilter = value;
     this.currentPage = 1;
     await this.changePagination(this.currentPage);
   }
@@ -108,15 +131,51 @@ export default class NFTController extends Controller {
   }
 
   @action
-  async toggleOffered(){
+  async toggleOffered() {
     this.currentPage = 1;
     const filters = [`pageNumber=${this.currentPage}`];
-    this.model = await this.model.wallets.reduce(async (total, wallet) => {
+    const newNFTs = await this.model.wallets.reduce(async (total, wallet) => {
       const fetched = await fetch(`/api/explorer/wallet-nft-offers/${wallet}?${filters.join("&")}`);
       const fetchedJSON = await fetched.json();
       total.totalCount += fetchedJSON.totalCount;
       total.NFTs.push(...fetchedJSON.NFTs);
       return total;
-    }, {totalCount: 0, NFTs: [], wallets: this.model.wallets});
+    }, {totalCount: 0, NFTs: []});
+    this.model.totalCount = newNFTs.totalCount;
+    this.model.NFTs = newNFTs.NFTs;
   }
+
+  @action
+  async searchNFTs() {
+    debounce(this, this.changePagination, 500);
+  }
+
+  @action
+  searchMarketplace() {
+    this.currentPageNumber = 1;
+    debounce(this, this.changePagination, 500);
+  }
+
+  @action
+  changeArtist(artist) {
+    this.currentPageNumber = 1;
+    this.selectedArtists = artist;
+    debounce(this, this.changePagination, 500);
+  }
+
+  @action
+  changeDrop(drop) {
+    this.currentPageNumber = 1;
+    this.selectedDrops = drop;
+    debounce(this, this.changePagination, 500);
+  }
+
+
+  @action
+  changeCategory(categories) {
+    this.currentPageNumber = 1;
+    this.selectedCategories = categories;
+    debounce(this, this.changePagination, 500);
+  }
+
 }

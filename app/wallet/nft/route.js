@@ -9,6 +9,8 @@ export default class NFTRoute extends Route {
   @service abi;
 
   async model() {
+    const model = {totalCount: 0, NFTs: [], wallets: this.wallets, facets: {artists: [], drops: [], category: []}};
+
     if (this.thetaSdk.currentGroup) {
       let allWallets = this.thetaSdk.walletList.map((x) => x.wallet_address.toLowerCase());
       this.wallets = [...new Set(allWallets)];
@@ -16,16 +18,21 @@ export default class NFTRoute extends Route {
       this.wallets = this.thetaSdk.currentAccount;
     }
     if (!this.wallets) {
-      return [];
+      return model;
     } else {
-      const total = {totalCount: 0, NFTs: [], wallets: this.wallets};
       await Promise.all(this.wallets.map(async (wallet) => {
-        const fetched = await fetch(`/api/explorer/wallet-nft/${wallet}`);
-        const fetchedJSON = await fetched.json();
-        total.totalCount += fetchedJSON.totalCount;
-        total.NFTs.push(...fetchedJSON.NFTs);
+        const [nftsAPI, facetsAPI] = await Promise.all([
+          fetch(`/api/explorer/wallet-nft/${wallet}`),
+          fetch(`/api/explorer/wallet-nft-facets/${wallet}`)]);
+        const nfts = await nftsAPI.json();
+        const facets = await facetsAPI.json();
+        model.totalCount += nfts.totalCount;
+        model.NFTs.push(...nfts.NFTs);
+        model.facets.artists.push(...facets.artists);
+        model.facets.drops.push(...facets.drops);
+        model.facets.categories = facets.categories; // categories are the same for all, so we don't push
       }));
-      return total;
+      return model;
     }
   }
 }

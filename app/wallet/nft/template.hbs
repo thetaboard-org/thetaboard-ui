@@ -1,50 +1,45 @@
 {{page-title "NFT"}}
 
-<div class="card card-body" style="flex-direction: row;">
-  <div>
-    <p>
-      <button type="button" {{on "click" this.buyMetamask}} class="btn btn-fill btn-primary btn-left">
-        {{t 'NFT.use_metamask'}}
-      </button>
-      <br>
-      {{t 'NFT.early_nft_1'}}
-      <a href="#" id="walletAddr" {{action this.copySummaryToClipBoard 'NFT Address' 'walletAddr'}}>
-        0xBDfc0c687861a65F54211C55E4c53A140FE0Bf32</a><br>
-      {{t 'NFT.early_nft_2' htmlSafe=true}}
-      <br>
+<!--<div class="card card-body" style="flex-direction: row;">-->
+<!--  <div>-->
+<!--    <p>-->
+<!--      <button type="button" {{on "click" this.buyMetamask}} class="btn btn-fill btn-primary btn-left">-->
+<!--        {{t 'NFT.use_metamask'}}-->
+<!--      </button>-->
+<!--      <br>-->
+<!--      {{t 'NFT.early_nft_1'}}-->
+<!--      <a href="#" id="walletAddr" {{action this.copySummaryToClipBoard 'NFT Address' 'walletAddr'}}>-->
+<!--        0xBDfc0c687861a65F54211C55E4c53A140FE0Bf32</a><br>-->
+<!--      {{t 'NFT.early_nft_2' htmlSafe=true}}-->
+<!--      <br>-->
 
-    </p>
-  </div>
-  <div style="margin-left: auto;margin-right:20px">
-    <video width="200" onloadstart="this.volume=0" autoplay controls loop playsinline>
-      <source src="{{rootURL}}/assets/nft/winter_badge.mp4" type="video/mp4">
-    </video>
-  </div>
-</div>
+<!--    </p>-->
+<!--  </div>-->
+<!--  <div style="margin-left: auto;margin-right:20px">-->
+<!--    <video width="200" onloadstart="this.volume=0" autoplay controls loop playsinline>-->
+<!--      <source src="{{rootURL}}/assets/nft/winter_badge.mp4" type="video/mp4">-->
+<!--    </video>-->
+<!--  </div>-->
+<!--</div>-->
 
 <div class="content" id="nft-list">
   <div class="btn-group btn-group-toggle float-right">
-    <label class="btn btn-sm btn-primary btn-simple {{unless onlyTNS "active"}}" {{action "toggleTNS"}}>
+    <label class="btn btn-sm btn-primary btn-simple {{if (eq overallFilter "all") "active"}}" {{action
+      "toggleOverallFilter" "all"}}>
       <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">All NFTs</span>
       <span class="d-block d-sm-none">
           <i class="tim-icons icon-image-02"></i>
       </span>
     </label>
-    <label class="btn btn-sm btn-primary btn-simple {{if onlyTNS "active"}}" {{action "toggleTNS"}}>
-      <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">TNS</span>
-      <span class="d-block d-sm-none">
-        <i class="tim-icons  icon-book-bookmark"></i>
-      </span>
-    </label>
-  </div>
-  <div class="btn-group btn-group-toggle float-right">
-    <label class="btn btn-sm btn-primary btn-simple" {{action "toggleOffers"}}>
+    <label class="btn btn-sm btn-primary btn-simple  {{if (eq overallFilter "offers") "active"}}"  {{action
+      "toggleOverallFilter" "offers"}}>
       <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">Received Offers</span>
       <span class="d-block d-sm-none">
         <i class="tim-icons  icon-book-bookmark"></i>
       </span>
     </label>
-    <label class="btn btn-sm btn-primary btn-simple" {{action "toggleOffered"}}>
+    <label class="btn btn-sm btn-primary btn-simple {{if (eq overallFilter "offered") "active"}}" {{action
+      "toggleOverallFilter" "offered"}}>
       <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">Sent Offers</span>
       <span class="d-block d-sm-none">
         <i class="tim-icons  icon-book-bookmark"></i>
@@ -53,6 +48,46 @@
   </div>
   {{wallet/wallet-navbar onRouteChange=this.setQueryParam}}
   <div class="tile-container-market">
+    <div>
+      <div class="search-input-container-marketplace">
+        <Input
+          @placeholder="Search"
+          @type="text"
+          @class="input-search-marketplace"
+          @value={{search}}
+          {{on "keyup" this.searchNFTs}}
+        />
+      </div>
+      <PowerSelectMultiple
+        @searchEnabled={{true}}
+        @searchField="name"
+        @options={{this.artists}}
+        @selected={{this.selectedArtists}}
+        @placeholder="Select artists"
+        @onChange={{this.changeArtist}} as |artist|>
+        {{artist.name}}
+      </PowerSelectMultiple>
+
+      <PowerSelectMultiple
+        @searchEnabled={{true}}
+        @searchField="name"
+        @options={{this.drops}}
+        @selected={{this.selectedDrops}}
+        @placeholder="Select drops"
+        @onChange={{this.changeDrop}} as |drop|>
+        {{drop.name}}
+      </PowerSelectMultiple>
+
+      <PowerSelectMultiple
+        @searchEnabled={{true}}
+        @options={{this.categories}}
+        @selected={{this.selectedCategories}}
+        @placeholder="Select category"
+        @onChange={{this.changeCategory}} as |category|>
+        {{category.name}}
+      </PowerSelectMultiple>
+    </div>
+
     {{#each this.model.NFTs as |NFT|}}
       <div class="card tile-nft-marketplace">
 
@@ -86,8 +121,19 @@
       <div class="card">
         <div class="card-body">
           {{#if isWallet}}
-            <p>{{t 'NFT.no_nft'}}
-            </p>
+            {{#if (eq overallFilter "all")}}
+              <p>{{t 'NFT.no_nft'}}
+              </p>
+            {{else if  (eq overallFilter "offers")}}
+              <p>
+                This wallet received no offers
+              </p>
+            {{else if  (eq overallFilter "offered")}}
+              <p>
+                This wallet made no offers
+              </p>
+            {{/if}}
+
           {{else}}
             <p>{{t 'wallet_list.no_wallet'}}
               <LinkTo @route="my-wallets">{{t 'global.link_wallet'}}</LinkTo>
