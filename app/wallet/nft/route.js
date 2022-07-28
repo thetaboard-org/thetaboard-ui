@@ -9,14 +9,14 @@ export default class NFTRoute extends Route {
   @service abi;
 
   async model() {
-    const model = {totalCount: 0, NFTs: [], wallets: this.wallets, facets: {artists: [], drops: [], category: []}};
-
     if (this.thetaSdk.currentGroup) {
       let allWallets = this.thetaSdk.walletList.map((x) => x.wallet_address.toLowerCase());
       this.wallets = [...new Set(allWallets)];
     } else {
       this.wallets = this.thetaSdk.currentAccount;
     }
+    const model = {totalCount: 0, NFTs: [], wallets: this.wallets, facets: {artists: [], drops: [], category: []}};
+
     if (!this.wallets) {
       return model;
     } else {

@@ -2,6 +2,7 @@ import Controller from '@ember/controller';
 import {inject as service} from '@ember/service';
 import {action, computed} from '@ember/object';
 import {tracked} from '@glimmer/tracking';
+import {debounce} from '@ember/runloop';
 
 
 export default class NFTController extends Controller {
@@ -42,8 +43,13 @@ export default class NFTController extends Controller {
     return Math.ceil(this.model.totalCount / 12);
   }
 
-  async changePagination(current) {
-    const filters = [`pageNumber=${current}`];
+  async refreshNFTs() {
+
+  }
+
+
+  async changePagination() {
+    const filters = [`pageNumber=${this.currentPage}`];
     let apiPath = `/api/explorer/wallet-nft`;
     if (this.overallFilter === "offered") {
       apiPath = `/api/explorer/wallet-nft-offers`;
@@ -52,23 +58,26 @@ export default class NFTController extends Controller {
     } else {
       // do nothing
     }
-    const newNFTs = await this.model.wallets.reduce(async (total, wallet) => {
-      const fetched = await fetch(`${apiPath}/${wallet}?${filters.join("&")}`);
-      const fetchedJSON = await fetched.json();
-      total.totalCount += fetchedJSON.totalCount;
-      total.NFTs.push(...fetchedJSON.NFTs);
-      return total;
-    }, {totalCount: 0, NFTs: []});
-    this.model.totalCount = newNFTs.totalCount;
-    this.model.NFTs = newNFTs.NFTs;
-    //$('nav[aria-label="Page navigation"] .pager li').removeClass("disabled");
+
+    const artistIds = this.selectedArtists.map((x) => x.id).join(',');
+    const dropsIds = this.selectedDrops.map((x) => x.id).join(',');
+    const categories = this.selectedCategories.map((x) => x.id).join(',');
+    const wallets = this.model.wallets.join(',');
+    filters.push(`search=${this.search}`, `artist=${artistIds}`, `drop=${dropsIds}`, `category=${categories}`, `wallets=${wallets}`);
+    // todo this is a hack for now. As wallets as passed as a query params
+    const wallet = this.model.wallets[0];
+    const fetched = await fetch(`${apiPath}/${wallet}?${filters.join("&")}`);
+    const fetchedJSON = await fetched.json();
+    this.set("model.totalCount", fetchedJSON.totalCount);
+    this.set("model.NFTs", fetchedJSON.NFTs);
+    $('nav[aria-label="Page navigation"] .pager li').removeClass("disabled");
   }
 
   @action
   pageChanged(current) {
     this.currentPage = current;
-    //$('nav[aria-label="Page navigation"] .pager li').addClass("disabled");
-    //Ember.run.debounce(this, this.changePagination, current, 1000, true);
+    $('nav[aria-label="Page navigation"] .pager li').addClass("disabled");
+    debounce(this, this.changePagination, current, 1000);
   }
 
   // Manage Metamask actions
@@ -120,14 +129,14 @@ export default class NFTController extends Controller {
   async toggleOverallFilter(value) {
     this.overallFilter = value;
     this.currentPage = 1;
-    await this.changePagination(this.currentPage);
+    await this.changePagination();
   }
 
   @action
   async toggleOffers() {
     this.onlyOffers = !this.onlyOffers;
     this.currentPage = 1;
-    await this.changePagination(this.currentPage);
+    await this.changePagination();
   }
 
   @action
@@ -147,12 +156,7 @@ export default class NFTController extends Controller {
 
   @action
   async searchNFTs() {
-    debounce(this, this.changePagination, 500);
-  }
-
-  @action
-  searchMarketplace() {
-    this.currentPageNumber = 1;
+    this.currentPage = 1
     debounce(this, this.changePagination, 500);
   }
 
@@ -160,6 +164,7 @@ export default class NFTController extends Controller {
   changeArtist(artist) {
     this.currentPageNumber = 1;
     this.selectedArtists = artist;
+    this.changePagination();
     debounce(this, this.changePagination, 500);
   }
 
