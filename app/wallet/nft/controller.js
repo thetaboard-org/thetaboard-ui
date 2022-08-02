@@ -26,6 +26,13 @@ export default class NFTController extends Controller {
   @tracked selectedCategories = [];
   @tracked currentPageNumber = 1;
 
+  resetFilters() {
+    this.search = '';
+    this.selectedArtists = [];
+    this.selectedDrops = [];
+    this.selectedCategories = [];
+  }
+
   get artists() {
     return this.model.facets.artists;
   }
@@ -42,11 +49,6 @@ export default class NFTController extends Controller {
   get totalPageNumber() {
     return Math.ceil(this.model.totalCount / 12);
   }
-
-  async refreshNFTs() {
-
-  }
-
 
   async changePagination() {
     const filters = [`pageNumber=${this.currentPage}`];
@@ -125,33 +127,13 @@ export default class NFTController extends Controller {
     }
   }
 
+
   @action
   async toggleOverallFilter(value) {
+    this.resetFilters();
     this.overallFilter = value;
     this.currentPage = 1;
     await this.changePagination();
-  }
-
-  @action
-  async toggleOffers() {
-    this.onlyOffers = !this.onlyOffers;
-    this.currentPage = 1;
-    await this.changePagination();
-  }
-
-  @action
-  async toggleOffered() {
-    this.currentPage = 1;
-    const filters = [`pageNumber=${this.currentPage}`];
-    const newNFTs = await this.model.wallets.reduce(async (total, wallet) => {
-      const fetched = await fetch(`/api/explorer/wallet-nft-offers/${wallet}?${filters.join("&")}`);
-      const fetchedJSON = await fetched.json();
-      total.totalCount += fetchedJSON.totalCount;
-      total.NFTs.push(...fetchedJSON.NFTs);
-      return total;
-    }, {totalCount: 0, NFTs: []});
-    this.model.totalCount = newNFTs.totalCount;
-    this.model.NFTs = newNFTs.NFTs;
   }
 
   @action
