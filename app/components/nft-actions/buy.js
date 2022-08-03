@@ -3,6 +3,8 @@ import { inject as service } from '@ember/service';
 import { computed } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
+import { ethers } from 'ethers';
+
 
 export default class NftActionsBuyComponent extends Component {
   @service utils;
@@ -22,14 +24,18 @@ export default class NftActionsBuyComponent extends Component {
     return this.args.nft;
   }
 
-  @computed('metamask.isInstalled', 'metamask.isThetaBlockchain', 'metamask.isConnected','metamask.currentAccount')
+  get price(){
+    return ethers.utils.formatUnits(this.nft.properties.selling_info.price);
+  }
+
+  @computed('metamask.isInstalled', 'metamask.isThetaBlockchain', 'metamask.isConnected')
   get metamaskAvailable() {
     // return 0 if metamask is not installed
     // return 1 if not theta blockchain
     // return 2 if metamask is installed but not linked to thetaboard.io
     // return 3 if metamask is installed and linked
 
-    const checkOwner = async () => {
+    const checkOwner = () => {
       this.setTooltip();
       if (!this.metamask.isInstalled) {
         return 0;

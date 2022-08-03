@@ -34,10 +34,6 @@ export default class SecondaryController extends Controller {
     return this.model.facets.priceRanges;
   }
 
-  get categories() {
-    return this.model.facets.categories;
-  }
-
   get sortBy() {
     return [{
       name: "Price: Low to High",

@@ -4,7 +4,7 @@ import { later } from '@ember/runloop';
 import { action } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
 import { ethers } from 'ethers';
-import * as thetajs from '@thetalabs/theta-js';
+
 import {
   isDomainAvailable,
   getReverseName,

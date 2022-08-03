@@ -2,6 +2,7 @@ import Controller from '@ember/controller';
 import {inject as service} from '@ember/service';
 import {action, computed} from '@ember/object';
 import {tracked} from '@glimmer/tracking';
+import {debounce} from '@ember/runloop';
 
 
 export default class NFTController extends Controller {
@@ -15,25 +16,62 @@ export default class NFTController extends Controller {
   @tracked currentPage = 1;
 
   // Manage facets
-  @tracked onlyTNS = false;
+  @tracked overallFilter = "all";
+  overallFiltersValues = ["all", "offers", "offered"];
+
+  // Search Options
+  @tracked search = '';
+  @tracked selectedArtists = [];
+  @tracked selectedDrops = [];
+  @tracked selectedCategories = [];
+  @tracked currentPageNumber = 1;
+
+  resetFilters() {
+    this.search = '';
+    this.selectedArtists = [];
+    this.selectedDrops = [];
+    this.selectedCategories = [];
+  }
+
+  get artists() {
+    return this.model.facets.artists;
+  }
+
+  get drops() {
+    return this.model.facets.drops;
+  }
+
+  get categories() {
+    return this.model.facets.categories;
+  }
 
   @computed('model.totalCount')
   get totalPageNumber() {
     return Math.ceil(this.model.totalCount / 12);
   }
 
-  async changePagination(current) {
-    const filters = [`pageNumber=${current}`];
-    if (this.onlyTNS) {
-      filters.push(`contractAddr=${this.abi.tnsRegistrarContractAddr}`);
+  async changePagination() {
+    const filters = [`pageNumber=${this.currentPage}`];
+    let apiPath = `/api/explorer/wallet-nft`;
+    if (this.overallFilter === "offered") {
+      apiPath = `/api/explorer/wallet-nft-offers`;
+    } else if (this.overallFilter === "offers") {
+      filters.push(`onlyOffers=${true}`);
+    } else {
+      // do nothing
     }
-    this.model = await this.model.wallets.reduce(async (total, wallet) => {
-      const fetched = await fetch(`/api/explorer/wallet-nft/${wallet}?${filters.join("&")}`);
-      const fetchedJSON = await fetched.json();
-      total.totalCount += fetchedJSON.totalCount;
-      total.NFTs.push(...fetchedJSON.NFTs);
-      return total;
-    }, {totalCount: 0, NFTs: [], wallets: this.model.wallets});
+
+    const artistIds = this.selectedArtists.map((x) => x.id).join(',');
+    const dropsIds = this.selectedDrops.map((x) => x.id).join(',');
+    const categories = this.selectedCategories.map((x) => x.id).join(',');
+    const wallets = this.model.wallets.join(',');
+    filters.push(`search=${this.search}`, `artist=${artistIds}`, `drop=${dropsIds}`, `category=${categories}`, `wallets=${wallets}`);
+    // todo this is a hack for now. As wallets as passed as a query params
+    const wallet = this.model.wallets[0];
+    const fetched = await fetch(`${apiPath}/${wallet}?${filters.join("&")}`);
+    const fetchedJSON = await fetched.json();
+    this.set("model.totalCount", fetchedJSON.totalCount);
+    this.set("model.NFTs", fetchedJSON.NFTs);
     $('nav[aria-label="Page navigation"] .pager li').removeClass("disabled");
   }
 
@@ -41,7 +79,7 @@ export default class NFTController extends Controller {
   pageChanged(current) {
     this.currentPage = current;
     $('nav[aria-label="Page navigation"] .pager li').addClass("disabled");
-    Ember.run.debounce(this, this.changePagination, current, 1000, true);
+    debounce(this, this.changePagination, current, 1000);
   }
 
   // Manage Metamask actions
@@ -89,10 +127,42 @@ export default class NFTController extends Controller {
     }
   }
 
+
   @action
-  async toggleTNS() {
-    this.onlyTNS = !this.onlyTNS;
+  async toggleOverallFilter(value) {
+    this.resetFilters();
+    this.overallFilter = value;
     this.currentPage = 1;
-    await this.changePagination(this.currentPage);
+    await this.changePagination();
   }
+
+  @action
+  async searchNFTs() {
+    this.currentPage = 1
+    debounce(this, this.changePagination, 500);
+  }
+
+  @action
+  changeArtist(artist) {
+    this.currentPageNumber = 1;
+    this.selectedArtists = artist;
+    this.changePagination();
+    debounce(this, this.changePagination, 500);
+  }
+
+  @action
+  changeDrop(drop) {
+    this.currentPageNumber = 1;
+    this.selectedDrops = drop;
+    debounce(this, this.changePagination, 500);
+  }
+
+
+  @action
+  changeCategory(categories) {
+    this.currentPageNumber = 1;
+    this.selectedCategories = categories;
+    debounce(this, this.changePagination, 500);
+  }
+
 }

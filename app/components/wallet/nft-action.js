@@ -36,42 +36,53 @@ export default class NftActionComponent extends Component {
     return new ethers.Contract(this.abi.ThetaboardMarketplaceAddr, this.abi.ThetaboardMarketplace, signer);
   }
 
-  @computed("metamask.isInstalled", "metamask.isThetaBlockchain", "metamask.isConnected", "metamask.currentAccount")
-  get metamaskAvailable() {
+  @computed("metamask.isInstalled", "metamask.isThetaBlockchain", "metamask.isConnected")
+  get metamaskStatus() {
     // return 0 if metamask is not installed
     // return 1 if not theta blockchain
     // return 2 if metamask is installed but not linked to thetaboard.io
-    // return 3 if metamask is installed and linked but account is not the same as the NFT
-    // return 4 if NFT is getting sold by current metamask wallet
-    // return 5 if NFT is owned by current metamask wallet
-    // return 6 if NFT is currently sold by someone else
+    // return 3 if all good
+    if (!this.metamask.isInstalled) {
+      return 0;
+    } else if (!this.metamask.isThetaBlockchain) {
+      return 1;
+    } else if (!this.metamask.isConnected) {
+        return 2;
+    } else {
+      return 3;
+    }
+  }
 
-    const checkOwner = async () => {
-      this.setTooltip();
-      if (!this.metamask.isInstalled) {
-        return 0;
-      } else if (!this.metamask.isThetaBlockchain) {
-        return 1;
+  @computed("nft.contract_addr", "nft.original_token_id", "metamask.currentAccount")
+  get isOwner() {
+    const isOwner = () => {
+      if (!this.metamask.currentAccount) {
+        return false;
+      } else if (this.nft.properties.selling_info) {
+        return this.nft.properties.selling_info.seller.toLowerCase() === this.metamask.currentAccount.toLowerCase();
       } else {
-        if (!this.metamask.isConnected) {
-          return 2;
-        }
-
-        const currentAccount = this.metamask.currentAccount.toLowerCase();
-        const nft_contract = new ethers.Contract(this.nft.contract_addr, this.abi.ThetaboardNFT, this.metamask.provider);
-        const token_owner = await nft_contract.ownerOf(this.nft.original_token_id);
-        if (token_owner.toLowerCase() === currentAccount) {
-          return 5;
-        } else if (this.nft.properties.selling_info && this.nft.properties.selling_info.seller.toLowerCase() === currentAccount) {
-          return 4;
-        } else if (this.nft.properties.selling_info) {
-          return 6;
-        } else {
-          return 3;
-        }
+        return this.nft.owner.toLowerCase() === this.metamask.currentAccount.toLowerCase();
       }
     }
-    return checkOwner();
+    return isOwner()
+  }
+
+  @computed("metamask.currentAccount")
+  get sellStatus() {
+    // return 0 if NFT is not sold but owned by current metamask wallet
+    // return 1 if NFT is sold and owned by current metamask wallet
+    // return 2 if NFT is not sold and owned by someone else
+    // return 3 if NFT is currently sold by someone else
+    this.setTooltip();
+    if (this.isOwner && !this.nft.properties.selling_info) {
+      return 0;
+    } else if (this.isOwner && this.nft.properties.selling_info) {
+      return 1;
+    } else if (!this.isOwner && !this.nft.properties.selling_info) {
+      return 2;
+    } else if (!this.isOwner && this.nft.properties.selling_info) {
+      return 3;
+    }
   }
 
   @computed('marketplaceChanged')
@@ -79,26 +90,30 @@ export default class NftActionComponent extends Component {
     // return 0 not approved
     // return 1 if approved
     // return 2 if on sale
+    try {
+      const checkStatus = async () => {
+        await this.metamask.initMeta();
+        const nft_contract = new ethers.Contract(this.nft.contract_addr, this.abi.ThetaboardNFT, this.metamask.provider);
+        const approved = await nft_contract.getApproved(this.nft.original_token_id);
 
-    const checkStatus = async () => {
-      await this.metamask.initMeta();
-      const nft_contract = new ethers.Contract(this.nft.contract_addr, this.abi.ThetaboardNFT, this.metamask.provider);
-      const approved = await nft_contract.getApproved(this.nft.original_token_id);
-
-      if (approved !== this.abi.ThetaboardMarketplaceAddr) {
-        return 0;
-      } else {
-        const itemOnMarketplace = await this.marketplaceContract
-          .getByNftContractTokenId(this.nft.contract_addr, this.nft.original_token_id);
-        if (itemOnMarketplace.itemId === 0) {
-          // is approved but not on sale
-          return 1;
+        if (approved !== this.abi.ThetaboardMarketplaceAddr) {
+          return 0;
         } else {
-          return 2;
+          const itemOnMarketplace = await this.marketplaceContract
+            .getByNftContractTokenId(this.nft.contract_addr, this.nft.original_token_id);
+          if (itemOnMarketplace.itemId === 0) {
+            // is approved but not on sale
+            return 1;
+          } else {
+            return 2;
+          }
         }
       }
+
+      return checkStatus();
+    } catch (e) {
+      debugger
     }
-    return checkStatus();
   }
 
   setTooltip() {

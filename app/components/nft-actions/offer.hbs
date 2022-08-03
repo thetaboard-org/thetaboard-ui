@@ -1,0 +1,53 @@
+{{#if (eq offerStatus 0)}}
+  <span data-toggle="tooltip" data-placement="top" title=""
+        data-original-title="You can't make an offer to your own NFT">
+      <button disabled="" class="button-icon-tb btn btn-fill btn-grey" type="button">
+         <i class="tim-icons icon-coins"></i>
+      </button>
+    </span>
+{{else if (eq offerStatus 1)}}
+  <span data-toggle="tooltip" data-placement="top" title=""
+        data-original-title="You can't make an offer to your own NFT">
+      <button disabled="" class="button-icon-tb btn btn-fill btn-grey" type="button">
+           <i class="tim-icons icon-coins"></i>
+        <span class="badge badge-secondary" style="position: absolute;margin-left: -10px;"> {{offersCount}}</span>
+       </button>
+    </span>
+{{else if (eq offerStatus 2)}}
+  {{#if offerPanel}}
+    <p>Make an Offer</p>
+    <p></p>
+    <form {{on 'submit' this.makeOffer}}>
+      <Input
+        @placeholder="Enter amount"
+        @type="number" min="1" class="form-control border-color input-domain-transfer-address"
+        @value={{offerPrice}}
+        required></Input>
+      <p></p>
+      {{#if offering}}
+        <img width="40" src="/assets/img/loader.gif"/>
+      {{else if commitingToTransfer}}
+        <img width="40" src="/assets/img/see-mm-small.png"/>
+        <img class="btn-icon-global right-margin" {{on 'click' toggleOfferPanel}}
+             src="/assets/img/cancel-small.png"/>
+      {{else}}
+        <img class="btn-icon-global" type="image" src="/assets/img/ok-small.png" {{on 'click' this.makeOffer}}>
+        <img class="btn-icon-global right-margin" {{on 'click' toggleOfferPanel}}
+             src="/assets/img/cancel-small.png"/>
+      {{/if}}
+      <br/><br/>
+    </form>
+  {{else}}
+    <span data-toggle="tooltip" data-placement="top" title="Make an offer">
+    <button type="button" class="button-icon-tb btn btn-fill btn-primary" {{on 'click' toggleOfferPanel}}>
+        <i class="tim-icons icon-coins"></i>
+    </button>
+    </span>
+  {{/if}}
+{{else if (eq offerStatus 3)}}
+  <span data-toggle="tooltip" data-placement="top" title="Cancel offer of {{price}} Tfuels">
+        <button type="button" class="button-icon-tb btn btn-fill btn-secondary" {{action "cancelOffer"}}>
+            <i class="tim-icons icon-coins"></i>
+        </button>
+    </span>
+{{/if}}
