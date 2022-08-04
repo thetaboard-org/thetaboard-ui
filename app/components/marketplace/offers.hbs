@@ -6,15 +6,20 @@
         <td>
           <p class="title"> Offer of: {{weiFormat offer.price}}{{t 'global.tfuel'}}</p>
         </td>
-        <td class="td-actions text-right">
-          <button type="button" class="btn btn-fill button-icon-tb btn-primary" {{on "click" (fn acceptOffer offer.itemId)}}>
-            <i class="tim-icons icon-check-2"></i>
-          </button>
 
-          <button type="button" {{on "click" (fn rejectOffer offer.itemId)}} class="button-icon-tb btn btn-fill btn-warning">
-            <i class="tim-icons icon-simple-remove"></i>
-          </button>
-        </td>
+        {{#if isOwner}}
+          <td class="td-actions text-right">
+            <button type="button" class="btn btn-fill button-icon-tb btn-primary" {{on "click"
+                                                                                       (fn acceptOffer offer.itemId)}}>
+              <i class="tim-icons icon-check-2"></i>
+            </button>
+
+            <button type="button" {{on "click" (fn rejectOffer offer.itemId)}}
+                    class="button-icon-tb btn btn-fill btn-warning">
+              <i class="tim-icons icon-simple-remove"></i>
+            </button>
+          </td>
+        {{/if}}
       </tr>
     {{/each}}
     </tbody>

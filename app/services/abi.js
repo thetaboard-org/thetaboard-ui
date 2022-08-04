@@ -52,7 +52,7 @@ export default class ABIService extends Service {
   }
 
   get ThetaboardOfferAddr() {
-    return "0x97D3EdFe60c8976eaf5d2D7e87FA8229dFC897f2";
+    return "0x890EC496Bc6e02a46439d0E22fA12d692f7B7920";
   }
 }
 
@@ -1899,7 +1899,8 @@ const thetaboardOffer = [
   },
   {
     "stateMutability": "payable",
-    "type": "fallback"
+    "type": "fallback",
+    "payable": true
   },
   {
     "inputs": [],
@@ -1912,11 +1913,13 @@ const thetaboardOffer = [
       }
     ],
     "stateMutability": "view",
-    "type": "function"
+    "type": "function",
+    "constant": true
   },
   {
     "stateMutability": "payable",
-    "type": "receive"
+    "type": "receive",
+    "payable": true
   },
   {
     "inputs": [],
@@ -1929,7 +1932,8 @@ const thetaboardOffer = [
       }
     ],
     "stateMutability": "view",
-    "type": "function"
+    "type": "function",
+    "constant": true
   },
   {
     "inputs": [
@@ -1947,7 +1951,8 @@ const thetaboardOffer = [
     "name": "createNewOffer",
     "outputs": [],
     "stateMutability": "payable",
-    "type": "function"
+    "type": "function",
+    "payable": true
   },
   {
     "inputs": [
@@ -1960,7 +1965,8 @@ const thetaboardOffer = [
     "name": "changeOffer",
     "outputs": [],
     "stateMutability": "payable",
-    "type": "function"
+    "type": "function",
+    "payable": true
   },
   {
     "inputs": [
@@ -2059,7 +2065,8 @@ const thetaboardOffer = [
       }
     ],
     "stateMutability": "view",
-    "type": "function"
+    "type": "function",
+    "constant": true
   },
   {
     "inputs": [
@@ -2120,7 +2127,8 @@ const thetaboardOffer = [
       }
     ],
     "stateMutability": "view",
-    "type": "function"
+    "type": "function",
+    "constant": true
   },
   {
     "inputs": [
@@ -2176,7 +2184,8 @@ const thetaboardOffer = [
       }
     ],
     "stateMutability": "view",
-    "type": "function"
+    "type": "function",
+    "constant": true
   },
   {
     "inputs": [
@@ -2232,7 +2241,8 @@ const thetaboardOffer = [
       }
     ],
     "stateMutability": "view",
-    "type": "function"
+    "type": "function",
+    "constant": true
   },
   {
     "inputs": [
@@ -2298,7 +2308,8 @@ const thetaboardOffer = [
       }
     ],
     "stateMutability": "view",
-    "type": "function"
+    "type": "function",
+    "constant": true
   },
   {
     "inputs": [
@@ -2359,7 +2370,8 @@ const thetaboardOffer = [
       }
     ],
     "stateMutability": "view",
-    "type": "function"
+    "type": "function",
+    "constant": true
   },
   {
     "inputs": [

@@ -49,11 +49,12 @@ export default class NftActionsTransferComponent extends Component {
     // return 1 if owned by current metamask wallet and there are offers
     // return 2 if owned by other wallet and current metamask wallet have made no offer
     // return 3 if owned by other wallet and current metamask wallet have made an offer
-    const isWalletInOffer = this.nft.properties.offers.some(offer => offer.offerer === this.metamask.currentAccount.toLowerCase());
+    const offers = this.nft.properties.offers || [];
+    const isWalletInOffer = offers.some(offer => offer.offerer === this.metamask.currentAccount.toLowerCase());
 
-    if (this.isOwner && this.nft.properties.offers.length === 0) {
+    if (this.isOwner && offers.length === 0) {
       return 0;
-    } else if (this.isOwner && this.nft.properties.offers.length !== 0) {
+    } else if (this.isOwner && offers.length !== 0) {
       return 1;
     } else if(!this.isOwner && !isWalletInOffer){
       return 2;
@@ -62,9 +63,7 @@ export default class NftActionsTransferComponent extends Component {
     } else {
       debugger
     }
-
   }
-
 
   @action
   toggleOfferPanel() {
@@ -96,9 +95,10 @@ export default class NftActionsTransferComponent extends Component {
   }
 
   @action
-  async cancelOffer(event) {
+  async cancelOffer() {
     const signer = this.metamask.provider.getSigner();
     const offerContract = new ethers.Contract(this.abi.ThetaboardOfferAddr, this.abi.ThetaboardOffer, signer);
-    const offerTx = await offerContract.cancelOffer("2");
+    const offer = this.nft.properties.offers.find(offer => offer.offerer === this.metamask.currentAccount.toLowerCase());
+    const offerTx = await offerContract.cancelOffer(offer.itemId);
   }
 }
