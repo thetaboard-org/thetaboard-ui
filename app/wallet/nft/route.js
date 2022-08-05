@@ -39,6 +39,8 @@ export default class NFTRoute extends Route {
   resetController(controller, isExiting, transition) {
     if (isExiting && transition.targetName !== 'error') {
       controller.resetFilters();
+      controller.overallFilter = 'all';
+
     }
   }
 }
