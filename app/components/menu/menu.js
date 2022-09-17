@@ -48,6 +48,7 @@ export default class MenuComponent extends Component {
       children: [
         {name: 'menu.creators', image: 'tfuel-white.png', route: 'creators.artists'},
         {name: 'menu.drops', image: 'tfuel-white.png', route: 'creators.drops'},
+        {name: 'menu.airdrop', icon: 'icon-send', route: 'creators.airdrop'},
         {name: 'menu.claim', icon: 'icon-align-center', route: 'creators.claim'}
       ],
     },

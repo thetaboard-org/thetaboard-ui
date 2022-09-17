@@ -71,6 +71,7 @@ Router.map(function () {
     this.route('artists');
     this.route('drops');
     this.route('claim');
+    this.route('airdrop');
     this.route('drop', {path: '/drop/:dropId'});
   });
 });

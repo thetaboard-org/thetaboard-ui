@@ -1,0 +1,34 @@
+{{page-title "Creators  Airdrop"}}
+
+<div class="content">
+  <div class="row">
+    <button {{on "click" this.addNewAirdrop}} class="btn btn-fill btn-primary">Add new Airdrop</button>
+    <br>
+    {{#if newAirdrop}}
+      {{creators/drops/airdrop airdrop=newAirdrop artists=model.artists}}
+    {{/if}}
+  </div>
+
+  <div class="row">
+      <h2> Airdrops</h2>
+      {{#each model.airdrops as |airdrop|}}
+        {{creators/drops/airdrop  airdrop=airdrop artists=model.artists nfts=model.nfts}}
+      {{/each}}
+      {{#if totalAirdropPage}}
+        <PaginationPager
+          @pager={{true}}
+          @count={{totalComingPage}}
+          @current={{currentComingPage}}
+          @change={{pageChangedComing}}
+          @pagerFirst="|<"
+          @pagerLast=">|"
+          @pagerNext={{t 'global.next'}}
+          @pagerPrevious={{t 'global.previous'}}>
+          {{currentComingPage}} of {{totalComingPage}}
+        </PaginationPager>
+      {{/if}}
+    <br>
+  </div>
+</div>
+
+

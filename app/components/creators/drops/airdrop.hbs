@@ -1,0 +1,25 @@
+<div class="card">
+  <div class="card-header">
+    <div class="col-md-5 pr-md-1">
+      <div class="form-group">
+       Drop <Input
+        @type="number"
+        @value={{airdrop.count}}
+      /> NFTs to owners of
+        <PowerSelect
+        @searchEnabled={{true}}
+        @searchField="name"
+        @options={{nfts}}
+        @selected={{airdrop.nft}}
+        @onChange={{fn (mut airdrop.nft)}} as |nft|>
+        {{nft.name}}
+      </PowerSelect>
+        nft
+      </div>
+
+
+      {{creators/drops/nft nft=nft}}
+
+    </div>
+  </div>
+</div>
