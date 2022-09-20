@@ -7,60 +7,67 @@ export default class AirdropComponent extends Component {
   @service session;
   @service utils;
   @service abi;
-
-  get artists() {
-    return this.args.artists;
-  }
+  @service store;
+  @service metamask;
 
   get nfts() {
     return this.args.nfts;
   }
 
-  get isAdmin() {
-    return this.session.currentUser.user.scope === 'Admin'
+  get airdrop() {
+    return this.args.airdrop;
   }
 
   @action
-  async saveAirdrop(airdrop) {
+  async saveAirdrop() {
     try {
-      await airdrop.save();
-      this.utils.successNotify("Drop saved successfully");
+      const giftNft = await this.airdrop.get('giftNft');
+      await giftNft.save();
+      this.airdrop.giftNftId = giftNft.get('id');
+      const sourceNft = await this.airdrop.get("sourceNft");
+      this.airdrop.sourceNftId = sourceNft.get('id');
+      //Objects are saved, get address and do deployment
+      this.airdrop.winners = await sourceNft.getRandomOwners(this.airdrop.count);
+      await this.airdrop.save();
+      this.utils.successNotify("Airdrop saved successfully");
     } catch (e) {
       console.error(e);
       this.utils.errorNotify(e.errors.message);
     }
   }
 
-  async deployNFTsContracts(account, nfts_to_deploy) {
-    const managerContract = new window.web3.eth.Contract(this.abi.ThetaboardDeploymentManager, this.abi.ThetaboardDeploymentManagerAddr);
-    await Promise.all(nfts_to_deploy.map(async (nft) => {
-      let sellAddress, contractFunction;
-      if (nft.isAuction) {
-        contractFunction = managerContract.methods.deployNFTandAuction;
-        sellAddress = this.abi.ThetaboardAuctionSellAddr
-      } else {
-        contractFunction = managerContract.methods.deployNFTandSell;
-        sellAddress = this.abi.ThetaboardDirectSellAddr
-      }
-      const minterRoles = ["0xBDfc0c687861a65F54211C55E4c53A140FE0Bf32", nft.drop.get('artist.walletAddr'), sellAddress];
+  @action
+  async uploadImage(file) {
+    try {
+      file.name = 'nft/' + file.name;
+      const response = await file.upload('/nft/assets/upload');
+      const nft = await this.airdrop.get('giftNft');
+      nft.image = response.body.fileUrl;
+      this.utils.successNotify("Successfully uploaded");
+    } catch (e) {
+      console.error(e);
+      this.utils.errorNotify("upload failed");
+      this.utils.errorNotify(e.errors.message);
+    }
+  }
 
-      // name, url, toBeMinters[],
-      // directSellContract, price, endDate,
-      // editionNumber, artistWallet, split
-
-      const params = [nft.name, `https://nft.thetaboard.io/nft/${nft.id}/`, minterRoles, sellAddress,
-        nft.price,
-        new Date(nft.drop.get('endDate') + 'Z').getTime() / 1000,
-        nft.editionNumber || 0,
-        nft.drop.get('artist.walletAddr'),
-        90];
-      return contractFunction(...params).send({from: account}).then((transaction) => {
-        nft.nftSellController = sellAddress;
-        nft.nftContractId = transaction.events.NFTDeployed.returnValues.nftContract;
-        return nft.save();
-      })
-
+  async deployAirdrop() {
+    const signer = this.metamask.provider.getSigner();
+    const giftNft = await this.airdrop.get('giftNft');
+    if (!giftNft.nftContractId) {
+      const factory = new ethers.ContractFactory(this.abi.ThetaboardNFT, this.abi.ThetaboardNFTByteCode, signer)
+      const contract = await factory.deploy(giftNft.name, `TB`, `https://nft.thetaboard.io/nft/${giftNft.id}/`);
+      giftNft.nftContractId = contract.address;
+      await giftNft.save();
+      this.utils.successNotify("NFT deployed");
+    }
+    const NFTcontract = new ethers.Contract(giftNft.nftContractId, this.abi.ThetaboardNFT, signer);
+    await Promise.all(this.airdrop.winners.split(',').map(async (x)=>{
+      return NFTcontract.mint(x);
     }));
+    this.airdrop.isDeployed = true
+    await this.airdrop.save()
+
   }
 
   // state for deployNFTs

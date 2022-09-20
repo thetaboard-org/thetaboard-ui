@@ -5,13 +5,13 @@
     <button {{on "click" this.addNewAirdrop}} class="btn btn-fill btn-primary">Add new Airdrop</button>
     <br>
     {{#if newAirdrop}}
-      {{creators/drops/airdrop airdrop=newAirdrop artists=model.artists}}
+      {{creators/drops/airdrop airdrop=newAirdrop artists=model.artists nfts=model.nfts}}
     {{/if}}
   </div>
 
   <div class="row">
       <h2> Airdrops</h2>
-      {{#each model.airdrops as |airdrop|}}
+      {{#each airdrops as |airdrop|}}
         {{creators/drops/airdrop  airdrop=airdrop artists=model.artists nfts=model.nfts}}
       {{/each}}
       {{#if totalAirdropPage}}

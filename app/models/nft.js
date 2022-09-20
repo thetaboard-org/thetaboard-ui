@@ -135,5 +135,23 @@ export default class NftModel extends Model {
   get firstAsset() {
     return this.nftAssets.firstObject.asset;
   }
+
+  // used for airdrop
+  async getRandomOwners(numberOfOwners){
+    await this.metamask.initMeta();
+    if (!this.nftContractId) return null;
+    if (this.abi.tnsRegistrarContractAddr === this.nftContractId) return 1;
+    const NFTContract = new ethers.Contract(
+      this.nftContractId,
+      this.abi.ThetaboardNFT,
+      this.metamask.provider
+    );
+    const totalSupply = await NFTContract.totalSupply();
+    const randomIds = [];
+    while(randomIds.length < numberOfOwners){
+      randomIds.push(Math.floor(Math.random() * (totalSupply)))
+    }
+    return await Promise.all(randomIds.map(async (x) => await NFTContract.ownerOf(x)));
+  }
 }
 

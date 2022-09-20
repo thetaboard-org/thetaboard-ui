@@ -1,9 +1,12 @@
 import Component from '@glimmer/component';
+import {inject as service} from '@ember/service';
 import {action} from '@ember/object';
 
 
 export default class NftComponent extends Component {
-  get nft(){
+  @service utils;
+
+  get nft() {
     return this.args.nft
   }
 

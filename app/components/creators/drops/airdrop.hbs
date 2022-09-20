@@ -1,25 +1,109 @@
 <div class="card">
-  <div class="card-header">
-    <div class="col-md-5 pr-md-1">
-      <div class="form-group">
-       Drop <Input
-        @type="number"
-        @value={{airdrop.count}}
-      /> NFTs to owners of
-        <PowerSelect
-        @searchEnabled={{true}}
-        @searchField="name"
-        @options={{nfts}}
-        @selected={{airdrop.nft}}
-        @onChange={{fn (mut airdrop.nft)}} as |nft|>
-        {{nft.name}}
-      </PowerSelect>
-        nft
+  <div class="card-body">
+
+    <form {{action "saveAirdrop" drop on="submit"}}>
+      <div class="row">
+        <div class="col-md-5 pr-md-1">
+          <div class="form-group">
+            <label>How many winners ?</label>
+            <Input
+              @class="form-control"
+              @type="number"
+              placeholder="Count of Winners"
+              required
+              @value={{airdrop.count}}
+            />
+          </div>
+        </div>
+        <div class="col-md-5 pr-md-1">
+          <div class="form-group">
+            <label>For owners of which nft ?</label>
+            <PowerSelect
+              @searchEnabled={{true}}
+              @searchField="name"
+              @options={{nfts}}
+              @selected={{airdrop.sourceNft}}
+              @onChange={{fn (mut airdrop.sourceNft)}} as |sourceNft|>
+              {{sourceNft.name}}
+            </PowerSelect>
+          </div>
+        </div>
       </div>
-
-
-      {{creators/drops/nft nft=nft}}
-
-    </div>
+      <h3> NFT to give </h3>
+      {{#if airdrop.giftNft.nftContractId}}
+        Deployed at: {{airdrop.giftNft.nftContractId}}
+      {{else}}
+        NFT not deployed to the blockchain
+      {{/if}}
+      <div class="row">
+        <div class="col-md-5 pr-md-1">
+          <div class="form-group">
+            <label>Name</label>
+            <Input
+              @class="form-control"
+              @type="text"
+              @disabled={{if airdrop.giftNft.nftContractId true}}
+              placeholder="Name"
+              @value={{airdrop.giftNft.name}}
+              required
+            />
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <FileDropzone @name="photos-{{airdrop.giftNft.id}}-image" as |nftzone queue|>
+            <h4>The NFT</h4>
+            <img src="{{airdrop.giftNft.image}}" style="max-height: 500px">
+            <p>
+              <FileUpload @name="photos-{{airdrop.airdrop.id}}-image"
+                          @accept="image/*"
+                          @multiple={{false}}
+                          @onFileAdd= {{fn this.uploadImage}}>
+                <a tabindex=0>Add an Image.</a>
+              </FileUpload>
+              {{#if queue.files.length}}
+                Uploading {{queue.files.length}} files. ({{queue.progress}}%)
+              {{/if}}
+            </p>
+          </FileDropzone>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="form-group">
+            <label>One line description</label>
+            <Textarea @rows="4" @class="form-control" @value={{airdrop.giftNft.smallDescription}} />
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="form-group">
+            <label>Description</label>
+            <Textarea @rows="4" @class="form-control" @value={{airdrop.giftNft.description}} />
+          </div>
+        </div>
+      </div>
+      {{#if airdrop.winners}}
+        <div class="row">
+          <div class="col-md-12">
+            The receivers of the NFT will be : {{airdrop.winners}} <br>
+          </div>
+        </div>
+      {{/if}}
+      <div class="card-footer">
+        {{#if airdrop.isDeployed}}
+          <button class="btn btn-fill btn-primary disabled">Save Airdrop</button>
+        {{else}}
+          <button type="submit" class="btn btn-fill btn-primary">Save Airdrop</button>
+        {{/if}}
+        {{#if airdrop.id}}
+          <button class="btn btn-fill btn-secondary" {{action "deployAirdrop"}}>Deploy Airdrop</button>
+        {{else}}
+          <button class="btn btn-fill btn-secondary disabled">Deploy Airdrop</button>
+        {{/if}}
+      </div>
+    </form>
   </div>
 </div>

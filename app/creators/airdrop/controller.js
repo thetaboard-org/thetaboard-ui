@@ -16,11 +16,17 @@ export default class DropsController extends Controller {
     return this.session.currentUser.user.scope === 'Admin'
   }
 
+  get airdrops() {
+    return this.model.airdrops.filter(x => !!x.id);
+  }
+
   @action
   addNewAirdrop() {
     this.set('newAirdrop', this.store.createRecord('airdrop', {
-      artist: this.model.artists.firstObject,
-      nft: this.store.createRecord('NFT')
+      artistId: this.model.artists.firstObject.id,
+      giftNft: this.store.createRecord('NFT', {
+        artistId: this.model.artists.firstObject.id
+      })
     }));
   }
 
@@ -33,10 +39,7 @@ export default class DropsController extends Controller {
   async pageChangedLive(page) {
     this.currentLivePage = page;
     this.set('model.airdrop', await this.store.query('airdrop', {
-      isLive: 1,
-      sortBy: "endDate",
-      pageNumber: page,
-      artistId: this.isAdmin ? null : this.model.artists.firstObject.id
+      pageNumber: page
     }));
   }
 }
