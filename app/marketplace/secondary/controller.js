@@ -42,7 +42,11 @@ export default class SecondaryController extends Controller {
       {
         name: "Price: High to Low",
         id: "price:desc"
-      }]
+      },
+      {
+        name: "Alphabetical",
+        id: "name:asc"
+      },]
   }
 
   @computed('model.marketplaceInfo.totalCount')
@@ -56,7 +60,7 @@ export default class SecondaryController extends Controller {
   }
 
   async searchMarketplaceFetch() {
-    const sortBy = this.selectedSortBy && this.selectedSortBy.id ? "price" : '';
+    const sortBy = this.selectedSortBy && this.selectedSortBy.id ? this.selectedSortBy.id.split(':')[0]  : '';
     const orderBy = this.selectedSortBy && this.selectedSortBy.id ? this.selectedSortBy.id.split(':')[1] : '';
 
     if (this.search
