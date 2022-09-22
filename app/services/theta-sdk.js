@@ -1,9 +1,7 @@
 import Service, {inject as service} from '@ember/service';
-import ThetaWalletConnect from '@thetalabs/theta-wallet-connect';
 import * as thetajs from '@thetalabs/theta-js';
 import {tracked} from '@glimmer/tracking';
 import {htmlSafe} from '@ember/template';
-import {cancel, later} from '@ember/runloop';
 
 export default class ThetaSdkService extends Service {
   constructor(...args) {

@@ -65,7 +65,7 @@ export default class AirdropComponent extends Component {
     await Promise.all(this.airdrop.winners.split(',').map(async (x)=>{
       return NFTcontract.mint(x);
     }));
-    this.airdrop.isDeployed = true
+    this.airdrop.isDeployed = true;
     await this.airdrop.save()
 
   }
