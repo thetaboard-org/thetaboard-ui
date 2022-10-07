@@ -10,21 +10,21 @@
   </div>
 
   <div class="row">
-      <h2> Airdrops</h2>
+      <h2> Airdrops </h2>
       {{#each airdrops as |airdrop|}}
         {{creators/drops/airdrop  airdrop=airdrop artists=model.artists nfts=model.nfts}}
       {{/each}}
       {{#if totalAirdropPage}}
         <PaginationPager
           @pager={{true}}
-          @count={{totalComingPage}}
-          @current={{currentComingPage}}
-          @change={{pageChangedComing}}
+          @count={{totalAirdropPage}}
+          @current={{currentPage}}
+          @change={{pageChanged}}
           @pagerFirst="|<"
           @pagerLast=">|"
           @pagerNext={{t 'global.next'}}
           @pagerPrevious={{t 'global.previous'}}>
-          {{currentComingPage}} of {{totalComingPage}}
+          {{currentPage}} of {{totalAirdropPage}}
         </PaginationPager>
       {{/if}}
     <br>

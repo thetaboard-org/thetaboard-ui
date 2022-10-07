@@ -43,6 +43,7 @@ export default class DropsController extends Controller {
 
   @computed('live.meta.total')
   get totalLivePage() {
+    debugger
     return Math.ceil(this.live.meta.total / 6);
   }
 
@@ -72,8 +73,8 @@ export default class DropsController extends Controller {
   async pageChangedComing(page) {
     this.currentComingPage = page;
     this.set('model.isComing', await this.store.query('drop', {
-      isEnded: 1,
-      sortBy: "endDate",
+      isComing: 1,
+      sortBy: "startDate",
       pageNumber: page,
       artistId: this.isAdmin ? null : this.model.artists.firstObject.id
     }));

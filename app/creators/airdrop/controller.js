@@ -16,8 +16,9 @@ export default class DropsController extends Controller {
     return this.session.currentUser.user.scope === 'Admin'
   }
 
+  @computed('model.airdrops')
   get airdrops() {
-    return this.model.airdrops.filter(x => !!x.id);
+    return this.model.airdrops;
   }
 
   @action
@@ -30,16 +31,22 @@ export default class DropsController extends Controller {
     }));
   }
 
-  @computed('this.airdrops')
+  @computed('airdrops.meta.total')
   get totalAirdropPage() {
-    return Math.ceil(this.model.airdrops.length / 6);
+    if (this.model.airdrops.meta) {
+      return Math.ceil(this.model.airdrops.meta.total / 6);
+    }
+    return 0
   }
 
   @action
-  async pageChangedLive(page) {
-    this.currentLivePage = page;
-    this.set('model.airdrop', await this.store.query('airdrop', {
-      pageNumber: page
-    }));
+  async pageChanged(page) {
+    this.currentPage = page;
+    const filter = {pageNumber: page}
+    if (this.isAdmin) {
+      filter.artistId = this.model.artists.firstObject.id
+    }
+
+    this.set('model.airdrop', await this.store.query('airdrop', filter));
   }
 }

@@ -9,17 +9,16 @@ export default class MyWalletsRoute extends Route {
   }
 
   async model(params) {
-
     const user = this.session.currentUser.user
     const scope = user.scope;
     let artists = [], airdrops = [], nfts = [];
 
     if (scope === "Admin") {
       artists = this.store.findAll("artist");
-      airdrops = this.store.findAll("airdrop");
+      airdrops = this.store.query("airdrop", {});
       nfts = this.store.query("nft", {artistId: 1}); // if admin, select nfts from thetaboard
     } else if (scope === "Creator") {
-      artists = await this.store.query("artist", {userId: user.id});
+      artists = this.store.query("artist", {userId: user.id});
       if (!artists.firstObject) {
         this.transitionTo('/creators/artists')
       }
