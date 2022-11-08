@@ -18,7 +18,7 @@ export default class MyWalletsRoute extends Route {
       airdrops = this.store.query("airdrop", {});
       nfts = this.store.query("nft", {artistId: 1}); // if admin, select nfts from thetaboard
     } else if (scope === "Creator") {
-      artists = this.store.query("artist", {userId: user.id});
+      artists = await this.store.query("artist", {userId: user.id});
       if (!artists.firstObject) {
         this.transitionTo('/creators/artists')
       }
