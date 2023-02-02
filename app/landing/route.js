@@ -33,7 +33,7 @@ export default class LandingRoute extends Route {
       latest_drop = live.firstObject;
     }
     if(!latest_drop){
-      const isComing = this.store.query('drop', {
+      const isComing = await this.store.query('drop', {
         isComing: 1,
 
         isPublic: 1,
@@ -44,7 +44,7 @@ export default class LandingRoute extends Route {
     }
 
     if(!latest_drop){
-      const ended = this.store.query('drop', {
+      const ended = await this.store.query('drop', {
         isEnded: 1,
 
         isPublic: 1,
