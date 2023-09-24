@@ -43,7 +43,6 @@ export default class DropsController extends Controller {
 
   @computed('live.meta.total')
   get totalLivePage() {
-    debugger
     return Math.ceil(this.live.meta.total / 6);
   }
 
