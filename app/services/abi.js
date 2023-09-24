@@ -44,7 +44,7 @@ export default class ABIService extends Service {
   }
 
   get tnsRegistrarContractAddr() {
-    return "0xbb4d339a7517c81c32a01221ba51cbd5d3461a94"
+    return "0x7DaEEe00fb89d5c46B8e8387fd9aaC79D6910a06"
   }
 
   get ThetaboardOffer() {
