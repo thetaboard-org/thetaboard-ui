@@ -14,6 +14,7 @@
       <h5 class="title">{{t 'staking.vip.title'}}
         {{#if this.thetaSdk.tfuelAPR}}<br>{{t 'staking.earn_up_to'}} <span class="nostyle" {{numberformat this.thetaSdk.tfuelAPR 1}}></span>% {{t 'global.apr'}}*{{/if}}
       </h5>
+      <p>{{t 'staking.tfuel_additional_info'}}<br/>{{t 'staking.tfuel_additional_info2'}}</p>
       <p>{{t 'staking.tfuel_fees'}}</p>
       <div class="row justify-content-lg-center justify-content-md-center">
         <form {{on 'submit' this.submitStake}} class="stakes-deposit col-md-9">

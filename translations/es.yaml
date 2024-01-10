@@ -174,8 +174,11 @@ NFT:
 ###### STAKING START ######
 staking:
   earn_up_to: "Ganar hasta"
-  tfuel_fees: "Comisión del 3% sobre recompensas por stake (por cada 10 Tfuels generados, la comisión de Thetaboard será de 0,3 Tfuels)."
+  tfuel_fees: "Comisión del 10% sobre recompensas por stake (por cada 10 Tfuels generados, la comisión de Thetaboard será de 1 Tfuel)."
   tfuel_fees_affiliate: "Comisión del 0% hasta el 31/08/2021 (Comisión del 3% a partir del 01/09/2021)."
+  tfuel_additional_info: "Todos los EN ejecutan la versión 1.3.1, que proporciona aproximadamente un 7,5%* de recompensas de apilamiento y un adicional de ~1%* proveniente de trabajos en blockchain."
+  tfuel_additional_info2: "Staking en nuestros ENs, contribuyes al ecosistema Theta mientras maximizas tus beneficios."
+  tfuel_additional_legend: "*Estos números se basan en nuestras pruebas y pueden variar de semana a semana."
   ### Staking Tfuel
   tfuel:
     title: "Tfuel Staking público"
@@ -590,7 +593,7 @@ faq:
   where_nodes_body: "<p>Thetaboard tiene nodos repartidos por EE. UU. Y Canadá. Planeamos extendernos a otras partes del mundo también.</p><br/>
                 <br/><br/>"
   fees: "Qué tarifas tiene Thetaboard?"
-  fees_body: "<p>Las tarifas de Thetaboard por alojar el nodo Theta y Tfuel son el 3% de las recompensas obtenidas. Con el 8% APR actual para Tfuel, significa que obtienes 7.76% APR y thetaboard obtiene 0.24%.</p><br/>
+  fees_body: "<p>Las tarifas de Thetaboard por alojar el nodo Theta es 3% y Tfuel es 10% de las recompensas obtenidas.</p><br/>
                 <br/><br/>"
   minimum: "Cuál es el número mínimo actual de tokens para staking?"
   minimum_body: "<p>Para staking en Theta Network, las cantidades mínimas son:</p><br/>
