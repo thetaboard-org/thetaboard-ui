@@ -174,7 +174,7 @@ NFT:
 ###### STAKING START ######
 staking:
   earn_up_to: "최대 적립"
-  tfuel_fees: "스테이킹 보상에 대한 5% 수수료(매 10 Tfuel 적립에 대해 Thetaboard 수수료는 0.5 Tfuel입니다)."
+  tfuel_fees: "스테이킹 보상에 대한 10% 수수료(매 10 Tfuel 적립에 대해 Thetaboard 수수료는 1 Tfuel입니다)."
   tfuel_fees_affiliate: "2021년 8월 31일까지 수수료 0%(2021년 9월 1일부터 수수료 3%)"
   tfuel_additional_info: "All ENs run version 1.3.1, which provides approximately 7.5%* stacking rewards and an additional ~1%* from blockchain jobs."
   tfuel_additional_info2: "By staking our edge nodes, you contribute to the Theta ecosystem while maximizing your profits."
